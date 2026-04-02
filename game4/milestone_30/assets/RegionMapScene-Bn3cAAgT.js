@@ -1,0 +1,2 @@
+import{W as n,D as i,S as t}from"./main-GcCELsWO.js";const g={async init(r){const e=r?.regionId??n.currentRegionId??0;n.currentRegionId=e;const o=n.world?.regions?.find(a=>a.id===e);o&&(n.currentRegionLevel=o.level),i.info(`[world] RegionMapScene: forwarding to localMap; regionId=${e}`),await t.transition("localMap",{regionId:e})},update(){},async destroy(){}};export{g as default};
+//# sourceMappingURL=RegionMapScene-Bn3cAAgT.js.map

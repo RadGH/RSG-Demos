@@ -9,16 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+    #game {
       position: fixed;
       inset: 0;
-      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: #000;
-    }
-    #game {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
     }
     canvas { image-rendering: auto; display: block; }
   </style>

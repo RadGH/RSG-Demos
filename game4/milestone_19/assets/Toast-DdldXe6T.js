@@ -1,2 +1,0 @@
-const d={show(e,o={}){const{type:s="info",duration:n=2200}=o,t=document.createElement("div");t.className="sr-toast",t.textContent=e;const a={success:"#40a060",warn:"#c8a020",error:"#c83020",info:"rgba(200, 160, 32, 0.4)"}[s]??"rgba(200, 160, 32, 0.4)";t.style.borderColor=a,(document.getElementById("ui-overlay")??document.body).appendChild(t),setTimeout(()=>{t.classList.add("sr-toast-out"),setTimeout(()=>t.remove(),350)},n)}};export{d as default};
-//# sourceMappingURL=Toast-DdldXe6T.js.map
