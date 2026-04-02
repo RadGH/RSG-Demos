@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSG Demos — Waystone Interactive</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a14; color: #eee; font-family: 'Segoe UI', sans-serif; }
+    .header { padding: 30px 40px 0; max-width: 860px; margin: 0 auto; }
+    h1 { color: #ffdd44; font-size: 28px; letter-spacing: 2px; margin-bottom: 4px; }
+    .subtitle { color: #556677; font-size: 13px; margin-bottom: 20px; }
+    .tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+    .tab {
+      display: inline-block; padding: 10px 28px;
+      border-radius: 8px 8px 0 0; border: 1px solid #334; border-bottom: none;
+      font-size: 16px; cursor: pointer; background: #0d0d1e; color: #8899bb;
+    }
+    .tab.active { background: #1a1a3a; border-color: #446; color: #ffdd44; font-weight: bold; }
+    .tab:hover:not(.active) { color: #aabbdd; background: #111128; }
+    .badge {
+      display: inline-block; background: #223; color: #88aadd;
+      font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-left: 6px;
+      vertical-align: middle;
+    }
+    .content {
+      background: #0f0f1e; border: 1px solid #334;
+      border-radius: 0 8px 8px 8px; padding: 28px 32px;
+      max-width: 860px; margin: 0 auto 40px;
+    }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .card {
+      background: #111122; border: 1px solid #334; border-radius: 8px;
+      padding: 16px 20px; margin-bottom: 14px;
+    }
+    .card a { color: #66aaff; font-size: 20px; font-weight: bold; text-decoration: none; }
+    .card a:hover { color: #fff; }
+    .latest {
+      display: inline-block; background: #1a3a0e; color: #66cc33;
+      font-size: 10px; padding: 2px 8px; border-radius: 4px;
+      margin-left: 12px; vertical-align: middle; letter-spacing: 1px;
+    }
+    .empty { color: #445566; font-style: italic; padding: 10px 0; }
+    .footer { color: #334455; font-size: 12px; margin-top: 24px; }
+  </style>
+</head>
+<body>
+<div class="header">
+  <h1>&#9876; RSG DEMOS</h1>
+  <div class="subtitle">Waystone Interactive &mdash; playable game builds</div>
+  <div class="tabs">
+    <button class="tab active" data-tab="game2" onclick="switchTab('game2', this)">Roguelike <span class="badge">9</span></button>
+    <button class="tab" data-tab="game3" onclick="switchTab('game3', this)">Roguelike III <span class="badge">3</span></button>
+    <button class="tab" data-tab="game4" onclick="switchTab('game4', this)">Spellroads <span class="badge">10</span></button>
+  </div>
+</div>
+<div class="content">
+    <div id="panel-game2" class="panel active">
+      <div class="card"><a href="./game2/milestone_125/">&#9654; Milestone 125</a><span class="latest">LATEST</span></div>
+      <div class="card"><a href="./game2/milestone_124/">&#9654; Milestone 124</a></div>
+      <div class="card"><a href="./game2/milestone_123/">&#9654; Milestone 123</a></div>
+      <div class="card"><a href="./game2/milestone_122/">&#9654; Milestone 122</a></div>
+      <div class="card"><a href="./game2/milestone_121/">&#9654; Milestone 121</a></div>
+      <div class="card"><a href="./game2/milestone_120/">&#9654; Milestone 120</a></div>
+      <div class="card"><a href="./game2/milestone_118/">&#9654; Milestone 118</a></div>
+      <div class="card"><a href="./game2/milestone_117/">&#9654; Milestone 117</a></div>
+      <div class="card"><a href="./game2/milestone_116/">&#9654; Milestone 116</a></div>
+    </div>
+    <div id="panel-game3" class="panel">
+      <div class="card"><a href="./game3/milestone_3/">&#9654; Milestone 3</a><span class="latest">LATEST</span></div>
+      <div class="card"><a href="./game3/milestone_2/">&#9654; Milestone 2</a></div>
+      <div class="card"><a href="./game3/milestone_1/">&#9654; Milestone 1</a></div>
+    </div>
+    <div id="panel-game4" class="panel">
+      <div class="card"><a href="./game4/milestone_26/">&#9654; Milestone 26</a><span class="latest">LATEST</span></div>
+      <div class="card"><a href="./game4/milestone_25/">&#9654; Milestone 25</a></div>
+      <div class="card"><a href="./game4/milestone_24/">&#9654; Milestone 24</a></div>
+      <div class="card"><a href="./game4/milestone_23/">&#9654; Milestone 23</a></div>
+      <div class="card"><a href="./game4/milestone_22/">&#9654; Milestone 22</a></div>
+      <div class="card"><a href="./game4/milestone_21/">&#9654; Milestone 21</a></div>
+      <div class="card"><a href="./game4/milestone_20/">&#9654; Milestone 20</a></div>
+      <div class="card"><a href="./game4/milestone_19/">&#9654; Milestone 19</a></div>
+      <div class="card"><a href="./game4/milestone_18/">&#9654; Milestone 18</a></div>
+      <div class="card"><a href="./game4/milestone_17/">&#9654; Milestone 17</a></div>
+    </div>
+
+  <p class="footer">Last deployed: April 02, 2026</p>
+</div>
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

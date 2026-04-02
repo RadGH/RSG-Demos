@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- CRITICAL for mobile: tells browser to use device width, not simulate 980px desktop -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Roguelike III</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      background: #000;
+      width: 100%; height: 100%;
+      /* dvh = dynamic viewport height — shrinks with iOS Safari address bar */
+      min-height: 100dvh;
+      overflow: hidden;
+      /* Prevent browser pan/zoom from interfering with game touch input */
+      touch-action: none;
+    }
+    body { display: flex; justify-content: center; align-items: center; }
+    #game {
+      /* Fill the entire viewport so Phaser's ScaleManager has room to center */
+      width: 100vw;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    canvas { image-rendering: auto; display: block; touch-action: none; }
+  </style>
+  <script type="module" crossorigin src="./assets/index-BJ6bZAfo.js"></script>
+</head>
+<body>
+  <div id="game"></div>
+</body>
+</html>

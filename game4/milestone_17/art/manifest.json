@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "tilesets": {
+    "world": {
+      "ocean": "tilesets/world/ocean.png",
+      "frozen_sea": "tilesets/world/frozen_sea.png",
+      "tundra": "tilesets/world/tundra.png",
+      "forest": "tilesets/world/forest.png",
+      "plains": "tilesets/local/grass.png",
+      "desert": "tilesets/world/desert.png",
+      "volcanic": "tilesets/world/volcanic.png"
+    },
+    "local": {
+      "dungeon": "tilesets/local/dungeon.png",
+      "grass": "tilesets/local/grass.png"
+    },
+    "combat": {
+      "dungeon": "tilesets/combat/dungeon_floor.png",
+      "forest": "tilesets/combat/forest_floor.png",
+      "volcanic": "tilesets/combat/volcanic_floor.png",
+      "ice": "tilesets/combat/ice_floor.png",
+      "void": "tilesets/combat/void_floor.png"
+    }
+  },
+  "combat_props": {
+    "chest": "tilesets/combat/chest.png",
+    "altar": "tilesets/combat/altar.png",
+    "portal": "tilesets/combat/portal.png",
+    "barrel": "tilesets/combat/barrel.png",
+    "void_topdown": "tilesets/combat/void.png",
+    "volcanic_topdown": "tilesets/combat/volcanic.png"
+  },
+  "characters": {
+    "human": "characters/human/preview.png",
+    "dvergr": "characters/dvergr/preview.png",
+    "alfar": "characters/alfar/preview.png"
+  },
+  "enemies": {
+    "lich": "enemies/lich/preview.png",
+    "plague_bearer": "enemies/plague_bearer/preview.png",
+    "shadow_stalker": "enemies/shadow_stalker/preview.png",
+    "phantom_wraith": "enemies/phantom_wraith/preview.png",
+    "demon_archer": "enemies/demon_archer/preview.png",
+    "troll_berserker": "enemies/troll_berserker/preview.png",
+    "orc_tank": "enemies/orc_tank/preview.png",
+    "void_wraith": "enemies/void_wraith/preview.png",
+    "forest_treant": "enemies/forest_treant/preview.png",
+    "skeleton_warrior": "enemies/skeleton_warrior/preview.png",
+    "goblin_melee": "enemies/goblin_melee/preview.png",
+    "stone_golem": "enemies/stone_golem/preview.png",
+    "herald_of_doom": "enemies/herald_of_doom/preview.png",
+    "void_overlord": "enemies/void_overlord/preview.png",
+    "chaos_titan": "enemies/chaos_titan/preview.png",
+    "war_chief": "enemies/war_chief/preview.png",
+    "goblin_scout": "enemies/goblin_melee/preview.png",
+    "orc_grunt": "enemies/orc_tank/preview.png",
+    "troll": "enemies/troll_berserker/preview.png",
+    "swamp_wraith": "enemies/phantom_wraith/preview.png"
+  },
+  "npcs": {
+    "merc_ice_mage": "npcs/merc_ice_mage/preview.png",
+    "merc_shadow_rogue": "npcs/merc_shadow_rogue/preview.png",
+    "merc_pyromancer": "npcs/merc_pyromancer/preview.png",
+    "merc_cleric": "npcs/merc_cleric/preview.png",
+    "merc_crossbowman": "npcs/merc_crossbowman/preview.png",
+    "merc_footsoldier": "npcs/merc_footsoldier/preview.png",
+    "merchant": "npcs/merchant/preview.png",
+    "blacksmith": "npcs/blacksmith/preview.png",
+    "innkeeper": "npcs/innkeeper/preview.png"
+  }
+}
