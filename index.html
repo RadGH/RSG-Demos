@@ -43,6 +43,28 @@
     }
     .empty { color: #445566; font-style: italic; padding: 10px 0; }
     .footer { color: #334455; font-size: 12px; margin-top: 24px; }
+    .game-desc {
+      color: #8899aa; font-size: 14px; line-height: 1.5;
+      margin: 0 0 16px 0; padding: 12px 16px;
+      background: #0d0d1a; border-left: 3px solid #334; border-radius: 0 6px 6px 0;
+    }
+    .meta-section {
+      margin-bottom: 12px; background: #0d0d1a;
+      border: 1px solid #2a2a44; border-radius: 6px;
+    }
+    .meta-section summary {
+      padding: 8px 16px; cursor: pointer; color: #7788aa; font-size: 13px; font-weight: bold;
+    }
+    .meta-section summary:hover { color: #aabbdd; }
+    .meta-pre {
+      color: #99aabb; font-size: 13px; line-height: 1.6;
+      white-space: pre-wrap; word-wrap: break-word; margin: 0;
+      padding: 0 16px 12px; font-family: 'Segoe UI', sans-serif;
+    }
+    .release-date {
+      display: inline-block; color: #667788; font-size: 12px;
+      margin-left: 12px; vertical-align: middle;
+    }
   </style>
 </head>
 <body>
@@ -53,13 +75,27 @@
     <button class="tab active" data-tab="game2" onclick="switchTab('game2', this)">Roguelike <span class="badge">9</span></button>
     <button class="tab" data-tab="game3" onclick="switchTab('game3', this)">Roguelike III <span class="badge">3</span></button>
     <button class="tab" data-tab="game4" onclick="switchTab('game4', this)">Spellroads <span class="badge">10</span></button>
-    <button class="tab" data-tab="game5" onclick="switchTab('game5', this)">Runefall <span class="badge">0</span></button>
     <button class="tab" data-tab="game6" onclick="switchTab('game6', this)">Astral Crypts <span class="badge">10</span></button>
     <button class="tab" data-tab="game7" onclick="switchTab('game7', this)">Wanderlight <span class="badge">10</span></button>
   </div>
 </div>
 <div class="content">
     <div id="panel-game2" class="panel active">
+      <p class="game-desc">A browser-based 2.5D isometric roguelike with local co-op (1–4 players). Fast runs (3–10 min/map), persistent progression, drop-in/out multiplayer. 9 classes, 126+ milestones of content including town NPCs, crafting, mercenaries, relic systems, and AI pixel art sprites.</p>
+      <details class="meta-section"><summary>Changelog</summary><pre class="meta-pre">See individual milestone notes for full history. Recent highlights:
+- M126: Fixed game UI off-center on desktop (2K/HiDPI screens)
+- M125: Mobile viewport centering fix, offset camera/aiming regression fix
+- M124: All town NPCs, mercenaries, biome tiles, and map props regenerated as pixel art
+- M123: All 26 enemies now render as PixelLab AI pixel art sprites
+- M120: PixelLab AI pixel art sprites for all 9 player classes, biome-aware floor tiles, room props
+- M116: Render quality setting (Low/Medium/High), auto-detect based on display
+- M100: Century milestone — Prestige aura system, new run modifiers</pre></details>
+      <details class="meta-section"><summary>Planned Milestones</summary><pre class="meta-pre">Ongoing development — no fixed milestone roadmap. Focus areas:
+- Additional pixel art generation for remaining placeholder sprites
+- Mobile touch controls refinement
+- Performance optimization for large milestone counts
+- Additional biome content and enemy variety
+- Online co-op (future)</pre></details>
       <div class="card"><a href="./game2/milestone_127/">&#9654; Milestone 127</a><span class="latest">LATEST</span></div>
       <div class="card"><a href="./game2/milestone_126/">&#9654; Milestone 126</a></div>
       <div class="card"><a href="./game2/milestone_125/">&#9654; Milestone 125</a></div>
@@ -71,11 +107,38 @@
       <div class="card"><a href="./game2/milestone_118/">&#9654; Milestone 118</a></div>
     </div>
     <div id="panel-game3" class="panel">
+      <p class="game-desc">A third-person top-down twin-stick action RPG. Full conversion from the isometric Roguelike engine to fast-paced twin-stick combat with 7 classes, 360° aiming, dash/roll mechanics, and mobile virtual joystick support.</p>
+      <details class="meta-section"><summary>Changelog</summary><pre class="meta-pre">- M3: Kill combo system, boss intro cinematic, dedicated boss HP bar, 3 new enemies (Berserker, Hexer, Spider), touch controls polish
+- M2: Character creation fix, loading screen fix, viewport meta tag, JS/CSS caching
+- M1: Full engine conversion — top-down twin-stick, 8-dir movement, projectile combat, lighting, 6 enemy types, wave system</pre></details>
+      <details class="meta-section"><summary>Planned Milestones</summary><pre class="meta-pre">Continuing twin-stick action RPG development:
+- Additional enemy types and boss encounters
+- Loot and equipment system
+- Town hub and NPC interactions
+- Mobile touch controls refinement
+- Multiplayer co-op support</pre></details>
       <div class="card"><a href="./game3/milestone_3/">&#9654; Milestone 3</a><span class="latest">LATEST</span></div>
       <div class="card"><a href="./game3/milestone_2/">&#9654; Milestone 2</a></div>
       <div class="card"><a href="./game3/milestone_1/">&#9654; Milestone 1</a></div>
     </div>
     <div id="panel-game4" class="panel">
+      <p class="game-desc">An open-world turn-based RPG set in a procedurally generated Norse world. Assemble a party of adventurers, travel the Spellroads — ancient magical highways — and restore them from growing darkness. 2–4 player local co-op, formation-based combat, and deep character progression.</p>
+      <details class="meta-section"><summary>Changelog</summary><pre class="meta-pre">- M32: Companion system — 12 hireable companions with personality traits
+- M31: Random events & loot tables — 15 Norse travel events, 8 loot tables
+- M30: Faction & reputation system — 8 factions with standing tiers
+- M29: Crafting system — 20 recipes
+- M21: New biomes (swamp, crystal caves, cursed wastes)
+- M20: Desktop packaging (Electron)
+- M19: Prestige system + 10 new skill trees (44 total)
+- M17: Dungeon interiors — room-based procedural dungeons
+- M15: Save system, achievements, compendium
+- M6: Full turn-based grid combat with initiative and AI</pre></details>
+      <details class="meta-section"><summary>Planned Milestones</summary><pre class="meta-pre">No additional milestones currently defined beyond M32. Future focus areas:
+- Art generation pass for remaining placeholder sprites
+- Online co-op via WebSocket
+- Steam/itch.io release packaging
+- Additional quest content and regions
+- Balance pass and endgame content</pre></details>
       <div class="card"><a href="./game4/milestone_32/">&#9654; Milestone 32</a><span class="latest">LATEST</span></div>
       <div class="card"><a href="./game4/milestone_31/">&#9654; Milestone 31</a></div>
       <div class="card"><a href="./game4/milestone_30/">&#9654; Milestone 30</a></div>
@@ -87,10 +150,30 @@
       <div class="card"><a href="./game4/milestone_24/">&#9654; Milestone 24</a></div>
       <div class="card"><a href="./game4/milestone_23/">&#9654; Milestone 23</a></div>
     </div>
-    <div id="panel-game5" class="panel">
-      <p class="empty">No milestones published yet.</p>
-    </div>
     <div id="panel-game6" class="panel">
+      <p class="game-desc">A top-down action roguelite with procedural dungeon generation, 4 classes (Ironclad, Riftmage, Phantom, Voidpriest), and meta-progression. Built with PixiJS v8 at 480×270 internal resolution scaled to 3×. Features melee/ranged combat, boss encounters, equipment, and pixel art.</p>
+      <details class="meta-section"><summary>Changelog</summary><pre class="meta-pre">- M25: Character select screen with class descriptions
+- M24: HUD polish — health/mana/xp bars, class icon, floor display
+- M23: Minimap with room grid, fog of war, player position
+- M22: Level-up system with XP and stat point allocation
+- M21: Relic system — 10 starter relics with passive effects
+- M17: Boss encounter — Lord of Dust (3-phase fight)
+- M10: Save/load system with run state and meta-progression
+- M1: Project bootstrap — Vite + PixiJS v8, debug tools, test harness</pre></details>
+      <details class="meta-section"><summary>Planned Milestones</summary><pre class="meta-pre">Phase 3: First Art Pass (M26–M35)
+- M26: Player class sprites via PixelLab
+- M27: Stone Crypts enemy sprites
+- M28: Dungeon tiles
+- M29: Map objects (chest, torch, shrine, barrel, pillar)
+- M30–M31: Sprite animations (player + enemy)
+- M32–M34: Particle effects, dynamic lighting, screen shake
+- M35: Main menu with animated background
+
+Phase 4: Biome 2 — Arcane Archives (M36–M48)
+- New tileset, enemies, boss (The Archivist)
+- Secret rooms, challenge rooms, puzzle rooms, traps, lore tablets
+
+Phase 5: Biomes 3+4 — Forge of Ruin & Void Sanctum (M49–M63)</pre></details>
       <div class="card"><a href="./game6/milestone_25/">&#9654; Milestone 25</a><span class="latest">LATEST</span></div>
       <div class="card"><a href="./game6/milestone_24/">&#9654; Milestone 24</a></div>
       <div class="card"><a href="./game6/milestone_23/">&#9654; Milestone 23</a></div>
@@ -103,6 +186,23 @@
       <div class="card"><a href="./game6/milestone_16/">&#9654; Milestone 16</a></div>
     </div>
     <div id="panel-game7" class="panel">
+      <p class="game-desc">A turn-based caravan RPG with branching dialogs. Lead a party of adventurers across a medieval fantasy world threatened by demonic corruption. Features side-scrolling caravan travel, tactical grid combat, 12 skill trees, and context-sensitive dialog options.</p>
+      <details class="meta-section"><summary>Changelog</summary><pre class="meta-pre">- M12: Combat AI & difficulty scaling, sophisticated party AI
+- M11: Companions & party travel, pack animals, vehicles, caravan visuals
+- M9: Town & vendors — shops, inn, services
+- M8: Items & equipment system
+- M7: Dialog system with branching choices
+- M6: Skills & abilities — 12 skill trees
+- M5: Combat core — turn-based grid combat
+- M4: World travel — side-scrolling caravan
+- M1: Foundation — PixiJS v8, input system, test harness</pre></details>
+      <details class="meta-section"><summary>Planned Milestones</summary><pre class="meta-pre">MVP target: Milestone 15
+
+- M10: Quest system — main/side/companion quests, procedural generation
+- M13: All 12 regions with unique biomes, encounters, and bosses
+- M14: Save system & death handling
+- M15: MVP integration & polish — full game loop playable
+- M16+: Art generation via PixelLab, additional content</pre></details>
       <div class="card"><a href="./game7/milestone_12/">&#9654; Milestone 12</a><span class="latest">LATEST</span></div>
       <div class="card"><a href="./game7/milestone_11/">&#9654; Milestone 11</a></div>
       <div class="card"><a href="./game7/milestone_10/">&#9654; Milestone 10</a></div>
