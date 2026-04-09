@@ -79,7 +79,7 @@
   <h1>&#9876; RSG DEMOS</h1>
   <div class="subtitle">Waystone Interactive &mdash; playable game builds</div>
   <div class="tabs">
-    <button class="tab active" data-tab="game2" onclick="switchTab('game2', this)">Roguelike <span class="badge">6</span></button>
+    <button class="tab active" data-tab="game2" onclick="switchTab('game2', this)">Roguelike <span class="badge">5</span></button>
     <button class="tab" data-tab="game3" onclick="switchTab('game3', this)">Roguelike III <span class="badge">3</span></button>
     <button class="tab" data-tab="game4" onclick="switchTab('game4', this)">Spellroads <span class="badge">10</span></button>
     <button class="tab" data-tab="game6" onclick="switchTab('game6', this)">Astral Crypts <span class="badge">10</span></button>
@@ -91,19 +91,19 @@
       <p class="game-desc">A browser-based 2.5D isometric roguelike with local co-op (1–4 players). Fast runs (3–10 min/map), persistent progression, drop-in/out multiplayer. 9 classes with 5 abilities each, 200+ milestones of content including Mythic items, endless dungeons, arena mode, crafting, mercenaries, and AI pixel art sprites.</p>
       <div class="token-badge">Total tokens used: <strong>2.15B</strong></div>
       <details class="meta-section"><summary>Changelog</summary><pre class="meta-pre">Recent highlights:
-- M229: UI zoom compensation — scrolling in/out no longer stretches inventory, quest HUD, room progression, or other fixed UI panels; compensation math uses inverse-scale trick so UI stays visually identical regardless of world zoom
-- M228: Minimap now uses isometric projection matching game view — floor area appears as a diamond shape matching the 2.5D perspective
-- M227: Ranged mob VFX fix — multi_shot/blink_strike/life_drain effects no longer appear displaced; effect clarity improvements (poison is now purple, not green; harmful badges show red border)
-- M226: Bug fix sweep — skill-use freeze, Death Coil aim, HOW TO PLAY ESC, screen close consistency</pre></details>
-      <details class="meta-section"><summary>Planned Milestones</summary><pre class="meta-pre">Completed: M1-M229 (229 milestones)
-M229: UI zoom compensation fix (inventory, quest HUD, panels unaffected by user zoom)
+- M230: New enemy sprites — 6 previously blob-shaped enemies now have distinct procedural art: Arcane Specter (glowing purple ghost), Blood Drake (crimson dragon), Mushroom Spore (cap with white spots), Shadow Lurker (dark amorphous with red eyes), Spectral Knight (ghostly armored), Void Lurker (void tentacle entity); added 3 new enemies to spawn pool
+- M229: UI zoom compensation — scrolling in/out no longer stretches inventory, quest HUD, room progression, or fixed UI panels
+- M228: Minimap now uses isometric projection — floor area appears as a diamond matching the 2.5D perspective
+- M227: Ranged mob VFX fix; effect clarity — poison is now purple, harmful badges show red border</pre></details>
+      <details class="meta-section"><summary>Planned Milestones</summary><pre class="meta-pre">Completed: M1-M230 (230 milestones)
+M230: New distinct enemy sprites for Arcane Specter, Blood Drake, Mushroom Spore, Shadow Lurker, Spectral Knight, Void Lurker
+M229: UI zoom compensation fix
 M228: Isometric minimap projection fix
 M227: Ranged mob VFX fix, effect helpful/harmful visual clarity
 M226: Bug fix sweep — skill crash, Death Coil aim, HOW TO PLAY ESC, screen close consistency
 M207-225: Comprehensive mobile UX overhaul
 
 Future wishlist:
-- Improved mob sprites (less generic blobs)
 - Online co-op multiplayer
 - New biomes and tilesets
 - Seasonal events and challenges
@@ -116,7 +116,6 @@ Future wishlist:
       <div class="card"><a href="./game2/milestone_223/">&#9654; Milestone 223</a><span class="release-date">2026-04-07</span></div>
       <div class="card"><a href="./game2/milestone_222/">&#9654; Milestone 222</a><span class="release-date">2026-04-07</span></div>
       <div class="card"><a href="./game2/milestone_221/">&#9654; Milestone 221</a><span class="release-date">2026-04-07</span></div>
-      <div class="card"><a href="./game2/milestone_220/">&#9654; Milestone 220</a><span class="release-date">2026-04-07</span></div>
     </div>
     <div id="panel-game3" class="panel">
       <p class="game-desc">A third-person top-down twin-stick action RPG. Full conversion from the isometric Roguelike engine to fast-paced twin-stick combat with 7 classes, 360° aiming, dash/roll mechanics, and mobile virtual joystick support.</p>
