@@ -84,6 +84,7 @@
     <button class="tab" data-tab="game4" onclick="switchTab('game4', this)">Spellroads <span class="badge">10</span></button>
     <button class="tab" data-tab="game6" onclick="switchTab('game6', this)">Astral Crypts <span class="badge">10</span></button>
     <button class="tab" data-tab="game7" onclick="switchTab('game7', this)">Wanderlight <span class="badge">10</span></button>
+    <button class="tab" data-tab="game8" onclick="switchTab('game8', this)">Vagrant & Ash <span class="badge">10</span></button>
   </div>
 </div>
 <div class="content">
@@ -235,8 +236,40 @@ Phase 5: Biomes 3+4 — Forge of Ruin & Void Sanctum (M49–M63)</pre></details>
       <div class="card"><a href="./game7/milestone_5/">&#9654; Milestone 5</a><span class="release-date">2026-04-05</span></div>
       <div class="card"><a href="./game7/milestone_4/">&#9654; Milestone 4</a><span class="release-date">2026-04-05</span></div>
     </div>
+    <div id="panel-game8" class="panel">
+      <p class="game-desc">A mobile-first dark fantasy survival RPG. Lead a party of 1–4 across a dying continent. Point-buy character creation, permadeath, emergent storytelling. Every choice costs something.</p>
+      <div class="token-badge">Total tokens used: <strong>0</strong></div>
+      <details class="meta-section"><summary>Changelog</summary><pre class="meta-pre">Milestone 1 — Foundation
+  - Vite 6 + React 19 scaffold (port 5180)
+  - Full CSS design system: Ashen Black palette, Cinzel/Crimson Text/Source Sans 3
+  - All game data: 7 races, 15 backgrounds, 30 traits, 25 skills, 12 biomes, items
+  - State management: GameContext + 6 sub-reducers + seeded PRNG (mulberry32)
+  - Title screen with procedural SVG ash background + animations
+  - Character creation: full point-buy system, party size 1-4, synergy detection
+  - Journey screen: biome art, party HP bars, resource tracking, travel log</pre></details>
+      <details class="meta-section"><summary>Planned Milestones</summary><pre class="meta-pre">M1  — Foundation (character creation, journey screen) ✓
+M2  — Encounter/Event system (event cards, choices, stat checks, 20+ events)
+M3  — Camp screen + turn-based combat + enemy data
+M4  — Town/settlement system (shop, tavern, healer)
+M5  — OpenAI environment images + mobile polish
+M6  — Full event library (50+ events), biome hazards, diseases
+M7  — Game over + epitaph system + 11 endings
+M8  — Save/load hardening + PWA + autosave
+M9  — Story arcs, companion dialogue, journal system
+M10 — Balance pass + full content + 10-milestone report</pre></details>
+      <div class="card"><a href="./game8/milestone_29/">&#9654; Milestone 29</a><span class="latest">LATEST</span><span class="release-date">2026-04-09</span></div>
+      <div class="card"><a href="./game8/milestone_28/">&#9654; Milestone 28</a><span class="release-date">2026-04-09</span></div>
+      <div class="card"><a href="./game8/milestone_27/">&#9654; Milestone 27</a><span class="release-date">2026-04-09</span></div>
+      <div class="card"><a href="./game8/milestone_26/">&#9654; Milestone 26</a><span class="release-date">2026-04-09</span></div>
+      <div class="card"><a href="./game8/milestone_25/">&#9654; Milestone 25</a><span class="release-date">2026-04-09</span></div>
+      <div class="card"><a href="./game8/milestone_24/">&#9654; Milestone 24</a><span class="release-date">2026-04-09</span></div>
+      <div class="card"><a href="./game8/milestone_23/">&#9654; Milestone 23</a><span class="release-date">2026-04-09</span></div>
+      <div class="card"><a href="./game8/milestone_22/">&#9654; Milestone 22</a><span class="release-date">2026-04-09</span></div>
+      <div class="card"><a href="./game8/milestone_21/">&#9654; Milestone 21</a><span class="release-date">2026-04-09</span></div>
+      <div class="card"><a href="./game8/milestone_20/">&#9654; Milestone 20</a><span class="release-date">2026-04-09</span></div>
+    </div>
 
-  <p class="footer">Last deployed: April 08, 2026</p>
+  <p class="footer">Last deployed: April 09, 2026</p>
 </div>
 <script>
 function switchTab(id, btn) {
