@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vagrant &amp; Ash — Report 003: Bug-Fix &amp; Feature Sprint · April 10, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ember:        #c7622a;
+      --ember-bright: #e8843a;
+      --ember-dim:    #8b4218;
+      --ember-glow:   rgba(199, 98, 42, 0.30);
+      --blood:        #9e2d2d;
+      --blood-dim:    #6a1e1e;
+      --ash:          #8a8078;
+      --ash-light:    #b0a898;
+      --ash-dark:     #5a554e;
+      --bone:         #e8ddc8;
+      --bone-dim:     #c8bda8;
+      --black:        #0c0b09;
+      --black-soft:   #151310;
+      --black-card:   #1a1714;
+      --black-raised: #201d1a;
+      --black-deep:   #0e0c0a;
+      --text:         #d4c8b4;
+      --text-muted:   #8a8078;
+      --ok:           #3a7840;
+      --ok-text:      #6ec476;
+      --warn:         #7a6020;
+      --warn-text:    #d4aa40;
+      --err:          #8c2020;
+      --err-text:     #d46060;
+      --font-h:       'Cinzel', serif;
+      --font-b:       'Crimson Text', serif;
+      --r:            6px;
+      --border:       1px solid rgba(138, 128, 120, 0.22);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--text); font-family: var(--font-b); font-size: 1.05rem; line-height: 1.72; -webkit-font-smoothing: antialiased; }
+
+    @keyframes rise    { 0%{transform:translateY(0) scale(1);opacity:.6} 100%{transform:translateY(-88vh) translateX(var(--dx,15px)) scale(.25);opacity:0} }
+    @keyframes pulse   { 0%,100%{text-shadow:0 0 14px var(--ember),0 0 32px var(--ember-dim)} 50%{text-shadow:0 0 24px var(--ember-bright),0 0 48px var(--ember)} }
+    @keyframes fadeUp  { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn  { from{opacity:0} to{opacity:1} }
+    @keyframes glow    { 0%,100%{box-shadow:0 0 8px var(--ember-glow)} 50%{box-shadow:0 0 22px var(--ember-glow)} }
+    @keyframes reveal  { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+    .particle-field { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+    .p { position:absolute; bottom:0; border-radius:50%; background:var(--ember); opacity:0; animation:rise linear infinite; }
+    .p:nth-child(1)  { left:7%;  width:2px;height:2px; animation-duration:6.4s; animation-delay:0s;    --dx:12px;  background:#d97a40; }
+    .p:nth-child(2)  { left:14%; width:3px;height:3px; animation-duration:8.1s; animation-delay:1.1s;  --dx:-18px; }
+    .p:nth-child(3)  { left:23%; width:2px;height:2px; animation-duration:5.7s; animation-delay:2.3s;  --dx:26px;  background:#e8843a; }
+    .p:nth-child(4)  { left:32%; width:3px;height:3px; animation-duration:9.2s; animation-delay:0.6s;  --dx:-10px; background:#b05820; }
+    .p:nth-child(5)  { left:41%; width:2px;height:2px; animation-duration:6.8s; animation-delay:3.0s;  --dx:20px; }
+    .p:nth-child(6)  { left:50%; width:4px;height:4px; animation-duration:7.5s; animation-delay:1.7s;  --dx:-22px; background:#d97a40; }
+    .p:nth-child(7)  { left:59%; width:2px;height:2px; animation-duration:5.9s; animation-delay:0.3s;  --dx:16px;  background:#e8843a; }
+    .p:nth-child(8)  { left:68%; width:3px;height:3px; animation-duration:8.6s; animation-delay:2.5s;  --dx:-8px; }
+    .p:nth-child(9)  { left:77%; width:2px;height:2px; animation-duration:6.3s; animation-delay:4.1s;  --dx:24px;  background:#b05820; }
+    .p:nth-child(10) { left:85%; width:3px;height:3px; animation-duration:7.9s; animation-delay:1.4s;  --dx:-16px; background:#d97a40; }
+    .p:nth-child(11) { left:92%; width:2px;height:2px; animation-duration:5.4s; animation-delay:3.7s;  --dx:10px; }
+    .p:nth-child(12) { left:3%;  width:3px;height:3px; animation-duration:10.2s;animation-delay:5.0s;  --dx:-14px; background:#e8843a; }
+
+    .hr-ember { border:none; height:2px; background:linear-gradient(90deg,transparent 0%,var(--ember-dim) 15%,var(--ember) 45%,var(--ember-bright) 50%,var(--ember) 55%,var(--ember-dim) 85%,transparent 100%); margin:36px 0; position:relative; }
+    .hr-ember::before { content:'✦'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:var(--ember); font-size:.68rem; background:var(--black); padding:0 8px; }
+    .hr-ash { border:none; height:1px; background:linear-gradient(90deg,transparent,var(--ash-dark) 30%,var(--ash) 50%,var(--ash-dark) 70%,transparent); margin:24px 0; }
+
+    .badge { display:inline-block; padding:2px 9px; border-radius:999px; font-family:var(--font-h); font-size:.58rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; vertical-align:middle; margin-left:5px; }
+    .b-red    { background:rgba(160,40,40,.22); color:#d46060; border:1px solid rgba(160,40,40,.4); }
+    .b-yellow { background:rgba(180,140,30,.2); color:#d4aa40; border:1px solid rgba(180,140,30,.4); }
+    .b-green  { background:rgba(56,120,60,.22); color:#6ec476; border:1px solid rgba(56,120,60,.4); }
+    .b-ember  { background:rgba(199,98,42,.2);  color:var(--ember-bright); border:1px solid var(--ember-dim); }
+    .b-ash    { background:rgba(90,85,78,.28);  color:var(--ash-light); border:1px solid var(--ash-dark); }
+    .b-fixed  { background:rgba(40,100,60,.22); color:#70c880; border:1px solid rgba(40,100,60,.4); }
+
+    .wrap { max-width:980px; margin:0 auto; padding:0 24px 100px; }
+    .page-section { position:relative; padding-top:72px; animation:reveal .65s ease both; }
+    .s-head { position:relative; padding-left:22px; margin-bottom:32px; }
+    .s-num { font-family:var(--font-h); font-size:4.5rem; font-weight:900; color:var(--ember); opacity:.14; position:absolute; top:-14px; left:-6px; pointer-events:none; user-select:none; line-height:1; }
+    .s-title { font-family:var(--font-h); font-size:1.4rem; font-weight:700; color:var(--bone); letter-spacing:.12em; text-transform:uppercase; }
+    .s-sub { font-family:var(--font-b); font-style:italic; color:var(--ash); font-size:1rem; margin-top:4px; }
+
+    .cover { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; position:relative; padding:60px 24px; overflow:hidden; }
+    .cover-bg { position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 85%,rgba(40,100,60,.08) 0%,transparent 60%), radial-gradient(ellipse 70% 55% at 50% 100%,rgba(199,98,42,.09) 0%,transparent 55%), linear-gradient(180deg,#0c0b09 0%,#100e0b 55%,#0e110a 100%); }
+    .cover-inner { position:relative; z-index:2; max-width:700px; }
+    .c-eyebrow { font-family:var(--font-h); font-size:.7rem; letter-spacing:.42em; color:var(--ember); text-transform:uppercase; margin-bottom:22px; animation:fadeIn 1.2s ease .3s both; }
+    .c-frame { border:1px solid var(--ember-dim); padding:44px 52px; position:relative; animation:fadeIn .8s ease .2s both, glow 5s ease-in-out 2s infinite; }
+    .c-frame .cr { position:absolute; color:var(--ember-dim); font-size:1.1rem; line-height:1; }
+    .c-frame .cr-tl { top:-4px; left:-4px; } .c-frame .cr-tr { top:-4px; right:-4px; }
+    .c-frame .cr-bl { bottom:-4px; left:-4px; } .c-frame .cr-br { bottom:-4px; right:-4px; }
+    .c-frame .c-top, .c-frame .c-bot { position:absolute; left:50%; transform:translateX(-50%); color:var(--ember-dim); font-size:.7rem; letter-spacing:.3em; background:var(--black); padding:0 12px; white-space:nowrap; }
+    .c-frame .c-top { top:-.55em; } .c-frame .c-bot { bottom:-.55em; }
+    .c-title { font-family:var(--font-h); font-size:clamp(3rem,9vw,5.8rem); font-weight:900; color:var(--bone); line-height:.9; letter-spacing:.06em; text-transform:uppercase; animation:fadeUp 1s ease .5s both, pulse 4s ease-in-out 2.5s infinite; }
+    .c-title span { display:block; font-size:.42em; color:var(--ash-light); letter-spacing:.3em; margin-top:8px; animation:none; text-shadow:none; }
+    .c-div { display:flex; align-items:center; gap:14px; margin:32px 0; animation:fadeIn 1s ease 1.2s both; }
+    .c-divl { flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--ok)); }
+    .c-divl:last-child { background:linear-gradient(90deg,var(--ok),transparent); }
+    .c-divi { color:var(--ok-text); font-size:1rem; }
+    .c-ver { font-family:var(--font-h); font-size:.82rem; letter-spacing:.22em; color:var(--bone-dim); text-transform:uppercase; animation:fadeIn 1s ease 1.4s both; }
+    .c-tag { font-family:var(--font-b); font-size:1.25rem; font-style:italic; color:var(--ash-light); margin-top:18px; animation:fadeIn 1s ease 1.6s both; }
+    .c-date { font-family:var(--font-h); font-size:.72rem; letter-spacing:.3em; color:var(--ash); text-transform:uppercase; margin-top:38px; animation:fadeIn 1s ease 1.8s both; }
+
+    .summary-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:16px; }
+    .sum-card { background:var(--black-card); border:var(--border); border-radius:var(--r); padding:18px 16px; text-align:center; }
+    .sum-val { font-family:var(--font-h); font-size:2rem; font-weight:700; line-height:1; }
+    .sum-val.red { color:#d46060; } .sum-val.yellow { color:#d4aa40; } .sum-val.green { color:#6ec476; } .sum-val.ember { color:var(--ember-bright); }
+    .sum-label { font-size:.78rem; color:var(--ash); margin-top:5px; letter-spacing:.04em; }
+
+    .change-list { display:flex; flex-direction:column; gap:10px; }
+    .change-card { background:var(--black-card); border:var(--border); border-radius:var(--r); padding:16px 18px 14px; position:relative; transition:background .15s; }
+    .change-card:hover { background:var(--black-raised); }
+    .change-card.type-fix    { border-left:3px solid #6ec476; }
+    .change-card.type-feat   { border-left:3px solid var(--ember); }
+    .change-card.type-ux     { border-left:3px solid #6088c8; }
+    .change-card.type-warn   { border-left:3px solid #d4aa40; }
+    .change-head { display:flex; align-items:flex-start; gap:10px; margin-bottom:6px; }
+    .change-id { font-family:var(--font-h); font-size:.6rem; letter-spacing:.15em; color:var(--ash-dark); min-width:44px; margin-top:3px; }
+    .change-title { font-family:var(--font-b); font-weight:600; color:var(--bone); font-size:1rem; flex:1; }
+    .change-body { font-size:.92rem; color:var(--ash-light); line-height:1.6; padding-left:54px; }
+    .bug-file { font-family:monospace; font-size:.76rem; background:rgba(232,221,200,.06); padding:1px 5px; border-radius:3px; border:1px solid rgba(232,221,200,.1); color:var(--bone-dim); }
+
+    .feat-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .feat-card { background:var(--black-card); border:var(--border); border-radius:var(--r); padding:16px 18px; transition:background .15s, border-color .15s; }
+    .feat-card:hover { background:var(--black-raised); border-color:var(--ash-dark); }
+    .feat-pri { font-family:var(--font-h); font-size:.58rem; letter-spacing:.15em; text-transform:uppercase; margin-bottom:5px; }
+    .feat-pri.high { color:#d4aa40; } .feat-pri.critical { color:#d46060; } .feat-pri.medium { color:var(--ember); } .feat-pri.low { color:var(--ash); }
+    .feat-title { font-family:var(--font-b); font-weight:600; color:var(--bone); font-size:1rem; margin-bottom:5px; }
+    .feat-body { font-size:.9rem; color:var(--ash-light); line-height:1.55; }
+
+    .callout { background:var(--black-raised); border-left:3px solid var(--ember); padding:16px 20px; border-radius:0 var(--r) var(--r) 0; margin:20px 0; font-style:italic; color:var(--ash-light); font-size:.95rem; }
+    .callout strong { color:var(--bone); font-style:normal; }
+    .callout-green { border-left-color: var(--ok-text); }
+
+    .road-phase { margin-bottom:28px; }
+    .road-phase-title { font-family:var(--font-h); font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:var(--ember); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid rgba(199,98,42,.2); }
+    .road-items { display:flex; flex-direction:column; gap:7px; }
+    .road-item { display:flex; align-items:flex-start; gap:12px; padding:9px 14px; background:var(--black-card); border:var(--border); border-radius:var(--r); }
+    .road-num { font-family:var(--font-h); font-size:.58rem; color:var(--ember-dim); min-width:22px; margin-top:3px; letter-spacing:.05em; }
+    .road-text { font-size:.92rem; line-height:1.5; color:var(--text); }
+    .road-text strong { color:var(--bone); font-weight:600; }
+
+    .report-footer { text-align:center; padding:48px 24px 32px; border-top:1px solid rgba(138,128,120,.15); margin-top:80px; }
+    .report-footer p { font-size:.85rem; color:var(--ash); }
+    .report-footer a { color:var(--ember); text-decoration:none; }
+    .report-footer a:hover { color:var(--ember-bright); }
+
+    @media (max-width:640px) {
+      .feat-grid { grid-template-columns:1fr; }
+      .summary-grid { grid-template-columns:1fr 1fr; }
+      .c-frame { padding:28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="particle-field">
+    <div class="p"></div><div class="p"></div><div class="p"></div>
+    <div class="p"></div><div class="p"></div><div class="p"></div>
+    <div class="p"></div><div class="p"></div><div class="p"></div>
+    <div class="p"></div><div class="p"></div><div class="p"></div>
+  </div>
+
+  <div class="cover-inner">
+    <div class="c-eyebrow">Bug-Fix &amp; Feature Sprint &nbsp;·&nbsp; Report 003</div>
+
+    <div class="c-frame">
+      <span class="cr cr-tl">✦</span>
+      <span class="cr cr-tr">✦</span>
+      <span class="cr cr-bl">✦</span>
+      <span class="cr cr-br">✦</span>
+      <span class="c-top">❧ &nbsp; ❧ &nbsp; ❧</span>
+      <span class="c-bot">❧ &nbsp; ❧ &nbsp; ❧</span>
+
+      <h1 class="c-title">
+        Vagrant &amp; Ash
+        <span>The Road Remembers</span>
+      </h1>
+
+      <div class="c-div">
+        <div class="c-divl"></div>
+        <div class="c-divi">✦</div>
+        <div class="c-divi">✿</div>
+        <div class="c-divi">✦</div>
+        <div class="c-divl"></div>
+      </div>
+
+      <div class="c-ver">Build Report 003 &nbsp;·&nbsp; Milestones 63–64</div>
+      <p class="c-tag">"Cracks sealed. New roads opened. More cracks discovered."</p>
+    </div>
+
+    <div class="c-date">April 10, 2026 &nbsp;·&nbsp; Sprint Review &nbsp;·&nbsp; Bugs · Features · UX</div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="wrap">
+
+  <!-- I. EXECUTIVE OVERVIEW -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">I</div>
+      <h2 class="s-title">Sprint Overview</h2>
+      <div class="s-sub">What changed across Milestones 63–64</div>
+    </div>
+
+    <p>This sprint executed the full roadmap laid out in Report 002. Three bug-fix categories, three new gameplay features, and seven UX improvements were implemented across two milestones. The game is meaningfully richer: players now have gear to choose at creation, camp is more contextual, skill check outcomes show the dice, conditions count down visibly, and the journal distinguishes personal thought from encounter record.</p>
+
+    <p style="margin-top:14px">The foundation continues to strengthen — but new code means new edge cases. This report catalogs the sprint's deliverables, surfaces new suspected defects, and sets the next priority list.</p>
+
+    <div class="summary-grid" style="margin-top:28px">
+      <div class="sum-card">
+        <div class="sum-val green">4</div>
+        <div class="sum-label">Bugs Fixed</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-val ember">3</div>
+        <div class="sum-label">Features Added</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-val" style="color:#6088c8">7</div>
+        <div class="sum-label">UX Improvements</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-val yellow">6</div>
+        <div class="sum-label">New Suspected Bugs</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- II. WHAT WAS FIXED -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">II</div>
+      <h2 class="s-title">Bugs Closed</h2>
+      <div class="s-sub">Report 002 defects addressed in this sprint</div>
+    </div>
+
+    <div class="change-list">
+
+      <div class="change-card type-fix">
+        <div class="change-head">
+          <span class="change-id">B-001</span>
+          <span class="change-title">getSaveMeta() day number now reads correctly <span class="badge b-fixed">Fixed</span></span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/services/saveLoad.js</span> — Changed to <code>parsed.dayNumber ?? parsed.journey?.dayNumber ?? 1</code>. The Continue Journey button now shows the correct day number instead of always saying Day 1.
+        </div>
+      </div>
+
+      <div class="change-card type-fix">
+        <div class="change-head">
+          <span class="change-id">B-003</span>
+          <span class="change-title">Save migration v3 added for consolidated skills <span class="badge b-fixed">Fixed</span></span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/services/saveLoad.js</span> — <code>CURRENT_SAVE_VERSION</code> bumped to 3. Migration merges <code>combat_blade/blunt/ranged/unarmed</code> → <code>combat</code>, <code>herbalism/foraging/lore_nature</code> → <code>nature</code>, <code>lore_history/lore_religion</code> → <code>history</code>, <code>locks</code> → <code>sleight_of_hand</code>. Values are additive rather than overwriting.
+        </div>
+      </div>
+
+      <div class="change-card type-fix">
+        <div class="change-head">
+          <span class="change-id">B-007</span>
+          <span class="change-title">CarryOver party size guard added <span class="badge b-fixed">Fixed</span></span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/screens/CharacterCreation/CharacterCreation.jsx</span> — Templates from sessionStorage are now sliced to <code>members.length</code> before dispatch. Carry-over from a 4-member party into a 2-member start no longer silently targets nonexistent character IDs.
+        </div>
+      </div>
+
+      <div class="change-card type-fix">
+        <div class="change-head">
+          <span class="change-id">B-006 / B-009</span>
+          <span class="change-title">Verified non-issues <span class="badge b-ash">Confirmed OK</span></span>
+        </div>
+        <div class="change-body">
+          B-006: <code>daysSinceEncounter</code> was already initialized in <code>initialState.js</code> and tracked in the journey reducer. B-009: No instances of <code>padStart(2, '00')</code> found in the codebase — already correct.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- III. NEW FEATURES -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">III</div>
+      <h2 class="s-title">Features Implemented</h2>
+      <div class="s-sub">New gameplay systems added in Milestones 63–64</div>
+    </div>
+
+    <div class="change-list">
+
+      <div class="change-card type-feat">
+        <div class="change-head">
+          <span class="change-id">FEAT-01</span>
+          <span class="change-title">Starting Equipment Choice in Character Creation <span class="badge b-ember">New</span></span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/screens/CharacterCreation/CharacterCreation.jsx</span> + CSS — Each character now picks one starting item from 3 thematic options based on background archetype (fighter, wilderness, academic, criminal, default). Options are rendered as tappable cards with amber highlight on selection. On Begin Journey, the chosen item is dispatched as <code>ADD_ITEM</code> alongside the default Traveler's Knife.
+        </div>
+      </div>
+
+      <div class="change-card type-feat">
+        <div class="change-head">
+          <span class="change-id">FEAT-02</span>
+          <span class="change-title">Wit &lt; 5 Consequences <span class="badge b-ember">New</span></span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">PointBuyPanel.jsx</span> + <span class="bug-file">EncounterScreen.jsx</span> + <span class="bug-file">OutcomeDisplay.jsx</span> — Low-Wit characters now have two effects: (1) A warning in character creation when Wit drops below 5: "⚠ Low wit — may cloud judgment." (2) A 30% chance of a confusion note on skill check outcomes: "[Name] seems confused by what just unfolded." The chance uses the roll value mod 10 for seeded reproducibility when available.
+        </div>
+      </div>
+
+      <div class="change-card type-feat">
+        <div class="change-head">
+          <span class="change-id">FEAT-03</span>
+          <span class="change-title">Camp Scavenge Submenu <span class="badge b-ember">New</span></span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/screens/Camp/CampScreen.jsx</span> + CSS — The single Scavenge button now expands into 3 options: <strong>Search Supplies</strong> (original logic), <strong>Forage for Food</strong> (Nature skill check TN 8, +2–3 food on success, +1 on fail), and <strong>Hunt</strong> (70% yields +2 food; 30% triggers a "dangerous tracks" message and +1 food). Each option marks the camp-scavenged world flag to prevent infinite repeats. Submenu collapses after any choice.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- IV. UX IMPROVEMENTS -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">IV</div>
+      <h2 class="s-title">UX Improvements</h2>
+      <div class="s-sub">Seven friction points addressed</div>
+    </div>
+
+    <div class="change-list">
+
+      <div class="change-card type-ux">
+        <div class="change-head">
+          <span class="change-id">UX-1</span>
+          <span class="change-title">Dice roll displayed on skill check outcomes</span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/screens/Encounter/OutcomeDisplay.jsx</span> — When outcome data includes <code>rolls.roll</code> and <code>rolls.tn</code>, a compact line renders above the narrative: "Roll: 8 vs. TN 10 — Failed." Muted UI font, small size. Only visible when roll data is present.
+        </div>
+      </div>
+
+      <div class="change-card type-ux">
+        <div class="change-head">
+          <span class="change-id">UX-2</span>
+          <span class="change-title">Condition duration numbers on party bar</span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/screens/Journey/JourneyScreen.jsx</span> — Condition icons now show a superscript day count when <code>cond.duration</code> is between 1 and 998 (permanent conditions marked 999 are excluded). Players can now see "🩸²" and know the bleeding resolves in 2 days.
+        </div>
+      </div>
+
+      <div class="change-card type-ux">
+        <div class="change-head">
+          <span class="change-id">UX-3</span>
+          <span class="change-title">Journal entry types differentiated visually</span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/screens/Journal/JournalOverlay.jsx</span> + CSS — Entries now have type icons (🕯 personal/campfire, 🧭 encounter, ⚔ combat) and left border colors. Dead character entries display at 65% opacity with a "(fallen)" label after the author name. The journal now reads as an artifact, not a flat list.
+        </div>
+      </div>
+
+      <div class="change-card type-ux">
+        <div class="change-head">
+          <span class="change-id">UX-4</span>
+          <span class="change-title">Morale tooltip added</span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/screens/Journey/JourneyScreen.jsx</span> — Morale display element now carries <code>title="Affects combat rolls, encounter choices, and skill checks."</code> so hovering on desktop reveals its purpose.
+        </div>
+      </div>
+
+      <div class="change-card type-ux">
+        <div class="change-head">
+          <span class="change-id">UX-5</span>
+          <span class="change-title">Free skill names display properly in CharacterForm</span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/screens/CharacterCreation/CharacterForm.jsx</span> — Background free skills now render using the canonical SKILLS display name (e.g. "Sleight of Hand") instead of the raw ID with underscores replaced.
+        </div>
+      </div>
+
+      <div class="change-card type-ux">
+        <div class="change-head">
+          <span class="change-id">UX-6</span>
+          <span class="change-title">Weather has mechanical effects in travel engine</span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/engine/travelEngine.js</span> — Three weather conditions now affect march outcomes: Storm/Ash Storm (15% deterministic chance of +1 damage to a random character, using day-based math for reproducibility), Blazing/Heat Shimmer (+1 extra water consumed), Rain (+1 morale). Weather is no longer just a display label.
+        </div>
+      </div>
+
+      <div class="change-card type-ux">
+        <div class="change-head">
+          <span class="change-id">UX-7</span>
+          <span class="change-title">Day 1 first-march hint</span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/screens/Journey/JourneyScreen.jsx</span> — On the first day only, a small italic hint appears above the March button: "March east to begin your journey." Simple onboarding touch for new players.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- V. NEW SUSPECTED BUGS -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">V</div>
+      <h2 class="s-title">New Suspected Defects</h2>
+      <div class="s-sub">Issues introduced or revealed by this sprint's changes</div>
+    </div>
+
+    <div class="callout">
+      New code brings new edge cases. None of the following are confirmed — they are risk areas identified through code review of the sprint's changes.
+    </div>
+
+    <div class="change-list" style="margin-top:20px">
+
+      <div class="change-card type-warn">
+        <div class="change-head">
+          <span class="change-id">N-001</span>
+          <span class="change-title">Starting gear ADD_ITEM dispatches may reference nonexistent CATALOG IDs <span class="badge b-yellow">Risk</span></span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">CharacterCreation.jsx</span> — The gear lookup table hardcodes item IDs (e.g. <code>'healing_poultice'</code>, <code>'hand_axe'</code>). If those IDs don't exist in <code>src/data/items.js</code>'s CATALOG export, the ADD_ITEM dispatch silently fails and the character receives no gear. Verify all hardcoded IDs against the actual CATALOG object.
+        </div>
+      </div>
+
+      <div class="change-card type-warn">
+        <div class="change-head">
+          <span class="change-id">N-002</span>
+          <span class="change-title">Hunt "combat" path was simplified to avoid triggering real combat — misleading flavor text <span class="badge b-yellow">Risk</span></span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">CampScreen.jsx</span> — On the 30% dangerous-hunt roll, the implementation shows "You flush out something dangerous… +1 food" without triggering actual combat. The notification implies danger but the outcome is just food. Players may notice the disconnect. Either wire up a real combat trigger or rewrite the flavor text to be honest ("You find tracks but circle back safely").
+        </div>
+      </div>
+
+      <div class="change-card type-warn">
+        <div class="change-head">
+          <span class="change-id">N-003</span>
+          <span class="change-title">Dice roll display only shows when outcome has <code>rolls.roll</code> — many outcomes may never show it <span class="badge b-yellow">Risk</span></span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">OutcomeDisplay.jsx</span> — The UX-1 roll line only renders when <code>rolls?.roll</code> and <code>rolls?.tn</code> exist. If the encounter engine stores roll data under a different key, or if non-skill-check outcomes don't include it, players will rarely see dice rolls. Audit <code>encounterEngine.js</code> to confirm the exact payload shape and add the fields if missing.
+        </div>
+      </div>
+
+      <div class="change-card type-warn">
+        <div class="change-head">
+          <span class="change-id">N-004</span>
+          <span class="change-title">Weather effects use <code>state.weather</code> — path may not match actual state structure <span class="badge b-yellow">Risk</span></span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/engine/travelEngine.js</span> — The weather block reads <code>state.weather</code> directly. If weather is nested at <code>state.journey.weather</code> or <code>state.world.weather</code>, the condition checks always evaluate to false and weather effects never fire. Verify the correct path in <code>initialState.js</code>.
+        </div>
+      </div>
+
+      <div class="change-card type-warn">
+        <div class="change-head">
+          <span class="change-id">N-005</span>
+          <span class="change-title">Journal fallen-character detection reads <code>party.members</code> which may not be in JournalOverlay context <span class="badge b-yellow">Risk</span></span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/screens/Journal/JournalOverlay.jsx</span> — The dead-author detection looks up <code>entry.characterId</code> in the party members array from state. If JournalOverlay doesn't have access to <code>state.party</code> (depends on what's passed as props vs. context), the lookup returns undefined and no entries are flagged as fallen. Test with a character who has died.
+        </div>
+      </div>
+
+      <div class="change-card type-warn">
+        <div class="change-head">
+          <span class="change-id">N-006</span>
+          <span class="change-title">Forage for Food camp action uses first party member's HED+Nature — doesn't find the best character <span class="badge b-yellow">Minor</span></span>
+        </div>
+        <div class="change-body">
+          <span class="bug-file">src/screens/Camp/CampScreen.jsx</span> — The Forage action description says it uses the "party member with highest Nature skill" but the implementation may default to the first alive character if the skill comparison logic is incomplete. Verify the character selection logic actually finds the max-Nature member.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- VI. REMAINING REPORT 002 ITEMS -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">VI</div>
+      <h2 class="s-title">Still Outstanding from Report 002</h2>
+      <div class="s-sub">Items not yet addressed — carried forward</div>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-pri critical">⚡ Carry Forward</div>
+        <div class="feat-title">Death deserves a full-screen moment</div>
+        <div class="feat-body">Character death is still a dismissible toast. A brief black card with the character name and epitaph before the game continues would make death land emotionally. Still the highest-impact UX change not yet made.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri critical">⚡ Carry Forward</div>
+        <div class="feat-title">Combat screen has no stat indicators</div>
+        <div class="feat-body">Players invest points in Edge, Grit, etc. but combat shows no indication of which stat governs attack or defense. "ATK: Edge+Combat" labels on each character card would make stat investment feel visible and meaningful.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri high">▲ Carry Forward</div>
+        <div class="feat-title">Combat encounter frequency too low (~10–15%)</div>
+        <div class="feat-body">Players can march 8–12 days without a fight. Target is 25%. Need 2–3 combat-likely encounters per biome, especially ambush/bandit archetypes. Late-game biomes (Mountains, Storm Coast) are most underserved.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri high">▲ Carry Forward</div>
+        <div class="feat-title">B-002: Wit &lt; 5 easter egg still unverified end-to-end</div>
+        <div class="feat-body">The consequences are now partially implemented but the About panel copy still says "Wit below 5 has… consequences" — which implies something more dramatic than a 30% confusion note. Consider amplifying the effect or updating the copy to match.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri medium">◆ Carry Forward</div>
+        <div class="feat-title">Scenario selector not wired to New Game Setup</div>
+        <div class="feat-body"><code>src/data/scenarios.js</code> is fully defined but scenarios can't be chosen during new game creation. Even one active scenario would add meaningful replayability and validate the scaffolded system.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri medium">◆ Carry Forward</div>
+        <div class="feat-title">Far Shore / victory screen not verified</div>
+        <div class="feat-body"><code>EndingScreen.jsx</code> exists but it's unclear if the Far Shore biome triggers it correctly or if the journey loops. The victory screen is the emotional payoff of the entire game — needs verification and enrichment.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- VII. NEXT PRIORITIES -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">VII</div>
+      <h2 class="s-title">Recommended Next Session</h2>
+      <div class="s-sub">Highest-leverage work after the current sprint</div>
+    </div>
+
+    <div class="road-phase">
+      <div class="road-phase-title">Session D — Verify &amp; Stabilize New Code</div>
+      <div class="road-items">
+        <div class="road-item"><span class="road-num">D1</span><span class="road-text"><strong>Verify N-001:</strong> Audit gear item IDs in the starting equipment lookup table against <code>src/data/items.js</code> CATALOG. Fix any mismatches.</span></div>
+        <div class="road-item"><span class="road-num">D2</span><span class="road-text"><strong>Verify N-003/N-004:</strong> Audit dice roll payload shape in <code>encounterEngine.js</code> and weather state path in <code>initialState.js</code>. Fix any path mismatches.</span></div>
+        <div class="road-item"><span class="road-num">D3</span><span class="road-text"><strong>Fix N-002:</strong> Rewrite Hunt camp action 30% path flavor text to be honest, or wire up a lightweight combat trigger using an existing encounter template.</span></div>
+        <div class="road-item"><span class="road-num">D4</span><span class="road-text"><strong>Death full-screen moment:</strong> Intercept the character death notification, show a brief black overlay with the name and epitaph before returning to journey. The single biggest emotional improvement still unmade.</span></div>
+        <div class="road-item"><span class="road-num">D5</span><span class="road-text"><strong>Combat stat labels:</strong> Add "ATK: Edge+Combat" style indicator to each character's combat card. Makes the stat allocation feel purposeful.</span></div>
+      </div>
+    </div>
+
+    <div class="road-phase">
+      <div class="road-phase-title">Session E — Content &amp; Replayability</div>
+      <div class="road-items">
+        <div class="road-item"><span class="road-num">E1</span><span class="road-text"><strong>Add 6–8 combat encounters</strong> across biomes; target 25% combat rate. Focus on Mountains and Storm Coast which are most underserved.</span></div>
+        <div class="road-item"><span class="road-num">E2</span><span class="road-text"><strong>Wire one scenario</strong> to New Game Setup (suggest "Hunted: Ironwatch escalation starts at 50") to validate the scaffolded system.</span></div>
+        <div class="road-item"><span class="road-num">E3</span><span class="road-text"><strong>Commissar final reckoning:</strong> Add an Ironmarch/Mountains encounter that resolves the Pale Commissar arc regardless of prior choices.</span></div>
+        <div class="road-item"><span class="road-num">E4</span><span class="road-text"><strong>Verify Far Shore ending:</strong> Test the full victory path. Ensure <code>EndingScreen.jsx</code> triggers, shows journey stats, surviving characters, and a farewell paragraph.</span></div>
+        <div class="road-item"><span class="road-num">E5</span><span class="road-text"><strong>Add persuasion/deception checks</strong> to 4–6 existing encounters to reward social build investment.</span></div>
+      </div>
+    </div>
+
+    <div class="road-phase">
+      <div class="road-phase-title">Session F — Depth Systems</div>
+      <div class="road-items">
+        <div class="road-item"><span class="road-num">F1</span><span class="road-text"><strong>Bond strength UI:</strong> Show a small indicator on the party bar between character pairs with high bond. Add one encounter branch that checks for a bond to validate the system.</span></div>
+        <div class="road-item"><span class="road-num">F2</span><span class="road-text"><strong>Faction reputation display:</strong> Add a one-line faction standing row to the map overlay or inventory sidebar. Factions are fully scaffolded — they just need surfacing.</span></div>
+        <div class="road-item"><span class="road-num">F3</span><span class="road-text"><strong>Escalation mechanics:</strong> <code>world.escalation</code> is tracked and displayed but has no effect. Above 60, spawn an additional hostile encounter on march. Above 80, spawn a patrol encounter.</span></div>
+        <div class="road-item"><span class="road-num">F4</span><span class="road-text"><strong>Town indicator:</strong> Replace the removed "Town Nearby" badge with a subtle waypoint hint in the direction display ("→ East · ⛺ ahead") so players know when a settlement is within range without the intrusive badge.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- CLOSING -->
+  <section class="page-section" style="padding-top:48px">
+    <div class="callout callout-green">
+      <strong>Solid progress.</strong> The sprint closed four confirmed bugs, added three meaningful gameplay systems, and improved seven friction points across the experience. Character creation now has weight — your choices of stat, background, and starting gear feel intentional from the first screen. Camp is contextual. The journal is an artifact. The dice are visible. These are the changes that make a game feel <em>crafted</em> rather than built. The path forward is clear: verify the new code holds, give death the gravity it deserves, and let the Commissar finish his story.
+    </div>
+  </section>
+
+</div><!-- /wrap -->
+
+<footer class="report-footer">
+  <p><strong style="color:var(--bone)">Vagrant &amp; Ash</strong> &nbsp;·&nbsp; Report 003: Bug-Fix &amp; Feature Sprint &nbsp;·&nbsp; April 10, 2026</p>
+  <p style="margin-top:6px"><a href="./report2.html">← Report 002</a> &nbsp;·&nbsp; <a href="/game8/">Play the Game</a> &nbsp;·&nbsp; <a href="./index.html">Asset Dashboard</a></p>
+</footer>
+
+</body>
+</html>
