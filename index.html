@@ -77,6 +77,10 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
 .meta-collapse[open] summary::before{transform:rotate(90deg)}
 .meta-collapse summary:hover{color:var(--gt)}
 .meta-pre{font-family:'Crimson Text',serif;font-size:.95rem;line-height:1.75;color:var(--gt);white-space:pre-wrap;word-wrap:break-word;padding:4px 18px 18px}
+.prompt-history{padding:4px 18px 18px;display:flex;flex-direction:column;gap:12px}
+.prompt-first{font-family:'Crimson Text',serif;font-size:1rem;line-height:1.75;color:var(--gt);font-style:italic;border-left:2px solid var(--ga);padding-left:12px}
+.prompt-entry{font-family:'Crimson Text',serif;font-size:.9rem;line-height:1.6;color:var(--gtm)}
+.prompt-date{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.15em;color:var(--ga);margin-right:8px}
 .section-hr{height:2px;border:none;margin:0}
 
 .site-footer{text-align:center;padding:40px 24px;font-family:'Cinzel',serif;font-size:.875rem;letter-spacing:.2em;text-transform:uppercase;color:#8866aa;border-top:1px solid rgba(80,50,130,.15)}
@@ -135,7 +139,7 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
       </div>
       <p class="game-desc">A browser-based 2.5D isometric roguelike with local co-op (1–4 players). Fast runs (3–10 min/map), persistent progression, drop-in/out multiplayer. 9 classes with 5 abilities each, 200+ milestones of content including Mythic items, endless dungeons, arena mode, crafting, mercenaries, and AI pixel art sprites.</p>
       <a href="./game2/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">Recent highlights:
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A browser-based 2.5D isometric roguelike with local co-op (1–4 players). Fast runs (3–10 min/map), persistent progression, drop-in/out multiplayer. Vivid, playful medieval fantasy with multiple classes.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">Recent highlights:
 - M231: How to Play screen fixed — close button was buried behind the panel (depth bug); added X button in top-right corner for touch/iPhone; ESC and gamepad B button now close the overlay
 - M230: New enemy sprites — 6 previously blob-shaped enemies now have distinct procedural art: Arcane Specter (glowing purple ghost), Blood Drake (crimson dragon), Mushroom Spore (cap with white spots), Shadow Lurker (dark amorphous with red eyes), Spectral Knight (ghostly armored), Void Lurker (void tentacle entity); added 3 new enemies to spawn pool
 - M229: UI zoom compensation — scrolling in/out no longer stretches inventory, quest HUD, room progression, or fixed UI panels
@@ -185,7 +189,7 @@ Future wishlist:
       </div>
       <p class="game-desc">A mobile-first dark fantasy survival RPG. Lead a party of 1–4 across a dying continent. Point-buy character creation, permadeath, emergent storytelling. Every choice costs something.</p>
       <a href="./game8/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M1  — Foundation: Vite 6 + React 19 scaffold, full CSS design system (Ashen Black palette), all game data (7 races, 15 backgrounds, 30 traits, 25 skills, 12 biomes), GameContext + 6 sub-reducers + seeded PRNG, title screen with procedural SVG ash background, character creation (point-buy, party 1–4, synergy detection), journey screen (biome art, HP bars, resource tracking, travel log)
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A mobile-first dark fantasy survival RPG. Lead a party of 1–4 across a dying continent. Point-buy character creation, permadeath, emergent storytelling. Every choice costs something.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M1  — Foundation: Vite 6 + React 19 scaffold, full CSS design system (Ashen Black palette), all game data (7 races, 15 backgrounds, 30 traits, 25 skills, 12 biomes), GameContext + 6 sub-reducers + seeded PRNG, title screen with procedural SVG ash background, character creation (point-buy, party 1–4, synergy detection), journey screen (biome art, HP bars, resource tracking, travel log)
 M2  — Encounter system: event cards, branching choices, stat checks, 20+ events, outcome resolutions, encounter history
 M3  — Camp screen + turn-based combat: rest mechanics, watch system, enemy data (20+ enemy types), combat turn order, ability system
 M4  — Town/settlement system: shop economy, tavern rumours, healer services, town gate &amp; passage
@@ -270,7 +274,7 @@ M70     — Multiplayer foundation: shared-seed co-op run synchronisation (exper
       </div>
       <p class="game-desc">A vibrant action RPG with loot, levelling, skill trees, mining and crafting. Fight enemies in real-time combat across a large open world.</p>
       <a href="./game10/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M1  — Engine Foundation: game loop, Wang-tile tilemap renderer, camera with smooth follow, player movement (WASD/touch), pixel-art sprite sheets, basic HUD
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A colorful action RPG with real-time combat set in a world of rolling meadows, stone wastes, and glowing crystal caverns. Explore an open world, mine ores, craft gear, and battle increasingly dangerous enemies. Visual style inspired by Cat Quest — 2D overhead map with upright character sprites.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M1  — Engine Foundation: game loop, Wang-tile tilemap renderer, camera with smooth follow, player movement (WASD/touch), pixel-art sprite sheets, basic HUD
 M2  — World &amp; Objects: interactive world objects (chests, ore veins, trees), minimap, day/night lighting cycle, object spawn system
 M3  — Combat Core: melee and ranged attack modes, enemy AI FSM (goblin scout, forest sprite, stone golem), particle hit effects, floating damage numbers
 M4  — Loot System: item drops on kill, 5 rarity tiers (Common → Legendary), 25 item definitions, inventory panel with grid layout
@@ -329,7 +333,7 @@ M20  — Feature Complete + QA (Game Over screen, combo system, polish)</pre></d
       </div>
       <p class="game-desc">Top-down survival escape: dodge massive tornadoes and zombies, rescue Sam from across town, grab the helicopter key, and escape before the storm destroys everything.</p>
       <a href="./game11/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">Milestone 1: Full game foundation — procedural town map, player movement with sprint/stamina, tornado entities with suction/kill zones, zombie AI, Sam NPC rescue mechanic, helicopter pad win condition, title/win/gameover screens, mobile virtual joystick.</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1 COMPLETE (2026-04-10): Foundation &amp; Town — map, player, tornadoes, zombies, full game loop. M2 PLANNED: Polish — sound effects, particles, mini-map, objective arrow enhancements. M3 PLANNED: Difficulty tuning, mobile feel polish, best time leaderboard.</pre></details></div>
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">Survive in a mid sized town where you have to run from huge tornadoes and zombies and you have to save a friend on the other side of town and they have the key to a helicopter to escape the town and the tornados are fast and hard to get away from</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">Milestone 1: Full game foundation — procedural town map, player movement with sprint/stamina, tornado entities with suction/kill zones, zombie AI, Sam NPC rescue mechanic, helicopter pad win condition, title/win/gameover screens, mobile virtual joystick.</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1 COMPLETE (2026-04-10): Foundation &amp; Town — map, player, tornadoes, zombies, full game loop. M2 PLANNED: Polish — sound effects, particles, mini-map, objective arrow enhancements. M3 PLANNED: Difficulty tuning, mobile feel polish, best time leaderboard.</pre></details></div>
     </div>
   </div>
 </section>
@@ -359,7 +363,7 @@ M20  — Feature Complete + QA (Game Over screen, combo system, polish)</pre></d
       </div>
       <p class="game-desc">A top-down action roguelite with procedural dungeon generation, 4 classes (Ironclad, Riftmage, Phantom, Voidpriest), and meta-progression. Built with PixiJS v8 at 480×270 internal resolution scaled to 3×. Features melee/ranged combat, boss encounters, equipment, and pixel art.</p>
       <a href="./game6/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M25: Character select screen with class descriptions
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A top-down action roguelite where you descend through procedurally generated ancient crypts floating in a dimensional void. Each run is unique, death is permanent but unlocks persist. A lone adventurer chasing a mysterious signal through ruins of fallen civilizations.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M25: Character select screen with class descriptions
 - M24: HUD polish — health/mana/xp bars, class icon, floor display
 - M23: Minimap with room grid, fog of war, player position
 - M22: Level-up system with XP and stat point allocation
@@ -409,7 +413,7 @@ Phase 5: Biomes 3+4 — Forge of Ruin &amp; Void Sanctum (M49–M63)</pre></deta
       </div>
       <p class="game-desc">A turn-based caravan RPG with branching dialogs. Lead a party of adventurers across a medieval fantasy world threatened by demonic corruption. Features side-scrolling caravan travel, tactical grid combat, 12 skill trees, and context-sensitive dialog options.</p>
       <a href="./game7/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M13: Combat bug fixes — enemy pathfinding, item picker, mobile UI, debug logging
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A turn-based caravan RPG — lead a party of adventurers across a medieval fantasy world threatened by demonic corruption. Side-scrolling caravan travel, deep branching dialogs, tactical grid combat, and 12 skill trees. Tone: whimsical like Terry Pratchett meets D&amp;D.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M13: Combat bug fixes — enemy pathfinding, item picker, mobile UI, debug logging
 - M12: Combat AI &amp; difficulty scaling, sophisticated party AI
 - M11: Companions &amp; party travel, pack animals, vehicles, caravan visuals
 - M9: Town &amp; vendors — shops, inn, services
@@ -454,7 +458,7 @@ Phase 5: Biomes 3+4 — Forge of Ruin &amp; Void Sanctum (M49–M63)</pre></deta
       </div>
       <p class="game-desc">An open-world turn-based RPG set in a procedurally generated Norse world. Assemble a party of adventurers, travel the Spellroads — ancient magical highways — and restore them from growing darkness. 2–4 player local co-op, formation-based combat, and deep character progression.</p>
       <a href="./game4/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M32: Companion system — 12 hireable companions with personality traits
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">An open-world turn-based RPG in a procedurally generated Norse world. Assemble a party and travel the Spellroads — ancient magical highways — restoring them from growing darkness. 2–4 player local co-op with formation-based combat and deep character progression.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M32: Companion system — 12 hireable companions with personality traits
 - M31: Random events &amp; loot tables — 15 Norse travel events, 8 loot tables
 - M30: Faction &amp; reputation system — 8 factions with standing tiers
 - M29: Crafting system — 20 recipes
@@ -498,7 +502,7 @@ Phase 5: Biomes 3+4 — Forge of Ruin &amp; Void Sanctum (M49–M63)</pre></deta
       </div>
       <p class="game-desc">A third-person top-down twin-stick action RPG. Full conversion from the isometric Roguelike engine to fast-paced twin-stick combat with 7 classes, 360° aiming, dash/roll mechanics, and mobile virtual joystick support.</p>
       <a href="./game3/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M3: Kill combo system, boss intro cinematic, dedicated boss HP bar, 3 new enemies (Berserker, Hexer, Spider), touch controls polish
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">Convert the isometric roguelike engine into a fast-paced twin-stick action RPG with 360° aiming, dash and roll mechanics, and mobile virtual joystick support.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M3: Kill combo system, boss intro cinematic, dedicated boss HP bar, 3 new enemies (Berserker, Hexer, Spider), touch controls polish
 - M2: Character creation fix, loading screen fix, viewport meta tag, JS/CSS caching
 - M1: Full engine conversion — top-down twin-stick, 8-dir movement, projectile combat, lighting, 6 enemy types, wave system</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">Continuing twin-stick action RPG development:
 - Additional enemy types and boss encounters
