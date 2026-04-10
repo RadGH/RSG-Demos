@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vagrant &amp; Ash — v1.0 Milestone Update Report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      --ember:        #c7622a;
+      --ember-bright: #e8843a;
+      --ember-dim:    #8b4218;
+      --ember-glow:   rgba(199, 98, 42, 0.35);
+      --ash:          #8a8078;
+      --ash-light:    #b0a898;
+      --ash-dark:     #5a554e;
+      --bone:         #e8ddc8;
+      --bone-dim:     #c8bda8;
+      --black:        #0c0b09;
+      --black-soft:   #151310;
+      --black-card:   #1a1714;
+      --black-raised: #201d1a;
+      --text:         #d4c8b4;
+      --text-muted:   #8a8078;
+
+      --font-heading: 'Cinzel', serif;
+      --font-body:    'Crimson Text', serif;
+
+      --section-gap:  80px;
+      --card-radius:  6px;
+      --border:       1px solid rgba(138, 128, 120, 0.25);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============================================================
+       KEYFRAME ANIMATIONS
+    ============================================================ */
+    @keyframes particleRise {
+      0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+      50%  { transform: translateY(-40vh) translateX(var(--dx, 20px)) scale(0.8); opacity: 0.4; }
+      100% { transform: translateY(-90vh) translateX(var(--dx2, -10px)) scale(0.3); opacity: 0; }
+    }
+
+    @keyframes emberPulse {
+      0%, 100% { text-shadow: 0 0 12px var(--ember), 0 0 28px var(--ember-dim), 0 0 56px rgba(199,98,42,0.2); }
+      50%       { text-shadow: 0 0 20px var(--ember-bright), 0 0 40px var(--ember), 0 0 80px rgba(232,132,58,0.3); }
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes glowBorder {
+      0%, 100% { box-shadow: 0 0 6px var(--ember-glow), inset 0 0 6px rgba(199,98,42,0.05); }
+      50%       { box-shadow: 0 0 18px var(--ember-glow), inset 0 0 12px rgba(199,98,42,0.1); }
+    }
+
+    @keyframes thornSway {
+      0%, 100% { letter-spacing: 0.08em; }
+      50%       { letter-spacing: 0.12em; }
+    }
+
+    @keyframes scrollReveal {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================================
+       PARTICLE SYSTEM
+    ============================================================ */
+    .particle-field {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      bottom: 0;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--ember);
+      opacity: 0;
+      animation: particleRise linear infinite;
+    }
+
+    .particle:nth-child(1)  { left: 8%;  animation-duration: 6.2s; animation-delay: 0s;    --dx: 15px;  --dx2: -8px;  background: #d97a40; width: 2px; height: 2px; }
+    .particle:nth-child(2)  { left: 15%; animation-duration: 7.8s; animation-delay: 1.2s;  --dx: -20px; --dx2: 12px;  background: #c7622a; }
+    .particle:nth-child(3)  { left: 24%; animation-duration: 5.5s; animation-delay: 2.4s;  --dx: 30px;  --dx2: -18px; background: #e8843a; width: 4px; height: 4px; }
+    .particle:nth-child(4)  { left: 33%; animation-duration: 8.1s; animation-delay: 0.7s;  --dx: -12px; --dx2: 25px;  background: #b05820; width: 2px; height: 2px; }
+    .particle:nth-child(5)  { left: 42%; animation-duration: 6.7s; animation-delay: 3.1s;  --dx: 22px;  --dx2: -5px;  background: #c7622a; }
+    .particle:nth-child(6)  { left: 51%; animation-duration: 9.3s; animation-delay: 1.8s;  --dx: -25px; --dx2: 15px;  background: #d97a40; width: 2px; height: 2px; }
+    .particle:nth-child(7)  { left: 60%; animation-duration: 5.9s; animation-delay: 0.4s;  --dx: 18px;  --dx2: -22px; background: #e8843a; }
+    .particle:nth-child(8)  { left: 68%; animation-duration: 7.4s; animation-delay: 2.6s;  --dx: -8px;  --dx2: 20px;  background: #c7622a; width: 2px; height: 2px; }
+    .particle:nth-child(9)  { left: 77%; animation-duration: 6.1s; animation-delay: 4.2s;  --dx: 28px;  --dx2: -14px; background: #b05820; }
+    .particle:nth-child(10) { left: 86%; animation-duration: 8.7s; animation-delay: 1.5s;  --dx: -18px; --dx2: 10px;  background: #d97a40; width: 4px; height: 4px; }
+    .particle:nth-child(11) { left: 93%; animation-duration: 5.3s; animation-delay: 3.8s;  --dx: 10px;  --dx2: -28px; background: #c7622a; width: 2px; height: 2px; }
+    .particle:nth-child(12) { left: 4%;  animation-duration: 10s;  animation-delay: 5.1s;  --dx: -15px; --dx2: 18px;  background: #e8843a; }
+    .particle:nth-child(13) { left: 20%; animation-duration: 6.8s; animation-delay: 2.0s;  --dx: 25px;  --dx2: -10px; background: #d97a40; width: 3px; height: 3px; }
+    .particle:nth-child(14) { left: 46%; animation-duration: 7.2s; animation-delay: 0.9s;  --dx: -20px; --dx2: 30px;  background: #c7622a; }
+    .particle:nth-child(15) { left: 72%; animation-duration: 5.8s; animation-delay: 4.7s;  --dx: 12px;  --dx2: -20px; background: #b05820; width: 2px; height: 2px; }
+
+    /* ============================================================
+       DECORATIVE ELEMENTS
+    ============================================================ */
+    .hr-ember {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--ember-dim) 15%,
+        var(--ember) 40%,
+        var(--ember-bright) 50%,
+        var(--ember) 60%,
+        var(--ember-dim) 85%,
+        transparent 100%
+      );
+      margin: 32px 0;
+      position: relative;
+    }
+
+    .hr-ember::before,
+    .hr-ember::after {
+      content: '✦';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--ember);
+      font-size: 0.7rem;
+      background: var(--black);
+      padding: 0 6px;
+    }
+
+    .hr-ember::before { left: 50%; transform: translateY(-50%) translateX(-50%); }
+    .hr-ember::after  { display: none; }
+
+    .hr-ash {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ash-dark) 30%, var(--ash) 50%, var(--ash-dark) 70%, transparent);
+      margin: 24px 0;
+    }
+
+    .thorn-border {
+      border: 1px solid var(--ember-dim);
+      position: relative;
+      padding: 4px;
+    }
+
+    .thorn-border::before,
+    .thorn-border::after {
+      content: '❧ ✦ ❧';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--ember-dim);
+      font-size: 0.85rem;
+      background: var(--black);
+      padding: 0 12px;
+      letter-spacing: 0.15em;
+    }
+    .thorn-border::before { top: -0.65em; }
+    .thorn-border::after  { bottom: -0.65em; }
+
+    /* ============================================================
+       STATUS BADGES
+    ============================================================ */
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-family: var(--font-heading);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+
+    .badge-green  { background: rgba(56, 120, 60, 0.25); color: #7dcf82; border: 1px solid rgba(56,120,60,0.4); }
+    .badge-yellow { background: rgba(180, 140, 30, 0.2); color: #d4aa40; border: 1px solid rgba(180,140,30,0.4); }
+    .badge-red    { background: rgba(160, 40, 40, 0.2);  color: #d46060; border: 1px solid rgba(160,40,40,0.4); }
+    .badge-ember  { background: rgba(199, 98, 42, 0.2);  color: var(--ember-bright); border: 1px solid var(--ember-dim); }
+    .badge-ash    { background: rgba(90, 85, 78, 0.3);   color: var(--ash-light); border: 1px solid var(--ash-dark); }
+
+    /* ============================================================
+       ROMAN NUMERAL SECTION DECORATORS
+    ============================================================ */
+    .section-numeral {
+      font-family: var(--font-heading);
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--ember);
+      opacity: 0.18;
+      line-height: 1;
+      position: absolute;
+      top: -16px;
+      left: -8px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ============================================================
+       LAYOUT CONTAINERS
+    ============================================================ */
+    .report-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .page-section {
+      position: relative;
+      padding-top: var(--section-gap);
+      animation: scrollReveal 0.7s ease both;
+    }
+
+    .page-section + .page-section {
+      border-top: none;
+    }
+
+    .section-header {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 36px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--bone);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-subtitle {
+      font-family: var(--font-body);
+      font-style: italic;
+      color: var(--ash);
+      font-size: 1rem;
+      margin-top: 4px;
+    }
+
+    /* ============================================================
+       COVER PAGE
+    ============================================================ */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 60px 24px;
+      overflow: hidden;
+    }
+
+    .cover-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 80%, rgba(199,98,42,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 90% 50% at 50% 100%, rgba(139,66,24,0.15) 0%, transparent 60%),
+        linear-gradient(180deg, #0c0b09 0%, #100e0b 60%, #1a1108 100%);
+    }
+
+    .cover-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .cover-eyebrow {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      letter-spacing: 0.4em;
+      color: var(--ember);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      animation: fadeIn 1.2s ease 0.3s both;
+    }
+
+    .cover-title {
+      font-family: var(--font-heading);
+      font-size: clamp(3.5rem, 10vw, 6.5rem);
+      font-weight: 900;
+      color: var(--bone);
+      line-height: 0.92;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      animation: fadeSlideUp 1s ease 0.5s both, emberPulse 4s ease-in-out 2s infinite;
+    }
+
+    .cover-title span {
+      display: block;
+      font-size: 0.45em;
+      color: var(--ash-light);
+      letter-spacing: 0.35em;
+      margin-top: 6px;
+      animation: none;
+      text-shadow: none;
+    }
+
+    .cover-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 36px 0;
+      animation: fadeIn 1s ease 1.2s both;
+    }
+
+    .cover-divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ember-dim));
+    }
+
+    .cover-divider-line:last-child {
+      background: linear-gradient(90deg, var(--ember-dim), transparent);
+    }
+
+    .cover-divider-glyph {
+      color: var(--ember);
+      font-size: 1.1rem;
+    }
+
+    .cover-version {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      color: var(--bone-dim);
+      text-transform: uppercase;
+      animation: fadeIn 1s ease 1.4s both;
+    }
+
+    .cover-tagline {
+      font-family: var(--font-body);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--ash-light);
+      margin-top: 20px;
+      animation: fadeIn 1s ease 1.6s both;
+    }
+
+    .cover-date {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: var(--ash);
+      text-transform: uppercase;
+      margin-top: 40px;
+      animation: fadeIn 1s ease 1.8s both;
+    }
+
+    .thorn-frame {
+      border: 1px solid var(--ember-dim);
+      padding: 48px 56px;
+      position: relative;
+      animation: fadeIn 0.8s ease 0.2s both, glowBorder 5s ease-in-out 2s infinite;
+    }
+
+    .thorn-frame::before,
+    .thorn-frame::after,
+    .thorn-frame .corner-tl,
+    .thorn-frame .corner-tr,
+    .thorn-frame .corner-bl,
+    .thorn-frame .corner-br {
+      position: absolute;
+      color: var(--ember-dim);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .thorn-frame .corner-tl { top: -4px;  left: -4px;  content: '✦'; }
+    .thorn-frame .corner-tr { top: -4px;  right: -4px; content: '✦'; }
+    .thorn-frame .corner-bl { bottom: -4px; left: -4px; }
+    .thorn-frame .corner-br { bottom: -4px; right: -4px; }
+
+    .thorn-frame .thorn-top,
+    .thorn-frame .thorn-bottom {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--ember-dim);
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      background: var(--black);
+      padding: 0 12px;
+      white-space: nowrap;
+    }
+
+    .thorn-frame .thorn-top    { top: -0.55em; }
+    .thorn-frame .thorn-bottom { bottom: -0.55em; }
+
+    /* ============================================================
+       EXECUTIVE SUMMARY
+    ============================================================ */
+    .feature-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 32px;
+      margin-top: 16px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--black-card);
+      border: var(--border);
+      border-left: 2px solid var(--ember-dim);
+      border-radius: var(--card-radius);
+      transition: border-left-color 0.2s, background 0.2s;
+      animation: fadeSlideUp 0.5s ease both;
+    }
+
+    .feature-item:hover {
+      border-left-color: var(--ember);
+      background: var(--black-raised);
+    }
+
+    .feature-glyph {
+      color: var(--ember);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .feature-text strong {
+      color: var(--bone);
+      font-family: var(--font-body);
+      font-weight: 600;
+    }
+
+    .feature-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .feature-item:nth-child(1)  { animation-delay: 0.05s; }
+    .feature-item:nth-child(2)  { animation-delay: 0.10s; }
+    .feature-item:nth-child(3)  { animation-delay: 0.15s; }
+    .feature-item:nth-child(4)  { animation-delay: 0.20s; }
+    .feature-item:nth-child(5)  { animation-delay: 0.25s; }
+    .feature-item:nth-child(6)  { animation-delay: 0.30s; }
+    .feature-item:nth-child(7)  { animation-delay: 0.35s; }
+    .feature-item:nth-child(8)  { animation-delay: 0.40s; }
+    .feature-item:nth-child(9)  { animation-delay: 0.45s; }
+    .feature-item:nth-child(10) { animation-delay: 0.50s; }
+    .feature-item:nth-child(11) { animation-delay: 0.55s; }
+    .feature-item:nth-child(12) { animation-delay: 0.60s; }
+
+    /* ============================================================
+       VISUAL SHOWCASE
+    ============================================================ */
+    .biome-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .biome-card {
+      background: var(--black-card);
+      border: var(--border);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .biome-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(199,98,42,0.2), 0 0 0 1px var(--ember-dim);
+    }
+
+    .biome-img-wrap {
+      width: 100%;
+      height: 140px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a1410, #2a1e14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .biome-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85) saturate(0.9);
+    }
+
+    .biome-img-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--ash-dark);
+      text-transform: uppercase;
+    }
+
+    .biome-info {
+      padding: 12px 14px;
+    }
+
+    .biome-name {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--bone);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .biome-region {
+      font-size: 0.85rem;
+      color: var(--ash);
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    .biome-danger {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .danger-label {
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--ash-dark);
+      text-transform: uppercase;
+    }
+
+    .danger-pips {
+      display: flex;
+      gap: 3px;
+    }
+
+    .pip {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1px solid var(--ash-dark);
+    }
+
+    .pip.lit { background: var(--ember); border-color: var(--ember); }
+
+    /* Portrait Grid */
+    .portrait-section-title {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      color: var(--ember);
+      text-transform: uppercase;
+      margin: 32px 0 12px;
+    }
+
+    .portrait-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .portrait-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .portrait-item img {
+      width: 80px;
+      height: 80px;
+      border-radius: 6px;
+      border: 2px solid var(--ash-dark);
+      display: block;
+      background: var(--black-raised);
+      object-fit: cover;
+      transition: border-color 0.2s, transform 0.2s;
+      image-rendering: pixelated;
+    }
+
+    .portrait-item:hover img {
+      border-color: var(--ember);
+      transform: scale(1.06);
+    }
+
+    .portrait-label {
+      font-family: var(--font-heading);
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      color: var(--ash);
+      text-transform: uppercase;
+    }
+
+    .race-row-wrap {
+      background: var(--black-card);
+      border: var(--border);
+      border-radius: var(--card-radius);
+      padding: 16px 18px;
+      margin-bottom: 12px;
+    }
+
+    .race-label {
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--ash-light);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* ============================================================
+       TECHNICAL DETAILS
+    ============================================================ */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .tech-card {
+      background: var(--black-card);
+      border: var(--border);
+      border-radius: var(--card-radius);
+      padding: 24px;
+    }
+
+    .tech-card-title {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      color: var(--ember);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(199,98,42,0.2);
+    }
+
+    .file-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .file-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .file-item::before {
+      content: '›';
+      color: var(--ember-dim);
+      flex-shrink: 0;
+      font-size: 1.1rem;
+      line-height: 1.3;
+    }
+
+    .file-path {
+      color: var(--bone-dim);
+      font-family: 'Courier New', monospace;
+      font-size: 0.78rem;
+      background: rgba(232, 221, 200, 0.06);
+      padding: 1px 5px;
+      border-radius: 3px;
+      border: 1px solid rgba(232,221,200,0.1);
+    }
+
+    .file-desc {
+      color: var(--ash);
+      font-size: 0.85rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .stat-item {
+      background: var(--black-raised);
+      border: var(--border);
+      border-radius: 4px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--ember-bright);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--ash);
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-item.wide {
+      grid-column: span 2;
+    }
+
+    .bundle-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(138,128,120,0.1);
+      font-size: 0.9rem;
+    }
+
+    .bundle-row:last-child { border-bottom: none; }
+
+    .bundle-name {
+      font-family: monospace;
+      color: var(--bone-dim);
+      font-size: 0.8rem;
+      min-width: 80px;
+    }
+
+    .bundle-bar-wrap {
+      flex: 1;
+      height: 6px;
+      background: rgba(90,85,78,0.3);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .bundle-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--ember-dim), var(--ember));
+      border-radius: 3px;
+    }
+
+    .bundle-size {
+      font-family: monospace;
+      font-size: 0.78rem;
+      color: var(--ash-light);
+      min-width: 58px;
+      text-align: right;
+    }
+
+    /* ============================================================
+       BUGS & ISSUES
+    ============================================================ */
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .issue-col-title {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: 4px 4px 0 0;
+      margin-bottom: 12px;
+    }
+
+    .issue-col-title.bugs    { background: rgba(160,40,40,0.2);  color: #d46060; border-bottom: 2px solid rgba(160,40,40,0.4); }
+    .issue-col-title.warn    { background: rgba(180,140,30,0.2); color: #d4aa40; border-bottom: 2px solid rgba(180,140,30,0.4); }
+    .issue-col-title.fixed   { background: rgba(56,120,60,0.2);  color: #7dcf82; border-bottom: 2px solid rgba(56,120,60,0.4); }
+
+    .issue-card {
+      background: var(--black-card);
+      border: var(--border);
+      border-radius: var(--card-radius);
+      padding: 20px;
+    }
+
+    .issue-item {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(138,128,120,0.12);
+    }
+
+    .issue-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .issue-title {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--bone-dim);
+      margin-bottom: 4px;
+      font-style: italic;
+    }
+
+    .issue-body {
+      font-size: 0.88rem;
+      color: var(--ash-light);
+      line-height: 1.5;
+    }
+
+    .issue-meta {
+      font-size: 0.78rem;
+      color: var(--ash);
+      margin-top: 5px;
+      font-style: italic;
+    }
+
+    /* ============================================================
+       RECOMMENDATIONS
+    ============================================================ */
+    .rec-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .rec-card {
+      display: flex;
+      gap: 18px;
+      background: var(--black-card);
+      border: var(--border);
+      border-left: 3px solid var(--ember-dim);
+      border-radius: var(--card-radius);
+      padding: 18px 20px;
+      transition: border-left-color 0.2s, background 0.2s, transform 0.2s;
+    }
+
+    .rec-card:hover {
+      border-left-color: var(--ember);
+      background: var(--black-raised);
+      transform: translateX(4px);
+    }
+
+    .rec-number {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--ember);
+      opacity: 0.5;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 28px;
+    }
+
+    .rec-content {}
+
+    .rec-title {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--bone);
+      margin-bottom: 4px;
+    }
+
+    .rec-body {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .rec-estimate {
+      display: inline-block;
+      margin-top: 7px;
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--ember-dim);
+      text-transform: uppercase;
+      background: rgba(199,98,42,0.08);
+      border: 1px solid rgba(199,98,42,0.2);
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+
+    /* ============================================================
+       FUTURE VISION
+    ============================================================ */
+    .vision-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .vision-card {
+      background: var(--black-card);
+      border: var(--border);
+      border-radius: var(--card-radius);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vision-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--ember-dim), var(--ember), var(--ember-dim));
+    }
+
+    .vision-card.near::before {
+      background: linear-gradient(90deg, transparent, var(--ember), transparent);
+    }
+
+    .vision-card.far::before {
+      background: linear-gradient(90deg, transparent, #7040c0, transparent);
+    }
+
+    .vision-card.far {
+      border-color: rgba(112, 64, 192, 0.25);
+    }
+
+    .vision-label {
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(138,128,120,0.15);
+    }
+
+    .vision-card.near .vision-label { color: var(--ember); }
+    .vision-card.far  .vision-label { color: #9060d8; }
+
+    .vision-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .vision-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .vision-marker {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .vision-card.near .vision-marker { background: var(--ember); box-shadow: 0 0 6px var(--ember-glow); }
+    .vision-card.far  .vision-marker { background: #9060d8; box-shadow: 0 0 6px rgba(144, 96, 216, 0.4); }
+
+    .vision-item-title {
+      font-weight: 600;
+      color: var(--bone-dim);
+      font-size: 0.95rem;
+    }
+
+    .vision-item-desc {
+      color: var(--ash-light);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .report-footer {
+      margin-top: var(--section-gap);
+      padding: 48px 0 40px;
+      border-top: var(--border);
+      text-align: center;
+      position: relative;
+    }
+
+    .footer-title {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      letter-spacing: 0.4em;
+      color: var(--ember);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .footer-meta {
+      font-size: 0.88rem;
+      color: var(--ash);
+      line-height: 2;
+    }
+
+    .footer-meta strong {
+      color: var(--ash-light);
+    }
+
+    .footer-particle-field {
+      position: relative;
+      height: 50px;
+      overflow: hidden;
+      margin-top: 24px;
+    }
+
+    /* ============================================================
+       PRINT STYLES
+    ============================================================ */
+    @media print {
+      * { animation: none !important; transition: none !important; }
+
+      body {
+        background: #0c0b09 !important;
+        color: var(--text) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .cover { min-height: auto; page-break-after: always; padding: 80px 24px; }
+      .page-section { page-break-inside: avoid; padding-top: 48px; }
+      .page-break { page-break-after: always; }
+      .particle-field { display: none; }
+      .cover-bg { display: none; }
+
+      .feature-list { grid-template-columns: 1fr 1fr; }
+      .two-col      { grid-template-columns: 1fr 1fr; }
+      .three-col    { grid-template-columns: repeat(3, 1fr); }
+      .biome-grid   { grid-template-columns: repeat(3, 1fr); }
+      .vision-grid  { grid-template-columns: 1fr 1fr; }
+
+      .report-wrapper { max-width: 100%; padding: 0 32px; }
+
+      .cover-title {
+        color: var(--bone) !important;
+        text-shadow: none !important;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .feature-list { grid-template-columns: 1fr; }
+      .two-col      { grid-template-columns: 1fr; }
+      .three-col    { grid-template-columns: 1fr; }
+      .biome-grid   { grid-template-columns: repeat(2, 1fr); }
+      .vision-grid  { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       SCROLL ANIMATION CLASSES
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     COVER PAGE
+============================================================ -->
+<div class="cover">
+  <div class="cover-bg"></div>
+
+  <!-- Ash Particles -->
+  <div class="particle-field" aria-hidden="true">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <div class="cover-inner">
+    <div class="cover-eyebrow">Milestone Update Report</div>
+
+    <div class="thorn-frame">
+      <span class="corner-tl">✦</span>
+      <span class="corner-tr">✦</span>
+      <span class="corner-bl">✦</span>
+      <span class="corner-br">✦</span>
+      <span class="thorn-top">❧ &nbsp; ❧ &nbsp; ❧</span>
+      <span class="thorn-bottom">❧ &nbsp; ❧ &nbsp; ❧</span>
+
+      <h1 class="cover-title">
+        Vagrant &amp; Ash
+        <span>&amp; the Road Eternal</span>
+      </h1>
+
+      <div class="cover-divider">
+        <div class="cover-divider-line"></div>
+        <div class="cover-divider-glyph">✦</div>
+        <div class="cover-divider-glyph">✦</div>
+        <div class="cover-divider-glyph">✦</div>
+        <div class="cover-divider-line"></div>
+      </div>
+
+      <div class="cover-version">Version 1.0 &nbsp;·&nbsp; Milestone Expansion</div>
+      <p class="cover-tagline">"The road remembers everyone who walked it."</p>
+    </div>
+
+    <div class="cover-date">April 9, 2026 &nbsp;·&nbsp; Build Report &nbsp;·&nbsp; Internal Distribution</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MAIN REPORT BODY
+============================================================ -->
+<div class="report-wrapper">
+
+  <!-- SECTION I: EXECUTIVE SUMMARY -->
+  <section class="page-section reveal" id="section-summary">
+    <div class="section-header">
+      <span class="section-numeral" aria-hidden="true">I</span>
+      <h2 class="section-title">Executive Summary</h2>
+      <p class="section-subtitle">Twelve feature additions comprising the v1.0 milestone expansion</p>
+    </div>
+
+    <div class="hr-ember"></div>
+
+    <p style="margin-bottom: 24px; color: var(--ash-light);">
+      This update marks the first major feature expansion of <strong style="color:var(--bone);">Vagrant &amp; Ash</strong> beyond the
+      core game loop. Twelve distinct features were designed, implemented, and tested — spanning AI asset generation,
+      UI systems, game mechanics, audio synthesis, and offline infrastructure. The build now ships 245 passing tests
+      across 13 suites with a compressed payload of approximately 218&nbsp;kB.
+    </p>
+
+    <ul class="feature-list" role="list">
+      <li class="feature-item">
+        <span class="feature-glyph">✦</span>
+        <span class="feature-text"><strong>OpenAI Biome Backgrounds</strong> — 14 AI-generated atmospheric landscape backgrounds, one per biome, created with DALL-E 3. Thematic prompts designed for dark fantasy atmosphere.</span>
+      </li>
+      <li class="feature-item">
+        <span class="feature-glyph">✦</span>
+        <span class="feature-text"><strong>PixelLab Race Portraits</strong> — 84 pixel art portraits (12 per race × 7 races) generated via PixelLab AI. Selectable in character creation.</span>
+      </li>
+      <li class="feature-item">
+        <span class="feature-glyph">✦</span>
+        <span class="feature-text"><strong>Portrait Selector</strong> — Players choose their character portrait during creation. Portraits persist throughout the entire run across all screens.</span>
+      </li>
+      <li class="feature-item">
+        <span class="feature-glyph">✦</span>
+        <span class="feature-text"><strong>Randomize Character Button</strong> — One-click random character generation drawing from a thematic name pool of 30 curated names.</span>
+      </li>
+      <li class="feature-item">
+        <span class="feature-glyph">✦</span>
+        <span class="feature-text"><strong>Font Awesome Icons</strong> — ~49 SVG icons replacing emoji throughout the UI. Scales cleanly and respects CSS color theming across light and dark contexts.</span>
+      </li>
+      <li class="feature-item">
+        <span class="feature-glyph">✦</span>
+        <span class="feature-text"><strong>Pause Menu</strong> — Escape key (desktop) or ☰ button (mobile) opens a pause overlay. Options to resume or return to Main Menu without progress loss.</span>
+      </li>
+      <li class="feature-item">
+        <span class="feature-glyph">✦</span>
+        <span class="feature-text"><strong>Animated Logo SVG</strong> — New atmospheric logo with drifting ash particles and ember glow pulse animation. Replaces the previous placeholder title text.</span>
+      </li>
+      <li class="feature-item">
+        <span class="feature-glyph">✦</span>
+        <span class="feature-text"><strong>Asset Review Dashboard</strong> — <code style="font-size:0.82em;color:var(--bone-dim)">/demo-assets/</code> page listing all generated assets for quality control review before shipping.</span>
+      </li>
+      <li class="feature-item">
+        <span class="feature-glyph">✦</span>
+        <span class="feature-text"><strong>Low-Wit Easter Egg</strong> — Party with Wit &lt; 5 sees slower typewriter text. Wit ≤ 1 garbles the text into runes and symbols — a subtle permadeath flavor mechanic.</span>
+      </li>
+      <li class="feature-item">
+        <span class="feature-glyph">✦</span>
+        <span class="feature-text"><strong>Biome Header Backgrounds</strong> — Each biome's journey header now displays its AI-generated background for an immersive regional atmosphere.</span>
+      </li>
+      <li class="feature-item">
+        <span class="feature-glyph">✦</span>
+        <span class="feature-text"><strong>Web Audio Procedural Sounds</strong> — 15 synthesized sounds with no external asset files. Combat effects, victory fanfare, and town bells fully synthesized in-browser.</span>
+      </li>
+      <li class="feature-item">
+        <span class="feature-glyph">✦</span>
+        <span class="feature-text"><strong>Service Worker &amp; PWA</strong> — Offline-first cache-first service worker. Bundle split into 4 chunks: vendor, engine, data, and main for optimal load performance.</span>
+      </li>
+    </ul>
+  </section>
+
+  <div class="hr-ember" style="margin-top:64px;"></div>
+
+  <!-- SECTION II: VISUAL SHOWCASE -->
+  <section class="page-section reveal" id="section-visual">
+    <div class="section-header">
+      <span class="section-numeral" aria-hidden="true">II</span>
+      <h2 class="section-title">Visual Showcase</h2>
+      <p class="section-subtitle">AI-generated biome backgrounds and pixel art race portraits</p>
+    </div>
+
+    <h3 style="font-family:var(--font-heading);font-size:0.78rem;letter-spacing:0.22em;color:var(--ember);text-transform:uppercase;margin-bottom:16px;">
+      Biome Background Gallery — DALL-E 3 Generated
+    </h3>
+
+    <div class="biome-grid">
+
+      <div class="biome-card">
+        <div class="biome-img-wrap">
+          <img src="./backgrounds/ashfields.png" alt="Ashfields biome background" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="biome-img-placeholder">Ashfields — image pending</div>
+        </div>
+        <div class="biome-info">
+          <div class="biome-name">Ashfields</div>
+          <div class="biome-region">The Starting Plains &nbsp;·&nbsp; West</div>
+          <div class="biome-danger">
+            <span class="danger-label">Danger</span>
+            <div class="danger-pips">
+              <div class="pip lit"></div><div class="pip lit"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div>
+            </div>
+            <span class="badge badge-green">Low</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="biome-card">
+        <div class="biome-img-wrap">
+          <img src="./backgrounds/greywood.png" alt="Greywood biome background" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="biome-img-placeholder">Greywood — image pending</div>
+        </div>
+        <div class="biome-info">
+          <div class="biome-name">Greywood</div>
+          <div class="biome-region">The Rotting Forest &nbsp;·&nbsp; Central</div>
+          <div class="biome-danger">
+            <span class="danger-label">Danger</span>
+            <div class="danger-pips">
+              <div class="pip lit"></div><div class="pip lit"></div><div class="pip lit"></div><div class="pip"></div><div class="pip"></div>
+            </div>
+            <span class="badge badge-yellow">Moderate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="biome-card">
+        <div class="biome-img-wrap">
+          <img src="./backgrounds/cinderwaste.png" alt="Cinderwaste biome background" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="biome-img-placeholder">Cinderwaste — image pending</div>
+        </div>
+        <div class="biome-info">
+          <div class="biome-name">Cinderwaste</div>
+          <div class="biome-region">The Scorched Expanse &nbsp;·&nbsp; East</div>
+          <div class="biome-danger">
+            <span class="danger-label">Danger</span>
+            <div class="danger-pips">
+              <div class="pip lit"></div><div class="pip lit"></div><div class="pip lit"></div><div class="pip lit"></div><div class="pip"></div>
+            </div>
+            <span class="badge badge-red">High</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="biome-card">
+        <div class="biome-img-wrap">
+          <img src="./backgrounds/storm_coast.png" alt="Storm Coast biome background" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="biome-img-placeholder">Storm Coast — image pending</div>
+        </div>
+        <div class="biome-info">
+          <div class="biome-name">Storm Coast</div>
+          <div class="biome-region">The Drowned Shore &nbsp;·&nbsp; North</div>
+          <div class="biome-danger">
+            <span class="danger-label">Danger</span>
+            <div class="danger-pips">
+              <div class="pip lit"></div><div class="pip lit"></div><div class="pip lit"></div><div class="pip"></div><div class="pip"></div>
+            </div>
+            <span class="badge badge-yellow">Moderate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="biome-card">
+        <div class="biome-img-wrap">
+          <img src="./backgrounds/ironmarch.png" alt="Ironmarch biome background" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="biome-img-placeholder">Ironmarch — image pending</div>
+        </div>
+        <div class="biome-info">
+          <div class="biome-name">Ironmarch</div>
+          <div class="biome-region">The Conquered Plains &nbsp;·&nbsp; Central</div>
+          <div class="biome-danger">
+            <span class="danger-label">Danger</span>
+            <div class="danger-pips">
+              <div class="pip lit"></div><div class="pip lit"></div><div class="pip lit"></div><div class="pip lit"></div><div class="pip"></div>
+            </div>
+            <span class="badge badge-red">High</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="biome-card">
+        <div class="biome-img-wrap">
+          <img src="./backgrounds/amber_forest.png" alt="Amber Forest biome background" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="biome-img-placeholder">Amber Forest — image pending</div>
+        </div>
+        <div class="biome-info">
+          <div class="biome-name">Amber Forest</div>
+          <div class="biome-region">The Glassed Wood &nbsp;·&nbsp; South</div>
+          <div class="biome-danger">
+            <span class="danger-label">Danger</span>
+            <div class="danger-pips">
+              <div class="pip lit"></div><div class="pip lit"></div><div class="pip"></div><div class="pip"></div><div class="pip"></div>
+            </div>
+            <span class="badge badge-green">Low</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hr-ash" style="margin-top:40px;"></div>
+
+    <h3 style="font-family:var(--font-heading);font-size:0.78rem;letter-spacing:0.22em;color:var(--ember);text-transform:uppercase;margin:28px 0 16px;">
+      Portrait Gallery — PixelLab AI Generated (3 of 7 Races Shown)
+    </h3>
+
+    <div class="race-row-wrap">
+      <div class="race-label">Human <span class="badge badge-ash">Race 1 of 7</span></div>
+      <div class="portrait-row">
+        <div class="portrait-item">
+          <img src="./portraits/human/human_01.png" alt="Human portrait 1" loading="lazy"
+               onerror="this.style.background='#2a1e14'; this.style.display='block';" />
+          <span class="portrait-label">Human 01</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/human/human_02.png" alt="Human portrait 2" loading="lazy"
+               onerror="this.style.background='#2a1e14';" />
+          <span class="portrait-label">Human 02</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/human/human_03.png" alt="Human portrait 3" loading="lazy"
+               onerror="this.style.background='#2a1e14';" />
+          <span class="portrait-label">Human 03</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/human/human_04.png" alt="Human portrait 4" loading="lazy"
+               onerror="this.style.background='#2a1e14';" />
+          <span class="portrait-label">Human 04</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/human/human_05.png" alt="Human portrait 5" loading="lazy"
+               onerror="this.style.background='#2a1e14';" />
+          <span class="portrait-label">Human 05</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/human/human_06.png" alt="Human portrait 6" loading="lazy"
+               onerror="this.style.background='#2a1e14';" />
+          <span class="portrait-label">Human 06</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="race-row-wrap">
+      <div class="race-label">Ashkin <span class="badge badge-ember">Race 2 of 7</span></div>
+      <div class="portrait-row">
+        <div class="portrait-item">
+          <img src="./portraits/ashkin/ashkin_01.png" alt="Ashkin portrait 1" loading="lazy"
+               onerror="this.style.background='#1a1410';" />
+          <span class="portrait-label">Ashkin 01</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/ashkin/ashkin_02.png" alt="Ashkin portrait 2" loading="lazy"
+               onerror="this.style.background='#1a1410';" />
+          <span class="portrait-label">Ashkin 02</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/ashkin/ashkin_03.png" alt="Ashkin portrait 3" loading="lazy"
+               onerror="this.style.background='#1a1410';" />
+          <span class="portrait-label">Ashkin 03</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/ashkin/ashkin_04.png" alt="Ashkin portrait 4" loading="lazy"
+               onerror="this.style.background='#1a1410';" />
+          <span class="portrait-label">Ashkin 04</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/ashkin/ashkin_05.png" alt="Ashkin portrait 5" loading="lazy"
+               onerror="this.style.background='#1a1410';" />
+          <span class="portrait-label">Ashkin 05</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/ashkin/ashkin_06.png" alt="Ashkin portrait 6" loading="lazy"
+               onerror="this.style.background='#1a1410';" />
+          <span class="portrait-label">Ashkin 06</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="race-row-wrap">
+      <div class="race-label">Cinderwolf <span class="badge badge-ash">Race 3 of 7</span></div>
+      <div class="portrait-row">
+        <div class="portrait-item">
+          <img src="./portraits/cinderwolf/cinderwolf_01.png" alt="Cinderwolf portrait 1" loading="lazy"
+               onerror="this.style.background='#1c1814';" />
+          <span class="portrait-label">C.Wolf 01</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/cinderwolf/cinderwolf_02.png" alt="Cinderwolf portrait 2" loading="lazy"
+               onerror="this.style.background='#1c1814';" />
+          <span class="portrait-label">C.Wolf 02</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/cinderwolf/cinderwolf_03.png" alt="Cinderwolf portrait 3" loading="lazy"
+               onerror="this.style.background='#1c1814';" />
+          <span class="portrait-label">C.Wolf 03</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/cinderwolf/cinderwolf_04.png" alt="Cinderwolf portrait 4" loading="lazy"
+               onerror="this.style.background='#1c1814';" />
+          <span class="portrait-label">C.Wolf 04</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/cinderwolf/cinderwolf_05.png" alt="Cinderwolf portrait 5" loading="lazy"
+               onerror="this.style.background='#1c1814';" />
+          <span class="portrait-label">C.Wolf 05</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/cinderwolf/cinderwolf_06.png" alt="Cinderwolf portrait 6" loading="lazy"
+               onerror="this.style.background='#1c1814';" />
+          <span class="portrait-label">C.Wolf 06</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/cinderwolf/cinderwolf_07.png" alt="Cinderwolf portrait 7" loading="lazy"
+               onerror="this.style.background='#1c1814';" />
+          <span class="portrait-label">C.Wolf 07</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/cinderwolf/cinderwolf_08.png" alt="Cinderwolf portrait 8" loading="lazy"
+               onerror="this.style.background='#1c1814';" />
+          <span class="portrait-label">C.Wolf 08</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/cinderwolf/cinderwolf_09.png" alt="Cinderwolf portrait 9" loading="lazy"
+               onerror="this.style.background='#1c1814';" />
+          <span class="portrait-label">C.Wolf 09</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/cinderwolf/cinderwolf_10.png" alt="Cinderwolf portrait 10" loading="lazy"
+               onerror="this.style.background='#1c1814';" />
+          <span class="portrait-label">C.Wolf 10</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/cinderwolf/cinderwolf_11.png" alt="Cinderwolf portrait 11" loading="lazy"
+               onerror="this.style.background='#1c1814';" />
+          <span class="portrait-label">C.Wolf 11</span>
+        </div>
+        <div class="portrait-item">
+          <img src="./portraits/cinderwolf/cinderwolf_12.png" alt="Cinderwolf portrait 12" loading="lazy"
+               onerror="this.style.background='#1c1814';" />
+          <span class="portrait-label">C.Wolf 12</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="hr-ember"></div>
+
+  <!-- SECTION III: TECHNICAL DETAILS -->
+  <section class="page-section reveal" id="section-technical">
+    <div class="section-header">
+      <span class="section-numeral" aria-hidden="true">III</span>
+      <h2 class="section-title">Technical Details</h2>
+      <p class="section-subtitle">New files, architecture changes, and build output metrics</p>
+    </div>
+
+    <div class="two-col">
+
+      <div class="tech-card">
+        <div class="tech-card-title">New Files Added</div>
+        <ul class="file-list">
+          <li class="file-item">
+            <span>
+              <span class="file-path">src/components/icons/index.jsx</span><br/>
+              <span class="file-desc">49 Font Awesome SVG icons as inline React components with color theming support</span>
+            </span>
+          </li>
+          <li class="file-item">
+            <span>
+              <span class="file-path">src/components/ui/PauseMenu.jsx</span><br/>
+              <span class="file-desc">Global pause overlay — resume or return to Main Menu</span>
+            </span>
+          </li>
+          <li class="file-item">
+            <span>
+              <span class="file-path">src/components/ui/PauseMenu.module.css</span><br/>
+              <span class="file-desc">Scoped styles for the pause overlay</span>
+            </span>
+          </li>
+          <li class="file-item">
+            <span>
+              <span class="file-path">src/components/ui/NotificationToast.jsx</span><br/>
+              <span class="file-desc">Animated notification toasts for SHOW_NOTIFICATION actions</span>
+            </span>
+          </li>
+          <li class="file-item">
+            <span>
+              <span class="file-path">src/components/ui/NotificationToast.module.css</span><br/>
+              <span class="file-desc">Slide-in/out animation styles for toast notifications</span>
+            </span>
+          </li>
+          <li class="file-item">
+            <span>
+              <span class="file-path">public/sw.js</span><br/>
+              <span class="file-desc">Cache-first service worker for full offline support</span>
+            </span>
+          </li>
+          <li class="file-item">
+            <span>
+              <span class="file-path">public/logo.svg</span><br/>
+              <span class="file-desc">Animated atmospheric SVG game logo with ember glow pulse</span>
+            </span>
+          </li>
+          <li class="file-item">
+            <span>
+              <span class="file-path">public/demo-assets/</span><br/>
+              <span class="file-desc">Asset review dashboard — index, backgrounds, portraits, icons</span>
+            </span>
+          </li>
+          <li class="file-item">
+            <span>
+              <span class="file-path">public/demo-assets/backgrounds/</span><br/>
+              <span class="file-desc">14 DALL-E 3 generated biome background images (PNG)</span>
+            </span>
+          </li>
+          <li class="file-item">
+            <span>
+              <span class="file-path">public/demo-assets/portraits/</span><br/>
+              <span class="file-desc">84 PixelLab pixel art portraits across 7 races × 12 portraits</span>
+            </span>
+          </li>
+          <li class="file-item">
+            <span>
+              <span class="file-path">public/demo-assets/icons/</span><br/>
+              <span class="file-desc">49 FA icon SVGs exported as reference files</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tech-card">
+        <div class="tech-card-title">Build &amp; Test Metrics</div>
+
+        <div class="stat-grid" style="margin-bottom: 20px;">
+          <div class="stat-item">
+            <div class="stat-value">245</div>
+            <div class="stat-label">Unit Tests Passing</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">13</div>
+            <div class="stat-label">Test Suites</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">4</div>
+            <div class="stat-label">Bundle Chunks</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">~218kB</div>
+            <div class="stat-label">Gzipped Total</div>
+          </div>
+          <div class="stat-item wide">
+            <div class="stat-value">116kB</div>
+            <div class="stat-label">Total CSS</div>
+          </div>
+        </div>
+
+        <div class="tech-card-title" style="margin-top: 4px;">Bundle Breakdown</div>
+
+        <div class="bundle-row">
+          <span class="bundle-name">vendor</span>
+          <div class="bundle-bar-wrap">
+            <div class="bundle-bar" style="width: 5%;"></div>
+          </div>
+          <span class="bundle-size">11.7 kB</span>
+        </div>
+        <div class="bundle-row">
+          <span class="bundle-name">engine</span>
+          <div class="bundle-bar-wrap">
+            <div class="bundle-bar" style="width: 22%;"></div>
+          </div>
+          <span class="bundle-size">54.8 kB</span>
+        </div>
+        <div class="bundle-row">
+          <span class="bundle-name">data</span>
+          <div class="bundle-bar-wrap">
+            <div class="bundle-bar" style="width: 63%;"></div>
+          </div>
+          <span class="bundle-size">155 kB</span>
+        </div>
+        <div class="bundle-row">
+          <span class="bundle-name">main</span>
+          <div class="bundle-bar-wrap">
+            <div class="bundle-bar" style="width: 100%; background: linear-gradient(90deg, var(--ember), var(--ember-bright));"></div>
+          </div>
+          <span class="bundle-size">396 kB</span>
+        </div>
+
+        <p style="font-size:0.8rem; color: var(--ash); margin-top: 16px; font-style: italic;">
+          Bundle splitting introduced via <code style="font-size:0.85em; color: var(--bone-dim);">manualChunks</code> in Vite config.
+          Eliminates the previous oversized bundle warning. Vendor chunk is fully cacheable across deploys.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="hr-ember"></div>
+
+  <!-- SECTION IV: BUGS & KNOWN ISSUES -->
+  <section class="page-section reveal" id="section-bugs">
+    <div class="section-header">
+      <span class="section-numeral" aria-hidden="true">IV</span>
+      <h2 class="section-title">Bugs &amp; Known Issues</h2>
+      <p class="section-subtitle">Defects discovered during development, potential risks, and resolved items</p>
+    </div>
+
+    <div class="three-col">
+
+      <!-- Column 1: Bugs Found -->
+      <div class="issue-card">
+        <div class="issue-col-title bugs">Bugs Found</div>
+
+        <div class="issue-item">
+          <div class="issue-title">Portrait 404 Fallback</div>
+          <div class="issue-body">If portraits are not yet generated, character creation shows broken image placeholders with no indication.</div>
+          <div class="issue-meta">
+            <strong>Mitigation:</strong> <code style="font-size:0.85em">onError</code> handler swaps to a letter-avatar fallback immediately.
+            <span class="badge badge-green">Mitigated</span>
+          </div>
+        </div>
+
+        <div class="issue-item">
+          <div class="issue-title">Pause Button Overlap</div>
+          <div class="issue-body">The floating ☰ button may overlap with the mute button or other fixed-position elements at certain intermediate screen sizes.</div>
+          <div class="issue-meta">
+            <strong>Status:</strong> Minor layout conflict. Z-index review needed.
+            <span class="badge badge-yellow">Minor</span>
+          </div>
+        </div>
+
+        <div class="issue-item">
+          <div class="issue-title">Logo SVG on Safari</div>
+          <div class="issue-body">SMIL animation support in inline SVGs is inconsistent across Safari versions. The logo animation may render without motion on older Safari.</div>
+          <div class="issue-meta">
+            <strong>Mitigation:</strong> Logo uses CSS <code style="font-size:0.85em">@keyframes</code>, not SMIL. Needs Safari device testing.
+            <span class="badge badge-yellow">Pending test</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Potential Issues -->
+      <div class="issue-card">
+        <div class="issue-col-title warn">Potential Issues</div>
+
+        <div class="issue-item">
+          <div class="issue-title">Background Image Load Time</div>
+          <div class="issue-body">14 large PNG backgrounds (~1 MB each) are loaded lazily per biome. First visit to each biome may show a brief blank delay before the image appears.</div>
+          <div class="issue-meta">
+            <strong>Recommendation:</strong> Add <code style="font-size:0.85em">loading="lazy"</code> and show the biome's solid color as a CSS placeholder.
+            <span class="badge badge-yellow">Watch</span>
+          </div>
+        </div>
+
+        <div class="issue-item">
+          <div class="issue-title">PixelLab API Rate Limits</div>
+          <div class="issue-body">Generating 84 portraits sequentially in a single script run may hit rate limiting. Some portraits may be absent on the first generation pass.</div>
+          <div class="issue-meta">
+            <strong>Recommendation:</strong> Add retry logic with exponential backoff and resume from checkpoint.
+            <span class="badge badge-yellow">Watch</span>
+          </div>
+        </div>
+
+        <div class="issue-item">
+          <div class="issue-title">Wit Easter Egg + Skip</div>
+          <div class="issue-body">When garbled text is skipped via tap, the full garbled version appears instantly. This reveals garbled content, not the original — which may surprise some players.</div>
+          <div class="issue-meta">
+            <strong>Note:</strong> Intentional behavior by design, but warrants player feedback.
+            <span class="badge badge-ash">By Design</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3: Previously Fixed -->
+      <div class="issue-card">
+        <div class="issue-col-title fixed">Previously Fixed</div>
+
+        <div class="issue-item">
+          <div class="issue-title">Notification System</div>
+          <div class="issue-body"><code style="font-size:0.85em">SHOW_NOTIFICATION</code> dispatches were stored in state but never rendered to the player — notifications were silently dropped.</div>
+          <div class="issue-meta">
+            <strong>Fix:</strong> Fully visible via animated <code style="font-size:0.85em">NotificationToast</code> component.
+            <span class="badge badge-green">Fixed</span>
+          </div>
+        </div>
+
+        <div class="issue-item">
+          <div class="issue-title">Save Corruption Recovery</div>
+          <div class="issue-body">Single-slot saves could be corrupted on write failure with no recovery path, causing permanent data loss on interrupted writes.</div>
+          <div class="issue-meta">
+            <strong>Fix:</strong> Dual-slot save with backup rotation prevents data loss on any write failure.
+            <span class="badge badge-green">Fixed</span>
+          </div>
+        </div>
+
+        <div class="issue-item">
+          <div class="issue-title">Bundle Size Warning</div>
+          <div class="issue-body">Vite was emitting a bundle size warning on every build due to an oversized monolithic chunk. CI output was polluted.</div>
+          <div class="issue-meta">
+            <strong>Fix:</strong> Resolved by <code style="font-size:0.85em">manualChunks</code> config splitting data/engine/vendor.
+            <span class="badge badge-green">Fixed</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="hr-ember"></div>
+
+  <!-- SECTION V: RECOMMENDATIONS -->
+  <section class="page-section reveal" id="section-recommendations">
+    <div class="section-header">
+      <span class="section-numeral" aria-hidden="true">V</span>
+      <h2 class="section-title">Recommendations</h2>
+      <p class="section-subtitle">Prioritized follow-up work to strengthen the v1.0 foundation</p>
+    </div>
+
+    <div class="rec-list">
+
+      <div class="rec-card">
+        <div class="rec-number">1</div>
+        <div class="rec-content">
+          <div class="rec-title">Background Lazy Loading</div>
+          <div class="rec-body">
+            Add IntersectionObserver to load biome backgrounds only when the biome header enters the viewport. This eliminates
+            the upfront bandwidth cost of loading all 14 backgrounds and improves first-biome time-to-interactive meaningfully.
+            Pair with a solid biome color as an instant CSS placeholder.
+          </div>
+          <span class="rec-estimate">Estimated: 2 hours</span>
+          <span class="badge badge-ember">Performance</span>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-number">2</div>
+        <div class="rec-content">
+          <div class="rec-title">Portrait Caching Strategy</div>
+          <div class="rec-body">
+            Store the selected portrait URL in save data. Pre-cache the chosen portrait on game load so it renders instantly
+            during the journey without a network round-trip or visible flicker. Particularly important for offline PWA sessions.
+          </div>
+          <span class="rec-estimate">Estimated: 1 hour</span>
+          <span class="badge badge-ash">UX</span>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-number">3</div>
+        <div class="rec-content">
+          <div class="rec-title">Icon Accessibility Audit</div>
+          <div class="rec-body">
+            All <code style="font-size:0.9em; color:var(--bone-dim)">&lt;Icon&gt;</code> components should carry a <code style="font-size:0.9em; color:var(--bone-dim)">title</code> prop for screen readers
+            in any context where the icon replaces meaningful text content. Run an axe audit pass and annotate every icon
+            usage that lacks an accessible label.
+          </div>
+          <span class="rec-estimate">Estimated: 2 hours</span>
+          <span class="badge badge-yellow">Accessibility</span>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-number">4</div>
+        <div class="rec-content">
+          <div class="rec-title">Animated Biome Background Transitions</div>
+          <div class="rec-body">
+            Crossfade between biome background images when the player's biome changes. A CSS opacity transition on the
+            background img element creates a filmic quality that reinforces the sense of travel and distance without any
+            JavaScript orchestration.
+          </div>
+          <span class="rec-estimate">Estimated: 1 hour</span>
+          <span class="badge badge-ash">Polish</span>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-number">5</div>
+        <div class="rec-content">
+          <div class="rec-title">Auto-Save on Pause Menu Open</div>
+          <div class="rec-body">
+            Auto-save the run state whenever the pause menu is opened so that "Return to Main Menu" can be offered without
+            the risk of losing progress. This is a 30-minute change that significantly reduces player anxiety around the
+            pause menu, especially on mobile where OS interruptions are common.
+          </div>
+          <span class="rec-estimate">Estimated: 30 minutes</span>
+          <span class="badge badge-green">Quick Win</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="hr-ember"></div>
+
+  <!-- SECTION VI: FUTURE VISION -->
+  <section class="page-section reveal" id="section-vision">
+    <div class="section-header">
+      <span class="section-numeral" aria-hidden="true">VI</span>
+      <h2 class="section-title">Future Vision</h2>
+      <p class="section-subtitle">Planned expansions charting the road ahead for Vagrant &amp; Ash</p>
+    </div>
+
+    <div class="vision-grid">
+
+      <div class="vision-card near">
+        <div class="vision-label">Near-Term &nbsp;—&nbsp; v1.1</div>
+        <ul class="vision-list">
+          <li class="vision-item">
+            <div class="vision-marker"></div>
+            <div>
+              <div class="vision-item-title">Companion Story Arcs</div>
+              <div class="vision-item-desc">Each party member develops a personal story arc with 3 stages, unlocked through journey milestones and player decisions.</div>
+            </div>
+          </li>
+          <li class="vision-item">
+            <div class="vision-marker"></div>
+            <div>
+              <div class="vision-item-title">6 New Biomes</div>
+              <div class="vision-item-desc">Completing the full 12-biome world map, each with unique encounter tables, enemy types, and AI-generated backgrounds.</div>
+            </div>
+          </li>
+          <li class="vision-item">
+            <div class="vision-marker"></div>
+            <div>
+              <div class="vision-item-title">Crafting System</div>
+              <div class="vision-item-desc">30 recipes using biome-specific materials gathered during the journey. Crafting takes rest actions and modifies inventory weight.</div>
+            </div>
+          </li>
+          <li class="vision-item">
+            <div class="vision-marker"></div>
+            <div>
+              <div class="vision-item-title">11 Distinct Endings</div>
+              <div class="vision-item-desc">Final outcomes determined by faction allegiance, artifact collection, and major decision points across the journey.</div>
+            </div>
+          </li>
+          <li class="vision-item">
+            <div class="vision-marker"></div>
+            <div>
+              <div class="vision-item-title">Route Planning Screen</div>
+              <div class="vision-item-desc">Before each journey leg, players view a rough map and choose a path — trading safety for speed or resources for risk.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="vision-card far">
+        <div class="vision-label">Long-Term &nbsp;—&nbsp; v2.0</div>
+        <ul class="vision-list">
+          <li class="vision-item">
+            <div class="vision-marker"></div>
+            <div>
+              <div class="vision-item-title">The Hollow Campaign</div>
+              <div class="vision-item-desc">A second full journey traversed westward in reverse — the same world recontextualized by what the first journey revealed.</div>
+            </div>
+          </li>
+          <li class="vision-item">
+            <div class="vision-marker"></div>
+            <div>
+              <div class="vision-item-title">The Crossroads Moment</div>
+              <div class="vision-item-desc">If two save files exist, the two parties briefly meet mid-journey — an optional story beat that acknowledges the player's history.</div>
+            </div>
+          </li>
+          <li class="vision-item">
+            <div class="vision-marker"></div>
+            <div>
+              <div class="vision-item-title">Community Seeds</div>
+              <div class="vision-item-desc">Shareable run seeds with a lightweight leaderboard tracking survival distance, party composition, and deaths per biome.</div>
+            </div>
+          </li>
+          <li class="vision-item">
+            <div class="vision-marker"></div>
+            <div>
+              <div class="vision-item-title">Ghost Messages</div>
+              <div class="vision-item-desc">Dark Souls-style messages left by other players at biome transitions — curated through upvote mechanics to surface the most resonant notes.</div>
+            </div>
+          </li>
+          <li class="vision-item">
+            <div class="vision-marker"></div>
+            <div>
+              <div class="vision-item-title">Companion Bond Matrix</div>
+              <div class="vision-item-desc">Relationship values (−5 to +5) tracked between each pair of party members, affecting combat synergy bonuses and dialogue options.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="report-footer">
+    <div class="hr-ember"></div>
+
+    <div class="footer-particle-field" aria-hidden="true">
+      <div class="particle-field">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+    </div>
+
+    <div class="footer-title">Vagrant &amp; Ash</div>
+    <div class="footer-meta">
+      <strong>v1.0 Milestone Release</strong> &nbsp;·&nbsp; April 9, 2026<br />
+      Built with <strong>React 19</strong>, <strong>Vite 6</strong>, <strong>Web Audio API</strong>, <strong>DALL-E 3</strong>, <strong>PixelLab</strong><br />
+      <strong>245 tests passing</strong> &nbsp;·&nbsp; <strong>13 test suites</strong> &nbsp;·&nbsp; <strong>~218 kB gzipped</strong><br />
+      <br />
+      <span style="color: var(--ash-dark); font-size: 0.82rem; font-style: italic;">
+        "The road remembers everyone who walked it."
+      </span>
+    </div>
+
+    <div style="margin-top: 28px; display: flex; justify-content: center; gap: 10px; color: var(--ember-dim);">
+      ❧ &nbsp; ✦ &nbsp; ❧ &nbsp; ✦ &nbsp; ❧ &nbsp; ✦ &nbsp; ❧
+    </div>
+  </footer>
+
+</div><!-- end report-wrapper -->
+
+<script>
+  // Scroll reveal animation
+  const reveals = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Stagger feature items
+  document.querySelectorAll('.feature-item').forEach((item, i) => {
+    item.style.animationDelay = (i * 0.05) + 's';
+  });
+</script>
+
+</body>
+</html>
