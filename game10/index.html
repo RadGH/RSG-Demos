@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Aethermoor Chronicles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%; height: 100%;
+      overflow: hidden;
+      background: #0d0f1a;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    #game {
+      position: absolute;
+      inset: 0;
+      display: block;
+    }
+    #ui-root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+    #loading-screen {
+      position: absolute;
+      inset: 0;
+      background: #0d0f1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      color: #e8e8f0;
+    }
+    #loading-screen h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #f5c842;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+    #loading-screen p {
+      color: #8890b0;
+      margin-bottom: 32px;
+      font-size: 1rem;
+    }
+    #loading-bar-outer {
+      width: 320px;
+      height: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    #loading-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #f5c842, #ff8c42);
+      border-radius: 4px;
+      width: 0%;
+      transition: width 0.2s ease;
+    }
+  </style>
+  <script type="module" crossorigin src="./assets/index-mw-KUtO9.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/game-Dz9-Bu8h.js">
+  <link rel="stylesheet" crossorigin href="./assets/index-CWHGv3jy.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+  <div id="ui-root"></div>
+  <div id="loading-screen">
+    <h1>Aethermoor Chronicles</h1>
+    <p>Loading world assets...</p>
+    <div id="loading-bar-outer">
+      <div id="loading-bar-fill"></div>
+    </div>
+  </div>
+</body>
+</html>

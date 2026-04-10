@@ -1,0 +1,131 @@
+{
+  "generated": "2026-04-10",
+  "note": "PixelLab-generated sprites for Aethermoor Chronicles. All characters are 4-directional side-view, chibi proportions.",
+
+  "characters": {
+    "player_warrior": {
+      "pixellab_id": "f5354e7d-5d16-4c79-aaf4-8b97b0f6ba2b",
+      "canvas_size": 92,
+      "status": "complete",
+      "files": {
+        "east": "characters/warrior_east.png",
+        "west": "characters/warrior_west.png"
+      },
+      "animations_queued": []
+    },
+    "player_ranger": {
+      "pixellab_id": "66fa6434-f977-4cbc-aeea-5be08ca9d790",
+      "canvas_size": 92,
+      "status": "complete",
+      "files": {
+        "east": "characters/ranger_east.png",
+        "west": "characters/ranger_west.png"
+      },
+      "animations_queued": []
+    },
+    "player_mage": {
+      "pixellab_id": "ce62e9a6-4359-4b54-82bd-15f4bf48ba3c",
+      "canvas_size": 92,
+      "status": "processing",
+      "files": {},
+      "animations_queued": []
+    },
+    "enemy_goblin_scout": {
+      "pixellab_id": "71ffaa35-ee96-4d1f-9bf3-d1bcd879f3d6",
+      "canvas_size": 68,
+      "status": "complete",
+      "files": {
+        "east": "characters/goblin_scout_east.png",
+        "west": "characters/goblin_scout_west.png"
+      },
+      "animations_queued": []
+    },
+    "enemy_stone_golem": {
+      "pixellab_id": "799c39d0-b1d1-4ddf-953d-1569f815d709",
+      "canvas_size": 92,
+      "status": "processing",
+      "files": {},
+      "animations_queued": []
+    },
+    "enemy_forest_sprite": {
+      "pixellab_id": "33349753-08ab-4004-833b-32e350e835b7",
+      "canvas_size": 56,
+      "status": "processing",
+      "files": {},
+      "animations_queued": []
+    }
+  },
+
+  "tilesets": {
+    "grass_dirt": {
+      "pixellab_id": "bb5e2091-12e0-4da6-a74e-a7c47f40e390",
+      "tile_size": 32,
+      "tile_count": 16,
+      "status": "complete",
+      "files": {
+        "png": "tiles/grass_dirt_tileset.png",
+        "metadata": "tiles/grass_dirt_tileset.json"
+      },
+      "base_tile_ids": {
+        "lower_grass": "ef679291-98a2-49f6-b58f-1005591b217a",
+        "upper_dirt": "1184c527-17fe-4338-8f04-28bbfa98ade4"
+      }
+    },
+    "dirt_stone": {
+      "pixellab_id": "4e1bc8cd-7944-45c2-b5d6-cca55cd97d7d",
+      "tile_size": 32,
+      "tile_count": 16,
+      "status": "processing",
+      "files": {},
+      "base_tile_ids": {
+        "lower_dirt": "45874c3e-b5f9-4bce-a7f8-93042aed48f1",
+        "upper_stone": "a70f3093-1b5b-4a51-8375-ff0c197bc23e"
+      }
+    }
+  },
+
+  "objects": {
+    "treasure_chest": {
+      "pixellab_id": "77a3c9bf-ce0b-4d48-8869-4a12eea0ff5a",
+      "size": 48,
+      "type": "isometric_tile",
+      "status": "complete",
+      "file": "objects/treasure_chest.png"
+    },
+    "sapphire_crystal_node": {
+      "pixellab_id": "747af1df-d794-4646-b529-5260a154ec57",
+      "size": 48,
+      "type": "isometric_tile",
+      "status": "complete",
+      "file": "objects/sapphire_crystal_node.png"
+    },
+    "iron_ore_node": {
+      "pixellab_id": "e6eaa8f6-29fc-4e4c-b406-d7bb7495c3f3",
+      "size": 48,
+      "type": "isometric_tile",
+      "status": "complete",
+      "file": "objects/iron_ore_node.png"
+    },
+    "oak_tree": {
+      "pixellab_id": "2b09243a-bb61-408a-b32c-d61a2ea4fced",
+      "size": 64,
+      "type": "isometric_tile",
+      "status": "processing",
+      "file": "objects/oak_tree.png"
+    },
+    "boulder_rock": {
+      "pixellab_id": "1881aedb-cb52-4321-aefe-bcac812cd211",
+      "size": 48,
+      "type": "isometric_tile",
+      "status": "processing",
+      "file": "objects/boulder_rock.png"
+    },
+    "portal_gate": {
+      "pixellab_id": "1f78ee15-f203-4748-9d6e-df12b0a0c609",
+      "size": 64,
+      "type": "isometric_tile",
+      "status": "processing",
+      "file": "objects/portal_gate.png"
+    }
+  }
+}

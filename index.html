@@ -112,7 +112,7 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
 <main class="games-list" id="games-list">
 
 <section class="game-section" id="game8"
-  data-key="game8" data-date="2026-04-10" data-milestone="67" data-title="Vagrant &amp; Ash"
+  data-key="game8" data-date="2026-04-10" data-milestone="68" data-title="Vagrant &amp; Ash"
   style="--ga:#c7622a;--gab:#e8843a;--gad:#8b4218;--gg:rgba(199, 98, 42, 0.35);--gbg:#0c0b09;--gt:#d4c8b4;--gtm:#8a8078;--gbo:#e8ddc8;--gbr:rgba(199,98,42,0.3);--gpf:0 0 12px #c7622a, 0 0 28px #8b4218, 0 0 56px rgba(199,98,42,0.2);--gpt:0 0 20px #e8843a, 0 0 40px #c7622a, 0 0 80px rgba(232,132,58,0.3);background:#0c0b09">
   <div class="game-bg">
     <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(199,98,42,0.12) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(139,66,24,0.15) 0%, transparent 60%), linear-gradient(180deg, #0c0b09 0%, #100e0b 60%, #1a1108 100%)"></div>
@@ -123,39 +123,130 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
     <div class="game-frame" style="--glow:rgba(199, 98, 42, 0.35)">
       <span class="fc-tl">☠</span><span class="fc-tr">☠</span>
       <span class="fc-bl">☠</span><span class="fc-br">☠</span>
-      <span class="frame-top">Milestone 67</span>
+      <span class="frame-top">Milestone 68</span>
       <span class="frame-bot">Dark Fantasy Survival RPG</span>
       <div class="game-eyebrow">Dark Fantasy Survival RPG</div>
       <h2 class="game-title">Vagrant &amp; Ash</h2>
       <div class="divider"><div class="divider-line"></div><span class="divider-glyph">☠</span><div class="divider-line"></div></div>
       <div class="game-badges">
-        <span class="gbadge gbadge-m">M67</span>
-        <span class="gbadge gbadge-tok">&#129302; 264.1M tokens</span>
+        <span class="gbadge gbadge-m">M68</span>
+        <span class="gbadge gbadge-tok">&#129302; 269.0M tokens</span>
         <span class="gbadge gbadge-date">2026-04-10</span>
       </div>
       <p class="game-desc">A mobile-first dark fantasy survival RPG. Lead a party of 1–4 across a dying continent. Point-buy character creation, permadeath, emergent storytelling. Every choice costs something.</p>
       <a href="./game8/" class="play-btn">&#9654; Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">Milestone 1 — Foundation
-  - Vite 6 + React 19 scaffold (port 5180)
-  - Full CSS design system: Ashen Black palette, Cinzel/Crimson Text/Source Sans 3
-  - All game data: 7 races, 15 backgrounds, 30 traits, 25 skills, 12 biomes, items
-  - State management: GameContext + 6 sub-reducers + seeded PRNG (mulberry32)
-  - Title screen with procedural SVG ash background + animations
-  - Character creation: full point-buy system, party size 1-4, synergy detection
-  - Journey screen: biome art, party HP bars, resource tracking, travel log</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1  — Foundation (character creation, journey screen) ✓
-M2  — Encounter/Event system (event cards, choices, stat checks, 20+ events)
-M3  — Camp screen + turn-based combat + enemy data
-M4  — Town/settlement system (shop, tavern, healer)
-M5  — OpenAI environment images + mobile polish
-M6  — Full event library (50+ events), biome hazards, diseases
-M7  — Game over + epitaph system + 11 endings
-M8  — Save/load hardening + PWA + autosave
-M9  — Story arcs, companion dialogue, journal system
-M10 — Balance pass + full content + 10-milestone report</pre></details></div>
+      <div class="meta-sections"><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M1  — Foundation: Vite 6 + React 19 scaffold, full CSS design system (Ashen Black palette), all game data (7 races, 15 backgrounds, 30 traits, 25 skills, 12 biomes), GameContext + 6 sub-reducers + seeded PRNG, title screen with procedural SVG ash background, character creation (point-buy, party 1–4, synergy detection), journey screen (biome art, HP bars, resource tracking, travel log)
+M2  — Encounter system: event cards, branching choices, stat checks, 20+ events, outcome resolutions, encounter history
+M3  — Camp screen + turn-based combat: rest mechanics, watch system, enemy data (20+ enemy types), combat turn order, ability system
+M4  — Town/settlement system: shop economy, tavern rumours, healer services, town gate &amp; passage
+M5  — Environment images + mobile polish: OpenAI-generated biome art, responsive layout audit, touch target enforcement
+M6  — Full event library: 50+ encounter events, biome hazard events, disease/injury conditions, trait-gated outcomes
+M7  — Game over &amp; epitaph system: 11 unique endings, procedural epitaph generation from journey data, run summary screen
+M8  — Save/load hardening + PWA + autosave: localStorage + IndexedDB persistence, Workbox offline caching, autosave on every action
+M9  — Story arcs, companion dialogue &amp; journal: 3 story arc chains, companion voice lines, journal overlay with run chronicle
+M10 — Balance pass + content audit + 10-milestone report: stat curve tuning, encounter weight rebalancing, full content review
+M11–M20 — Event system hardening: event deck reshuffling, biome-conditional event pools, item condition effects, disease spread mechanics, morale system integration
+M21–M30 — Combat depth + town expansion: combo attacks, status effects (burning/stunned/poisoned), town rumour quests, black market, healer recipes, faction reputation seeds
+M31–M34 — Content expansion: 30+ additional encounters, multi-stage encounter chains, rare legendary item tier, item synergy detection
+M35  — Win state &amp; journey structure: destination system, final landmark encounter, victory screen with run stats
+M36  — New Game Setup: difficulty presets, scenario selection, cursed-start modifiers, NG+ unlock tracking
+M37  — Character depth &amp; morale: bond system, inter-party dialogue, morale thresholds triggering narrative events
+M38  — World pushback: environmental hazard escalation, faction response events, supply scarcity curves
+M39  — Boss encounters + player guidance: 3 boss encounter types, contextual hint system, glossary overlay
+M40  — Chronicle, persistence &amp; polish: run chronicle persistence across sessions, UI animation pass, PWA manifest v2
+M41  — Run modifiers &amp; cursed starts: 12 run modifier cards, cursed-start scenarios, modifier synergy detection
+M42  — Faction memory &amp; story flags: persistent faction reputation, global story flags, flag-gated encounter branches
+M43  — New Game+ unlock progression: NG+ tier system, unlockable races/scenarios/modifiers, achievement tracking
+M44  — Encounter pack — The Long Dark: 20 new winter biome encounters, multi-step encounter chains using M42 flags
+M45  — Combat depth — tactics &amp; enemy variety: flanking bonuses, retreat mechanic, 8 new enemy archetypes, elite variants
+M46  — Town expansion — rumours, quests &amp; black market: 15 quest chains, black market vendor, faction-gated services
+M47  — Ambient audio &amp; UI sound design: 5 ambient loops, 12 UI sound effects, audio settings, Howler.js integration
+M48  — Animation pass &amp; screen transitions: CSS keyframe transitions between all screens, combat hit-flash, death animation
+M49  — Bundle splitting &amp; PWA offline audit: code splitting by screen, Workbox precache manifest, Lighthouse PWA 100
+M50  — v1.0 ship: save reliability hardening, final balance pass, release candidate validation, v1.0 tag
+M51  — Post-launch fix sprint: save migration for existing runs, encounter weight hot-fixes, mobile layout patches
+M52  — Accessibility pass: ARIA labels, keyboard navigation for all modals, colour-contrast audit (WCAG AA)
+M53  — Deepened lore content: expanded race lore in glossary, 10 new trait descriptions, biome flavour text rewrites
+M54  — Extended encounter library: 40+ new encounters spanning all 12 biomes, including rare cross-biome event chains
+M55  — Asset optimisation: WebP conversion for all biome art, lazy-loading for large assets, bundle size −30 %
+M56  — Condition system overhaul: 8 new conditions (frostbite, corruption, blight), condition stacking rules, cure items
+M57  — Major refactor: state management decomposition, engine/UI boundary hardening, test coverage to 60 %
+M58  — Voice lines &amp; micro-events: 120 voiced character reactions, 30 micro-event interrupts during travel
+M59  — Dynamic difficulty &amp; difficulty scaling: adaptive encounter weights based on party health/resources, hard-mode curve
+M60  — Faction quest chains: 3 full faction story arcs (6 quests each), faction-exclusive endings
+M61  — Equipment overhaul: 25 new items, set bonuses, item crafting recipes from town alchemist
+M62  — UI/UX refinement: redesigned inventory panel, drag-and-drop equipment, tooltip system, party sort order
+M63  — Map system expansion: fog-of-war reveal, discovered location pins, map annotation notes
+M64  — Scenario pack — The Withered Coast: 5 new biomes, 35 new encounters, coastal faction and unique boss
+M65  — Performance optimisation: React render audit, memoisation pass, 60 fps on mid-range Android
+M66  — Narrative endings expansion: 6 new endings (total 17), ending gallery with unlock conditions visible
+M67  — Polish sprint &amp; current milestone: notification toast system, pause menu, biome transition cards, portrait component</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1–M10  — Foundation through first content pass ✓
+M11–M20 — Event system hardening &amp; morale ✓
+M21–M34 — Combat depth, towns, content expansion ✓
+M35–M40 — Win state, difficulty, chronicle &amp; polish ✓
+M41–M50 — Run modifiers, factions, NG+, audio, v1.0 ship ✓
+M51–M57 — Post-launch fixes, accessibility, refactor ✓
+M58–M62 — Voice lines, dynamic difficulty, faction quests, equipment ✓
+M63–M67 — Map expansion, Withered Coast, performance, endings gallery, polish ✓
+M68     — Localisation: i18n scaffold, EN/ES/FR/DE string extraction
+M69     — Controller support: gamepad input mapping, vibration feedback
+M70     — Multiplayer foundation: shared-seed co-op run synchronisation (experimental)</pre></details></div>
     </div>
   </div>
 </section>
 <hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#8b4218 15%,#c7622a 50%,#8b4218 85%,transparent 100%)">
+
+<section class="game-section" id="game10"
+  data-key="game10" data-date="2026-04-10" data-milestone="1" data-title="Aethermoor Chronicles"
+  style="--ga:#3ab88a;--gab:#5ddaaa;--gad:#1d7a5c;--gg:rgba(58, 184, 138, 0.3);--gbg:#060c09;--gt:#c4d9ce;--gtm:#4a7060;--gbo:#d4e8de;--gbr:rgba(58,184,138,0.3);--gpf:0 0 12px #3ab88a, 0 0 28px #1d7a5c, 0 0 56px rgba(58,184,138,0.2);--gpt:0 0 20px #5ddaaa, 0 0 40px #3ab88a, 0 0 80px rgba(93,218,170,0.3);background:#060c09">
+  <div class="game-bg">
+    <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(30,160,100,0.12) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(15,100,60,0.18) 0%, transparent 60%), linear-gradient(180deg, #060c09 0%, #09120d 60%, #0c1810 100%)"></div>
+    
+    <div class="particle-field"><div class="particle" style="left:8%;animation-duration:6.2s;animation-delay:0s;--dx:15px;--dx2:-8px;background:#3ab88a;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:15%;animation-duration:7.8s;animation-delay:1.2s;--dx:-20px;--dx2:12px;background:#5ddaaa;"></div><div class="particle" style="left:24%;animation-duration:5.5s;animation-delay:2.4s;--dx:30px;--dx2:-18px;background:#1d9966;"></div><div class="particle" style="left:33%;animation-duration:8.1s;animation-delay:0.7s;--dx:-12px;--dx2:25px;background:#80eec4;width:2px;height:2px"></div><div class="particle" style="left:42%;animation-duration:6.7s;animation-delay:3.1s;--dx:22px;--dx2:-5px;background:#0d5c40;width:4px;height:4px"></div><div class="particle" style="left:51%;animation-duration:9.3s;animation-delay:1.8s;--dx:-25px;--dx2:15px;background:#3ab88a;"></div><div class="particle" style="left:60%;animation-duration:5.9s;animation-delay:0.4s;--dx:18px;--dx2:-22px;background:#5ddaaa;width:2px;height:2px"></div><div class="particle" style="left:68%;animation-duration:7.4s;animation-delay:2.6s;--dx:-8px;--dx2:20px;background:#1d9966;"></div><div class="particle" style="left:77%;animation-duration:6.1s;animation-delay:4.2s;--dx:28px;--dx2:-14px;background:#80eec4;width:4px;height:4px"></div><div class="particle" style="left:86%;animation-duration:8.7s;animation-delay:1.5s;--dx:-18px;--dx2:10px;background:#0d5c40;width:2px;height:2px"></div><div class="particle" style="left:93%;animation-duration:5.3s;animation-delay:3.8s;--dx:10px;--dx2:-28px;background:#3ab88a;"></div><div class="particle" style="left:4%;animation-duration:10s;animation-delay:5.1s;--dx:-15px;--dx2:18px;background:#5ddaaa;"></div><div class="particle" style="left:20%;animation-duration:6.8s;animation-delay:2s;--dx:25px;--dx2:-10px;background:#1d9966;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:46%;animation-duration:7.2s;animation-delay:0.9s;--dx:-20px;--dx2:30px;background:#80eec4;"></div><div class="particle" style="left:72%;animation-duration:5.8s;animation-delay:4.7s;--dx:12px;--dx2:-20px;background:#0d5c40;"></div></div>
+  </div>
+  <div class="game-outer">
+    <div class="game-frame" style="--glow:rgba(58, 184, 138, 0.3)">
+      <span class="fc-tl">⚒</span><span class="fc-tr">⚒</span>
+      <span class="fc-bl">⚒</span><span class="fc-br">⚒</span>
+      <span class="frame-top">Milestone 1</span>
+      <span class="frame-bot">Open-World Action RPG</span>
+      <div class="game-eyebrow">Open-World Action RPG</div>
+      <h2 class="game-title">Aethermoor Chronicles</h2>
+      <div class="divider"><div class="divider-line"></div><span class="divider-glyph">⚒</span><div class="divider-line"></div></div>
+      <div class="game-badges">
+        <span class="gbadge gbadge-m">M1</span>
+        <span class="gbadge gbadge-tok">&#129302; 18.3M tokens</span>
+        <span class="gbadge gbadge-date">2026-04-10</span>
+      </div>
+      <p class="game-desc">A vibrant action RPG with loot, levelling, skill trees, mining and crafting. Fight enemies in real-time combat across a large open world.</p>
+      <a href="./game10/" class="play-btn">&#9654; Play Now</a>
+      <div class="meta-sections"><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M1  — Engine Foundation: game loop, Wang-tile tilemap renderer, camera with smooth follow, player movement (WASD/touch), pixel-art sprite sheets, basic HUD
+M2  — World &amp; Objects: interactive world objects (chests, ore veins, trees), minimap, day/night lighting cycle, object spawn system
+M3  — Combat Core: melee and ranged attack modes, enemy AI (goblin scout, forest sprite, stone golem), particle hit effects, floating damage numbers
+M4  — Loot System: item drops on kill, 5 rarity tiers (Common → Legendary), 25 item definitions, inventory panel with grid layout
+M5  — Equipment &amp; Stats: paper-doll equipment screen, full stat aggregation pipeline, experience and level-up with attribute allocation — M1–M5 complete
+M6  — Skill Trees: Warrior / Ranger / Mage skill trees (8 nodes each), passive and active skills, hotbar skill binding
+M7  — Mining &amp; Crafting: ore node mining with tool requirement, smelting furnace, crafting bench recipes (weapons, armour, consumables)
+M8  — Spells &amp; Magic: mana resource, 12 spells across 3 schools (fire/frost/lightning), spell cooldowns, AoE ground effects
+M9  — World Expansion &amp; Quests: 3 explorable zones (Forest, Cave, Ruins), 10 quest chains with objectives, NPC dialogue system
+M10 — Polish &amp; Save System: save/load via localStorage, pause menu, settings panel, audio integration, performance optimisation
+M11 — Content &amp; Balance: 30 new enemies, 50 new items, boss encounters for each zone, loot table tuning, skill tree rebalancing
+M12 — Release Candidate: full playthrough QA, bug-fix sprint, mobile touch layout finalisation, GitHub Pages deploy</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1   — Engine Foundation (Game loop, tilemap, camera, player movement) ✓
+M2   — World &amp; Objects (World objects, minimap, day/night) ✓
+M3   — Combat Core (Enemy AI, melee/ranged, particles, damage numbers) ✓
+M4   — Loot System (Item drops, rarity, inventory panel) ✓
+M5   — Equipment &amp; Stats (Paper doll, stat aggregation, level-up) ✓
+M6   — Skill Trees
+M7   — Mining &amp; Crafting
+M8   — Spells &amp; Magic
+M9   — World Expansion &amp; Quests
+M10  — Polish &amp; Save System
+M11  — Content &amp; Balance
+M12  — Release Candidate</pre></details></div>
+    </div>
+  </div>
+</section>
+<hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#1d7a5c 15%,#3ab88a 50%,#1d7a5c 85%,transparent 100%)">
 
 <section class="game-section" id="game2"
   data-key="game2" data-date="2026-04-08" data-milestone="230" data-title="Roguelike"
@@ -382,9 +473,9 @@ Phase 5: Biomes 3+4 — Forge of Ruin &amp; Void Sanctum (M49–M63)</pre></deta
 </section>
 <hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#007a99 15%,#00bbdd 50%,#007a99 85%,transparent 100%)">
 </main>
-<footer class="site-footer">Rad's Game Demos &mdash; 6 games &mdash; 2026</footer>
+<footer class="site-footer">Rad's Game Demos &mdash; 7 games &mdash; 2026</footer>
 <script>
-const SORT_DATA=[{"key":"game2","date":"2026-04-08","milestone":230,"title":"Roguelike"},{"key":"game3","date":"2026-04-01","milestone":3,"title":"Roguelike III"},{"key":"game4","date":"2026-04-02","milestone":32,"title":"Spellroads"},{"key":"game6","date":"2026-04-05","milestone":29,"title":"Astral Crypts"},{"key":"game7","date":"2026-04-05","milestone":13,"title":"Wanderlight"},{"key":"game8","date":"2026-04-10","milestone":67,"title":"Vagrant & Ash"}];
+const SORT_DATA=[{"key":"game2","date":"2026-04-08","milestone":230,"title":"Roguelike"},{"key":"game3","date":"2026-04-01","milestone":3,"title":"Roguelike III"},{"key":"game4","date":"2026-04-02","milestone":32,"title":"Spellroads"},{"key":"game6","date":"2026-04-05","milestone":29,"title":"Astral Crypts"},{"key":"game7","date":"2026-04-05","milestone":13,"title":"Wanderlight"},{"key":"game8","date":"2026-04-10","milestone":68,"title":"Vagrant & Ash"},{"key":"game10","date":"2026-04-10","milestone":1,"title":"Aethermoor Chronicles"}];
 function reSort(by){
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('sort-'+by).classList.add('active');
