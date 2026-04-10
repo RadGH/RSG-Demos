@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vagrant &amp; Ash — Report 002: Quality &amp; Depth Audit · April 10, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ember:        #c7622a;
+      --ember-bright: #e8843a;
+      --ember-dim:    #8b4218;
+      --ember-glow:   rgba(199, 98, 42, 0.30);
+      --blood:        #9e2d2d;
+      --blood-dim:    #6a1e1e;
+      --ash:          #8a8078;
+      --ash-light:    #b0a898;
+      --ash-dark:     #5a554e;
+      --bone:         #e8ddc8;
+      --bone-dim:     #c8bda8;
+      --black:        #0c0b09;
+      --black-soft:   #151310;
+      --black-card:   #1a1714;
+      --black-raised: #201d1a;
+      --black-deep:   #0e0c0a;
+      --text:         #d4c8b4;
+      --text-muted:   #8a8078;
+      --ok:           #3a7840;
+      --ok-text:      #6ec476;
+      --warn:         #7a6020;
+      --warn-text:    #d4aa40;
+      --err:          #8c2020;
+      --err-text:     #d46060;
+      --font-h:       'Cinzel', serif;
+      --font-b:       'Crimson Text', serif;
+      --r:            6px;
+      --border:       1px solid rgba(138, 128, 120, 0.22);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--text); font-family: var(--font-b); font-size: 1.05rem; line-height: 1.72; -webkit-font-smoothing: antialiased; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes rise    { 0%{transform:translateY(0) scale(1);opacity:.6} 100%{transform:translateY(-88vh) translateX(var(--dx,15px)) scale(.25);opacity:0} }
+    @keyframes pulse   { 0%,100%{text-shadow:0 0 14px var(--ember),0 0 32px var(--ember-dim)} 50%{text-shadow:0 0 24px var(--ember-bright),0 0 48px var(--ember)} }
+    @keyframes fadeUp  { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn  { from{opacity:0} to{opacity:1} }
+    @keyframes glow    { 0%,100%{box-shadow:0 0 8px var(--ember-glow)} 50%{box-shadow:0 0 22px var(--ember-glow)} }
+    @keyframes reveal  { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes bleed   { 0%,100%{box-shadow:inset 0 0 0 1px rgba(158,45,45,0)} 50%{box-shadow:inset 0 0 0 1px rgba(158,45,45,.35)} }
+    @keyframes scanline{ 0%{transform:translateY(-100%)} 100%{transform:translateY(200%)} }
+
+    /* ── PARTICLES ── */
+    .particle-field { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+    .p { position:absolute; bottom:0; border-radius:50%; background:var(--ember); opacity:0; animation:rise linear infinite; }
+    .p:nth-child(1)  { left:7%;  width:2px;height:2px; animation-duration:6.4s; animation-delay:0s;    --dx:12px;  background:#d97a40; }
+    .p:nth-child(2)  { left:14%; width:3px;height:3px; animation-duration:8.1s; animation-delay:1.1s;  --dx:-18px; }
+    .p:nth-child(3)  { left:23%; width:2px;height:2px; animation-duration:5.7s; animation-delay:2.3s;  --dx:26px;  background:#e8843a; }
+    .p:nth-child(4)  { left:32%; width:3px;height:3px; animation-duration:9.2s; animation-delay:0.6s;  --dx:-10px; background:#b05820; }
+    .p:nth-child(5)  { left:41%; width:2px;height:2px; animation-duration:6.8s; animation-delay:3.0s;  --dx:20px; }
+    .p:nth-child(6)  { left:50%; width:4px;height:4px; animation-duration:7.5s; animation-delay:1.7s;  --dx:-22px; background:#d97a40; }
+    .p:nth-child(7)  { left:59%; width:2px;height:2px; animation-duration:5.9s; animation-delay:0.3s;  --dx:16px;  background:#e8843a; }
+    .p:nth-child(8)  { left:68%; width:3px;height:3px; animation-duration:8.6s; animation-delay:2.5s;  --dx:-8px; }
+    .p:nth-child(9)  { left:77%; width:2px;height:2px; animation-duration:6.3s; animation-delay:4.1s;  --dx:24px;  background:#b05820; }
+    .p:nth-child(10) { left:85%; width:3px;height:3px; animation-duration:7.9s; animation-delay:1.4s;  --dx:-16px; background:#d97a40; }
+    .p:nth-child(11) { left:92%; width:2px;height:2px; animation-duration:5.4s; animation-delay:3.7s;  --dx:10px; }
+    .p:nth-child(12) { left:3%;  width:3px;height:3px; animation-duration:10.2s;animation-delay:5.0s;  --dx:-14px; background:#e8843a; }
+
+    /* ── DECORATIVE ── */
+    .hr-ember { border:none; height:2px; background:linear-gradient(90deg,transparent 0%,var(--ember-dim) 15%,var(--ember) 45%,var(--ember-bright) 50%,var(--ember) 55%,var(--ember-dim) 85%,transparent 100%); margin:36px 0; position:relative; }
+    .hr-ember::before { content:'✦'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:var(--ember); font-size:.68rem; background:var(--black); padding:0 8px; }
+    .hr-ash { border:none; height:1px; background:linear-gradient(90deg,transparent,var(--ash-dark) 30%,var(--ash) 50%,var(--ash-dark) 70%,transparent); margin:24px 0; }
+
+    /* ── BADGE ── */
+    .badge { display:inline-block; padding:2px 9px; border-radius:999px; font-family:var(--font-h); font-size:.58rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; vertical-align:middle; margin-left:5px; }
+    .b-red    { background:rgba(160,40,40,.22); color:#d46060; border:1px solid rgba(160,40,40,.4); }
+    .b-yellow { background:rgba(180,140,30,.2); color:#d4aa40; border:1px solid rgba(180,140,30,.4); }
+    .b-green  { background:rgba(56,120,60,.22); color:#6ec476; border:1px solid rgba(56,120,60,.4); }
+    .b-ember  { background:rgba(199,98,42,.2);  color:var(--ember-bright); border:1px solid var(--ember-dim); }
+    .b-ash    { background:rgba(90,85,78,.28);  color:var(--ash-light); border:1px solid var(--ash-dark); }
+    .b-blood  { background:rgba(158,45,45,.22); color:#c86060; border:1px solid rgba(158,45,45,.4); }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width:980px; margin:0 auto; padding:0 24px 100px; }
+    .page-section { position:relative; padding-top:72px; animation:reveal .65s ease both; }
+    .s-head { position:relative; padding-left:22px; margin-bottom:32px; }
+    .s-num { font-family:var(--font-h); font-size:4.5rem; font-weight:900; color:var(--ember); opacity:.14; position:absolute; top:-14px; left:-6px; pointer-events:none; user-select:none; line-height:1; }
+    .s-title { font-family:var(--font-h); font-size:1.4rem; font-weight:700; color:var(--bone); letter-spacing:.12em; text-transform:uppercase; }
+    .s-sub { font-family:var(--font-b); font-style:italic; color:var(--ash); font-size:1rem; margin-top:4px; }
+
+    /* ── COVER ── */
+    .cover { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; position:relative; padding:60px 24px; overflow:hidden; }
+    .cover-bg { position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 85%,rgba(158,45,45,.1) 0%,transparent 60%), radial-gradient(ellipse 70% 55% at 50% 100%,rgba(199,98,42,.09) 0%,transparent 55%), linear-gradient(180deg,#0c0b09 0%,#100e0b 55%,#160f09 100%); }
+    .cover-inner { position:relative; z-index:2; max-width:700px; }
+    .c-eyebrow { font-family:var(--font-h); font-size:.7rem; letter-spacing:.42em; color:var(--ember); text-transform:uppercase; margin-bottom:22px; animation:fadeIn 1.2s ease .3s both; }
+    .c-frame { border:1px solid var(--ember-dim); padding:44px 52px; position:relative; animation:fadeIn .8s ease .2s both, glow 5s ease-in-out 2s infinite; }
+    .c-frame .cr { position:absolute; color:var(--ember-dim); font-size:1.1rem; line-height:1; }
+    .c-frame .cr-tl { top:-4px; left:-4px; } .c-frame .cr-tr { top:-4px; right:-4px; }
+    .c-frame .cr-bl { bottom:-4px; left:-4px; } .c-frame .cr-br { bottom:-4px; right:-4px; }
+    .c-frame .c-top, .c-frame .c-bot { position:absolute; left:50%; transform:translateX(-50%); color:var(--ember-dim); font-size:.7rem; letter-spacing:.3em; background:var(--black); padding:0 12px; white-space:nowrap; }
+    .c-frame .c-top { top:-.55em; } .c-frame .c-bot { bottom:-.55em; }
+    .c-title { font-family:var(--font-h); font-size:clamp(3rem,9vw,5.8rem); font-weight:900; color:var(--bone); line-height:.9; letter-spacing:.06em; text-transform:uppercase; animation:fadeUp 1s ease .5s both, pulse 4s ease-in-out 2.5s infinite; }
+    .c-title span { display:block; font-size:.42em; color:var(--ash-light); letter-spacing:.3em; margin-top:8px; animation:none; text-shadow:none; }
+    .c-div { display:flex; align-items:center; gap:14px; margin:32px 0; animation:fadeIn 1s ease 1.2s both; }
+    .c-divl { flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--blood-dim)); }
+    .c-divl:last-child { background:linear-gradient(90deg,var(--blood-dim),transparent); }
+    .c-divi { color:var(--blood); font-size:1rem; }
+    .c-ver { font-family:var(--font-h); font-size:.82rem; letter-spacing:.22em; color:var(--bone-dim); text-transform:uppercase; animation:fadeIn 1s ease 1.4s both; }
+    .c-tag { font-family:var(--font-b); font-size:1.25rem; font-style:italic; color:var(--ash-light); margin-top:18px; animation:fadeIn 1s ease 1.6s both; }
+    .c-date { font-family:var(--font-h); font-size:.72rem; letter-spacing:.3em; color:var(--ash); text-transform:uppercase; margin-top:38px; animation:fadeIn 1s ease 1.8s both; }
+
+    /* ── SUMMARY GRID ── */
+    .summary-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:16px; }
+    .sum-card { background:var(--black-card); border:var(--border); border-radius:var(--r); padding:18px 16px; text-align:center; }
+    .sum-val { font-family:var(--font-h); font-size:2rem; font-weight:700; line-height:1; }
+    .sum-val.red { color:#d46060; } .sum-val.yellow { color:#d4aa40; } .sum-val.green { color:#6ec476; } .sum-val.ember { color:var(--ember-bright); }
+    .sum-label { font-size:.78rem; color:var(--ash); margin-top:5px; letter-spacing:.04em; }
+
+    /* ── BUG TABLE ── */
+    .bug-list { display:flex; flex-direction:column; gap:10px; }
+    .bug-card { background:var(--black-card); border:var(--border); border-radius:var(--r); padding:16px 18px 14px; position:relative; transition:background .15s; }
+    .bug-card:hover { background:var(--black-raised); }
+    .bug-card.sev-critical { border-left:3px solid #d46060; animation:bleed 4s ease-in-out infinite; }
+    .bug-card.sev-major    { border-left:3px solid #d4aa40; }
+    .bug-card.sev-minor    { border-left:3px solid var(--ash-dark); }
+    .bug-card.sev-polish   { border-left:3px solid rgba(56,120,60,.6); }
+    .bug-head { display:flex; align-items:flex-start; gap:10px; margin-bottom:6px; }
+    .bug-id { font-family:var(--font-h); font-size:.6rem; letter-spacing:.15em; color:var(--ash-dark); min-width:44px; margin-top:3px; }
+    .bug-title { font-family:var(--font-b); font-weight:600; color:var(--bone); font-size:1rem; flex:1; }
+    .bug-body { font-size:.92rem; color:var(--ash-light); line-height:1.6; padding-left:54px; }
+    .bug-file { font-family:monospace; font-size:.76rem; background:rgba(232,221,200,.06); padding:1px 5px; border-radius:3px; border:1px solid rgba(232,221,200,.1); color:var(--bone-dim); }
+
+    /* ── FEATURE TABLE ── */
+    .feat-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .feat-card { background:var(--black-card); border:var(--border); border-radius:var(--r); padding:16px 18px; transition:background .15s, border-color .15s; }
+    .feat-card:hover { background:var(--black-raised); border-color:var(--ash-dark); }
+    .feat-pri { font-family:var(--font-h); font-size:.58rem; letter-spacing:.15em; text-transform:uppercase; margin-bottom:5px; }
+    .feat-pri.high { color:#d4aa40; } .feat-pri.critical { color:#d46060; } .feat-pri.medium { color:var(--ember); } .feat-pri.low { color:var(--ash); }
+    .feat-title { font-family:var(--font-b); font-weight:600; color:var(--bone); font-size:1rem; margin-bottom:5px; }
+    .feat-body { font-size:.9rem; color:var(--ash-light); line-height:1.55; }
+
+    /* ── SYSTEM AUDIT TABLE ── */
+    .audit-table { width:100%; border-collapse:collapse; }
+    .audit-table thead tr { border-bottom:1px solid rgba(199,98,42,.25); }
+    .audit-table th { font-family:var(--font-h); font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--ember); padding:10px 14px; text-align:left; }
+    .audit-table td { padding:11px 14px; border-bottom:1px solid rgba(138,128,120,.1); font-size:.9rem; vertical-align:top; }
+    .audit-table tr:last-child td { border-bottom:none; }
+    .audit-table tr:hover td { background:rgba(255,255,255,.02); }
+    .sys-name { font-family:var(--font-b); font-weight:600; color:var(--bone-dim); }
+    .sys-status { white-space:nowrap; }
+    .sys-note { color:var(--ash); line-height:1.5; }
+
+    /* ── ENCOUNTER AUDIT ── */
+    .enc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .enc-card { background:var(--black-card); border:var(--border); border-radius:var(--r); padding:14px 16px; }
+    .enc-biome { font-family:var(--font-h); font-size:.62rem; letter-spacing:.15em; text-transform:uppercase; color:var(--ember); margin-bottom:4px; }
+    .enc-count { font-family:var(--font-h); font-size:1.6rem; font-weight:700; color:var(--bone); line-height:1; }
+    .enc-label { font-size:.8rem; color:var(--ash); margin-top:2px; }
+    .enc-bar-wrap { height:4px; background:rgba(90,85,78,.3); border-radius:2px; margin-top:8px; overflow:hidden; }
+    .enc-bar { height:100%; background:linear-gradient(90deg,var(--ember-dim),var(--ember)); border-radius:2px; }
+
+    /* ── PRIORITY ROADMAP ── */
+    .road-phase { margin-bottom:28px; }
+    .road-phase-title { font-family:var(--font-h); font-size:.72rem; letter-spacing:.25em; text-transform:uppercase; color:var(--ember); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid rgba(199,98,42,.2); }
+    .road-items { display:flex; flex-direction:column; gap:7px; }
+    .road-item { display:flex; align-items:flex-start; gap:12px; padding:9px 14px; background:var(--black-card); border:var(--border); border-radius:var(--r); }
+    .road-num { font-family:var(--font-h); font-size:.58rem; color:var(--ember-dim); min-width:22px; margin-top:3px; letter-spacing:.05em; }
+    .road-text { font-size:.92rem; line-height:1.5; color:var(--text); }
+    .road-text strong { color:var(--bone); font-weight:600; }
+
+    /* ── DEPTH GAUGES ── */
+    .depth-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .depth-card { background:var(--black-card); border:var(--border); border-radius:var(--r); padding:16px 18px; }
+    .depth-title { font-family:var(--font-h); font-size:.68rem; letter-spacing:.15em; text-transform:uppercase; color:var(--bone-dim); margin-bottom:12px; }
+    .depth-bar-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+    .depth-row-label { font-size:.82rem; color:var(--ash-light); min-width:110px; }
+    .depth-bar-outer { flex:1; height:7px; background:rgba(90,85,78,.28); border-radius:4px; overflow:hidden; }
+    .depth-bar-inner { height:100%; border-radius:4px; }
+    .d-full  { background:linear-gradient(90deg,var(--ember-dim),var(--ember-bright)); }
+    .d-good  { background:linear-gradient(90deg,#3a6030,#5aaa50); }
+    .d-mid   { background:linear-gradient(90deg,#6a5010,#c8a030); }
+    .d-low   { background:linear-gradient(90deg,var(--blood-dim),var(--blood)); }
+    .depth-pct { font-family:var(--font-h); font-size:.62rem; color:var(--ash); min-width:30px; text-align:right; }
+
+    /* ── UX ISSUES ── */
+    .ux-list { display:flex; flex-direction:column; gap:9px; }
+    .ux-item { display:flex; gap:14px; padding:12px 16px; background:var(--black-card); border:var(--border); border-radius:var(--r); align-items:flex-start; }
+    .ux-icon { font-size:1.1rem; flex-shrink:0; margin-top:1px; }
+    .ux-title { font-family:var(--font-b); font-weight:600; color:var(--bone); font-size:.95rem; }
+    .ux-desc  { font-size:.88rem; color:var(--ash-light); line-height:1.55; margin-top:2px; }
+
+    /* ── QUOTES / CALLOUTS ── */
+    .callout { background:var(--black-raised); border-left:3px solid var(--ember); padding:16px 20px; border-radius:0 var(--r) var(--r) 0; margin:20px 0; font-style:italic; color:var(--ash-light); font-size:.95rem; }
+    .callout strong { color:var(--bone); font-style:normal; }
+
+    /* ── FOOTER ── */
+    .report-footer { text-align:center; padding:48px 24px 32px; border-top:1px solid rgba(138,128,120,.15); margin-top:80px; }
+    .report-footer p { font-size:.85rem; color:var(--ash); }
+    .report-footer a { color:var(--ember); text-decoration:none; }
+    .report-footer a:hover { color:var(--ember-bright); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:640px) {
+      .feat-grid, .depth-grid, .enc-grid { grid-template-columns:1fr; }
+      .summary-grid { grid-template-columns:1fr 1fr; }
+      .c-frame { padding:28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ COVER ══════════════ -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="particle-field">
+    <div class="p"></div><div class="p"></div><div class="p"></div>
+    <div class="p"></div><div class="p"></div><div class="p"></div>
+    <div class="p"></div><div class="p"></div><div class="p"></div>
+    <div class="p"></div><div class="p"></div><div class="p"></div>
+  </div>
+
+  <div class="cover-inner">
+    <div class="c-eyebrow">Quality &amp; Depth Audit &nbsp;·&nbsp; Report 002</div>
+
+    <div class="c-frame">
+      <span class="cr cr-tl">✦</span>
+      <span class="cr cr-tr">✦</span>
+      <span class="cr cr-bl">✦</span>
+      <span class="cr cr-br">✦</span>
+      <span class="c-top">❧ &nbsp; ❧ &nbsp; ❧</span>
+      <span class="c-bot">❧ &nbsp; ❧ &nbsp; ❧</span>
+
+      <h1 class="c-title">
+        Vagrant &amp; Ash
+        <span>The Road Remembers</span>
+      </h1>
+
+      <div class="c-div">
+        <div class="c-divl"></div>
+        <div class="c-divi">✦</div>
+        <div class="c-divi">☽</div>
+        <div class="c-divi">✦</div>
+        <div class="c-divl"></div>
+      </div>
+
+      <div class="c-ver">Build Report 002 &nbsp;·&nbsp; Milestone 62</div>
+      <p class="c-tag">"Every crack in the road is a place something could fall through."</p>
+    </div>
+
+    <div class="c-date">April 10, 2026 &nbsp;·&nbsp; Internal QA &nbsp;·&nbsp; Depth &amp; Bug Audit</div>
+  </div>
+</div>
+
+<!-- ══════════════ BODY ══════════════ -->
+<div class="wrap">
+
+  <!-- ── I. EXECUTIVE OVERVIEW ── -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">I</div>
+      <h2 class="s-title">Executive Overview</h2>
+      <div class="s-sub">Where the game stands after Milestone 62</div>
+    </div>
+
+    <p>Vagrant &amp; Ash has grown substantially across 62 milestones. The core loop — march, encounter, decide, survive — is functional and compelling. Assets are in strong shape: 84 race portraits, 14 biome backgrounds, a full icon library. Systems like the skill consolidation, SOS encounter weighting, camp persistence, and carry-over characters have been recently implemented.</p>
+
+    <p style="margin-top:14px">This report focuses on what's <em>cracking beneath the surface</em>: bugs that slip through unnoticed, systems that exist in code but aren't surfaced in gameplay, UX friction that makes the experience feel rougher than it should, and encounter content that needs thinning or enrichment. The goal is to give the next development pass a clear, prioritized target list.</p>
+
+    <div class="summary-grid" style="margin-top:28px">
+      <div class="sum-card">
+        <div class="sum-val red">9</div>
+        <div class="sum-label">Critical / Major Bugs</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-val yellow">14</div>
+        <div class="sum-label">UX Friction Points</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-val ember">11</div>
+        <div class="sum-label">Unimplemented Systems</div>
+      </div>
+      <div class="sum-card">
+        <div class="sum-val green">6</div>
+        <div class="sum-label">Quick Wins Available</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- ── II. BUG INVENTORY ── -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">II</div>
+      <h2 class="s-title">Bug Inventory</h2>
+      <div class="s-sub">Confirmed issues and suspected defects by severity</div>
+    </div>
+
+    <div class="bug-list">
+
+      <div class="bug-card sev-critical">
+        <div class="bug-head">
+          <span class="bug-id">B-001</span>
+          <span class="bug-title">Save meta reads stale <code>journey.dayNumber</code> instead of top-level <code>dayNumber</code> <span class="badge b-red">Critical</span></span>
+        </div>
+        <div class="bug-body">
+          <span class="bug-file">src/services/saveLoad.js</span> — <code>getSaveMeta()</code> reads <code>parsed.journey?.dayNumber</code> but day number is stored at <code>parsed.dayNumber</code> (top level of state). The Continue Journey button shows Day 1 for all saves. Fix: change to <code>parsed.dayNumber ?? parsed.journey?.dayNumber ?? 1</code>.
+        </div>
+      </div>
+
+      <div class="bug-card sev-critical">
+        <div class="bug-head">
+          <span class="bug-id">B-002</span>
+          <span class="bug-title">Wit below 5 easter egg mentioned in About panel is not implemented <span class="badge b-red">Critical</span></span>
+        </div>
+        <div class="bug-body">
+          The About panel states "Wit below 5 has… consequences." No such mechanic exists in any component or engine file. Either implement it (garbled/slow text on low-Wit characters) or remove the reference from the About copy to avoid player confusion.
+        </div>
+      </div>
+
+      <div class="bug-card sev-major">
+        <div class="bug-head">
+          <span class="bug-id">B-003</span>
+          <span class="bug-title">Skill consolidation doesn't migrate existing saves — old skill keys orphaned <span class="badge b-yellow">Major</span></span>
+        </div>
+        <div class="bug-body">
+          <span class="bug-file">src/services/saveLoad.js</span> — The migration function only handles v1→v2. Characters saved before the consolidation (M60) may carry <code>combat_blade</code>, <code>herbalism</code>, <code>lore_history</code> etc. skill entries. These silently do nothing. Add a v3 migration pass that renames old keys on load.
+        </div>
+      </div>
+
+      <div class="bug-card sev-major">
+        <div class="bug-head">
+          <span class="bug-id">B-004</span>
+          <span class="bug-title">Combat screen has no retreat path when all party members are incapacitated <span class="badge b-yellow">Major</span></span>
+        </div>
+        <div class="bug-body">
+          <span class="bug-file">src/screens/Combat/CombatScreen.jsx</span> — If all party members reach 0 HP simultaneously (possible with AoE damage), the game may enter a state where no one can act but the combat loop continues. The game-over watcher may not trigger mid-combat. Verify the <code>useGameOverWatcher</code> hook fires during active combat.
+        </div>
+      </div>
+
+      <div class="bug-card sev-major">
+        <div class="bug-head">
+          <span class="bug-id">B-005</span>
+          <span class="bug-title">Journal overlay shows entries for dead characters with no visual distinction <span class="badge b-yellow">Major</span></span>
+        </div>
+        <div class="bug-body">
+          <span class="bug-file">src/screens/Journal/JournalOverlay.jsx</span> — Dead characters' journal entries appear interleaved with survivors' entries but nothing distinguishes their authorship. A deceased character's voice should feel archival — greyed out, marked with a small epitaph badge, or shown in a separate "Fallen" section.
+        </div>
+      </div>
+
+      <div class="bug-card sev-major">
+        <div class="bug-head">
+          <span class="bug-id">B-006</span>
+          <span class="bug-title">EncounterCooldownDots uses <code>journey.daysSinceEncounter</code> which may not exist <span class="badge b-yellow">Major</span></span>
+        </div>
+        <div class="bug-body">
+          <span class="bug-file">src/screens/Journey/JourneyScreen.jsx</span> — The new <code>EncounterCooldownDots</code> component reads <code>journey.daysSinceEncounter</code>. This field may not be initialized in <code>initialState.js</code> or incremented by <code>journeyReducer</code>. If undefined, all dots show as unfilled. Verify the field is tracked and reset after each encounter.
+        </div>
+      </div>
+
+      <div class="bug-card sev-major">
+        <div class="bug-head">
+          <span class="bug-id">B-007</span>
+          <span class="bug-title">CarryOver characters applied before party is fully initialized <span class="badge b-yellow">Major</span></span>
+        </div>
+        <div class="bug-body">
+          <span class="bug-file">src/screens/CharacterCreation/CharacterCreation.jsx</span> — The <code>useEffect</code> that applies <code>vna_carryover</code> from sessionStorage fires on mount. If the party members array has fewer slots than the templates (e.g. templates for 4 but default party size is 2), some dispatches target non-existent character IDs silently. Add a guard: only apply templates up to <code>partySize</code>.
+        </div>
+      </div>
+
+      <div class="bug-card sev-minor">
+        <div class="bug-head">
+          <span class="bug-id">B-008</span>
+          <span class="bug-title">Unspent-points conversion notification is never shown if <code>SHOW_NOTIFICATION</code> action requires a duration <span class="badge b-ash">Minor</span></span>
+        </div>
+        <div class="bug-body">
+          <span class="bug-file">src/screens/CharacterCreation/CharacterCreation.jsx</span> — The dispatch of <code>SHOW_NOTIFICATION</code> for the bonus resources message may fire before the phase transition completes, causing the journey screen to never display it if the notification reducer clears on phase change. Test that the message actually surfaces.
+        </div>
+      </div>
+
+      <div class="bug-card sev-minor">
+        <div class="bug-head">
+          <span class="bug-id">B-009</span>
+          <span class="bug-title">Portrait URL <code>padStart(2, '00')</code> is a no-op — should be <code>'0'</code> <span class="badge b-ash">Minor</span></span>
+        </div>
+        <div class="bug-body">
+          Previously in <span class="bug-file">JourneyScreen.jsx</span>: <code>String(n).padStart(2, '00')</code> — the pad string should be a single <code>'0'</code>. Though portrait images are now removed from the party bar, the same bug may exist in other places that construct portrait URLs (EncounterScreen, MapOverlay character markers). Audit all portrait path construction.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- ── III. UNIMPLEMENTED SYSTEMS ── -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">III</div>
+      <h2 class="s-title">Systems Audit</h2>
+      <div class="s-sub">Code exists but mechanics aren't surfaced to the player</div>
+    </div>
+
+    <div class="callout">
+      Several systems were scaffolded early and are referenced throughout the codebase but have no visible effect on gameplay. These are the highest-leverage opportunities: the infrastructure is already built.
+    </div>
+
+    <table class="audit-table" style="margin-top:20px">
+      <thead>
+        <tr>
+          <th>System</th>
+          <th>Status</th>
+          <th>Location</th>
+          <th>Gap / What's Missing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="sys-name">Factions &amp; Reputation</td>
+          <td class="sys-status"><span class="badge b-yellow">Scaffolded</span></td>
+          <td><span class="bug-file">src/data/factions.js</span><br><span class="bug-file">state/initialState.js</span></td>
+          <td class="sys-note">Faction data and world.factions state exist. No encounter branches check faction rep. No UI shows current standing. Faction events could gate certain town services or spawn Ironwatch patrols at high hostility.</td>
+        </tr>
+        <tr>
+          <td class="sys-name">Quest System</td>
+          <td class="sys-status"><span class="badge b-yellow">Scaffolded</span></td>
+          <td><span class="bug-file">src/data/quests.js</span><br><span class="bug-file">hooks/useQuestWatcher.js</span></td>
+          <td class="sys-note">Quest definitions and a watcher hook exist but quests are never started, displayed, or completed in UI. The watcher likely fires on every state change and checks conditions that are never met. Integrate 2–3 quests as a proof of concept.</td>
+        </tr>
+        <tr>
+          <td class="sys-name">Escalation / Tension</td>
+          <td class="sys-status"><span class="badge b-yellow">Partial</span></td>
+          <td><span class="bug-file">src/screens/Journey/JourneyScreen.jsx</span></td>
+          <td class="sys-note"><code>world.escalation</code> is tracked and a warning icon appears above 40. But escalation never triggers additional encounters, boss spawns, or story beats. The tension system should drive pacing — make players feel hunted as it rises.</td>
+        </tr>
+        <tr>
+          <td class="sys-name">Scenarios</td>
+          <td class="sys-status"><span class="badge b-yellow">Scaffolded</span></td>
+          <td><span class="bug-file">src/data/scenarios.js</span></td>
+          <td class="sys-note">Scenario data is defined but not selectable from New Game Setup. Scenarios offer enormous replayability — even one active scenario (e.g. "Hunted: start with Ironwatch escalation at 50") would add meaningful variety.</td>
+        </tr>
+        <tr>
+          <td class="sys-name">Voice Lines</td>
+          <td class="sys-status"><span class="badge b-red">Unused</span></td>
+          <td><span class="bug-file">src/data/voiceLines.js</span></td>
+          <td class="sys-note">File exists with character voice line data but nothing displays or plays these. Even text-only "voice lines" shown in the travel log during key moments (first death, first combat, entering a new biome) would add personality.</td>
+        </tr>
+        <tr>
+          <td class="sys-name">Bond System</td>
+          <td class="sys-status"><span class="badge b-yellow">Partial</span></td>
+          <td><span class="bug-file">src/engine/bondEngine.js</span></td>
+          <td class="sys-note">Bond logic is implemented but no UI surfaces bond strength between characters. Bonds don't visibly affect morale, combat, or encounter choices. Add a small bond indicator to the party bar and one encounter branch that checks for a bond.</td>
+        </tr>
+        <tr>
+          <td class="sys-name">Weather Effects</td>
+          <td class="sys-status"><span class="badge b-yellow">Display Only</span></td>
+          <td><span class="bug-file">src/engine/travelEngine.js</span></td>
+          <td class="sys-note">Weather is displayed in the biome header but has no mechanical effect. Rain should reduce fire/fuel efficiency. Storm should add a chance of lost progress. Heat should increase water consumption. These are 1-2 line additions to the travel engine.</td>
+        </tr>
+        <tr>
+          <td class="sys-name">Camp Scavenge Submenu</td>
+          <td class="sys-status"><span class="badge b-yellow">Partial</span></td>
+          <td><span class="bug-file">src/screens/Camp/CampScreen.jsx</span></td>
+          <td class="sys-note">Scavenge was requested as a submenu: generic scavenge, biome-specific scavenge, and hunt (with combat chance). Currently it's a single flat action. A submenu with 3 options and biome-flavored results would make camp feel more contextual.</td>
+        </tr>
+        <tr>
+          <td class="sys-name">Victory / Far Shore Ending</td>
+          <td class="sys-status"><span class="badge b-red">Incomplete</span></td>
+          <td><span class="bug-file">src/screens/Ending/EndingScreen.jsx</span></td>
+          <td class="sys-note">An EndingScreen component exists. It's unclear if the Far Shore biome triggers it correctly or if the journey simply loops. The victory screen should feel earned — show the journey stats, surviving characters, notable moments, and a farewell paragraph.</td>
+        </tr>
+        <tr>
+          <td class="sys-name">Condition Duration Display</td>
+          <td class="sys-status"><span class="badge b-yellow">Partial</span></td>
+          <td><span class="bug-file">src/screens/Journey/JourneyScreen.jsx</span></td>
+          <td class="sys-note">Conditions like <em>Bleeding</em>, <em>Infected Wound</em>, <em>Exhausted</em> are tracked with duration, but the party bar only shows condition icons with no count. Players can't tell if a condition will resolve tomorrow or in five days. Show the remaining duration as a small number on the icon.</td>
+        </tr>
+        <tr>
+          <td class="sys-name">Starting Equipment Choice</td>
+          <td class="sys-status"><span class="badge b-red">Missing</span></td>
+          <td><span class="bug-file">src/screens/CharacterCreation/CharacterCreation.jsx</span></td>
+          <td class="sys-note">Requested feature: character background selection should offer a starting equipment option (gear budget items). The architecture exists (<code>gearBudgetBonus</code> on some backgrounds) but no UI allows the player to spend their gear budget in character creation — they just get a Traveler's Knife and go.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- ── IV. ENCOUNTER CONTENT AUDIT ── -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">IV</div>
+      <h2 class="s-title">Encounter Content Audit</h2>
+      <div class="s-sub">Encounter distribution, quality gaps, and missing content</div>
+    </div>
+
+    <p>The encounter pool is large — well over 100 entries — but distribution is uneven and certain biomes are dramatically under-served. More critically, <strong style="color:var(--bone)">combat encounters are rare relative to the game's emphasis on combat</strong> as a meaningful mechanic.</p>
+
+    <div class="enc-grid" style="margin-top:24px">
+      <div class="enc-card">
+        <div class="enc-biome">Ashfields</div>
+        <div class="enc-count">18</div>
+        <div class="enc-label">encounters, ~4 combat</div>
+        <div class="enc-bar-wrap"><div class="enc-bar" style="width:85%"></div></div>
+      </div>
+      <div class="enc-card">
+        <div class="enc-biome">Greywood</div>
+        <div class="enc-count">14</div>
+        <div class="enc-label">encounters, ~3 combat</div>
+        <div class="enc-bar-wrap"><div class="enc-bar" style="width:66%"></div></div>
+      </div>
+      <div class="enc-card">
+        <div class="enc-biome">Salt Flats</div>
+        <div class="enc-count">11</div>
+        <div class="enc-label">encounters, ~2 combat</div>
+        <div class="enc-bar-wrap"><div class="enc-bar" style="width:52%"></div></div>
+      </div>
+      <div class="enc-card">
+        <div class="enc-biome">Ironmarch</div>
+        <div class="enc-count">8</div>
+        <div class="enc-label">encounters, ~3 combat</div>
+        <div class="enc-bar-wrap"><div class="enc-bar" style="width:38%"></div></div>
+      </div>
+      <div class="enc-card">
+        <div class="enc-biome">Hollows</div>
+        <div class="enc-count">9</div>
+        <div class="enc-label">encounters, ~2 combat</div>
+        <div class="enc-bar-wrap"><div class="enc-bar" style="width:42%"></div></div>
+      </div>
+      <div class="enc-card">
+        <div class="enc-biome">Mountains / Storm Coast</div>
+        <div class="enc-count">7</div>
+        <div class="enc-label">encounters, ~2 combat — underserved</div>
+        <div class="enc-bar-wrap"><div class="enc-bar" style="width:28%"></div></div>
+      </div>
+    </div>
+
+    <div class="feat-grid" style="margin-top:24px">
+      <div class="feat-card">
+        <div class="feat-pri high">⚠ High Priority</div>
+        <div class="feat-title">Combat encounter frequency is too low</div>
+        <div class="feat-body">Players can go 8–12 days without a fight. The combat system is the most mechanically rich part of the game and it rarely fires. Target: ~25% of encounters should lead to combat. Currently closer to 10–15%. Add 2–3 combat-likely encounters per biome, especially ambush/bandit archetypes.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri high">⚠ High Priority</div>
+        <div class="feat-title">Late-game biomes feel thin</div>
+        <div class="feat-body">Mountains and Storm Coast — the final stretch before the Far Shore — have the fewest encounters. This is exactly where tension should be highest. Add 4–6 encounters to each: brutal weather challenges, desperate refugees, imperial remnants, things that signal the world is ending <em>right now</em>.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri medium">◆ Medium</div>
+        <div class="feat-title">Skill checks favor History and Nature heavily</div>
+        <div class="feat-body">After consolidation, <code>history</code> and <code>nature</code> checks appear most frequently. Skills like <code>combat</code>, <code>persuasion</code>, <code>deception</code>, and <code>stealth</code> have far fewer checks. Players who invest in social skills feel their build is irrelevant. Add persuasion/deception branches to at least 6 existing encounters.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri medium">◆ Medium</div>
+        <div class="feat-title">No encounters reference the Pale Commissar chain after Day 22</div>
+        <div class="feat-body">The Commissar storyline ends at <code>commissar_second_meeting</code> (day 15–22). If the player hasn't resolved it, nothing happens. Add a "final reckoning" encounter in the Ironmarch or Mountains where the Commissar makes a last move — even if the player avoided the earlier meetings.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri low">· Low</div>
+        <div class="feat-title">Multiple encounters have identical "nothing happens" failure text</div>
+        <div class="feat-body">Several skill check failures resolve with "You fail" or equivalent generic text. These should each have flavored failure descriptions — a failed Stealth check in Greywood should feel different from a failed Nature check in the Salt Flats. 20–30 failures need unique text.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri low">· Low</div>
+        <div class="feat-title">Water encounters are fewer than food encounters post-SOS</div>
+        <div class="feat-body">The SOS system correctly boosts tagged encounters, but the <code>water_source</code> tag pool is smaller than <code>food_source</code>. In dry biomes (Salt Flats, Ironmarch) water crisis should feel more present. Tag 3–4 additional encounters with <code>water_source</code> and add 2 new Salt Flats water-crisis encounters.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- ── V. UX FRICTION POINTS ── -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">V</div>
+      <h2 class="s-title">UX Friction Points</h2>
+      <div class="s-sub">Where players are likely to feel confused, lost, or annoyed</div>
+    </div>
+
+    <div class="ux-list">
+      <div class="ux-item">
+        <div class="ux-icon">🔢</div>
+        <div>
+          <div class="ux-title">Stat max of 16 creates wildly unbalanced characters without warning</div>
+          <div class="ux-desc">The stat cap was raised from 8 to 16 but the point cost and balance assumptions haven't been revisited. A character with Wit 16 and everything else at 3 is mechanically overpowered for knowledge checks. Either rebalance costs (stats above 10 cost 2 points each) or add a soft warning when any single stat exceeds 12.</div>
+        </div>
+      </div>
+      <div class="ux-item">
+        <div class="ux-icon">📍</div>
+        <div>
+          <div class="ux-title">EncounterCooldownDots shows "7 quiet marches" to players who don't know the system</div>
+          <div class="ux-desc">New players will see dots and have no idea what they mean. The label "quiet marches left" is confusing — does it mean something good or bad? Replace with a more intuitive metaphor: a flame that grows brighter as encounters approach, or simply omit numbers and show a "tension" fill bar.</div>
+        </div>
+      </div>
+      <div class="ux-item">
+        <div class="ux-icon">🎒</div>
+        <div>
+          <div class="ux-title">No onboarding for new players — the About panel is the only reference</div>
+          <div class="ux-desc">The first time a player opens the game, they see a main menu with no tutorial hints. The About panel helps but requires the player to seek it out. Consider a small "first march" hint system: a single line of grey italic text above the March button on Day 1, e.g. "March to begin your journey east."</div>
+        </div>
+      </div>
+      <div class="ux-item">
+        <div class="ux-icon">⚔️</div>
+        <div>
+          <div class="ux-title">Combat screen doesn't explain what stats govern attack vs. defense</div>
+          <div class="ux-desc">Players allocate points to Edge, Grit, etc. but the combat screen shows no indication of which stat is active or how damage is calculated. A small "ATK: Edge+Combat" indicator on each character's combat card would make stat investment feel meaningful and visible.</div>
+        </div>
+      </div>
+      <div class="ux-item">
+        <div class="ux-icon">🎲</div>
+        <div>
+          <div class="ux-title">Skill check outcomes don't show the roll</div>
+          <div class="ux-desc">When an encounter presents a skill check, the player sees a success or failure but never sees the dice roll. Showing "Roll: 8 vs. TN 10 — Failed" makes the game feel fair and teaches players the system. Even a brief flash of the numbers before the outcome would help.</div>
+        </div>
+      </div>
+      <div class="ux-item">
+        <div class="ux-icon">📖</div>
+        <div>
+          <div class="ux-title">Journal entries all have the same font and visual weight</div>
+          <div class="ux-desc">Personal journal entries (campfire thoughts), auto-entries from encounters, and combat summaries all look identical in the journal overlay. Differentiate by type: personal entries in italic with a candle icon, encounter entries with a compass icon, combat entries with a blood-red accent. The journal should feel like a real document.</div>
+        </div>
+      </div>
+      <div class="ux-item">
+        <div class="ux-icon">🗺️</div>
+        <div>
+          <div class="ux-title">Map overlay doesn't show current day or resources — purely decorative</div>
+          <div class="ux-desc">Players open the map to understand their situation, but it only shows position. Add a small status panel inside the map overlay: current day, food/water remaining, morale, current biome. Make the map a true tactical overview rather than just a progress bar with flavor.</div>
+        </div>
+      </div>
+      <div class="ux-item">
+        <div class="ux-icon">💀</div>
+        <div>
+          <div class="ux-title">Death notification is easy to miss during fast multi-choice encounter resolution</div>
+          <div class="ux-desc">Character death fires a notification, but if the player is rapidly tapping through encounter choices, the death toast may appear and vanish before they register it. Death deserves a full-screen pause — a brief black card with the character's name and their epitaph — before continuing. Currently it's a toast the same size as "Found 1 food."</div>
+        </div>
+      </div>
+      <div class="ux-item">
+        <div class="ux-icon">⚙️</div>
+        <div>
+          <div class="ux-title">Character creation has no explanation of background special abilities</div>
+          <div class="ux-desc">Background abilities like "Road Blessing" and "Field Surgeon" are described in text but players don't know when or how they activate. Add an "activates when:" line to each ability description. Players shouldn't need to guess whether "Once per rest" means the camp action or the Rest button on the journey screen.</div>
+        </div>
+      </div>
+      <div class="ux-item">
+        <div class="ux-icon">🌡️</div>
+        <div>
+          <div class="ux-title">Morale percentage is shown but its effects on gameplay are invisible</div>
+          <div class="ux-desc">Players see "Morale: 73%" but have no feedback on what morale actually does. The code checks morale for encounter branches and combat bonuses, but this isn't communicated. Add a one-line tooltip to the morale display: "Affects combat, encounter choices, and skill check rolls."</div>
+        </div>
+      </div>
+      <div class="ux-item">
+        <div class="ux-icon">🏘️</div>
+        <div>
+          <div class="ux-title">Town entry button appears and disappears inconsistently</div>
+          <div class="ux-desc">The "Enter Town" button on the journey screen only appears when <code>journey.nearTown</code> is truthy. But players don't know when they're close to a town, since the "Town Nearby" badge was removed. Consider replacing the badge with a subtle town-icon in the direction indicator: "→ East · ⛺ Waypoint ahead"</div>
+        </div>
+      </div>
+      <div class="ux-item">
+        <div class="ux-icon">📜</div>
+        <div>
+          <div class="ux-title">Past Runs history doesn't show which biome the run ended in contextually</div>
+          <div class="ux-desc">The history panel shows biome IDs like "ashfields" rather than the full name, and "cause" fields are often null. The cause of death comes from <code>char.deathRecord.cause</code> which may not be set in all death paths. Audit <code>KILL_CHARACTER</code> dispatches to ensure a cause string is always provided.</div>
+        </div>
+      </div>
+      <div class="ux-item">
+        <div class="ux-icon">🔤</div>
+        <div>
+          <div class="ux-title">Free skill tags in character creation show raw skill IDs not display names</div>
+          <div class="ux-desc"><span class="bug-file">CharacterForm.jsx</span> — The free skills section renders <code>skillId.replace(/_/g, ' ')</code>, turning <code>sleight_of_hand</code> into "sleight of hand" (lowercase). Should use the SKILLS display name: "Sleight of Hand 2". Minor but visible polish gap.</div>
+        </div>
+      </div>
+      <div class="ux-item">
+        <div class="ux-icon">🔊</div>
+        <div>
+          <div class="ux-title">Sound system exists but no audio assets are loaded</div>
+          <div class="ux-desc">The <code>src/services/sound.js</code> service and mute button exist, but no audio files are bundled. The mute button is visible on the title screen but has no functional effect for new players. Either add 2–3 ambient audio files (fire crackle, wind, combat impact) or hide the mute button until audio is implemented.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- ── VI. DEPTH ASSESSMENT ── -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">VI</div>
+      <h2 class="s-title">System Depth Assessment</h2>
+      <div class="s-sub">How much of each system's potential is currently realized</div>
+    </div>
+
+    <div class="depth-grid">
+      <div class="depth-card">
+        <div class="depth-title">Core Loop</div>
+        <div class="depth-bar-row"><span class="depth-row-label">March / Travel</span><div class="depth-bar-outer"><div class="depth-bar-inner d-good" style="width:80%"></div></div><span class="depth-pct">80%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Encounters</span><div class="depth-bar-outer"><div class="depth-bar-inner d-mid" style="width:60%"></div></div><span class="depth-pct">60%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Combat</span><div class="depth-bar-outer"><div class="depth-bar-inner d-mid" style="width:55%"></div></div><span class="depth-pct">55%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Camp Actions</span><div class="depth-bar-outer"><div class="depth-bar-inner d-mid" style="width:50%"></div></div><span class="depth-pct">50%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Town / Economy</span><div class="depth-bar-outer"><div class="depth-bar-inner d-mid" style="width:45%"></div></div><span class="depth-pct">45%</span></div>
+      </div>
+      <div class="depth-card">
+        <div class="depth-title">Character Systems</div>
+        <div class="depth-bar-row"><span class="depth-row-label">Stat Allocation</span><div class="depth-bar-outer"><div class="depth-bar-inner d-good" style="width:75%"></div></div><span class="depth-pct">75%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Skills</span><div class="depth-bar-outer"><div class="depth-bar-inner d-mid" style="width:50%"></div></div><span class="depth-pct">50%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Traits</span><div class="depth-bar-outer"><div class="depth-bar-inner d-mid" style="width:55%"></div></div><span class="depth-pct">55%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Bonds</span><div class="depth-bar-outer"><div class="depth-bar-inner d-low" style="width:15%"></div></div><span class="depth-pct">15%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Journal</span><div class="depth-bar-outer"><div class="depth-bar-inner d-mid" style="width:40%"></div></div><span class="depth-pct">40%</span></div>
+      </div>
+      <div class="depth-card">
+        <div class="depth-title">World Systems</div>
+        <div class="depth-bar-row"><span class="depth-row-label">Biomes</span><div class="depth-bar-outer"><div class="depth-bar-inner d-good" style="width:70%"></div></div><span class="depth-pct">70%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Weather</span><div class="depth-bar-outer"><div class="depth-bar-inner d-low" style="width:20%"></div></div><span class="depth-pct">20%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Factions</span><div class="depth-bar-outer"><div class="depth-bar-inner d-low" style="width:10%"></div></div><span class="depth-pct">10%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Escalation</span><div class="depth-bar-outer"><div class="depth-bar-inner d-low" style="width:25%"></div></div><span class="depth-pct">25%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Quests</span><div class="depth-bar-outer"><div class="depth-bar-inner d-low" style="width:5%"></div></div><span class="depth-pct">5%</span></div>
+      </div>
+      <div class="depth-card">
+        <div class="depth-title">Narrative &amp; Replayability</div>
+        <div class="depth-bar-row"><span class="depth-row-label">Encounter Writing</span><div class="depth-bar-outer"><div class="depth-bar-inner d-good" style="width:72%"></div></div><span class="depth-pct">72%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Storylines</span><div class="depth-bar-outer"><div class="depth-bar-inner d-low" style="width:22%"></div></div><span class="depth-pct">22%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Ending / Victory</span><div class="depth-bar-outer"><div class="depth-bar-inner d-low" style="width:30%"></div></div><span class="depth-pct">30%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Scenarios</span><div class="depth-bar-outer"><div class="depth-bar-inner d-low" style="width:5%"></div></div><span class="depth-pct">5%</span></div>
+        <div class="depth-bar-row"><span class="depth-row-label">Run History</span><div class="depth-bar-outer"><div class="depth-bar-inner d-mid" style="width:55%"></div></div><span class="depth-pct">55%</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- ── VII. QUICK WINS ── -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">VII</div>
+      <h2 class="s-title">Quick Wins</h2>
+      <div class="s-sub">High impact, low effort — implement in under a session</div>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-pri critical">⚡ Fix Now</div>
+        <div class="feat-title">Fix getSaveMeta() day number</div>
+        <div class="feat-body">One-line fix in <code>saveLoad.js</code>. The Continue button showing "Day 1" for every save is the first thing a returning player sees — it immediately undermines trust in the save system.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri critical">⚡ Fix Now</div>
+        <div class="feat-title">Add save migration for consolidated skills</div>
+        <div class="feat-body">20 lines in <code>saveLoad.js</code>. Any player who had a save before M60 will silently have broken skill references. A v3 migration pass protects existing players and demonstrates save reliability.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri high">▲ This Week</div>
+        <div class="feat-title">Show dice roll result on skill checks</div>
+        <div class="feat-body">In <code>EncounterScreen</code> or <code>OutcomeDisplay</code>, show "Rolled 7 vs. TN 9 — Failed" on skill check outcomes. Players immediately understand the system, feel the tension, and stop wondering if outcomes are random or unfair.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri high">▲ This Week</div>
+        <div class="feat-title">Add condition duration numbers to party bar</div>
+        <div class="feat-body">One-line change in <code>JourneyScreen.jsx</code> — add <code>cond.duration</code> as a subscript on each condition icon. Players currently have no idea if they need to worry about a condition or if it resolves tomorrow.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri medium">◆ Soon</div>
+        <div class="feat-title">Add weather mechanical effects to travelEngine</div>
+        <div class="feat-body">3–5 lines per weather type in <code>travelEngine.js</code>. Storm: +1 exhaustion on march. Heat: +0.5 water consumed. Rain: morale +1. These tiny changes make the weather display feel purposeful and add a new layer of resource tension.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-pri medium">◆ Soon</div>
+        <div class="feat-title">Differentiate journal entry types visually</div>
+        <div class="feat-body">CSS-only change in <code>JournalOverlay.module.css</code> + a type indicator in the entry render. Personal entries in italic, encounter entries with an amber left border, combat entries with a blood-red border. The journal becomes a beautiful artifact instead of a plain list.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- ── VIII. PRIORITY ROADMAP ── -->
+  <section class="page-section">
+    <div class="s-head">
+      <div class="s-num">VIII</div>
+      <h2 class="s-title">Recommended Priority Roadmap</h2>
+      <div class="s-sub">Suggested sequencing for next 3 development sessions</div>
+    </div>
+
+    <div class="road-phase">
+      <div class="road-phase-title">Session A — Stability &amp; Correctness</div>
+      <div class="road-items">
+        <div class="road-item"><span class="road-num">A1</span><span class="road-text"><strong>Fix B-001:</strong> getSaveMeta day number bug — one line, immediately visible to returning players</span></div>
+        <div class="road-item"><span class="road-num">A2</span><span class="road-text"><strong>Fix B-003:</strong> Add skill migration v3 to saveLoad.js — protects all pre-M60 saves</span></div>
+        <div class="road-item"><span class="road-num">A3</span><span class="road-text"><strong>Fix B-006:</strong> Verify daysSinceEncounter is tracked in journeyReducer and initialized in initialState</span></div>
+        <div class="road-item"><span class="road-num">A4</span><span class="road-text"><strong>Implement or remove</strong> the Wit&lt;5 easter egg referenced in About panel</span></div>
+        <div class="road-item"><span class="road-num">A5</span><span class="road-text"><strong>Fix or suppress</strong> the mute button if no audio assets are loaded</span></div>
+      </div>
+    </div>
+
+    <div class="road-phase">
+      <div class="road-phase-title">Session B — Depth &amp; Feedback</div>
+      <div class="road-items">
+        <div class="road-item"><span class="road-num">B1</span><span class="road-text"><strong>Show dice rolls</strong> on all skill check outcomes in EncounterScreen / OutcomeDisplay</span></div>
+        <div class="road-item"><span class="road-num">B2</span><span class="road-text"><strong>Add condition durations</strong> as subscript numbers on party bar condition icons</span></div>
+        <div class="road-item"><span class="road-num">B3</span><span class="road-text"><strong>Weather mechanical effects:</strong> Storm, Heat, Rain each add a minor resource modifier in travelEngine</span></div>
+        <div class="road-item"><span class="road-num">B4</span><span class="road-text"><strong>Death full-screen moment:</strong> Brief black card with name + epitaph before continuing, instead of a dismissible toast</span></div>
+        <div class="road-item"><span class="road-num">B5</span><span class="road-text"><strong>Differentiate journal entry types</strong> visually (type icons + border colors)</span></div>
+        <div class="road-item"><span class="road-num">B6</span><span class="road-text"><strong>Activate one scenario</strong> as a New Game Setup option to validate the scaffolded system</span></div>
+      </div>
+    </div>
+
+    <div class="road-phase">
+      <div class="road-phase-title">Session C — Content &amp; Replayability</div>
+      <div class="road-items">
+        <div class="road-item"><span class="road-num">C1</span><span class="road-text"><strong>Add 6–8 combat encounters</strong> distributed across all biomes; target 25% combat encounter rate</span></div>
+        <div class="road-item"><span class="road-num">C2</span><span class="road-text"><strong>Add persuasion/deception skill checks</strong> to 6 existing encounters to reward social builds</span></div>
+        <div class="road-item"><span class="road-num">C3</span><span class="road-text"><strong>Commissar final reckoning:</strong> Add encounter in Ironmarch/Mountains that resolves the storyline regardless of earlier choices</span></div>
+        <div class="road-item"><span class="road-num">C4</span><span class="road-text"><strong>Surface bond strength</strong> in party bar with a small indicator; add one encounter branch that checks for a bond</span></div>
+        <div class="road-item"><span class="road-num">C5</span><span class="road-text"><strong>Faction reputation UI:</strong> Add a one-line faction standing display somewhere accessible — inventory sidebar or map overlay</span></div>
+        <div class="road-item"><span class="road-num">C6</span><span class="road-text"><strong>Complete the victory screen</strong> — verify Far Shore triggers EndingScreen; add journey stats, character roll call, farewell paragraph</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr-ember">
+
+  <!-- ── CLOSING ── -->
+  <section class="page-section" style="padding-top:48px">
+    <div class="callout" style="font-size:1rem; line-height:1.75">
+      <strong>The foundations are solid.</strong> The encounter writing is strong, the visual identity is cohesive, and the core loop — march, decide, survive — is genuinely compelling even at this stage. The gap between where the game <em>is</em> and where it could be isn't a lack of vision; it's a list of specific, tractable items. Fix the day number in the save meta. Show the dice. Give weather teeth. Let the Commissar finish his arc. These aren't moonshots — they're the difference between a game that works and a game that <em>stays with you</em>.
+    </div>
+  </section>
+
+</div><!-- /wrap -->
+
+<footer class="report-footer">
+  <p><strong style="color:var(--bone)">Vagrant &amp; Ash</strong> &nbsp;·&nbsp; Report 002: Quality &amp; Depth Audit &nbsp;·&nbsp; April 10, 2026</p>
+  <p style="margin-top:6px"><a href="./report.html">← Report 001: Milestone Expansion</a> &nbsp;·&nbsp; <a href="/game8/">Play the Game</a> &nbsp;·&nbsp; <a href="./index.html">Asset Dashboard</a></p>
+</footer>
+
+</body>
+</html>
