@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vagrant &amp; Ash — Milestone 79 Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0d0d0d;
+    --burgundy: #3d1a1a;
+    --burgundy-mid: #5a2020;
+    --gold: #c8a855;
+    --gold-bright: #e8c870;
+    --ash: #a89880;
+    --ash-light: #c8b8a0;
+    --ember: #e05a00;
+    --ember-bright: #ff7020;
+    --smoke: #1a1a1a;
+    --card-bg: #111010;
+    --border: rgba(200, 168, 85, 0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--ash-light);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ── Custom cursor ── */
+  #cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: var(--ember);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s, height 0.15s, background 0.15s;
+    mix-blend-mode: screen;
+    box-shadow: 0 0 14px 4px var(--ember), 0 0 30px 8px rgba(224,90,0,0.3);
+  }
+  #cursor-ring {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(200,168,85,0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, border-color 0.3s;
+  }
+  body:has(a:hover) #cursor, body:has(button:hover) #cursor {
+    width: 20px; height: 20px; background: var(--gold);
+  }
+
+  /* ── Canvas ── */
+  #particle-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ── Animated background ── */
+  #bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse at 50% 0%, #2a0e0e 0%, #0d0d0d 60%);
+    overflow: hidden;
+  }
+  #bg-layer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at var(--mx, 50%) var(--my, 30%), rgba(61,26,26,0.4) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 80% 80%, rgba(224,90,0,0.05) 0%, transparent 60%);
+    transition: background 0.1s;
+  }
+  #bg-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  /* ── Parallax ── */
+  .parallax-scene { position: relative; z-index: 2; }
+  .parallax-layer { will-change: transform; transition: transform 0.08s linear; }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── Hero ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 24px;
+  }
+  .hero-rune {
+    position: absolute;
+    font-family: 'Cinzel', serif;
+    color: rgba(200,168,85,0.04);
+    font-size: clamp(120px, 20vw, 260px);
+    font-weight: 900;
+    letter-spacing: 0.3em;
+    user-select: none;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+  }
+  .hero-ornament {
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 32px;
+    position: relative;
+  }
+  .hero-ornament::before {
+    content: '◆';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold);
+    font-size: 10px;
+  }
+  .hero-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--ember);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeSlideDown 0.8s ease 0.3s forwards;
+  }
+  #hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(36px, 7vw, 90px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    color: #fff;
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeSlideDown 0.9s ease 0.5s forwards;
+    position: relative;
+  }
+  #hero-title span { color: var(--gold); text-shadow: 0 0 40px rgba(200,168,85,0.6), 0 0 80px rgba(200,168,85,0.2); }
+  #hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(14px, 2.5vw, 22px);
+    color: var(--ash);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeSlideDown 0.9s ease 0.7s forwards;
+  }
+  #hero-date {
+    font-size: 13px;
+    color: rgba(168,152,128,0.6);
+    letter-spacing: 0.2em;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeSlideDown 0.9s ease 0.9s forwards;
+  }
+  #cycling-text-wrapper {
+    height: 32px;
+    overflow: hidden;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeSlideDown 0.9s ease 1.1s forwards;
+  }
+  .cycling-line {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(13px, 2vw, 17px);
+    color: var(--gold-bright);
+    letter-spacing: 0.25em;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 0 20px rgba(200,168,85,0.5);
+    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.6s ease;
+  }
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeSlideDown 1s ease 1.8s forwards;
+  }
+  .hero-scroll-hint span { font-size: 10px; letter-spacing: 0.3em; color: rgba(168,152,128,0.4); text-transform: uppercase; }
+  .scroll-arrow { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+
+  /* ── Sections ── */
+  .section { padding: 100px 0; position: relative; z-index: 2; }
+  .section + .section { border-top: 1px solid rgba(61,26,26,0.4); }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: var(--ember);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .section-label.revealed { opacity: 1; transform: translateY(0); }
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(26px, 4vw, 46px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 48px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease 0.1s, transform 0.8s ease 0.1s;
+  }
+  .section-title.revealed { opacity: 1; transform: translateY(0); }
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--ember), transparent);
+    margin-top: 14px;
+  }
+  .section-title em { font-style: normal; color: var(--gold); }
+
+  /* ── Feature grid ── */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    will-change: transform;
+  }
+  .feature-card.revealed { opacity: 1; transform: translateY(0); }
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--rx, 50%) var(--ry, 50%), rgba(200,168,85,0.07) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-card:hover {
+    border-color: rgba(200,168,85,0.4);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 20px rgba(200,168,85,0.06);
+  }
+  .feature-card .card-glow {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(224,90,0,0.15), transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .feature-card:hover .card-glow { opacity: 1; }
+  .card-icon { font-size: 26px; margin-bottom: 14px; display: block; filter: drop-shadow(0 0 8px rgba(224,90,0,0.4)); }
+  .card-title { font-family: 'Cinzel', serif; font-size: 15px; font-weight: 600; color: var(--gold); margin-bottom: 10px; letter-spacing: 0.05em; }
+  .card-body { font-size: 14px; line-height: 1.7; color: var(--ash); }
+  .card-body ul { list-style: none; padding: 0; margin: 6px 0 0; }
+  .card-body ul li { padding-left: 14px; position: relative; margin-bottom: 4px; }
+  .card-body ul li::before { content: '·'; position: absolute; left: 0; color: var(--ember); }
+  .card-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--ember);
+    background: rgba(224,90,0,0.1);
+    border: 1px solid rgba(224,90,0,0.3);
+    padding: 3px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+  }
+
+  /* ── Milestone tag on card ── */
+  .card-milestone {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: rgba(200,168,85,0.5);
+    font-family: 'Cinzel', serif;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  /* ── Bug list ── */
+  .bug-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .bug-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px 22px;
+    background: rgba(10,8,8,0.6);
+    border: 1px solid rgba(61,26,26,0.5);
+    border-left: 3px solid var(--ember);
+    border-radius: 4px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .bug-item.revealed { opacity: 1; transform: translateX(0); }
+  .bug-item:hover { border-left-color: var(--gold); background: rgba(20,14,14,0.8); }
+  .bug-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .bug-text { font-size: 14px; line-height: 1.65; color: var(--ash-light); }
+  .bug-text strong { color: #fff; font-weight: 700; display: block; margin-bottom: 3px; }
+
+  /* ── Suggestions ── */
+  .suggestion-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .suggestion-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px 22px;
+    background: rgba(10,10,8,0.6);
+    border: 1px solid rgba(61,26,26,0.4);
+    border-left: 3px solid rgba(200,168,85,0.4);
+    border-radius: 4px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .suggestion-item.revealed { opacity: 1; transform: translateX(0); }
+  .suggestion-item:hover { border-left-color: var(--gold); background: rgba(18,16,10,0.9); }
+  .suggestion-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .suggestion-text { font-size: 14px; line-height: 1.65; color: var(--ash-light); }
+  .suggestion-text strong { color: var(--gold-bright); font-weight: 700; display: block; margin-bottom: 3px; }
+
+  /* ── Parchment / Campfire dialogue ── */
+  .parchment {
+    background: linear-gradient(135deg, rgba(40,28,18,0.9) 0%, rgba(26,18,12,0.95) 100%);
+    border: 1px solid rgba(168,152,128,0.25);
+    border-radius: 8px;
+    padding: 48px 44px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .parchment.revealed { opacity: 1; transform: translateY(0); }
+  .parchment::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.02' numOctaves='3' result='noise'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23t)' fill='rgba(100,70,40,0.03)'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .parchment-corner { position: absolute; width: 40px; height: 40px; border-color: rgba(168,152,128,0.3); border-style: solid; }
+  .parchment-corner.tl { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+  .parchment-corner.tr { top: 12px; right: 12px; border-width: 1px 1px 0 0; }
+  .parchment-corner.bl { bottom: 12px; left: 12px; border-width: 0 0 1px 1px; }
+  .parchment-corner.br { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
+
+  /* ── Campfire dialogue format ── */
+  .fire-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .fire-header-icon { font-size: 28px; filter: drop-shadow(0 0 10px rgba(224,90,0,0.6)); animation: emberFlicker 3s ease-in-out infinite; }
+  .fire-header-text { font-family: 'Cinzel', serif; font-size: 13px; color: var(--ash); letter-spacing: 0.2em; text-transform: uppercase; }
+
+  .dialogue-block { margin-bottom: 0; }
+  .dialogue-line {
+    display: flex;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(168,152,128,0.07);
+    align-items: flex-start;
+  }
+  .dialogue-line:last-child { border-bottom: none; }
+  .dialogue-speaker {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--ember);
+    text-transform: uppercase;
+    min-width: 44px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+  .dialogue-speaker.b { color: rgba(200,168,85,0.7); }
+  .dialogue-quote {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ash-light);
+    font-style: italic;
+  }
+  .dialogue-quote.highlight { color: #fff; font-style: normal; }
+
+  /* ── Rune cards (wishlist) ── */
+  .rune-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+  }
+  .rune-card {
+    padding: 24px 20px;
+    background: rgba(13,10,10,0.8);
+    border: 1px solid rgba(61,26,26,0.6);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.93) translateY(18px);
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, background 0.3s;
+  }
+  .rune-card.revealed { opacity: 1; transform: scale(1) translateY(0); }
+  .rune-card:hover {
+    border-color: rgba(200,168,85,0.4);
+    background: rgba(22,16,10,0.95);
+  }
+  .rune-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,168,85,0.4), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+  .rune-card:hover::after { transform: scaleX(1); }
+  .rune-card-number {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: rgba(200,168,85,0.25);
+    letter-spacing: 0.1em;
+  }
+  .rune-card-glow {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,168,85,0.08), transparent 70%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .rune-card:hover .rune-card-glow { opacity: 1; }
+  .rune-icon { font-size: 24px; margin-bottom: 12px; display: block; filter: drop-shadow(0 0 6px rgba(200,168,85,0.3)); }
+  .rune-title { font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold); margin-bottom: 8px; letter-spacing: 0.08em; }
+  .rune-desc { font-size: 13px; line-height: 1.65; color: var(--ash); }
+
+  /* ── Stats bar ── */
+  .stats-row {
+    display: flex;
+    gap: 0;
+    margin-bottom: 60px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .stats-row.revealed { opacity: 1; transform: translateY(0); }
+  .stat-item {
+    flex: 1;
+    padding: 24px 16px;
+    text-align: center;
+    background: rgba(10,8,8,0.5);
+    border-right: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ember), transparent);
+    transform: scaleX(0);
+    transition: transform 0.6s ease 0.3s;
+  }
+  .stats-row.revealed .stat-item::before { transform: scaleX(1); }
+  .stat-number {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+    text-shadow: 0 0 20px rgba(200,168,85,0.4);
+  }
+  .stat-label { font-size: 11px; letter-spacing: 0.2em; color: var(--ash); text-transform: uppercase; }
+
+  /* ── Divider ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 48px;
+    opacity: 0;
+    transition: opacity 0.7s ease 0.2s;
+  }
+  .divider.revealed { opacity: 1; }
+  .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,168,85,0.3)); }
+  .divider-line.right { background: linear-gradient(90deg, rgba(200,168,85,0.3), transparent); }
+  .divider-gem { color: var(--gold); font-size: 12px; }
+
+  /* ── Footer ── */
+  footer {
+    position: relative;
+    z-index: 2;
+    padding: 60px 24px 40px;
+    text-align: center;
+    border-top: 1px solid rgba(61,26,26,0.4);
+  }
+  .footer-ornament {
+    width: 300px;
+    margin: 0 auto 32px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position: relative;
+  }
+  .footer-title { font-family: 'Cinzel', serif; font-size: 20px; color: var(--gold); margin-bottom: 24px; }
+  .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+  .footer-link {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: var(--ash);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    padding: 12px 28px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .footer-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(200,168,85,0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .footer-link:hover { color: var(--gold); border-color: rgba(200,168,85,0.5); box-shadow: 0 0 20px rgba(200,168,85,0.1); }
+  .footer-link:hover::before { opacity: 1; }
+  .footer-credit { font-size: 11px; color: rgba(168,152,128,0.35); letter-spacing: 0.15em; }
+
+  /* ── Keyframes ── */
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(1.2); }
+  }
+  @keyframes glowPulse {
+    0%, 100% { text-shadow: 0 0 20px rgba(200,168,85,0.3); }
+    50% { text-shadow: 0 0 40px rgba(200,168,85,0.7), 0 0 80px rgba(200,168,85,0.3); }
+  }
+  @keyframes emberFlicker {
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(224,90,0,0.5)); transform: rotate(-2deg); }
+    33% { filter: drop-shadow(0 0 14px rgba(224,90,0,0.8)); transform: rotate(1deg); }
+    66% { filter: drop-shadow(0 0 6px rgba(224,90,0,0.4)); transform: rotate(-1deg); }
+  }
+  @keyframes runeGlow {
+    0%, 100% { opacity: 0.04; }
+    50% { opacity: 0.07; }
+  }
+
+  /* ── Milestone timeline ── */
+  .milestone-nav {
+    display: flex;
+    gap: 0;
+    margin-bottom: 48px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s;
+  }
+  .milestone-nav::-webkit-scrollbar { display: none; }
+  .milestone-nav.revealed { opacity: 1; transform: translateY(0); }
+  .mnav-item {
+    flex: 1;
+    min-width: 80px;
+    padding: 10px 6px;
+    text-align: center;
+    border-bottom: 2px solid rgba(61,26,26,0.4);
+    position: relative;
+    cursor: default;
+  }
+  .mnav-item.current { border-bottom-color: var(--ember); }
+  .mnav-item-num {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--ash);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .mnav-item.current .mnav-item-num { color: var(--gold); }
+  .mnav-item-label { font-size: 9px; letter-spacing: 0.1em; color: rgba(168,152,128,0.4); text-transform: uppercase; }
+  .mnav-item.current .mnav-item-label { color: var(--ember); }
+  .mnav-dot {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(61,26,26,0.6);
+    border: 1px solid rgba(61,26,26,0.8);
+  }
+  .mnav-item.current .mnav-dot { background: var(--ember); border-color: var(--ember); box-shadow: 0 0 8px rgba(224,90,0,0.6); }
+
+  @media (max-width: 680px) {
+    .rune-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    .parchment { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- Background -->
+<div id="bg-layer"><div id="bg-noise"></div></div>
+
+<!-- Particle canvas -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- ════════════════════════════ HERO ════════════════════════════ -->
+<section id="hero" class="parallax-scene">
+  <div class="hero-rune parallax-layer" data-depth="0.02" style="animation: runeGlow 6s ease-in-out infinite;">M79</div>
+
+  <div class="parallax-layer" data-depth="0.06" style="width:100%;text-align:center;">
+    <div class="hero-tag">Development Dispatch</div>
+    <h1 id="hero-title">Vagrant &amp; <span>Ash</span></h1>
+    <p id="hero-subtitle">Milestone 79 Report</p>
+    <p id="hero-date">April 10, 2026</p>
+    <div class="hero-ornament"></div>
+    <div id="cycling-text-wrapper">
+      <div class="cycling-line" id="cycling-text">The road grows longer</div>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint parallax-layer" data-depth="0.0">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ STATS BAR ════════════════════════════ -->
+<div class="container">
+  <div class="stats-row" id="stats-row">
+    <div class="stat-item"><span class="stat-number" data-target="79">0</span><span class="stat-label">Milestone</span></div>
+    <div class="stat-item"><span class="stat-number" data-target="9">0</span><span class="stat-label">Milestones</span></div>
+    <div class="stat-item"><span class="stat-number" data-target="6">0</span><span class="stat-label">Weapon Traits</span></div>
+    <div class="stat-item"><span class="stat-number" data-target="7">0</span><span class="stat-label">Enemy Traits</span></div>
+    <div class="stat-item"><span class="stat-number" data-target="4">0</span><span class="stat-label">Event Chains</span></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ FEATURES ════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label reveal-item">M71 – M79</div>
+    <h2 class="section-title reveal-item">What's <em>New</em></h2>
+
+    <!-- Milestone nav timeline -->
+    <div class="milestone-nav reveal-item">
+      <div class="mnav-item"><span class="mnav-item-num">M71</span><span class="mnav-item-label">Weapon Traits</span><div class="mnav-dot"></div></div>
+      <div class="mnav-item"><span class="mnav-item-num">M72</span><span class="mnav-item-label">Combat Depth</span><div class="mnav-dot"></div></div>
+      <div class="mnav-item"><span class="mnav-item-num">M73</span><span class="mnav-item-label">Journey Polish</span><div class="mnav-dot"></div></div>
+      <div class="mnav-item"><span class="mnav-item-num">M74</span><span class="mnav-item-label">Town Depth</span><div class="mnav-dot"></div></div>
+      <div class="mnav-item"><span class="mnav-item-num">M75</span><span class="mnav-item-label">Skills</span><div class="mnav-dot"></div></div>
+      <div class="mnav-item"><span class="mnav-item-num">M76</span><span class="mnav-item-label">Run Stats</span><div class="mnav-dot"></div></div>
+      <div class="mnav-item"><span class="mnav-item-num">M77</span><span class="mnav-item-label">Event Chains</span><div class="mnav-dot"></div></div>
+      <div class="mnav-item"><span class="mnav-item-num">M78</span><span class="mnav-item-label">Char. Creation</span><div class="mnav-dot"></div></div>
+      <div class="mnav-item current"><span class="mnav-item-num">M79</span><span class="mnav-item-label">Current</span><div class="mnav-dot"></div></div>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card reveal-item" data-delay="0">
+        <div class="card-glow"></div>
+        <span class="card-milestone">M71</span>
+        <span class="card-icon">⚔️</span>
+        <div class="card-badge">Combat</div>
+        <div class="card-title">Weapon Traits System</div>
+        <div class="card-body">
+          Six distinct trait types reshape how weapons feel in combat.
+          <ul>
+            <li>Quick · Reach · Heavy · Ranged</li>
+            <li>Versatile · Brutal</li>
+            <li>Weapon-specific attack verbs</li>
+            <li>Trait badges in inventory and combat UI</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="1">
+        <div class="card-glow"></div>
+        <span class="card-milestone">M72</span>
+        <span class="card-icon">🐺</span>
+        <div class="card-badge">Combat</div>
+        <div class="card-title">Enemy Trait Mechanics</div>
+        <div class="card-body">
+          Seven enemy traits fully wired into combat resolution.
+          <ul>
+            <li>Pack — wolf strength in numbers</li>
+            <li>Venomous — poison on hit</li>
+            <li>Ambush — +2 first round</li>
+            <li>Charge — double first hit</li>
+            <li>Coward — flee at half HP</li>
+            <li>Armored · Ethereal (20% miss)</li>
+          </ul>
+          Seeded RNG throughout.
+        </div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="2">
+        <div class="card-glow"></div>
+        <span class="card-milestone">M73</span>
+        <span class="card-icon">🌄</span>
+        <div class="card-badge">UX</div>
+        <div class="card-title">Journey Screen Polish</div>
+        <div class="card-body">
+          The road now reads at a glance.
+          <ul>
+            <li>Distance progress bar in leagues</li>
+            <li>Resource color: normal → amber → red</li>
+            <li>Day/night indicator (☀ / ☽)</li>
+            <li>Party HP bars + condition badges</li>
+            <li>Weather mechanical effects display</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="3">
+        <div class="card-glow"></div>
+        <span class="card-milestone">M74</span>
+        <span class="card-icon">🏘️</span>
+        <div class="card-badge">Town</div>
+        <div class="card-title">Town Depth</div>
+        <div class="card-body">
+          Settlements feel like places worth visiting.
+          <ul>
+            <li>Reputation: Stranger → Known → Regular</li>
+            <li>Rumor boards per town</li>
+            <li>Healer treats conditions (8 gold)</li>
+            <li>Tavern full-rest (+morale +HP +food)</li>
+            <li>Low Stock badges on scarce items</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="4">
+        <div class="card-glow"></div>
+        <span class="card-milestone">M75</span>
+        <span class="card-icon">📈</span>
+        <div class="card-badge">Progression</div>
+        <div class="card-title">Skill Progression</div>
+        <div class="card-body">
+          Skills grow from use — no menus, no points.
+          <ul>
+            <li>5 uses per rank · max rank 5</li>
+            <li>Progress chips on camp party panel</li>
+            <li>All checks track usage automatically</li>
+            <li>Rank-up notification on improvement</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="5">
+        <div class="card-glow"></div>
+        <span class="card-milestone">M76</span>
+        <span class="card-icon">📜</span>
+        <div class="card-badge">Epitaph</div>
+        <div class="card-title">Run Statistics</div>
+        <div class="card-body">
+          Every death is now a memorial worth reading.
+          <ul>
+            <li>Tracks: encounters, combats, items, damage</li>
+            <li>Game Over shows full Run Summary</li>
+            <li>Memorial stone visual treatment</li>
+            <li>"Copy Epitaph" for shareable text</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="6">
+        <div class="card-glow"></div>
+        <span class="card-milestone">M77</span>
+        <span class="card-icon">🔗</span>
+        <div class="card-badge">Encounters</div>
+        <div class="card-title">Event Chains</div>
+        <div class="card-body">
+          Four multi-part narratives thread across travel.
+          <ul>
+            <li>The Stranger · The Abandoned Cart</li>
+            <li>The Smoke · The Wounded Deer</li>
+            <li>Follow-ups queue on next travel segment</li>
+            <li>Weight-0 chains never pollute random draw</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="7">
+        <div class="card-glow"></div>
+        <span class="card-milestone">M78</span>
+        <span class="card-icon">🧑‍🎨</span>
+        <div class="card-badge">Creation</div>
+        <div class="card-title">Character Creation Polish</div>
+        <div class="card-body">
+          The first five minutes now feel intentional.
+          <ul>
+            <li>Background preview panel (live hover)</li>
+            <li>✦ Synergy badge for matching traits</li>
+            <li>Randomize via seeded RNG, all fields</li>
+            <li>70 race-specific name suggestions</li>
+            <li>Step indicator for creation flow</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ BUGS & CONCERNS ════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label reveal-item">Known Issues</div>
+    <h2 class="section-title reveal-item">Bugs &amp; <em>Concerns</em></h2>
+
+    <ul class="bug-list">
+      <li class="bug-item reveal-item" data-delay="0">
+        <span class="bug-icon">⚠️</span>
+        <div class="bug-text">
+          <strong>Event Chain — Overly Aggressive Clear</strong>
+          Clearing <code style="font-size:12px;color:var(--ember);background:rgba(224,90,0,0.08);padding:1px 5px;border-radius:2px;">pendingEncounter</code> on every travel tick may be too aggressive — rapid travel taps can skip a follow-up encounter before it fires.
+        </div>
+      </li>
+      <li class="bug-item reveal-item" data-delay="1">
+        <span class="bug-icon">⚠️</span>
+        <div class="bug-text">
+          <strong>Skill Rank-Up Visibility Gap</strong>
+          Progression resets on death by design, but there is no indicator showing "close to ranking up X" until after the first use of that skill. Players discover their progress retroactively.
+        </div>
+      </li>
+      <li class="bug-item reveal-item" data-delay="2">
+        <span class="bug-icon">⚠️</span>
+        <div class="bug-text">
+          <strong>Reputation Save Edge Case</strong>
+          The reputation system reads <code style="font-size:12px;color:var(--ember);background:rgba(224,90,0,0.08);padding:1px 5px;border-radius:2px;">visitedSettlements</code> but this key may not persist correctly across all save/load paths — needs cross-slot testing.
+        </div>
+      </li>
+      <li class="bug-item reveal-item" data-delay="3">
+        <span class="bug-icon">⚠️</span>
+        <div class="bug-text">
+          <strong>Step Indicator — No Transition Animation</strong>
+          The character creation step indicator updates state correctly but does not animate between steps — the change feels abrupt on mobile.
+        </div>
+      </li>
+      <li class="bug-item reveal-item" data-delay="4">
+        <span class="bug-icon">🐛</span>
+        <div class="bug-text">
+          <strong>Coward Flee — Message Without Effect</strong>
+          Enemy <em>coward</em> flee logic displays a "they flee!" message but does not remove the enemy from the combat state — it continues to act on subsequent turns as though nothing happened.
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ════════════════════════════ SUGGESTIONS ════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label reveal-item">Design Notes</div>
+    <h2 class="section-title reveal-item">Suggestions &amp; <em>Ideas</em></h2>
+
+    <ul class="suggestion-list">
+      <li class="suggestion-item reveal-item" data-delay="0">
+        <span class="suggestion-icon">🏃</span>
+        <div class="suggestion-text">
+          <strong>Enemy Flee — Real Consequence</strong>
+          The <code style="font-size:12px;color:var(--gold);background:rgba(200,168,85,0.08);padding:1px 5px;border-radius:2px;">fleeAttempt</code> flag needs to actually end the fight or present a "let them run / give chase" choice. Right now it is purely cosmetic.
+        </div>
+      </li>
+      <li class="suggestion-item reveal-item" data-delay="1">
+        <span class="suggestion-icon">🎓</span>
+        <div class="suggestion-text">
+          <strong>Skill Caps — Background Synergy</strong>
+          Background-granted free skills feel underused. They should count toward the rank-up threshold so starting characters feel meaningfully ahead in their specialty.
+        </div>
+      </li>
+      <li class="suggestion-item reveal-item" data-delay="2">
+        <span class="suggestion-icon">🗣️</span>
+        <div class="suggestion-text">
+          <strong>Rumor Payoffs — Real World Flags</strong>
+          Rumors should occasionally reference active world flags. "That merchant" on a rumor board becomes the <code style="font-size:12px;color:var(--gold);background:rgba(200,168,85,0.08);padding:1px 5px;border-radius:2px;">wandering_merchant</code> encounter two days later.
+        </div>
+      </li>
+      <li class="suggestion-item reveal-item" data-delay="3">
+        <span class="suggestion-icon">🌿</span>
+        <div class="suggestion-text">
+          <strong>Chain Branching — World Memory</strong>
+          Event chains could branch based on prior world flags. If you have met a soldier before, the <code style="font-size:12px;color:var(--gold);background:rgba(200,168,85,0.08);padding:1px 5px;border-radius:2px;">road_stranger</code> dialogue opens a different path.
+        </div>
+      </li>
+      <li class="suggestion-item reveal-item" data-delay="4">
+        <span class="suggestion-icon">📊</span>
+        <div class="suggestion-text">
+          <strong>Mid-Run Stats Screen</strong>
+          Players have no way to view current run statistics while alive. A mid-run stats overlay — accessible from the journey screen — would surface engagement data and reinforce investment.
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ════════════════════════════ BRAINSTORM / CAMPFIRE ════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label reveal-item">Design Thinking</div>
+    <h2 class="section-title reveal-item">What Makes the <em>Road Feel Alive?</em></h2>
+
+    <div class="parchment reveal-item">
+      <div class="parchment-corner tl"></div>
+      <div class="parchment-corner tr"></div>
+      <div class="parchment-corner bl"></div>
+      <div class="parchment-corner br"></div>
+
+      <div class="fire-header">
+        <span class="fire-header-icon">🔥</span>
+        <span class="fire-header-text">Campfire Dispatch — Two Travelers on the Road</span>
+      </div>
+
+      <div class="dialogue-block">
+        <div class="dialogue-line">
+          <span class="dialogue-speaker">A</span>
+          <span class="dialogue-quote">"What's missing from this road?"</span>
+        </div>
+        <div class="dialogue-line">
+          <span class="dialogue-speaker b">B</span>
+          <span class="dialogue-quote">"Stakes. Every encounter feels the same weight."</span>
+        </div>
+        <div class="dialogue-line">
+          <span class="dialogue-speaker">A</span>
+          <span class="dialogue-quote">"So weight some higher. Make the bandit toll matter more if you're out of food."</span>
+        </div>
+        <div class="dialogue-line">
+          <span class="dialogue-speaker b">B</span>
+          <span class="dialogue-quote highlight">"The world should remember your choices. A rumor you dismissed comes back."</span>
+        </div>
+        <div class="dialogue-line">
+          <span class="dialogue-speaker">A</span>
+          <span class="dialogue-quote">"Follow-up events. You help someone, they show up again two days later."</span>
+        </div>
+        <div class="dialogue-line">
+          <span class="dialogue-speaker b">B</span>
+          <span class="dialogue-quote">"Weather that changes your options, not just your resources."</span>
+        </div>
+        <div class="dialogue-line">
+          <span class="dialogue-speaker">A</span>
+          <span class="dialogue-quote highlight">"A storm that forces you off the main road entirely."</span>
+        </div>
+        <div class="dialogue-line">
+          <span class="dialogue-speaker b">B</span>
+          <span class="dialogue-quote">"And what waits on that side road?"</span>
+        </div>
+        <div class="dialogue-line">
+          <span class="dialogue-speaker">A</span>
+          <span class="dialogue-quote">"That's the question that keeps you playing."</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ WISHLIST — RUNE CARDS ════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label reveal-item">Next Sprint</div>
+    <h2 class="section-title reveal-item">Wishlist — <em>The Rune Stones</em></h2>
+
+    <div class="divider reveal-item">
+      <div class="divider-line"></div>
+      <span class="divider-gem">◆</span>
+      <div class="divider-line right"></div>
+    </div>
+
+    <div class="rune-grid">
+      <div class="rune-card reveal-item" data-delay="0">
+        <div class="rune-card-glow"></div>
+        <span class="rune-card-number">I</span>
+        <span class="rune-icon">💾</span>
+        <div class="rune-title">Mid-Run Save Points</div>
+        <div class="rune-desc">Checkpoints for long sessions — rest at a safe settlement to mark your progress without triggering full permadeath.</div>
+      </div>
+      <div class="rune-card reveal-item" data-delay="1">
+        <div class="rune-card-glow"></div>
+        <span class="rune-card-number">II</span>
+        <span class="rune-icon">⚖️</span>
+        <div class="rune-title">Faction Reputation</div>
+        <div class="rune-desc">Three factions, each tracking your deeds. Reputation shifts encounter tables, prices, and which doors open.</div>
+      </div>
+      <div class="rune-card reveal-item" data-delay="2">
+        <div class="rune-card-glow"></div>
+        <span class="rune-card-number">III</span>
+        <span class="rune-icon">🌙</span>
+        <div class="rune-title">Day/Night Encounters</div>
+        <div class="rune-desc">Night travel is faster but draws from a darker pool. Predators hunt. Strange lights appear. The road is not the same after dark.</div>
+      </div>
+      <div class="rune-card reveal-item" data-delay="3">
+        <div class="rune-card-glow"></div>
+        <span class="rune-card-number">IV</span>
+        <span class="rune-icon">🧙</span>
+        <div class="rune-title">Companion NPC</div>
+        <div class="rune-desc">A character who joins temporarily — their own personality, morale threshold, and reason for walking this road.</div>
+      </div>
+      <div class="rune-card reveal-item" data-delay="4">
+        <div class="rune-card-glow"></div>
+        <span class="rune-card-number">V</span>
+        <span class="rune-icon">🔨</span>
+        <div class="rune-title">Camp Crafting Table</div>
+        <div class="rune-desc">Combine two ingredients into something useful. Medicine from herbs. Torches from wood and fat. Decisions at rest.</div>
+      </div>
+      <div class="rune-card reveal-item" data-delay="5">
+        <div class="rune-card-glow"></div>
+        <span class="rune-card-number">VI</span>
+        <span class="rune-icon">🗺️</span>
+        <div class="rune-title">Map Reveal</div>
+        <div class="rune-desc">The route uncovers itself as you travel. Fog lifts. Landmarks emerge. The road behind feels earned.</div>
+      </div>
+      <div class="rune-card reveal-item" data-delay="6">
+        <div class="rune-card-glow"></div>
+        <span class="rune-card-number">VII</span>
+        <span class="rune-icon">🐴</span>
+        <div class="rune-title">Mounted Travel</div>
+        <div class="rune-desc">A horse reduces water cost per segment but demands feed daily. Faster with upkeep — a strategic resource gamble.</div>
+      </div>
+      <div class="rune-card reveal-item" data-delay="7">
+        <div class="rune-card-glow"></div>
+        <span class="rune-card-number">VIII</span>
+        <span class="rune-icon">🍂</span>
+        <div class="rune-title">Seasonal Events</div>
+        <div class="rune-desc">Time of year reshapes the encounter pool. Winter starves the road. Harvest season fills it. The world does not stand still.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ FOOTER ════════════════════════════ -->
+<footer>
+  <div class="footer-ornament"></div>
+  <div class="footer-title">Vagrant &amp; Ash</div>
+  <div class="footer-links">
+    <a href="https://radgh.github.io/RSG-Demos/game8/" class="footer-link" target="_blank">Play M79</a>
+    <a href="./index.html" class="footer-link">All Reports</a>
+  </div>
+  <div class="footer-credit">Generated with Claude Code &nbsp;|&nbsp; Vagrant &amp; Ash M79 &nbsp;|&nbsp; April 2026</div>
+</footer>
+
+<!-- ════════════════════════════ SCRIPTS ════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  // ── State ──────────────────────────────────────────────────────────────────
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let targetMouseX = mouseX;
+  let targetMouseY = mouseY;
+  let cursorX = mouseX;
+  let cursorY = mouseY;
+  let ringX = mouseX;
+  let ringY = mouseY;
+
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  const bgLayer = document.getElementById('bg-layer');
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+
+  // ── Canvas resize ──────────────────────────────────────────────────────────
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  // ── Mouse tracking ─────────────────────────────────────────────────────────
+  document.addEventListener('mousemove', function (e) {
+    targetMouseX = e.clientX;
+    targetMouseY = e.clientY;
+  });
+
+  // ── Particle System ────────────────────────────────────────────────────────
+  const PARTICLE_COUNT = 60;
+  const particles = [];
+
+  function randomBetween(a, b) { return a + Math.random() * (b - a); }
+
+  function createParticle(x, y) {
+    var fromCursor = x !== undefined;
+    return {
+      x: fromCursor ? x : randomBetween(0, canvas.width),
+      y: fromCursor ? y : randomBetween(canvas.height * 0.2, canvas.height),
+      vx: randomBetween(-0.5, 0.5),
+      vy: randomBetween(-1.2, -0.3),
+      life: fromCursor ? 1.0 : randomBetween(0.2, 1.0),
+      maxLife: randomBetween(3.0, 7.0),
+      size: randomBetween(1.5, 4),
+      hue: randomBetween(10, 40),
+      brightness: randomBetween(60, 100),
+      wobble: randomBetween(0, Math.PI * 2),
+      wobbleSpeed: randomBetween(0.01, 0.04),
+      flicker: Math.random() > 0.6
+    };
+  }
+
+  for (var i = 0; i < PARTICLE_COUNT; i++) particles.push(createParticle());
+
+  var lastCursorTrail = 0;
+  var cursorTrailParticles = [];
+
+  function updateParticles(dt, timestamp) {
+    if (timestamp - lastCursorTrail > 80 && Math.hypot(targetMouseX - mouseX, targetMouseY - mouseY) > 4) {
+      cursorTrailParticles.push(createParticle(targetMouseX, targetMouseY));
+      if (cursorTrailParticles.length > 30) cursorTrailParticles.shift();
+      lastCursorTrail = timestamp;
+    }
+
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.wobble += p.wobbleSpeed;
+      p.vx = Math.sin(p.wobble) * 0.4;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.life -= dt * 0.14;
+
+      var dx = p.x - mouseX;
+      var dy = p.y - mouseY;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        var force = (120 - dist) / 120 * 0.3;
+        p.vx += (dx / dist) * force;
+        p.vy += (dy / dist) * force * 0.5;
+      }
+
+      if (p.life <= 0 || p.y < -20 || p.x < -20 || p.x > canvas.width + 20) {
+        particles[i] = createParticle();
+      }
+    }
+
+    for (var j = cursorTrailParticles.length - 1; j >= 0; j--) {
+      var tp = cursorTrailParticles[j];
+      tp.wobble += tp.wobbleSpeed;
+      tp.x += tp.vx + Math.sin(tp.wobble) * 0.3;
+      tp.y += tp.vy;
+      tp.life -= dt * 0.4;
+      if (tp.life <= 0) cursorTrailParticles.splice(j, 1);
+    }
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      var alpha = Math.min(p.life, 1) * (p.flicker ? (0.5 + Math.sin(p.wobble * 3) * 0.3) : 0.7);
+      var r = p.size * Math.min(p.life, 1);
+      if (r <= 0 || alpha <= 0) continue;
+
+      var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 2.5);
+      grad.addColorStop(0, 'hsla(' + p.hue + ', 90%, ' + p.brightness + '%, ' + alpha + ')');
+      grad.addColorStop(0.5, 'hsla(' + (p.hue - 5) + ', 80%, 50%, ' + (alpha * 0.5) + ')');
+      grad.addColorStop(1, 'hsla(' + p.hue + ', 70%, 30%, 0)');
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r * 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+
+    for (var j = 0; j < cursorTrailParticles.length; j++) {
+      var tp = cursorTrailParticles[j];
+      var talpha = tp.life * 0.9;
+      var tr = tp.size * 0.8;
+      if (tr <= 0 || talpha <= 0) continue;
+
+      var tgrad = ctx.createRadialGradient(tp.x, tp.y, 0, tp.x, tp.y, tr * 3);
+      tgrad.addColorStop(0, 'rgba(255, 200, 80, ' + talpha + ')');
+      tgrad.addColorStop(0.4, 'rgba(224, 90, 0, ' + (talpha * 0.6) + ')');
+      tgrad.addColorStop(1, 'rgba(200, 168, 85, 0)');
+
+      ctx.beginPath();
+      ctx.arc(tp.x, tp.y, tr * 3, 0, Math.PI * 2);
+      ctx.fillStyle = tgrad;
+      ctx.fill();
+    }
+  }
+
+  // ── Parallax ───────────────────────────────────────────────────────────────
+  var parallaxLayers = document.querySelectorAll('.parallax-layer');
+
+  function updateParallax() {
+    var cx = window.innerWidth / 2;
+    var cy = window.innerHeight / 2;
+    var rx = (mouseX - cx) / cx;
+    var ry = (mouseY - cy) / cy;
+
+    parallaxLayers.forEach(function (el) {
+      var depth = parseFloat(el.dataset.depth) || 0.05;
+      var tx = rx * depth * 60;
+      var ty = ry * depth * 40;
+      el.style.transform = 'translate(' + tx + 'px, ' + ty + 'px)';
+    });
+
+    var pct_x = (mouseX / window.innerWidth * 100).toFixed(1);
+    var pct_y = (mouseY / window.innerHeight * 100).toFixed(1);
+    bgLayer.style.setProperty('--mx', pct_x + '%');
+    bgLayer.style.setProperty('--my', pct_y + '%');
+  }
+
+  // ── 3D Card Tilt ───────────────────────────────────────────────────────────
+  function attachTilt(selector, maxAngle, zDepth) {
+    var cards = document.querySelectorAll(selector);
+    cards.forEach(function (card) {
+      var glow = card.querySelector('.card-glow, .rune-card-glow');
+
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        var cx = rect.width / 2;
+        var cy = rect.height / 2;
+        var rx = ((y - cy) / cy) * -maxAngle;
+        var ry = ((x - cx) / cx) * maxAngle;
+
+        card.style.transform = 'perspective(800px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateZ(' + zDepth + 'px)';
+        card.style.transition = 'box-shadow 0.3s, border-color 0.3s';
+
+        card.style.setProperty('--rx', ((x / rect.width) * 100).toFixed(1) + '%');
+        card.style.setProperty('--ry', ((y / rect.height) * 100).toFixed(1) + '%');
+
+        if (glow) {
+          glow.style.left = x + 'px';
+          glow.style.top = y + 'px';
+        }
+      });
+
+      card.addEventListener('mouseleave', function () {
+        card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+        card.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s, border-color 0.3s';
+      });
+    });
+  }
+
+  attachTilt('.feature-card', 12, 8);
+  attachTilt('.rune-card', 8, 5);
+  attachTilt('.bug-item', 4, 3);
+  attachTilt('.suggestion-item', 4, 3);
+
+  // ── Cycling text ───────────────────────────────────────────────────────────
+  var lines = ['The road grows longer', 'Every choice echoes', 'Deeper into the ash'];
+  var lineIdx = 0;
+  var cyclingEl = document.getElementById('cycling-text');
+
+  function nextLine() {
+    cyclingEl.style.transition = 'transform 0.5s cubic-bezier(0.76,0,0.24,1), opacity 0.5s ease';
+    cyclingEl.style.transform = 'translateY(-28px)';
+    cyclingEl.style.opacity = '0';
+
+    setTimeout(function () {
+      lineIdx = (lineIdx + 1) % lines.length;
+      cyclingEl.textContent = lines[lineIdx];
+      cyclingEl.style.transition = 'none';
+      cyclingEl.style.transform = 'translateY(28px)';
+      cyclingEl.style.opacity = '0';
+
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          cyclingEl.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1), opacity 0.5s ease';
+          cyclingEl.style.transform = 'translateY(0)';
+          cyclingEl.style.opacity = '1';
+        });
+      });
+    }, 500);
+  }
+
+  setInterval(nextLine, 3200);
+
+  // ── IntersectionObserver reveals ──────────────────────────────────────────
+  var revealItems = document.querySelectorAll('.reveal-item');
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var delay = (parseInt(el.dataset.delay) || 0) * 80;
+        setTimeout(function () { el.classList.add('revealed'); }, delay);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealItems.forEach(function (el) { observer.observe(el); });
+
+  // ── Stat counter animation ─────────────────────────────────────────────────
+  var statsRow = document.getElementById('stats-row');
+  var statNumbers = statsRow.querySelectorAll('.stat-number');
+  var statsAnimated = false;
+
+  var statsObserver = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting && !statsAnimated) {
+      statsAnimated = true;
+      statsRow.classList.add('revealed');
+
+      statNumbers.forEach(function (el, i) {
+        var target = parseInt(el.dataset.target, 10);
+        var duration = 1200;
+        var start = performance.now();
+        function tick(now) {
+          var progress = Math.min((now - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target);
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target;
+        }
+        setTimeout(function () { requestAnimationFrame(tick); }, i * 120);
+      });
+    }
+  }, { threshold: 0.3 });
+
+  statsObserver.observe(statsRow);
+
+  // ── Hero title glow pulse ──────────────────────────────────────────────────
+  var heroTitle = document.getElementById('hero-title');
+  if (heroTitle) {
+    heroTitle.style.animation = 'glowPulse 4s ease-in-out infinite 2s, fadeSlideDown 0.9s ease 0.5s forwards';
+  }
+
+  // ── Main animation loop ────────────────────────────────────────────────────
+  var lastTimestamp = 0;
+
+  function loop(timestamp) {
+    var dt = Math.min((timestamp - lastTimestamp) / 16.67, 3);
+    lastTimestamp = timestamp;
+
+    cursorX += (targetMouseX - cursorX) * 0.25;
+    cursorY += (targetMouseY - cursorY) * 0.25;
+    ringX += (targetMouseX - ringX) * 0.12;
+    ringY += (targetMouseY - ringY) * 0.12;
+    mouseX += (targetMouseX - mouseX) * 0.1;
+    mouseY += (targetMouseY - mouseY) * 0.1;
+
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+
+    updateParallax();
+    updateParticles(dt, timestamp);
+    drawParticles();
+
+    requestAnimationFrame(loop);
+  }
+
+  requestAnimationFrame(loop);
+
+})();
+</script>
+</body>
+</html>
