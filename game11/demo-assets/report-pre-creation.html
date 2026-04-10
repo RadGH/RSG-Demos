@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stormtown — Pre-Creation Design Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a14;
+    --bg2: #0f0f1e;
+    --bg3: #13131f;
+    --gold: #ffcc44;
+    --gold-dim: #c8991a;
+    --blue: #4488ff;
+    --blue-dim: #2255bb;
+    --red: #ff4422;
+    --red-dim: #aa2211;
+    --text: #d0d0e0;
+    --text-dim: #7070a0;
+    --border: #1e1e38;
+    --border-bright: #2a2a50;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── LIGHTNING OVERLAY ─────────────────────────────────────── */
+  #lightning-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background: rgba(180, 210, 255, 0.18);
+    opacity: 0;
+    transition: opacity 0.06s ease;
+  }
+
+  /* ─── HERO ──────────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 60%, #0e0e24 0%, #06060f 100%);
+    padding: 2rem;
+  }
+
+  /* Storm clouds background */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 40% at 20% 30%, rgba(30,30,80,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 30% at 80% 20%, rgba(20,20,60,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 100% 50% at 50% 80%, rgba(10,10,30,0.8) 0%, transparent 60%);
+    animation: cloudDrift 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes cloudDrift {
+    0%   { transform: translateX(0) scale(1); }
+    100% { transform: translateX(20px) scale(1.03); }
+  }
+
+  /* Rain streaks */
+  .rain-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rain-streak {
+    position: absolute;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(100,150,255,0.3), transparent);
+    animation: rainFall linear infinite;
+  }
+
+  @keyframes rainFall {
+    0%   { transform: translateY(-100px); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(110vh); opacity: 0; }
+  }
+
+  /* Tornado vortex */
+  .vortex-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    pointer-events: none;
+    opacity: 0.12;
+  }
+
+  .vortex-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: transparent;
+    transform-origin: center;
+  }
+
+  .vortex-ring:nth-child(1)  { width: 60px;  height: 60px;  margin: -30px 0 0 -30px;  border-top-color: var(--gold);   border-width: 3px; animation: spin 1.0s linear infinite; }
+  .vortex-ring:nth-child(2)  { width: 120px; height: 120px; margin: -60px 0 0 -60px;  border-top-color: var(--gold);   border-left-color: var(--gold-dim); border-width: 2px; animation: spin 1.4s linear infinite reverse; }
+  .vortex-ring:nth-child(3)  { width: 190px; height: 190px; margin: -95px 0 0 -95px;  border-top-color: var(--blue);   border-width: 2px; animation: spin 1.9s linear infinite; }
+  .vortex-ring:nth-child(4)  { width: 270px; height: 270px; margin: -135px 0 0 -135px; border-top-color: var(--blue);  border-left-color: var(--blue-dim); border-width: 2px; animation: spin 2.5s linear infinite reverse; }
+  .vortex-ring:nth-child(5)  { width: 360px; height: 360px; margin: -180px 0 0 -180px; border-top-color: rgba(68,136,255,0.5); border-width: 1px; animation: spin 3.2s linear infinite; }
+  .vortex-ring:nth-child(6)  { width: 460px; height: 460px; margin: -230px 0 0 -230px; border-top-color: rgba(68,136,255,0.3); border-width: 1px; animation: spin 4.0s linear infinite reverse; }
+  .vortex-ring:nth-child(7)  { width: 560px; height: 560px; margin: -280px 0 0 -280px; border-top-color: rgba(68,136,255,0.15); border-width: 1px; animation: spin 5.0s linear infinite; }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Hero content */
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: 1px solid var(--border-bright);
+    padding: 0.3rem 1rem;
+    margin-bottom: 2rem;
+    background: rgba(10,10,20,0.6);
+  }
+
+  .tornado-icon {
+    display: block;
+    margin: 0 auto 1.5rem;
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 0 12px rgba(255,204,68,0.6));
+  }
+
+  .hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 10vw, 7rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow:
+      0 0 20px rgba(255,204,68,0.4),
+      0 0 60px rgba(255,204,68,0.15),
+      0 2px 0 rgba(0,0,0,0.8);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .hero-title span {
+    color: var(--gold);
+  }
+
+  .tagline {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--blue);
+    letter-spacing: 0.15em;
+    min-height: 2em;
+    margin-bottom: 2.5rem;
+  }
+
+  .tagline-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background: var(--blue);
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: blink 0.8s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .hero-meta-item {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  .hero-meta-item span {
+    color: var(--gold);
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.5;
+    animation: float 2s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+  }
+
+  .scroll-indicator span {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+  }
+
+  .scroll-arrow {
+    width: 16px;
+    height: 16px;
+    border-right: 2px solid var(--text-dim);
+    border-bottom: 2px solid var(--text-dim);
+    transform: rotate(45deg);
+  }
+
+  /* ─── CONTENT WRAPPER ───────────────────────────────────────── */
+  .content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ─── SECTION ───────────────────────────────────────────────── */
+  .section {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-child {
+    border-bottom: none;
+  }
+
+  .section-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    opacity: 0.8;
+  }
+
+  .section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: #fff;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .section-body {
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 740px;
+  }
+
+  /* ─── SLIDE-IN ANIMATION ────────────────────────────────────── */
+  .slide-in {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .slide-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── CONCEPT OVERVIEW ──────────────────────────────────────── */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .concept-card {
+    background: var(--bg2);
+    border: 1px solid var(--border-bright);
+    padding: 1.75rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    cursor: default;
+  }
+
+  .concept-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+  }
+
+  .concept-card.gold::before  { background: var(--gold); }
+  .concept-card.blue::before  { background: var(--blue); }
+  .concept-card.red::before   { background: var(--red); }
+
+  .concept-card:hover {
+    border-color: var(--border-bright);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+
+  .concept-card.gold:hover  { box-shadow: 0 8px 32px rgba(255,204,68,0.1); }
+  .concept-card.blue:hover  { box-shadow: 0 8px 32px rgba(68,136,255,0.1); }
+  .concept-card.red:hover   { box-shadow: 0 8px 32px rgba(255,68,34,0.1); }
+
+  .concept-card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .concept-card-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+
+  .concept-card-body {
+    font-size: 0.92rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ─── CORE LOOP ─────────────────────────────────────────────── */
+  .loop-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0;
+    margin-top: 2.5rem;
+    position: relative;
+  }
+
+  .loop-steps::before {
+    content: '';
+    position: absolute;
+    top: 3rem;
+    left: calc(50% / 5);
+    right: calc(50% / 5);
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), var(--blue), var(--red));
+    z-index: 0;
+    animation: progressLine 2s ease forwards;
+    transform-origin: left;
+  }
+
+  @keyframes progressLine {
+    from { scaleX: 0; opacity: 0; }
+    to   { scaleX: 1; opacity: 1; }
+  }
+
+  .loop-step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem 2rem;
+    transition: transform 0.3s;
+  }
+
+  .loop-step:hover {
+    transform: translateY(-4px);
+  }
+
+  .loop-step-number {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    border: 2px solid;
+    background: var(--bg);
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .loop-step:nth-child(1) .loop-step-number { color: var(--gold);  border-color: var(--gold);  box-shadow: 0 0 16px rgba(255,204,68,0.3); }
+  .loop-step:nth-child(2) .loop-step-number { color: var(--blue);  border-color: var(--blue);  box-shadow: 0 0 16px rgba(68,136,255,0.3); }
+  .loop-step:nth-child(3) .loop-step-number { color: var(--red);   border-color: var(--red);   box-shadow: 0 0 16px rgba(255,68,34,0.3); }
+  .loop-step:nth-child(4) .loop-step-number { color: var(--gold);  border-color: var(--gold);  box-shadow: 0 0 16px rgba(255,204,68,0.3); }
+  .loop-step:nth-child(5) .loop-step-number { color: var(--blue);  border-color: var(--blue);  box-shadow: 0 0 16px rgba(68,136,255,0.3); }
+
+  .loop-step-label {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .loop-step-desc {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* ─── FEATURES ──────────────────────────────────────────────── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+
+  .feature-item:hover {
+    border-color: var(--gold-dim);
+    box-shadow: 0 4px 24px rgba(255,204,68,0.08);
+    transform: translateX(4px);
+  }
+
+  .feature-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px rgba(255,204,68,0.6);
+  }
+
+  .feature-text {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .feature-text strong {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* ─── ENTITIES ──────────────────────────────────────────────── */
+  .entities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .entity-card {
+    background: var(--bg2);
+    border: 1px solid var(--border-bright);
+    padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .entity-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .entity-card.tornado::after { background: radial-gradient(ellipse at top left, rgba(68,136,255,0.05), transparent 70%); }
+  .entity-card.zombie::after  { background: radial-gradient(ellipse at top left, rgba(255,68,34,0.05), transparent 70%); }
+  .entity-card.sam::after     { background: radial-gradient(ellipse at top left, rgba(255,204,68,0.05), transparent 70%); }
+
+  .entity-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .entity-card.tornado:hover  { box-shadow: 0 12px 40px rgba(68,136,255,0.15); }
+  .entity-card.zombie:hover   { box-shadow: 0 12px 40px rgba(255,68,34,0.15); }
+  .entity-card.sam:hover      { box-shadow: 0 12px 40px rgba(255,204,68,0.15); }
+
+  .entity-card:hover::after { opacity: 1; }
+
+  .entity-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .entity-name {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .entity-card.tornado .entity-name { color: var(--blue); }
+  .entity-card.zombie  .entity-name { color: var(--red); }
+  .entity-card.sam     .entity-name { color: var(--gold); }
+
+  .entity-role {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .entity-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .entity-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .entity-stat-key {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--text-dim);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    min-width: 90px;
+  }
+
+  .entity-stat-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--border-bright);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .entity-stat-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 1s ease;
+    width: 0;
+  }
+
+  .entity-card.tornado .entity-stat-fill { background: var(--blue); }
+  .entity-card.zombie  .entity-stat-fill { background: var(--red); }
+  .entity-card.sam     .entity-stat-fill { background: var(--gold); }
+
+  .entity-stat-fill.loaded { width: var(--fill-width); }
+
+  /* ─── VISUAL DESIGN ─────────────────────────────────────────── */
+  .design-palette {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  }
+
+  .palette-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .swatch-color {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .swatch-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .design-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .design-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border-bright);
+    color: var(--text-dim);
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .design-tag:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  /* ─── MILESTONE TIMELINE ────────────────────────────────────── */
+  .timeline {
+    margin-top: 2.5rem;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-bright);
+  }
+
+  .timeline-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--blue), var(--red));
+    height: 0;
+    transition: height 1.5s ease;
+  }
+
+  .timeline-progress.loaded {
+    height: 100%;
+  }
+
+  .milestone-entry {
+    position: relative;
+    padding: 0 0 2.5rem 2rem;
+    transition: transform 0.3s;
+  }
+
+  .milestone-entry:hover {
+    transform: translateX(6px);
+  }
+
+  .milestone-dot {
+    position: absolute;
+    left: -2.5rem;
+    top: 0.2rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid;
+    background: var(--bg);
+    z-index: 1;
+  }
+
+  .milestone-entry:nth-child(2) .milestone-dot { border-color: var(--gold); box-shadow: 0 0 10px rgba(255,204,68,0.4); }
+  .milestone-entry:nth-child(3) .milestone-dot { border-color: var(--blue); box-shadow: 0 0 10px rgba(68,136,255,0.4); }
+  .milestone-entry:nth-child(4) .milestone-dot { border-color: var(--red);  box-shadow: 0 0 10px rgba(255,68,34,0.4); }
+
+  .milestone-number {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .milestone-entry:nth-child(2) .milestone-number { color: var(--gold); }
+  .milestone-entry:nth-child(3) .milestone-number { color: var(--blue); }
+  .milestone-entry:nth-child(4) .milestone-number { color: var(--red); }
+
+  .milestone-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .milestone-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .milestone-items li {
+    font-size: 0.88rem;
+    color: var(--text);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .milestone-items li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--text-dim);
+    font-size: 0.7rem;
+    top: 0.15rem;
+  }
+
+  /* ─── RISKS ─────────────────────────────────────────────────── */
+  .risks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .risk-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
+
+  .risk-item:hover {
+    border-left-color: var(--red);
+    border-color: var(--red-dim);
+    box-shadow: 0 4px 24px rgba(255,68,34,0.08);
+    transform: translateX(4px);
+  }
+
+  .risk-level {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid;
+    white-space: nowrap;
+    margin-top: 0.1rem;
+  }
+
+  .risk-level.high   { color: var(--red);  border-color: var(--red);  }
+  .risk-level.medium { color: var(--gold); border-color: var(--gold); }
+  .risk-level.low    { color: var(--blue); border-color: var(--blue); }
+
+  .risk-content-title {
+    font-weight: 600;
+    color: #fff;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .risk-content-desc {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* ─── IDEAS ─────────────────────────────────────────────────── */
+  .ideas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .idea-card {
+    padding: 1.5rem;
+    background: var(--bg2);
+    border: 1px solid var(--border-bright);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    cursor: default;
+  }
+
+  .idea-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(68,136,255,0.1);
+    border-color: var(--blue-dim);
+  }
+
+  .idea-card::before {
+    content: attr(data-index);
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+  }
+
+  .idea-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 0.6rem;
+  }
+
+  .idea-desc {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ─── FOOTER ────────────────────────────────────────────────── */
+  .report-footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border-bright);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .footer-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-date {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--gold);
+  }
+
+  .footer-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), var(--blue));
+    margin: 1.5rem auto;
+  }
+
+  .footer-note {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ─── RESPONSIVE ────────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .loop-steps::before { display: none; }
+    .loop-steps { gap: 1rem; }
+    .hero-meta { gap: 1rem; }
+    .timeline { padding-left: 1.5rem; }
+    .milestone-entry { padding-left: 1.5rem; }
+    .milestone-dot { left: -2rem; }
+  }
+
+  /* ─── DIVIDER ───────────────────────────────────────────────── */
+  .section-divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    margin-bottom: 2rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- Lightning overlay -->
+<div id="lightning-overlay"></div>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="rain-container" id="rainContainer"></div>
+
+  <div class="vortex-wrapper">
+    <div class="vortex-ring"></div>
+    <div class="vortex-ring"></div>
+    <div class="vortex-ring"></div>
+    <div class="vortex-ring"></div>
+    <div class="vortex-ring"></div>
+    <div class="vortex-ring"></div>
+    <div class="vortex-ring"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Pre-Creation Design Report &mdash; 2026-04-10</div>
+
+    <!-- SVG Tornado Icon -->
+    <svg class="tornado-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Tornado icon">
+      <ellipse cx="40" cy="18" rx="32" ry="8" fill="none" stroke="#ffcc44" stroke-width="2.5" opacity="0.9"/>
+      <ellipse cx="40" cy="32" rx="24" ry="6" fill="none" stroke="#ffcc44" stroke-width="2" opacity="0.8"/>
+      <ellipse cx="40" cy="44" rx="16" ry="4.5" fill="none" stroke="#ffcc44" stroke-width="1.8" opacity="0.7"/>
+      <ellipse cx="40" cy="54" rx="10" ry="3" fill="none" stroke="#ffcc44" stroke-width="1.5" opacity="0.6"/>
+      <ellipse cx="40" cy="62" rx="6" ry="2" fill="none" stroke="#ffcc44" stroke-width="1.2" opacity="0.5"/>
+      <line x1="40" y1="64" x2="40" y2="74" stroke="#ffcc44" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+      <circle cx="40" cy="76" r="2.5" fill="#ffcc44" opacity="0.5"/>
+      <!-- spin lines on top ellipse -->
+      <path d="M 16 14 Q 28 10 40 18 Q 52 26 64 22" stroke="#ffcc44" stroke-width="1" opacity="0.4" fill="none" stroke-dasharray="3 3"/>
+      <path d="M 22 32 Q 31 28 40 32 Q 49 36 58 32" stroke="#4488ff" stroke-width="1" opacity="0.4" fill="none" stroke-dasharray="3 2"/>
+    </svg>
+
+    <h1 class="hero-title">STORM<span>TOWN</span></h1>
+
+    <div class="tagline">
+      <span id="tagline-text"></span><span class="tagline-cursor"></span>
+    </div>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">ENGINE: <span>Phaser 3</span></div>
+      <div class="hero-meta-item">PLATFORM: <span>Web / Mobile</span></div>
+      <div class="hero-meta-item">GENRE: <span>Top-Down Survival</span></div>
+      <div class="hero-meta-item">STATUS: <span>Pre-Production</span></div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>SCROLL</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     CONCEPT OVERVIEW
+═══════════════════════════════════════════════════ -->
+<div class="content">
+
+  <section class="section slide-in">
+    <div class="section-label">01 &mdash; Concept Overview</div>
+    <h2 class="section-title">The Storm Has Come for Stormtown</h2>
+    <div class="section-divider"></div>
+    <p class="section-body">
+      Stormtown is a top-down survival web game set in a small town being torn apart by a catastrophic tornado outbreak. The player is trapped on foot, surrounded by roving zombie hordes drawn out by the chaos, and racing against a closing window of escape. Your only hope: find your friend Sam, who has the key to a waiting helicopter — and get out before the storm kills you both.
+    </p>
+    <p class="section-body" style="margin-top:1rem;">
+      The emotional tone is <strong style="color:var(--gold)">disaster thriller</strong> — tense, relentless, atmospheric. Every second outdoors is dangerous. Tornadoes rewrite the safe paths in real time. Zombies pressure you from every direction. The helicopter hums somewhere to the north. Sam is out there. Move.
+    </p>
+
+    <div class="concept-grid" style="margin-top:2.5rem;">
+      <div class="concept-card gold slide-in">
+        <div class="concept-card-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="16" stroke="#ffcc44" stroke-width="1.5" stroke-dasharray="4 2"/>
+            <circle cx="18" cy="18" r="10" stroke="#ffcc44" stroke-width="1.5" opacity="0.7" stroke-dasharray="3 2"/>
+            <circle cx="18" cy="18" r="4" fill="#ffcc44" opacity="0.9"/>
+          </svg>
+        </div>
+        <div class="concept-card-title">The Scenario</div>
+        <div class="concept-card-body">A freak tornado outbreak has devastated Stormtown. Roads are blocked. Power is out. The dead are walking. You have minutes before the next vortex descends.</div>
+      </div>
+      <div class="concept-card blue slide-in">
+        <div class="concept-card-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <rect x="6" y="8" width="24" height="20" rx="2" stroke="#4488ff" stroke-width="1.5"/>
+            <path d="M6 14h24" stroke="#4488ff" stroke-width="1"/>
+            <circle cx="18" cy="22" r="3" fill="#4488ff" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="concept-card-title">The Mission</div>
+        <div class="concept-card-body">Navigate a procedurally generated town grid. Locate Sam somewhere in the map. Retrieve the helicopter key. Reach the extraction zone. Do not die.</div>
+      </div>
+      <div class="concept-card red slide-in">
+        <div class="concept-card-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <path d="M18 4 L22 14 L32 14 L24 21 L27 32 L18 25 L9 32 L12 21 L4 14 L14 14 Z" stroke="#ff4422" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="concept-card-title">The Tension</div>
+        <div class="concept-card-body">Tornadoes move unpredictably and pull you toward them. Zombies close every open lane. Stamina limits your sprint. One wrong turn and you are cornered.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       CORE LOOP
+  ═══════════════════════════════════════════════════ -->
+  <section class="section slide-in">
+    <div class="section-label">02 &mdash; Core Loop</div>
+    <h2 class="section-title">Five Steps to Escape</h2>
+    <div class="section-divider"></div>
+    <p class="section-body">Every run follows the same high-stakes arc. Short enough to replay in minutes, tense enough that every run feels distinct.</p>
+
+    <div class="loop-steps">
+      <div class="loop-step slide-in">
+        <div class="loop-step-number">1</div>
+        <div class="loop-step-label">Spawn</div>
+        <div class="loop-step-desc">Player drops into a procedurally generated town grid. Sam's location is hidden. Tornadoes begin spawning at the edges.</div>
+      </div>
+      <div class="loop-step slide-in">
+        <div class="loop-step-number">2</div>
+        <div class="loop-step-label">Navigate</div>
+        <div class="loop-step-desc">Explore streets, alleyways, and building perimeters. Map awareness is key. Tornadoes shift safe corridors constantly.</div>
+      </div>
+      <div class="loop-step slide-in">
+        <div class="loop-step-number">3</div>
+        <div class="loop-step-label">Survive</div>
+        <div class="loop-step-desc">Dodge tornado suction zones and kill zones. Outmaneuver zombie clusters. Manage sprint/stamina to avoid getting cornered.</div>
+      </div>
+      <div class="loop-step slide-in">
+        <div class="loop-step-number">4</div>
+        <div class="loop-step-label">Rescue Sam</div>
+        <div class="loop-step-desc">Locate Sam, trigger rescue sequence, receive helicopter key. Sam becomes a follow-target — now protect them both.</div>
+      </div>
+      <div class="loop-step slide-in">
+        <div class="loop-step-number">5</div>
+        <div class="loop-step-label">Escape</div>
+        <div class="loop-step-desc">Reach the extraction zone with Sam alive. Storm intensifies as you approach. Victory — or start again.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       KEY FEATURES
+  ═══════════════════════════════════════════════════ -->
+  <section class="section slide-in">
+    <div class="section-label">03 &mdash; Key Features</div>
+    <h2 class="section-title">What Makes Stormtown Distinct</h2>
+    <div class="section-divider"></div>
+
+    <div class="features-grid">
+      <div class="feature-item slide-in">
+        <div class="feature-dot"></div>
+        <div class="feature-text"><strong>Massive tornadoes with suction physics</strong> — Multiple live tornadoes on screen at once, each with a dynamic suction radius that pulls the player off course and a lethal inner kill zone.</div>
+      </div>
+      <div class="feature-item slide-in">
+        <div class="feature-dot"></div>
+        <div class="feature-text"><strong>Zombie horde navigation</strong> — Slow-moving but numerous. Zombies spawn continuously and funnel into bottlenecks, forcing routing decisions under pressure.</div>
+      </div>
+      <div class="feature-item slide-in">
+        <div class="feature-dot"></div>
+        <div class="feature-text"><strong>Sprint and stamina system</strong> — Sprint burns a finite stamina bar. Overuse leaves the player sluggish at the worst moment. Tactical stamina management is essential.</div>
+      </div>
+      <div class="feature-item slide-in">
+        <div class="feature-dot"></div>
+        <div class="feature-text"><strong>Procedural town map</strong> — Every run generates a new grid of city blocks, alleys, and open plazas. No two escapes follow the same path.</div>
+      </div>
+      <div class="feature-item slide-in">
+        <div class="feature-dot"></div>
+        <div class="feature-text"><strong>Mobile virtual joystick</strong> — Full touch input via on-screen joystick for move direction plus a sprint button. Designed for iPhone 14 Pro at 393×852 CSS px portrait.</div>
+      </div>
+      <div class="feature-item slide-in">
+        <div class="feature-dot"></div>
+        <div class="feature-text"><strong>Full-screen progression flow</strong> — Title screen → gameplay → death/win screens, all within a single Phaser scene graph. No page reloads, no breaks in immersion.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       THREATS & ENTITIES
+  ═══════════════════════════════════════════════════ -->
+  <section class="section slide-in">
+    <div class="section-label">04 &mdash; Threats &amp; Entities</div>
+    <h2 class="section-title">Who and What Wants You Dead</h2>
+    <div class="section-divider"></div>
+
+    <div class="entities-grid">
+
+      <!-- Tornado -->
+      <div class="entity-card tornado slide-in">
+        <div class="entity-icon-wrapper">
+          <svg width="56" height="64" viewBox="0 0 56 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="28" cy="12" rx="24" ry="6" stroke="#4488ff" stroke-width="2"/>
+            <ellipse cx="28" cy="26" rx="17" ry="4.5" stroke="#4488ff" stroke-width="1.8" opacity="0.85"/>
+            <ellipse cx="28" cy="38" rx="11" ry="3" stroke="#4488ff" stroke-width="1.5" opacity="0.7"/>
+            <ellipse cx="28" cy="48" rx="6" ry="2" stroke="#4488ff" stroke-width="1.2" opacity="0.55"/>
+            <line x1="28" y1="50" x2="28" y2="59" stroke="#4488ff" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+            <circle cx="28" cy="61" r="2" fill="#4488ff" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="entity-name">Tornado</div>
+        <div class="entity-role">Environmental Threat / Boss Hazard</div>
+        <div class="entity-stats">
+          <div class="entity-stat">
+            <span class="entity-stat-key">SPEED</span>
+            <div class="entity-stat-bar"><div class="entity-stat-fill" style="--fill-width: 80%"></div></div>
+          </div>
+          <div class="entity-stat">
+            <span class="entity-stat-key">SUCTION RADIUS</span>
+            <div class="entity-stat-bar"><div class="entity-stat-fill" style="--fill-width: 90%"></div></div>
+          </div>
+          <div class="entity-stat">
+            <span class="entity-stat-key">LETHALITY</span>
+            <div class="entity-stat-bar"><div class="entity-stat-fill" style="--fill-width: 100%"></div></div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-dim); margin-top:1.25rem; line-height:1.6;">Moves on a wandering path that drifts toward the player periodically. Two zones: an outer suction field that drags the player in, and an inner kill zone that ends the run instantly.</p>
+      </div>
+
+      <!-- Zombie -->
+      <div class="entity-card zombie slide-in">
+        <div class="entity-icon-wrapper">
+          <svg width="48" height="64" viewBox="0 0 48 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="12" r="10" stroke="#ff4422" stroke-width="2"/>
+            <rect x="12" y="24" width="24" height="22" rx="3" stroke="#ff4422" stroke-width="1.8"/>
+            <line x1="12" y1="34" x2="2" y2="46" stroke="#ff4422" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="36" y1="34" x2="46" y2="42" stroke="#ff4422" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="18" y1="46" x2="16" y2="60" stroke="#ff4422" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="30" y1="46" x2="32" y2="60" stroke="#ff4422" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="20" cy="11" r="2" fill="#ff4422" opacity="0.8"/>
+            <circle cx="28" cy="11" r="2" fill="#ff4422" opacity="0.8"/>
+            <path d="M20 17 Q24 14 28 17" stroke="#ff4422" stroke-width="1" fill="none" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="entity-name">Zombie</div>
+        <div class="entity-role">Primary Enemy / Horde AI</div>
+        <div class="entity-stats">
+          <div class="entity-stat">
+            <span class="entity-stat-key">SPEED</span>
+            <div class="entity-stat-bar"><div class="entity-stat-fill" style="--fill-width: 35%"></div></div>
+          </div>
+          <div class="entity-stat">
+            <span class="entity-stat-key">HORDE DENSITY</span>
+            <div class="entity-stat-bar"><div class="entity-stat-fill" style="--fill-width: 85%"></div></div>
+          </div>
+          <div class="entity-stat">
+            <span class="entity-stat-key">CHASE RANGE</span>
+            <div class="entity-stat-bar"><div class="entity-stat-fill" style="--fill-width: 60%"></div></div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-dim); margin-top:1.25rem; line-height:1.6;">Slow individually but spawn in large numbers and form choke points on narrow streets. Drawn toward sound and movement. Can be kited past tornado paths — at your own risk.</p>
+      </div>
+
+      <!-- Sam -->
+      <div class="entity-card sam slide-in">
+        <div class="entity-icon-wrapper">
+          <svg width="48" height="64" viewBox="0 0 48 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="12" r="10" stroke="#ffcc44" stroke-width="2"/>
+            <rect x="14" y="24" width="20" height="20" rx="3" stroke="#ffcc44" stroke-width="1.8"/>
+            <line x1="14" y1="32" x2="5" y2="42" stroke="#ffcc44" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="34" y1="32" x2="43" y2="38" stroke="#ffcc44" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="19" y1="44" x2="18" y2="58" stroke="#ffcc44" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="29" y1="44" x2="30" y2="58" stroke="#ffcc44" stroke-width="1.8" stroke-linecap="round"/>
+            <!-- key icon -->
+            <circle cx="40" cy="52" r="5" stroke="#ffcc44" stroke-width="1.5"/>
+            <line x1="44" y1="55" x2="48" y2="60" stroke="#ffcc44" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="46" y1="58" x2="48" y2="56" stroke="#ffcc44" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="entity-name">Sam</div>
+        <div class="entity-role">Rescue Target / Key Holder</div>
+        <div class="entity-stats">
+          <div class="entity-stat">
+            <span class="entity-stat-key">MOVE SPEED</span>
+            <div class="entity-stat-bar"><div class="entity-stat-fill" style="--fill-width: 65%"></div></div>
+          </div>
+          <div class="entity-stat">
+            <span class="entity-stat-key">FOLLOW AI</span>
+            <div class="entity-stat-bar"><div class="entity-stat-fill" style="--fill-width: 70%"></div></div>
+          </div>
+          <div class="entity-stat">
+            <span class="entity-stat-key">CRITICAL VALUE</span>
+            <div class="entity-stat-bar"><div class="entity-stat-fill" style="--fill-width: 100%"></div></div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-dim); margin-top:1.25rem; line-height:1.6;">Hidden at a random map location. Once found, Sam follows the player toward extraction. Sam cannot sprint and will fall behind if the player moves too fast — adding a protection dynamic post-rescue.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       VISUAL DESIGN GOALS
+  ═══════════════════════════════════════════════════ -->
+  <section class="section slide-in">
+    <div class="section-label">05 &mdash; Visual Design Goals</div>
+    <h2 class="section-title">Dark. Stormy. No External Assets.</h2>
+    <div class="section-divider"></div>
+    <p class="section-body">The entire visual language is built procedurally in Phaser 3 using Graphics primitives, particle systems, and Canvas draws. No sprite sheets are required to ship Milestone 1. This keeps the build fast and portable while establishing the correct atmospheric tone.</p>
+
+    <div class="design-palette">
+      <div class="palette-swatch">
+        <div class="swatch-color" style="background:#0a0a14;"></div>
+        <div class="swatch-label">#0a0a14<br>BG Base</div>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-color" style="background:#13131f;"></div>
+        <div class="swatch-label">#13131f<br>BG Surface</div>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-color" style="background:#1e1e38;"></div>
+        <div class="swatch-label">#1e1e38<br>Borders</div>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-color" style="background:#ffcc44;"></div>
+        <div class="swatch-label">#ffcc44<br>Gold</div>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-color" style="background:#4488ff;"></div>
+        <div class="swatch-label">#4488ff<br>Blue</div>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-color" style="background:#ff4422;"></div>
+        <div class="swatch-label">#ff4422<br>Danger</div>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-color" style="background:#d0d0e0;"></div>
+        <div class="swatch-label">#d0d0e0<br>Text</div>
+      </div>
+      <div class="palette-swatch">
+        <div class="swatch-color" style="background:#44bb66;"></div>
+        <div class="swatch-label">#44bb66<br>Safe / Sam</div>
+      </div>
+    </div>
+
+    <div class="design-tags">
+      <div class="design-tag">Top-Down Perspective</div>
+      <div class="design-tag">Phaser 3 Engine</div>
+      <div class="design-tag">Procedural Textures</div>
+      <div class="design-tag">Particle Storm Effects</div>
+      <div class="design-tag">No External Sprites</div>
+      <div class="design-tag">60 FPS Target</div>
+      <div class="design-tag">Mobile First</div>
+      <div class="design-tag">Portrait Only</div>
+      <div class="design-tag">Canvas Render</div>
+      <div class="design-tag">Post-Processing Glows</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       MILESTONE PLAN
+  ═══════════════════════════════════════════════════ -->
+  <section class="section slide-in">
+    <div class="section-label">06 &mdash; Milestone Plan</div>
+    <h2 class="section-title">Three Milestones to Ship</h2>
+    <div class="section-divider"></div>
+    <p class="section-body">Development is sequenced to deliver a playable vertical slice in Milestone 1, then layer in polish and tuning in subsequent milestones.</p>
+
+    <div class="timeline" id="timeline">
+      <div class="timeline-progress" id="timelineProgress"></div>
+
+      <div class="milestone-entry slide-in">
+        <div class="milestone-dot"></div>
+        <div class="milestone-number">Milestone 1</div>
+        <div class="milestone-title">Foundation — Playable Core</div>
+        <ul class="milestone-items">
+          <li>Phaser 3 project scaffold with Vite, ESLint, port 5211</li>
+          <li>Procedural town map generator (grid-based city blocks)</li>
+          <li>Player entity: movement, sprint/stamina, collision</li>
+          <li>Tornado entity: wandering AI, suction physics, kill zone</li>
+          <li>Zombie entity: spawn system, basic chase AI, collision</li>
+          <li>Sam NPC: hidden placement, follow behavior, key transfer</li>
+          <li>Extraction zone trigger and win/loss state machine</li>
+          <li>Mobile virtual joystick + sprint button (touch input)</li>
+          <li>Title screen, game over screen, win screen — full flow</li>
+          <li>All entities rendered with Phaser Graphics primitives only</li>
+        </ul>
+      </div>
+
+      <div class="milestone-entry slide-in">
+        <div class="milestone-dot"></div>
+        <div class="milestone-number">Milestone 2</div>
+        <div class="milestone-title">Polish — Atmosphere &amp; Feel</div>
+        <ul class="milestone-items">
+          <li>Particle system: rain streaks, debris around tornado</li>
+          <li>Screen shake on close tornado proximity</li>
+          <li>Vignette darkening at storm boundary</li>
+          <li>Audio: ambient storm loop, zombie groans, player sprint breath</li>
+          <li>Sam dialogue bubbles (panic lines, rescue confirmation)</li>
+          <li>HUD polish: stamina bar, mini-map, storm intensity meter</li>
+          <li>Zombie variety: wanderers, chasers, blockers</li>
+          <li>Multiple tornadoes with staggered spawn timing</li>
+          <li>Post-processing glow on tornado cores</li>
+        </ul>
+      </div>
+
+      <div class="milestone-entry slide-in">
+        <div class="milestone-dot"></div>
+        <div class="milestone-number">Milestone 3</div>
+        <div class="milestone-title">Tuning — Balance &amp; Retention</div>
+        <ul class="milestone-items">
+          <li>Difficulty scaling: tornado speed and count escalate over time</li>
+          <li>Run timer and high-score persistence via localStorage</li>
+          <li>Map seed displayed on death screen (share your run)</li>
+          <li>Accessibility pass: touch target audit, contrast check</li>
+          <li>Performance profiling and optimization for mid-range mobile</li>
+          <li>QA pass: iPhone 14 Pro Safari, Chrome desktop, Firefox</li>
+          <li>Final release and deployment to GitHub Pages</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       KNOWN RISKS
+  ═══════════════════════════════════════════════════ -->
+  <section class="section slide-in">
+    <div class="section-label">07 &mdash; Known Risks &amp; Considerations</div>
+    <h2 class="section-title">What Could Go Wrong</h2>
+    <div class="section-divider"></div>
+
+    <div class="risks-list">
+
+      <div class="risk-item slide-in">
+        <div class="risk-level high">HIGH</div>
+        <div>
+          <div class="risk-content-title">Mobile performance with Phaser 3 and multiple moving entities</div>
+          <div class="risk-content-desc">Phaser 3 Canvas renderer with 20+ active entities (tornadoes, zombie hordes, particles) may push frame rate below 60 FPS on older iPhones. Mitigation: entity culling, object pooling, particle count limits, and early profiling in M1 before adding particles in M2.</div>
+        </div>
+      </div>
+
+      <div class="risk-item slide-in">
+        <div class="risk-level high">HIGH</div>
+        <div>
+          <div class="risk-content-title">Touch input precision on virtual joystick</div>
+          <div class="risk-content-desc">A virtual joystick on a 393px-wide screen is inherently imprecise, especially during high-stress navigation near tornado suction zones. Mitigation: generous dead zone on the joystick center, slight aim-assist toward open lanes, and a larger joystick radius than the visual suggests.</div>
+        </div>
+      </div>
+
+      <div class="risk-item slide-in">
+        <div class="risk-level medium">MEDIUM</div>
+        <div>
+          <div class="risk-content-title">Tornado difficulty balance — suction too punishing or too trivial</div>
+          <div class="risk-content-desc">Suction physics must feel threatening without being unfair. Too strong and the player feels robbed of agency; too weak and tornadoes become irrelevant obstacles. Requires iterative playtesting with tunable constants from the start. All physics values should live in a single config object.</div>
+        </div>
+      </div>
+
+      <div class="risk-item slide-in">
+        <div class="risk-level medium">MEDIUM</div>
+        <div>
+          <div class="risk-content-title">Sam follow-AI getting stuck on procedural geometry</div>
+          <div class="risk-content-desc">Sam needs to navigate the same procedural map as the player but uses a simplified follow behavior. Narrow alleys and generated block arrangements may trap Sam. Mitigation: Sam uses a lightweight A* pathfind (or simplified steering with obstacle avoidance) rather than direct position follow.</div>
+        </div>
+      </div>
+
+      <div class="risk-item slide-in">
+        <div class="risk-level medium">MEDIUM</div>
+        <div>
+          <div class="risk-content-title">Procedural map guaranteeing navigability</div>
+          <div class="risk-content-desc">A randomly generated city grid must always be solvable — Sam must be reachable, the extraction zone must be reachable, and no area should be fully sealed. The map generator must include connectivity validation (flood-fill from player spawn) before the scene goes live.</div>
+        </div>
+      </div>
+
+      <div class="risk-item slide-in">
+        <div class="risk-level low">LOW</div>
+        <div>
+          <div class="risk-content-title">Safari Mobile Phaser 3 canvas compositing quirks</div>
+          <div class="risk-content-desc">Safari on iOS occasionally has issues with Canvas 2D blend modes and globalAlpha on rapid redraws. All tornado glow and overlay effects should be tested specifically on iPhone Safari in M1 before investing time in M2 visual polish.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       IDEAS & FUTURE FEATURES
+  ═══════════════════════════════════════════════════ -->
+  <section class="section slide-in">
+    <div class="section-label">08 &mdash; Ideas &amp; Future Features</div>
+    <h2 class="section-title">Beyond the Horizon</h2>
+    <div class="section-divider"></div>
+    <p class="section-body">Features deferred from the core scope but worth preserving for post-launch or a content update. These are not on the milestone plan — they live here so they are not forgotten.</p>
+
+    <div class="ideas-grid">
+
+      <div class="idea-card slide-in" data-index="01">
+        <div class="idea-title">Weather Progression</div>
+        <div class="idea-desc">Storm intensity escalates in real time — more tornadoes, faster movement, heavier rain reducing visibility. Each run has a hard timer before the final mega-vortex wipes the entire map.</div>
+      </div>
+
+      <div class="idea-card slide-in" data-index="02">
+        <div class="idea-title">Radio Broadcasts</div>
+        <div class="idea-desc">Ambient audio or text overlays broadcast emergency messages that hint at Sam's location or upcoming tornado paths. Adds narrative texture and a subtle guidance system for new players.</div>
+      </div>
+
+      <div class="idea-card slide-in" data-index="03">
+        <div class="idea-title">Car Mechanic</div>
+        <div class="idea-desc">Abandoned cars scattered across the map. Find keys (different from Sam's helicopter key), hot-wire a vehicle, and drive to the extraction zone at high speed — but cars attract every zombie within two blocks.</div>
+      </div>
+
+      <div class="idea-card slide-in" data-index="04">
+        <div class="idea-title">Daily Challenge Mode</div>
+        <div class="idea-desc">A fixed seed generated from the current date. Every player on that day faces the identical map. Leaderboard comparison via completion time. Shareable via URL hash encoding the seed and run stats.</div>
+      </div>
+
+      <div class="idea-card slide-in" data-index="05">
+        <div class="idea-title">Building Interiors</div>
+        <div class="idea-desc">Enterable buildings that provide temporary shelter from tornado suction and block zombie line-of-sight, at the cost of slower movement and reduced situational awareness. Adds hide-and-seek tension.</div>
+      </div>
+
+      <div class="idea-card slide-in" data-index="06">
+        <div class="idea-title">Supply Drops</div>
+        <div class="idea-desc">Tornado winds carry crates into the map: health kits, flares (stun zombies), and stamina boosters. High-value drops land in high-risk tornado paths, forcing risk/reward decisions on detours.</div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+<footer class="report-footer">
+  <div class="footer-title">Stormtown — Pre-Creation Design Report</div>
+  <div class="footer-date">2026-04-10</div>
+  <div class="footer-line"></div>
+  <div class="footer-note">This report was generated before any code was written. It defines the creative and technical direction for all three milestones. Refer to <code style="font-family:'Share Tech Mono',monospace; color:var(--gold); font-size:0.78rem;">memory/future_milestones.md</code> for live milestone status.</div>
+</footer>
+
+<script>
+  // ─── RAIN ──────────────────────────────────────────────────────
+  (function initRain() {
+    const container = document.getElementById('rainContainer');
+    const COUNT = 60;
+    for (let i = 0; i < COUNT; i++) {
+      const streak = document.createElement('div');
+      streak.className = 'rain-streak';
+      const left = Math.random() * 100;
+      const height = 40 + Math.random() * 80;
+      const duration = 0.6 + Math.random() * 0.8;
+      const delay = -Math.random() * 2;
+      streak.style.cssText = `
+        left: ${left}%;
+        height: ${height}px;
+        animation-duration: ${duration}s;
+        animation-delay: ${delay}s;
+        opacity: ${0.2 + Math.random() * 0.4};
+      `;
+      container.appendChild(streak);
+    }
+  })();
+
+  // ─── LIGHTNING ────────────────────────────────────────────────
+  (function initLightning() {
+    const overlay = document.getElementById('lightning-overlay');
+    function flash() {
+      overlay.style.opacity = '1';
+      setTimeout(() => {
+        overlay.style.opacity = '0';
+        // Double flash sometimes
+        if (Math.random() > 0.5) {
+          setTimeout(() => {
+            overlay.style.opacity = '0.7';
+            setTimeout(() => {
+              overlay.style.opacity = '0';
+            }, 60);
+          }, 120);
+        }
+      }, 80);
+      // Schedule next flash
+      const nextFlash = 3000 + Math.random() * 8000;
+      setTimeout(flash, nextFlash);
+    }
+    // Initial delay before first flash
+    setTimeout(flash, 2000 + Math.random() * 4000);
+  })();
+
+  // ─── TYPEWRITER ───────────────────────────────────────────────
+  (function initTypewriter() {
+    const el = document.getElementById('tagline-text');
+    const text = 'Survive. Rescue. Escape.';
+    let i = 0;
+    function type() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i);
+        i++;
+        setTimeout(type, 80 + Math.random() * 40);
+      }
+    }
+    setTimeout(type, 1200);
+  })();
+
+  // ─── SCROLL ANIMATIONS ───────────────────────────────────────
+  (function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, idx) => {
+        if (entry.isIntersecting) {
+          // Stagger siblings if in a grid
+          const siblings = entry.target.parentElement
+            ? Array.from(entry.target.parentElement.children).filter(c => c.classList.contains('slide-in'))
+            : [];
+          const myIdx = siblings.indexOf(entry.target);
+          const delay = myIdx > 0 ? myIdx * 80 : 0;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.slide-in').forEach(el => observer.observe(el));
+  })();
+
+  // ─── ENTITY STAT BARS ────────────────────────────────────────
+  (function initStatBars() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.entity-stat-fill').forEach(fill => {
+            fill.classList.add('loaded');
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.entity-card').forEach(card => observer.observe(card));
+  })();
+
+  // ─── TIMELINE PROGRESS LINE ───────────────────────────────────
+  (function initTimeline() {
+    const progress = document.getElementById('timelineProgress');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          progress.classList.add('loaded');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    const timeline = document.getElementById('timeline');
+    if (timeline) observer.observe(timeline);
+  })();
+
+  // ─── LOOP STEP STAGGER ───────────────────────────────────────
+  (function initLoopSteps() {
+    const steps = document.querySelectorAll('.loop-step');
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        steps.forEach((step, i) => {
+          setTimeout(() => {
+            step.style.opacity = '1';
+            step.style.transform = 'translateY(0)';
+          }, i * 120);
+        });
+        observer.disconnect();
+      }
+    }, { threshold: 0.2 });
+
+    if (steps.length > 0) {
+      steps.forEach(step => {
+        step.style.opacity = '0';
+        step.style.transform = 'translateY(24px)';
+        step.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      });
+      observer.observe(steps[0].parentElement);
+    }
+  })();
+</script>
+</body>
+</html>

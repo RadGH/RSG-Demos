@@ -1,0 +1,71 @@
+{
+  "game": "game11",
+  "assets": [
+    {
+      "id": "report_pre_creation",
+      "name": "Pre-Creation Design Report",
+      "category": "other",
+      "source": "svg",
+      "file": "report-pre-creation.html",
+      "prompt": "",
+      "notes": "Animated HTML report covering game concept, core loop, entities, milestone plan, risks, and future ideas — written before implementation began."
+    }
+  ],
+  "reports": [
+    {
+      "milestone": "Milestone 1 — Foundation & Full Game Loop",
+      "date": "2026-04-10",
+      "summary": "Built the complete Stormtown game loop from scratch: procedural town map, player movement, tornadoes, zombies, Sam NPC rescue, helicopter escape, and all screens.",
+      "changes": [
+        "Phaser 3 + Vite project setup with portrait orientation lock",
+        "Procedural town grid generator (40×60 tiles, 1280×1920 world) with road network and building blocks",
+        "Player entity: 160 px/s base speed, 240 px/s sprint with stamina drain/regen, 3 HP system, 1.2s invulnerability frames",
+        "Tornado entity: semi-guided AI targeting player with randomized waypoints, 200px suction zone (slow + pull force), 44px kill zone (instant death), spinning animation with debris particles, difficulty escalation (1 → 4 tornadoes at 60/120/180s)",
+        "Zombie entity: wander AI with seeded timer, chase AI at 180px detection range, physics collider with buildings and each other",
+        "Sam NPC at NE quadrant with beacon pulse animation and rescue dialogue popup",
+        "Helicopter pad at north center with pulsing ring animation and overlap win zone",
+        "Storm surge mechanic: all tornadoes speed up ×1.2 when key is picked up",
+        "InputManager: unified WASD/arrow keys + touch virtual joystick (left half) + sprint button (right half)",
+        "UIScene (parallel scene): HP hearts, elapsed timer, stamina bar, objective arrow compass, key badge, storm surge warning",
+        "Title screen with animated cloud strips, lightning flash effect, best time display",
+        "Win screen with escape time, new best time detection, localStorage persistence",
+        "Game Over screen with cause of death (tornado vs zombie distinction)",
+        "Camera follow with world bounds, 12% lerp for smooth tracking",
+        "Procedurally generated textures for all entities (no external image files required)",
+        "Sky parallax overlay with scrolling dark cloud layer at varying scroll factors"
+      ],
+      "bugs": [
+        "Tornadoes can clip through building corners (no building collision on tornado movement — intentional for now, but makes the tornado feel slightly unphysical)",
+        "Virtual joystick start position locks to first touch point — dragging fast can sometimes cause the knob to lag behind slightly on low-end devices",
+        "Sam beacon position uses tile coords that may occasionally land inside a building edge if building generation shifts — needs boundary check",
+        "Zombie respawn not yet implemented — once 12 zombies wander off-screen they don't come back",
+        "The Phaser UIScene receives per-frame data via polling (onUpdate call from GameScene update) — this works but is tightly coupled; a cleaner event system would be better",
+        "Sprint button zone is right half of screen which can conflict with tapping UI elements on some layouts"
+      ],
+      "suggestions": [
+        "Add footstep or running sound that changes pitch with sprint for player feedback",
+        "Tornado roar should get louder as it approaches — proximity audio would greatly amplify tension",
+        "Add a brief tutorial overlay on first play explaining controls and objective",
+        "Sprint button should be a visible on-screen button with tactile feel, not just a right-half tap zone",
+        "Buildings should have varying heights visually (darker/lighter gradient) to suggest 3D depth",
+        "Add a panic meter or heartbeat effect when tornado is within 300px"
+      ],
+      "recommendations": [
+        "Add zombie respawn system from map edges before Milestone 2 — the game gets too easy after initial zombies wander away",
+        "Decouple UIScene from GameScene with an event emitter (Phaser.Events.EventEmitter) rather than direct function calls — current coupling makes it brittle",
+        "Consider adding a StaticTilemapLayer for buildings to get tilemap rendering performance rather than raw Graphics objects, especially on mobile",
+        "InputManager should cache scale factor instead of reading it per event — minor perf win on mobile",
+        "Test tornado suction force stacking with 4 tornadoes — may need a cap to prevent physics explosion"
+      ],
+      "ideas": [
+        "Weather progression: rain starts light and intensifies, flooding some roads (slows movement)",
+        "Radio broadcasts: intermittent text overlays of emergency broadcasts add atmosphere",
+        "Car mechanic: find a working car to drive faster but harder to maneuver in tight streets",
+        "Multiple survivors: more friends to rescue, each adds a bonus (stamina boost, speed boost)",
+        "Daily challenge mode: fixed seed with leaderboard via URL hash sharing",
+        "Tornado path history: brief trail showing where tornado came from to help predict movement"
+      ],
+      "notes": "All visuals are procedurally generated in BootScene via Phaser Graphics — no external image assets needed. The town layout is deterministic with seed 42, so the same map appears every run. Changing the seed would give variety. The game runs entirely in-browser with no server requirements."
+    }
+  ]
+}
