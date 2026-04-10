@@ -222,25 +222,23 @@ M70     — Multiplayer foundation: shared-seed co-op run synchronisation (exper
       <a href="./game10/" class="play-btn">&#9654; Play Now</a>
       <div class="meta-sections"><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M1  — Engine Foundation: game loop, Wang-tile tilemap renderer, camera with smooth follow, player movement (WASD/touch), pixel-art sprite sheets, basic HUD
 M2  — World &amp; Objects: interactive world objects (chests, ore veins, trees), minimap, day/night lighting cycle, object spawn system
-M3  — Combat Core: melee and ranged attack modes, enemy AI (goblin scout, forest sprite, stone golem), particle hit effects, floating damage numbers
+M3  — Combat Core: melee and ranged attack modes, enemy AI FSM (goblin scout, forest sprite, stone golem), particle hit effects, floating damage numbers
 M4  — Loot System: item drops on kill, 5 rarity tiers (Common → Legendary), 25 item definitions, inventory panel with grid layout
-M5  — Equipment &amp; Stats: paper-doll equipment screen, full stat aggregation pipeline, experience and level-up with attribute allocation — M1–M5 complete
-M6  — Skill Trees: Warrior / Ranger / Mage skill trees (8 nodes each), passive and active skills, hotbar skill binding
-M7  — Mining &amp; Crafting: ore node mining with tool requirement, smelting furnace, crafting bench recipes (weapons, armour, consumables)
-M8  — Spells &amp; Magic: mana resource, 12 spells across 3 schools (fire/frost/lightning), spell cooldowns, AoE ground effects
-M9  — World Expansion &amp; Quests: 3 explorable zones (Forest, Cave, Ruins), 10 quest chains with objectives, NPC dialogue system
-M10 — Polish &amp; Save System: save/load via localStorage, pause menu, settings panel, audio integration, performance optimisation
-M11 — Content &amp; Balance: 30 new enemies, 50 new items, boss encounters for each zone, loot table tuning, skill tree rebalancing
-M12 — Release Candidate: full playthrough QA, bug-fix sprint, mobile touch layout finalisation, GitHub Pages deploy</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1   — Engine Foundation (Game loop, tilemap, camera, player movement) ✓
-M2   — World &amp; Objects (World objects, minimap, day/night) ✓
-M3   — Combat Core (Enemy AI, melee/ranged, particles, damage numbers) ✓
-M4   — Loot System (Item drops, rarity, inventory panel) ✓
-M5   — Equipment &amp; Stats (Paper doll, stat aggregation, level-up) ✓
-M6   — Skill Trees
-M7   — Mining &amp; Crafting
-M8   — Spells &amp; Magic
-M9   — World Expansion &amp; Quests
-M10  — Polish &amp; Save System
+M5  — Equipment &amp; Stats: paper-doll equipment screen, full stat aggregation pipeline, experience and level-up with attribute allocation
+M6  — Skill Trees: Warrior / Ranger / Mage skill trees (12 nodes each, 36 total), active skills on hotbar, passive stat effects
+M7  — Mining &amp; Crafting: ore node mining with progress bars, 20 crafting recipes, smelting and crafting benches
+M8  — Spells &amp; Magic: 10 spell types (fireball, frost nova, blink, chain lightning, meteor, etc.), 6 status effects (burning/frozen/poisoned/shocked/bleeding/stunned), Elder Stone Golem multi-phase boss
+M9  — World Expansion &amp; Quests: 8 quests with quest log, world map overlay, elite enemy variants
+M10 — Polish &amp; Save System: save/load system, main menu with class selection, virtual joystick touch controls, gamepad support</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1   — Engine Foundation (Game loop, Wang tilemap, camera, player movement) ✓
+M2   — World &amp; Objects (World objects, minimap, day/night cycle) ✓
+M3   — Combat Core (Enemy AI FSM, melee/ranged, particles, damage numbers) ✓
+M4   — Loot System (25 items, 5 rarity tiers, inventory panel, loot drops) ✓
+M5   — Equipment &amp; Stats (Paper doll, stat aggregation, level-up + attribute points) ✓
+M6   — Skill Trees (3 paths x 12 nodes, active skills on hotbar, passive effects) ✓
+M7   — Mining &amp; Crafting (Ore mining with progress bar, 20 crafting recipes) ✓
+M8   — Spells &amp; Magic (10 spells, status effects, Elder Stone Golem boss) ✓
+M9   — World Expansion &amp; Quests (8 quests, quest log, world map, elite enemies) ✓
+M10  — Polish &amp; Save System (Save/load, main menu, touch controls, gamepad) ✓
 M11  — Content &amp; Balance
 M12  — Release Candidate</pre></details></div>
     </div>
