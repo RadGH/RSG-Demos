@@ -772,7 +772,7 @@
               </div>`;
             pgrid.appendChild(card);
 
-            const img = document.getElementById(`port-img-${race}-${pi}`);
+            const img = card.querySelector('img');
             trackImg(img, bid, filename, (ok, fname) => {
               if (ok) { portOk++; loadedAssets++; }
               else    { portMiss.push(`${race}/${fname}`); allMissing.push(`${race}/${fname}`); }
