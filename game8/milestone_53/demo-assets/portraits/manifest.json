@@ -1,0 +1,36 @@
+[
+  {"race":"human","file":"human/human_01.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, young adult male, brown hair short, stoic expression, worn leather collar, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_02.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, middle-aged female, black hair pulled back, weary eyes, deep facial lines, scarred cheek, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_03.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, young adult ambiguous gender, red hair messy, determined expression, freckled face, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_04.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, older male, grey hair and beard, weathered deeply lined face, calm stoic expression, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_05.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, young female, dark black hair long, hopeful but tired eyes, minor scar on forehead, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_06.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, middle-aged male, auburn red hair, gruff beard, battle-scarred face, grim expression, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_07.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, young adult female, brown braided hair, alert watchful expression, strong jaw, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_08.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, middle-aged ambiguous, grey streaked brown hair, hollow haunted eyes, gaunt face, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_09.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, young male, black hair with streak of grey, determined fierce expression, strong brow, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_10.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, older female, silver white hair, wise eyes, subtle smile, wrinkled but strong face, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_11.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, young adult male, sandy brown hair, nervous cautious expression, soft features, scar on neck, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_12.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, middle-aged female, dark red auburn hair, fierce defiant expression, strong cheekbones, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_01.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, male, ashen grey skin, faint orange glowing fractures beneath skin, controlled calm expression, dimly glowing eyes, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_02.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, female, ashen grey skin, intense bright glowing cracks on cheek and brow, barely contained expression, blazing luminous eyes, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_03.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, ambiguous gender, pale ash skin, white-orange glowing fractures spreading from eyes, serene eerie expression, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_04.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, young male, dark ash skin, faint barely-visible glow lines, sad expression, struggling against corruption, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_05.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, older female, mid-intensity orange glowing cracks, resigned acceptance expression, hollow cheeks, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_06.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, male, grey ash skin, glow fractures radiating from mouth, speaking or screaming expression, intense inner fire, otherworldly but tragic"}

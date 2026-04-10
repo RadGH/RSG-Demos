@@ -1,0 +1,19 @@
+{
+  "generated": "2026-04-09",
+  "biomes": [
+    {"id": "ashfields", "file": "ashfields.png", "ok": true, "size_kb": 2786},
+    {"id": "greywood", "file": "greywood.png", "ok": true, "size_kb": 3502},
+    {"id": "salt_flats", "file": "salt_flats.png", "ok": true, "size_kb": 2825},
+    {"id": "mountains", "file": "mountains.png", "ok": true, "size_kb": 3226},
+    {"id": "fens", "file": "fens.png", "ok": true, "size_kb": 3027},
+    {"id": "cinderwaste", "file": "cinderwaste.png", "ok": true, "size_kb": 2861},
+    {"id": "hollow_reaches", "file": "hollow_reaches.png", "ok": true, "size_kb": 2948},
+    {"id": "storm_coast", "file": "storm_coast.png", "ok": true, "size_kb": 2583},
+    {"id": "amber_forest", "file": "amber_forest.png", "ok": true, "size_kb": 2959},
+    {"id": "thorn_mere", "file": "thorn_mere.png", "ok": true, "size_kb": 2890},
+    {"id": "steppe", "file": "steppe.png", "ok": true, "size_kb": 2796},
+    {"id": "east_march", "file": "east_march.png", "ok": true, "size_kb": 2465},
+    {"id": "ironmarch", "file": "ironmarch.png", "ok": true, "size_kb": 2961},
+    {"id": "hollows", "file": "hollows.png", "ok": true, "size_kb": 2656}
+  ]
+}
