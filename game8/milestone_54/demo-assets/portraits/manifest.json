@@ -1,0 +1,170 @@
+[
+  {"race":"human","file":"human/human_01.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, young adult male, brown hair short, stoic expression, worn leather collar, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_02.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, middle-aged female, black hair pulled back, weary eyes, deep facial lines, scarred cheek, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_03.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, young adult ambiguous gender, red hair messy, determined expression, freckled face, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_04.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, older male, grey hair and beard, weathered deeply lined face, calm stoic expression, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_05.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, young female, dark black hair long, hopeful but tired eyes, minor scar on forehead, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_06.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, middle-aged male, auburn red hair, gruff beard, battle-scarred face, grim expression, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_07.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, young adult female, brown braided hair, alert watchful expression, strong jaw, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_08.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, middle-aged ambiguous, grey streaked brown hair, hollow haunted eyes, gaunt face, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_09.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, young male, black hair with streak of grey, determined fierce expression, strong brow, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_10.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, older female, silver white hair, wise eyes, subtle smile, wrinkled but strong face, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_11.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, young adult male, sandy brown hair, nervous cautious expression, soft features, scar on neck, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"human","file":"human/human_12.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, human aurenborn survivor, middle-aged female, dark red auburn hair, fierce defiant expression, strong cheekbones, weathered traveler, realistic proportions, dramatic side lighting"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_01.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, male, ashen grey skin, faint orange glowing fractures beneath skin, controlled calm expression, dimly glowing eyes, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_02.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, female, ashen grey skin, intense bright glowing cracks on cheek and brow, barely contained expression, blazing luminous eyes, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_03.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, ambiguous gender, pale ash skin, white-orange glowing fractures spreading from eyes, serene eerie expression, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_04.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, young male, dark ash skin, faint barely-visible glow lines, sad expression, struggling against corruption, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_05.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, older female, mid-intensity orange glowing cracks, resigned acceptance expression, hollow cheeks, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_06.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, male, grey ash skin, glow fractures radiating from mouth, speaking or screaming expression, intense inner fire, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_07.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, young female, pale ash skin, subtle neck and forehead glow veins, haunted fearful eyes, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_08.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, middle-aged male, dark grey ash skin, symmetrical bright crack patterns on face, stoic acceptance, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_09.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, ambiguous elder, nearly fully cracked surface with intense white-orange glow, ancient expression, transcendent, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_10.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, young female, light ash skin, minimal single glowing crack on cheek, fresh corruption, frightened expression, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_11.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, male warrior, ash skin with orange glow in war-paint-like patterns, fierce defiant expression, otherworldly but tragic"}
+,
+  {"race":"ashkin","file":"ashkin/ashkin_12.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, ashkin corrupted human, female elder, full body glow cracks intricate web pattern, wise serene expression, at peace with corruption, otherworldly but tragic"}
+,
+  {"race":"greymoss_dwarf","file":"greymoss_dwarf/greymoss_dwarf_01.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, greymoss dwarf tunnelkin, extremely stocky male, grey-green moss patches on cheeks and beard, small deep-set suspicious eyes, thick neck, underground survivor"}
+,
+  {"race":"greymoss_dwarf","file":"greymoss_dwarf/greymoss_dwarf_02.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, greymoss dwarf tunnelkin, stocky female, green moss growing through braided hair, wide face, cautious expression, underground survivor"}
+,
+  {"race":"greymoss_dwarf","file":"greymoss_dwarf/greymoss_dwarf_03.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, greymoss dwarf tunnelkin, older male, thick grey moss beard dominating face, weathered stone-like skin, gruff squinting eyes, underground survivor"}
+,
+  {"race":"greymoss_dwarf","file":"greymoss_dwarf/greymoss_dwarf_04.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, greymoss dwarf tunnelkin, young male, minimal sparse moss patches on jaw, wide startled eyes unused to light, dense compact face, underground survivor"}
+,
+  {"race":"greymoss_dwarf","file":"greymoss_dwarf/greymoss_dwarf_05.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, greymoss dwarf tunnelkin, stocky ambiguous, heavy grey-green moss covering brow and scalp like hair, stern expression, underground survivor"}
+,
+  {"race":"greymoss_dwarf","file":"greymoss_dwarf/greymoss_dwarf_06.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, greymoss dwarf tunnelkin, older female, grey-green moss patches on cheeks and neck, deep wrinkles, distrustful scowl, underground survivor"}
+,
+  {"race":"greymoss_dwarf","file":"greymoss_dwarf/greymoss_dwarf_07.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, greymoss dwarf tunnelkin, middle-aged male, patchy moss on shaved head and thick beard, flat nose, alert wary expression, underground survivor"}
+,
+  {"race":"greymoss_dwarf","file":"greymoss_dwarf/greymoss_dwarf_08.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, greymoss dwarf tunnelkin, young female, light moss growth on brow and ears, curious wide eyes, round face, underground survivor"}
+,
+  {"race":"greymoss_dwarf","file":"greymoss_dwarf/greymoss_dwarf_09.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, greymoss dwarf tunnelkin, elder male, heavily moss-covered face like a rock formation, ancient stone-grey skin, barely visible eyes, underground survivor"}
+,
+  {"race":"greymoss_dwarf","file":"greymoss_dwarf/greymoss_dwarf_10.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, greymoss dwarf tunnelkin, stocky male, bright green moss in contrast to dark grey stone-textured skin, proud expression, underground survivor"}
+,
+  {"race":"greymoss_dwarf","file":"greymoss_dwarf/greymoss_dwarf_11.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, greymoss dwarf tunnelkin, female, irregular moss patches and lichen spots, weathered face, determined set jaw, underground survivor"}
+,
+  {"race":"greymoss_dwarf","file":"greymoss_dwarf/greymoss_dwarf_12.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, greymoss dwarf tunnelkin, middle-aged male, moss and tiny fungi growing on brow, stoic unreadable expression, extremely compact features, underground survivor"}
+,
+  {"race":"thornwalker","file":"thornwalker/thornwalker_01.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, thornwalker forest elf, extremely tall thin elongated face male, dark root-vein patterns branching on pale skin from temples, sorrowful deep eyes, druidic survivor"}
+,
+  {"race":"thornwalker","file":"thornwalker/thornwalker_02.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, thornwalker forest elf, tall thin female, delicate root-vein patterns on cheeks and neck, large mournful eyes, silver-white hair, druidic survivor"}
+,
+  {"race":"thornwalker","file":"thornwalker/thornwalker_03.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, thornwalker forest elf, androgynous tall face, heavy dark root-veins covering most of face, hollow grief-stricken expression, druidic survivor"}
+,
+  {"race":"thornwalker","file":"thornwalker/thornwalker_04.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, thornwalker forest elf, young male, faint thin root-vein lines only at temples, sad questioning eyes, sharp elfin features, druidic survivor"}
+,
+  {"race":"thornwalker","file":"thornwalker/thornwalker_05.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, thornwalker forest elf, middle-aged female, medium root-vein patterns on forehead and chin, stoic dignified expression, dark green-tinged hair, druidic survivor"}
+,
+  {"race":"thornwalker","file":"thornwalker/thornwalker_06.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, thornwalker forest elf, elder male, gnarled heavy root-veins like bark texture on deeply lined face, ancient sorrowful eyes, druidic survivor"}
+,
+  {"race":"thornwalker","file":"thornwalker/thornwalker_07.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, thornwalker forest elf, young female, root-vein patterns glowing faintly green, wide haunted eyes, sparse leaf-like markings, druidic survivor"}
+,
+  {"race":"thornwalker","file":"thornwalker/thornwalker_08.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, thornwalker forest elf, male, asymmetric root-vein patterns heavier on one side, resigned expression, dark circles, druidic survivor"}
+,
+  {"race":"thornwalker","file":"thornwalker/thornwalker_09.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, thornwalker forest elf, elder female, root-veins merged into thorn-like facial patterns, serene acceptance, wisdom in sad eyes, druidic survivor"}
+,
+  {"race":"thornwalker","file":"thornwalker/thornwalker_10.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, thornwalker forest elf, young male, fine delicate root-veins on pale skin, tears or dew on face, grief-struck expression, druidic survivor"}
+,
+  {"race":"thornwalker","file":"thornwalker/thornwalker_11.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, thornwalker forest elf, female, root-vein patterns radiating from one eye, angular sharp face, bitter expression, dark auburn hair, druidic survivor"}
+,
+  {"race":"thornwalker","file":"thornwalker/thornwalker_12.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, thornwalker forest elf, ambiguous adult, intricate symmetrical root-vein face pattern, transcendent expression, barely-there mourning, druidic survivor"}
+,
+  {"race":"saltback","file":"saltback/saltback_01.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, saltback coastal nomad, broad flat face male, subtle neck scales blue-grey, shell harness at shoulder, calm sea-weathered expression, drowned city survivor"}
+,
+  {"race":"saltback","file":"saltback/saltback_02.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, saltback coastal nomad, female, broad flat face, dark green subtle neck scales, salt-crusted brow, stoic oceanic expression, drowned city survivor"}
+,
+  {"race":"saltback","file":"saltback/saltback_03.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, saltback coastal nomad, older male, heavy blue-grey scales on neck and jaw, deep-set watery eyes, weathered sailor expression, drowned city survivor"}
+,
+  {"race":"saltback","file":"saltback/saltback_04.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, saltback coastal nomad, young female, light iridescent scales on neck, wide curious eyes, flat broad nose, drowned city survivor"}
+,
+  {"race":"saltback","file":"saltback/saltback_05.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, saltback coastal nomad, ambiguous adult, mottled blue-green scale patches, grim wary expression, barnacle-like growths at ear, drowned city survivor"}
+,
+  {"race":"saltback","file":"saltback/saltback_06.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, saltback coastal nomad, elder male, heavy patterned dark scales covering jaw and neck, deeply weathered face, experienced expression, drowned city survivor"}
+,
+  {"race":"saltback","file":"saltback/saltback_07.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, saltback coastal nomad, young male, minimal scale hints, bright alert eyes, slightly flat facial structure, drowned city survivor"}
+,
+  {"race":"saltback","file":"saltback/saltback_08.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, saltback coastal nomad, female elder, green-grey scales covering cheeks, long memory in sad eyes, shell jewelry at neck, drowned city survivor"}
+,
+  {"race":"saltback","file":"saltback/saltback_09.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, saltback coastal nomad, middle-aged male, blue-grey scale pattern on neck sides, grim tight-lipped expression, sea-salt weathered, drowned city survivor"}
+,
+  {"race":"saltback","file":"saltback/saltback_10.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, saltback coastal nomad, female, teal iridescent scales on neck, intense fierce expression, broad cheekbones, drowned city survivor"}
+,
+  {"race":"saltback","file":"saltback/saltback_11.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, saltback coastal nomad, young ambiguous, sparse pale blue scale flecks, wary squinting eyes, flat facial features, drowned city survivor"}
+,
+  {"race":"saltback","file":"saltback/saltback_12.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, saltback coastal nomad, older female, heavily scaled neck and jawline, resigned acceptance, kelp-woven hair, drowned city survivor"}
+,
+  {"race":"wrenborn","file":"wrenborn/wrenborn_01.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, wrenborn avian-touched, delicate male face, brown feather quills at temples and hairline, sharp alert birdlike eyes, hollow-boned features, messenger god descendant"}
+,
+  {"race":"wrenborn","file":"wrenborn/wrenborn_02.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, wrenborn avian-touched, female, white feather quills at hairline, wide curious luminous eyes, fine delicate features, secretive expression, messenger god descendant"}
+,
+  {"race":"wrenborn","file":"wrenborn/wrenborn_03.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, wrenborn avian-touched, young ambiguous, speckled brown-white quills at temples, nervous twitchy expression, sharp angular face, messenger god descendant"}
+,
+  {"race":"wrenborn","file":"wrenborn/wrenborn_04.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, wrenborn avian-touched, male elder, long grey-brown quills fanning at temples, wise knowing eyes, thin lips, alert head-tilted expression, messenger god descendant"}
+,
+  {"race":"wrenborn","file":"wrenborn/wrenborn_05.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, wrenborn avian-touched, young female, bright white quills at hairline, intense obsessive eyes, fragile hollow-boned look, messenger god descendant"}
+,
+  {"race":"wrenborn","file":"wrenborn/wrenborn_06.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, wrenborn avian-touched, male, dark brown quills mixed with dark hair, cautious suspicious expression, beaked-shaped nose, messenger god descendant"}
+,
+  {"race":"wrenborn","file":"wrenborn/wrenborn_07.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, wrenborn avian-touched, female, grey speckled quills at temples and eyebrows, serene calm expression, large downward-tilted eyes, messenger god descendant"}
+,
+  {"race":"wrenborn","file":"wrenborn/wrenborn_08.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, wrenborn avian-touched, young male, rust-orange quills at temples, excited eager expression, sharp cheekbones, messenger god descendant"}
+,
+  {"race":"wrenborn","file":"wrenborn/wrenborn_09.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, wrenborn avian-touched, ambiguous adult, iridescent dark quills, secretive hidden expression, intelligent watchful eyes, messenger god descendant"}
+,
+  {"race":"wrenborn","file":"wrenborn/wrenborn_10.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, wrenborn avian-touched, older female, white quills tipped brown, tired but alert expression, knowledge-worn face, messenger god descendant"}
+,
+  {"race":"wrenborn","file":"wrenborn/wrenborn_11.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, wrenborn avian-touched, male, black quills at temples, intense focused expression, hunter-like sharp eyes, messenger god descendant"}
+,
+  {"race":"wrenborn","file":"wrenborn/wrenborn_12.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, wrenborn avian-touched, young female, pale cream quills with brown tips, dreamy distant gaze, delicate ethereal features, messenger god descendant"}
+,
+  {"race":"cinderwolf","file":"cinderwolf/cinderwolf_01.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, cinderwolf lycanthrope, male, subtle wolf features in human form, grey fur patches at ears and jawline, amber golden eyes, slight elongated canines, ashwell-mutated survivor"}
+,
+  {"race":"cinderwolf","file":"cinderwolf/cinderwolf_02.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, cinderwolf lycanthrope, female, black fur at ears, prominent golden eyes, strong jaw, partial wolf shift visible, ashwell-mutated survivor"}
+,
+  {"race":"cinderwolf","file":"cinderwolf/cinderwolf_03.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, cinderwolf lycanthrope, young male, red-brown fur patches on cheeks and ears, intense fierce expression, fangs slightly showing, ashwell-mutated survivor"}
+,
+  {"race":"cinderwolf","file":"cinderwolf/cinderwolf_04.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, cinderwolf lycanthrope, older female, grey and white fur heavily covering jaw, amber eyes with slit pupils, resigned wolf-elder expression, ashwell-mutated survivor"}
+,
+  {"race":"cinderwolf","file":"cinderwolf/cinderwolf_05.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, cinderwolf lycanthrope, ambiguous young adult, minimal wolf traits barely visible, nervous expression, trying to appear human, ashwell-mutated survivor"}
+,
+  {"race":"cinderwolf","file":"cinderwolf/cinderwolf_06.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, cinderwolf lycanthrope, male, heavily shifted black wolf fur on face and neck, snarling defiant expression, clearly monstrous, ashwell-mutated survivor"}
+,
+  {"race":"cinderwolf","file":"cinderwolf/cinderwolf_07.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, cinderwolf lycanthrope, female, tawny golden fur patches, warm amber eyes, somewhat serene expression, comfortable with wolf nature, ashwell-mutated survivor"}
+,
+  {"race":"cinderwolf","file":"cinderwolf/cinderwolf_08.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, cinderwolf lycanthrope, older male, salt-and-pepper grey fur at jaw and ears, weathered face, wise pack-elder expression, ashwell-mutated survivor"}
+,
+  {"race":"cinderwolf","file":"cinderwolf/cinderwolf_09.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, cinderwolf lycanthrope, young female, sparse brown fur patches, frightened timid expression, eyes shifting between human and wolf, ashwell-mutated survivor"}
+,
+  {"race":"cinderwolf","file":"cinderwolf/cinderwolf_10.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, cinderwolf lycanthrope, male, red fur at jaw and triangular ears, fierce hunting expression, golden eyes focused, ashwell-mutated survivor"}
+,
+  {"race":"cinderwolf","file":"cinderwolf/cinderwolf_11.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, cinderwolf lycanthrope, ambiguous elder, white grey fur heavily covering lower face, ancient tired eyes, long memory, ashwell-mutated survivor"}
+,
+  {"race":"cinderwolf","file":"cinderwolf/cinderwolf_12.png","prompt":"pixel art portrait 128x128 dark fantasy RPG, cinderwolf lycanthrope, female, dark grey fur on face and prominent ears, stoic guardian expression, protective amber eyes, ashwell-mutated survivor"}
+
+]

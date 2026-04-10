@@ -1,0 +1,113 @@
+{
+  "backgrounds": [
+    "ashfields.png",
+    "greywood.png",
+    "salt_flats.png",
+    "mountains.png",
+    "fens.png",
+    "cinderwaste.png",
+    "hollow_reaches.png",
+    "storm_coast.png",
+    "amber_corridor.png",
+    "thornmere_marshes.png",
+    "iron_steppe.png",
+    "eastmarch.png",
+    "blighted_wastes.png",
+    "petrified_forest.png"
+  ],
+  "portraits": {
+    "human": [
+      "human_01.png", "human_02.png", "human_03.png",
+      "human_04.png", "human_05.png", "human_06.png",
+      "human_07.png", "human_08.png", "human_09.png",
+      "human_10.png", "human_11.png", "human_12.png"
+    ],
+    "ashkin": [
+      "ashkin_01.png", "ashkin_02.png", "ashkin_03.png",
+      "ashkin_04.png", "ashkin_05.png", "ashkin_06.png",
+      "ashkin_07.png", "ashkin_08.png", "ashkin_09.png",
+      "ashkin_10.png", "ashkin_11.png", "ashkin_12.png"
+    ],
+    "greymoss_dwarf": [
+      "greymoss_dwarf_01.png", "greymoss_dwarf_02.png", "greymoss_dwarf_03.png",
+      "greymoss_dwarf_04.png", "greymoss_dwarf_05.png", "greymoss_dwarf_06.png",
+      "greymoss_dwarf_07.png", "greymoss_dwarf_08.png", "greymoss_dwarf_09.png",
+      "greymoss_dwarf_10.png", "greymoss_dwarf_11.png", "greymoss_dwarf_12.png"
+    ],
+    "thornwalker": [
+      "thornwalker_01.png", "thornwalker_02.png", "thornwalker_03.png",
+      "thornwalker_04.png", "thornwalker_05.png", "thornwalker_06.png",
+      "thornwalker_07.png", "thornwalker_08.png", "thornwalker_09.png",
+      "thornwalker_10.png", "thornwalker_11.png", "thornwalker_12.png"
+    ],
+    "saltback": [
+      "saltback_01.png", "saltback_02.png", "saltback_03.png",
+      "saltback_04.png", "saltback_05.png", "saltback_06.png",
+      "saltback_07.png", "saltback_08.png", "saltback_09.png",
+      "saltback_10.png", "saltback_11.png", "saltback_12.png"
+    ],
+    "wrenborn": [
+      "wrenborn_01.png", "wrenborn_02.png", "wrenborn_03.png",
+      "wrenborn_04.png", "wrenborn_05.png", "wrenborn_06.png",
+      "wrenborn_07.png", "wrenborn_08.png", "wrenborn_09.png",
+      "wrenborn_10.png", "wrenborn_11.png", "wrenborn_12.png"
+    ],
+    "cinderwolf": [
+      "cinderwolf_01.png", "cinderwolf_02.png", "cinderwolf_03.png",
+      "cinderwolf_04.png", "cinderwolf_05.png", "cinderwolf_06.png",
+      "cinderwolf_07.png", "cinderwolf_08.png", "cinderwolf_09.png",
+      "cinderwolf_10.png", "cinderwolf_11.png", "cinderwolf_12.png"
+    ]
+  },
+  "icons": [
+    "arrow-right",
+    "arrow-rotate-left",
+    "bag-shopping",
+    "bars",
+    "bell",
+    "bolt",
+    "book",
+    "bullseye",
+    "circle-arrow-left",
+    "circle-check",
+    "circle-xmark",
+    "cloud",
+    "coins",
+    "compass",
+    "crown",
+    "dice",
+    "door-open",
+    "dragon",
+    "droplet",
+    "eye",
+    "fire",
+    "fish",
+    "flask",
+    "gear",
+    "ghost",
+    "heart",
+    "house",
+    "leaf",
+    "lock",
+    "map",
+    "moon",
+    "mountain",
+    "person",
+    "person-walking",
+    "sack",
+    "scroll",
+    "shield",
+    "skull",
+    "snowflake",
+    "star",
+    "sun",
+    "sword",
+    "tent",
+    "tree",
+    "triangle-exclamation",
+    "volume-high",
+    "volume-xmark",
+    "wind",
+    "xmark"
+  ]
+}
