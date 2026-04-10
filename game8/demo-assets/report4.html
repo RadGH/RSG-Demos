@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vagrant &amp; Ash — Milestone 69 Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0d0d0d;
+    --burgundy: #3d1a1a;
+    --burgundy-mid: #5a2020;
+    --gold: #c8a855;
+    --gold-bright: #e8c870;
+    --ash: #a89880;
+    --ash-light: #c8b8a0;
+    --ember: #e05a00;
+    --ember-bright: #ff7020;
+    --smoke: #1a1a1a;
+    --card-bg: #111010;
+    --border: rgba(200, 168, 85, 0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--ash-light);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ── Custom cursor ── */
+  #cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: var(--ember);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s, height 0.15s, background 0.15s;
+    mix-blend-mode: screen;
+    box-shadow: 0 0 14px 4px var(--ember), 0 0 30px 8px rgba(224,90,0,0.3);
+  }
+  #cursor-ring {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(200,168,85,0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, border-color 0.3s;
+  }
+  body:has(a:hover) #cursor, body:has(button:hover) #cursor {
+    width: 20px; height: 20px; background: var(--gold);
+  }
+
+  /* ── Canvas ── */
+  #particle-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ── Animated background ── */
+  #bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(ellipse at 50% 0%, #2a0e0e 0%, #0d0d0d 60%);
+    overflow: hidden;
+  }
+  #bg-layer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at var(--mx, 50%) var(--my, 30%), rgba(61,26,26,0.4) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 80% 80%, rgba(224,90,0,0.05) 0%, transparent 60%);
+    transition: background 0.1s;
+  }
+  #bg-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  /* ── Parallax layers ── */
+  .parallax-scene {
+    position: relative;
+    z-index: 2;
+  }
+  .parallax-layer {
+    will-change: transform;
+    transition: transform 0.08s linear;
+  }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── Hero ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 24px;
+  }
+
+  .hero-rune {
+    position: absolute;
+    font-family: 'Cinzel', serif;
+    color: rgba(200,168,85,0.04);
+    font-size: clamp(120px, 20vw, 260px);
+    font-weight: 900;
+    letter-spacing: 0.3em;
+    user-select: none;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+  }
+
+  .hero-ornament {
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 32px;
+    position: relative;
+  }
+  .hero-ornament::before, .hero-ornament::after {
+    content: '◆';
+    position: absolute;
+    top: -8px;
+    color: var(--gold);
+    font-size: 10px;
+  }
+  .hero-ornament::before { left: 50%; transform: translateX(-50%); }
+
+  .hero-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--ember);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeSlideDown 0.8s ease 0.3s forwards;
+  }
+
+  #hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(36px, 7vw, 90px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    color: #fff;
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeSlideDown 0.9s ease 0.5s forwards;
+    position: relative;
+  }
+  #hero-title span {
+    color: var(--gold);
+    text-shadow: 0 0 40px rgba(200,168,85,0.6), 0 0 80px rgba(200,168,85,0.2);
+  }
+
+  #hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(14px, 2.5vw, 22px);
+    color: var(--ash);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeSlideDown 0.9s ease 0.7s forwards;
+  }
+
+  #hero-date {
+    font-size: 13px;
+    color: rgba(168,152,128,0.6);
+    letter-spacing: 0.2em;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeSlideDown 0.9s ease 0.9s forwards;
+  }
+
+  #cycling-text-wrapper {
+    height: 32px;
+    overflow: hidden;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeSlideDown 0.9s ease 1.1s forwards;
+  }
+  .cycling-line {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(13px, 2vw, 17px);
+    color: var(--gold-bright);
+    letter-spacing: 0.25em;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 0 20px rgba(200,168,85,0.5);
+    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.6s ease;
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeSlideDown 1s ease 1.8s forwards;
+  }
+  .hero-scroll-hint span {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: rgba(168,152,128,0.4);
+    text-transform: uppercase;
+  }
+  .scroll-arrow {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ── Sections ── */
+  .section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 2;
+  }
+  .section + .section {
+    border-top: 1px solid rgba(61,26,26,0.4);
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: var(--ember);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .section-label.revealed { opacity: 1; transform: translateY(0); }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(26px, 4vw, 46px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 48px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease 0.1s, transform 0.8s ease 0.1s;
+  }
+  .section-title.revealed { opacity: 1; transform: translateY(0); }
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--ember), transparent);
+    margin-top: 14px;
+  }
+  .section-title em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  /* ── Feature grid ── */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    will-change: transform;
+  }
+  .feature-card.revealed { opacity: 1; transform: translateY(0); }
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--rx, 50%) var(--ry, 50%), rgba(200,168,85,0.07) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-card:hover {
+    border-color: rgba(200,168,85,0.4);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 20px rgba(200,168,85,0.06);
+  }
+  .feature-card .card-glow {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(224,90,0,0.15), transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .feature-card:hover .card-glow { opacity: 1; }
+
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 14px;
+    display: block;
+    filter: drop-shadow(0 0 8px rgba(224,90,0,0.4));
+  }
+  .card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+  }
+  .card-body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ash);
+  }
+  .card-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--ember);
+    background: rgba(224,90,0,0.1);
+    border: 1px solid rgba(224,90,0,0.3);
+    padding: 3px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+  }
+
+  /* ── Bug list ── */
+  .bug-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .bug-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px 22px;
+    background: rgba(10,8,8,0.6);
+    border: 1px solid rgba(61,26,26,0.5);
+    border-left: 3px solid var(--ember);
+    border-radius: 4px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .bug-item.revealed { opacity: 1; transform: translateX(0); }
+  .bug-item:hover { border-left-color: var(--gold); background: rgba(20,14,14,0.8); }
+  .bug-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .bug-text { font-size: 14px; line-height: 1.65; color: var(--ash-light); }
+  .bug-text strong { color: #fff; font-weight: 700; display: block; margin-bottom: 3px; }
+
+  /* ── Issues & Wishlist ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } }
+
+  .sub-panel {
+    background: rgba(10,8,8,0.5);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 24px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .sub-panel.revealed { opacity: 1; transform: translateY(0); }
+  .sub-panel-title {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(200,168,85,0.15);
+  }
+  .issue-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .issue-list li {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ash);
+    padding-left: 18px;
+    position: relative;
+  }
+  .issue-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--ember);
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  /* ── Parchment (brainstorm) ── */
+  .parchment {
+    background:
+      linear-gradient(135deg, rgba(40,28,18,0.9) 0%, rgba(26,18,12,0.95) 100%);
+    border: 1px solid rgba(168,152,128,0.25);
+    border-radius: 8px;
+    padding: 48px 44px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .parchment.revealed { opacity: 1; transform: translateY(0); }
+  .parchment::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.02' numOctaves='3' result='noise'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23t)' fill='rgba(100,70,40,0.03)'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .parchment-corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: rgba(168,152,128,0.3);
+    border-style: solid;
+  }
+  .parchment-corner.tl { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+  .parchment-corner.tr { top: 12px; right: 12px; border-width: 1px 1px 0 0; }
+  .parchment-corner.bl { bottom: 12px; left: 12px; border-width: 0 0 1px 1px; }
+  .parchment-corner.br { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
+
+  .qa-block {
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .qa-block:last-child { margin-bottom: 0; }
+  .qa-block + .qa-block { padding-top: 28px; border-top: 1px solid rgba(168,152,128,0.1); }
+  .qa-q {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: var(--gold);
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+  }
+  .qa-q::before { content: 'Q: '; color: var(--ember); }
+  .qa-a {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--ash-light);
+    font-style: italic;
+    padding-left: 16px;
+    border-left: 2px solid rgba(200,168,85,0.2);
+  }
+
+  /* ── Wishlist cards ── */
+  .wish-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .wish-card {
+    padding: 20px 18px;
+    background: rgba(13,10,10,0.7);
+    border: 1px solid rgba(61,26,26,0.5);
+    border-radius: 6px;
+    opacity: 0;
+    transform: scale(0.94) translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, background 0.3s;
+  }
+  .wish-card.revealed { opacity: 1; transform: scale(1) translateY(0); }
+  .wish-card:hover {
+    border-color: rgba(200,168,85,0.35);
+    background: rgba(20,14,10,0.9);
+  }
+  .wish-card-icon { font-size: 22px; margin-bottom: 10px; }
+  .wish-card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .wish-card-desc { font-size: 13px; line-height: 1.6; color: var(--ash); }
+
+  /* ── Stats bar ── */
+  .stats-row {
+    display: flex;
+    gap: 0;
+    margin-bottom: 60px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .stats-row.revealed { opacity: 1; transform: translateY(0); }
+  .stat-item {
+    flex: 1;
+    padding: 24px 16px;
+    text-align: center;
+    background: rgba(10,8,8,0.5);
+    border-right: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ember), transparent);
+    transform: scaleX(0);
+    transition: transform 0.6s ease 0.3s;
+  }
+  .stats-row.revealed .stat-item::before { transform: scaleX(1); }
+  .stat-number {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+    text-shadow: 0 0 20px rgba(200,168,85,0.4);
+  }
+  .stat-label { font-size: 11px; letter-spacing: 0.2em; color: var(--ash); text-transform: uppercase; }
+
+  /* ── Footer ── */
+  footer {
+    position: relative;
+    z-index: 2;
+    padding: 60px 24px 40px;
+    text-align: center;
+    border-top: 1px solid rgba(61,26,26,0.4);
+  }
+  .footer-ornament {
+    width: 300px;
+    margin: 0 auto 32px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position: relative;
+  }
+  .footer-title {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .footer-link {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: var(--ash);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    padding: 12px 28px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .footer-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(200,168,85,0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .footer-link:hover { color: var(--gold); border-color: rgba(200,168,85,0.5); box-shadow: 0 0 20px rgba(200,168,85,0.1); }
+  .footer-link:hover::before { opacity: 1; }
+  .footer-credit { font-size: 11px; color: rgba(168,152,128,0.35); letter-spacing: 0.15em; }
+
+  /* ── Keyframes ── */
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(1.2); }
+  }
+  @keyframes glowPulse {
+    0%, 100% { text-shadow: 0 0 20px rgba(200,168,85,0.3); }
+    50% { text-shadow: 0 0 40px rgba(200,168,85,0.7), 0 0 80px rgba(200,168,85,0.3); }
+  }
+
+  /* ── Divider ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 48px;
+    opacity: 0;
+    transition: opacity 0.7s ease 0.2s;
+  }
+  .divider.revealed { opacity: 1; }
+  .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,168,85,0.3)); }
+  .divider-line.right { background: linear-gradient(90deg, rgba(200,168,85,0.3), transparent); }
+  .divider-gem { color: var(--gold); font-size: 12px; }
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- Background -->
+<div id="bg-layer"><div id="bg-noise"></div></div>
+
+<!-- Particle canvas -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- ════════════════════════════ HERO ════════════════════════════ -->
+<section id="hero" class="parallax-scene">
+  <div class="hero-rune parallax-layer" data-depth="0.02">V&A</div>
+
+  <!-- Floating ornament particles (decorative SVG, positioned via JS) -->
+  <div id="hero-floaters"></div>
+
+  <div class="parallax-layer" data-depth="0.06" style="width:100%;text-align:center;">
+    <div class="hero-tag">Development Dispatch</div>
+    <h1 id="hero-title">Vagrant &amp; <span>Ash</span></h1>
+    <p id="hero-subtitle">Milestone 69 Report</p>
+    <p id="hero-date">April 10, 2026</p>
+    <div class="hero-ornament"></div>
+    <div id="cycling-text-wrapper">
+      <div class="cycling-line" id="cycling-text">A game of survival</div>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint parallax-layer" data-depth="0.0">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ STATS BAR ════════════════════════════ -->
+<div class="container">
+  <div class="stats-row" id="stats-row">
+    <div class="stat-item"><span class="stat-number">69</span><span class="stat-label">Milestone</span></div>
+    <div class="stat-item"><span class="stat-number">224</span><span class="stat-label">Tests</span></div>
+    <div class="stat-item"><span class="stat-number">16</span><span class="stat-label">New Weapons</span></div>
+    <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">New Encounters</span></div>
+    <div class="stat-item"><span class="stat-number">6</span><span class="stat-label">Camp Actions</span></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ FEATURES ════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label reveal-item">M63 – M69</div>
+    <h2 class="section-title reveal-item">What's <em>New</em></h2>
+
+    <div class="feature-grid">
+      <div class="feature-card reveal-item" data-delay="0">
+        <div class="card-glow" id="glow-0"></div>
+        <span class="card-icon">⚔️</span>
+        <div class="card-badge">Combat</div>
+        <div class="card-title">Weapons System</div>
+        <div class="card-body">16 new weapons across standard, premium, and rare tiers. Attack bonuses fully integrated into combat rolls. Damage dice animation added. Players auto-equip at game start.</div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="1">
+        <div class="card-glow" id="glow-1"></div>
+        <span class="card-icon">🏪</span>
+        <div class="card-badge">Economy</div>
+        <div class="card-title">Town Shop Expansion</div>
+        <div class="card-body">Armor and weapons now sold by tier across all three settlements — Ashford, Greyveil, and Saltmere. Each town has its own inventory appropriate to its power level.</div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="2">
+        <div class="card-glow" id="glow-2"></div>
+        <span class="card-icon">🌿</span>
+        <div class="card-badge">Encounters</div>
+        <div class="card-title">6 New Passive Encounters</div>
+        <div class="card-body">Fishing Spot, Watering Hole, Berry Thicket, Abandoned Campfire, Injured Animal, and Ruins Cache. Low-stakes discovery moments that reward exploration.</div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="3">
+        <div class="card-glow" id="glow-3"></div>
+        <span class="card-icon">🔥</span>
+        <div class="card-badge">Camp</div>
+        <div class="card-title">Camp "Other Actions"</div>
+        <div class="card-body">6 new skill-based activities: Scout Ahead, Set Traps, Treat Wounds, Tell Stories, Repair Gear, Meditate. Each draws from character skills for meaningful choices at rest.</div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="4">
+        <div class="card-glow" id="glow-4"></div>
+        <span class="card-icon">💎</span>
+        <div class="card-badge">Loot</div>
+        <div class="card-title">Rare Items</div>
+        <div class="card-body">Four new rare items added to the loot pool: Commissar's Blade, Ember Stone, Traveler's Talisman, and Ironwood Shield. Each with unique stat contributions.</div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="5">
+        <div class="card-glow" id="glow-5"></div>
+        <span class="card-icon">🖼️</span>
+        <div class="card-badge">UX</div>
+        <div class="card-title">Character Portraits</div>
+        <div class="card-body">Fixed portrait selection in character creation — selections now properly save and display in-game. Previously the UPDATE_CHARACTER action was missing from the PARTY_ACTIONS Set.</div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="6">
+        <div class="card-glow" id="glow-6"></div>
+        <span class="card-icon">📱</span>
+        <div class="card-badge">Mobile</div>
+        <div class="card-title">Font Scaling</div>
+        <div class="card-body">All fonts scaled up — minimum raised from 11px to 16px. The game is substantially more readable on mobile devices, addressing a long-standing usability complaint.</div>
+      </div>
+
+      <div class="feature-card reveal-item" data-delay="7">
+        <div class="card-glow" id="glow-7"></div>
+        <span class="card-icon">🎲</span>
+        <div class="card-badge">Feedback</div>
+        <div class="card-title">Skill Check Dice Rolls</div>
+        <div class="card-body">Animated dice rolls now display during skill checks. The dynamic milestone version number (M69) appears on the home screen. Starting equipment is now a player choice.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ BUGS FIXED ════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label reveal-item">Resolved</div>
+    <h2 class="section-title reveal-item">Bugs <em>Fixed</em></h2>
+
+    <ul class="bug-list">
+      <li class="bug-item reveal-item">
+        <span class="bug-icon">🔧</span>
+        <div class="bug-text">
+          <strong>Portrait Selection Never Saved</strong>
+          UPDATE_CHARACTER was missing from the PARTY_ACTIONS Set used by the save middleware. Portraits were selected but the reducer's state change was never persisted.
+        </div>
+      </li>
+      <li class="bug-item reveal-item">
+        <span class="bug-icon">🔧</span>
+        <div class="bug-text">
+          <strong>GitHub Pages Portrait URLs</strong>
+          Portrait image paths resolved to the root domain instead of the /RSG-Demos/game8/ sub-path, causing broken images on the deployed build.
+        </div>
+      </li>
+      <li class="bug-item reveal-item">
+        <span class="bug-icon">🔧</span>
+        <div class="bug-text">
+          <strong>Save Meta Showing Day 1 for All Saves</strong>
+          The save metadata snapshot was captured before the journey state was updated, so all saves displayed "Day 1" in the load screen.
+        </div>
+      </li>
+      <li class="bug-item reveal-item">
+        <span class="bug-icon">🔧</span>
+        <div class="bug-text">
+          <strong>Day 1 March Hint Removed</strong>
+          An early-game tutorial hint about marching on Day 1 was confusing players rather than guiding them. Removed in favor of letting the UI speak for itself.
+        </div>
+      </li>
+      <li class="bug-item reveal-item">
+        <span class="bug-icon">🔧</span>
+        <div class="bug-text">
+          <strong>Wind Direction Display Removed</strong>
+          Wind direction was shown as a decorative UI element but implied meaningful gameplay consequences that don't exist. Removed to avoid misleading players.
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ════════════════════════════ KNOWN ISSUES + WISHLIST ════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label reveal-item">Looking Ahead</div>
+    <h2 class="section-title reveal-item">Issues &amp; <em>Ideas</em></h2>
+
+    <div class="two-col">
+      <div class="sub-panel reveal-item">
+        <div class="sub-panel-title">Known Issues</div>
+        <ul class="issue-list">
+          <li>No music or sound effects yet — the world is silent</li>
+          <li>Combat lacks variety — no special abilities or status effects</li>
+          <li>Character backgrounds feel similar in play — more differentiation needed</li>
+          <li>No mid-run save points for long sessions</li>
+          <li>Encounter outcomes could branch further — most are single-resolution</li>
+          <li>Town interactions are thin — no questgivers, factions, or reputation</li>
+        </ul>
+      </div>
+
+      <div class="sub-panel reveal-item" style="transition-delay:0.15s">
+        <div class="sub-panel-title">Wishlist / Future Ideas</div>
+        <ul class="issue-list">
+          <li>Faction system — guilds that remember your choices across runs</li>
+          <li>Companion NPCs that join temporarily</li>
+          <li>Weather events affecting travel costs</li>
+          <li>Seasonal calendar shaping biomes and encounters</li>
+          <li>Crafting system from gathered materials</li>
+          <li>Mounted travel with upkeep cost</li>
+          <li>Procedural world map layouts</li>
+          <li>Ruin exploration — dungeon-lite segments</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ WISHLIST CARDS ════════════════════════════ -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="divider reveal-item">
+      <div class="divider-line"></div>
+      <span class="divider-gem">◆</span>
+      <div class="divider-line right"></div>
+    </div>
+    <div class="wish-grid">
+      <div class="wish-card reveal-item" data-delay="0">
+        <div class="wish-card-icon">⚖️</div>
+        <div class="wish-card-title">Faction System</div>
+        <div class="wish-card-desc">Guilds and power groups that track your deeds across runs. Reputation opens doors — and closes others.</div>
+      </div>
+      <div class="wish-card reveal-item" data-delay="1">
+        <div class="wish-card-icon">🧙</div>
+        <div class="wish-card-title">Companions</div>
+        <div class="wish-card-desc">Temporary NPC party members with their own needs, morale, and backstory threads.</div>
+      </div>
+      <div class="wish-card reveal-item" data-delay="2">
+        <div class="wish-card-icon">🌩️</div>
+        <div class="wish-card-title">Weather Events</div>
+        <div class="wish-card-desc">Storms, fog, and extreme heat as dynamic modifiers to travel cost and encounter chance.</div>
+      </div>
+      <div class="wish-card reveal-item" data-delay="3">
+        <div class="wish-card-icon">📅</div>
+        <div class="wish-card-title">Seasonal Calendar</div>
+        <div class="wish-card-desc">Time of year transforms the world — winter starves the road, summer opens new routes.</div>
+      </div>
+      <div class="wish-card reveal-item" data-delay="4">
+        <div class="wish-card-icon">🔨</div>
+        <div class="wish-card-title">Crafting</div>
+        <div class="wish-card-desc">Combine gathered materials into tools, medicine, and weapons at camp.</div>
+      </div>
+      <div class="wish-card reveal-item" data-delay="5">
+        <div class="wish-card-icon">🐴</div>
+        <div class="wish-card-title">Mounted Travel</div>
+        <div class="wish-card-desc">Horses halve travel cost but require feed. A strategic resource decision.</div>
+      </div>
+      <div class="wish-card reveal-item" data-delay="6">
+        <div class="wish-card-icon">🗺️</div>
+        <div class="wish-card-title">Procedural Maps</div>
+        <div class="wish-card-desc">Randomized world layouts each run — no two journeys share the same geography.</div>
+      </div>
+      <div class="wish-card reveal-item" data-delay="7">
+        <div class="wish-card-icon">🏚️</div>
+        <div class="wish-card-title">Ruin Exploration</div>
+        <div class="wish-card-desc">Dungeon-lite segments inside abandoned structures — room-by-room tension with curated loot.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ BRAINSTORM PARCHMENT ════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label reveal-item">Design Thinking</div>
+    <h2 class="section-title reveal-item">Brainstorming <em>Session</em></h2>
+
+    <div class="parchment reveal-item">
+      <div class="parchment-corner tl"></div>
+      <div class="parchment-corner tr"></div>
+      <div class="parchment-corner bl"></div>
+      <div class="parchment-corner br"></div>
+
+      <div class="qa-block">
+        <div class="qa-q">What would make the journey feel more alive?</div>
+        <div class="qa-a">Dynamic world events that change the road itself — a fire blocks the pass, a flood reroutes you through dangerous territory, a festival fills the road with both opportunity and threat. The world should feel like it doesn't wait for the player.</div>
+      </div>
+
+      <div class="qa-block">
+        <div class="qa-q">What creates memorable deaths?</div>
+        <div class="qa-a">Meaningful choices under pressure, not random bad luck. A death from a wrong call stings beautifully — it teaches. A death from bad dice feels hollow. The goal is for players to replay the fatal moment in their mind and see exactly where they went wrong.</div>
+      </div>
+
+      <div class="qa-block">
+        <div class="qa-q">How do you make a short session feel complete?</div>
+        <div class="qa-a">Give each session a narrative arc: depart from somewhere, discover something unexpected, make a decision with weight, then rest. Even a 10-minute play can feel like a chapter if the structure is there.</div>
+      </div>
+
+      <div class="qa-block">
+        <div class="qa-q">What's missing from the survival loop?</div>
+        <div class="qa-a">Upward mobility. Right now it's all attrition — resources drain, health drains, morale drains. The game needs genuine moments of bounty: a full camp, well-rested party, rare item in hand, road clear ahead. Contrast is what makes hardship meaningful.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ FOOTER ════════════════════════════ -->
+<footer>
+  <div class="footer-ornament"></div>
+  <div class="footer-title">Vagrant &amp; Ash</div>
+  <div class="footer-links">
+    <a href="https://radgh.github.io/RSG-Demos/game8/" class="footer-link" target="_blank">Play the Game</a>
+    <a href="/demo-assets/" class="footer-link">All Reports</a>
+  </div>
+  <div class="footer-credit">Generated with Claude Code &nbsp;|&nbsp; Vagrant &amp; Ash M69 &nbsp;|&nbsp; April 2026</div>
+</footer>
+
+<!-- ════════════════════════════ SCRIPTS ════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  // ── State ──────────────────────────────────────────────────────────────────
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let targetMouseX = mouseX;
+  let targetMouseY = mouseY;
+  let cursorX = mouseX;
+  let cursorY = mouseY;
+  let ringX = mouseX;
+  let ringY = mouseY;
+
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  const bgLayer = document.getElementById('bg-layer');
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+
+  // ── Canvas resize ──────────────────────────────────────────────────────────
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  // ── Mouse tracking ──────────────────────────────────────────────────────────
+  document.addEventListener('mousemove', function (e) {
+    targetMouseX = e.clientX;
+    targetMouseY = e.clientY;
+  });
+
+  // ── Particle System ────────────────────────────────────────────────────────
+  const PARTICLE_COUNT = 60;
+  const particles = [];
+
+  function randomBetween(a, b) { return a + Math.random() * (b - a); }
+
+  function createParticle(x, y) {
+    const fromCursor = x !== undefined;
+    return {
+      x: fromCursor ? x : randomBetween(0, canvas.width),
+      y: fromCursor ? y : randomBetween(canvas.height * 0.2, canvas.height),
+      vx: randomBetween(-0.5, 0.5),
+      vy: randomBetween(-1.2, -0.3),
+      life: fromCursor ? 1.0 : randomBetween(0.2, 1.0),
+      maxLife: randomBetween(3.0, 7.0),
+      size: randomBetween(1.5, 4),
+      hue: randomBetween(10, 40),
+      brightness: randomBetween(60, 100),
+      wobble: randomBetween(0, Math.PI * 2),
+      wobbleSpeed: randomBetween(0.01, 0.04),
+      flicker: Math.random() > 0.6,
+    };
+  }
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push(createParticle());
+  }
+
+  let lastCursorTrail = 0;
+  const cursorTrailParticles = [];
+
+  function updateParticles(dt, timestamp) {
+    // Spawn cursor trail sparks
+    if (timestamp - lastCursorTrail > 80 && Math.hypot(targetMouseX - mouseX, targetMouseY - mouseY) > 4) {
+      cursorTrailParticles.push(createParticle(targetMouseX, targetMouseY));
+      if (cursorTrailParticles.length > 30) cursorTrailParticles.shift();
+      lastCursorTrail = timestamp;
+    }
+
+    // Update background embers
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.wobble += p.wobbleSpeed;
+      p.vx = Math.sin(p.wobble) * 0.4;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.life -= dt * 0.14;
+
+      // Cursor attraction/repulsion
+      const dx = p.x - mouseX;
+      const dy = p.y - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        const force = (120 - dist) / 120 * 0.3;
+        p.vx += (dx / dist) * force;
+        p.vy += (dy / dist) * force * 0.5;
+      }
+
+      if (p.life <= 0 || p.y < -20 || p.x < -20 || p.x > canvas.width + 20) {
+        particles[i] = createParticle();
+      }
+    }
+
+    // Update cursor trail
+    for (let i = cursorTrailParticles.length - 1; i >= 0; i--) {
+      const p = cursorTrailParticles[i];
+      p.wobble += p.wobbleSpeed;
+      p.x += p.vx + Math.sin(p.wobble) * 0.3;
+      p.y += p.vy;
+      p.life -= dt * 0.4;
+      if (p.life <= 0) cursorTrailParticles.splice(i, 1);
+    }
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw background embers
+    for (const p of particles) {
+      const alpha = Math.min(p.life, 1) * (p.flicker ? (0.5 + Math.sin(p.wobble * 3) * 0.3) : 0.7);
+      const r = p.size * Math.min(p.life, 1);
+      if (r <= 0 || alpha <= 0) continue;
+
+      const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 2.5);
+      grad.addColorStop(0, `hsla(${p.hue}, 90%, ${p.brightness}%, ${alpha})`);
+      grad.addColorStop(0.5, `hsla(${p.hue - 5}, 80%, 50%, ${alpha * 0.5})`);
+      grad.addColorStop(1, `hsla(${p.hue}, 70%, 30%, 0)`);
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r * 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+
+    // Draw cursor trail
+    for (const p of cursorTrailParticles) {
+      const alpha = p.life * 0.9;
+      const r = p.size * 0.8;
+      if (r <= 0 || alpha <= 0) continue;
+
+      const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 3);
+      grad.addColorStop(0, `rgba(255, 200, 80, ${alpha})`);
+      grad.addColorStop(0.4, `rgba(224, 90, 0, ${alpha * 0.6})`);
+      grad.addColorStop(1, `rgba(200, 168, 85, 0)`);
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r * 3, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+  }
+
+  // ── Parallax ───────────────────────────────────────────────────────────────
+  const parallaxLayers = document.querySelectorAll('.parallax-layer');
+
+  function updateParallax() {
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+    const rx = (mouseX - cx) / cx;
+    const ry = (mouseY - cy) / cy;
+
+    parallaxLayers.forEach(function (el) {
+      const depth = parseFloat(el.dataset.depth) || 0.05;
+      const tx = rx * depth * 60;
+      const ty = ry * depth * 40;
+      el.style.transform = 'translate(' + tx + 'px, ' + ty + 'px)';
+    });
+
+    // Background radial gradient tracking
+    const pct_x = (mouseX / window.innerWidth * 100).toFixed(1);
+    const pct_y = (mouseY / window.innerHeight * 100).toFixed(1);
+    bgLayer.style.setProperty('--mx', pct_x + '%');
+    bgLayer.style.setProperty('--my', pct_y + '%');
+  }
+
+  // ── 3D Card Tilt ───────────────────────────────────────────────────────────
+  const featureCards = document.querySelectorAll('.feature-card');
+
+  featureCards.forEach(function (card, idx) {
+    const glow = card.querySelector('.card-glow');
+
+    card.addEventListener('mousemove', function (e) {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const rx = ((y - cy) / cy) * -12;
+      const ry = ((x - cx) / cx) * 12;
+
+      card.style.transform = 'perspective(800px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateZ(8px)';
+      card.style.transition = 'box-shadow 0.3s, border-color 0.3s';
+
+      const pctX = ((x / rect.width) * 100).toFixed(1);
+      const pctY = ((y / rect.height) * 100).toFixed(1);
+      card.style.setProperty('--rx', pctX + '%');
+      card.style.setProperty('--ry', pctY + '%');
+
+      if (glow) {
+        glow.style.left = x + 'px';
+        glow.style.top = y + 'px';
+      }
+    });
+
+    card.addEventListener('mouseleave', function () {
+      card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+      card.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s, border-color 0.3s';
+    });
+  });
+
+  // Wish cards tilt too
+  const wishCards = document.querySelectorAll('.wish-card');
+  wishCards.forEach(function (card) {
+    card.addEventListener('mousemove', function (e) {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const rx = ((y - cy) / cy) * -8;
+      const ry = ((x - cx) / cx) * 8;
+      card.style.transform = 'perspective(600px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale(1.02)';
+      card.style.transition = 'box-shadow 0.2s, border-color 0.3s';
+    });
+    card.addEventListener('mouseleave', function () {
+      card.style.transform = '';
+      card.style.transition = 'transform 0.4s ease, box-shadow 0.3s, border-color 0.3s, background 0.3s';
+    });
+  });
+
+  // ── Cycling text ───────────────────────────────────────────────────────────
+  const lines = ['A game of survival', 'A tale of roads', 'Where heroes become ash'];
+  let lineIdx = 0;
+  const cyclingEl = document.getElementById('cycling-text');
+
+  function nextLine() {
+    cyclingEl.style.transition = 'transform 0.5s cubic-bezier(0.76,0,0.24,1), opacity 0.5s ease';
+    cyclingEl.style.transform = 'translateY(-28px)';
+    cyclingEl.style.opacity = '0';
+
+    setTimeout(function () {
+      lineIdx = (lineIdx + 1) % lines.length;
+      cyclingEl.textContent = lines[lineIdx];
+      cyclingEl.style.transition = 'none';
+      cyclingEl.style.transform = 'translateY(28px)';
+      cyclingEl.style.opacity = '0';
+
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          cyclingEl.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1), opacity 0.5s ease';
+          cyclingEl.style.transform = 'translateY(0)';
+          cyclingEl.style.opacity = '1';
+        });
+      });
+    }, 500);
+  }
+
+  setInterval(nextLine, 3000);
+
+  // ── IntersectionObserver reveals ──────────────────────────────────────────
+  const revealItems = document.querySelectorAll('.reveal-item');
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const delay = (parseInt(el.dataset.delay) || 0) * 80;
+        setTimeout(function () { el.classList.add('revealed'); }, delay);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealItems.forEach(function (el) { observer.observe(el); });
+
+  // ── Main animation loop ────────────────────────────────────────────────────
+  let lastTimestamp = 0;
+
+  function loop(timestamp) {
+    const dt = Math.min((timestamp - lastTimestamp) / 16.67, 3);
+    lastTimestamp = timestamp;
+
+    // Smooth cursor follow
+    cursorX += (targetMouseX - cursorX) * 0.25;
+    cursorY += (targetMouseY - cursorY) * 0.25;
+    ringX += (targetMouseX - ringX) * 0.12;
+    ringY += (targetMouseY - ringY) * 0.12;
+    mouseX += (targetMouseX - mouseX) * 0.1;
+    mouseY += (targetMouseY - mouseY) * 0.1;
+
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+
+    updateParallax();
+    updateParticles(dt, timestamp);
+    drawParticles();
+
+    requestAnimationFrame(loop);
+  }
+
+  requestAnimationFrame(loop);
+
+  // ── Stat number counter animation ──────────────────────────────────────────
+  const statsRow = document.getElementById('stats-row');
+  const statNumbers = statsRow.querySelectorAll('.stat-number');
+  const targets = [69, 224, 16, 6, 6];
+  let statsAnimated = false;
+
+  const statsObserver = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting && !statsAnimated) {
+      statsAnimated = true;
+      statsRow.classList.add('revealed');
+
+      statNumbers.forEach(function (el, i) {
+        const target = targets[i];
+        const duration = 1200;
+        const start = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target);
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target;
+        }
+        setTimeout(function () { requestAnimationFrame(tick); }, i * 120);
+      });
+    }
+  }, { threshold: 0.3 });
+
+  statsObserver.observe(statsRow);
+
+  // ── Glow pulse on hero title ───────────────────────────────────────────────
+  const heroTitle = document.getElementById('hero-title');
+  if (heroTitle) {
+    heroTitle.style.animation = 'glowPulse 4s ease-in-out infinite 2s';
+  }
+
+  // ── Footer link glow tracking ─────────────────────────────────────────────
+  document.querySelectorAll('.footer-link').forEach(function (link) {
+    link.addEventListener('mousemove', function (e) {
+      const rect = link.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+      const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+      link.style.background = 'radial-gradient(circle at ' + x + '% ' + y + '%, rgba(200,168,85,0.12), transparent 70%)';
+    });
+    link.addEventListener('mouseleave', function () {
+      link.style.background = '';
+    });
+  });
+
+  // ── Parchment subtle mouse tilt ───────────────────────────────────────────
+  const parchment = document.querySelector('.parchment');
+  if (parchment) {
+    parchment.addEventListener('mousemove', function (e) {
+      const rect = parchment.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rx = ((y / rect.height) - 0.5) * -3;
+      const ry = ((x / rect.width) - 0.5) * 3;
+      parchment.style.transform = 'perspective(1400px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+      parchment.style.transition = 'box-shadow 0.3s';
+    });
+    parchment.addEventListener('mouseleave', function () {
+      parchment.style.transform = '';
+      parchment.style.transition = 'transform 0.6s ease, opacity 0.9s ease';
+    });
+  }
+
+  // ── Scroll-based hero parallax offset ────────────────────────────────────
+  window.addEventListener('scroll', function () {
+    const scrollY = window.scrollY;
+    const heroEl = document.getElementById('hero');
+    if (heroEl) {
+      heroEl.style.transform = 'translateY(' + (scrollY * 0.3) + 'px)';
+    }
+  }, { passive: true });
+
+})();
+</script>
+</body>
+</html>
