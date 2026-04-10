@@ -2,6 +2,132 @@
   "game": "game11",
   "assets": [
     {
+      "id": "sprite_player",
+      "name": "Player Character",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/player.png",
+      "prompt": "top-down view survivor character dark hoodie running pose pixel art 16-color dark stormy aesthetic transparent background",
+      "notes": "Top-down player sprite, 64x64, generated via PixelLab pixflux"
+    },
+    {
+      "id": "sprite_tornado",
+      "name": "Tornado",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/tornado.png",
+      "prompt": "massive tornado funnel viewed from above swirling vortex gray-brown debris cloud pixel art dramatic transparent background",
+      "notes": "Tornado vortex sprite, 128x128, generated via PixelLab pixflux"
+    },
+    {
+      "id": "sprite_zombie",
+      "name": "Zombie Enemy",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/zombie.png",
+      "prompt": "top-down zombie character ragged clothes arms outstretched greenish tint pixel art 16-color transparent background",
+      "notes": "Top-down zombie sprite, 48x48, generated via PixelLab pixflux"
+    },
+    {
+      "id": "sprite_sam",
+      "name": "Sam NPC",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sam.png",
+      "prompt": "top-down NPC character yellow jacket friendly pose pixel art 16-color transparent background",
+      "notes": "Sam the NPC rescue target, 64x64, generated via PixelLab pixflux"
+    },
+    {
+      "id": "bg_town",
+      "name": "Town Background",
+      "category": "background",
+      "source": "pixellab",
+      "file": "../images/town_bg.png",
+      "prompt": "top-down view dark stormy town roads building rooftops pixel art atmospheric dark color palette",
+      "notes": "Top-down stormy town background, 256x256, generated via PixelLab pixflux"
+    },
+    {
+      "id": "sprite_helipad",
+      "name": "Helicopter Pad",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/helipad.png",
+      "prompt": "top-down helicopter landing pad, large H painted on concrete, glowing green lights at corners, dark urban rooftop surface, pixel art, viewed from directly above",
+      "notes": "128x128 helipad top-down, goal/escape zone sprite"
+    },
+    {
+      "id": "item_key",
+      "name": "Helicopter Key",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/key_item.png",
+      "prompt": "golden helicopter key item, chunky pixel art, glowing yellow-gold, top-down flat view, transparent background",
+      "notes": "48x32 collectible key item, triggers storm surge on pickup"
+    },
+    {
+      "id": "tile_building_roof",
+      "name": "Building Roof Tile",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/building_roof.png",
+      "prompt": "top-down building rooftop texture tile, dark gray concrete, HVAC unit, pixel art, seamless-ish, stormy atmosphere",
+      "notes": "64x64 rooftop tile for building tops in the town map"
+    },
+    {
+      "id": "sprite_zombie_walk",
+      "name": "Zombie Walk",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/zombie_walk.png",
+      "prompt": "top-down zombie walking sprite, decayed flesh, tattered clothes, greenish skin, pixel art, viewed from above, arms reaching forward",
+      "notes": "48x48 zombie enemy sprite, alternative to procedural zombie"
+    },
+    {
+      "id": "sprite_survivor_sprint",
+      "name": "Survivor Sprint",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/survivor_sprint.png",
+      "prompt": "top-down survivor sprinting, dark hoodie, leaning forward urgently, pixel art, viewed from above, single frame",
+      "notes": "64x64 player sprint frame, alternative to procedural player sprite"
+    },
+    {
+      "id": "sprite_helipad",
+      "name": "Helicopter Pad",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/helipad.png",
+      "prompt": "top-down helicopter landing pad on dark rooftop, giant H marking, glowing green corner lights, stormy night, pixel art",
+      "notes": "128x128 helipad top-down"
+    },
+    {
+      "id": "sprite_key",
+      "name": "Helicopter Key",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/key_item.png",
+      "prompt": "golden helicopter room key, blocky chunky shape, glowing warm yellow gold, flat top-down, pixel art",
+      "notes": "64x64 key item pickup"
+    },
+    {
+      "id": "sprite_building_roof",
+      "name": "Building Rooftop Tile",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/building_roof.png",
+      "prompt": "dark urban rooftop concrete texture tile, small ventilation unit, pixel art, stormy overcast sky",
+      "notes": "64x64 tileable rooftop"
+    },
+    {
+      "id": "sprite_survivor_sprint",
+      "name": "Survivor Sprinting",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/survivor_sprint.png",
+      "prompt": "survivor character sprinting in dark hoodie leaning forward urgently, top-down view, pixel art",
+      "notes": "64x64 sprint pose variant"
+    },
+    {
       "id": "report_pre_creation",
       "name": "Pre-Creation Design Report",
       "category": "other",
