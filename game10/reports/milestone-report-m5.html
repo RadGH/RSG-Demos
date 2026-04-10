@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aethermoor Chronicles — Milestone Report M1–M5</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-deep:    #0d0f1a;
+  --bg-card:    #13162a;
+  --bg-panel:   #181c30;
+  --border:     #2a2f52;
+  --border-glow:#f5c842;
+  --gold:       #f5c842;
+  --gold-dim:   #c49a20;
+  --gold-light: #fde68a;
+  --text-body:  #c8cfe8;
+  --text-dim:   #6b749a;
+  --text-white: #eef0f8;
+  --common:     #9ca3af;
+  --uncommon:   #4ade80;
+  --rare:       #60a5fa;
+  --epic:       #c084fc;
+  --legendary:  #fb923c;
+  --red:        #f87171;
+  --cyan:       #22d3ee;
+  --teal:       #2dd4bf;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-body);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+/* ─── HERO ─── */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 60%, #1a1040 0%, #0d0f1a 70%);
+  padding: 80px 24px 60px;
+}
+
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 860px;
+}
+
+.rune-ring {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 32px;
+  position: relative;
+}
+
+.rune-ring svg {
+  width: 100%;
+  height: 100%;
+  animation: runeRotate 18s linear infinite;
+  filter: drop-shadow(0 0 12px rgba(245,200,66,0.6));
+}
+
+.rune-inner {
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,200,66,0.15) 0%, transparent 70%);
+  animation: runeGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes runeRotate { to { transform: rotate(360deg); } }
+@keyframes runeGlow {
+  from { box-shadow: 0 0 20px rgba(245,200,66,0.3); }
+  to   { box-shadow: 0 0 50px rgba(245,200,66,0.7), 0 0 80px rgba(245,200,66,0.2); }
+}
+
+.hero-eyebrow {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease 0.4s forwards;
+}
+
+.hero-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  font-weight: 700;
+  color: var(--gold-light);
+  text-shadow: 0 0 40px rgba(245,200,66,0.5), 0 2px 4px rgba(0,0,0,0.8);
+  line-height: 1.15;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease 0.7s forwards;
+}
+
+.hero-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: var(--text-body);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease 1s forwards;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease 1.2s forwards;
+}
+
+.hero-divider-line {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dim));
+}
+.hero-divider-line.right {
+  background: linear-gradient(to left, transparent, var(--gold-dim));
+}
+
+.hero-divider-gem {
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  box-shadow: 0 0 12px var(--gold);
+}
+
+.hero-date {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease 1.4s forwards;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeIn 1s ease 2.5s forwards;
+}
+
+.scroll-cue span {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+}
+
+.scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid var(--text-dim);
+  border-bottom: 2px solid var(--text-dim);
+  transform: rotate(45deg);
+  animation: scrollBounce 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.5; }
+  50%       { transform: rotate(45deg) translateY(6px); opacity: 1; }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* ─── SECTION SHELL ─── */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.section-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-heading {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--border), transparent);
+}
+
+/* ─── REVEAL ANIMATION ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ─── STATS BAR ─── */
+#stats {
+  background: var(--bg-panel);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+}
+
+#stats .inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 32px;
+}
+
+.stat-block {
+  text-align: center;
+  position: relative;
+}
+
+.stat-block::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: var(--border);
+}
+
+.stat-block:last-child::after { display: none; }
+
+.stat-number {
+  font-family: 'Cinzel', serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(245,200,66,0.4);
+  line-height: 1;
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 6px;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.stat-bar-track {
+  width: 60px;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 10px auto 0;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--gold-dim), var(--gold));
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── TIMELINE ─── */
+#timeline-section { background: var(--bg-deep); }
+
+.timeline {
+  position: relative;
+  padding: 20px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--border) 10%, var(--border) 90%, transparent);
+  transform: translateX(-50%);
+}
+
+@media (max-width: 700px) {
+  .timeline::before { left: 28px; }
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row;
+  padding-right: calc(50% + 40px);
+  padding-left: 0;
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+  padding-left: calc(50% + 40px);
+  padding-right: 0;
+}
+
+@media (max-width: 700px) {
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    flex-direction: row;
+    padding-left: 70px;
+    padding-right: 0;
+  }
+}
+
+.timeline-node {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  z-index: 2;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .timeline-node { left: 28px; }
+}
+
+.timeline-node.done {
+  background: radial-gradient(circle, #2a2010 0%, #1a1408 100%);
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 20px rgba(245,200,66,0.4), 0 0 40px rgba(245,200,66,0.15);
+  animation: nodePulse 3s ease-in-out infinite;
+}
+
+.timeline-node.upcoming {
+  background: var(--bg-panel);
+  border: 2px solid var(--border);
+  color: var(--text-dim);
+}
+
+@keyframes nodePulse {
+  0%, 100% { box-shadow: 0 0 16px rgba(245,200,66,0.35), 0 0 40px rgba(245,200,66,0.1); }
+  50%       { box-shadow: 0 0 28px rgba(245,200,66,0.6), 0 0 60px rgba(245,200,66,0.25); }
+}
+
+.timeline-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  width: 100%;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  cursor: default;
+}
+
+.timeline-item.done .timeline-card:hover {
+  border-color: var(--gold-dim);
+  box-shadow: 0 0 24px rgba(245,200,66,0.12);
+  transform: translateY(-2px);
+}
+
+.timeline-item.upcoming .timeline-card {
+  opacity: 0.65;
+}
+
+.tl-milestone-badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+}
+
+.done .tl-milestone-badge { color: var(--gold-dim); }
+.upcoming .tl-milestone-badge { color: var(--text-dim); }
+
+.tl-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.done .tl-title { color: var(--text-white); }
+.upcoming .tl-title { color: var(--text-dim); }
+
+.tl-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.tl-status.complete {
+  background: rgba(74,222,128,0.12);
+  border: 1px solid rgba(74,222,128,0.35);
+  color: var(--uncommon);
+}
+
+.tl-status.upcoming-badge {
+  background: rgba(107,116,154,0.2);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+.tl-bullets {
+  list-style: none;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.tl-bullets li::before {
+  content: '▶ ';
+  color: var(--border);
+  font-size: 0.7em;
+}
+
+/* ─── MILESTONE FEATURE CARDS ─── */
+#features { background: var(--bg-panel); }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-accent, var(--gold));
+  opacity: 0.7;
+}
+
+.feature-card::after {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--card-accent, var(--gold)) 0%, transparent 70%);
+  opacity: 0.04;
+  transition: opacity 0.3s;
+}
+
+.feature-card:hover {
+  border-color: var(--card-accent, var(--gold));
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 20px rgba(var(--card-accent-rgb, 245,200,66), 0.08);
+}
+
+.feature-card:hover::after { opacity: 0.1; }
+
+.fc-milestone {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--card-accent, var(--gold));
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.fc-icon {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+  display: block;
+  line-height: 1;
+}
+
+.fc-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 16px;
+}
+
+.fc-items {
+  list-style: none;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fc-items li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--text-body);
+  line-height: 1.4;
+}
+
+.fc-bullet {
+  color: var(--card-accent, var(--gold));
+  font-size: 0.6em;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+/* ─── RARITY SHOWCASE ─── */
+#rarity { background: var(--bg-deep); padding: 80px 24px; }
+#rarity .inner { max-width: 1100px; margin: 0 auto; }
+
+.rarity-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.rarity-pill {
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 1px solid;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.rarity-pill:hover {
+  transform: translateY(-2px);
+}
+
+.rarity-pill.common    { border-color: var(--common);    color: var(--common);    background: rgba(156,163,175,0.08); }
+.rarity-pill.uncommon  { border-color: var(--uncommon);  color: var(--uncommon);  background: rgba(74,222,128,0.08); }
+.rarity-pill.rare      { border-color: var(--rare);      color: var(--rare);      background: rgba(96,165,250,0.08); }
+.rarity-pill.epic      { border-color: var(--epic);      color: var(--epic);      background: rgba(192,132,252,0.08); }
+.rarity-pill.legendary {
+  border-color: var(--legendary);
+  color: var(--legendary);
+  background: rgba(251,146,60,0.08);
+  animation: legendaryShimmer 3s ease-in-out infinite;
+}
+
+@keyframes legendaryShimmer {
+  0%, 100% { box-shadow: 0 0 8px rgba(251,146,60,0.25); }
+  50%       { box-shadow: 0 0 20px rgba(251,146,60,0.55); }
+}
+
+.rarity-chance {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-left: 8px;
+}
+
+.rarity-progress-wrap {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rarity-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rarity-bar-label {
+  width: 90px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.rarity-bar-label.common   { color: var(--common); }
+.rarity-bar-label.uncommon { color: var(--uncommon); }
+.rarity-bar-label.rare     { color: var(--rare); }
+.rarity-bar-label.epic     { color: var(--epic); }
+.rarity-bar-label.legendary{ color: var(--legendary); }
+
+.rarity-track {
+  flex: 1;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.rarity-fill {
+  height: 100%;
+  border-radius: 4px;
+  width: 0;
+  transition: width 2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rarity-fill.common    { background: var(--common); }
+.rarity-fill.uncommon  { background: var(--uncommon); }
+.rarity-fill.rare      { background: var(--rare); }
+.rarity-fill.epic      { background: var(--epic); }
+.rarity-fill.legendary { background: linear-gradient(to right, var(--legendary), #fcd34d); }
+
+.rarity-pct {
+  width: 40px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-align: right;
+}
+
+/* ─── LOG / KNOWN ISSUES ─── */
+#issues { background: var(--bg-panel); }
+
+.console-panel {
+  background: #080a14;
+  border: 1px solid #1e2340;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.console-topbar {
+  background: #0f1120;
+  border-bottom: 1px solid #1e2340;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.console-dot {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+}
+.console-dot.red    { background: #f87171; }
+.console-dot.yellow { background: #fbbf24; }
+.console-dot.green  { background: #4ade80; }
+
+.console-title {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  flex: 1;
+  text-align: center;
+}
+
+.console-body {
+  padding: 20px 20px 24px;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.log-line {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.log-line:last-child { border-bottom: none; }
+
+.log-ts {
+  color: #3a4060;
+  flex-shrink: 0;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.log-tag {
+  flex-shrink: 0;
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.tag-warn  { background: rgba(251,191,36,0.2);  color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+.tag-info  { background: rgba(96,165,250,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
+.tag-stub  { background: rgba(192,132,252,0.15);color: #c084fc; border: 1px solid rgba(192,132,252,0.3); }
+.tag-edge  { background: rgba(156,163,175,0.1); color: #9ca3af; border: 1px solid rgba(156,163,175,0.2); }
+
+.log-msg { color: var(--text-body); }
+.log-msg .highlight { color: var(--gold); }
+.log-msg .muted     { color: var(--text-dim); }
+
+/* ─── COMING NEXT ─── */
+#coming { background: var(--bg-deep); }
+
+.coming-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.coming-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.coming-card:hover {
+  border-color: rgba(107,116,154,0.6);
+  transform: translateY(-3px);
+}
+
+.coming-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+}
+
+.coming-milestone {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+
+.coming-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-body);
+  margin-bottom: 14px;
+}
+
+.coming-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  background: rgba(107,116,154,0.15);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+.coming-items {
+  list-style: none;
+  font-size: 0.88rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.coming-items li {
+  color: var(--text-dim);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  line-height: 1.4;
+}
+
+.coming-items li::before {
+  content: '◇ ';
+  color: var(--border);
+  font-size: 0.7em;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* ─── TECH BADGES ─── */
+#tech { background: var(--bg-panel); padding: 60px 24px; }
+#tech .inner { max-width: 1100px; margin: 0 auto; }
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-body);
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.badge:hover {
+  border-color: var(--gold-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.badge-icon {
+  font-size: 1.2rem;
+}
+
+.badge-name { font-family: 'Cinzel', serif; font-size: 0.85rem; }
+.badge-ver  { font-size: 0.8rem; color: var(--text-dim); font-family: 'Share Tech Mono', monospace; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: #080a12;
+  border-top: 1px solid var(--border);
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.3rem;
+  color: var(--gold-dim);
+  margin-bottom: 16px;
+  text-shadow: 0 0 20px rgba(245,200,66,0.3);
+}
+
+.footer-desc {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.footer-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.footer-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.footer-divider-gem {
+  width: 6px; height: 6px;
+  background: var(--gold-dim);
+  transform: rotate(45deg);
+}
+
+.footer-meta {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #2a2f52;
+}
+
+/* ─── UTILITY ─── */
+.gold { color: var(--gold); }
+.dim  { color: var(--text-dim); }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════ -->
+<header id="hero">
+  <canvas id="hero-canvas"></canvas>
+
+  <div class="hero-content">
+    <div class="rune-ring" aria-hidden="true">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer ring -->
+        <circle cx="60" cy="60" r="56" stroke="#f5c842" stroke-width="1" stroke-dasharray="8 4" opacity="0.6"/>
+        <!-- Middle ring -->
+        <circle cx="60" cy="60" r="44" stroke="#c49a20" stroke-width="1" opacity="0.4"/>
+        <!-- Rune marks on outer ring -->
+        <g stroke="#f5c842" stroke-width="1.5" opacity="0.8">
+          <line x1="60" y1="4"  x2="60" y2="14"/>
+          <line x1="60" y1="106" x2="60" y2="116"/>
+          <line x1="4"  y1="60" x2="14" y2="60"/>
+          <line x1="106" y1="60" x2="116" y2="60"/>
+          <line x1="20" y1="20" x2="27" y2="27"/>
+          <line x1="93" y1="93" x2="100" y2="100"/>
+          <line x1="100" y1="20" x2="93" y2="27"/>
+          <line x1="27" y1="93" x2="20" y2="100"/>
+        </g>
+        <!-- Inner octagram -->
+        <polygon points="60,20 67,46 93,40 72,58 80,84 60,70 40,84 48,58 27,40 53,46"
+                 stroke="#f5c842" stroke-width="1.2" fill="rgba(245,200,66,0.06)" opacity="0.7"/>
+        <!-- Center gem -->
+        <polygon points="60,50 66,60 60,70 54,60" fill="#f5c842" opacity="0.9"/>
+        <!-- Tick marks -->
+        <g stroke="#c49a20" stroke-width="1" opacity="0.5">
+          <line x1="60" y1="16" x2="60" y2="20"/>
+          <line x1="60" y1="100" x2="60" y2="104"/>
+          <line x1="16" y1="60" x2="20" y2="60"/>
+          <line x1="100" y1="60" x2="104" y2="60"/>
+        </g>
+      </svg>
+      <div class="rune-inner"></div>
+    </div>
+
+    <p class="hero-eyebrow">◆ Development Progress Report ◆</p>
+
+    <h1 class="hero-title">Aethermoor<br>Chronicles</h1>
+
+    <p class="hero-subtitle">Milestone Report &mdash; M1 through M5</p>
+
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <div class="hero-divider-gem"></div>
+      <div class="hero-divider-line right"></div>
+    </div>
+
+    <p class="hero-date">Report Date: April 10, 2026 &nbsp;&#x25C6;&nbsp; Engine Version: 0.5.0 &nbsp;&#x25C6;&nbsp; Platform: Browser / Canvas2D</p>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span>SCROLL</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     LIVE STATS BAR
+═══════════════════════════════════════════════════════ -->
+<div id="stats">
+  <div class="inner">
+    <div class="stat-block reveal">
+      <span class="stat-number" data-target="25" data-suffix="">0</span>
+      <div class="stat-label">Items Defined</div>
+      <div class="stat-bar-track"><div class="stat-bar-fill" data-width="42%"></div></div>
+    </div>
+    <div class="stat-block reveal reveal-delay-1">
+      <span class="stat-number" data-target="5" data-suffix="">0</span>
+      <div class="stat-label">Rarity Tiers</div>
+      <div class="stat-bar-track"><div class="stat-bar-fill" data-width="50%"></div></div>
+    </div>
+    <div class="stat-block reveal reveal-delay-2">
+      <span class="stat-number" data-target="3" data-suffix="">0</span>
+      <div class="stat-label">Enemy Types</div>
+      <div class="stat-bar-track"><div class="stat-bar-fill" data-width="30%"></div></div>
+    </div>
+    <div class="stat-block reveal reveal-delay-3">
+      <span class="stat-number" data-target="34" data-suffix="">0</span>
+      <div class="stat-label">Source Files</div>
+      <div class="stat-bar-track"><div class="stat-bar-fill" data-width="57%"></div></div>
+    </div>
+    <div class="stat-block reveal reveal-delay-4">
+      <span class="stat-number" data-target="57" data-suffix="">0</span>
+      <div class="stat-label">KB Bundle</div>
+      <div class="stat-bar-track"><div class="stat-bar-fill" data-width="38%"></div></div>
+    </div>
+    <div class="stat-block reveal reveal-delay-5">
+      <span class="stat-number" data-target="60" data-suffix="">0</span>
+      <div class="stat-label">Target FPS</div>
+      <div class="stat-bar-track"><div class="stat-bar-fill" data-width="100%"></div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     TIMELINE
+═══════════════════════════════════════════════════════ -->
+<section id="timeline-section">
+  <div>
+    <p class="section-label reveal">Chronicle of Progress</p>
+    <h2 class="section-heading reveal">Development Timeline</h2>
+  </div>
+
+  <div class="timeline">
+
+    <!-- M1 -->
+    <div class="timeline-item done reveal">
+      <div class="timeline-node done">M1</div>
+      <div class="timeline-card">
+        <div class="tl-milestone-badge">Milestone 01</div>
+        <div class="tl-title">Engine Foundation</div>
+        <span class="tl-status complete">&#x2713; Complete</span>
+        <ul class="tl-bullets">
+          <li>Fixed-timestep game loop (60 fps physics, uncapped render)</li>
+          <li>Wang tileset renderer with grass/dirt corner matching</li>
+          <li>Smooth lerp camera follow system</li>
+          <li>WASD movement with tile collision</li>
+          <li>Pixel-art characters scaled 3x (~165 px)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- M2 -->
+    <div class="timeline-item done reveal">
+      <div class="timeline-node done">M2</div>
+      <div class="timeline-card">
+        <div class="tl-milestone-badge">Milestone 02</div>
+        <div class="tl-title">World &amp; Objects</div>
+        <span class="tl-status complete">&#x2713; Complete</span>
+        <ul class="tl-bullets">
+          <li>Oak trees, boulders, chests, ore nodes, portal gate</li>
+          <li>Y-sorting for pseudo-3D depth ordering</li>
+          <li>Minimap canvas (150x120) with terrain + dots</li>
+          <li>20-minute real-time day/night cycle overlay</li>
+          <li>Proximity interaction indicators</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- M3 -->
+    <div class="timeline-item done reveal">
+      <div class="timeline-node done">M3</div>
+      <div class="timeline-card">
+        <div class="tl-milestone-badge">Milestone 03</div>
+        <div class="tl-title">Combat Core</div>
+        <span class="tl-status complete">&#x2713; Complete</span>
+        <ul class="tl-bullets">
+          <li>3 enemy types: Goblin Scout, Forest Sprite, Stone Golem</li>
+          <li>AI FSM: idle / patrol / chase / attack / dead</li>
+          <li>Melee arc hitbox with knockback physics</li>
+          <li>Arrow projectile pool (40 pre-allocated)</li>
+          <li>200-particle pool + floating damage numbers</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- M4 -->
+    <div class="timeline-item done reveal">
+      <div class="timeline-node done">M4</div>
+      <div class="timeline-card">
+        <div class="tl-milestone-badge">Milestone 04</div>
+        <div class="tl-title">Loot System</div>
+        <span class="tl-status complete">&#x2713; Complete</span>
+        <ul class="tl-bullets">
+          <li>25 item definitions across 6 item types</li>
+          <li>5 rarity tiers with weighted drop table</li>
+          <li>Up to 4 random affixes on Legendary items</li>
+          <li>World item drops glowing in rarity color</li>
+          <li>Inventory panel (8x5 grid) + click-to-equip</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- M5 -->
+    <div class="timeline-item done reveal">
+      <div class="timeline-node done">M5</div>
+      <div class="timeline-card">
+        <div class="tl-milestone-badge">Milestone 05</div>
+        <div class="tl-title">Equipment &amp; Stats</div>
+        <span class="tl-status complete">&#x2713; Complete</span>
+        <ul class="tl-bullets">
+          <li>Paper doll equipment panel (9 equipment slots)</li>
+          <li>Full stat aggregation from items + affixes</li>
+          <li>Level-up system with attribute point allocation</li>
+          <li>Tooltip stat comparison (green up / red down vs equipped)</li>
+          <li>XP progress bar in HUD</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- M6 upcoming -->
+    <div class="timeline-item upcoming reveal">
+      <div class="timeline-node upcoming">M6</div>
+      <div class="timeline-card">
+        <div class="tl-milestone-badge">Milestone 06</div>
+        <div class="tl-title">Skill Trees</div>
+        <span class="tl-status upcoming-badge">&#x25C7; Upcoming</span>
+        <ul class="tl-bullets">
+          <li>Warrior / Ranger / Mage paths, 12 nodes each</li>
+          <li>Hotbar active skill slots</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- M7 upcoming -->
+    <div class="timeline-item upcoming reveal">
+      <div class="timeline-node upcoming">M7</div>
+      <div class="timeline-card">
+        <div class="tl-milestone-badge">Milestone 07</div>
+        <div class="tl-title">Crafting &amp; Mining</div>
+        <span class="tl-status upcoming-badge">&#x25C7; Upcoming</span>
+        <ul class="tl-bullets">
+          <li>Mining channels with progress bars</li>
+          <li>Crafting forge + enchantment system</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- M10 upcoming abbreviated -->
+    <div class="timeline-item upcoming reveal">
+      <div class="timeline-node upcoming">M10</div>
+      <div class="timeline-card">
+        <div class="tl-milestone-badge">Milestone 10</div>
+        <div class="tl-title">Polish &amp; Launch</div>
+        <span class="tl-status upcoming-badge">&#x25C7; Upcoming</span>
+        <ul class="tl-bullets">
+          <li>Full save / load system</li>
+          <li>Touch controls + gamepad support</li>
+          <li>Main menu + performance polish</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     FEATURE CARDS
+═══════════════════════════════════════════════════════ -->
+<section id="features">
+  <p class="section-label reveal">What Was Built</p>
+  <h2 class="section-heading reveal">Milestone Feature Breakdown</h2>
+
+  <div class="features-grid">
+
+    <div class="feature-card reveal" style="--card-accent: #22d3ee; --card-accent-rgb: 34,211,238;">
+      <div class="fc-milestone">M1 — Engine</div>
+      <div class="fc-icon" aria-hidden="true">&#9881;</div>
+      <div class="fc-title">Engine Foundation</div>
+      <ul class="fc-items">
+        <li><span class="fc-bullet">&#9670;</span>Fixed-timestep loop decoupled from render — physics locked at 60 Hz, render uncapped for fluid motion</li>
+        <li><span class="fc-bullet">&#9670;</span>Wang tile corner-matching: 47-variant tileset for seamless grass-to-dirt transitions</li>
+        <li><span class="fc-bullet">&#9670;</span>Smooth lerp camera with dead-zone and edge dampening</li>
+        <li><span class="fc-bullet">&#9670;</span>AABB tile collision with sub-pixel correction on all 4 faces</li>
+      </ul>
+    </div>
+
+    <div class="feature-card reveal reveal-delay-1" style="--card-accent: #4ade80; --card-accent-rgb: 74,222,128;">
+      <div class="fc-milestone">M2 — World</div>
+      <div class="fc-icon" aria-hidden="true">&#9655;</div>
+      <div class="fc-title">World &amp; Objects</div>
+      <ul class="fc-items">
+        <li><span class="fc-bullet">&#9670;</span>5 world object archetypes, each with sprite sheet, shadow, and interaction radius</li>
+        <li><span class="fc-bullet">&#9670;</span>Painter's-algorithm Y-sort ensures correct depth for all sprites each frame</li>
+        <li><span class="fc-bullet">&#9670;</span>Minimap: 150x120 scaled canvas, fog-of-war mask, live enemy + player dots</li>
+        <li><span class="fc-bullet">&#9670;</span>Day/night alpha overlay driven by real wall-clock time (20-min cycle)</li>
+      </ul>
+    </div>
+
+    <div class="feature-card reveal reveal-delay-2" style="--card-accent: #f87171; --card-accent-rgb: 248,113,113;">
+      <div class="fc-milestone">M3 — Combat</div>
+      <div class="fc-icon" aria-hidden="true">&#9651;</div>
+      <div class="fc-title">Combat Core</div>
+      <ul class="fc-items">
+        <li><span class="fc-bullet">&#9670;</span>Three distinct AI classes, each with unique stat profile and behavior tree depth</li>
+        <li><span class="fc-bullet">&#9670;</span>Melee hitbox computed as arc sector; correct for rotation and weapon reach</li>
+        <li><span class="fc-bullet">&#9670;</span>Object pool pattern for both projectiles (40) and particles (200) — zero GC pressure</li>
+        <li><span class="fc-bullet">&#9670;</span>Damage numbers: white standard / yellow critical / red player — lifetime + drift animation</li>
+      </ul>
+    </div>
+
+    <div class="feature-card reveal reveal-delay-3" style="--card-accent: #c084fc; --card-accent-rgb: 192,132,252;">
+      <div class="fc-milestone">M4 — Loot</div>
+      <div class="fc-icon" aria-hidden="true">&#9670;</div>
+      <div class="fc-title">Loot System</div>
+      <ul class="fc-items">
+        <li><span class="fc-bullet">&#9670;</span>Item taxonomy: 6 types x 25 base definitions — weapons, armor, rings, trinkets, consumables, materials</li>
+        <li><span class="fc-bullet">&#9670;</span>Weighted RNG drop table with clamped legendary floor rate</li>
+        <li><span class="fc-bullet">&#9670;</span>Affixes: additive stat rolls selected from affix pool, non-duplicate per item</li>
+        <li><span class="fc-bullet">&#9670;</span>Ground items render with pulsing billboard glow in rarity color</li>
+      </ul>
+    </div>
+
+    <div class="feature-card reveal reveal-delay-4" style="--card-accent: #fb923c; --card-accent-rgb: 251,146,60;">
+      <div class="fc-milestone">M5 — Equipment</div>
+      <div class="fc-icon" aria-hidden="true">&#9733;</div>
+      <div class="fc-title">Equipment &amp; Stats</div>
+      <ul class="fc-items">
+        <li><span class="fc-bullet">&#9670;</span>Paper doll: 9 slots (head, chest, legs, hands, feet, main-hand, off-hand, ring x2, neck)</li>
+        <li><span class="fc-bullet">&#9670;</span>Stat sheet aggregates base + level bonuses + item base + all active affixes in one pass</li>
+        <li><span class="fc-bullet">&#9670;</span>Level-up modal: 5 attribute points per level, spend in STR / DEX / INT / VIT</li>
+        <li><span class="fc-bullet">&#9670;</span>Tooltip diff: green arrow up for improvements, red arrow down for downgrades vs currently worn</li>
+      </ul>
+    </div>
+
+    <div class="feature-card reveal reveal-delay-5" style="--card-accent: #f5c842; --card-accent-rgb: 245,200,66;">
+      <div class="fc-milestone">Core Systems</div>
+      <div class="fc-icon" aria-hidden="true">&#9724;</div>
+      <div class="fc-title">Architecture Highlights</div>
+      <ul class="fc-items">
+        <li><span class="fc-bullet">&#9670;</span>Pure Vanilla JS + Canvas2D — no framework overhead, predictable render budget</li>
+        <li><span class="fc-bullet">&#9670;</span>Component-entity model: loose coupling between renderer, physics, AI, and input modules</li>
+        <li><span class="fc-bullet">&#9670;</span>Vite HMR for fast iteration during development</li>
+        <li><span class="fc-bullet">&#9670;</span>57 KB gzipped bundle — loads in &lt;1 s on 4G</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     RARITY TIERS
+═══════════════════════════════════════════════════════ -->
+<div id="rarity">
+  <div class="inner">
+    <p class="section-label reveal">Item System Detail</p>
+    <h2 class="section-heading reveal">Rarity Tier Distribution</h2>
+
+    <div class="rarity-row reveal">
+      <div class="rarity-pill common">Common <span class="rarity-chance">60%</span></div>
+      <div class="rarity-pill uncommon">Uncommon <span class="rarity-chance">25%</span></div>
+      <div class="rarity-pill rare">Rare <span class="rarity-chance">10%</span></div>
+      <div class="rarity-pill epic">Epic <span class="rarity-chance">4%</span></div>
+      <div class="rarity-pill legendary">Legendary <span class="rarity-chance">1%</span></div>
+    </div>
+
+    <div class="rarity-progress-wrap reveal reveal-delay-2">
+      <div class="rarity-bar-row">
+        <span class="rarity-bar-label common">Common</span>
+        <div class="rarity-track"><div class="rarity-fill common" data-width="60%"></div></div>
+        <span class="rarity-pct">60%</span>
+      </div>
+      <div class="rarity-bar-row">
+        <span class="rarity-bar-label uncommon">Uncommon</span>
+        <div class="rarity-track"><div class="rarity-fill uncommon" data-width="25%"></div></div>
+        <span class="rarity-pct">25%</span>
+      </div>
+      <div class="rarity-bar-row">
+        <span class="rarity-bar-label rare">Rare</span>
+        <div class="rarity-track"><div class="rarity-fill rare" data-width="10%"></div></div>
+        <span class="rarity-pct">10%</span>
+      </div>
+      <div class="rarity-bar-row">
+        <span class="rarity-bar-label epic">Epic</span>
+        <div class="rarity-track"><div class="rarity-fill epic" data-width="4%"></div></div>
+        <span class="rarity-pct">4%</span>
+      </div>
+      <div class="rarity-bar-row">
+        <span class="rarity-bar-label legendary">Legendary</span>
+        <div class="rarity-track"><div class="rarity-fill legendary" data-width="1%"></div></div>
+        <span class="rarity-pct">1%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     KNOWN ISSUES LOG
+═══════════════════════════════════════════════════════ -->
+<section id="issues">
+  <p class="section-label reveal">Honest Assessment</p>
+  <h2 class="section-heading reveal">Known Issues &amp; Gaps</h2>
+
+  <div class="console-panel reveal">
+    <div class="console-topbar">
+      <div class="console-dot red"></div>
+      <div class="console-dot yellow"></div>
+      <div class="console-dot green"></div>
+      <div class="console-title">AETHERMOOR // ISSUE_LOG // v0.5.0</div>
+    </div>
+    <div class="console-body">
+
+      <div class="log-line">
+        <span class="log-ts">[M10]</span>
+        <span class="log-tag tag-info">PLANNED</span>
+        <span class="log-msg"><span class="highlight">Touch controls</span> not yet implemented. Mobile input is stubbed. Scheduled for <span class="highlight">Milestone 10</span>.</span>
+      </div>
+
+      <div class="log-line">
+        <span class="log-ts">[M10]</span>
+        <span class="log-tag tag-stub">STUB</span>
+        <span class="log-msg"><span class="highlight">Gamepad API</span> binding exists in source but action map is not connected. Controller input returns no-ops.</span>
+      </div>
+
+      <div class="log-line">
+        <span class="log-ts">[M09]</span>
+        <span class="log-tag tag-info">PLANNED</span>
+        <span class="log-msg">Only <span class="highlight">Zone 1</span> (Ember Hollow) is playable. Zone 2 (Duststone Pass) is data-defined but not loaded. ETA: Milestone 9.</span>
+      </div>
+
+      <div class="log-line">
+        <span class="log-ts">[M06]</span>
+        <span class="log-tag tag-stub">STUB</span>
+        <span class="log-msg"><span class="highlight">Skill trees</span> are fully defined in data layer (36 nodes, 3 paths) but the UI panel is not wired. Tree nodes return passive bonuses of 0. ETA: Milestone 6.</span>
+      </div>
+
+      <div class="log-line">
+        <span class="log-ts">[M10]</span>
+        <span class="log-tag tag-info">PLANNED</span>
+        <span class="log-msg"><span class="highlight">Save system</span> absent. All progression resets on page reload. LocalStorage serializer scaffolded but not hooked into game state. ETA: Milestone 10.</span>
+      </div>
+
+      <div class="log-line">
+        <span class="log-ts">[---]</span>
+        <span class="log-tag tag-warn">WARN</span>
+        <span class="log-msg"><span class="highlight">Day/night overlay</span> may exhibit single-frame luminance flicker on Firefox when tab regains focus due to requestAnimationFrame gap. Workaround: force redraw on visibilitychange.</span>
+      </div>
+
+      <div class="log-line">
+        <span class="log-ts">[---]</span>
+        <span class="log-tag tag-edge">EDGE</span>
+        <span class="log-msg"><span class="highlight">Wang tile lookup</span> falls back to solid fill color when JSON variant key is absent (rare map edge case). Visual artifact is minor but logged for future audit pass.</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     COMING NEXT
+═══════════════════════════════════════════════════════ -->
+<section id="coming">
+  <p class="section-label reveal">Looking Ahead</p>
+  <h2 class="section-heading reveal">Milestones M6 &ndash; M10</h2>
+
+  <div class="coming-grid">
+
+    <div class="coming-card reveal">
+      <div class="coming-milestone">Milestone 06</div>
+      <div class="coming-title">Full Skill Trees</div>
+      <span class="coming-status">&#x25C7; In Planning</span>
+      <ul class="coming-items">
+        <li>Warrior / Ranger / Mage class paths</li>
+        <li>12 nodes per path, passive + active skills</li>
+        <li>Hotbar with 6 active skill slots</li>
+        <li>Skill point allocation UI panel</li>
+      </ul>
+    </div>
+
+    <div class="coming-card reveal reveal-delay-1">
+      <div class="coming-milestone">Milestone 07</div>
+      <div class="coming-title">Mining &amp; Crafting</div>
+      <span class="coming-status">&#x25C7; In Planning</span>
+      <ul class="coming-items">
+        <li>Mining channels with timed progress bars</li>
+        <li>Raw material inventory category</li>
+        <li>Crafting forge: recipe-based item creation</li>
+        <li>Enchantment system: affix augmentation</li>
+      </ul>
+    </div>
+
+    <div class="coming-card reveal reveal-delay-2">
+      <div class="coming-milestone">Milestone 08</div>
+      <div class="coming-title">Spells &amp; First Boss</div>
+      <span class="coming-status">&#x25C7; In Planning</span>
+      <ul class="coming-items">
+        <li>Fireball: projectile + explosion particle burst</li>
+        <li>Frost Nova: area freeze with status effect</li>
+        <li>Status effect system (burn, chill, stun)</li>
+        <li>Zone 1 boss encounter with phase transitions</li>
+      </ul>
+    </div>
+
+    <div class="coming-card reveal reveal-delay-3">
+      <div class="coming-milestone">Milestone 09</div>
+      <div class="coming-title">Zone 2 &amp; Quests</div>
+      <span class="coming-status">&#x25C7; In Planning</span>
+      <ul class="coming-items">
+        <li>Duststone Pass: new biome tileset, 3 elite enemies</li>
+        <li>Quest system with 8 hand-crafted quests</li>
+        <li>World map overlay + zone transition portal</li>
+        <li>NPC dialogue system (branching, single-depth)</li>
+      </ul>
+    </div>
+
+    <div class="coming-card reveal reveal-delay-4">
+      <div class="coming-milestone">Milestone 10</div>
+      <div class="coming-title">Polish &amp; Launch</div>
+      <span class="coming-status">&#x25C7; In Planning</span>
+      <ul class="coming-items">
+        <li>Full save / load via LocalStorage JSON serializer</li>
+        <li>Touch virtual joystick + tap-to-interact</li>
+        <li>Gamepad mapping (Xbox / DualSense layout)</li>
+        <li>Main menu, settings panel, performance audit</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     TECH STACK
+═══════════════════════════════════════════════════════ -->
+<div id="tech">
+  <div class="inner">
+    <p class="section-label reveal">Infrastructure</p>
+    <h2 class="section-heading reveal">Tech Stack</h2>
+
+    <div class="badge-row reveal">
+      <div class="badge">
+        <span class="badge-icon" aria-hidden="true">&#9651;</span>
+        <div>
+          <div class="badge-name">Vite</div>
+          <div class="badge-ver">v5.x Build Tool</div>
+        </div>
+      </div>
+      <div class="badge">
+        <span class="badge-icon" aria-hidden="true">&#9724;</span>
+        <div>
+          <div class="badge-name">Canvas 2D</div>
+          <div class="badge-ver">HTML5 Renderer</div>
+        </div>
+      </div>
+      <div class="badge">
+        <span class="badge-icon" aria-hidden="true">&#9670;</span>
+        <div>
+          <div class="badge-name">Vanilla JS</div>
+          <div class="badge-ver">ES2022 / No Framework</div>
+        </div>
+      </div>
+      <div class="badge">
+        <span class="badge-icon" aria-hidden="true">&#9733;</span>
+        <div>
+          <div class="badge-name">PixelLab AI</div>
+          <div class="badge-ver">Sprite Generation</div>
+        </div>
+      </div>
+      <div class="badge">
+        <span class="badge-icon" aria-hidden="true">&#9632;</span>
+        <div>
+          <div class="badge-name">ESLint</div>
+          <div class="badge-ver">Code Quality</div>
+        </div>
+      </div>
+      <div class="badge">
+        <span class="badge-icon" aria-hidden="true">&#9651;</span>
+        <div>
+          <div class="badge-name">Vitest</div>
+          <div class="badge-ver">Unit Testing</div>
+        </div>
+      </div>
+      <div class="badge">
+        <span class="badge-icon" aria-hidden="true">&#9655;</span>
+        <div>
+          <div class="badge-name">Google Fonts</div>
+          <div class="badge-ver">Cinzel / Rajdhani</div>
+        </div>
+      </div>
+      <div class="badge">
+        <span class="badge-icon" aria-hidden="true">&#9724;</span>
+        <div>
+          <div class="badge-name">GitHub Pages</div>
+          <div class="badge-ver">Deployment Target</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Aethermoor Chronicles</div>
+    <p class="footer-desc">
+      A browser-based action RPG built entirely in Vanilla JavaScript and Canvas2D.
+      No framework, no dependencies beyond the platform — just the engine, the world, and the player.
+    </p>
+    <div class="footer-divider">
+      <div class="footer-divider-line"></div>
+      <div class="footer-divider-gem"></div>
+      <div class="footer-divider-line"></div>
+    </div>
+    <div class="footer-meta">
+      MILESTONE REPORT &nbsp;&#x25C6;&nbsp; M1 THROUGH M5 &nbsp;&#x25C6;&nbsp; APRIL 10, 2026
+      &nbsp;&#x25C6;&nbsp; ENGINE v0.5.0 &nbsp;&#x25C6;&nbsp; BUILD: CANVAS2D / VITE / VANILLA JS
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════ -->
+<script>
+// ─── HERO PARTICLE CANVAS ───────────────────────────────────────────────────
+(function () {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Star particle definition
+  const STAR_COUNT = 220;
+  const stars = [];
+
+  function mkStar() {
+    const type = Math.random();
+    return {
+      x:    Math.random() * canvas.width,
+      y:    Math.random() * canvas.height,
+      r:    Math.random() * 1.6 + 0.2,
+      // drift velocity
+      vx:   (Math.random() - 0.5) * 0.18,
+      vy:   -(Math.random() * 0.22 + 0.04),
+      // twinkle
+      alpha:     Math.random(),
+      alphaDir:  Math.random() > 0.5 ? 1 : -1,
+      alphaSpeed: Math.random() * 0.006 + 0.002,
+      // gold accent probability
+      gold: Math.random() < 0.12,
+      // shooting-star flag
+      shoot: type > 0.97,
+      shootLen: Math.random() * 40 + 20,
+      shootAlpha: 0,
+    };
+  }
+
+  for (let i = 0; i < STAR_COUNT; i++) stars.push(mkStar());
+
+  // Extra floating rune glyphs
+  const RUNE_CHARS = ['&#x16A0;', '&#x16C1;', '&#x16B9;', '&#x16AA;'];
+  const glyphs = [];
+  for (let i = 0; i < 12; i++) {
+    glyphs.push({
+      x:    Math.random() * 100,
+      y:    Math.random() * 100,
+      vy:  -(Math.random() * 0.015 + 0.005),
+      alpha: Math.random() * 0.12 + 0.03,
+      size:  Math.random() * 14 + 10,
+      char:  RUNE_CHARS[Math.floor(Math.random() * RUNE_CHARS.length)],
+    });
+  }
+
+  let raf;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Stars
+    for (let i = 0; i < stars.length; i++) {
+      const s = stars[i];
+
+      // Twinkle
+      s.alpha += s.alphaDir * s.alphaSpeed;
+      if (s.alpha > 1)  { s.alpha = 1;  s.alphaDir = -1; }
+      if (s.alpha < 0.05){ s.alpha = 0.05; s.alphaDir = 1; }
+
+      // Move
+      s.x += s.vx;
+      s.y += s.vy;
+
+      // Wrap
+      if (s.y < -4)         s.y = canvas.height + 4;
+      if (s.x < -4)         s.x = canvas.width + 4;
+      if (s.x > canvas.width + 4) s.x = -4;
+
+      const color = s.gold ? `rgba(245,200,66,${s.alpha})` : `rgba(200,207,232,${s.alpha * 0.7})`;
+
+      if (s.shoot) {
+        // Shooting star trail
+        s.shootAlpha += 0.04;
+        if (s.shootAlpha > 1) s.shootAlpha = 0;
+        const trailAlpha = Math.sin(s.shootAlpha * Math.PI) * 0.6;
+        const grad = ctx.createLinearGradient(s.x, s.y, s.x + s.shootLen * 0.7, s.y + s.shootLen * 0.3);
+        grad.addColorStop(0, `rgba(245,200,66,${trailAlpha})`);
+        grad.addColorStop(1, 'rgba(245,200,66,0)');
+        ctx.beginPath();
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1;
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(s.x + s.shootLen * 0.7, s.y + s.shootLen * 0.3);
+        ctx.stroke();
+      }
+
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+    }
+
+    // Soft horizon glow at hero center
+    const cX = canvas.width  * 0.5;
+    const cY = canvas.height * 0.58;
+    const grd = ctx.createRadialGradient(cX, cY, 0, cX, cY, Math.min(canvas.width, canvas.height) * 0.55);
+    grd.addColorStop(0,   'rgba(60,30,120,0.18)');
+    grd.addColorStop(0.5, 'rgba(30,15,60,0.06)');
+    grd.addColorStop(1,   'rgba(0,0,0,0)');
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    raf = requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+
+
+// ─── INTERSECTION OBSERVER — REVEAL ─────────────────────────────────────────
+(function () {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+
+
+// ─── ANIMATED COUNTERS ───────────────────────────────────────────────────────
+(function () {
+  const counters = document.querySelectorAll('.stat-number[data-target]');
+
+  function animateCounter(el) {
+    const target   = parseInt(el.dataset.target, 10);
+    const suffix   = el.dataset.suffix || '';
+    const duration = 1800;
+    const start    = performance.now();
+
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.round(eased * target);
+      el.textContent = value + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  const obs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach(el => obs.observe(el));
+})();
+
+
+// ─── PROGRESS BAR TRIGGERS ──────────────────────────────────────────────────
+(function () {
+  function triggerBars(container) {
+    container.querySelectorAll('[data-width]').forEach(bar => {
+      const target = bar.dataset.width;
+      // Slight delay so the reveal animation runs first
+      setTimeout(() => { bar.style.width = target; }, 200);
+    });
+  }
+
+  const obs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          triggerBars(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  // Stat bars (in stats section)
+  document.querySelectorAll('#stats .inner').forEach(el => obs.observe(el));
+  // Rarity bars
+  document.querySelectorAll('.rarity-progress-wrap').forEach(el => obs.observe(el));
+})();
+
+
+// ─── ACTIVE SECTION HIGHLIGHT ON SCROLL (optional scroll spy) ───────────────
+(function () {
+  // Subtle parallax depth on hero rune ring
+  const ring = document.querySelector('.rune-ring');
+  if (!ring) return;
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const heroH   = document.getElementById('hero').offsetHeight;
+        if (scrollY < heroH) {
+          const ratio = scrollY / heroH;
+          ring.style.transform = `translateY(${ratio * 40}px)`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

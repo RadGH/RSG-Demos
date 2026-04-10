@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aethermoor Chronicles — Milestone Report M16–M20</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #060810;
+    --surface: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.08);
+    --gold: #f5c842;
+    --orange: #ff8c42;
+    --purple: #9b59e8;
+    --blue: #4a9eff;
+    --green: #56d66b;
+    --red: #e74c3c;
+    --text: #e8e8f0;
+    --muted: #6a7090;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Starfield ── */
+  #stars { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  .star { position:absolute; border-radius:50%; background:#fff; animation:twinkle linear infinite; }
+  @keyframes twinkle {
+    0%,100% { opacity:0.1; transform:scale(1); }
+    50% { opacity:0.8; transform:scale(1.4); }
+  }
+
+  /* ── Void portal background ── */
+  .void-bg {
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background: radial-gradient(ellipse 120% 80% at 50% 50%,
+      rgba(155,89,232,0.12) 0%,
+      rgba(74,158,255,0.06) 40%,
+      transparent 70%);
+    animation: voidPulse 8s ease-in-out infinite;
+  }
+  @keyframes voidPulse {
+    0%,100% { opacity:0.6; transform:scale(1); }
+    50% { opacity:1; transform:scale(1.05); }
+  }
+
+  main { position:relative; z-index:1; max-width:900px; margin:0 auto; padding:0 20px 80px; }
+
+  /* ── Hero ── */
+  .hero {
+    text-align:center; padding:80px 20px 60px;
+    position:relative;
+  }
+  .hero-eyebrow {
+    font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+    color:var(--purple); margin-bottom:16px; opacity:0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+  .hero-title {
+    font-family:'Cinzel',serif; font-size:clamp(32px,6vw,64px); font-weight:900; line-height:1.05;
+    background:linear-gradient(135deg,var(--gold) 0%,var(--orange) 30%,var(--purple) 60%,var(--blue) 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    margin-bottom:16px; opacity:0;
+    animation: fadeUp 0.6s 0.4s forwards;
+  }
+  .hero-sub {
+    font-size:18px; color:var(--muted); opacity:0;
+    animation: fadeUp 0.6s 0.6s forwards;
+  }
+  .hero-badge {
+    display:inline-block; margin-top:24px; padding:8px 22px;
+    background:linear-gradient(135deg,var(--purple),var(--blue));
+    border-radius:99px; font-size:12px; font-weight:700; letter-spacing:1px;
+    text-transform:uppercase; color:#fff; opacity:0;
+    animation: fadeUp 0.6s 0.8s forwards;
+    box-shadow: 0 0 30px rgba(155,89,232,0.4);
+  }
+
+  /* ── Rune divider ── */
+  .rune-divider {
+    text-align:center; padding:20px 0; color:var(--muted); font-size:20px;
+    letter-spacing:12px; opacity:0.4;
+  }
+
+  /* ── Section ── */
+  .section { margin-bottom:64px; }
+  .section-label {
+    font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+    color:var(--purple); margin-bottom:8px;
+  }
+  .section-title {
+    font-family:'Cinzel',serif; font-size:26px; font-weight:700; margin-bottom:24px;
+    background:linear-gradient(90deg,var(--gold),var(--orange));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+
+  /* ── Milestone cards ── */
+  .milestone-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
+  .ms-card {
+    background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:20px;
+    position:relative; overflow:hidden; cursor:default;
+    transition:transform 0.2s, box-shadow 0.2s;
+    opacity:0; transform:translateY(20px);
+  }
+  .ms-card.visible { animation: slideIn 0.5s forwards; }
+  @keyframes slideIn {
+    to { opacity:1; transform:translateY(0); }
+  }
+  .ms-card:hover { transform:translateY(-3px); box-shadow:0 8px 32px rgba(0,0,0,0.4); }
+  .ms-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background: var(--accent, var(--gold));
+  }
+  .ms-num { font-size:11px; font-weight:700; color:var(--muted); letter-spacing:1px; margin-bottom:6px; }
+  .ms-title { font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px; }
+  .ms-desc { font-size:12px; color:var(--muted); line-height:1.6; }
+  .ms-badge {
+    display:inline-block; margin-top:10px; padding:3px 10px;
+    background:rgba(86,214,107,0.12); border:1px solid rgba(86,214,107,0.3);
+    border-radius:99px; font-size:10px; font-weight:700; color:var(--green);
+    letter-spacing:0.5px; text-transform:uppercase;
+  }
+
+  /* ── Feature highlight ── */
+  .feature-highlight {
+    background: linear-gradient(135deg, rgba(155,89,232,0.08), rgba(74,158,255,0.08));
+    border:1px solid rgba(155,89,232,0.2); border-radius:16px; padding:28px;
+    margin-bottom:16px; position:relative; overflow:hidden;
+    opacity:0; transform:translateY(16px);
+    transition:opacity 0.5s, transform 0.5s;
+  }
+  .feature-highlight.visible { opacity:1; transform:translateY(0); }
+  .feature-icon {
+    font-size:32px; margin-bottom:12px; display:block;
+  }
+  .feature-title { font-size:18px; font-weight:700; margin-bottom:8px; color:var(--gold); }
+  .feature-body { font-size:13px; color:var(--muted); line-height:1.7; }
+
+  /* ── Stats row ── */
+  .stats-row { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:32px; }
+  .stat-pill {
+    flex:1; min-width:120px;
+    background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px;
+    text-align:center; opacity:0; animation:fadeUp 0.5s forwards;
+  }
+  .stat-num {
+    font-family:'Cinzel',serif; font-size:28px; font-weight:900;
+    background:linear-gradient(135deg,var(--gold),var(--orange));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .stat-label { font-size:10px; color:var(--muted); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-top:4px; }
+
+  /* ── Bug report ── */
+  .bug-item {
+    display:flex; gap:14px; align-items:flex-start;
+    padding:14px; background:var(--surface); border:1px solid var(--border);
+    border-radius:10px; margin-bottom:8px;
+  }
+  .bug-icon { font-size:18px; flex-shrink:0; margin-top:2px; }
+  .bug-title { font-size:13px; font-weight:700; margin-bottom:3px; }
+  .bug-desc { font-size:12px; color:var(--muted); line-height:1.5; }
+  .bug-status {
+    display:inline-block; padding:2px 8px; border-radius:99px;
+    font-size:10px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;
+  }
+  .bug-fixed { background:rgba(86,214,107,0.15); color:var(--green); border:1px solid rgba(86,214,107,0.3); }
+  .bug-known { background:rgba(231,76,60,0.12); color:var(--red); border:1px solid rgba(231,76,60,0.3); }
+
+  /* ── Void portal animation ── */
+  .portal-container {
+    text-align:center; padding:40px 0;
+    position:relative;
+  }
+  .portal {
+    display:inline-block; width:180px; height:180px; border-radius:50%;
+    background: radial-gradient(circle, rgba(155,89,232,0.8) 0%, rgba(74,158,255,0.4) 40%, transparent 70%);
+    box-shadow: 0 0 60px rgba(155,89,232,0.5), 0 0 120px rgba(155,89,232,0.2);
+    animation: portalSpin 4s linear infinite, portalPulse 2s ease-in-out infinite;
+    position:relative;
+  }
+  .portal::before, .portal::after {
+    content:''; position:absolute; inset:-10px; border-radius:50%;
+    border:2px solid rgba(155,89,232,0.3);
+    animation: portalRing 3s linear infinite;
+  }
+  .portal::after { inset:-20px; border-color:rgba(74,158,255,0.2); animation-direction:reverse; animation-duration:5s; }
+  @keyframes portalSpin { to { filter:hue-rotate(360deg); } }
+  @keyframes portalPulse {
+    0%,100% { transform:scale(1); box-shadow:0 0 60px rgba(155,89,232,0.5); }
+    50% { transform:scale(1.08); box-shadow:0 0 80px rgba(155,89,232,0.8), 0 0 160px rgba(155,89,232,0.3); }
+  }
+  @keyframes portalRing { to { transform:rotate(360deg); } }
+  .portal-label {
+    margin-top:16px; font-family:'Cinzel',serif; font-size:13px; color:var(--purple);
+    letter-spacing:2px; text-transform:uppercase;
+  }
+
+  /* ── Achievements strip ── */
+  .achievement-strip {
+    display:flex; gap:10px; overflow-x:auto; padding-bottom:8px;
+    scrollbar-width:thin; scrollbar-color:rgba(255,255,255,0.1) transparent;
+  }
+  .ach-chip {
+    flex-shrink:0; padding:10px 16px; border-radius:10px;
+    background:var(--surface); border:1px solid var(--border);
+    font-size:12px; white-space:nowrap; transition:all 0.2s;
+  }
+  .ach-chip span { color:var(--gold); margin-right:6px; }
+  .ach-chip:hover { background:rgba(245,200,66,0.08); border-color:rgba(245,200,66,0.3); }
+
+  /* ── Thoughts / suggestions ── */
+  .thought-card {
+    border-left:3px solid; padding:14px 18px; border-radius:0 10px 10px 0;
+    background:var(--surface); margin-bottom:10px; font-size:13px; line-height:1.7;
+  }
+  .thought-card.idea { border-color:var(--blue); }
+  .thought-card.warning { border-color:var(--orange); }
+  .thought-card.success { border-color:var(--green); }
+  .thought-label { font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px; }
+  .thought-card.idea .thought-label { color:var(--blue); }
+  .thought-card.warning .thought-label { color:var(--orange); }
+  .thought-card.success .thought-label { color:var(--green); }
+
+  /* ── Animate in ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(12px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .animate-in { opacity:0; }
+  .animate-in.visible { animation: fadeUp 0.5s forwards; }
+
+  /* ── Footer ── */
+  footer {
+    text-align:center; padding:40px 20px 20px;
+    font-size:12px; color:var(--muted); border-top:1px solid var(--border);
+    position:relative; z-index:1;
+  }
+  footer a { color:var(--purple); text-decoration:none; }
+
+  @media (max-width:600px) {
+    .milestone-grid { grid-template-columns:1fr; }
+    .stats-row { flex-direction:column; }
+    .hero { padding:50px 10px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Starfield -->
+<div id="stars"></div>
+<div class="void-bg"></div>
+
+<main>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-eyebrow">Aethermoor Chronicles · Development Chronicle</div>
+    <h1 class="hero-title">Milestones 16–20<br/>Feature Complete</h1>
+    <p class="hero-sub">From content expansion to a fully shipped action RPG</p>
+    <span class="hero-badge">Release Candidate</span>
+  </div>
+
+  <div class="rune-divider">✦ ᛞ ✦ ᛟ ✦ ᛉ ✦</div>
+
+  <!-- Stats strip -->
+  <div class="section">
+    <div class="stats-row">
+      <div class="stat-pill" style="animation-delay:0.1s">
+        <div class="stat-num">20</div>
+        <div class="stat-label">Milestones</div>
+      </div>
+      <div class="stat-pill" style="animation-delay:0.2s">
+        <div class="stat-num">185KB</div>
+        <div class="stat-label">Bundle Size</div>
+      </div>
+      <div class="stat-pill" style="animation-delay:0.3s">
+        <div class="stat-num">16</div>
+        <div class="stat-label">Quests</div>
+      </div>
+      <div class="stat-pill" style="animation-delay:0.4s">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Boss Fights</div>
+      </div>
+      <div class="stat-pill" style="animation-delay:0.5s">
+        <div class="stat-num">15</div>
+        <div class="stat-label">Achievements</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Milestone cards M16–M20 -->
+  <div class="section">
+    <div class="section-label">Milestones</div>
+    <div class="section-title">The Final Sprint</div>
+    <div class="milestone-grid">
+      <div class="ms-card" style="--accent:var(--gold)">
+        <div class="ms-num">M16</div>
+        <div class="ms-title">Content Expansion II</div>
+        <div class="ms-desc">Mithril ore, sign posts, campfires (HP regen), waystones for fast travel. 8 more quests (16 total). ZoneEvents system with 4 rotating world events.</div>
+        <span class="ms-badge">Complete</span>
+      </div>
+      <div class="ms-card" style="--accent:var(--blue)">
+        <div class="ms-num">M17</div>
+        <div class="ms-title">Audio System</div>
+        <div class="ms-desc">Web Audio API procedural synthesis — no audio files needed. Swing, hit, death, level-up, loot pickup, spells, mining, quest complete, and boss roar sounds.</div>
+        <span class="ms-badge">Complete</span>
+      </div>
+      <div class="ms-card" style="--accent:var(--orange)">
+        <div class="ms-num">M18</div>
+        <div class="ms-title">Zones 4–5 + Final Boss</div>
+        <div class="ms-desc">Ember Highlands (molten orange tint) and The Void (deep purple). Boss Ember Drake (3 phases, 2000 HP). The Ancient One — 4-phase final boss with 4000 HP and an enrage timer.</div>
+        <span class="ms-badge">Complete</span>
+      </div>
+      <div class="ms-card" style="--accent:var(--purple)">
+        <div class="ms-num">M19</div>
+        <div class="ms-title">Final Content Pass</div>
+        <div class="ms-desc">Achievement system with 15 unlockable milestones, persistent via localStorage. Slide-down popup notifications. Player title system displayed in HUD.</div>
+        <span class="ms-badge">Complete</span>
+      </div>
+      <div class="ms-card" style="--accent:var(--green)">
+        <div class="ms-num">M20</div>
+        <div class="ms-title">Feature Complete + QA</div>
+        <div class="ms-desc">GAME_OVER "You Died" screen. Combo system (x1–x10+) with XP bonus. Pickup range indicator. Fixed mouse click bug — pointer-events on UI root. Focus management for keyboard nav.</div>
+        <span class="ms-badge">Complete</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Void portal -->
+  <div class="portal-container animate-in">
+    <div class="portal"></div>
+    <div class="portal-label">The Void Awaits</div>
+  </div>
+
+  <!-- Feature highlights -->
+  <div class="section">
+    <div class="section-label">Spotlight</div>
+    <div class="section-title">Standout Features</div>
+
+    <div class="feature-highlight">
+      <span class="feature-icon">🌀</span>
+      <div class="feature-title">ZoneEvents — Dynamic World Events</div>
+      <div class="feature-body">
+        Four rotating world events shake up each play session: <strong>Double Loot</strong> (all drops ×2),
+        <strong>Elite Surge</strong> (50% of enemies become elites), <strong>Mining Rush</strong> (ore respawn
+        instantly) and <strong>Monster Horde</strong> (rapid enemy spawns). Events announce via a HUD banner
+        and last 3 minutes each. Cycle repeats so every hour of play feels different.
+      </div>
+    </div>
+
+    <div class="feature-highlight">
+      <span class="feature-icon">🎵</span>
+      <div class="feature-title">AudioManager — Zero-File Procedural Audio</div>
+      <div class="feature-body">
+        The entire audio system uses Web Audio API oscillators, filters, and envelope shaping — no audio files,
+        no CDN, no loading cost. Lazy-initialises on first user gesture to satisfy browser autoplay policies.
+        Sounds are tuned per action: sword swing uses a detuned sawtooth with a short decay; boss roar layers
+        a low square wave with a noise burst; level-up plays a triumphant major chord cascade.
+      </div>
+    </div>
+
+    <div class="feature-highlight">
+      <span class="feature-icon">🐉</span>
+      <div class="feature-title">The Ancient One — 4-Phase Final Boss</div>
+      <div class="feature-body">
+        The Void's final guardian scales through four distinct phases at 75%, 50%, and 25% HP thresholds.
+        Phase 1: standard melee + projectile spiral. Phase 2: clones appear. Phase 3: shadow dashes. Phase 4:
+        enrage — after 4 minutes real-time the boss enters permanent rage mode, dealing 3× damage. Epic and
+        Legendary loot is guaranteed on kill.
+      </div>
+    </div>
+
+    <div class="feature-highlight">
+      <span class="feature-icon">🏆</span>
+      <div class="feature-title">Achievement System</div>
+      <div class="feature-body">
+        15 achievements track long-term milestones: First Blood, Level 10, Zone Explorer, Combo Master (x10),
+        Boss Slayer, Legendary Find, Master Crafter, and more. Each unlock triggers a slide-down toast with
+        animated icon and gold border. Progress persists in localStorage and awards player titles shown in HUD.
+      </div>
+    </div>
+  </div>
+
+  <!-- Achievements strip -->
+  <div class="section">
+    <div class="section-label">Achievements</div>
+    <div class="section-title">15 Unlockable Milestones</div>
+    <div class="achievement-strip">
+      <div class="ach-chip"><span>⚔</span>First Blood</div>
+      <div class="ach-chip"><span>⭐</span>Level 10</div>
+      <div class="ach-chip"><span>🌍</span>Zone Explorer</div>
+      <div class="ach-chip"><span>💥</span>Combo Master</div>
+      <div class="ach-chip"><span>🐲</span>Boss Slayer</div>
+      <div class="ach-chip"><span>✨</span>Legendary Find</div>
+      <div class="ach-chip"><span>⚒</span>Master Crafter</div>
+      <div class="ach-chip"><span>💎</span>Gem Hunter</div>
+      <div class="ach-chip"><span>🎯</span>Sharpshooter</div>
+      <div class="ach-chip"><span>🧙</span>Archmage</div>
+      <div class="ach-chip"><span>🛡</span>Unbreakable</div>
+      <div class="ach-chip"><span>💰</span>Gold Hoarder</div>
+      <div class="ach-chip"><span>🗺</span>World Walker</div>
+      <div class="ach-chip"><span>⚡</span>Speed Demon</div>
+      <div class="ach-chip"><span>👑</span>Conqueror</div>
+    </div>
+  </div>
+
+  <!-- Bugs & Fixes -->
+  <div class="section">
+    <div class="section-label">Quality</div>
+    <div class="section-title">Bugs Fixed &amp; Known Issues</div>
+
+    <div class="bug-item">
+      <div class="bug-icon">🖱</div>
+      <div>
+        <div class="bug-title">Mouse clicks not registering on menu buttons <span class="bug-status bug-fixed">Fixed M20</span></div>
+        <div class="bug-desc">Root cause: <code>#ui-root</code> had <code>pointer-events:none</code> for game-world passthrough. MainMenuUI's container div had no override, so all mouse events fell through to the canvas. Fixed by adding <code>pointer-events:auto</code> to the menu container and <code>focus()</code> on the default button for keyboard accessibility.</div>
+      </div>
+    </div>
+
+    <div class="bug-item">
+      <div class="bug-icon">🗂</div>
+      <div>
+        <div class="bug-title">Asset 404s on GitHub Pages <span class="bug-status bug-fixed">Fixed M15</span></div>
+        <div class="bug-desc">Absolute <code>/sprites/</code> paths worked on localhost but resolved to the root of radgh.github.io rather than the <code>/game10/</code> subdirectory. Migrated all paths to <code>./sprites/</code> relative form.</div>
+      </div>
+    </div>
+
+    <div class="bug-item">
+      <div class="bug-icon">📱</div>
+      <div>
+        <div class="bug-title">Touch joystick can overlap skill hotbar on small phones <span class="bug-status bug-known">Known</span></div>
+        <div class="bug-desc">On screens narrower than 360px the virtual joystick and the skill buttons share the same vertical band. A future layout pass should move hotbar to the top-right in that case.</div>
+      </div>
+    </div>
+
+    <div class="bug-item">
+      <div class="bug-icon">🔊</div>
+      <div>
+        <div class="bug-title">Audio silent until first interaction on iOS Safari <span class="bug-status bug-fixed">By Design</span></div>
+        <div class="bug-desc">AudioManager lazy-initialises the AudioContext on first <code>pointerdown</code> event as required by browser autoplay policy. No workaround needed — this is correct behaviour.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Suggestions -->
+  <div class="section">
+    <div class="section-label">Looking Ahead</div>
+    <div class="section-title">Suggestions &amp; Ideas</div>
+
+    <div class="thought-card success">
+      <div class="thought-label">Strength</div>
+      The procedural audio system is a standout — no audio files, zero loading overhead, and surprisingly expressive. Worth keeping this approach for any future audio additions.
+    </div>
+
+    <div class="thought-card idea">
+      <div class="thought-label">Idea — Seasonal Events</div>
+      The ZoneEvents foundation could support "seasonal" events (one per real-world day) that persist across sessions. A daily "Ancient Rift" event that spawns unique enemies for 24 hours would drive return engagement.
+    </div>
+
+    <div class="thought-card idea">
+      <div class="thought-label">Idea — Leaderboard</div>
+      A simple localStorage-backed highscore board (most enemies killed, deepest zone reached, fastest boss kill) shown on the main menu would give long-term players a goal to chase.
+    </div>
+
+    <div class="thought-card warning">
+      <div class="thought-label">Performance Watch</div>
+      At 185 KB the bundle is comfortable, but the particle system and Y-sort pass both run every frame. If enemy count scales beyond 30 on-screen, profile and consider spatial bucketing for the sort.
+    </div>
+
+    <div class="thought-card idea">
+      <div class="thought-label">Idea — NG+ Mode</div>
+      After defeating The Ancient One, a New Game+ mode with enemies at 2× stats and a chance at exclusive Legendary variants would meaningfully extend the loot-chase loop.
+    </div>
+  </div>
+
+  <!-- Footer rune -->
+  <div class="rune-divider" style="margin-bottom:20px">ᚱ ✦ ᛊ ✦ ᚷ</div>
+
+</main>
+
+<footer>
+  <p>Aethermoor Chronicles · Milestone Report M16–M20 · 2026-04-10</p>
+  <p style="margin-top:6px">Built with Vite + Canvas2D · Sprites by PixelLab AI · Audio via Web Audio API</p>
+  <p style="margin-top:6px"><a href="../reports/milestone-report-m15.html">← M11–M15 Report</a></p>
+</footer>
+
+<script>
+  // Generate stars
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 120; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `
+      left:${Math.random()*100}%;top:${Math.random()*100}%;
+      width:${size}px;height:${size}px;
+      animation-duration:${2+Math.random()*5}s;
+      animation-delay:${Math.random()*5}s;
+      opacity:${0.05+Math.random()*0.4};
+    `;
+    starsEl.appendChild(s);
+  }
+
+  // Intersection Observer for scroll-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.ms-card, .feature-highlight, .animate-in').forEach(el => observer.observe(el));
+
+  // Stagger milestone cards
+  document.querySelectorAll('.ms-card').forEach((card, i) => {
+    card.style.animationDelay = `${i * 0.1}s`;
+  });
+</script>
+</body>
+</html>

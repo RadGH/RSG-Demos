@@ -1,0 +1,2752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aethermoor Chronicles — Milestone Report M6–M10</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-deep:     #07060f;
+  --bg-card:     #0e0c1e;
+  --bg-panel:    #120f22;
+  --border:      #231d42;
+  --border-glow: #7c3aed;
+  --purple:      #a855f7;
+  --purple-dim:  #7c3aed;
+  --purple-light:#d8b4fe;
+  --blue:        #3b82f6;
+  --blue-bright: #60a5fa;
+  --blue-light:  #bfdbfe;
+  --cyan:        #22d3ee;
+  --teal:        #2dd4bf;
+  --text-body:   #c4b8e8;
+  --text-dim:    #5a5080;
+  --text-white:  #f0ebff;
+  --green:       #4ade80;
+  --gold:        #f5c842;
+  --red:         #f87171;
+  --orange:      #fb923c;
+  --frost:       #93c5fd;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-body);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--purple-dim); }
+
+/* ─── HERO ─── */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 55%, #1a0a38 0%, #07060f 65%);
+  padding: 80px 24px 60px;
+}
+
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+}
+
+/* ─── ARCANE CIRCLE ─── */
+.arcane-ring {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 36px;
+  position: relative;
+}
+
+.arcane-ring svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ring-outer {
+  animation: ringRotate 20s linear infinite;
+  filter: drop-shadow(0 0 14px rgba(168,85,247,0.7));
+}
+
+.ring-middle {
+  animation: ringRotate 14s linear infinite reverse;
+  filter: drop-shadow(0 0 8px rgba(59,130,246,0.6));
+}
+
+.ring-inner-glow {
+  position: absolute;
+  inset: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,85,247,0.2) 0%, rgba(59,130,246,0.1) 50%, transparent 80%);
+  animation: arcaneBreath 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes ringRotate { to { transform: rotate(360deg); } }
+@keyframes arcaneBreath {
+  from { box-shadow: 0 0 20px rgba(168,85,247,0.3), inset 0 0 20px rgba(168,85,247,0.1); }
+  to   { box-shadow: 0 0 60px rgba(168,85,247,0.7), 0 0 100px rgba(59,130,246,0.25), inset 0 0 30px rgba(168,85,247,0.15); }
+}
+
+.hero-eyebrow {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--purple-dim);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease 0.4s forwards;
+}
+
+.hero-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2rem, 5.5vw, 4rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #d8b4fe 0%, #818cf8 40%, #60a5fa 70%, #d8b4fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: fadeSlideUp 0.8s ease 0.7s forwards, gradientShift 5s ease-in-out infinite;
+  text-shadow: none;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  opacity: 0;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+.hero-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.95rem, 2.2vw, 1.3rem);
+  color: var(--text-body);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease 1s forwards;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease 1.2s forwards;
+}
+
+.hero-divider-line {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--purple-dim));
+}
+.hero-divider-line.right {
+  background: linear-gradient(to left, transparent, var(--purple-dim));
+}
+.hero-divider-gem {
+  width: 10px;
+  height: 10px;
+  background: var(--purple);
+  transform: rotate(45deg);
+  box-shadow: 0 0 14px var(--purple);
+  animation: gemPulse 2s ease-in-out infinite;
+}
+
+@keyframes gemPulse {
+  0%, 100% { box-shadow: 0 0 10px var(--purple); }
+  50%       { box-shadow: 0 0 24px var(--purple), 0 0 40px rgba(168,85,247,0.4); }
+}
+
+.hero-tagline {
+  font-size: 1.05rem;
+  color: var(--text-body);
+  max-width: 560px;
+  margin: 0 auto 0;
+  line-height: 1.7;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease 1.4s forwards;
+}
+
+.hero-date {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  margin-top: 16px;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease 1.6s forwards;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeIn 1s ease 2.8s forwards;
+}
+
+.scroll-cue span {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+}
+
+.scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid var(--text-dim);
+  border-bottom: 2px solid var(--text-dim);
+  transform: rotate(45deg);
+  animation: scrollBounce 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.5; }
+  50%       { transform: rotate(45deg) translateY(6px); opacity: 1; }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* ─── SECTION SHELL ─── */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.section-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--purple-dim);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-heading {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--border), transparent);
+}
+
+/* ─── REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+
+/* ─── STATS BAR ─── */
+#stats {
+  background: var(--bg-panel);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+}
+
+#stats .inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 28px;
+}
+
+.stat-block {
+  text-align: center;
+  position: relative;
+}
+
+.stat-block::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: var(--border);
+}
+
+.stat-block:last-child::after { display: none; }
+
+.stat-number {
+  font-family: 'Cinzel', serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--purple);
+  text-shadow: 0 0 24px rgba(168,85,247,0.5);
+  line-height: 1;
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 6px;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.stat-bar-track {
+  width: 60px;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 10px auto 0;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--purple-dim), var(--purple));
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── HORIZONTAL TIMELINE ─── */
+#timeline-wrap {
+  background: var(--bg-deep);
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+#timeline-wrap .section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.h-timeline {
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.h-timeline::-webkit-scrollbar { height: 4px; }
+.h-timeline::-webkit-scrollbar-track { background: transparent; }
+.h-timeline::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.h-timeline-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  min-width: 1200px;
+  padding: 16px 0 8px;
+  position: relative;
+}
+
+.h-timeline-track::before {
+  content: '';
+  position: absolute;
+  top: 38px;
+  left: 40px;
+  right: 40px;
+  height: 2px;
+  background: linear-gradient(to right,
+    var(--green) 0%, var(--green) 32%,
+    var(--purple) 33%, var(--purple) 67%,
+    var(--border) 68%, var(--border) 100%);
+}
+
+.h-node {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  padding-top: 0;
+}
+
+.h-node-dot {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  z-index: 2;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.h-node.done .h-node-dot {
+  background: radial-gradient(circle, #0f1e0f 0%, #081408 100%);
+  border: 2px solid var(--green);
+  color: var(--green);
+  box-shadow: 0 0 16px rgba(74,222,128,0.4);
+}
+
+.h-node.active .h-node-dot {
+  background: radial-gradient(circle, #1e0940 0%, #10052a 100%);
+  border: 2px solid var(--purple);
+  color: var(--purple-light);
+  box-shadow: 0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.2);
+  animation: activeNodePulse 2.5s ease-in-out infinite;
+}
+
+.h-node.upcoming .h-node-dot {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  color: var(--text-dim);
+}
+
+@keyframes activeNodePulse {
+  0%, 100% { box-shadow: 0 0 16px rgba(168,85,247,0.5), 0 0 32px rgba(168,85,247,0.15); }
+  50%       { box-shadow: 0 0 28px rgba(168,85,247,0.8), 0 0 56px rgba(168,85,247,0.3); }
+}
+
+.h-node-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 10px;
+  padding: 0 4px;
+  line-height: 1.35;
+}
+
+.h-node.done .h-node-label { color: var(--green); }
+.h-node.active .h-node-label { color: var(--purple-light); }
+.h-node.upcoming .h-node-label { color: var(--text-dim); }
+
+.h-node-sub {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  text-align: center;
+  margin-top: 4px;
+  color: var(--text-dim);
+  padding: 0 4px;
+  line-height: 1.4;
+}
+
+.h-node-status {
+  display: inline-block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  border-radius: 8px;
+  margin-top: 6px;
+  letter-spacing: 1px;
+}
+
+.h-node.done .h-node-status {
+  background: rgba(74,222,128,0.12);
+  border: 1px solid rgba(74,222,128,0.35);
+  color: var(--green);
+}
+
+.h-node.active .h-node-status {
+  background: rgba(168,85,247,0.15);
+  border: 1px solid rgba(168,85,247,0.4);
+  color: var(--purple);
+}
+
+.h-node.upcoming .h-node-status {
+  background: rgba(107,116,154,0.15);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+/* ─── FEATURE SPOTLIGHT ─── */
+#features { background: var(--bg-panel); }
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+  .spotlight-grid { grid-template-columns: 1fr; }
+}
+
+.features-secondary {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--card-accent, var(--purple));
+}
+
+.feature-card::after {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--card-accent, var(--purple)) 0%, transparent 70%);
+  opacity: 0.04;
+  transition: opacity 0.3s;
+}
+
+.feature-card:hover {
+  border-color: var(--card-accent, var(--purple));
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+}
+.feature-card:hover::after { opacity: 0.12; }
+
+.feature-card.large { padding: 36px; }
+
+.fc-milestone {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--card-accent, var(--purple));
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.fc-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 12px;
+}
+
+.feature-card.large .fc-title { font-size: 1.5rem; }
+
+.fc-desc {
+  font-size: 0.92rem;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.fc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid;
+  letter-spacing: 0.5px;
+}
+
+.chip-purple {
+  background: rgba(168,85,247,0.1);
+  border-color: rgba(168,85,247,0.35);
+  color: var(--purple-light);
+}
+
+.chip-blue {
+  background: rgba(59,130,246,0.1);
+  border-color: rgba(59,130,246,0.35);
+  color: var(--blue-bright);
+}
+
+.chip-cyan {
+  background: rgba(34,211,238,0.08);
+  border-color: rgba(34,211,238,0.3);
+  color: var(--cyan);
+}
+
+.chip-teal {
+  background: rgba(45,212,191,0.08);
+  border-color: rgba(45,212,191,0.3);
+  color: var(--teal);
+}
+
+.chip-orange {
+  background: rgba(251,146,60,0.1);
+  border-color: rgba(251,146,60,0.35);
+  color: var(--orange);
+}
+
+/* ─── SPELL SHOWCASE ─── */
+#spells { background: var(--bg-deep); }
+
+.spell-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.spell-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.spell-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--spell-color, var(--purple));
+}
+
+.spell-fx {
+  width: 72px;
+  height: 72px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* FIREBALL */
+.fx-fireball .core {
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff8e1 0%, #fbbf24 30%, #ef4444 70%, transparent 100%);
+  animation: fireballPulse 1.2s ease-in-out infinite;
+}
+
+.fx-fireball .trail {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 14px;
+  background: linear-gradient(to left, transparent, rgba(239,68,68,0.6), rgba(251,146,60,0.8));
+  border-radius: 50%;
+  animation: trailPulse 1.2s ease-in-out infinite;
+}
+
+.fx-fireball .halo {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 2px solid rgba(251,146,60,0.5);
+  animation: haloExpand 1.6s ease-out infinite;
+}
+
+@keyframes fireballPulse {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50%       { transform: scale(1.1); filter: brightness(1.25); }
+}
+@keyframes trailPulse {
+  0%, 100% { opacity: 0.7; transform: translateY(-50%) scaleX(1); }
+  50%       { opacity: 1; transform: translateY(-50%) scaleX(1.3); }
+}
+@keyframes haloExpand {
+  0%   { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* FROST NOVA */
+.fx-frost .ring1, .fx-frost .ring2, .fx-frost .ring3 {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid #93c5fd;
+}
+
+.fx-frost .ring1 {
+  inset: 24px;
+  background: radial-gradient(circle, rgba(147,197,253,0.3) 0%, transparent 70%);
+  animation: frostRing 1.8s ease-out infinite;
+}
+
+.fx-frost .ring2 {
+  inset: 12px;
+  border-color: rgba(147,197,253,0.5);
+  animation: frostRing 1.8s ease-out 0.4s infinite;
+}
+
+.fx-frost .ring3 {
+  inset: 2px;
+  border-color: rgba(147,197,253,0.25);
+  animation: frostRing 1.8s ease-out 0.8s infinite;
+}
+
+.fx-frost .shard1, .fx-frost .shard2, .fx-frost .shard3, .fx-frost .shard4 {
+  position: absolute;
+  width: 4px;
+  height: 12px;
+  background: linear-gradient(to top, rgba(147,197,253,0.8), white);
+  border-radius: 2px;
+  top: 50%;
+  left: 50%;
+}
+
+.fx-frost .shard1 { transform-origin: bottom center; transform: translate(-50%, -100%) rotate(0deg); animation: shardShoot 1.8s ease-out infinite; }
+.fx-frost .shard2 { transform-origin: bottom center; transform: translate(-50%, -100%) rotate(90deg); animation: shardShoot 1.8s ease-out 0.15s infinite; }
+.fx-frost .shard3 { transform-origin: bottom center; transform: translate(-50%, -100%) rotate(45deg); animation: shardShoot 1.8s ease-out 0.3s infinite; }
+.fx-frost .shard4 { transform-origin: bottom center; transform: translate(-50%, -100%) rotate(135deg); animation: shardShoot 1.8s ease-out 0.45s infinite; }
+
+@keyframes frostRing {
+  0%   { transform: scale(0.3); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+@keyframes shardShoot {
+  0%   { height: 4px; opacity: 1; }
+  60%  { height: 16px; opacity: 0.9; }
+  100% { height: 4px; opacity: 0; }
+}
+
+/* BLINK */
+.fx-blink .ghost {
+  position: absolute;
+  inset: 10px;
+  border-radius: 4px;
+  border: 2px solid var(--purple);
+  opacity: 0;
+  animation: blinkFlash 2s ease-in-out infinite;
+}
+
+.fx-blink .flash {
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,85,247,0.9) 0%, transparent 70%);
+  animation: blinkCore 2s ease-in-out infinite;
+}
+
+.fx-blink .streak1, .fx-blink .streak2, .fx-blink .streak3 {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--purple), transparent);
+  border-radius: 1px;
+  top: 50%;
+  width: 40px;
+  left: 50%;
+}
+
+.fx-blink .streak1 { transform: translateY(-8px); animation: streakFade 2s ease-in-out 0.1s infinite; }
+.fx-blink .streak2 { transform: translateY(0px);  animation: streakFade 2s ease-in-out 0.2s infinite; }
+.fx-blink .streak3 { transform: translateY(8px);  animation: streakFade 2s ease-in-out 0.3s infinite; }
+
+@keyframes blinkFlash {
+  0%, 70%, 100% { opacity: 0; transform: scale(1); }
+  40%, 50%      { opacity: 0.6; transform: scale(1.05); }
+}
+
+@keyframes blinkCore {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  45%       { opacity: 1; transform: scale(1); }
+  60%       { opacity: 0; transform: scale(1.4); }
+}
+
+@keyframes streakFade {
+  0%, 30%, 100% { opacity: 0; transform: translateY(var(--dy, 0)) scaleX(0.3); }
+  45%           { opacity: 0.8; transform: translateY(var(--dy, 0)) scaleX(1); }
+  65%           { opacity: 0; }
+}
+
+/* METEOR */
+.fx-meteor .rock {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle at 40% 40%, #ef4444, #7f1d1d);
+  border-radius: 40% 50% 45% 55%;
+  top: 6px;
+  right: 12px;
+  animation: meteorDrop 2.2s ease-in infinite;
+}
+
+.fx-meteor .impact {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 8px;
+  border: 2px solid rgba(251,146,60,0.6);
+  border-radius: 50%;
+  animation: impactRing 2.2s ease-out infinite;
+}
+
+.fx-meteor .trail2 {
+  position: absolute;
+  width: 3px;
+  background: linear-gradient(to bottom, transparent, rgba(251,146,60,0.8));
+  border-radius: 2px;
+  right: 19px;
+  top: 0;
+  height: 0;
+  animation: meteorTrail 2.2s ease-in infinite;
+}
+
+@keyframes meteorDrop {
+  0%   { top: 2px; right: 20px; opacity: 1; transform: rotate(-45deg); }
+  70%  { top: 44px; right: 4px; opacity: 1; }
+  80%, 100% { opacity: 0; top: 50px; }
+}
+
+@keyframes meteorTrail {
+  0%   { height: 0; top: 2px; right: 19px; opacity: 0; }
+  50%  { height: 36px; opacity: 0.8; }
+  70%  { height: 50px; opacity: 0.4; }
+  100% { height: 0; opacity: 0; }
+}
+
+@keyframes impactRing {
+  0%, 65% { width: 8px; opacity: 0; }
+  75%      { width: 50px; opacity: 1; }
+  100%     { width: 70px; opacity: 0; }
+}
+
+/* CHAIN LIGHTNING */
+.fx-lightning svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.lightning-bolt {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation: drawBolt 1.4s ease-in-out infinite;
+}
+
+.lightning-glow {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation: drawBolt 1.4s ease-in-out infinite;
+  opacity: 0.4;
+}
+
+@keyframes drawBolt {
+  0%   { stroke-dashoffset: 120; opacity: 0; }
+  20%  { opacity: 1; }
+  60%  { stroke-dashoffset: 0; opacity: 1; }
+  80%  { opacity: 0.8; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+/* INFERNO */
+.fx-inferno .flame1, .fx-inferno .flame2, .fx-inferno .flame3 {
+  position: absolute;
+  bottom: 8px;
+  border-radius: 50% 50% 20% 20%;
+  animation: flameDance 1s ease-in-out infinite alternate;
+}
+
+.fx-inferno .flame1 {
+  left: 22px;
+  width: 28px;
+  height: 46px;
+  background: linear-gradient(to top, #ef4444, #fbbf24, #fff8e1);
+  animation-delay: 0s;
+}
+
+.fx-inferno .flame2 {
+  left: 14px;
+  width: 20px;
+  height: 34px;
+  background: linear-gradient(to top, #dc2626, #f97316);
+  animation-delay: 0.2s;
+  border-radius: 50% 50% 20% 20%;
+}
+
+.fx-inferno .flame3 {
+  left: 38px;
+  width: 16px;
+  height: 28px;
+  background: linear-gradient(to top, #b91c1c, #ef4444);
+  animation-delay: 0.35s;
+  border-radius: 50% 50% 20% 20%;
+}
+
+@keyframes flameDance {
+  from { transform: scaleY(1) skewX(0deg); filter: brightness(1); }
+  to   { transform: scaleY(1.08) skewX(-4deg); filter: brightness(1.2); }
+}
+
+/* GLACIAL SPIKE */
+.fx-glacial .spike1, .fx-glacial .spike2, .fx-glacial .spike3 {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  width: 10px;
+  background: linear-gradient(to top, #93c5fd, #dbeafe, #ffffff);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: spikeGrow 1.6s ease-out infinite;
+}
+
+.fx-glacial .spike1 { height: 46px; transform: translateX(-50%);      animation-delay: 0s; }
+.fx-glacial .spike2 { height: 32px; transform: translateX(-200%);     animation-delay: 0.2s; width: 8px; }
+.fx-glacial .spike3 { height: 36px; transform: translateX(100%);      animation-delay: 0.15s; width: 8px; }
+
+.fx-glacial .glow {
+  position: absolute;
+  inset: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(147,197,253,0.4) 0%, transparent 70%);
+  animation: frostGlow 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes spikeGrow {
+  0%   { opacity: 0; transform: translateX(-50%) scaleY(0); }
+  40%  { opacity: 1; transform: translateX(-50%) scaleY(1); }
+  80%  { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+@keyframes frostGlow {
+  from { opacity: 0.5; }
+  to   { opacity: 1; transform: scale(1.1); }
+}
+
+/* WHIRLWIND */
+.fx-whirlwind .ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid;
+}
+
+.fx-whirlwind .ring1 {
+  inset: 8px;
+  border-color: rgba(148,163,184,0.7);
+  border-style: dashed;
+  animation: whirlSpin 1s linear infinite;
+}
+
+.fx-whirlwind .ring2 {
+  inset: 18px;
+  border-color: rgba(203,213,225,0.5);
+  border-style: dashed;
+  animation: whirlSpin 0.7s linear infinite reverse;
+}
+
+.fx-whirlwind .center-dot {
+  position: absolute;
+  inset: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
+}
+
+@keyframes whirlSpin { to { transform: rotate(360deg); } }
+
+/* RAIN OF ARROWS */
+.fx-rain .arrow1, .fx-rain .arrow2, .fx-rain .arrow3, .fx-rain .arrow4 {
+  position: absolute;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(74,222,128,0), rgba(74,222,128,0.9));
+  border-radius: 1px;
+  animation: arrowFall 1.4s ease-in infinite;
+}
+
+.fx-rain .arrow1 { height: 22px; left: 18px; animation-delay: 0s; }
+.fx-rain .arrow2 { height: 18px; left: 30px; animation-delay: 0.2s; }
+.fx-rain .arrow3 { height: 24px; left: 42px; animation-delay: 0.1s; }
+.fx-rain .arrow4 { height: 16px; left: 54px; animation-delay: 0.35s; }
+
+.fx-rain .head1, .fx-rain .head2, .fx-rain .head3, .fx-rain .head4 {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 6px solid rgba(74,222,128,0.9);
+  animation: arrowFall 1.4s ease-in infinite;
+}
+
+.fx-rain .head1 { left: 15px; animation-delay: 0s; }
+.fx-rain .head2 { left: 27px; animation-delay: 0.2s; }
+.fx-rain .head3 { left: 39px; animation-delay: 0.1s; }
+.fx-rain .head4 { left: 51px; animation-delay: 0.35s; }
+
+@keyframes arrowFall {
+  0%   { top: -8px; opacity: 0; }
+  20%  { opacity: 1; }
+  90%  { opacity: 0.9; top: 62px; }
+  100% { top: 72px; opacity: 0; }
+}
+
+/* MULTI-SHOT */
+.fx-multishot .bolt1, .fx-multishot .bolt2, .fx-multishot .bolt3, .fx-multishot .bolt4, .fx-multishot .bolt5 {
+  position: absolute;
+  height: 3px;
+  background: linear-gradient(to right, rgba(74,222,128,0.9), rgba(74,222,128,0));
+  border-radius: 2px;
+  left: 8px;
+  animation: boltShoot 1.6s ease-out infinite;
+  top: 50%;
+  transform-origin: left center;
+}
+
+.fx-multishot .bolt1 { width: 36px; transform: translateY(-50%) rotate(-20deg); animation-delay: 0s; }
+.fx-multishot .bolt2 { width: 40px; transform: translateY(-50%) rotate(-10deg); animation-delay: 0.1s; }
+.fx-multishot .bolt3 { width: 44px; transform: translateY(-50%) rotate(0deg);  animation-delay: 0.05s; }
+.fx-multishot .bolt4 { width: 40px; transform: translateY(-50%) rotate(10deg); animation-delay: 0.15s; }
+.fx-multishot .bolt5 { width: 36px; transform: translateY(-50%) rotate(20deg); animation-delay: 0.08s; }
+
+@keyframes boltShoot {
+  0%   { opacity: 0; width: 0; }
+  30%  { opacity: 1; }
+  70%  { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+.spell-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-white);
+}
+
+.spell-type {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 8px;
+  border: 1px solid;
+}
+
+/* ─── STATUS EFFECTS ─── */
+#status { background: var(--bg-panel); }
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--badge-color, var(--purple));
+  border-radius: 8px;
+  padding: 16px 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.status-badge:hover {
+  transform: translateX(4px);
+  box-shadow: -4px 0 16px rgba(var(--badge-r,168), var(--badge-g,85), var(--badge-b,247), 0.2);
+}
+
+.status-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: var(--badge-bg, rgba(168,85,247,0.15));
+  border: 1px solid var(--badge-color, var(--purple));
+  color: var(--badge-color, var(--purple));
+  flex-shrink: 0;
+  font-family: 'Share Tech Mono', monospace;
+  animation: iconAura 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes iconAura {
+  from { box-shadow: 0 0 6px var(--badge-color, var(--purple)); }
+  to   { box-shadow: 0 0 16px var(--badge-color, var(--purple)), 0 0 24px rgba(var(--badge-r,168),var(--badge-g,85),var(--badge-b,247),0.3); }
+}
+
+.status-text { flex: 1; }
+
+.status-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--badge-color, var(--purple));
+  margin-bottom: 3px;
+}
+
+.status-desc {
+  font-size: 0.83rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ─── SKILL TREE ─── */
+#skill-tree { background: var(--bg-deep); }
+
+.tree-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 680px) {
+  .tree-container { grid-template-columns: 1fr; }
+}
+
+.tree-path {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--path-color, var(--purple));
+  border-radius: 10px;
+  padding: 24px 20px;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.tree-path-header {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--path-color, var(--purple));
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tree-path-sub {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.tree-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.tree-connector {
+  width: 2px;
+  height: 12px;
+  background: var(--border);
+  margin: 0 auto;
+}
+
+.tree-node-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.tree-node {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-panel);
+  border: 1px solid var(--node-border, var(--border));
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 0.68rem;
+  color: var(--node-color, var(--text-dim));
+  white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s;
+  cursor: default;
+}
+
+.tree-node:hover {
+  border-color: var(--path-color, var(--purple));
+  color: var(--text-body);
+}
+
+.tree-node-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--path-color, var(--purple));
+  flex-shrink: 0;
+}
+
+.tree-node.active {
+  border-color: var(--path-color, var(--purple));
+  color: var(--path-color, var(--purple));
+  background: rgba(0,0,0,0.3);
+}
+
+.tree-count {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 10px;
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+}
+
+/* ─── KNOWN ISSUES ─── */
+#issues { background: var(--bg-panel); }
+
+.issue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.issue-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  transition: border-color 0.2s;
+}
+
+.issue-item:hover { border-color: var(--issue-color, var(--border)); }
+
+.issue-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  min-width: 32px;
+  padding-top: 2px;
+}
+
+.issue-body { flex: 1; }
+
+.issue-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-white);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.issue-desc {
+  font-size: 0.83rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.issue-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.issue-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid;
+  letter-spacing: 0.5px;
+}
+
+.tag-open {
+  background: rgba(251,146,60,0.1);
+  border-color: rgba(251,146,60,0.4);
+  color: var(--orange);
+}
+
+.tag-planned {
+  background: rgba(96,165,250,0.1);
+  border-color: rgba(96,165,250,0.35);
+  color: var(--blue-bright);
+}
+
+.tag-wip {
+  background: rgba(168,85,247,0.1);
+  border-color: rgba(168,85,247,0.35);
+  color: var(--purple);
+}
+
+/* ─── PERFORMANCE CHART ─── */
+#perf { background: var(--bg-deep); }
+
+.perf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.perf-table th {
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  padding: 8px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.perf-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(35,29,66,0.5);
+  font-size: 0.85rem;
+  color: var(--text-body);
+  vertical-align: middle;
+}
+
+.perf-table tr:last-child td { border-bottom: none; }
+
+.perf-table tr.current td { background: rgba(168,85,247,0.04); }
+
+.perf-milestone {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-white);
+}
+
+.perf-current { color: var(--purple-light) !important; }
+
+.bar-cell { width: 40%; }
+
+.bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bar-bg {
+  flex: 1;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-fg {
+  height: 100%;
+  border-radius: 4px;
+  width: 0;
+  transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bar-val {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  min-width: 50px;
+  text-align: right;
+}
+
+/* ─── ROADMAP ─── */
+#roadmap { background: var(--bg-panel); }
+
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.roadmap-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px 20px;
+  opacity: 0.7;
+  transition: opacity 0.3s, transform 0.3s, border-color 0.3s;
+}
+
+.roadmap-card:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+  border-color: var(--purple-dim);
+}
+
+.rm-ms {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.rm-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 10px;
+}
+
+.rm-items {
+  list-style: none;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.rm-items li::before {
+  content: '\25B6  ';
+  color: var(--border);
+  font-size: 0.65em;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border);
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-game {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: var(--purple-light);
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+.footer-meta {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  line-height: 2;
+}
+
+.footer-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--border);
+  margin: 20px auto;
+}
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<div id="hero">
+  <canvas id="hero-canvas"></canvas>
+
+  <div class="hero-content">
+    <!-- Arcane Circle -->
+    <div class="arcane-ring">
+      <!-- Outer rune ring -->
+      <svg class="ring-outer" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="80" cy="80" r="74" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="6 4"/>
+        <circle cx="80" cy="80" r="66" stroke="#a855f7" stroke-width="0.5" opacity="0.5"/>
+        <!-- Rune marks outer -->
+        <g stroke="#a855f7" stroke-width="1.5" opacity="0.8">
+          <line x1="80" y1="6"  x2="80" y2="16"/>
+          <line x1="80" y1="144" x2="80" y2="154"/>
+          <line x1="6"  y1="80" x2="16" y2="80"/>
+          <line x1="144" y1="80" x2="154" y2="80"/>
+          <line x1="27.5" y1="27.5" x2="34.5" y2="34.5"/>
+          <line x1="125.5" y1="125.5" x2="132.5" y2="132.5"/>
+          <line x1="27.5" y1="132.5" x2="34.5" y2="125.5"/>
+          <line x1="125.5" y1="27.5" x2="132.5" y2="34.5"/>
+        </g>
+        <!-- Octagon rune path -->
+        <polygon points="80,10 125,34.5 150,80 125,125.5 80,150 35,125.5 10,80 35,34.5"
+                 stroke="#7c3aed" stroke-width="1" fill="none" opacity="0.35"/>
+      </svg>
+
+      <!-- Middle ring -->
+      <svg class="ring-middle" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+        <circle cx="80" cy="80" r="52" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3 6"/>
+        <circle cx="80" cy="80" r="44" stroke="#60a5fa" stroke-width="0.5" opacity="0.4"/>
+        <!-- Triangle inscribed -->
+        <polygon points="80,28 119,100 41,100" stroke="#60a5fa" stroke-width="1" fill="none" opacity="0.45"/>
+        <polygon points="80,132 41,60 119,60" stroke="#818cf8" stroke-width="1" fill="none" opacity="0.3"/>
+        <!-- Small ticks -->
+        <g stroke="#3b82f6" stroke-width="1.2" opacity="0.7">
+          <line x1="80" y1="28" x2="80" y2="34"/>
+          <line x1="80" y1="126" x2="80" y2="132"/>
+          <line x1="119" y1="100" x2="114" y2="97"/>
+          <line x1="41"  y1="100" x2="46" y2="97"/>
+          <line x1="41"  y1="60"  x2="46" y2="63"/>
+          <line x1="119" y1="60"  x2="114" y2="63"/>
+        </g>
+      </svg>
+
+      <div class="ring-inner-glow"></div>
+    </div>
+
+    <p class="hero-eyebrow">Aethermoor Chronicles &bull; Development Report</p>
+    <h1 class="hero-title">Milestone Report<br>M6 &ndash; M10</h1>
+    <p class="hero-subtitle">The Arcane Chapter &mdash; Spells, Skills &amp; Systems</p>
+
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <div class="hero-divider-gem"></div>
+      <div class="hero-divider-line right"></div>
+    </div>
+
+    <p class="hero-tagline">Five milestones of deep systems: skill trees across three paths, a full spellcasting engine, ore mining and crafting, world quests, and the foundations of a polished save-enabled experience ready for players.</p>
+    <p class="hero-date">Report compiled &bull; April 10, 2026</p>
+  </div>
+
+  <div class="scroll-cue">
+    <span>SCROLL</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</div>
+
+
+<!-- ─── STATS ─── -->
+<div id="stats">
+  <div class="inner">
+    <div class="stat-block reveal">
+      <span class="stat-number" data-target="10">0</span>
+      <div class="stat-label">Spells Implemented</div>
+      <div class="stat-bar-track"><div class="stat-bar-fill" data-pct="100"></div></div>
+    </div>
+    <div class="stat-block reveal reveal-delay-1">
+      <span class="stat-number" data-target="36">0</span>
+      <div class="stat-label">Skill Tree Nodes</div>
+      <div class="stat-bar-track"><div class="stat-bar-fill" data-pct="85"></div></div>
+    </div>
+    <div class="stat-block reveal reveal-delay-2">
+      <span class="stat-number" data-target="8">0</span>
+      <div class="stat-label">Active Quests</div>
+      <div class="stat-bar-track"><div class="stat-bar-fill" data-pct="60"></div></div>
+    </div>
+    <div class="stat-block reveal reveal-delay-3">
+      <span class="stat-number" data-target="20">0</span>
+      <div class="stat-label">Crafting Recipes</div>
+      <div class="stat-bar-track"><div class="stat-bar-fill" data-pct="70"></div></div>
+    </div>
+    <div class="stat-block reveal reveal-delay-4">
+      <span class="stat-number" data-target="48">0</span>
+      <div class="stat-label">Source Files</div>
+      <div class="stat-bar-track"><div class="stat-bar-fill" data-pct="55"></div></div>
+    </div>
+    <div class="stat-block reveal reveal-delay-5">
+      <span class="stat-number" data-target="138">0</span>
+      <div class="stat-label">KB Bundle</div>
+      <div class="stat-bar-track"><div class="stat-bar-fill" data-pct="48"></div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ─── HORIZONTAL TIMELINE ─── -->
+<div id="timeline-wrap">
+  <div class="section-inner">
+    <div class="section-label reveal">Full Project Timeline</div>
+    <div class="section-heading reveal">M1 through M15</div>
+
+    <div class="h-timeline reveal reveal-delay-1">
+      <div class="h-timeline-track">
+
+        <div class="h-node done">
+          <div class="h-node-dot">M1</div>
+          <div class="h-node-label">Foundation</div>
+          <div class="h-node-sub">Engine, player,<br>combat core</div>
+          <span class="h-node-status">COMPLETE</span>
+        </div>
+
+        <div class="h-node done">
+          <div class="h-node-dot">M2</div>
+          <div class="h-node-label">Items &amp; Loot</div>
+          <div class="h-node-sub">Drop system,<br>rarity tiers</div>
+          <span class="h-node-status">COMPLETE</span>
+        </div>
+
+        <div class="h-node done">
+          <div class="h-node-dot">M3</div>
+          <div class="h-node-label">Inventory</div>
+          <div class="h-node-sub">Grid UI,<br>equipment slots</div>
+          <span class="h-node-status">COMPLETE</span>
+        </div>
+
+        <div class="h-node done">
+          <div class="h-node-dot">M4</div>
+          <div class="h-node-label">World Gen</div>
+          <div class="h-node-sub">Procedural maps,<br>Zone 1</div>
+          <span class="h-node-status">COMPLETE</span>
+        </div>
+
+        <div class="h-node done">
+          <div class="h-node-dot">M5</div>
+          <div class="h-node-label">Character</div>
+          <div class="h-node-sub">Stats, leveling,<br>XP system</div>
+          <span class="h-node-status">COMPLETE</span>
+        </div>
+
+        <div class="h-node active">
+          <div class="h-node-dot">M6</div>
+          <div class="h-node-label">Skill Trees</div>
+          <div class="h-node-sub">3 paths,<br>36 nodes</div>
+          <span class="h-node-status">COMPLETE</span>
+        </div>
+
+        <div class="h-node active">
+          <div class="h-node-dot">M7</div>
+          <div class="h-node-label">Mining &amp; Craft</div>
+          <div class="h-node-sub">6 ores,<br>20 recipes</div>
+          <span class="h-node-status">COMPLETE</span>
+        </div>
+
+        <div class="h-node active">
+          <div class="h-node-dot">M8</div>
+          <div class="h-node-label">Spells &amp; Magic</div>
+          <div class="h-node-sub">10 spells,<br>Boss fight</div>
+          <span class="h-node-status">COMPLETE</span>
+        </div>
+
+        <div class="h-node active">
+          <div class="h-node-dot">M9</div>
+          <div class="h-node-label">World &amp; Quests</div>
+          <div class="h-node-sub">8 quests,<br>Map overlay</div>
+          <span class="h-node-status">COMPLETE</span>
+        </div>
+
+        <div class="h-node active">
+          <div class="h-node-dot">M10</div>
+          <div class="h-node-label">Polish &amp; Save</div>
+          <div class="h-node-sub">Save system,<br>Gamepad, Touch</div>
+          <span class="h-node-status">COMPLETE</span>
+        </div>
+
+        <div class="h-node upcoming">
+          <div class="h-node-dot">M11</div>
+          <div class="h-node-label">Enemy Expansion</div>
+          <div class="h-node-sub">4 new types,<br>Zone 2 pop.</div>
+          <span class="h-node-status">UPCOMING</span>
+        </div>
+
+        <div class="h-node upcoming">
+          <div class="h-node-dot">M12</div>
+          <div class="h-node-label">Game Juice</div>
+          <div class="h-node-sub">Hit-stop, shake,<br>polish</div>
+          <span class="h-node-status">UPCOMING</span>
+        </div>
+
+        <div class="h-node upcoming">
+          <div class="h-node-dot">M13</div>
+          <div class="h-node-label">Item Depth</div>
+          <div class="h-node-sub">60+ items,<br>10 new affixes</div>
+          <span class="h-node-status">UPCOMING</span>
+        </div>
+
+        <div class="h-node upcoming">
+          <div class="h-node-dot">M14</div>
+          <div class="h-node-label">Crystal Hydra</div>
+          <div class="h-node-sub">Boss, Zone 3<br>preview</div>
+          <span class="h-node-status">UPCOMING</span>
+        </div>
+
+        <div class="h-node upcoming">
+          <div class="h-node-dot">M15</div>
+          <div class="h-node-label">Mobile &amp; A11y</div>
+          <div class="h-node-sub">44px targets,<br>ARIA, settings</div>
+          <span class="h-node-status">UPCOMING</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ─── FEATURE SPOTLIGHT ─── -->
+<section id="features">
+  <div class="section-label reveal">Milestone Deep Dives</div>
+  <div class="section-heading reveal">Feature Spotlight</div>
+
+  <div class="spotlight-grid">
+    <!-- M6 Large Card -->
+    <div class="feature-card large reveal reveal-delay-1" style="--card-accent:#a855f7;">
+      <div class="fc-milestone">M6 &mdash; Skill Trees</div>
+      <div class="fc-title">Three-Path Mastery System</div>
+      <p class="fc-desc">A branching skill tree with 36 nodes across Warrior, Ranger, and Mage paths. Passive nodes auto-apply on unlock via the character sheet, while active skills are dispatched directly from the hotbar with animated cooldown overlays.</p>
+      <div class="fc-chips">
+        <span class="chip chip-purple">36 Nodes</span>
+        <span class="chip chip-purple">3 Paths</span>
+        <span class="chip chip-blue">Hotbar Dispatch</span>
+        <span class="chip chip-blue">Z/X/C/V Keys</span>
+        <span class="chip chip-cyan">Cooldown Pies</span>
+        <span class="chip chip-cyan">Auto-Passives</span>
+      </div>
+    </div>
+
+    <!-- M8 Large Card -->
+    <div class="feature-card large reveal reveal-delay-2" style="--card-accent:#3b82f6;">
+      <div class="fc-milestone">M8 &mdash; Spells &amp; Magic</div>
+      <div class="fc-title">Full Spellcasting Engine</div>
+      <p class="fc-desc">Ten distinct spell types with unique cast mechanics, particle systems, and status effect interactions. The Elder Stone Golem — an 800 HP dual-phase boss — anchors the combat challenge, complete with a ground-slam AoE and a dedicated top-screen HP bar.</p>
+      <div class="fc-chips">
+        <span class="chip chip-blue">10 Spells</span>
+        <span class="chip chip-blue">6 Status Effects</span>
+        <span class="chip chip-cyan">Mana Economy</span>
+        <span class="chip chip-purple">Boss Fight</span>
+        <span class="chip chip-orange">800 HP Boss</span>
+        <span class="chip chip-orange">2-Phase AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="features-secondary reveal reveal-delay-3">
+    <div class="feature-card" style="--card-accent:#2dd4bf;">
+      <div class="fc-milestone">M7 &mdash; Mining &amp; Crafting</div>
+      <div class="fc-title">Resource Economy</div>
+      <p class="fc-desc">Channel-based ore mining with 1.5s progress bars, depleting nodes that respawn after 5 minutes, and 20 recipes across Forge and Enchant tabs.</p>
+      <div class="fc-chips">
+        <span class="chip chip-teal">6 Ore Types</span>
+        <span class="chip chip-teal">20 Recipes</span>
+        <span class="chip chip-cyan">Forge + Enchant</span>
+      </div>
+    </div>
+
+    <div class="feature-card" style="--card-accent:#4ade80;">
+      <div class="fc-milestone">M9 &mdash; World &amp; Quests</div>
+      <div class="fc-title">Quest &amp; World Layer</div>
+      <p class="fc-desc">Eight quests spanning kill, gear, material, boss, and legendary objectives. World map overlay shows Zone 1 and locked Zone 2. Elite enemy variants carry guaranteed Rare+ drops.</p>
+      <div class="fc-chips">
+        <span class="chip chip-cyan">8 Quests</span>
+        <span class="chip chip-teal">World Map</span>
+        <span class="chip chip-teal">Elite Enemies</span>
+      </div>
+    </div>
+
+    <div class="feature-card" style="--card-accent:#818cf8;">
+      <div class="fc-milestone">M10 &mdash; Polish &amp; Save</div>
+      <div class="fc-title">Player Experience Layer</div>
+      <p class="fc-desc">Versioned localStorage save/load, auto-save every 60s, main menu with class selection, floating-origin touch joystick, and full gamepad support with rumble on hit.</p>
+      <div class="fc-chips">
+        <span class="chip chip-purple">Save System</span>
+        <span class="chip chip-blue">Gamepad</span>
+        <span class="chip chip-blue">Touch Controls</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── SPELL SHOWCASE ─── -->
+<section id="spells">
+  <div class="section-label reveal">M8 Highlight</div>
+  <div class="section-heading reveal">Spell Showcase</div>
+
+  <div class="spell-grid">
+
+    <div class="spell-card reveal reveal-delay-1" style="--spell-color:#ef4444;">
+      <div class="spell-fx fx-fireball">
+        <div class="trail"></div>
+        <div class="core"></div>
+        <div class="halo"></div>
+      </div>
+      <div class="spell-name">Fireball</div>
+      <span class="spell-type" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.4);color:#fca5a5;">Fire / Direct</span>
+    </div>
+
+    <div class="spell-card reveal reveal-delay-1" style="--spell-color:#93c5fd;">
+      <div class="spell-fx fx-frost">
+        <div class="ring1"></div>
+        <div class="ring2"></div>
+        <div class="ring3"></div>
+        <div class="shard1"></div>
+        <div class="shard2"></div>
+        <div class="shard3"></div>
+        <div class="shard4"></div>
+      </div>
+      <div class="spell-name">Frost Nova</div>
+      <span class="spell-type" style="background:rgba(147,197,253,0.1);border-color:rgba(147,197,253,0.4);color:#bfdbfe;">Frost / AoE</span>
+    </div>
+
+    <div class="spell-card reveal reveal-delay-2" style="--spell-color:#a855f7;">
+      <div class="spell-fx fx-blink">
+        <div class="flash"></div>
+        <div class="ghost"></div>
+        <div class="streak1"></div>
+        <div class="streak2"></div>
+        <div class="streak3"></div>
+      </div>
+      <div class="spell-name">Blink</div>
+      <span class="spell-type" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.4);color:#d8b4fe;">Arcane / Utility</span>
+    </div>
+
+    <div class="spell-card reveal reveal-delay-2" style="--spell-color:#fb923c;">
+      <div class="spell-fx fx-meteor">
+        <div class="trail2"></div>
+        <div class="rock"></div>
+        <div class="impact"></div>
+      </div>
+      <div class="spell-name">Meteor</div>
+      <span class="spell-type" style="background:rgba(251,146,60,0.1);border-color:rgba(251,146,60,0.4);color:#fdba74;">Fire / AoE</span>
+    </div>
+
+    <div class="spell-card reveal reveal-delay-3" style="--spell-color:#fbbf24;">
+      <div class="spell-fx fx-lightning">
+        <svg viewBox="0 0 72 72" fill="none">
+          <polyline class="lightning-glow" points="12,10 28,36 20,36 44,62 36,42 44,42 20,18 28,18 12,10"
+                    stroke="#fbbf24" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <polyline class="lightning-bolt" points="12,10 28,36 20,36 44,62 36,42 44,42 20,18 28,18 12,10"
+                    stroke="white" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="spell-name">Chain Lightning</div>
+      <span class="spell-type" style="background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.4);color:#fde68a;">Lightning / Chain</span>
+    </div>
+
+    <div class="spell-card reveal reveal-delay-3" style="--spell-color:#ef4444;">
+      <div class="spell-fx fx-inferno">
+        <div class="flame3"></div>
+        <div class="flame2"></div>
+        <div class="flame1"></div>
+      </div>
+      <div class="spell-name">Inferno</div>
+      <span class="spell-type" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.4);color:#fca5a5;">Fire / Channel</span>
+    </div>
+
+    <div class="spell-card reveal reveal-delay-4" style="--spell-color:#bfdbfe;">
+      <div class="spell-fx fx-glacial">
+        <div class="glow"></div>
+        <div class="spike2"></div>
+        <div class="spike3"></div>
+        <div class="spike1"></div>
+      </div>
+      <div class="spell-name">Glacial Spike</div>
+      <span class="spell-type" style="background:rgba(191,219,254,0.1);border-color:rgba(191,219,254,0.35);color:#dbeafe;">Frost / Projectile</span>
+    </div>
+
+    <div class="spell-card reveal reveal-delay-4" style="--spell-color:#94a3b8;">
+      <div class="spell-fx fx-whirlwind">
+        <div class="ring1"></div>
+        <div class="ring2"></div>
+        <div class="center-dot"></div>
+      </div>
+      <div class="spell-name">Whirlwind</div>
+      <span class="spell-type" style="background:rgba(148,163,184,0.1);border-color:rgba(148,163,184,0.35);color:#cbd5e1;">Physical / AoE</span>
+    </div>
+
+    <div class="spell-card reveal reveal-delay-5" style="--spell-color:#4ade80;">
+      <div class="spell-fx fx-rain">
+        <div class="head1"></div>
+        <div class="head2"></div>
+        <div class="head3"></div>
+        <div class="head4"></div>
+        <div class="arrow1"></div>
+        <div class="arrow2"></div>
+        <div class="arrow3"></div>
+        <div class="arrow4"></div>
+      </div>
+      <div class="spell-name">Rain of Arrows</div>
+      <span class="spell-type" style="background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.35);color:#bbf7d0;">Nature / AoE</span>
+    </div>
+
+    <div class="spell-card reveal reveal-delay-5" style="--spell-color:#4ade80;">
+      <div class="spell-fx fx-multishot">
+        <div class="bolt1"></div>
+        <div class="bolt2"></div>
+        <div class="bolt3"></div>
+        <div class="bolt4"></div>
+        <div class="bolt5"></div>
+      </div>
+      <div class="spell-name">Multi-Shot</div>
+      <span class="spell-type" style="background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.35);color:#bbf7d0;">Nature / Spread</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─── STATUS EFFECTS ─── -->
+<section id="status">
+  <div class="section-label reveal">M8 Systems</div>
+  <div class="section-heading reveal">Status Effects</div>
+
+  <div class="status-grid">
+    <div class="status-badge reveal reveal-delay-1"
+         style="--badge-color:#ef4444;--badge-bg:rgba(239,68,68,0.1);--badge-r:239;--badge-g:68;--badge-b:68;">
+      <div class="status-icon">Brn</div>
+      <div class="status-text">
+        <div class="status-name">Burning</div>
+        <div class="status-desc">Fire damage over time. Orange particle aura. Applied by Fireball and Inferno.</div>
+      </div>
+    </div>
+
+    <div class="status-badge reveal reveal-delay-1"
+         style="--badge-color:#93c5fd;--badge-bg:rgba(147,197,253,0.1);--badge-r:147;--badge-g:197;--badge-b:253;">
+      <div class="status-icon">Frz</div>
+      <div class="status-text">
+        <div class="status-name">Frozen</div>
+        <div class="status-desc">Movement halted. Blue crystalline aura. Applied by Frost Nova and Glacial Spike.</div>
+      </div>
+    </div>
+
+    <div class="status-badge reveal reveal-delay-2"
+         style="--badge-color:#4ade80;--badge-bg:rgba(74,222,128,0.1);--badge-r:74;--badge-g:222;--badge-b:128;">
+      <div class="status-icon">Psn</div>
+      <div class="status-text">
+        <div class="status-name">Poisoned</div>
+        <div class="status-desc">Stacking nature DOT. Green drip particles. Applied by Ranger active skills.</div>
+      </div>
+    </div>
+
+    <div class="status-badge reveal reveal-delay-2"
+         style="--badge-color:#fbbf24;--badge-bg:rgba(251,191,36,0.1);--badge-r:251;--badge-g:191;--badge-b:36;">
+      <div class="status-icon">Shk</div>
+      <div class="status-text">
+        <div class="status-name">Shocked</div>
+        <div class="status-desc">Amplifies incoming damage. Yellow spark aura. Applied by Chain Lightning.</div>
+      </div>
+    </div>
+
+    <div class="status-badge reveal reveal-delay-3"
+         style="--badge-color:#f87171;--badge-bg:rgba(248,113,113,0.1);--badge-r:248;--badge-g:113;--badge-b:113;">
+      <div class="status-icon">Bld</div>
+      <div class="status-text">
+        <div class="status-name">Bleeding</div>
+        <div class="status-desc">Physical DOT with red drip aura. Applied by Warrior slashing skills and crits.</div>
+      </div>
+    </div>
+
+    <div class="status-badge reveal reveal-delay-3"
+         style="--badge-color:#818cf8;--badge-bg:rgba(129,140,248,0.1);--badge-r:129;--badge-g:140;--badge-b:248;">
+      <div class="status-icon">Stn</div>
+      <div class="status-text">
+        <div class="status-name">Stunned</div>
+        <div class="status-desc">Action locked for duration. Purple star aura. Applied by Blink on impact and boss slams.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── SKILL TREE PREVIEW ─── -->
+<section id="skill-tree">
+  <div class="section-label reveal">M6 Preview</div>
+  <div class="section-heading reveal">Skill Tree Paths</div>
+
+  <div class="tree-container">
+
+    <!-- WARRIOR -->
+    <div class="tree-path reveal reveal-delay-1" style="--path-color:#ef4444;">
+      <div class="tree-path-header">
+        <span>&#9876;</span> Warrior Path
+      </div>
+      <div class="tree-path-sub">STRENGTH &bull; DEFENSE &bull; MELEE</div>
+
+      <!-- Tier 1 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node active" style="--node-border:#ef4444;--node-color:#ef4444;">
+            <div class="tree-node-dot" style="background:#ef4444;"></div>Iron Skin
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Tier 2 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node active" style="--node-border:#ef4444;--node-color:#ef4444;">
+            <div class="tree-node-dot" style="background:#ef4444;"></div>Cleave
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>War Cry
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Tier 3 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Shield Wall
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Rend
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Tier 4 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Fortify
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Brutality
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Taunt
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Tier 5 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Berserk
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Stone Form
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Capstone -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node active" style="--node-border:#ef4444;--node-color:#ef4444;">
+            <div class="tree-node-dot" style="background:#ef4444;"></div>Whirlwind
+          </div>
+        </div>
+      </div>
+
+      <div class="tree-count">12 nodes &bull; 4 passives / 8 actives</div>
+    </div>
+
+    <!-- RANGER -->
+    <div class="tree-path reveal reveal-delay-2" style="--path-color:#4ade80;">
+      <div class="tree-path-header">
+        <span>&#8594;</span> Ranger Path
+      </div>
+      <div class="tree-path-sub">AGILITY &bull; PRECISION &bull; RANGE</div>
+
+      <!-- Tier 1 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node active" style="--node-border:#4ade80;--node-color:#4ade80;">
+            <div class="tree-node-dot" style="background:#4ade80;"></div>Eagle Eye
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Tier 2 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node active" style="--node-border:#4ade80;--node-color:#4ade80;">
+            <div class="tree-node-dot" style="background:#4ade80;"></div>Quick Draw
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Camouflage
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Tier 3 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Poison Tip
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Evasion
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Tier 4 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Volley
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Trap Mastery
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Swift Feet
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Tier 5 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Shadow Step
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Critical Eye
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Capstone -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node active" style="--node-border:#4ade80;--node-color:#4ade80;">
+            <div class="tree-node-dot" style="background:#4ade80;"></div>Multi-Shot
+          </div>
+        </div>
+      </div>
+
+      <div class="tree-count">12 nodes &bull; 5 passives / 7 actives</div>
+    </div>
+
+    <!-- MAGE -->
+    <div class="tree-path reveal reveal-delay-3" style="--path-color:#a855f7;">
+      <div class="tree-path-header">
+        <span>&#10022;</span> Mage Path
+      </div>
+      <div class="tree-path-sub">INTELLECT &bull; MANA &bull; SPELLS</div>
+
+      <!-- Tier 1 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node active" style="--node-border:#a855f7;--node-color:#a855f7;">
+            <div class="tree-node-dot" style="background:#a855f7;"></div>Arcane Mind
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Tier 2 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node active" style="--node-border:#a855f7;--node-color:#a855f7;">
+            <div class="tree-node-dot" style="background:#a855f7;"></div>Mana Flow
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Frost Armor
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Tier 3 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Spellfire
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Icy Veins
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Tier 4 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Overload
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Arcane Surge
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Mana Shield
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Tier 5 -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Time Warp
+          </div>
+          <div class="tree-node">
+            <div class="tree-node-dot"></div>Astral Form
+          </div>
+        </div>
+      </div>
+      <div class="tree-connector"></div>
+
+      <!-- Capstone -->
+      <div class="tree-row">
+        <div class="tree-node-row">
+          <div class="tree-node active" style="--node-border:#a855f7;--node-color:#a855f7;">
+            <div class="tree-node-dot" style="background:#a855f7;"></div>Meteor
+          </div>
+        </div>
+      </div>
+
+      <div class="tree-count">12 nodes &bull; 4 passives / 8 actives</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─── KNOWN ISSUES ─── -->
+<section id="issues">
+  <div class="section-label reveal">Transparency Report</div>
+  <div class="section-heading reveal">Known Issues &amp; Gaps</div>
+
+  <div class="issue-list">
+
+    <div class="issue-item reveal reveal-delay-1" style="--issue-color:#fb923c;">
+      <div class="issue-num">#001</div>
+      <div class="issue-body">
+        <div class="issue-title">Zone 2 Transition Portal Not Fully Wired</div>
+        <div class="issue-desc">Zone 2 data exists and is referenced in the world map overlay, but the portal trigger that moves the player between zones does not fire reliably in all spawn configurations. Players may not be able to enter Zone 2 in all sessions.</div>
+        <div class="issue-tags">
+          <span class="issue-tag tag-open">OPEN</span>
+          <span class="issue-tag tag-planned">M11 Target</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="issue-item reveal reveal-delay-1" style="--issue-color:#fb923c;">
+      <div class="issue-num">#002</div>
+      <div class="issue-body">
+        <div class="issue-title">Boss Spawn Proximity Not Communicated to Player</div>
+        <div class="issue-desc">The Elder Stone Golem spawns only when the player approaches the portal area, but no UI cue or ambient hint alerts the player to this mechanic. The boss may appear unexpectedly or never if the player avoids the area.</div>
+        <div class="issue-tags">
+          <span class="issue-tag tag-open">OPEN</span>
+          <span class="issue-tag tag-planned">M11 Target</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="issue-item reveal reveal-delay-2" style="--issue-color:#60a5fa;">
+      <div class="issue-num">#003</div>
+      <div class="issue-body">
+        <div class="issue-title">Touch Controls Need Polish on Small Screens</div>
+        <div class="issue-desc">The floating-origin joystick and attack/skill buttons function correctly but hitbox sizing is not optimised for screens below 390px wide. Some skill buttons may be difficult to activate reliably in fast combat.</div>
+        <div class="issue-tags">
+          <span class="issue-tag tag-planned">PLANNED</span>
+          <span class="issue-tag tag-wip">M15 Target</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="issue-item reveal reveal-delay-2" style="--issue-color:#a855f7;">
+      <div class="issue-num">#004</div>
+      <div class="issue-body">
+        <div class="issue-title">Gamepad Rumble Not Supported on All Browsers</div>
+        <div class="issue-desc">The Gamepad Haptics API is implemented and fires on hit, but Firefox and some mobile browsers do not support the rumble actuator. The feature degrades silently to a no-op — no error is thrown and gameplay continues normally.</div>
+        <div class="issue-tags">
+          <span class="issue-tag tag-wip">GRACEFUL NO-OP</span>
+          <span class="issue-tag tag-planned">Browser Limitation</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="issue-item reveal reveal-delay-3" style="--issue-color:#60a5fa;">
+      <div class="issue-num">#005</div>
+      <div class="issue-body">
+        <div class="issue-title">No Audio System Yet (Stubs Only)</div>
+        <div class="issue-desc">Audio function stubs are in place across the codebase — spell casts, hit impacts, and ambient music hooks are all called — but no audio assets exist and the Web Audio context is never initialised. The game is completely silent.</div>
+        <div class="issue-tags">
+          <span class="issue-tag tag-planned">PLANNED</span>
+          <span class="issue-tag tag-planned">M11-M12 Target</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="issue-item reveal reveal-delay-3" style="--issue-color:#a855f7;">
+      <div class="issue-num">#006</div>
+      <div class="issue-body">
+        <div class="issue-title">Spell Visual Effect Quality Variance</div>
+        <div class="issue-desc">Fireball has a high-quality multi-layer particle system. Several other spells (notably Rain of Arrows and Whirlwind) use simpler placeholder visuals that do not match the visual bar set by the fire spells. No gameplay impact.</div>
+        <div class="issue-tags">
+          <span class="issue-tag tag-wip">COSMETIC</span>
+          <span class="issue-tag tag-planned">M12 Polish Pass</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="issue-item reveal reveal-delay-4" style="--issue-color:#fb923c;">
+      <div class="issue-num">#007</div>
+      <div class="issue-body">
+        <div class="issue-title">Save/Load Equipment Re-hydration Edge Cases</div>
+        <div class="issue-desc">Core character stats, inventory contents, and quest progress save and load correctly. However, equipment items with procedurally-generated affixes can occasionally fail to re-attach their affix data on load, resulting in a "clean" version of the item.</div>
+        <div class="issue-tags">
+          <span class="issue-tag tag-open">OPEN</span>
+          <span class="issue-tag tag-planned">M11 Fix</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─── PERFORMANCE METRICS ─── -->
+<section id="perf">
+  <div class="section-label reveal">Build Health</div>
+  <div class="section-heading reveal">Bundle Size Progression</div>
+
+  <div class="reveal reveal-delay-1">
+    <table class="perf-table">
+      <thead>
+        <tr>
+          <th>Milestone</th>
+          <th>Description</th>
+          <th class="bar-cell">Source Files</th>
+          <th class="bar-cell">Bundle Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="perf-milestone">M1</span></td>
+          <td>Foundation &mdash; Engine &amp; Combat Core</td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar-bg"><div class="bar-fg" data-pct="15" style="background:linear-gradient(to right,#16a34a,#4ade80);"></div></div>
+              <span class="bar-val">8 files</span>
+            </div>
+          </td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar-bg"><div class="bar-fg" data-pct="12" style="background:linear-gradient(to right,#16a34a,#4ade80);"></div></div>
+              <span class="bar-val">18 KB</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="perf-milestone">M2</span></td>
+          <td>Items &amp; Loot Drop System</td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar-bg"><div class="bar-fg" data-pct="23" style="background:linear-gradient(to right,#16a34a,#4ade80);"></div></div>
+              <span class="bar-val">13 files</span>
+            </div>
+          </td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar-bg"><div class="bar-fg" data-pct="20" style="background:linear-gradient(to right,#16a34a,#4ade80);"></div></div>
+              <span class="bar-val">30 KB</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="perf-milestone">M3</span></td>
+          <td>Inventory Grid &amp; Equipment UI</td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar-bg"><div class="bar-fg" data-pct="35" style="background:linear-gradient(to right,#16a34a,#4ade80);"></div></div>
+              <span class="bar-val">20 files</span>
+            </div>
+          </td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar-bg"><div class="bar-fg" data-pct="34" style="background:linear-gradient(to right,#16a34a,#4ade80);"></div></div>
+              <span class="bar-val">52 KB</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="perf-milestone">M4</span></td>
+          <td>Procedural World Generation</td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar-bg"><div class="bar-fg" data-pct="47" style="background:linear-gradient(to right,#16a34a,#4ade80);"></div></div>
+              <span class="bar-val">27 files</span>
+            </div>
+          </td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar-bg"><div class="bar-fg" data-pct="47" style="background:linear-gradient(to right,#16a34a,#4ade80);"></div></div>
+              <span class="bar-val">72 KB</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="perf-milestone">M5</span></td>
+          <td>Character Stats &amp; Leveling</td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar-bg"><div class="bar-fg" data-pct="58" style="background:linear-gradient(to right,#16a34a,#4ade80);"></div></div>
+              <span class="bar-val">33 files</span>
+            </div>
+          </td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar-bg"><div class="bar-fg" data-pct="58" style="background:linear-gradient(to right,#16a34a,#4ade80);"></div></div>
+              <span class="bar-val">89 KB</span>
+            </div>
+          </td>
+        </tr>
+        <tr class="current">
+          <td><span class="perf-milestone perf-current">M10</span></td>
+          <td style="color:var(--purple-light);">Skills, Spells, Crafting, Quests, Save</td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar-bg"><div class="bar-fg" data-pct="83" style="background:linear-gradient(to right,#7c3aed,#a855f7);"></div></div>
+              <span class="bar-val" style="color:var(--purple);">48 files</span>
+            </div>
+          </td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar-bg"><div class="bar-fg" data-pct="90" style="background:linear-gradient(to right,#7c3aed,#a855f7);"></div></div>
+              <span class="bar-val" style="color:var(--purple);">138 KB</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ─── ROADMAP ─── -->
+<section id="roadmap">
+  <div class="section-label reveal">Looking Ahead</div>
+  <div class="section-heading reveal">M11 &ndash; M15 Roadmap</div>
+
+  <div class="roadmap-grid">
+    <div class="roadmap-card reveal reveal-delay-1">
+      <div class="rm-ms">MILESTONE 11</div>
+      <div class="rm-title">Enemy Expansion</div>
+      <ul class="rm-items">
+        <li>4 new enemy types</li>
+        <li>Zone 2 fully populated</li>
+        <li>35 additional items</li>
+        <li>Portal transition fix</li>
+        <li>Save hydration bug fix</li>
+      </ul>
+    </div>
+
+    <div class="roadmap-card reveal reveal-delay-2">
+      <div class="rm-ms">MILESTONE 12</div>
+      <div class="rm-title">Game Juice</div>
+      <ul class="rm-items">
+        <li>Hit-stop on heavy hits</li>
+        <li>Screen shake system</li>
+        <li>Sprite flash on damage</li>
+        <li>Death animation polish</li>
+        <li>Audio system integration</li>
+      </ul>
+    </div>
+
+    <div class="roadmap-card reveal reveal-delay-3">
+      <div class="rm-ms">MILESTONE 13</div>
+      <div class="rm-title">Item Depth</div>
+      <ul class="rm-items">
+        <li>60+ total items</li>
+        <li>10 new affixes</li>
+        <li>Life Steal mechanic</li>
+        <li>Dodge stat</li>
+        <li>Thorns damage reflect</li>
+      </ul>
+    </div>
+
+    <div class="roadmap-card reveal reveal-delay-4">
+      <div class="rm-ms">MILESTONE 14</div>
+      <div class="rm-title">Crystal Hydra</div>
+      <ul class="rm-items">
+        <li>Crystal Hydra boss fight</li>
+        <li>Zone 3 preview area</li>
+        <li>Crystal Caverns biome</li>
+        <li>Hydra multi-head AI</li>
+        <li>Unique boss loot table</li>
+      </ul>
+    </div>
+
+    <div class="roadmap-card reveal reveal-delay-5">
+      <div class="rm-ms">MILESTONE 15</div>
+      <div class="rm-title">Mobile &amp; Accessibility</div>
+      <ul class="rm-items">
+        <li>44px min touch targets</li>
+        <li>ARIA labels throughout</li>
+        <li>Settings panel expansion</li>
+        <li>Full iPhone 14 Pro pass</li>
+        <li>Cross-browser QA audit</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-game">Aethermoor Chronicles</div>
+    <div class="footer-divider"></div>
+    <div class="footer-meta">
+      Milestone Report M6&ndash;M10 &bull; The Arcane Chapter<br>
+      Compiled April 10, 2026 &bull; Build 138 KB &bull; 48 Source Files<br>
+      M1&ndash;M10 Complete &bull; M11&ndash;M15 In Planning
+    </div>
+  </div>
+</footer>
+
+
+<script>
+// ─── PARTICLE CANVAS ───
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Particle types: arcane motes (purple/blue) + sparkles
+  const particles = [];
+  const PARTICLE_COUNT = 80;
+
+  class Particle {
+    constructor() { this.reset(true); }
+
+    reset(init) {
+      this.x  = Math.random() * canvas.width;
+      this.y  = init ? Math.random() * canvas.height : canvas.height + 10;
+      this.vx = (Math.random() - 0.5) * 0.5;
+      this.vy = -(Math.random() * 0.6 + 0.2);
+      this.size = Math.random() * 2.5 + 0.5;
+      this.life = 0;
+      this.maxLife = Math.random() * 300 + 150;
+      // Color: purple, indigo, or blue
+      const r = Math.random();
+      if (r < 0.4)       this.color = [168, 85,  247]; // purple
+      else if (r < 0.75) this.color = [99,  102, 241]; // indigo
+      else               this.color = [59,  130, 246]; // blue
+    }
+
+    update() {
+      this.x += this.vx + Math.sin(this.life * 0.04) * 0.3;
+      this.y += this.vy;
+      this.life++;
+      if (this.life > this.maxLife || this.y < -10) this.reset(false);
+    }
+
+    draw() {
+      const progress = this.life / this.maxLife;
+      const alpha = progress < 0.1
+        ? progress * 10
+        : progress > 0.8
+          ? (1 - progress) * 5
+          : 1;
+      const [r, g, b] = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${r},${g},${b},${alpha * 0.75})`;
+      ctx.fill();
+
+      // glow halo on larger particles
+      if (this.size > 1.5) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${r},${g},${b},${alpha * 0.1})`;
+        ctx.fill();
+      }
+    }
+  }
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+
+  // Shooting sparkles
+  const sparkles = [];
+  const SPARKLE_COUNT = 20;
+
+  class Sparkle {
+    constructor() { this.reset(); }
+
+    reset() {
+      const cx = canvas.width  * 0.5;
+      const cy = canvas.height * 0.48;
+      const angle = Math.random() * Math.PI * 2;
+      const dist  = Math.random() * 80 + 20;
+      this.x = cx + Math.cos(angle) * dist;
+      this.y = cy + Math.sin(angle) * dist;
+      this.vx = (Math.random() - 0.5) * 1.5;
+      this.vy = (Math.random() - 0.5) * 1.5;
+      this.life = 0;
+      this.maxLife = Math.random() * 60 + 30;
+      this.size = Math.random() * 2 + 0.5;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.life++;
+      if (this.life > this.maxLife) this.reset();
+    }
+
+    draw() {
+      const t = this.life / this.maxLife;
+      const a = t < 0.3 ? t / 0.3 : (1 - t) / 0.7;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(216, 180, 254, ${a * 0.9})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < SPARKLE_COUNT; i++) {
+    const s = new Sparkle();
+    s.life = Math.floor(Math.random() * s.maxLife);
+    sparkles.push(s);
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // soft vignette
+    const grad = ctx.createRadialGradient(
+      canvas.width * 0.5, canvas.height * 0.5, 0,
+      canvas.width * 0.5, canvas.height * 0.5, canvas.width * 0.8
+    );
+    grad.addColorStop(0, 'rgba(26,10,56,0)');
+    grad.addColorStop(1, 'rgba(7,6,15,0.5)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => { p.update(); p.draw(); });
+    sparkles.forEach(s => { s.update(); s.draw(); });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+})();
+
+// ─── INTERSECTION OBSERVER (REVEAL) ───
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(el => observer.observe(el));
+
+// ─── STAT NUMBER COUNTER ───
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10);
+  const duration = 1800;
+  const step = 16;
+  const steps = Math.ceil(duration / step);
+  let current = 0;
+  const inc = target / steps;
+
+  const timer = setInterval(() => {
+    current = Math.min(current + inc, target);
+    el.textContent = Math.floor(current);
+    if (current >= target) {
+      el.textContent = target;
+      clearInterval(timer);
+    }
+  }, step);
+}
+
+const statsObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const nums = e.target.querySelectorAll('.stat-number[data-target]');
+      nums.forEach(n => animateCounter(n));
+      statsObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+statsObs.observe(document.getElementById('stats'));
+
+// ─── BAR FILLS ───
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.bar-fg[data-pct]').forEach(bar => {
+        setTimeout(() => {
+          bar.style.width = bar.dataset.pct + '%';
+        }, 100);
+      });
+      e.target.querySelectorAll('.stat-bar-fill[data-pct]').forEach(bar => {
+        setTimeout(() => {
+          bar.style.width = bar.dataset.pct + '%';
+        }, 400);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('#stats, #perf').forEach(el => barObs.observe(el));
+</script>
+</body>
+</html>
