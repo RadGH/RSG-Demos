@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PENNY PANIC — Pre-Release Design Report</title>
+<style>
+  :root {
+    --bg: #000000;
+    --bg-card: #0a0a0a;
+    --bg-card-hover: #111111;
+    --copper: #c8922a;
+    --copper-bright: #f5d06e;
+    --copper-dim: #7a5510;
+    --white: #ffffff;
+    --white-dim: rgba(255,255,255,0.5);
+    --white-muted: rgba(255,255,255,0.2);
+    --white-faint: rgba(255,255,255,0.07);
+    --red: #ff2244;
+    --green: #44ff88;
+    --blue: #44aaff;
+    --border: rgba(200,146,42,0.18);
+    --border-bright: rgba(200,146,42,0.5);
+    --glow: 0 0 20px rgba(200,146,42,0.15);
+    --glow-strong: 0 0 40px rgba(200,146,42,0.3);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: ui-monospace, 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── void canvas ── */
+  #void-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  /* ── hero ── */
+  .hero {
+    text-align: center;
+    padding: 80px 0 48px;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-title {
+    font-size: clamp(40px, 10vw, 72px);
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 10px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero-title span {
+    color: var(--copper-bright);
+    text-shadow: 0 0 30px rgba(245,208,110,0.5);
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--white-dim);
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-penny {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 35%, var(--copper-bright), var(--copper) 55%, var(--copper-dim));
+    box-shadow: 0 0 30px rgba(200,146,42,0.4), 0 0 60px rgba(200,146,42,0.2);
+    animation: fadeUp 0.6s 0.3s ease both, pennySpin 8s linear infinite 1s;
+    margin-bottom: 36px;
+  }
+
+  @keyframes pennySpin {
+    0% { box-shadow: 0 0 30px rgba(200,146,42,0.4), 0 0 60px rgba(200,146,42,0.2); transform: scale(1); }
+    50% { box-shadow: 0 0 50px rgba(245,208,110,0.6), 0 0 80px rgba(200,146,42,0.3); transform: scale(1.08); }
+    100% { box-shadow: 0 0 30px rgba(200,146,42,0.4), 0 0 60px rgba(200,146,42,0.2); transform: scale(1); }
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.35s ease both;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+  .meta-label { font-size: 10px; letter-spacing: 0.15em; color: var(--white-muted); text-transform: uppercase; }
+  .meta-value { font-size: 13px; color: var(--copper-bright); font-weight: 700; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── section headers ── */
+  .section {
+    margin-top: 56px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: var(--white-faint);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--copper);
+    font-weight: 700;
+  }
+
+  /* ── cards ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    border-color: var(--border-bright);
+    box-shadow: var(--glow);
+  }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--copper-bright);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  .card p {
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* ── split screen viz ── */
+  .screen-viz {
+    display: block;
+    margin: 0 auto 28px;
+    width: 200px;
+    height: 360px;
+    border-radius: 16px;
+    background: #000;
+    border: 2px solid var(--border-bright);
+    box-shadow: var(--glow-strong);
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+
+  .viz-p1 {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .viz-p2 {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    transform: rotate(180deg);
+  }
+
+  .viz-label {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+  }
+
+  .viz-score {
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+  }
+
+  .viz-seam {
+    position: absolute;
+    left: 0; right: 0;
+    top: 50%;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .viz-penny {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 35%, var(--copper-bright), var(--copper));
+    box-shadow: 0 0 8px rgba(200,146,42,0.6);
+  }
+
+  .viz-bug {
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    border-radius: 40%;
+    background: #e8e8e8;
+  }
+
+  .viz-penny-1 { top: 22%; left: 25%; animation: floatPenny 3s ease-in-out infinite; }
+  .viz-penny-2 { top: 35%; left: 68%; animation: floatPenny 3s 0.8s ease-in-out infinite; }
+  .viz-penny-3 { top: 72%; left: 40%; animation: floatPenny 3s 1.6s ease-in-out infinite; }
+  .viz-bug-1 { top: 8%; left: 55%; animation: moveBug1 4s linear infinite; }
+  .viz-bug-2 { top: 55%; left: 20%; animation: moveBug2 3.5s 1s linear infinite; }
+
+  @keyframes floatPenny {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 8px rgba(200,146,42,0.6); }
+    50% { transform: scale(1.12); box-shadow: 0 0 14px rgba(200,146,42,0.9); }
+  }
+
+  @keyframes moveBug1 {
+    0% { top: 2%; opacity: 1; }
+    80% { opacity: 1; }
+    100% { top: 48%; opacity: 0; }
+  }
+
+  @keyframes moveBug2 {
+    0% { bottom: 2%; top: auto; opacity: 1; }
+    100% { bottom: 48%; top: auto; opacity: 0; }
+  }
+
+  /* ── concept grid ── */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin-bottom: 0;
+  }
+
+  .concept-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .concept-card:hover {
+    border-color: var(--border-bright);
+    transform: translateY(-2px);
+  }
+
+  .concept-icon { font-size: 22px; margin-bottom: 8px; }
+  .concept-name { font-size: 12px; font-weight: 700; color: var(--copper-bright); margin-bottom: 5px; letter-spacing: 0.07em; text-transform: uppercase; }
+  .concept-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+  /* ── milestone track ── */
+  .milestone-track {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .milestone-track::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .milestone-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 16px 0;
+  }
+
+  .milestone-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 900;
+    color: var(--white-dim);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+  }
+
+  .milestone-item:hover .milestone-dot {
+    border-color: var(--copper);
+    color: var(--copper-bright);
+    box-shadow: 0 0 12px rgba(200,146,42,0.3);
+  }
+
+  .milestone-body { padding-top: 6px; }
+  .milestone-label { font-size: 10px; letter-spacing: 0.15em; color: var(--white-muted); text-transform: uppercase; margin-bottom: 3px; }
+  .milestone-name { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  .milestone-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+  .milestone-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    color: var(--white-dim);
+    text-transform: uppercase;
+  }
+
+  .tag-copper { border-color: rgba(200,146,42,0.4); color: var(--copper); }
+  .tag-white { border-color: rgba(255,255,255,0.2); color: var(--white-dim); }
+
+  /* ── architecture diagram ── */
+  .arch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 8px;
+  }
+
+  .arch-module {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    transition: border-color 0.15s;
+  }
+
+  .arch-module:hover { border-color: var(--border-bright); }
+
+  .arch-path { font-size: 10px; color: var(--white-muted); margin-bottom: 3px; }
+  .arch-name { font-size: 12px; font-weight: 700; color: var(--copper-bright); margin-bottom: 4px; }
+  .arch-desc { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+  /* ── color palette ── */
+  .palette {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .swatch-color {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .swatch-name { font-size: 9px; color: var(--white-muted); text-align: center; }
+  .swatch-hex { font-size: 9px; color: var(--white-dim); font-family: monospace; }
+
+  /* ── void principle ── */
+  .void-box {
+    background: #000;
+    border: 1px solid var(--border-bright);
+    border-radius: 8px;
+    padding: 28px 28px;
+    text-align: center;
+    box-shadow: var(--glow-strong);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .void-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(200,146,42,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .void-quote {
+    font-size: clamp(15px, 3vw, 20px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    position: relative;
+    z-index: 1;
+  }
+
+  .void-quote em {
+    font-style: normal;
+    color: var(--copper-bright);
+    text-shadow: 0 0 20px rgba(245,208,110,0.4);
+  }
+
+  .void-caption {
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--white-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── penny counter demo ── */
+  .penny-counter {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    flex-wrap: wrap;
+  }
+
+  .penny-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+    transition: background 0.3s, box-shadow 0.3s;
+    cursor: default;
+  }
+
+  .penny-dot.lit {
+    background: var(--copper);
+    box-shadow: 0 0 8px rgba(200,146,42,0.6);
+    animation: dotPop 0.3s ease;
+  }
+
+  @keyframes dotPop {
+    0% { transform: scale(0.5); }
+    70% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+
+  /* ── bug score table ── */
+  .score-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .score-table th {
+    text-align: left;
+    padding: 8px 14px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .score-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.7);
+  }
+
+  .score-table tr:last-child td { border-bottom: none; }
+
+  .val-positive { color: var(--copper-bright); font-weight: 700; }
+  .val-negative { color: var(--red); font-weight: 700; }
+
+  /* ── risk table ── */
+  .risk-row { display: flex; gap: 14px; margin-bottom: 10px; align-items: flex-start; }
+  .risk-pill {
+    flex-shrink: 0;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .risk-high { background: rgba(255,34,68,0.2); color: var(--red); border: 1px solid rgba(255,34,68,0.3); }
+  .risk-med { background: rgba(255,180,0,0.15); color: #ffb300; border: 1px solid rgba(255,180,0,0.3); }
+  .risk-low { background: rgba(68,255,136,0.1); color: var(--green); border: 1px solid rgba(68,255,136,0.25); }
+  .risk-text { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+  .risk-text strong { color: var(--white); font-weight: 600; }
+
+  /* ── ideas grid ── */
+  .ideas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+
+  .idea-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    transition: border-color 0.2s, transform 0.15s;
+    line-height: 1.6;
+  }
+
+  .idea-card:hover { border-color: var(--border-bright); transform: translateY(-1px); }
+  .idea-card strong { display: block; font-size: 11px; color: var(--copper); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+
+  /* ── prompt block ── */
+  .prompt-block {
+    background: var(--bg-card);
+    border-left: 3px solid var(--copper);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  /* ── date stamp ── */
+  .datestamp {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--white-muted);
+    text-transform: uppercase;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── scroll reveal ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<canvas id="void-canvas"></canvas>
+
+<div class="wrapper">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Pre-Release Design Report</div>
+    <div class="hero-penny"></div>
+    <div class="hero-title">PENNY<br><span>PANIC</span></div>
+    <div class="hero-subtitle">2-Player · Same Device · The Void</div>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Game</span>
+        <span class="meta-value">game12</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Players</span>
+        <span class="meta-value">2 (local)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Platform</span>
+        <span class="meta-value">Mobile-First Web</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Engine</span>
+        <span class="meta-value">Vanilla JS + Canvas</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Date</span>
+        <span class="meta-value">2026-04-10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORIGIN -->
+  <div class="section reveal">
+    <div class="section-header">
+      <div class="section-icon">✦</div>
+      <div class="section-title">Origin Prompt</div>
+    </div>
+    <div class="prompt-block">
+      "give me a prompt for a game, not 3d, don't get me banned lmao — uh — take a penny there's two players player 1 takes a penny player 2 takes a penny there are 10 pennies when all pennies are taken the player with the higher score wins and you can get more points by shooting bugs that fly at you — but the retarded layer of absolutely fucking nothing is absolutely fucking necessary"
+    </div>
+  </div>
+
+  <!-- LIVE SCREEN PREVIEW -->
+  <div class="section reveal" style="text-align:center">
+    <div class="section-header">
+      <div class="section-icon">📱</div>
+      <div class="section-title">Split-Screen Layout</div>
+    </div>
+    <div class="screen-viz" id="screen-viz">
+      <div class="viz-p1">
+        <div class="viz-label">Player 1</div>
+        <div class="viz-score" id="score-p1">4</div>
+      </div>
+      <div class="viz-seam"></div>
+      <div class="viz-p2">
+        <div class="viz-label">Player 2</div>
+        <div class="viz-score" id="score-p2">3</div>
+      </div>
+      <div class="viz-penny viz-penny-1"></div>
+      <div class="viz-penny viz-penny-2"></div>
+      <div class="viz-penny viz-penny-3"></div>
+      <div class="viz-bug viz-bug-1"></div>
+      <div class="viz-bug viz-bug-2"></div>
+    </div>
+    <p style="font-size:12px;color:var(--white-muted);max-width:400px;margin:0 auto">
+      One phone. Two players. The screen splits in half — P1 owns the top, P2 owns the bottom. P2's UI rotates 180° so they read it right-side up.
+    </p>
+  </div>
+
+  <!-- CORE CONCEPT -->
+  <div class="section reveal">
+    <div class="section-header">
+      <div class="section-icon">⚡</div>
+      <div class="section-title">Core Mechanics</div>
+    </div>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <div class="concept-icon">🪙</div>
+        <div class="concept-name">10 Pennies</div>
+        <div class="concept-desc">Pennies drop into the void one at a time. First finger to tap one claims it. +1 point. Each penny has an 8-second lifetime — unclaimed pennies vanish.</div>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">🐛</div>
+        <div class="concept-name">Bug Shooting</div>
+        <div class="concept-desc">Bugs fly at each player from off-screen. Tap to shoot: +2 pts. Let one reach you: −1 pt. Bugs escalate across 6 wave tiers during a round.</div>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">✋</div>
+        <div class="concept-name">Multitouch</div>
+        <div class="concept-desc">Both players touch simultaneously — full multitouch. Up to 5 touches per frame, each resolving independently against bugs (priority) then pennies.</div>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">🏆</div>
+        <div class="concept-name">Scoring</div>
+        <div class="concept-desc">When all 10 pennies are resolved (claimed or expired), the round ends. Most points wins. Scores can go negative. No floor clamping.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE VOID -->
+  <div class="section reveal">
+    <div class="section-header">
+      <div class="section-icon">◼</div>
+      <div class="section-title">The Void — Design Principle</div>
+    </div>
+    <div class="void-box">
+      <div class="void-quote">
+        The background is <em>#000000</em>.<br>
+        Not styled black. Not themed black.<br>
+        <em>The void.</em>
+      </div>
+      <div class="void-caption">Every pixel of color belongs to a game object. Nothing else exists.</div>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <p>The void is load-bearing. When a copper penny appears on pure black, it has maximum visual contrast and weight. Any background element steals from that. The emptiness is not laziness — it maximizes cognitive focus on the only two things that matter: the pennies and the bugs.</p>
+    </div>
+  </div>
+
+  <!-- SCORE TABLE -->
+  <div class="section reveal">
+    <div class="section-header">
+      <div class="section-icon">📊</div>
+      <div class="section-title">Point System</div>
+    </div>
+    <div class="card" style="padding:0;overflow:hidden">
+      <table class="score-table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Who Scores</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Tap a penny first</td><td>The tapper</td><td class="val-positive">+1</td></tr>
+          <tr><td>Shoot a bug</td><td>The tapper</td><td class="val-positive">+2</td></tr>
+          <tr><td>Bug reaches your side</td><td>Owner of that half</td><td class="val-negative">−1</td></tr>
+          <tr><td>Penny expires uncollected</td><td>—</td><td style="color:var(--white-muted)">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PENNY COUNTER DEMO -->
+  <div class="section reveal">
+    <div class="section-header">
+      <div class="section-icon">●</div>
+      <div class="section-title">Penny Counter — Live Demo</div>
+    </div>
+    <div class="card">
+      <p style="margin-bottom:14px;font-size:12px;color:var(--white-muted)">10 dots in the HUD. Dim → copper as each penny is claimed. Click to simulate:</p>
+      <div class="penny-counter" id="penny-counter">
+        <!-- dots injected by JS -->
+      </div>
+      <div style="text-align:center;margin-top:8px">
+        <button onclick="resetDots()" style="background:none;border:1px solid var(--border);color:var(--white-muted);padding:6px 16px;border-radius:4px;font-family:inherit;font-size:11px;cursor:pointer;letter-spacing:0.1em;text-transform:uppercase">reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLOR PALETTE -->
+  <div class="section reveal">
+    <div class="section-header">
+      <div class="section-icon">🎨</div>
+      <div class="section-title">Visual Palette</div>
+    </div>
+    <div class="card">
+      <div class="palette">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#000000;border-color:rgba(255,255,255,0.2)"></div>
+          <div class="swatch-name">Void</div>
+          <div class="swatch-hex">#000000</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#c8922a"></div>
+          <div class="swatch-name">Penny</div>
+          <div class="swatch-hex">#c8922a</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#f5d06e"></div>
+          <div class="swatch-name">Highlight</div>
+          <div class="swatch-hex">#f5d06e</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#e8e8e8"></div>
+          <div class="swatch-name">Bug Body</div>
+          <div class="swatch-hex">#e8e8e8</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#ffffff"></div>
+          <div class="swatch-name">HUD</div>
+          <div class="swatch-hex">#ffffff</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:rgba(255,30,30,0.28);border-color:rgba(255,30,30,0.4)"></div>
+          <div class="swatch-name">Hit Flash</div>
+          <div class="swatch-hex">rgba flash</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARCHITECTURE -->
+  <div class="section reveal">
+    <div class="section-header">
+      <div class="section-icon">🏗</div>
+      <div class="section-title">Architecture</div>
+    </div>
+    <div class="arch-grid">
+      <div class="arch-module">
+        <div class="arch-path">src/</div>
+        <div class="arch-name">state.js</div>
+        <div class="arch-desc">Single source of truth. All systems read/write gameState. No distributed state.</div>
+      </div>
+      <div class="arch-module">
+        <div class="arch-path">src/</div>
+        <div class="arch-name">input.js</div>
+        <div class="arch-desc">touchstart + mousedown. Multi-touch via changedTouches. Drain queue once per tick.</div>
+      </div>
+      <div class="arch-module">
+        <div class="arch-path">src/</div>
+        <div class="arch-name">renderer.js</div>
+        <div class="arch-desc">DPR-aware canvas. Layered draw fns by priority. Clear to #000000 each frame.</div>
+      </div>
+      <div class="arch-module">
+        <div class="arch-path">src/entities/</div>
+        <div class="arch-name">penny.js</div>
+        <div class="arch-desc">Drop-in animation, lifetime fade, expiry flicker, circular hit test.</div>
+      </div>
+      <div class="arch-module">
+        <div class="arch-path">src/entities/</div>
+        <div class="arch-name">bug.js</div>
+        <div class="arch-desc">Direction vector to target half, sinusoidal wobble, canvas-drawn body/legs.</div>
+      </div>
+      <div class="arch-module">
+        <div class="arch-path">src/entities/</div>
+        <div class="arch-name">particle.js</div>
+        <div class="arch-desc">Pre-allocated pool of 128. spawnBurst(), gravity, alpha fade. Zero allocs in hot path.</div>
+      </div>
+      <div class="arch-module">
+        <div class="arch-path">src/systems/</div>
+        <div class="arch-name">collision.js</div>
+        <div class="arch-desc">Bugs resolved before pennies. Per-touch entity resolution. No ghost hits.</div>
+      </div>
+      <div class="arch-module">
+        <div class="arch-path">src/audio/</div>
+        <div class="arch-name">synth.js</div>
+        <div class="arch-desc">Web Audio API only. Zero audio files. OscillatorNode + noise for all sounds.</div>
+      </div>
+      <div class="arch-module">
+        <div class="arch-path">src/fx/</div>
+        <div class="arch-name">flash.js</div>
+        <div class="arch-desc">Half-screen or full-screen flash. Multiple flashes queue without cancelling.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MILESTONES -->
+  <div class="section reveal">
+    <div class="section-header">
+      <div class="section-icon">🗺</div>
+      <div class="section-title">Milestone Roadmap</div>
+    </div>
+    <div class="milestone-track">
+      <div class="milestone-item">
+        <div class="milestone-dot">1</div>
+        <div class="milestone-body">
+          <div class="milestone-label">Milestone 1</div>
+          <div class="milestone-name">Core Gameplay</div>
+          <div class="milestone-desc">Split-screen canvas, penny spawning + collection, score tracking, round end screen. Fully playable competitive round between two players.</div>
+          <div class="milestone-tags">
+            <span class="tag tag-copper">Canvas</span>
+            <span class="tag tag-copper">Input</span>
+            <span class="tag tag-copper">Entities</span>
+            <span class="tag tag-white">Spawner</span>
+            <span class="tag tag-white">Collision</span>
+          </div>
+        </div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-dot">2</div>
+        <div class="milestone-body">
+          <div class="milestone-label">Milestone 2</div>
+          <div class="milestone-name">Juice &amp; Audio</div>
+          <div class="milestone-desc">Web Audio synth, 3-2-1 countdown, particle bursts on every hit, screen flash on bug miss, score pop animation, penny expiry flicker, mute toggle.</div>
+          <div class="milestone-tags">
+            <span class="tag tag-copper">Audio</span>
+            <span class="tag tag-copper">Particles</span>
+            <span class="tag tag-copper">Flash FX</span>
+            <span class="tag tag-white">Countdown</span>
+          </div>
+        </div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-dot">3</div>
+        <div class="milestone-body">
+          <div class="milestone-label">Milestone 3</div>
+          <div class="milestone-name">Polish &amp; Ship</div>
+          <div class="milestone-desc">Best-of-3 round system, match end screen, share button, void depth effect (60 near-invisible parallax dots), animated penny counter dots, full QA pass.</div>
+          <div class="milestone-tags">
+            <span class="tag tag-copper">Best-of-3</span>
+            <span class="tag tag-white">Share</span>
+            <span class="tag tag-white">Void Depth</span>
+            <span class="tag tag-white">QA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RISKS -->
+  <div class="section reveal">
+    <div class="section-header">
+      <div class="section-icon">⚠</div>
+      <div class="section-title">Design Risks</div>
+    </div>
+    <div class="card">
+      <div class="risk-row">
+        <span class="risk-pill risk-high">HIGH</span>
+        <div class="risk-text"><strong>Multitouch conflicts on iOS Safari</strong> — Two players touching simultaneously may trigger system gestures (screenshot, app switcher). Need to call preventDefault() on all touch events and test on real hardware.</div>
+      </div>
+      <div class="risk-row">
+        <span class="risk-pill risk-med">MED</span>
+        <div class="risk-text"><strong>Center seam penny balance</strong> — 20% of pennies spawn in the contested seam zone. Could create overwhelming conflict or feel unfair. May need playtesting to tune the percentage.</div>
+      </div>
+      <div class="risk-row">
+        <span class="risk-pill risk-med">MED</span>
+        <div class="risk-text"><strong>Audio unlock on iOS</strong> — AudioContext must be created on a user gesture. If the unlock flow fails silently, the game runs with no audio and looks broken. Must handle and recover gracefully.</div>
+      </div>
+      <div class="risk-row">
+        <span class="risk-pill risk-low">LOW</span>
+        <div class="risk-text"><strong>P2 orientation disorientation</strong> — First-time P2 players may need a moment to parse the rotated UI. The layout is self-evident after 3 seconds of play but onboarding could be rough.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IDEAS -->
+  <div class="section reveal">
+    <div class="section-header">
+      <div class="section-icon">💡</div>
+      <div class="section-title">Future Ideas</div>
+    </div>
+    <div class="ideas-grid">
+      <div class="idea-card"><strong>Chaos Mode</strong>20 pennies, bugs 3× faster. Unlock after winning a best-of-3.</div>
+      <div class="idea-card"><strong>Bug Variants</strong>Gold bug (+5 pts), silver bug (fast, weaves), fat bug (needs 2 taps).</div>
+      <div class="idea-card"><strong>Penny Types</strong>Wheat penny = 3 pts. Silver penny = 2 pts. Same tap mechanic, different glow.</div>
+      <div class="idea-card"><strong>Void Events</strong>Rare cosmetic: a penny falls impossibly slow. A bug spirals. The void breathes.</div>
+      <div class="idea-card"><strong>Sudden Death</strong>First miss loses the round. Triggered if series reaches 2-2 for a best-of-5.</div>
+      <div class="idea-card"><strong>Combo System</strong>3 pennies in a row without a miss = score multiplier for next penny.</div>
+    </div>
+  </div>
+
+  <div class="datestamp">Penny Panic — game12 — Pre-Release Design Report — 2026-04-10</div>
+
+</div>
+
+<script>
+// ── void canvas: slowly drifting faint dots ──────────────────────────
+const canvas = document.getElementById('void-canvas')
+const ctx = canvas.getContext('2d')
+
+const dots = []
+const DOT_COUNT = 70
+
+function resize() {
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+}
+
+window.addEventListener('resize', resize)
+resize()
+
+for (let i = 0; i < DOT_COUNT; i++) {
+  dots.push({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    r: 0.8 + Math.random() * 1.2,
+    vx: (Math.random() - 0.5) * 0.25,
+    vy: (Math.random() - 0.5) * 0.25,
+    opacity: 0.02 + Math.random() * 0.04,
+  })
+}
+
+// Occasionally spawn a "penny" particle that drifts and fades
+const floaters = []
+
+function spawnFloater() {
+  floaters.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: 3 + Math.random() * 6,
+    vx: (Math.random() - 0.5) * 0.4,
+    vy: (Math.random() - 0.5) * 0.4,
+    life: 1,
+    decay: 0.003 + Math.random() * 0.005,
+  })
+}
+
+let floaterTimer = 0
+
+function animateVoid(ts) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+  // Drift dots
+  for (const d of dots) {
+    d.x += d.vx
+    d.y += d.vy
+    if (d.x < 0) d.x = canvas.width
+    if (d.x > canvas.width) d.x = 0
+    if (d.y < 0) d.y = canvas.height
+    if (d.y > canvas.height) d.y = 0
+
+    ctx.beginPath()
+    ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2)
+    ctx.fillStyle = `rgba(255,255,255,${d.opacity})`
+    ctx.fill()
+  }
+
+  // Copper floaters
+  floaterTimer++
+  if (floaterTimer > 180) {
+    spawnFloater()
+    floaterTimer = 0
+  }
+
+  for (let i = floaters.length - 1; i >= 0; i--) {
+    const f = floaters[i]
+    f.x += f.vx
+    f.y += f.vy
+    f.life -= f.decay
+
+    ctx.beginPath()
+    ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2)
+    ctx.fillStyle = `rgba(200,146,42,${f.life * 0.12})`
+    ctx.fill()
+
+    if (f.life <= 0) floaters.splice(i, 1)
+  }
+
+  requestAnimationFrame(animateVoid)
+}
+
+requestAnimationFrame(animateVoid)
+
+// ── scroll reveal ────────────────────────────────────────────────────
+const reveals = document.querySelectorAll('.reveal')
+const observer = new IntersectionObserver(entries => {
+  for (const e of entries) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible')
+    }
+  }
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
+
+for (const el of reveals) observer.observe(el)
+
+// ── penny counter demo ───────────────────────────────────────────────
+const counterEl = document.getElementById('penny-counter')
+let litCount = 0
+const dotEls = []
+
+for (let i = 0; i < 10; i++) {
+  const d = document.createElement('div')
+  d.className = 'penny-dot'
+  d.onclick = () => {
+    if (!d.classList.contains('lit')) {
+      d.classList.add('lit')
+      litCount++
+    }
+  }
+  counterEl.appendChild(d)
+  dotEls.push(d)
+}
+
+function resetDots() {
+  for (const d of dotEls) d.classList.remove('lit')
+  litCount = 0
+}
+
+// auto-demo: light up dots one by one on load
+let autoDotIdx = 0
+function autoLitNext() {
+  if (autoDotIdx < 7) {
+    dotEls[autoDotIdx].classList.add('lit')
+    autoDotIdx++
+    setTimeout(autoLitNext, 220)
+  }
+}
+setTimeout(autoLitNext, 1200)
+
+// ── live score demo in screen-viz ────────────────────────────────────
+const scoreP1 = document.getElementById('score-p1')
+const scoreP2 = document.getElementById('score-p2')
+
+function animScore(el, delta) {
+  let v = parseInt(el.textContent) + delta
+  el.textContent = v
+  el.style.transition = 'none'
+  el.style.transform = 'scale(1.4)'
+  el.style.color = delta > 0 ? '#f5d06e' : '#ff2244'
+  requestAnimationFrame(() => {
+    el.style.transition = 'transform 0.3s ease, color 0.3s ease'
+    el.style.transform = 'scale(1)'
+    el.style.color = ''
+  })
+}
+
+// Simulate random score events every few seconds
+const events = [
+  () => animScore(scoreP1, 1),
+  () => animScore(scoreP2, 1),
+  () => animScore(scoreP1, 2),
+  () => animScore(scoreP2, -1),
+  () => animScore(scoreP1, 1),
+  () => animScore(scoreP2, 2),
+]
+let eIdx = 0
+function runNextEvent() {
+  events[eIdx % events.length]()
+  eIdx++
+  setTimeout(runNextEvent, 1400 + Math.random() * 800)
+}
+setTimeout(runNextEvent, 2500)
+</script>
+</body>
+</html>
