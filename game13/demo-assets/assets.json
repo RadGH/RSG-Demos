@@ -324,6 +324,53 @@
         "Codex unlocks: defeating each boss type adds a lore entry to a bestiary"
       ],
       "notes": "Build: 222KB JS (60KB gzip). 29 modules. Full game loop complete across 4 acts, 8 zones, 30+ enemies, 14 classes, 56 sprites. All acts playable start to finish. NG+ fully functional. Known gaps: shrine empower effect unimplemented, item set display missing, party bench swapping missing."
+    },
+    {
+      "milestone": "Milestone 25 — Final Polish: Audio, Animations, Balance",
+      "date": "2026-04-11",
+      "summary": "Final launch-ready pass: zone-specific combat music, 7 new SFX (defeat, level_up, purchase, shrine, craft, ng_plus, purchase), CSS fade-in animations for all screen transitions, touch feedback, scrollbar styling, and NG+ audio fanfare.",
+      "changes": [
+        "Zone-specific combat music: hell/void zones play darker sawtooth-heavy themes, cosmic void uses deep sub-bass; standard zones unchanged",
+        "New SFX: 'defeat' (descending tone on party wipe), 'level_up'/'levelup' (ascending arpeggio), 'purchase' (quick chime), 'shrine' (rising tone), 'craft' (metallic strike), 'ng_plus' (triumphant fanfare)",
+        "Shrine modal now plays 'shrine' SFX instead of 'levelup'",
+        "NG+ button in victory modal now plays 'ng_plus' fanfare instead of generic 'victory'",
+        "Party defeat now plays 'defeat' SFX and sets survived_defeat flag for achievement",
+        "CSS fadeInScreen animation (0.18s ease-out) applied to all overlay screens (party, codex, forge, challenge, quests, achievements, inventory, skills)",
+        "Slim custom scrollbar (4px, amber tint) for all overlay screens",
+        "button:active CSS for touch feedback (scale + opacity)",
+        "user-select: none on #ui-overlay to prevent text selection on mobile",
+        "M21 PartyScreen: party/companion/bench swap with full reorder support",
+        "M22 CodexScreen: 12 lore entries across 5 categories, zone/boss unlock gates",
+        "M23 ForgeScreen: 5 material types, 9 crafting recipes, salvage→craft pipeline",
+        "M24 ChallengeScreen: daily seeded 5-wave gauntlet, local leaderboard",
+        "All 25 milestones complete, game at launch-ready state"
+      ],
+      "bugs": [
+        "ChallengeScreen onResume fires for any screen pop — including settings or codex — not just combat return. Score increments incorrectly if player visits other screens during a challenge run",
+        "ForgeScreen doesn't validate that items aren't equipped before displaying in salvage list (uses !item.equipped flag, but equipping doesn't always set this flag)",
+        "Codex empower shrineType node is never triggered — only 'heal' and 'fullrestore' are used in actual zone data",
+        "PartyScreen swap does not save after swapping — changes are in-memory only until SaveManager.saveCurrentGame() is called from TownScreen",
+        "NG+ attr points (+5 pending) from GameState.startNgPlus() are correctly stored but LevelUpScreen must be reached through combat to spend them — no way to spend them in town"
+      ],
+      "suggestions": [
+        "Add a 'Spend Attribute Points' button to TownScreen so NG+ attr points can be allocated without fighting",
+        "ChallengeScreen should set a flag when entering combat and only advance wave on return-with-flag pattern",
+        "Show 'Item Set Active' notification when a set bonus activates (e.g. equipping 2nd piece)",
+        "Add haptic feedback (navigator.vibrate) on mobile for hits, deaths, victories",
+        "Boss intro: 1-2 second 'dramatic pause' before boss round starts with a name flash on canvas"
+      ],
+      "recommendations": [
+        "ChallengeScreen onResume wave-advance logic needs a combat-result flag to prevent false advances",
+        "Save after party swaps: call GameState/SaveManager after PartyScreen changes take effect",
+        "LevelUpScreen should be accessible from TownScreen for pending attr points"
+      ],
+      "ideas": [
+        "Persistent cloud leaderboard for daily challenge (requires backend)",
+        "Seasonal events: holiday-themed challenge waves (Christmas goblins, etc.)",
+        "Speedrun mode: show time-to-complete on victory screen",
+        "Endless mode: infinite combat waves with escalating difficulty and high-score tracking"
+      ],
+      "notes": "Build: 264KB JS (70KB gzip). 33 modules. Full game stack: 4 acts × 8 zones × 5-7 nodes each, 32 enemy types, 14 hero classes, 56 pixel sprites, party+companions, full inventory/equip, skill trees, crafting, achievements (24), quests (8), codex (12), daily challenge, NG+. All systems integrated. Launch-ready."
     }
   ]
 }

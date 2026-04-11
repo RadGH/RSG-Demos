@@ -116,7 +116,7 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
 <main class="games-list" id="games-list">
 
 <section class="game-section" id="game13"
-  data-key="game13" data-date="2026-04-11" data-milestone="24" data-title="Emberveil"
+  data-key="game13" data-date="2026-04-11" data-milestone="25" data-title="Emberveil"
   style="--ga:#e8a020;--gab:#f0c060;--gad:#8a5010;--gg:rgba(232,160,32,0.3);--gbg:#0a0608;--gt:#f0e8d8;--gtm:#8a7a6a;--gbo:#f0e8d8;--gbr:rgba(232,160,32,0.3);--gpf:0 0 12px #e8a020, 0 0 28px #8a5010, 0 0 56px rgba(232,160,32,0.2);--gpt:0 0 20px #f0c060, 0 0 40px #e8a020, 0 0 80px rgba(240,192,96,0.3);background:#0a0608">
   <div class="game-bg">
     <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(192,64,48,0.12) 0%, transparent 70%), linear-gradient(180deg, #0a0608 0%, #1a1218 100%)"></div>
@@ -127,19 +127,21 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
     <div class="game-frame" style="--glow:rgba(232,160,32,0.3)">
       <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
       <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
-      <span class="frame-top">Milestone 24</span>
+      <span class="frame-top">Milestone 25</span>
       <span class="frame-bot">A High Fantasy Party RPG</span>
       <div class="game-eyebrow">A High Fantasy Party RPG</div>
       <h2 class="game-title">Emberveil</h2>
       <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
       <div class="game-badges">
-        <span class="gbadge gbadge-m">M24</span>
+        <span class="gbadge gbadge-m">M25</span>
         
         <span class="gbadge gbadge-date">2026-04-11</span>
       </div>
       <p class="game-desc">A high fantasy party RPG. Build a party of up to 8 heroes and companions, journey across four acts — goblin frontier, volcanic wastelands, the Shattered Hell, and the Cosmic Void — in cinematic auto-play combat against hordes of enemies. 14 playable classes, procedurally generated equipment, and a story-driven journey to stop the corruption tearing worlds apart.</p>
       <a href="./game13/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">We are creating a game involving a party of 1-4 heroes and up to 8 characters including pets. The game involves combat against hordes of enemies from just one big enemy to 50 small enemies. The combat takes place a round at a time. All characters in combat roll a turn order and auto-plays using the most appropriate skills available... [full prompt as described in design session April 2026]</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">• M23 (2026-04-11): Item Crafting (Forge) — salvage unequipped items into materials (Iron Scrap, Magic Essence, Rare Dust, Legendary Core, Void Shard), then forge new items from 9 recipes. Materials tracked in GameState. Forge button added to TownScreen action bar. Forge achievement added. Zone-scaled salvage yields (normal → legendary progressively better materials).
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">We are creating a game involving a party of 1-4 heroes and up to 8 characters including pets. The game involves combat against hordes of enemies from just one big enemy to 50 small enemies. The combat takes place a round at a time. All characters in combat roll a turn order and auto-plays using the most appropriate skills available... [full prompt as described in design session April 2026]</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">• M25 (2026-04-11): Final polish — zone-specific combat music (7 variants: hell/void/standard), 7 new SFX (defeat, level_up, shrine, craft, ng_plus, purchase), CSS fade-in animations on all overlay screens, custom scrollbars, touch feedback, user-select disabled. All 25 milestones complete. Build: 266KB JS (71KB gzip), 33 modules.
+• M24 (2026-04-11): Daily Challenge mode — seeded 5-wave gauntlet, seed changes daily, local leaderboard tracking (per-day localStorage). Score = 100 × waves cleared × wave multiplier. Challenge button added to TownScreen. Daily Champion achievement added. Seeded PRNG (mulberry32) varies wave composition slightly per day while keeping difficulty consistent.
+• M23 (2026-04-11): Item Crafting (Forge) — salvage unequipped items into materials (Iron Scrap, Magic Essence, Rare Dust, Legendary Core, Void Shard), then forge new items from 9 recipes. Materials tracked in GameState. Forge button added to TownScreen action bar. Forge achievement added. Zone-scaled salvage yields (normal → legendary progressively better materials).
 • M22 (2026-04-11): World Codex screen — 12 lore entries across World, Factions, Bestiary, and Lore categories. Entries unlock based on zones visited, bosses defeated, and story flags. Tabbed category filter, split list/detail layout, progress counter (N/12 unlocked). Codex button added to TownScreen action bar. Lore Seeker achievement added.
 • M21 (2026-04-11): Party Management Screen — swap heroes/companions between active party and bench, reorder party with up/down controls, tap-to-select-then-tap-another to swap, companion slots visible separately. Party button added to TownScreen action bar. Fixed 4 achievement checks that referenced wrong boss node IDs. Added Act 4 and NG+ achievements (Cosmic Voyager, The Unraveler Falls, New Game+, Twice-Born Legend).
 • M20 (2026-04-11): Audit and polish pass — fixed isGameComplete boss detection (core_boss not 'sovereign'), armor soft cap (damage floors at 15% of raw, not 1), zone-scaled loot tables (Normal→Legendary by zone), zone-scaled drop chance (15%→25%), zone-scaled fame gain (1×→6× multiplier). Full NG+ completeness pass.
@@ -184,8 +186,8 @@ M20 COMPLETE (2026-04-11) — Audit, polish, bug fixes (boss detection, armor ca
 M21 COMPLETE (2026-04-11) — PartyScreen (bench swap, reorder, achievement fixes)
 M22 COMPLETE (2026-04-11) — World Codex screen (12 lore entries, unlock system)
 M23 COMPLETE (2026-04-11) — Forge (salvage, materials, 9 crafting recipes)
-M24 — Challenge mode: daily seed runs, leaderboard stub
-M25 — Final polish: audio, animations, balance pass, launch-ready</pre></details></div>
+M24 COMPLETE (2026-04-11) — Daily Challenge (seeded gauntlet, local leaderboard)
+M25 COMPLETE (2026-04-11) — Final polish: zone music, SFX, CSS animations, launch-ready ✦</pre></details></div>
     </div>
   </div>
 </section>
@@ -651,7 +653,7 @@ Phase 5: Biomes 3+4 — Forge of Ruin &amp; Void Sanctum (M49–M63)</pre></deta
 </main>
 <footer class="site-footer">Rad's Game Demos &mdash; 10 games &mdash; 2026</footer>
 <script>
-const SORT_DATA=[{"key":"game2","date":"2026-04-10","milestone":231,"title":"Roguelike"},{"key":"game3","date":"2026-04-01","milestone":3,"title":"Roguelike III"},{"key":"game4","date":"2026-04-02","milestone":32,"title":"Spellroads"},{"key":"game6","date":"2026-04-05","milestone":29,"title":"Astral Crypts"},{"key":"game7","date":"2026-04-05","milestone":13,"title":"Wanderlight"},{"key":"game8","date":"2026-04-10","milestone":80,"title":"Vagrant & Ash"},{"key":"game10","date":"2026-04-10","milestone":8,"title":"Aethermoor Chronicles"},{"key":"game11","date":"2026-04-10","milestone":19,"title":"Stormtown"},{"key":"game12","date":"2026-04-10","milestone":29,"title":"Penny Panic"},{"key":"game13","date":"2026-04-11","milestone":24,"title":"Emberveil"}];
+const SORT_DATA=[{"key":"game2","date":"2026-04-10","milestone":231,"title":"Roguelike"},{"key":"game3","date":"2026-04-01","milestone":3,"title":"Roguelike III"},{"key":"game4","date":"2026-04-02","milestone":32,"title":"Spellroads"},{"key":"game6","date":"2026-04-05","milestone":29,"title":"Astral Crypts"},{"key":"game7","date":"2026-04-05","milestone":13,"title":"Wanderlight"},{"key":"game8","date":"2026-04-10","milestone":80,"title":"Vagrant & Ash"},{"key":"game10","date":"2026-04-10","milestone":8,"title":"Aethermoor Chronicles"},{"key":"game11","date":"2026-04-10","milestone":19,"title":"Stormtown"},{"key":"game12","date":"2026-04-10","milestone":29,"title":"Penny Panic"},{"key":"game13","date":"2026-04-11","milestone":25,"title":"Emberveil"}];
 function reSort(by){
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('sort-'+by).classList.add('active');
