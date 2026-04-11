@@ -1552,7 +1552,7 @@ When the Emberveil began to fail, most orders fractured or scattered. Individual
   }
   .service-panel {
     overflow-y: visible !important;
-    padding: 0.9rem 1rem !important;
+    padding: 0.9rem 1rem 80px !important; /* 80px clearance so last items don't hide under the action bar */
   }
   .town-actions-panel {
     flex-shrink: 0;
