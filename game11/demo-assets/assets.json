@@ -2,6 +2,15 @@
   "game": "game11",
   "assets": [
     {
+      "id": "report_final_m20",
+      "name": "Final Build Report — Stormtown v1.0 (M1–M20)",
+      "category": "other",
+      "source": "svg",
+      "file": "report-final-m20.html",
+      "prompt": "",
+      "notes": "Cinematic final release document. Milestone timeline, stat cards with count-up animations, full accordion changelog M1–M20, bug tracker, dev+PM retrospectives, Agent-Driven Development reflection."
+    },
+    {
       "id": "sprite_player",
       "name": "Player Character",
       "category": "sprite",
@@ -143,7 +152,7 @@
       "source": "svg",
       "file": "report-pre-creation.html",
       "prompt": "",
-      "notes": "Animated HTML report covering game concept, core loop, entities, milestone plan, risks, and future ideas \u2014 written before implementation began."
+      "notes": "Animated HTML report covering game concept, core loop, entities, milestone plan, risks, and future ideas — written before implementation began."
     }
   ],
   "reports": [
@@ -314,18 +323,18 @@
       "notes": "M2 completes the first 5-milestone block. Pre-build report for M2–M6 cycle was generated with animated HTML, game dev persona (Alex Chen) and PM persona (Jordan Rivera) feedback, brainstorm wall, and risk analysis."
     },
     {
-      "milestone": "Milestone 1 \u2014 Foundation & Full Game Loop",
+      "milestone": "Milestone 1 — Foundation & Full Game Loop",
       "date": "2026-04-10",
       "summary": "Built the complete Stormtown game loop from scratch: procedural town map, player movement, tornadoes, zombies, Sam NPC rescue, helicopter escape, and all screens.",
       "changes": [
         "Phaser 3 + Vite project setup with portrait orientation lock",
-        "Procedural town grid generator (40\u00d760 tiles, 1280\u00d71920 world) with road network and building blocks",
+        "Procedural town grid generator (40×60 tiles, 1280×1920 world) with road network and building blocks",
         "Player entity: 160 px/s base speed, 240 px/s sprint with stamina drain/regen, 3 HP system, 1.2s invulnerability frames",
-        "Tornado entity: semi-guided AI targeting player with randomized waypoints, 200px suction zone (slow + pull force), 44px kill zone (instant death), spinning animation with debris particles, difficulty escalation (1 \u2192 4 tornadoes at 60/120/180s)",
+        "Tornado entity: semi-guided AI targeting player with randomized waypoints, 200px suction zone (slow + pull force), 44px kill zone (instant death), spinning animation with debris particles, difficulty escalation (1 → 4 tornadoes at 60/120/180s)",
         "Zombie entity: wander AI with seeded timer, chase AI at 180px detection range, physics collider with buildings and each other",
         "Sam NPC at NE quadrant with beacon pulse animation and rescue dialogue popup",
         "Helicopter pad at north center with pulsing ring animation and overlap win zone",
-        "Storm surge mechanic: all tornadoes speed up \u00d71.2 when key is picked up",
+        "Storm surge mechanic: all tornadoes speed up ×1.2 when key is picked up",
         "InputManager: unified WASD/arrow keys + touch virtual joystick (left half) + sprint button (right half)",
         "UIScene (parallel scene): HP hearts, elapsed timer, stamina bar, objective arrow compass, key badge, storm surge warning",
         "Title screen with animated cloud strips, lightning flash effect, best time display",
@@ -336,27 +345,27 @@
         "Sky parallax overlay with scrolling dark cloud layer at varying scroll factors"
       ],
       "bugs": [
-        "Tornadoes can clip through building corners (no building collision on tornado movement \u2014 intentional for now, but makes the tornado feel slightly unphysical)",
-        "Virtual joystick start position locks to first touch point \u2014 dragging fast can sometimes cause the knob to lag behind slightly on low-end devices",
-        "Sam beacon position uses tile coords that may occasionally land inside a building edge if building generation shifts \u2014 needs boundary check",
-        "Zombie respawn not yet implemented \u2014 once 12 zombies wander off-screen they don't come back",
-        "The Phaser UIScene receives per-frame data via polling (onUpdate call from GameScene update) \u2014 this works but is tightly coupled; a cleaner event system would be better",
+        "Tornadoes can clip through building corners (no building collision on tornado movement — intentional for now, but makes the tornado feel slightly unphysical)",
+        "Virtual joystick start position locks to first touch point — dragging fast can sometimes cause the knob to lag behind slightly on low-end devices",
+        "Sam beacon position uses tile coords that may occasionally land inside a building edge if building generation shifts — needs boundary check",
+        "Zombie respawn not yet implemented — once 12 zombies wander off-screen they don't come back",
+        "The Phaser UIScene receives per-frame data via polling (onUpdate call from GameScene update) — this works but is tightly coupled; a cleaner event system would be better",
         "Sprint button zone is right half of screen which can conflict with tapping UI elements on some layouts"
       ],
       "suggestions": [
         "Add footstep or running sound that changes pitch with sprint for player feedback",
-        "Tornado roar should get louder as it approaches \u2014 proximity audio would greatly amplify tension",
+        "Tornado roar should get louder as it approaches — proximity audio would greatly amplify tension",
         "Add a brief tutorial overlay on first play explaining controls and objective",
         "Sprint button should be a visible on-screen button with tactile feel, not just a right-half tap zone",
         "Buildings should have varying heights visually (darker/lighter gradient) to suggest 3D depth",
         "Add a panic meter or heartbeat effect when tornado is within 300px"
       ],
       "recommendations": [
-        "Add zombie respawn system from map edges before Milestone 2 \u2014 the game gets too easy after initial zombies wander away",
-        "Decouple UIScene from GameScene with an event emitter (Phaser.Events.EventEmitter) rather than direct function calls \u2014 current coupling makes it brittle",
+        "Add zombie respawn system from map edges before Milestone 2 — the game gets too easy after initial zombies wander away",
+        "Decouple UIScene from GameScene with an event emitter (Phaser.Events.EventEmitter) rather than direct function calls — current coupling makes it brittle",
         "Consider adding a StaticTilemapLayer for buildings to get tilemap rendering performance rather than raw Graphics objects, especially on mobile",
-        "InputManager should cache scale factor instead of reading it per event \u2014 minor perf win on mobile",
-        "Test tornado suction force stacking with 4 tornadoes \u2014 may need a cap to prevent physics explosion"
+        "InputManager should cache scale factor instead of reading it per event — minor perf win on mobile",
+        "Test tornado suction force stacking with 4 tornadoes — may need a cap to prevent physics explosion"
       ],
       "ideas": [
         "Weather progression: rain starts light and intensifies, flooding some roads (slows movement)",
@@ -366,7 +375,7 @@
         "Daily challenge mode: fixed seed with leaderboard via URL hash sharing",
         "Tornado path history: brief trail showing where tornado came from to help predict movement"
       ],
-      "notes": "All visuals are procedurally generated in BootScene via Phaser Graphics \u2014 no external image assets needed. The town layout is deterministic with seed 42, so the same map appears every run. Changing the seed would give variety. The game runs entirely in-browser with no server requirements."
+      "notes": "All visuals are procedurally generated in BootScene via Phaser Graphics — no external image assets needed. The town layout is deterministic with seed 42, so the same map appears every run. Changing the seed would give variety. The game runs entirely in-browser with no server requirements."
     },
     {
       "milestone": "Milestone 5 — Car Mechanic, Building Destruction & Flooding",
@@ -422,6 +431,195 @@
         "Buildings that collapse could block road tiles with rubble, creating new pathfinding obstacles for zombies"
       ],
       "notes": "The building destruction index lookup (buildingGroup.getChildren()[stateIndex]) is safe as long as destroyed buildings are removed from the group via remove() rather than destroy() after the initial removal — the current code calls remove(body, true, true) which removes and destroys, so index shifts will occur on subsequent lookups. However, since destroyed buildings set state.destroyed=true and are skipped immediately, this only matters for buildings destroyed in the same frame, which is extremely unlikely given the slow hp drain rate. In practice this is stable."
+    },
+    {
+      "milestone": "Milestones 12 & 13 — Ghost Replay + Survivor Chain",
+      "date": "2026-04-10",
+      "summary": "Added a ghost replay system that records and replays the previous run, and a survivor chain where rescued bonus survivors physically follow the player.",
+      "changes": [
+        "Created ChainFollower.js — Phaser.Physics.Arcade.Sprite that follows a target (player or prior follower) with proportional velocity capped at 220px/s, 36px follow distance, tinted by survivor type (speed=cyan, stamina=orange, shield=blue), scale 0.7, alpha 0.85",
+        "Ghost recording: GameScene._ghostPath[] collects {x, y, t} every 0.5s in update(); capped at 500 points before serialization",
+        "Ghost save: _saveGhostRun() serializes path + deathTime + seed to localStorage key 'stormtown_ghost'; called on _triggerDeath() and _triggerEscape()",
+        "Ghost load: on create(), reads 'stormtown_ghost', parses JSON, calls _spawnGhost() if valid",
+        "_spawnGhost(): creates a Phaser.GameObjects.Arc circle (r=12, color 0xffffff, alpha 0.28, depth 8) at first path point; sets _ghostElapsed=0, _ghostIndex=0",
+        "Ghost playback in update(): _ghostElapsed advances with dt; binary search via while-loop to advance _ghostIndex; interpolates x/y between current and next path point using fractional time",
+        "Ghost dissolve: when _ghostElapsed >= deathTime, tween ghostSprite to alpha=0, scaleX=2, scaleY=2 over 600ms then destroy",
+        "Ghost with no deathTime (escaped run) simply fades at last path point naturally",
+        "Chain follower spawned in _applyBonusUpgrade(type) each time a bonus survivor is rescued; target set to player (first) or last follower (subsequent)",
+        "Physics collider added between each follower and buildingGroup so followers navigate around walls",
+        "Chain penalty: player.chainPenalty = chainFollowers.length * 5 set each frame; Player.js update() computes effectiveBase and effectiveSprint by subtracting chainPenalty from both BASE_SPEED and SPRINT_SPEED",
+        "Follower sacrifice: per-frame check tests each unsacrificed follower against all tornado getSuctionForce(); force.kill triggers _sacrificed=true, setVisible(false), body.enable=false, dissolve tween, and 2s 'FOLLOWER SACRIFICED!' popup at scrollFactor 0",
+        "chainCount (active followers) passed in onUpdate payload to UIScene",
+        "UIScene: added chainCountText (top-right, y=78, monospace 11px, color #aaddff); weatherHudText moved to y=94 to make room; chainCountText shows 'CHAIN: N' when N > 0, empty string when 0"
+      ],
+      "bugs": [
+        "Ghost playback uses wallclock elapsed time for interpolation — if the player takes a very long route, ghost path recorded at 0.5s intervals may skip across wide gaps rather than smoothly interpolating through the missing frames (this is inherent to the 0.5s sampling rate)",
+        "ChainFollower physics body is setCircle(8, 4, 4) — the offset (4, 4) assumes a 16px-wide sprite origin; if the texture size differs for zombie or sam sprites, the circle may be visually misaligned",
+        "Followers have setCollideWorldBounds implicitly false since no explicit call is made — followers near edges could drift off-map if the player walks close to world bounds",
+        "Chain sacrifice check iterates O(followers * tornadoes) every frame — at max 3 followers and 8 tornadoes this is 24 distance checks, acceptable but should be noted if follower count scales",
+        "Ghost is always spawned from the seed of the previous run, regardless of current seed — ghost from a daily challenge run will replay over a completely different map in normal mode",
+        "Ghost disappears cleanly if deathTime is set, but if the player escaped on the previous run (deathTime=null), the ghost walks to the end of its path and then just stops mid-screen with no dissolve — it will persist indefinitely until scene restart",
+        "Follower target chain: if a middle follower is sacrificed, the follower behind it loses its target's visibility but _sacrificed flag is set on the target follower — the trailing follower will still track the sacrificed follower's last position since _sacrificed only stops the follower's own movement, not its use as a target"
+      ],
+      "suggestions": [
+        "Ghost should have a subtle trail particle effect (3-4 fading circles behind it) to make it easier to distinguish from other world objects",
+        "Add a brief 'GHOST LOADED' HUD message at run start when ghost data is present, so players know to expect it",
+        "Followers should visually react when the player sprints (scale up briefly or change alpha) for more life",
+        "Chain followers could show their type label ('SPD', 'STM', 'SHD') above their sprite so the player can identify who they have",
+        "After a follower is sacrificed, the follower behind it should retarget to the follower ahead of the gap rather than the missing follower's stopped position"
+      ],
+      "recommendations": [
+        "Fix the ghost escape run (deathTime=null) — add a check: if ghostElapsed exceeds path[path.length-1].t by 2+ seconds, dissolve the ghost. This prevents stuck ghost sprites",
+        "Fix the chain retargeting after sacrifice: when marking a follower _sacrificed, iterate remaining followers and update any follower whose target === sacrificed follower to point to the sacrificed follower's own target",
+        "Add setCollideWorldBounds(true) to ChainFollower constructor to prevent followers drifting off map near edges",
+        "Consider a downsample pass in _saveGhostRun() that filters to unique positions rather than just a tail slice, to maximize path coverage over long runs"
+      ],
+      "ideas": [
+        "Ghost color could change based on how far into the run it got — blue for early death, orange for mid-game, green for escape — giving the player a visual distance goal",
+        "Multiple ghost slots: keep last 3 runs, show all simultaneously at different alpha levels for progression history",
+        "Follower chain AI could be smarter: followers could pathfind around buildings using a simplified A* on the road grid instead of direct velocity-based following",
+        "Tornado sacrifice animation could be more dramatic — flash the follower brighter before dissolving, add a scream audio cue",
+        "Chain followers could occasionally help the player: stamina follower could boost player stamina regen rate, speed follower adds a movement trail, shield follower periodically generates a small protective bubble"
+      ],
+      "notes": "Ghost and chain implemented in the same milestone since they share the concept of previous-run data influencing the current run experience. The ghost is deliberately subtle (28% alpha white circle) to not distract from the main threat. The chain penalty (5px/s per follower) is intentionally small — at 3 followers that is only 15px/s off a 160px/s base, which is felt but not punishing. The real cost of the chain is positional: followers trail through danger zones the player navigated past, and can be consumed by tornadoes or slow the player in tight situations."
+    },
+    {
+      "milestone": "Milestone 10 — Dynamic Weather Events",
+      "date": "2026-04-10",
+      "summary": "Added three dynamic weather events (fog, electrical storm, hailstorm) with a reusable banner system and weather HUD icons.",
+      "changes": [
+        "Added _showWeatherBanner(text, color): screen-center text (depth 190, scrollFactor 0) that fades in over 400ms, holds 2s, fades out over 600ms, then self-destroys",
+        "Added fog of war system: _scheduleFogEvent() fires first at 60–90s, then recurs every 45–75s. _triggerFog() creates 4 screen-edge dark panels (top/bottom=30% of screen height, left/right=25% of width) at depth 49 that tween to alpha 0.82 over 3s, creating tunnel-vision. _clearFog() tweens panels back to 0 over 2s then destroys them. Fog lasts 15 seconds per cycle.",
+        "Added electrical storm system: _scheduleElectricalStorm() fires first at 80–120s, then recurs every 60–100s. _triggerElectricalStorm() uses time.addEvent with repeat:5 at 1500ms intervals to call _electricBolt(). Each bolt picks a random road tile, flashes screen white (alpha 0.5, 80ms via tween), draws a 3-segment jagged Graphics line (0xffff44, lineWidth 3, depth 32) that fades over 600ms, stuns player if within 120px, plays thunder audio. activeWeather 'storm' tag cleared after 9s.",
+        "Added hailstorm system: _scheduleHailstorm() fires first at 100–140s, then recurs every 80–120s. _triggerHailstorm() sets hailActive and hailOverride flags for 10s. In update(), hailDmgAccum accumulates dt; when it reaches 2s, player.takeDamage() is called and UI.onPlayerHit() is notified. Death cause 'KILLED BY HAILSTORM' is set if hp reaches 0.",
+        "Updated rain drawing loop: when hailOverride is true, drop color changes from 0xaabbdd to 0xffffff, alpha multiplier increases to 3.0, and 40 extra white hail specks (filled circles, r=2) are scattered each frame using Math.random()",
+        "Added activeWeather array to GameScene state; fog/storm/hail labels are pushed/spliced as events start and end",
+        "Updated onUpdate payload to include activeWeather array",
+        "Added weatherHudText Text object to UIScene (top-right, y=60, origin right-top, depth 200). onUpdate maps 'fog' -> U+1F32B, 'storm' -> U+26A1, 'hail' -> U+1F9E3 and sets joined icon string"
+      ],
+      "bugs": [
+        "Fog panels are created and recreated on each trigger — if the player defeats a fog event mid-tween and the next fog fires before the old panels finish destroying, both sets of panels will coexist briefly. The fix would be to guard _triggerFog() with a check that fogPanels is null before creating new ones, or cancel the in-progress clear tween",
+        "Electrical storm repeat:5 fires 6 times total (initial + 5 repeats), but the brief is 4–6 bolts over 10s. At 1500ms intervals, 6 bolts span 7.5s, which fits the 10s window but the repeat count may need tuning for feel",
+        "Hail damage uses a per-session accumulator (hailDmgAccum) that is reset per trigger via the 10s delayedCall. If the game scene is restarted without the delayedCall completing, the accumulator could have stale state — this is fine since the scene is fully recreated on restart",
+        "activeWeather splice uses indexOf which is O(n), fine for 3 entries but fragile if entries can appear multiple times (they cannot currently since _triggerFog etc. guard with includes() checks)",
+        "weatherHudText emoji rendering depends on device emoji font support — on platforms that do not support fog emoji (U+1F32B) it will fall back to a box character. Using text like [FOG] as a fallback was not implemented"
+      ],
+      "suggestions": [
+        "Add a faint ambient sound effect during fog (low rumble, muted audio) to reinforce the atmospheric effect",
+        "Animate the fog panels with a slow pulse (tween alpha between 0.70 and 0.86 on a repeat cycle) while active to make the fog feel more organic",
+        "Play a unique crackle/zap audio for electrical bolt strikes separate from the existing thunder sound to distinguish storm type",
+        "Show a damage number popup floating up from the player during hail damage to make the effect legible without reading the HP bar",
+        "Consider applying a blue-white color tint to the rain gfx background during hailstorm to reinforce the weather change visually beyond just drop color"
+      ],
+      "recommendations": [
+        "Weather event scheduling is done via raw delayedCall with no reference stored — if the scene restarts before a delayed call fires, Phaser will have already cleaned up those timers, so this is safe. However, if weather methods are called after scene shutdown (via a race with an in-flight animation callback), this could cause errors. Guard all weather trigger methods with: if (this.escaped || !this.player?.alive) return;",
+        "The activeWeather array is passed as a shallow slice to UIScene each frame. This is correct but means UIScene rebuilds the icon string every frame. This is trivial at 3 entries but a change-detection pattern (tracking last rendered set) would avoid redundant setText calls",
+        "Fog panels use setOrigin(0, 0) and are created at screen-space coords (W, H). These will be correct at initial creation but if screen is resized (unlikely on mobile portrait lock), panels could leave gaps. Since portrait lock is enforced this is acceptable",
+        "M11 audio pass should wire weather events to AudioManager: fog gets an ambient low-frequency rumble, electrical storm gets a distinct spark sound, hailstorm gets a percussion-like patter effect"
+      ],
+      "ideas": [
+        "Tornado meets fog: if fog is active when a tornado passes nearby, the fog could get 'cleared' in a radius around the tornado (as the vortex sucks it away), creating a brief visibility island around the tornado that the player might exploite",
+        "Lightning strike during electrical storm could also scorch flooded road tiles, causing them to momentarily dry (removing flood penalty) — a nice emergent interaction",
+        "Add a weather forecast radio message that fires 15s before each weather event as a warning",
+        "Combine hailstorm with car mechanic: car roof blocks hail damage while the player is inside",
+        "Electrical storm bolt could occasionally strike and destroy a building (dealing 2 instant hp damage to the building state)"
+      ],
+      "notes": "All three weather events use self-rescheduling delayedCalls rather than addEvent with repeat:-1, which is safer because each reschedule happens after the event completes and allows randomized intervals per cycle. The first events are staggered (fog at 60–90s, storm at 80–120s, hail at 100–140s) so they are unlikely to all trigger simultaneously in a normal game run (total of ~5 minutes playtime). Weather HUD icons use Unicode emoji codepoints encoded as \\uXXXX escape sequences in the source rather than raw emoji chars, which is more reliable across editors and linters."
+    },
+    {
+      "milestone": "Milestone 14 — Achievement System",
+      "date": "2026-04-10",
+      "summary": "Implemented a 12-achievement system with localStorage persistence, animated slide-in unlock pop-ups in the HUD, and a full-screen achievement gallery on the title screen.",
+      "changes": [
+        "Created AchievementManager.js singleton with unlock(), isUnlocked(), getAll(), getUnlocked(), onUnlock(cb), and reset() API",
+        "12 achievements defined: first_escape, speed_runner, pacifist, full_house, untouchable, mechanic, last_breath, tornado_dodger, exterminator, survivor, powered_up, endless_5min",
+        "Achievements persisted to localStorage under stormtown_achievements as a JSON array",
+        "GameScene imports and hooks AchievementManager: escape checks (first_escape, speed_runner, pacifist, full_house, untouchable, last_breath, powered_up), car enter (mechanic), zombie kill 20 (exterminator), 3-minute survival (survivor), 4-tornado threshold (tornado_dodger), 5-min endless (endless_5min)",
+        "Per-run power-up set tracking via this._achPowerupsCollected added to create()",
+        "UIScene.showAchievement(def) added — queued pop-up panel, slide in from right edge with Back.Out ease over 400ms, hold 2.5s, slide out with Quad.In over 300ms, then destroy",
+        "Achievement panel: dark rounded rect 220x60px, gold 4px left border strip, emoji icon + bold name + gray description",
+        "Queue system maintains _achQueue array and _achShowing flag so simultaneous unlocks don't overlap",
+        "TitleScene shows live count '🏆 N / 12 achievements' with gold hover effect and click-to-open gallery",
+        "Achievement gallery: full-screen dark overlay, 3-column grid of 100x80 cards, unlocked cards show full color, locked show 30% alpha with lock emoji overlay",
+        "Gallery close button and overlay tap both destroy all gallery objects",
+        "Version label updated from M6 to M14"
+      ],
+      "bugs": [
+        "The achievement gallery cleanup in TitleScene uses a depth-based filter to destroy stragglers — this is fragile if other objects share depth 400/401/402. A container or tracked array would be safer",
+        "onUnlock callbacks accumulate across scene restarts because AchievementManager is a module-level singleton — if GameScene restarts, each run registers a new callback, eventually causing duplicate pop-ups. Should clear callbacks on scene shutdown or use a 'latest handler' pattern",
+        "achievements.unlock() fires callbacks immediately and synchronously before UIScene has fully launched (it launches after the onUnlock is registered, but onUnlock callback fires on the same frame the UIScene launch call is made) — this could cause ui.showAchievement to be called before UIScene.create() runs. In practice the first achievable achievement requires escape, which is many seconds after launch, so this is a non-issue in normal play but is architecturally fragile",
+        "Achievement gallery does not scroll — if ACHIEVEMENTS grows beyond ~4 rows, cards overflow the screen on short displays (iPhone SE). Currently 12 achievements fit in 4 rows at 80px+10px gap = 380px plus header, which is tight on 852px screen with other UI"
+      ],
+      "suggestions": [
+        "Add a subtle sound effect when an achievement unlocks — a short ascending chime would reinforce the moment",
+        "The gallery locked card shows a generic lock icon; showing a cryptic hint text instead ('Kill 20 zombies') would encourage experimentation without being a full spoiler",
+        "Show a brief flash or shake on the title screen achievement counter when a new achievement has been unlocked since last visit (compare localStorage count to cached count)",
+        "Consider color-coding achievement cards by category: combat (red), survival (blue), skill (gold), misc (grey)"
+      ],
+      "recommendations": [
+        "Replace the per-scene onUnlock callback accumulation with a single cleanup on GameScene shutdown: store the callback reference and remove it in the shutdown handler. AchievementManager should support offUnlock(cb) to enable this",
+        "The gallery cleanup should use a Phaser Container rather than relying on depth-based filtering — add all gallery objects to a single container, then container.destroy() is one clean call",
+        "Consider storing achievements as an object {id: date} in localStorage rather than a plain array — this lets you display unlock dates in the gallery for free"
+      ],
+      "ideas": [
+        "Secret/hidden achievements not shown in gallery until unlocked — 'mystery' slots with ??? text",
+        "Achievement unlock counter on WinScene ('Run unlocked: N achievements') to celebrate progress",
+        "Streak achievement: escape 3 runs in a row without dying (requires multi-run state)",
+        "Daily challenge achievement: complete a daily challenge seed"
+      ],
+      "notes": "The AchievementManager uses a module-level singleton export (const achievements = new AchievementManager()) so state persists across Phaser scene transitions within the same browser session without needing to pass references. The localStorage key stormtown_achievements is separate from stormtown_best and stormtown_scores to allow selective reset."
+    },
+    {
+      "milestone": "Milestones 19-20 — Environmental Hazards & Expanded Inventory",
+      "date": "2026-04-10",
+      "summary": "Added 7 environmental hazards across the map (power lines + gas canisters) and replaced the single-item inventory with a 2-slot system with E-to-use and tap/double-tap cycling.",
+      "changes": [
+        "Created Hazard.js — Phaser Container with a static physics zone; two types: power_line and gas_canister",
+        "power_line: animated flickering spark gfx (tween on alpha, Stepped ease), electrocutes player on overlap (1 damage + 800ms stun), death cause ELECTROCUTED",
+        "gas_canister: red cylinder gfx, explodes when any tornado comes within 100px, expanding orange flash circle tween, damages player within 120px, kills zombies within 150px, death cause CAUGHT IN GAS EXPLOSION",
+        "_spawnHazards(town) called from create(): 4 power lines + 3 gas canisters at road intersections spread across the map",
+        "Hazard.update() called each frame in GameScene.update() with dt, player, tornadoes array",
+        "Player.inventory changed from [] to [null, null] (2 explicit null slots)",
+        "Added Player.activeSlot = 0 tracking the active slot index",
+        "Added Player.addItem(type): fills first empty slot, returns false if full",
+        "Added Player.removeActiveItem(): clears and returns active slot item",
+        "Added Player.getActiveItem(): peeks active slot",
+        "Added Player.cycleSlot(): increments activeSlot mod 2",
+        "_collectPowerup() reworked: calls player.addItem() — shows INVENTORY FULL popup if slots full, otherwise collects and shows '(E to use)' hint",
+        "Added _useActiveItem() dispatching to flare/_throwFlare, windbreaker, medkit, torch effects",
+        "_throwFlare() updated — inventory removal now happens in _useActiveItem before call, not inside _throwFlare",
+        "Added _showPopup(text, color) helper used by both powerup and use-item feedback",
+        "Added E key ('_useKey') in create() wired to _useActiveItem() via JustDown check in update()",
+        "activeSlot passed in onUpdate payload to UIScene",
+        "UIScene._drawInventory() rewritten: two 42x42 side-by-side slots, bright white border on active, dim border on inactive, per-item icon drawn inside each slot (flare=triangle, windbreaker=ellipse, medkit=cross, torch=flame), E=USE hint below active slot",
+        "UIScene: tap on inventory graphics rectangle cycles active slot via player.cycleSlot()",
+        "UIScene: double-tap left quarter of screen (within 350ms) cycles active slot"
+      ],
+      "bugs": [
+        "power_line hazard remains visible and active even after the player is dead — it does not check player.alive before dealing damage, relying on the GameScene overlap guard. Safe but worth tidying.",
+        "gas_canister explosions can chain if two canisters are close together and both triggered by a tornado — no limit on chained AoE damage to player. Could stack to 2x damage in one frame.",
+        "Hazard Container is added to scene but the graphics child 'g' is positioned relative to the container — on power_line the spark gfx draws at (0,0) of the container (correct), but the zone rectangle is created at world coords independently. If the container is moved, the zone does not follow. Currently hazards are static so this is not a live bug.",
+        "Double-tap on left side shares the same pointer listener as the joystick. A joystick drag start followed quickly by a tap could accidentally trigger slot cycle. Low probability in practice.",
+        "windbreakerCountdown text was previously anchored at W/2+28; now at W/2+60 to avoid overlapping new 2-slot layout — may clip near right edge on very narrow viewports."
+      ],
+      "suggestions": [
+        "Add a warning indicator (blinking red) on the minimap near gas canisters so players can see them before running into them",
+        "Show a 'TAP SLOT' or '1/2' label below the inventory slots to make the cycling gesture discoverable on mobile",
+        "Power line hazard could be made avoidable by sparking visually before becoming active (1-2s warm-up) — adds skill expression",
+        "Gas canister explosion could knock back nearby zombies rather than just killing them — creates tactical use of tornadoes"
+      ],
+      "recommendations": [
+        "Decouple Hazard zone from Container by making zone a child of the container or updating zone.x/y in a Hazard.setPosition override — currently safe because hazards are static, but will break if hazards ever become dynamic (e.g. car knocks canister)",
+        "Extract _showPopup into a shared UIHelper utility or move it to UIScene as an event — GameScene currently has both _showPopup and the old inline popup pattern in _applyBonusUpgrade; consolidate for consistency",
+        "Consider a 3-slot inventory for future milestones — the 2-slot system is functional but tight; torch + medkit + flare is a common want",
+        "Add _useKey to InputManager.getActions() pattern rather than directly adding Phaser keyboard key in GameScene — keeps all input in one place"
+      ],
+      "ideas": [
+        "Fuel canister: throwable gas canister the player can pick up and toss — explodes on impact",
+        "Generator hazard: powers nearby lamp posts, lets player toggle lights to lure or distract zombies",
+        "Barbed wire: slow zone that damages player per second, can be cleared with a tire iron pickup"
+      ],
+      "notes": "Both milestones share a single release (milestone_14 in releases dir). The _throwFlare contract changed: previously it removed the item from inventory internally; now _useActiveItem removes it before calling _throwFlare. This is cleaner and ensures the item is always consumed exactly once regardless of which code path triggers the throw."
     }
   ]
 }
