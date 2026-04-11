@@ -110,6 +110,15 @@
       "notes": "64x64 sprint pose variant"
     },
     {
+      "id": "report_pre_m2_cycle",
+      "name": "Pre-Build Report: Milestone Cycle 2–6",
+      "category": "other",
+      "source": "svg",
+      "file": "report-pre-m2.html",
+      "prompt": "",
+      "notes": "Animated HTML pre-build report for M2–M6 cycle. Includes bug tracker, milestone plan, UX review, game dev + PM feedback, risk assessment, and brainstorm ideas."
+    },
+    {
       "id": "report_pre_creation",
       "name": "Pre-Creation Design Report",
       "category": "other",
