@@ -1,6 +1,61 @@
 {
   "game": "Emberveil",
-  "assets": [],
+  "assets": [
+    {
+      "id": "sprite_warrior_south",
+      "name": "Warrior Hero — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/warrior_south.png",
+      "prompt": "armored warrior in dark plate armor with red trim, broadsword and shield, determined expression, pixel art side view",
+      "notes": "PixelLab character ID: 3a3845f5-8cc3-4ddd-ba0c-663f1bbe7044, 68×68px canvas"
+    },
+    {
+      "id": "sprite_warrior_east",
+      "name": "Warrior Hero — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/warrior_east.png",
+      "prompt": "armored warrior in dark plate armor with red trim, broadsword and shield, determined expression, pixel art side view",
+      "notes": "PixelLab character ID: 3a3845f5-8cc3-4ddd-ba0c-663f1bbe7044"
+    },
+    {
+      "id": "sprite_mage_south",
+      "name": "Mage Hero — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/mage_south.png",
+      "prompt": "robed mage with deep blue and purple robes, glowing arcane staff, arcane runic tattoos on face, long white hair, pixel art side view",
+      "notes": "PixelLab character ID: 73b37f4a-4639-4410-b94f-6e99b16a4212, 68×68px canvas"
+    },
+    {
+      "id": "sprite_mage_east",
+      "name": "Mage Hero — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/mage_east.png",
+      "prompt": "robed mage with deep blue and purple robes, glowing arcane staff, arcane runic tattoos on face, long white hair, pixel art side view",
+      "notes": "PixelLab character ID: 73b37f4a-4639-4410-b94f-6e99b16a4212"
+    },
+    {
+      "id": "sprite_goblin_scout_south",
+      "name": "Goblin Scout — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/goblin_scout_south.png",
+      "prompt": "small green-skinned goblin in leather scraps with a rusty dagger and wooden shield, yellow eyes, sneaky posture, pixel art side view",
+      "notes": "PixelLab character ID: f590d4fb-2812-441b-a667-db28d0c2d878, 52×52px canvas"
+    },
+    {
+      "id": "sprite_goblin_scout_east",
+      "name": "Goblin Scout — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/goblin_scout_east.png",
+      "prompt": "small green-skinned goblin in leather scraps with a rusty dagger and wooden shield, yellow eyes, sneaky posture, pixel art side view",
+      "notes": "PixelLab character ID: f590d4fb-2812-441b-a667-db28d0c2d878"
+    }
+  ],
   "reports": [
     {
       "milestone": "Pre-Game Design Report",
