@@ -445,6 +445,97 @@
       ],
       "ideas": [],
       "notes": "Stats tracking gives the game longevity. Career numbers on title create a visible sense of progression."
+    },
+    {
+      "milestone": "Milestone 16 — Round Variety System",
+      "date": "2026-04-10",
+      "summary": "Three round types randomly rolled per round: STANDARD (10 pennies), BLITZ (6 pennies, 1.5× bugs), ENDURANCE (14 pennies). Badge in HUD and countdown.",
+      "changes": [
+        "round.roundType added to freshRoundState ('STANDARD'|'BLITZ'|'ENDURANCE')",
+        "rollRoundType() in state.js: 1/3 chance each",
+        "resetRound() calls rollRoundType() unless chaosMode active",
+        "spawner.js: pennyTarget and spawnInterval vary by roundType",
+        "difficulty.js: BLITZ applies 1.5× bug speed multiplier",
+        "game.js: pennyTarget and dotCount vary by roundType",
+        "HUD: round type badge shown below seam center for non-STANDARD rounds",
+        "Countdown screen: round type label shown in each half during countdown"
+      ],
+      "bugs": [
+        "Round type is rolled when resetRound() is called, which happens before match even starts — so first round of a new match gets a random type immediately. This is fine but could confuse players expecting STANDARD to be the baseline."
+      ],
+      "suggestions": [
+        "First round could always be STANDARD for new players to learn the baseline",
+        "Round type could be shown on round end screen: 'Next: BLITZ'"
+      ],
+      "recommendations": [],
+      "ideas": [],
+      "notes": "Round variety significantly increases replayability. BLITZ rounds feel hectic; ENDURANCE requires sustained attention."
+    },
+    {
+      "milestone": "Milestone 17 — Bug AI Improvements",
+      "date": "2026-04-10",
+      "summary": "Bugs dodge when tapped near but not hit. Swarm event spawns 3 bugs simultaneously at wave 5+.",
+      "changes": [
+        "Bug class: dodging bool, dodgeTimer ms, dodgeDir ±1 added",
+        "Bug.dodge() method: sets dodging=true, timer=400ms, random direction",
+        "Bug.update(): dodgeAmp = 30*dodgeDir*(timer/400) while dodging — perp offset added to wobble",
+        "game.js: tap within 60px of active bug (not a hit) calls bug.dodge()",
+        "difficulty.js: swarmTimer tracks 30s interval at wave 5+",
+        "resetDifficulty() resets swarmTimer",
+        "Swarm: 3 bugs spawned targeting same randomly chosen player, seam pulse triggers as visual warning"
+      ],
+      "bugs": [
+        "Dodge detection runs on all tap events including those that hit a bug — bug correctly takes damage but also dodges (dodge happens before hitTest, logically inconsistent)",
+        "Swarm does not have a pre-warning visual beyond seam pulse — red half-screen flash would be more obvious"
+      ],
+      "suggestions": [
+        "Swarm pre-warning: brief red flash on target player's half 1s before swarm spawns"
+      ],
+      "recommendations": [],
+      "ideas": [],
+      "notes": "Bug dodge behavior is subtle but rewarding — good players will notice bugs veering on near-misses."
+    },
+    {
+      "milestone": "Milestone 18 — Accessibility + Landscape",
+      "date": "2026-04-10",
+      "summary": "Tap feedback rings, color-blind mode (long-press mute to toggle), landscape rotation overlay.",
+      "changes": [
+        "round.tapRings[] added to freshRoundState",
+        "Every tap event pushes a ring {x,y,age,maxAge:200} — rings drawn as expanding white circles (8→40px, fades over 200ms)",
+        "Color-blind mode: gameState.colorBlind bool, toggled by 500ms long-press of mute button area",
+        "colorBlind=true: copper pennies → #44aaff blue, bugs unchanged except gold → #ffdd44 yellow",
+        "'pp_colorblind' localStorage key persists preference",
+        "main.js: checkOrientation() runs on resize — shows landscape overlay div with 'ROTATE DEVICE' message in portrait-enforcing games",
+        "Preferences restored from localStorage on page load (colorBlind and muted)"
+      ],
+      "bugs": [
+        "Long-press color-blind toggle also toggles mute since it fires the tap handler — the logic tries to handle this but timer accumulation per-event is awkward",
+        "Tap rings accumulate in round.tapRings permanently if many taps happen — cleared each frame via filter but never bounded"
+      ],
+      "suggestions": [],
+      "recommendations": [],
+      "ideas": [],
+      "notes": "Tap feedback rings are a significant feel improvement — every touch now has visible confirmation, even misses."
+    },
+    {
+      "milestone": "Milestone 19 — Performance + Architecture",
+      "date": "2026-04-10",
+      "summary": "Off-screen entity culling, FPS debug counter, particle pool peak tracking, debug mode via URL param.",
+      "changes": [
+        "game.js drawGame: off-screen culling with 30px margin — skip draw if x/y outside canvas bounds",
+        "gameState.debug: enabled, fps, frameCount, fpsTimer, particlePoolPeak",
+        "debug.enabled set from URL param ?debug=1",
+        "FPS counter: frameCount++, fpsTimer+=dt, compute fps at 1s intervals",
+        "FPS drawn top-center in debug mode: 'FPS: N' in dim white",
+        "main.js checks URLSearchParams for debug param"
+      ],
+      "bugs": [
+        "FPS counter starts at 0 for first second — shows 0 until first 1s interval completes"
+      ],
+      "suggestions": [],
+      "recommendations": [],
+      "ideas": [],
+      "notes": "Culling is free performance — even at 30 entities it eliminates unnecessary draw calls for off-screen bugs."
     }
   ]
 }
