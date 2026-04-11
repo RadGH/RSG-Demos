@@ -168,6 +168,131 @@
         "Show 'ROUND X of 3' on countdown screen for context"
       ],
       "notes": "The best-of-3 flow works correctly. Rounds now advance through a proper match arc. The series dots on round end are a clear communication of match state."
+    },
+    {
+      "milestone": "Milestone 5 — Share + Void Depth",
+      "date": "2026-04-10",
+      "summary": "Share result button on Match End screen and ambient void depth particle layer (60 semi-transparent drifting dots at draw layer 0).",
+      "changes": [
+        "src/fx/voidDepth.js: 60 particles, r=0.8-2px, rgba(255,255,255,0.035), slow drift (8-12px/s), wrap at canvas edges, registered at draw layer 0 via registerLayer",
+        "initVoidDepth() called from main.js at startup before enterTitle()",
+        "Share button rendered on Match End screen in each player's half near the dots",
+        "getShareText() builds share string: 'Penny Panic: P1 N – P2 N (P? wins the match). radgh.github.io/RSG-Demos/game12/'",
+        "handleMatchEndInput() checks share button hit area before restarting — uses navigator.share() with clipboard fallback",
+        "Animated HTML report generated at public/demo-assets/report-m5.html covering M1-M5 with scroll-reveal, void particle canvas, milestone grid, architecture overview"
+      ],
+      "bugs": [
+        "Void particles initialize at first draw call — if canvas resizes before first draw, particles may cluster",
+        "Share hit area uses approximate Y coordinates — may miss on extreme aspect ratios"
+      ],
+      "suggestions": [
+        "Add 3-5 slightly brighter copper floaters (0.08 opacity) among the void depth particles for depth layering",
+        "Share text could include emoji for quick scanning: '🪙 Penny Panic'"
+      ],
+      "recommendations": [
+        "Before M6: refactor scoring.js to support per-entity point values — current fixed constants won't work for gold/wheat variants"
+      ],
+      "ideas": [
+        "Void depth particles could react subtly to game events — briefly brightening on penny collect"
+      ],
+      "notes": "Void depth effect is barely visible by design (0.035 opacity). It adds subperceptual motion to the otherwise static black background. The game loop runs cleanly at layer 0."
+    },
+    {
+      "milestone": "Milestone 6 — Bug Variants",
+      "date": "2026-04-10",
+      "summary": "Three bug types: normal (75%), gold (15%, +5 pts, 1.5× speed), fast silver (10%, +2 pts, 2× speed, smaller). Each type has distinct visuals.",
+      "changes": [
+        "Bug class constructor now accepts bugType parameter ('normal'|'gold'|'fast')",
+        "Gold bug: radius unchanged, golden body color #f5d06e, copper legs #c8922a, gold highlight ring drawn around body, speed 1.5× base",
+        "Fast bug: radius 0.75× base, dimmer white body (rgba 0.7 opacity), speed 2× base, all geometry scaled proportionally",
+        "rollBugType() in difficulty.js: 15% gold, 10% fast, 75% normal",
+        "getBugPoints(bug) in scoring.js: gold=5, fast=2, normal=2",
+        "shootBug() uses getBugPoints() instead of constant BUG_KILL_POINTS"
+      ],
+      "bugs": [
+        "Fast bugs are harder to tap due to smaller radius — combined with 2× speed, may be frustrating on first encounter",
+        "Bug variant type is not shown in any HUD tooltip — players discover by tapping"
+      ],
+      "suggestions": [
+        "Brief text popup '+5!' at gold bug kill location (part of M8 combo system could handle this)",
+        "Fast bug could leave a brief motion trail (3 ghost circles at 20% opacity)"
+      ],
+      "recommendations": [],
+      "ideas": [
+        "Boss bug: huge slow bug worth +10 pts, takes 2 taps to kill"
+      ],
+      "notes": "Gold bugs at 15% spawn rate and +5 pts create meaningful upside for aggressive play. Fast bugs at 2× speed are a real threat."
+    },
+    {
+      "milestone": "Milestone 7 — Penny Types",
+      "date": "2026-04-10",
+      "summary": "Three penny types: normal (75%, +1 pt), silver (15%, +2 pts, silver color), wheat (10%, +3 pts, larger, dark copper).",
+      "changes": [
+        "Penny class constructor accepts pennyType ('normal'|'wheat'|'silver')",
+        "Wheat penny: radius 1.2× base, body color #8B4513, highlight rgba(200,120,60,0.35)",
+        "Silver penny: radius unchanged, body color #C0C0C0, highlight rgba(240,240,255,0.4)",
+        "rollPennyType() in spawner.js: 10% wheat, 15% silver, 75% normal",
+        "getPennyPoints(penny) in scoring.js: wheat=3, silver=2, normal=1",
+        "claimPenny() uses getPennyPoints() for variable point awards"
+      ],
+      "bugs": [
+        "Wheat penny slightly larger radius makes it easier to tap — could be considered overpowered given higher value",
+        "Penny type not shown in any point popup — players don't know why they got 3 pts until they learn the visual distinction"
+      ],
+      "suggestions": [
+        "Brief '+3!' text burst at wheat penny claim location",
+        "Consider adding a subtle sparkle or secondary glow ring for silver/wheat pennies to help new players identify them"
+      ],
+      "recommendations": [],
+      "ideas": [],
+      "notes": "Penny variety adds strategic depth. Wheat pennies visible size difference makes them feel premium. Silver vs normal is subtler and rewards attentive players."
+    },
+    {
+      "milestone": "Milestone 8 — Combo System",
+      "date": "2026-04-10",
+      "summary": "Consecutive penny claims build a combo counter per player — x3+ awards 3pts, breaks on bug miss or 4s inactivity.",
+      "changes": [
+        "comboCount[2] and comboTimer[2] added to freshRoundState() in state.js",
+        "tickCombos(dt) in scoring.js advances combo timers, resets combo at 4000ms",
+        "breakCombo(playerIdx) called on bug miss in game.js tickGame",
+        "claimPenny() increments comboCount, resets timer, awards 3pts if combo>=3",
+        "Burst color changes: normal=gold #f5d06e, x2=orange #ff8822, x3+=red #ff4444; burst count 16 at x3+",
+        "Combo counter displayed in HUD when combo>=2: 'x2' in orange, 'x3+' in red, positioned right of score"
+      ],
+      "bugs": [
+        "Combo counter always shows combo at time of draw, not smoothly animated — it jumps in/out",
+        "Wheat penny at 3pt overrides combo bonus at 3pt — effectively no benefit for wheat+combo (same 3pts)"
+      ],
+      "suggestions": [
+        "Combo counter could pulse/scale briefly when it increments",
+        "Wheat penny combo could award 4pts for clarity of value"
+      ],
+      "recommendations": [],
+      "ideas": [],
+      "notes": "Combo system adds pace variance and rewards consistent play. The 4s timeout is forgiving enough to survive one bad spawn gap."
+    },
+    {
+      "milestone": "Milestone 9 — Visual Polish Pass",
+      "date": "2026-04-10",
+      "summary": "Penny pulse animation, center seam amber pulse on contested spawns, subtle vignette overlay, bug death × text that floats up and fades.",
+      "changes": [
+        "Penny.draw(): pulse = 1 + 0.03 * sin(Date.now/1200 * 2π) — radius scales ±3% on 1.2s sine wave",
+        "gameState.seamPulseTimer added — spawner.js sets it to 400ms on center-zone penny spawn",
+        "renderer.js drawSeam uses seamPulseTimer to interpolate seam color from dim white to amber #c8922a",
+        "Vignette: radial gradient overlay (transparent center → rgba 0,0,0,0.15 at edges) drawn after all layers",
+        "Bug death text: deathTexts array in round state, × drawn at bug kill position, floats up 10px, fades over 300ms"
+      ],
+      "bugs": [
+        "Death texts are stored in round.deathTexts but the variable name `dt` shadows the outer `dt` parameter in the tick loop — works correctly but is confusing naming",
+        "Vignette redraws every frame via createRadialGradient — could be cached but not a perf issue at this scale"
+      ],
+      "suggestions": [
+        "Penny pulse phase could be offset per-penny (using penny.id as offset seed) so all pennies don't pulse in unison",
+        "Seam amber pulse could show 'CONTESTED' text for 1s (deferred to M14)"
+      ],
+      "recommendations": [],
+      "ideas": [],
+      "notes": "The vignette is extremely subtle at 0.15 opacity — exactly right for the void aesthetic. The seam amber pulse communicates contested territory without distracting from gameplay."
     }
   ]
 }
