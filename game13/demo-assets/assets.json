@@ -279,6 +279,51 @@
         "Replayable zones: cleared nodes respawn enemies after returning to town 3 times"
       ],
       "notes": "Build: 183KB JS (49KB gzip). 27 modules. First 10 milestones complete. Full Act 1 loop: title → cinematic → builder → town → map (2 zones) → combat (8 enemy types) → boss → zone unlock → town services (5 services)."
+    },
+    {
+      "milestone": "Milestone 20 — Audit, Polish & Balance Pass",
+      "date": "2026-04-11",
+      "summary": "Full game audit through 20 milestones: critical bug fixes (boss detection, armor math), zone-scaled loot and fame systems, armor soft cap, and New Game+ completeness pass.",
+      "changes": [
+        "Fixed isGameComplete boss detection — was checking bossNodeId === 'sovereign' (wrong), now correctly checks 'core_boss' (Act 3 final) and 'void_boss' (Act 4 final)",
+        "Armor soft cap: damage floors at 15% of raw instead of 1, preventing 1-damage spam from high-armor tanks",
+        "Same soft cap applied to skill damage (both normal attacks and skills)",
+        "Zone-scaled loot tables — earlier zones drop Normal/Magic/low-quality, late zones (cosmic_rift/eternal_void) drop Legendary/exotic",
+        "Zone-scaled drop chance — rises from 15% (border_roads) to 25% (eternal_void)",
+        "Zone-scaled fame gain — multiplier per zone (1× to 6×), boss bonuses also scale with zone tier",
+        "NG+ title screen badge — reads all save slots, shows highest NG+ tier as ✦ NG+N in gold on subtitle",
+        "NG+ stat scaling: enemies +35% HP/damage and +15% armor per tier, names get ✦ prefix",
+        "GameState.startNgPlus() resets zones/nodes/bosses, halves gold (min 150), gives party +5 attr points each",
+        "TownScreen shows NG+ indicator next to fame title when ngPlus > 0"
+      ],
+      "bugs": [
+        "FIXED: Core boss (Act 3 The Emberveil Sovereign, node ID 'core_boss') was not triggering game-complete because code checked for 'sovereign' instead of 'core_boss'",
+        "FIXED: Armor reduction could produce 1 damage from high-damage skills against tanks, making endgame unbalanced",
+        "Companion stat sheet not visible in combat HUD — companions fight but player can't see their HP mid-combat without switching to inventory",
+        "Item set bonus display: sets are calculated correctly in items.js but bonus is never shown to the player in any screen",
+        "Shrine 'empower' effect type is not defined in MapScreen._showShrineModal — only 'heal' and 'fullrestore' are handled, 'empower' silently does nothing"
+      ],
+      "suggestions": [
+        "Show active item set bonuses as a tooltip or small panel in TownScreen inventory view",
+        "Add 'Recently Visited' section to MapScreen so players can see where they were",
+        "Boss intro moment — brief dialog or name flash before combat begins would add drama",
+        "Victory fanfare: add a particle burst or brief screen flash on victory to make it feel earned",
+        "NG+ enemies could have unique name prefixes per tier (★, ★★, ★★★) rather than all using ✦"
+      ],
+      "recommendations": [
+        "M21 should implement the shrine 'empower' effect — it's a dead code path right now",
+        "Party management screen (M21) is the most-needed missing feature — player can't swap bench ↔ party without UI support",
+        "Item set bonus display widget should be added alongside M21's party management work",
+        "Consider a codex/glossary screen for lore collected from 'lore' node types — currently the dialog appears once and is gone",
+        "Performance is excellent at 222KB (60KB gzip) — no urgent optimizations needed"
+      ],
+      "ideas": [
+        "NG+ cosmetic rewards: unique title prefix on hero names for NG+2 and beyond",
+        "Hidden boss: encounter unlocked only on NG+2 or higher",
+        "Daily challenge seed: fixed seed per day, share score via URL hash",
+        "Codex unlocks: defeating each boss type adds a lore entry to a bestiary"
+      ],
+      "notes": "Build: 222KB JS (60KB gzip). 29 modules. Full game loop complete across 4 acts, 8 zones, 30+ enemies, 14 classes, 56 sprites. All acts playable start to finish. NG+ fully functional. Known gaps: shrine empower effect unimplemented, item set display missing, party bench swapping missing."
     }
   ]
 }
