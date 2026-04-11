@@ -178,6 +178,52 @@
         "Zone completion bonus reward screen with unique item"
       ],
       "notes": "Build: 175KB JS (47KB gzip). 26 modules. Game now has a full playable Act 1 loop with varied enemies and working town services."
+    },
+    {
+      "milestone": "Milestone 10 — Act 1 Complete Foundation",
+      "date": "2026-04-11",
+      "summary": "M9–M10 added opening cinematic, dialog UX overhaul (fully opaque backdrop, tap-to-advance), and zone progression system completing the Act 1 gameplay loop.",
+      "changes": [
+        "OpeningCinematicScreen: shown once per new game — scrolling italic story text (35s), starfield sky, ember particle drift, mountain silhouette, skip button",
+        "GameState: unlockedZones (default ['border_roads']) and completedBosses arrays for zone progression",
+        "MapScreen: zone tab selector for all unlocked zones; active zone highlighted; rebuilds on zone switch",
+        "Boss encounter: stores _bossNodeId and _zoneId on encounter object; CombatScreen detects boss victory and unlocks next zone",
+        "ZONE_UNLOCK_MAP: border_roads → thornwood (hardcoded for Act 1; will generalize for Act 2)",
+        "Victory modal: shows '🗺 Thornwood Forest unlocked!' announcement when boss cleared",
+        "Dialog UX: backdrop is now 92% opaque (no town UI bleeding through), full-screen opaque black background",
+        "Dialog advance: tap anywhere on text bubble advances line (in addition to 'Tap to continue' button)",
+        "'Tap to continue' button redesigned: larger (44px min-height), visible styling with border and background, ▶ prefix",
+        "BUG FIX: Main menu buttons visible through dialog — fixed with fully opaque backdrop",
+        "BUG FIX: Dialog could not advance on iPhone (no keyboard visible) — fixed with tap-on-bubble advance"
+      ],
+      "bugs": [
+        "Opening cinematic run once flag (opening_seen) is checked on GameState, but CharacterBuilderScreen always shows it on new game regardless — confirmed correct behavior",
+        "Zone tab is re-rendered with full _build() call on zone switch — causes brief DOM rebuild flash",
+        "MapScreen reconstructs entire HTML on zone change instead of just swapping the canvas content",
+        "unlockedZones/completedBosses not serialized correctly to SaveManager (Set vs Array issue mirroring visitedNodes)",
+        "Companion stat blocks missing mp/maxMp fields when hired from Tavern — causes undefined in _memberToCombatant()",
+        "Dialog #dlg-done button uses document.getElementById instead of this._el.querySelector — could fail if multiple dialogs exist"
+      ],
+      "suggestions": [
+        "Opening cinematic should have a 'New Game' fade-in transition from CharacterBuilderScreen rather than cutting abruptly",
+        "MapScreen zone tabs should pulse/glow when a new zone is unlocked",
+        "Boss defeat should trigger a brief fanfare/celebration animation before victory modal",
+        "Add a zone completion percentage indicator per zone tab"
+      ],
+      "recommendations": [
+        "Fix unlockedZones serialization before M11 — saveCurrentGame will lose zone progress on reload",
+        "Fix companion mp/maxMp initialization in Tavern hire — Lysa (Cleric) needs MP to cast Lay on Hands",
+        "M11: Act 2 zones — author Ashen Wastes (2 zones: Dust Roads, Ember Plateau) with volcanic enemy set",
+        "M12: Equip companions from InventoryScreen (currently only heroes can equip items)",
+        "M13: Journal/quest log UI connected to story flags",
+        "Consider merging MapScreen zone change to just swap canvas data rather than full DOM rebuild"
+      ],
+      "ideas": [
+        "Zone clear bonus: unique item drop + story dialog on boss defeat",
+        "Random daily events: special vendor appears on one node per zone per day",
+        "Replayable zones: cleared nodes respawn enemies after returning to town 3 times"
+      ],
+      "notes": "Build: 183KB JS (49KB gzip). 27 modules. First 10 milestones complete. Full Act 1 loop: title → cinematic → builder → town → map (2 zones) → combat (8 enemy types) → boss → zone unlock → town services (5 services)."
     }
   ]
 }
