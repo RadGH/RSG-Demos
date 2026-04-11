@@ -80,6 +80,104 @@
         "Damage type color coding in combat log"
       ],
       "notes": "Full game loop skeleton established: title → builder → town → combat → town. Build: 63.5KB JS (17.4KB gzip). Zero runtime dependencies."
+    },
+    {
+      "milestone": "Milestone 5 — Core Systems Complete",
+      "date": "2026-04-10",
+      "summary": "M2–M5 delivered fully wired town services, node map, full party combat with GameState, skill trees, inventory equip/unequip, save/load (3 slots), dialog encounters with typewriter reveal, level-up attribute spending, and floating damage numbers.",
+      "changes": [
+        "TownScreen: Merchant (buy/sell), Tavern (hire party + companions), Cleric (revive for 50g), Save modal (3 slots)",
+        "Party of up to 4 heroes + 4 companions — all fight in combat",
+        "MapScreen: canvas node map, zone system (2 zones), node types with color coding, click-to-navigate with adjacency gating",
+        "CombatScreen: full party from GameState, all stats computed from attrs + equipped items, XP/gold award, 15% item drop chance, level-up detection via awardXp()",
+        "SkillTreeScreen: 14 classes × 4 skills, talent nodes, unlock level display",
+        "InventoryScreen: 10 equipment slots, equip/unequip, ring slot logic, computed stat panel",
+        "SaveManager v2: versioned save slots, migration function, getAllSlots previews",
+        "LoadGameScreen: shows actual save data (name, class, level, act, timestamp)",
+        "DialogScreen: typewriter text reveal, NPC/hero speaker bubbles, skill-check choices (DEX/STR/INT vs DC), outcome effects (gold, flags, reward items)",
+        "LevelUpScreen: spend 2 pending attr points per level-up, live stat preview, confirm required",
+        "FloatingDmgNumbers: red for hero attacks, gold for enemy attacks, spawn from hit position",
+        "BUG FIX: CharacterBuilderScreen called non-existent SaveManager.saveSlot — fixed to GameState.init + saveCurrentGame",
+        "BUG FIX: Screen layering — all full-screen UI screens now implement onPause (hide) / onResume (show)"
+      ],
+      "bugs": [
+        "MapScreen tutorial node tooltip shows zone label at edge of screen on narrow viewports",
+        "LevelUpScreen has minor layout overflow on very small phones (320px width)",
+        "Combat skill AI picks heal skill even when all allies are at full HP (checks < 50% threshold but still triggered)",
+        "Merchant stock is static per session — refreshes only on page reload, not on town re-entry",
+        "GameState.companions not serialized correctly in LoadGameScreen preview — shows 0 companions even if hired",
+        "Status effect 'stun' icon in combat log uses emoji (☠ etc.) — may not render on all platforms"
+      ],
+      "suggestions": [
+        "Add a mini tutorial overlay on first map visit (arrow pointing to first accessible node)",
+        "LevelUpScreen should animate numbers increasing as points are spent",
+        "Combat log should color-code by damage type (physical=white, magic=purple, fire=orange)",
+        "Add 'Back to Title' option from TownScreen pause menu",
+        "Tavern should refresh its hireable roster each time you return to town"
+      ],
+      "recommendations": [
+        "M6: Implement combat skill AI with proper AoE resolution — current basic attack only feels repetitive after level 3",
+        "M7: Fix the screen layering before any more full-screen screens are added (confirmed done in M7)",
+        "M8: Add opening cinematic — one scrolling text intro scene shown once per new game",
+        "Zone progression gating (unlock Thornwood after defeating Border Roads boss) needed before Act 2",
+        "Refactor _memberToCombatant to read from a centralized stat formula function shared with TownScreen stat display"
+      ],
+      "ideas": [
+        "Ambient sound variation per zone (forest sounds in Thornwood, wind in Border Roads)",
+        "Item set bonuses for equipping multiple items from the same enemy's loot table",
+        "Random event nodes: traveler with choices, weather events affecting combat"
+      ],
+      "notes": "Build size: 162KB JS (43KB gzip). 26 modules. First playable full loop with persistence."
+    },
+    {
+      "milestone": "Milestone 8 — Combat Polish + Town Services",
+      "date": "2026-04-10",
+      "summary": "M6–M8 added hero skill AI with AoE and status effects, full Act 1 enemy roster, zone-specific encounters, Blacksmith and Enchanter services, and critical screen layering / navigation bug fixes.",
+      "changes": [
+        "Hero skill AI: 45% chance per turn to use a class skill; picks heal when ally below 50% HP, AoE when 3+ enemies, else single-target",
+        "AoE resolution: single / adjacent / group / row / all target patterns",
+        "Status effect engine: Burn (fire DoT), Poison (nature DoT), Bleed (physical DoT), Stun (skip turn) — tracked per combatant, processed each round",
+        "Status effect visual: colored dots above HP bar (orange=burn, green=poison, red=bleed, yellow=stun)",
+        "Status effects from enemy skills (Goblin Shaman burns, spiders poison, bears stun, Veil Wardens burn)",
+        "Buff skills: Battle Cry party dmgBuff (Warrior), Unbreakable self dmgReduct (Warrior) — tracked with round countdown",
+        "Skill damage formulas: damageStat + damageMult applied correctly per skill definition",
+        "Enemy roster: Goblin Scout/Warrior/Shaman/Warlord, Corrupted Wolf/Bear, Bandits, Veil Wardens, Grax the Veil-Touched",
+        "Encounter tables: 8 authored encounters wired to zone nodes by key",
+        "MapScreen: DIALOG nodes now route to DialogScreen, not static lore modal",
+        "MapScreen: Bandit Ambush triggered from shady_wanderer dialog fight outcome",
+        "Blacksmith: upgrade item rarity (60g→150g→400g) and quality (40g→100g→250g→600g) with stat scaling",
+        "Enchanter: add stat affixes to Magic/Rare/Legendary items with open slots (6 affix types, random value in range)",
+        "BUG FIX (critical): Town → Map navigation now hides TownScreen UI (onPause/onResume on all DOM screens)",
+        "BUG FIX: GameState.init() now called before saveCurrentGame in new game flow"
+      ],
+      "bugs": [
+        "Blacksmith quality upgrade scale calculation has a bug — uses next quality as current quality when computing scale ratio (off-by-one)",
+        "Enchanter does not rebuild item display name after adding affix (name stays as original)",
+        "Combat skill AI buff selection: picks buff skills even when target condition not met (Battle Cry used when no enemies alive)",
+        "_processStatusEffects runs before first round ends when starting new combat (round 1 status tick is immediate)",
+        "Goblin Shaman burn proc triggers on miss as well as on hit (statusOnHit not checked against hit result)",
+        "MapScreen dialog for 'forest_enter' node expects node.id to match DIALOG_EVENTS key — works but fragile if node IDs change"
+      ],
+      "suggestions": [
+        "Skill use should flash a skill name label above the actor in combat (e.g. 'Whirlwind!' in gold text)",
+        "Blacksmith should preview the stat change before spending gold",
+        "Add 'auto-enchant' option that picks the best affix for your primary stat",
+        "Enchanter UI should show current affixes on the item before adding",
+        "Status effect icons should show remaining duration count"
+      ],
+      "recommendations": [
+        "Fix Blacksmith quality scale bug before users find it (easy fix: store old quality index separately)",
+        "Fix statusOnHit to only trigger on actual hits (compare to hit roll result)",
+        "M9: Add companion system — pet AI, summon mechanics (raise skeleton for Necromancer, wolf companion, etc.)",
+        "M10: Zone progression gating — track boss node completion via story flag, unlock next zone in sequence",
+        "Start PixelLab character art generation — even 2-3 classes done adds massive visual impact"
+      ],
+      "ideas": [
+        "Boss encounter phases — Grax transforms at 50% HP, changes move set and gains new status effects",
+        "Loot explosion on boss defeat — rain of items with rarity fanfare",
+        "Zone completion bonus reward screen with unique item"
+      ],
+      "notes": "Build: 175KB JS (47KB gzip). 26 modules. Game now has a full playable Act 1 loop with varied enemies and working town services."
     }
   ]
 }
