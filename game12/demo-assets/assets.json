@@ -96,6 +96,45 @@
         "Sound design for M3: the void should be near-silent except for game events — no ambient music, just sharp precise audio cues"
       ],
       "notes": "M1 is fully playable. The void aesthetic is working — pure black background, copper pennies, white bugs, everything immediately readable. The split-screen layout with P2 rotated 180° works well for same-device multiplayer. Main architectural win: all seam calculations are dynamic (canvasH/2) so the game works correctly on any screen size. Main outstanding issue before M2: the penny despawn/resolve tracking logic should be tightened up."
+    },
+    {
+      "milestone": "Milestone 2 — Juice & Audio",
+      "date": "2026-04-10",
+      "summary": "Audio system live (Web Audio API, zero files), 3-2-1 countdown before each round, penny expiry flicker, score scale animation on change, mute toggle with localStorage persistence, fixed penny despawn round-end logic.",
+      "changes": [
+        "src/audio/synth.js: Web Audio API synthesizer — playCoin (C5→E5 glide), playBug (white noise), playMiss (sawtooth thud), playWin (4-note arpeggio), playBeep (countdown), playPennyAppear",
+        "AudioContext lazy-initialized on first touch (iOS Safari gate), setMuted() for global mute",
+        "3-2-1 countdown before each round — gameplay blocked during countdown, beep per number, high beep on GO",
+        "Penny expiry flicker: slow flicker at 6s, fast flicker at 7s (300ms/150ms), draws urgency without obscuring",
+        "Score number animates on change: scale 1.35× → 1.0× over 200ms, both players tracked independently",
+        "Mute toggle button in top-right corner of each player's half (canvas-drawn speaker/X icon, ~44px target)",
+        "Mute persisted to localStorage key 'pp_muted', restored on page load",
+        "Fixed penny despawn round-end bug: penniesResolved now counts only claimed pennies (p.owner !== null), not expired ones. Round ends when all 10 spawned AND no active pennies remain — expired pennies no longer prematurely end rounds",
+        "Small amber burst on penny expiry to indicate it vanished (not claimed)"
+      ],
+      "bugs": [
+        "Countdown is per-round but not shown on round-end screen — when tap-to-continue triggers a new round, the countdown appears but briefly overlaps with the transition",
+        "Mute button is drawn in both P1 and P2 HUD (each rotated half) — tapping either corner works, but visually appears in both halves which could be confusing",
+        "Score animation scale accumulates if score changes rapidly (back-to-back events reset timer before animation completes) — visually fine but mathematically incorrect",
+        "playPennyAppear not wired up — penny spawn has no sound yet",
+        "Bug wobble path drift still present (perpendicular accumulated per frame) — minor"
+      ],
+      "suggestions": [
+        "Countdown 'GO!' text could flash green rather than white for more excitement",
+        "A brief visual indicator on the seam when a contested (center-zone) penny spawns would add tension",
+        "Bug miss sound is quite loud relative to coin collect — consider normalizing gain levels across all sounds",
+        "Round end should show how many pennies each player collected vs expired — gives more information"
+      ],
+      "recommendations": [
+        "Wire playPennyAppear to spawner.js spawn event before M3",
+        "Evaluate if the countdown 3s delay is too long for repeat play — consider reducing to 2s after first round",
+        "Consider adding a brief 'safe window' after round start before bugs spawn (give players time to orient)"
+      ],
+      "ideas": [
+        "Combo system: collect 3 pennies in a row without a bug miss = bonus multiplier",
+        "Bug sounds could vary by bug type if bug variants are added in a future milestone"
+      ],
+      "notes": "The audio system works well. The void-plus-audio combination is exactly right — silence except for precise event sounds makes every collect feel satisfying. The countdown is essential for same-device multiplayer (players need a moment to get their thumbs positioned). The penny flicker is a small detail that reads immediately in play."
     }
   ]
 }
