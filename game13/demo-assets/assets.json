@@ -342,6 +342,294 @@
       "file": "../images/sprites/ash_wraith_west.png",
       "prompt": "Gray smoke wraith specter with glowing orange eyes, ashen smoky body, haunting undead spirit fantasy RPG",
       "notes": "PixelLab character ID: 8b8cdbe3-7137-46d3-a1bf-ad333a719e2e"
+    },
+    {
+      "id": "sprite_pyromancer_south",
+      "name": "Pyromancer — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/pyromancer_south.png",
+      "prompt": "Mage in red-orange flame robes, fire dancing between hands, red hair, ember glow around body",
+      "notes": "PixelLab character ID: dd280ec3-fb2e-4806-b798-1682c5e23678, 68×68px canvas"
+    },
+    {
+      "id": "sprite_pyromancer_east",
+      "name": "Pyromancer — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/pyromancer_east.png",
+      "prompt": "Mage in red-orange flame robes, fire dancing between hands, red hair, ember glow around body",
+      "notes": "PixelLab character ID: dd280ec3-fb2e-4806-b798-1682c5e23678"
+    },
+    {
+      "id": "sprite_pyromancer_north",
+      "name": "Pyromancer — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/pyromancer_north.png",
+      "prompt": "Mage in red-orange flame robes, fire dancing between hands, red hair, ember glow around body",
+      "notes": "PixelLab character ID: dd280ec3-fb2e-4806-b798-1682c5e23678"
+    },
+    {
+      "id": "sprite_pyromancer_west",
+      "name": "Pyromancer — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/pyromancer_west.png",
+      "prompt": "Mage in red-orange flame robes, fire dancing between hands, red hair, ember glow around body",
+      "notes": "PixelLab character ID: dd280ec3-fb2e-4806-b798-1682c5e23678"
+    },
+    {
+      "id": "sprite_corrupted_bear_south",
+      "name": "Corrupted Bear — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/corrupted_bear_south.png",
+      "prompt": "Large dark brown bear with purple corruption veins glowing on body, red eyes, hulking stance",
+      "notes": "PixelLab character ID: dfa83ce2-080f-46ad-99ea-57af2eacf3a7, 52×52px canvas"
+    },
+    {
+      "id": "sprite_corrupted_bear_east",
+      "name": "Corrupted Bear — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/corrupted_bear_east.png",
+      "prompt": "Large dark brown bear with purple corruption veins glowing on body, red eyes, hulking stance",
+      "notes": "PixelLab character ID: dfa83ce2-080f-46ad-99ea-57af2eacf3a7"
+    },
+    {
+      "id": "sprite_corrupted_bear_north",
+      "name": "Corrupted Bear — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/corrupted_bear_north.png",
+      "prompt": "Large dark brown bear with purple corruption veins glowing on body, red eyes, hulking stance",
+      "notes": "PixelLab character ID: dfa83ce2-080f-46ad-99ea-57af2eacf3a7"
+    },
+    {
+      "id": "sprite_corrupted_bear_west",
+      "name": "Corrupted Bear — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/corrupted_bear_west.png",
+      "prompt": "Large dark brown bear with purple corruption veins glowing on body, red eyes, hulking stance",
+      "notes": "PixelLab character ID: dfa83ce2-080f-46ad-99ea-57af2eacf3a7"
+    },
+    {
+      "id": "sprite_demon_brute_south",
+      "name": "Demon Brute — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/demon_brute_south.png",
+      "prompt": "Massive red-skinned demon, horns, bulging muscles, stone fists, chains hanging from wrists",
+      "notes": "PixelLab character ID: 2aa627c5-4395-4698-a839-ed481ac4286c, 52×52px canvas"
+    },
+    {
+      "id": "sprite_demon_brute_east",
+      "name": "Demon Brute — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/demon_brute_east.png",
+      "prompt": "Massive red-skinned demon, horns, bulging muscles, stone fists, chains hanging from wrists",
+      "notes": "PixelLab character ID: 2aa627c5-4395-4698-a839-ed481ac4286c"
+    },
+    {
+      "id": "sprite_demon_brute_north",
+      "name": "Demon Brute — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/demon_brute_north.png",
+      "prompt": "Massive red-skinned demon, horns, bulging muscles, stone fists, chains hanging from wrists",
+      "notes": "PixelLab character ID: 2aa627c5-4395-4698-a839-ed481ac4286c"
+    },
+    {
+      "id": "sprite_demon_brute_west",
+      "name": "Demon Brute — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/demon_brute_west.png",
+      "prompt": "Massive red-skinned demon, horns, bulging muscles, stone fists, chains hanging from wrists",
+      "notes": "PixelLab character ID: 2aa627c5-4395-4698-a839-ed481ac4286c"
+    },
+    {
+      "id": "sprite_cinder_hound_south",
+      "name": "Cinder Hound — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/cinder_hound_south.png",
+      "prompt": "Fiery wolf hound with ember-orange fur, glowing cracks in skin like cooling lava",
+      "notes": "PixelLab character ID: 4deb0e02-23c1-44b6-bbbd-3d08d35e483c, 52×52px canvas"
+    },
+    {
+      "id": "sprite_cinder_hound_east",
+      "name": "Cinder Hound — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/cinder_hound_east.png",
+      "prompt": "Fiery wolf hound with ember-orange fur, glowing cracks in skin like cooling lava",
+      "notes": "PixelLab character ID: 4deb0e02-23c1-44b6-bbbd-3d08d35e483c"
+    },
+    {
+      "id": "sprite_cinder_hound_north",
+      "name": "Cinder Hound — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/cinder_hound_north.png",
+      "prompt": "Fiery wolf hound with ember-orange fur, glowing cracks in skin like cooling lava",
+      "notes": "PixelLab character ID: 4deb0e02-23c1-44b6-bbbd-3d08d35e483c"
+    },
+    {
+      "id": "sprite_cinder_hound_west",
+      "name": "Cinder Hound — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/cinder_hound_west.png",
+      "prompt": "Fiery wolf hound with ember-orange fur, glowing cracks in skin like cooling lava",
+      "notes": "PixelLab character ID: 4deb0e02-23c1-44b6-bbbd-3d08d35e483c"
+    },
+    {
+      "id": "sprite_veil_cultist_south",
+      "name": "Veil Cultist — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/veil_cultist_south.png",
+      "prompt": "Robed humanoid in dark purple cowled robe, veil symbol glowing on chest, shadowy face",
+      "notes": "PixelLab character ID: 0f344810-3380-417a-9b4d-0003e71a2337, 52×52px canvas"
+    },
+    {
+      "id": "sprite_veil_cultist_east",
+      "name": "Veil Cultist — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/veil_cultist_east.png",
+      "prompt": "Robed humanoid in dark purple cowled robe, veil symbol glowing on chest, shadowy face",
+      "notes": "PixelLab character ID: 0f344810-3380-417a-9b4d-0003e71a2337"
+    },
+    {
+      "id": "sprite_veil_cultist_north",
+      "name": "Veil Cultist — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/veil_cultist_north.png",
+      "prompt": "Robed humanoid in dark purple cowled robe, veil symbol glowing on chest, shadowy face",
+      "notes": "PixelLab character ID: 0f344810-3380-417a-9b4d-0003e71a2337"
+    },
+    {
+      "id": "sprite_veil_cultist_west",
+      "name": "Veil Cultist — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/veil_cultist_west.png",
+      "prompt": "Robed humanoid in dark purple cowled robe, veil symbol glowing on chest, shadowy face",
+      "notes": "PixelLab character ID: 0f344810-3380-417a-9b4d-0003e71a2337"
+    },
+    {
+      "id": "sprite_bandit_south",
+      "name": "Bandit — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/bandit_south.png",
+      "prompt": "Rugged human bandit in brown leather armor, short sword, bandana over face",
+      "notes": "PixelLab character ID: 420c8b51-8a47-4796-add9-57018a01ce1c, 52×52px canvas"
+    },
+    {
+      "id": "sprite_bandit_east",
+      "name": "Bandit — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/bandit_east.png",
+      "prompt": "Rugged human bandit in brown leather armor, short sword, bandana over face",
+      "notes": "PixelLab character ID: 420c8b51-8a47-4796-add9-57018a01ce1c"
+    },
+    {
+      "id": "sprite_bandit_north",
+      "name": "Bandit — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/bandit_north.png",
+      "prompt": "Rugged human bandit in brown leather armor, short sword, bandana over face",
+      "notes": "PixelLab character ID: 420c8b51-8a47-4796-add9-57018a01ce1c"
+    },
+    {
+      "id": "sprite_bandit_west",
+      "name": "Bandit — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/bandit_west.png",
+      "prompt": "Rugged human bandit in brown leather armor, short sword, bandana over face",
+      "notes": "PixelLab character ID: 420c8b51-8a47-4796-add9-57018a01ce1c"
+    },
+    {
+      "id": "sprite_grax_veil_touched_south",
+      "name": "Grax Veil-Touched — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/grax_veil_touched_south.png",
+      "prompt": "Large corrupted goblin boss with purple-glowing armor and oversized war hammer",
+      "notes": "PixelLab character ID: ddce13d7-43bf-481c-9f29-865e9d2ae8e2, 52×52px canvas"
+    },
+    {
+      "id": "sprite_grax_veil_touched_east",
+      "name": "Grax Veil-Touched — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/grax_veil_touched_east.png",
+      "prompt": "Large corrupted goblin boss with purple-glowing armor and oversized war hammer",
+      "notes": "PixelLab character ID: ddce13d7-43bf-481c-9f29-865e9d2ae8e2"
+    },
+    {
+      "id": "sprite_grax_veil_touched_north",
+      "name": "Grax Veil-Touched — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/grax_veil_touched_north.png",
+      "prompt": "Large corrupted goblin boss with purple-glowing armor and oversized war hammer",
+      "notes": "PixelLab character ID: ddce13d7-43bf-481c-9f29-865e9d2ae8e2"
+    },
+    {
+      "id": "sprite_grax_veil_touched_west",
+      "name": "Grax Veil-Touched — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/grax_veil_touched_west.png",
+      "prompt": "Large corrupted goblin boss with purple-glowing armor and oversized war hammer",
+      "notes": "PixelLab character ID: ddce13d7-43bf-481c-9f29-865e9d2ae8e2"
+    },
+    {
+      "id": "sprite_lava_titan_south",
+      "name": "Lava Titan — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/lava_titan_south.png",
+      "prompt": "Enormous molten rock golem with glowing orange-red cracks, massive stone arms, magma dripping",
+      "notes": "PixelLab character ID: 6c0e785e-4f79-4792-a694-27eb879ac513, 52×52px canvas"
+    },
+    {
+      "id": "sprite_lava_titan_east",
+      "name": "Lava Titan — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/lava_titan_east.png",
+      "prompt": "Enormous molten rock golem with glowing orange-red cracks, massive stone arms, magma dripping",
+      "notes": "PixelLab character ID: 6c0e785e-4f79-4792-a694-27eb879ac513"
+    },
+    {
+      "id": "sprite_lava_titan_north",
+      "name": "Lava Titan — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/lava_titan_north.png",
+      "prompt": "Enormous molten rock golem with glowing orange-red cracks, massive stone arms, magma dripping",
+      "notes": "PixelLab character ID: 6c0e785e-4f79-4792-a694-27eb879ac513"
+    },
+    {
+      "id": "sprite_lava_titan_west",
+      "name": "Lava Titan — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/lava_titan_west.png",
+      "prompt": "Enormous molten rock golem with glowing orange-red cracks, massive stone arms, magma dripping",
+      "notes": "PixelLab character ID: 6c0e785e-4f79-4792-a694-27eb879ac513"
     }
   ],
   "reports": [
