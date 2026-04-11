@@ -110,6 +110,24 @@
       "notes": "64x64 sprint pose variant"
     },
     {
+      "id": "report_pre_m7_cycle",
+      "name": "Pre-Build Report: Milestone Cycle 7–11",
+      "category": "other",
+      "source": "svg",
+      "file": "report-pre-m7.html",
+      "prompt": "",
+      "notes": "Animated HTML pre-build report for M7–M11. Terminal feature readout, tech debt diff view, risk matrix, milestone cards with complexity ratings, Alex Chen + Jordan Rivera feedback, architecture improvements, brainstorm wall."
+    },
+    {
+      "id": "report_post_m6_cycle",
+      "name": "Post-Build Report: Milestone Cycle 2–6",
+      "category": "other",
+      "source": "svg",
+      "file": "report-post-m6.html",
+      "prompt": "",
+      "notes": "Animated HTML post-build retrospective for completed M2–M6 block. Progress tracker, bug severity badges, shipped vs deferred comparison, performance charts, dev+PM feedback, 7 lessons learned, next block preview."
+    },
+    {
       "id": "report_pre_m2_cycle",
       "name": "Pre-Build Report: Milestone Cycle 2–6",
       "category": "other",
@@ -129,6 +147,172 @@
     }
   ],
   "reports": [
+    {
+      "milestone": "Milestone 6 — Score, Endless & Accessibility",
+      "date": "2026-04-10",
+      "summary": "Completed the M2–M6 block with score system, endless mode, death recap, daily challenge URL seeds, and accessibility pass.",
+      "changes": [
+        "Score formula: baseScore (300−elapsed) + survivorBonus (150×rescued) + healthBonus (100×HP)",
+        "Top-5 score leaderboard in WinScene alongside time leaderboard (localStorage stormtown_scores)",
+        "Endless survival mode: title screen button, escalates tornadoes to 8 total, helipad doesn't trigger escape",
+        "Endless HUD: running survival score displayed at top of screen",
+        "GameOver in endless shows SURVIVAL RECORD header with score + time survived",
+        "Death recap panel: time survived, survivors rescued (N/3), cause-specific text with tornado XY coordinates",
+        "Daily challenge seed via URL hash (#seed=NNNN), parsed in TitleScene — shows DAILY CHALLENGE badge",
+        "SHARE RUN button on WinScene copies challenge URL to clipboard, shows Copied! flash",
+        "Seed passed through TitleScene → GameScene.init(data) → forceSeed override",
+        "Accessibility: role=application + aria-label on canvas container",
+        "aria-live polite region #game-status added to index.html for screen reader announcements",
+        "UIScene._announceStatus() wired to key pickup, tornado spawns, low HP (1 HP remaining)",
+        "Version badge on title updated to M6"
+      ],
+      "bugs": [
+        "WinScene layout may overflow on very small screens with all new score/leaderboard elements stacked",
+        "Endless mode survival score calculation not capped — very long runs could overflow display width",
+        "Death recap tornado coordinates shown in world-space px which is not meaningful to players (col,row tile position would be clearer)",
+        "Daily challenge seed range (0–999999) gives enough variety but memorable seeds could collide with normal runs",
+        "Clipboard API requires HTTPS or localhost — share button silently fails on non-secure origins",
+        "Tutorial overlay spawns at 500ms delay but tornado/zombie AI starts immediately — first-time players may die before tutorial dismisses"
+      ],
+      "suggestions": [
+        "Add seed display on WinScene even for non-daily runs so players can share any run",
+        "Score breakdown animation: numbers count up from 0 on win screen for satisfaction",
+        "Endless leaderboard: separate localStorage key for endless high scores",
+        "Show survivors rescued count on GameOver screen to reward partial progress"
+      ],
+      "recommendations": [
+        "Pause zombie+tornado updates while tutorial is active — players shouldn't die during the tutorial",
+        "Show tile coordinates instead of world pixel coords in death recap",
+        "Add a stormtown_version localStorage key — clear old leaderboard entries if game version changes to prevent stale data"
+      ],
+      "ideas": [
+        "Ghost run: record player path positions and replay as a faded ghost on next run",
+        "Achievement badges: first run, survived 3 tornadoes, rescued all survivors, sub-60s escape",
+        "Post-M6 block reports generated: post-build retrospective (M2–M6) and pre-build plan (M7–M11)"
+      ],
+      "notes": "Completes the M2–M6 milestone block. Post-build retrospective report (report-post-m6.html) and pre-build planning report for M7–M11 (report-pre-m7.html) both generated and catalogued in assets.json."
+    },
+    {
+      "milestone": "Milestone 4 — Atmosphere & Effects",
+      "date": "2026-04-10",
+      "summary": "Added rain overlay, emergency radio broadcasts, panic vignette with heartbeat, and tornado path trail graphics.",
+      "changes": [
+        "Rain system: 80 drop objects (speed 400-600, len 12-20, alpha 0.1-0.25), scrollFactor 0, depth 45",
+        "Rain intensity scales 0→1 over first 120 seconds of play",
+        "Drops drift slightly right (x += speed*dt*0.1) and wrap at screen edges",
+        "10 emergency radio broadcast messages cycle every 25-35s starting at 15s elapsed",
+        "_showNextRadio(): fade-in 300ms, hold 3.5s, fade-out 500ms, amber monospace text at bottom",
+        "Panic vignette: 8 concentric border strips in GameScene UIScene, alpha proportional to panicLevel",
+        "panicLevel computed from closest tornado distance / 400, clamped 0-1",
+        "Heartbeat pulse: flashes vignette to 1.5x alpha for 80ms when panicLevel > 0.5, every 0.7s",
+        "Tornado trail: 20-position array, sampled every 0.15s, drawn as growing/fading circles at depth 18",
+        "Trail circles: radius 4→12px, alpha 0→0.25 along trail length"
+      ],
+      "bugs": [
+        "Rain x-drift accumulates indefinitely on very long runs (minor visual artifact)",
+        "Radio broadcast text can overlap with other UI elements if message is very long",
+        "Tornado trail trailGfx drawn in world-space but not added to any container — cleanup relies on scene restart"
+      ],
+      "suggestions": [
+        "Radio broadcast should flash the HUD border amber briefly when a message appears",
+        "Rain could shift direction slightly when near a tornado (wind effect)"
+      ],
+      "recommendations": [
+        "Cache the static portions of the mini-map (road layout, building positions) to avoid redrawing every frame"
+      ],
+      "ideas": [
+        "Thunder sound timed to lightning flashes in the rain system"
+      ],
+      "notes": "All visual overlays use scrollFactor 0 (HUD-space). Trail is world-space. Panic vignette lerps smoothly at factor 0.05 so it doesn't snap."
+    },
+    {
+      "milestone": "Milestone 3 — Map Variety & Survivors",
+      "date": "2026-04-10",
+      "summary": "Random seed per run, three bonus survivors with powerup effects, zombie count scaling, top-5 leaderboard, and first-play tutorial.",
+      "changes": [
+        "generateTown() now called with Math.random()*999999 seed each run — different layout every game",
+        "currentSeed stored on GameScene for sharing",
+        "BonusSurvivor.js: Container with colored pulse circle + label, onRescue(type) callback",
+        "Three survivor types: Speed (cyan, +30px/s), Stamina (orange, 60% drain rate), Shield (blue, absorbs next hit)",
+        "Survivors spawned in NW/SW/SE quadrants spread across the map",
+        "Player.bonusSpeed, bonusStamina, shieldActive properties — applied in update() and takeDamage()",
+        "Shield absorb: blue flash tween instead of red, no HP loss",
+        "Survivor count HUD: 3 colored dots at top-right, fill on rescue",
+        "Zombie scaling: 8 initial → max 12 → max 18 at 90s → max 24 at 150s",
+        "WinScene replaced single best-time with top-5 times array (stormtown_times localStorage key)",
+        "New best detection: current run time equals top5[0]",
+        "Tutorial overlay: full-screen dark panel, WASD/joystick + objective instructions, tap to dismiss",
+        "Tutorial sets stormtown_played localStorage key, skipped on subsequent runs",
+        "tutorialActive flag blocks main update loop while tutorial is showing"
+      ],
+      "bugs": [
+        "Tutorial active flag blocks player update but tornado/zombie AI still runs — player can die before dismissing tutorial",
+        "BonusSurvivor hitZone is a staticSprite that may not align perfectly with visual if container position shifts",
+        "Zombie respawn edge-spawn overlap handler differs from initial batch — respawned zombies may not trigger audio correctly"
+      ],
+      "suggestions": [
+        "Tutorial should pause all game entities, not just the player update",
+        "Bonus survivor rescue should play a unique pickup sound via AudioManager"
+      ],
+      "recommendations": [
+        "Separate entity update pausing into a global this.gamePaused flag checked at top of update()"
+      ],
+      "ideas": [
+        "Survivor dialogue: each bonus survivor says a different line when rescued"
+      ],
+      "notes": "Leaderboard uses stormtown_times (array of 5 ints, sorted ascending). stormtown_best single key kept in sync for backward compatibility with TitleScene display."
+    },
+    {
+      "milestone": "Milestone 2 — Polish & Feel",
+      "date": "2026-04-10",
+      "summary": "Reworked tornado AI, added procedural Web Audio sounds, zombie respawn, visible sprint button, building depth shading, and mini-map overlay.",
+      "changes": [
+        "Tornado AI: reduced direct player chase to 20%, added 40% drift mode (±300–600px offset), 40% pure random wandering",
+        "Tornado momentum: velocity now lerps toward target direction (factor 0.04) instead of instant snapping",
+        "Tornado linger: pauses 0.5–2s at each waypoint before picking next target",
+        "Tornado speed variance: oscillates ±30% sinusoidally — no longer constant speed",
+        "Tornado visuals: dual debris rings (inner 0.3× and outer 0.8× suction radius), varied debris sizes 3–8px, varied colors, faint ground glow",
+        "Zombie respawn: every 8s, if count < 12, spawn from random map edge road tile",
+        "Web Audio system (AudioManager.js): lazy-init on first user gesture, Safari-safe",
+        "Wind sound: white noise + bandpass filter, gain and cutoff scale with tornado proximity, howl overtone above 70% proximity",
+        "Zombie groans: per-zombie groan timer, fires every 3–7s while chasing",
+        "Hit sfx, death rumble, key pickup chime, escape fanfare — all procedurally generated",
+        "Ambient storm rumble: looping low-pass filtered noise in background",
+        "Sprint button: visible circle at bottom-right with outer ring and RUN label, highlights on press",
+        "Building depth shading: south edge shadow, east edge shadow, north highlight edge",
+        "Building lit windows: 30% of windows render as warm yellow-gold (0xffdd88)",
+        "Mini-map: 80×80 overlay bottom-right showing player (white), Sam (yellow), helipad (green), tornadoes (red)",
+        "Pre-build report HTML generated for M2–M6 milestone block with animated design, game dev + PM personas"
+      ],
+      "bugs": [
+        "Tornado glow graphics object tracks position via separate update — may cause slight visual lag at high frame rates",
+        "Sprint button active state uses direct property on InputManager (externalSprint) — not event-driven",
+        "Mini-map draws building outlines via world-to-minimap scaling without caching — minor perf cost each frame",
+        "Zombie groan timer initializes at same seed range for all zombies spawned in batch — could groan simultaneously at start",
+        "Web Audio wind howl overtone oscillator frequency not capped — at max proximity could produce harsh tone on some speakers",
+        "AudioContext.resume() not explicitly called on iOS after tab switch — wind may go silent after backgrounding",
+        "Zombie respawn uses same road tile logic as initial spawn — can occasionally spawn zombies in off-screen-but-near-edge positions visible to player"
+      ],
+      "suggestions": [
+        "Mini-map needs a fog-of-war effect — shouldn't show all tornado positions instantly",
+        "Sprint button haptic feedback (navigator.vibrate) on mobile would add satisfying tactility",
+        "Tornado proximity warning should flash the mini-map red when a tornado enters danger range",
+        "Zombie groan volume should also scale with proximity (like wind) — loud groans = danger",
+        "Add footstep sound effect that pitch-shifts with sprint state"
+      ],
+      "recommendations": [
+        "Cache mini-map background (roads/buildings) to an offscreen canvas and only redraw dynamic elements per frame",
+        "Move to Phaser EventEmitter for UI updates instead of direct onUpdate() call before M3 adds more state",
+        "Investigate AudioContext.onstatechange to auto-resume after iOS tab backgrounding",
+        "Cap suction force stacking at 4 tornadoes before they can combine into a physics-breaking force"
+      ],
+      "ideas": [
+        "Tornado heat map: show player a ghost-trail of tornado paths from previous run",
+        "Dynamic wind direction indicator as a HUD weather vane that reacts to nearest tornado",
+        "Zombie attraction to sound — player sprinting draws nearby zombies"
+      ],
+      "notes": "M2 completes the first 5-milestone block. Pre-build report for M2–M6 cycle was generated with animated HTML, game dev persona (Alex Chen) and PM persona (Jordan Rivera) feedback, brainstorm wall, and risk analysis."
+    },
     {
       "milestone": "Milestone 1 \u2014 Foundation & Full Game Loop",
       "date": "2026-04-10",
@@ -183,6 +367,61 @@
         "Tornado path history: brief trail showing where tornado came from to help predict movement"
       ],
       "notes": "All visuals are procedurally generated in BootScene via Phaser Graphics \u2014 no external image assets needed. The town layout is deterministic with seed 42, so the same map appears every run. Changing the seed would give variety. The game runs entirely in-browser with no server requirements."
+    },
+    {
+      "milestone": "Milestone 5 — Car Mechanic, Building Destruction & Flooding",
+      "date": "2026-04-10",
+      "summary": "Added driveable cars, tornado-driven building destruction with rubble, and a road flooding system that slows the player.",
+      "changes": [
+        "Created Car.js — Phaser Container with Arcade physics body (48x28), drawn via Graphics (body 0x556677, windshield 0x88aacc alpha 0.4, two wheel axles)",
+        "Car properties: speed=320, handling=0.08 (angle lerp factor), velAngle/velMag state",
+        "enterCar() hides player sprite and disables physics body; exitCar() restores player beside car",
+        "Car steering: atan2 target angle, shortest-path lerp on velAngle, velMag accelerates toward max speed at 4x per second",
+        "Sprint while driving boosts max speed to speed*1.4 (448 px/s)",
+        "Car rotation follows velAngle + PI/2 (visual orientation matches heading)",
+        "2 cars spawned at road intersections — one lower-third, one mid-map",
+        "Cars use setInteractive with Rectangle geometry for tap-to-enter; overlay prompt text 'TAP TO ENTER' shows when player within 80px",
+        "Camera re-targets from player to car on enter, back to player on exit",
+        "Car collides with buildingGroup (static) and zombie group (dynamic pushes zombies)",
+        "Tornado kill zone ejects player from car, deals damage, transfers camera back to player",
+        "Tornado suction applied to car velocity at 0.5x multiplier while occupied",
+        "buildingStates array tracks hp (starting 3.0) and destroyed flag for each building, parallel to buildingGroup children",
+        "Tornado proximity < 120px drains building hp at dt*0.4 per second (~7.5s to destroy)",
+        "Destruction deferred via toDestroy queue to avoid mutating buildingGroup mid-loop",
+        "_destroyBuilding removes static body from group and draws rubble (5-10 dark scattered rectangles + dark fill overlay at depth 2.5)",
+        "Flood system: 3-5 seed tiles at random road intersections initialized when elapsed >= 100s",
+        "floodedTiles stored as Set of 'col,row' strings; _isFlooded checks tile at player world position",
+        "floodGfx at depth 1.5 (above road, below buildings) redrawn on each change",
+        "Flood spreads every 20s: picks up to 2 adjacent tiles from existing flooded tiles at 50% probability each",
+        "Player velocity multiplied by 0.6 each frame when standing on a flooded tile"
+      ],
+      "bugs": [
+        "Car rotation: container rotates by velAngle+PI/2 but the Graphics body is drawn with the car facing +x, so the visual orientation is correct only if the car starts facing right — initial velAngle=0 means first motion must be rightward or the orientation may briefly look wrong before lerpring catches up",
+        "Static body removal via buildingGroup.remove(body, true, true) assumes the buildingGroup children array index is stable and parallel to town.buildings — this is true at construction but would break if any other code reorders the group",
+        "Flood _isFlooded checks only the tile under player center, not the full player footprint — narrow tile transitions at player edges may not trigger slowdown consistently",
+        "Torpedo kill-zone check for cars loops over tornadoes inside the car update block which already runs inside the tornado loop for suction — slight redundancy but not a correctness issue",
+        "Cars can be entered when player is on the opposite side through a building wall if somehow within 80px distance (unlikely given 48px body but possible at map edges)"
+      ],
+      "suggestions": [
+        "Add a car engine sound (low procedural Web Audio oscillator) that pitches up with velMag for tactile feedback",
+        "Tween the 'TAP TO ENTER' prompt with a gentle pulse alpha to make it more noticeable",
+        "Add a skid visual (short fading line segments) when the car changes direction sharply at high speed",
+        "Show a building crack graphic (diagonal lines) when hp drops below 2 — currently destruction is abrupt",
+        "Flood tiles could show animated ripple rings for atmosphere (simple tween on a Graphics circle)"
+      ],
+      "recommendations": [
+        "The buildingGroup children order must remain insertion-order for _destroyBuilding index lookup to work — document this invariant or switch to storing a reference directly on buildingStates",
+        "Consider making flood tiles use a TileMap or a dedicated Set-based lookup with a typed array for O(1) hit detection rather than string parsing on every frame",
+        "Car physics using a Container with Arcade physics needs care — the body offset is always at container origin; if the car is rotated, the collision box does not rotate with it (Arcade physics boxes are always axis-aligned). This is acceptable for top-down but may cause visible clipping on diagonal impacts",
+        "Track playerInCar state in InputManager rather than GameScene to prevent joystick input being consumed for player movement while driving"
+      ],
+      "ideas": [
+        "Car takes cumulative damage from zombie collisions — catches fire and explodes after 5 hits",
+        "Multiple car types: pickup truck (slower, more HP), sports car (faster, poor handling)",
+        "Flooded tiles could damage car engine if submerged too long, forcing player to exit and swim",
+        "Buildings that collapse could block road tiles with rubble, creating new pathfinding obstacles for zombies"
+      ],
+      "notes": "The building destruction index lookup (buildingGroup.getChildren()[stateIndex]) is safe as long as destroyed buildings are removed from the group via remove() rather than destroy() after the initial removal — the current code calls remove(body, true, true) which removes and destroys, so index shifts will occur on subsequent lookups. However, since destroyed buildings set state.destroyed=true and are skipped immediately, this only matters for buildings destroyed in the same frame, which is extremely unlikely given the slow hp drain rate. In practice this is stable."
     }
   ]
 }

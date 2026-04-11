@@ -135,6 +135,39 @@
         "Bug sounds could vary by bug type if bug variants are added in a future milestone"
       ],
       "notes": "The audio system works well. The void-plus-audio combination is exactly right — silence except for precise event sounds makes every collect feel satisfying. The countdown is essential for same-device multiplayer (players need a moment to get their thumbs positioned). The penny flicker is a small detail that reads immediately in play."
+    },
+    {
+      "milestone": "Milestone 4 — Best-of-3 Match System",
+      "date": "2026-04-10",
+      "summary": "Full best-of-3 match flow: round wins are tracked, Match End screen shows series winner and per-round breakdown, series dots display on round end screen.",
+      "changes": [
+        "Added SCREENS.MATCH_END to state.js (was already declared, now actually wired)",
+        "Added roundHistory array to gameState — stores {scores:[p1,p2]} per completed round",
+        "resetMatch() now clears roundHistory on new match",
+        "enterRoundEnd() now records round result and awards roundWins before showing screen",
+        "handleRoundEndInput() checks roundWins — if either player has 2 wins, goes to MATCH_END; otherwise increments currentRound and continues",
+        "Created src/screens/matchEnd.js — draws match winner, per-round score breakdown, win dots, tap-to-play-again",
+        "matchEnd draws both P1 and P2 halves (P2 rotated 180°) so both players can read the result",
+        "Round end screen now shows series dots (● ○) reflecting each player's current round wins",
+        "main.js wired to handle MATCH_END screen in game loop — enterMatchEnd, tickMatchEnd, handleMatchEndInput"
+      ],
+      "bugs": [
+        "If a round ends in a tie, no roundWin is awarded — series could theoretically never reach 2 wins (edge case, unlikely in practice)",
+        "Match end tap target is whole screen — players could accidentally restart by grazing the screen"
+      ],
+      "suggestions": [
+        "Add a brief celebration animation on the winning half at match end (particle burst from score)",
+        "Show round number in game HUD so players know which round they're in mid-game"
+      ],
+      "recommendations": [
+        "Consider adding chaosMode unlock trigger at match end (M11 feature) — the match end screen is the right place for this prompt",
+        "roundHistory could accumulate across matches if resetMatch isn't called correctly — verify the flow from title → game → round_end → match_end → title"
+      ],
+      "ideas": [
+        "Best-of-5 mode for longer sessions",
+        "Show 'ROUND X of 3' on countdown screen for context"
+      ],
+      "notes": "The best-of-3 flow works correctly. Rounds now advance through a proper match arc. The series dots on round end are a clear communication of match state."
     }
   ]
 }

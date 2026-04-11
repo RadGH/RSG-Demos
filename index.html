@@ -310,7 +310,7 @@ M20  — Feature Complete + QA (Game Over screen, combo system, polish)</pre></d
 <hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#1d7a5c 15%,#3ab88a 50%,#1d7a5c 85%,transparent 100%)">
 
 <section class="game-section" id="game11"
-  data-key="game11" data-date="2026-04-10" data-milestone="6" data-title="Stormtown"
+  data-key="game11" data-date="2026-04-10" data-milestone="9" data-title="Stormtown"
   style="--ga:#ffcc44;--gab:#ffe080;--gad:#aa8820;--gg:rgba(255,204,68,0.3);--gbg:#07070e;--gt:#e8e0c8;--gtm:#887744;--gbo:#f0ead8;--gbr:rgba(255,204,68,0.3);--gpf:0 0 12px #ffcc44, 0 0 28px #aa8820, 0 0 56px rgba(255,204,68,0.2);--gpt:0 0 20px #ffe080, 0 0 40px #ffcc44, 0 0 80px rgba(255,224,128,0.3);background:#07070e">
   <div class="game-bg">
     <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(255,180,0,0.08) 0%, transparent 70%), linear-gradient(180deg, #07070e 0%, #0e0d0a 100%)"></div>
@@ -321,32 +321,41 @@ M20  — Feature Complete + QA (Game Over screen, combo system, polish)</pre></d
     <div class="game-frame" style="--glow:rgba(255,204,68,0.3)">
       <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
       <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
-      <span class="frame-top">Milestone 6</span>
+      <span class="frame-top">Milestone 9</span>
       <span class="frame-bot">Survive. Rescue. Escape.</span>
       <div class="game-eyebrow">Survive. Rescue. Escape.</div>
       <h2 class="game-title">Stormtown</h2>
       <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
       <div class="game-badges">
-        <span class="gbadge gbadge-m">M6</span>
+        <span class="gbadge gbadge-m">M9</span>
         
         <span class="gbadge gbadge-date">2026-04-10</span>
       </div>
       <p class="game-desc">Top-down survival escape: dodge massive tornadoes and zombies, rescue Sam from across town, grab the helicopter key, and escape before the storm destroys everything.</p>
       <a href="./game11/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">Survive in a mid sized town where you have to run from huge tornadoes and zombies and you have to save a friend on the other side of town and they have the key to a helicopter to escape the town and the tornados are fast and hard to get away from</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">Milestone 2 (2026-04-10): Polish &amp; Feel — reworked tornado AI (unpredictable wandering with momentum/linger/speed variance), zombie respawn from map edges every 8s, Web Audio procedural sound system (wind proximity roar, zombie groans, hit sfx, key pickup chime, escape fanfare), visible sprint button on mobile, building depth shading with lit windows, mini-map overlay showing player/Sam/helipad/tornadoes, pre-build report for M2–M6 cycle generated.
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">Survive in a mid sized town where you have to run from huge tornadoes and zombies and you have to save a friend on the other side of town and they have the key to a helicopter to escape the town and the tornados are fast and hard to get away from</p><div class="prompt-entry"><span class="prompt-date">2026-04-10</span> M5: User asked for driveable cars to find in town, buildings that get destroyed by tornadoes, and roads that flood over time slowing the player.</div></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">Milestone 6 (2026-04-10): Score system, endless mode, death recap, daily challenge seeds, accessibility — score computed from time+survivors+health, top-5 score leaderboard, endless survival mode (escalates to 8 tornadoes, no escape), death recap panel, URL hash challenge seeds, ARIA live regions, post-build report for M2–M6 cycle.
+Milestone 5 (2026-04-10): Car mechanic, building destruction, flooding roads — 2 driveable cars spawned on roads (tap to enter/exit, 320px/s speed, sprint boost to 448px/s), tornado-driven building destruction with rubble graphics and body removal, road flooding starting at 100s that slows player by 40% and spreads every 20s.
+Milestone 4 (2026-04-10): Rain overlay intensifying over 120s, emergency radio broadcast overlays every 25–35s, panic vignette + heartbeat effect when tornado nearby, tornado path trail graphics.
+Milestone 3 (2026-04-10): Random seed per run, 3 bonus survivors (speed/stamina/shield pickups), zombie scaling to 18 at 90s and 24 at 150s, top-5 escape time leaderboard, first-play tutorial overlay.
+Milestone 2 (2026-04-10): Polish &amp; Feel — reworked tornado AI (unpredictable wandering with momentum/linger/speed variance), zombie respawn from map edges every 8s, Web Audio procedural sound system (wind proximity roar, zombie groans, hit sfx, key pickup chime, escape fanfare), visible sprint button on mobile, building depth shading with lit windows, mini-map overlay showing player/Sam/helipad/tornadoes.
 Milestone 1 (2026-04-10): Full game foundation — procedural town map, player movement with sprint/stamina, tornado entities with suction/kill zones, zombie AI, Sam NPC rescue mechanic, helicopter pad win condition, title/win/gameover screens, mobile virtual joystick.</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1 COMPLETE (2026-04-10): Foundation &amp; Town — map, player, tornadoes, zombies, full game loop.
 M2 COMPLETE (2026-04-10): Polish &amp; Feel — tornado AI rework, zombie respawn, Web Audio sound, sprint button, building depth, mini-map.
-M3 PLANNED: Map variety (random seeds), multiple survivors, zombie scaling, leaderboard, tutorial overlay.
-M4 PLANNED: Advanced audio, weather rain overlay, radio broadcasts, panic meter.
-M5 PLANNED: Car mechanic, building destruction, flooding roads, tornado path trails.
-M6 PLANNED: Daily challenge mode, endless survival, score system, death recap, accessibility pass.</pre></details></div>
+M3 COMPLETE (2026-04-10): Map variety, multiple survivors, zombie scaling, tutorial overlay.
+M4 COMPLETE (2026-04-10): Rain overlay, radio broadcasts, panic meter, tornado trails.
+M5 COMPLETE (2026-04-10): Car mechanic, building destruction by tornadoes, road flooding.
+M6 COMPLETE (2026-04-10): Score system, endless survival mode, death recap, daily challenge URL seeds, accessibility ARIA regions.
+M7 PLANNED: Visual FX pass — explosion particles on building collapse, car fire/smoke, flood ripples, lightning strikes hitting buildings.
+M8 PLANNED: Zombie variants — runner, brute, screamer that attracts others.
+M9 PLANNED: Power-ups — medkits, flares (repel zombies), wind-breaker (reduces suction).
+M10 PLANNED: Dynamic weather events — sudden visibility fog, electrical storm that stuns the player.
+M11 PLANNED: Full audio pass — music layer, dynamic soundtrack intensity, environmental reverb.</pre></details></div>
     </div>
   </div>
 </section>
 <hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#aa8820 15%,#ffcc44 50%,#aa8820 85%,transparent 100%)">
 
 <section class="game-section" id="game12"
-  data-key="game12" data-date="2026-04-10" data-milestone="4" data-title="Penny Panic"
+  data-key="game12" data-date="2026-04-10" data-milestone="7" data-title="Penny Panic"
   style="--ga:#c8922a;--gab:#f5d06e;--gad:#8a6018;--gg:rgba(200,146,42,0.3);--gbg:#000000;--gt:#e8e8e8;--gtm:#888888;--gbo:#f0f0f0;--gbr:rgba(136,102,204,0.3);--gpf:0 0 12px #8866cc, 0 0 28px #553388, 0 0 56px rgba(136,102,204,0.2);--gpt:0 0 20px #aa88ee, 0 0 40px #8866cc, 0 0 80px rgba(170,136,238,0.3);background:#000000">
   <div class="game-bg">
     <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(100,60,200,0.12) 0%, transparent 70%), linear-gradient(180deg, #08080f 0%, #0f0d18 100%)"></div>
@@ -357,22 +366,27 @@ M6 PLANNED: Daily challenge mode, endless survival, score system, death recap, a
     <div class="game-frame" style="--glow:rgba(200,146,42,0.3)">
       <span class="fc-tl">◆︎</span><span class="fc-tr">◆︎</span>
       <span class="fc-bl">◆︎</span><span class="fc-br">◆︎</span>
-      <span class="frame-top">Milestone 4</span>
+      <span class="frame-top">Milestone 7</span>
       <span class="frame-bot">2-Player Penny Collecting Bug Shooter</span>
       <div class="game-eyebrow">2-Player Penny Collecting Bug Shooter</div>
       <h2 class="game-title">Penny Panic</h2>
       <div class="divider"><div class="divider-line"></div><span class="divider-glyph">◆︎</span><div class="divider-line"></div></div>
       <div class="game-badges">
-        <span class="gbadge gbadge-m">M4</span>
+        <span class="gbadge gbadge-m">M7</span>
         
         <span class="gbadge gbadge-date">2026-04-10</span>
       </div>
       <p class="game-desc">Two players, one phone. Split the screen in half — you own your side. Ten pennies fall into the void. Race your opponent to tap them first. Shoot the bugs that fly at you for bonus points. Miss one and lose a point. When the last penny is gone, highest score wins. First to win two rounds takes the match.</p>
       <a href="./game12/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">give me a prompt for a game, not 3d, don't get me banned lmao — uh — take a penny there's two players player 1 takes a penny player 2 takes a penny there are 10 pennies when all pennies are taken the player with the higher score wins and you can get more points by shooting bugs that fly at you — but the retarded layer of absolutely fucking nothing is absolutely fucking necessary</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M1 (2026-04-10): Core gameplay — split-screen canvas, penny spawning + collection, bug entities, score tracking, round end screen.</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1: Core Gameplay — COMPLETE (2026-04-10)
-M2: Bugs — PENDING
-M3: Juice — PENDING
-M4: Polish — PENDING</pre></details></div>
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">give me a prompt for a game, not 3d, don't get me banned lmao — uh — take a penny there's two players player 1 takes a penny player 2 takes a penny there are 10 pennies when all pennies are taken the player with the higher score wins and you can get more points by shooting bugs that fly at you — but the retarded layer of absolutely fucking nothing is absolutely fucking necessary</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M5 (2026-04-10): Share button on Match End (navigator.share/clipboard), void depth 60-particle ambient layer (voidDepth.js, layer 0).
+M4 (2026-04-10): Best-of-3 match system — roundWins tracking, Match End screen, series dots on round end.
+M1-M3 (2026-04-10): Core gameplay, bugs, audio, particles, countdown, void aesthetic.</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1: Core Gameplay — COMPLETE (2026-04-10)
+M2: Bugs &amp; Audio — COMPLETE (2026-04-10)
+M3: Juice &amp; Polish — COMPLETE (2026-04-10)
+M4: Best-of-3 Match System — COMPLETE (2026-04-10)
+M5: Share + Void Depth — COMPLETE (2026-04-10)
+M6: Bug Variants — PENDING
+M7–M25: See plan</pre></details></div>
     </div>
   </div>
 </section>
@@ -556,7 +570,7 @@ Phase 5: Biomes 3+4 — Forge of Ruin &amp; Void Sanctum (M49–M63)</pre></deta
 </main>
 <footer class="site-footer">Rad's Game Demos &mdash; 9 games &mdash; 2026</footer>
 <script>
-const SORT_DATA=[{"key":"game2","date":"2026-04-10","milestone":231,"title":"Roguelike"},{"key":"game3","date":"2026-04-01","milestone":3,"title":"Roguelike III"},{"key":"game4","date":"2026-04-02","milestone":32,"title":"Spellroads"},{"key":"game6","date":"2026-04-05","milestone":29,"title":"Astral Crypts"},{"key":"game7","date":"2026-04-05","milestone":13,"title":"Wanderlight"},{"key":"game8","date":"2026-04-10","milestone":80,"title":"Vagrant & Ash"},{"key":"game10","date":"2026-04-10","milestone":8,"title":"Aethermoor Chronicles"},{"key":"game11","date":"2026-04-10","milestone":6,"title":"Stormtown"},{"key":"game12","date":"2026-04-10","milestone":4,"title":"Penny Panic"}];
+const SORT_DATA=[{"key":"game2","date":"2026-04-10","milestone":231,"title":"Roguelike"},{"key":"game3","date":"2026-04-01","milestone":3,"title":"Roguelike III"},{"key":"game4","date":"2026-04-02","milestone":32,"title":"Spellroads"},{"key":"game6","date":"2026-04-05","milestone":29,"title":"Astral Crypts"},{"key":"game7","date":"2026-04-05","milestone":13,"title":"Wanderlight"},{"key":"game8","date":"2026-04-10","milestone":80,"title":"Vagrant & Ash"},{"key":"game10","date":"2026-04-10","milestone":8,"title":"Aethermoor Chronicles"},{"key":"game11","date":"2026-04-10","milestone":9,"title":"Stormtown"},{"key":"game12","date":"2026-04-10","milestone":7,"title":"Penny Panic"}];
 function reSort(by){
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('sort-'+by).classList.add('active');

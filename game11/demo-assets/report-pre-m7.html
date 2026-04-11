@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Build Report: M7–M11 | Stormtown</title>
+<style>
+  :root {
+    --bg: #080c14;
+    --bg2: #0d1420;
+    --bg3: #111827;
+    --blue: #38bdf8;
+    --blue-dim: #1e7aa8;
+    --purple: #a855f7;
+    --purple-dim: #6b21a8;
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --text: #cbd5e1;
+    --text-dim: #64748b;
+    --border: #1e293b;
+    --glow-blue: 0 0 18px rgba(56,189,248,0.35);
+    --glow-purple: 0 0 18px rgba(168,85,247,0.35);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Canvas */
+  #rain-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.22;
+  }
+
+  /* Layout */
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    padding: 56px 0 36px;
+  }
+  .header-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--purple-dim), var(--blue-dim));
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  .header h1 {
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 800;
+    background: linear-gradient(120deg, var(--blue), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    animation: titlePulse 4s ease-in-out infinite;
+  }
+  @keyframes titlePulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.18); }
+  }
+  .header .sub {
+    color: var(--text-dim);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  /* Scan line decorators */
+  .scan-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue), var(--purple), transparent);
+    margin: 10px 0 28px;
+    opacity: 0.6;
+  }
+
+  /* Section */
+  section {
+    margin-bottom: 52px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Terminal checklist */
+  .terminal {
+    background: #070b11;
+    border: 1px solid #1a2744;
+    border-radius: 10px;
+    padding: 20px 24px;
+    font-family: 'Cascadia Code', 'Fira Mono', monospace;
+    font-size: 13px;
+    box-shadow: inset 0 0 40px rgba(56,189,248,0.04);
+  }
+  .terminal .t-header {
+    color: var(--text-dim);
+    font-size: 11px;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
+  .check-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 4px 0;
+    border-bottom: 1px solid #0d1420;
+  }
+  .check-row:last-child { border-bottom: none; }
+  .check-icon {
+    color: var(--green);
+    font-size: 12px;
+    flex-shrink: 0;
+    animation: flickerIn 0.3s ease both;
+  }
+  .check-label { color: var(--text); flex: 1; }
+  .check-tag {
+    font-size: 10px;
+    padding: 1px 7px;
+    border-radius: 10px;
+    background: #0d2035;
+    color: var(--blue);
+    white-space: nowrap;
+  }
+
+  /* Grid 2-col */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  /* Diff view */
+  .diff-block {
+    background: #070b11;
+    border: 1px solid #2a1a00;
+    border-radius: 10px;
+    padding: 18px 22px;
+    font-family: 'Cascadia Code', 'Fira Mono', monospace;
+    font-size: 13px;
+  }
+  .diff-line {
+    display: flex;
+    gap: 10px;
+    padding: 3px 0;
+  }
+  .diff-minus {
+    color: var(--amber);
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .diff-text { color: #d6a75a; }
+  .diff-comment { color: #4a3800; margin-left: 4px; font-style: italic; }
+
+  /* Milestone cards */
+  .milestone-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 18px;
+  }
+  .m-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .m-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--glow-blue);
+  }
+  .m-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--card-accent, var(--blue));
+  }
+  .m-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .m-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--card-accent, var(--blue));
+  }
+  .m-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 10px;
+  }
+  .m-items {
+    list-style: none;
+    font-size: 12.5px;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+  }
+  .m-items li { padding: 2px 0; }
+  .m-items li::before { content: '→ '; color: var(--card-accent, var(--blue)); }
+  .lightning-row {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+  }
+  .bolt {
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .bolt.active { color: #facc15; }
+  .bolt.inactive { color: #1e293b; }
+  .complexity-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-left: 6px;
+    letter-spacing: 1px;
+  }
+  .priority-pill {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--pill-bg, #1e293b);
+    color: var(--pill-color, var(--text-dim));
+  }
+
+  /* Risk matrix */
+  .risk-matrix-wrap {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .risk-grid {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.6 / 1;
+    max-height: 380px;
+    background:
+      linear-gradient(#1e293b 1px, transparent 1px),
+      linear-gradient(90deg, #1e293b 1px, transparent 1px);
+    background-size: 25% 33.33%;
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    margin-top: 16px;
+  }
+  .risk-axis-x {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 6px;
+    padding: 0 2px;
+    letter-spacing: 1px;
+  }
+  .risk-axis-y {
+    position: absolute;
+    left: -54px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .risk-zone {
+    position: absolute;
+    border-radius: 4px;
+  }
+  .risk-zone.high { background: rgba(239,68,68,0.08); border: 1px dashed rgba(239,68,68,0.2); }
+  .risk-zone.med  { background: rgba(245,158,11,0.06); border: 1px dashed rgba(245,158,11,0.15); }
+  .risk-zone.low  { background: rgba(34,197,94,0.05); border: 1px dashed rgba(34,197,94,0.12); }
+  .risk-dot {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    transform: translate(-50%, 50%);
+    cursor: default;
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: 700;
+    color: #000;
+  }
+  .risk-dot:hover { transform: translate(-50%, 50%) scale(1.6); z-index: 10; }
+  .risk-label {
+    position: absolute;
+    font-size: 10px;
+    white-space: nowrap;
+    color: var(--text);
+    transform: translate(-50%, 24px);
+    pointer-events: none;
+    text-align: center;
+  }
+  .risk-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .risk-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .risk-legend-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Feedback cards */
+  .feedback-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .feedback-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .feedback-name { font-weight: 700; font-size: 14px; color: #e2e8f0; }
+  .feedback-role { font-size: 11px; color: var(--text-dim); }
+  .feedback-body { font-size: 13.5px; color: var(--text); line-height: 1.7; }
+  .feedback-body strong { color: #e2e8f0; }
+  .feedback-quote {
+    border-left: 3px solid;
+    padding-left: 14px;
+    margin: 12px 0;
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+  .inline-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 8px;
+    border-radius: 10px;
+    vertical-align: middle;
+    margin: 0 2px;
+  }
+  .tag-green { background: #052e16; color: #22c55e; }
+  .tag-amber { background: #2a1800; color: #f59e0b; }
+  .tag-red   { background: #2a0808; color: #ef4444; }
+  .tag-blue  { background: #0a1f35; color: #38bdf8; }
+  .tag-purple{ background: #1a0a35; color: #a855f7; }
+
+  /* Architecture */
+  .arch-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .arch-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .arch-item:hover { border-color: var(--blue-dim); }
+  .arch-num {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--blue);
+    opacity: 0.4;
+    line-height: 1;
+    min-width: 28px;
+    font-family: monospace;
+  }
+  .arch-content {}
+  .arch-title { font-weight: 700; color: #e2e8f0; margin-bottom: 4px; }
+  .arch-desc { font-size: 13px; color: var(--text-dim); }
+
+  /* Brainstorm wall */
+  .brainstorm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .idea-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .idea-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-purple);
+  }
+  .idea-emoji { font-size: 22px; margin-bottom: 8px; display: block; }
+  .idea-title { font-weight: 700; font-size: 13px; color: #e2e8f0; margin-bottom: 5px; }
+  .idea-desc { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+  .idea-tag {
+    position: absolute;
+    top: 12px; right: 12px;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 32px 0 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+  }
+  .footer-glyph { color: var(--blue); margin: 0 6px; }
+
+  /* Animations */
+  @keyframes flickerIn {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    70% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+
+  /* Risk matrix responsive */
+  .risk-matrix-outer {
+    position: relative;
+    padding-left: 60px;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="rain-canvas"></canvas>
+
+<div class="wrapper">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-badge">Pre-Build Report</div>
+    <h1>Milestone Cycle 7 – 11</h1>
+    <div class="sub">Stormtown &nbsp;|&nbsp; Planning Document &nbsp;|&nbsp; 2026-04-10</div>
+    <div class="scan-line"></div>
+  </header>
+
+  <!-- Current State -->
+  <section id="s-state">
+    <div class="section-title">Current State — End of M6</div>
+    <div class="terminal">
+      <div class="t-header">// stormtown — feature audit — build:m6 — status:COMPLETE</div>
+
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Procedural town map — random seed per run, 40×60 tiles</span>
+        <span class="check-tag">CORE</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Player — sprint/stamina system, 3 HP, invulnerability frames</span>
+        <span class="check-tag">CORE</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Up to 4 tornadoes (8 in endless) — unpredictable AI, suction zones, path trails</span>
+        <span class="check-tag">GAMEPLAY</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">12–24 zombies with respawn and scaling difficulty</span>
+        <span class="check-tag">GAMEPLAY</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Sam NPC rescue + helicopter pad escape</span>
+        <span class="check-tag">NARRATIVE</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">3 bonus survivors (speed / stamina / shield)</span>
+        <span class="check-tag">GAMEPLAY</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Driveable cars (2 per map) — tap-to-enter</span>
+        <span class="check-tag">GAMEPLAY</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Building destruction by tornadoes</span>
+        <span class="check-tag">SIMULATION</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Road flooding after 100s</span>
+        <span class="check-tag">SIMULATION</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Panic vignette + heartbeat effect</span>
+        <span class="check-tag">JUICE</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Rain overlay intensifying over 120s</span>
+        <span class="check-tag">VFX</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Emergency radio broadcasts</span>
+        <span class="check-tag">AUDIO</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Web Audio procedural sound effects</span>
+        <span class="check-tag">AUDIO</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Score system + top-5 leaderboards (time + score modes)</span>
+        <span class="check-tag">META</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Endless survival mode</span>
+        <span class="check-tag">MODE</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Death recap panel</span>
+        <span class="check-tag">UX</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Daily challenge URL seeds</span>
+        <span class="check-tag">META</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">Mini-map + tutorial overlay</span>
+        <span class="check-tag">UX</span>
+      </div>
+      <div class="check-row">
+        <span class="check-icon">✔</span>
+        <span class="check-label">ARIA live region accessibility</span>
+        <span class="check-tag">A11Y</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Debt -->
+  <section id="s-debt">
+    <div class="section-title">Tech Debt Backlog</div>
+    <div class="diff-block">
+      <div class="diff-line">
+        <span class="diff-minus">−</span>
+        <span class="diff-text">No music track<span class="diff-comment">  // only SFX + ambient; audio world feels incomplete</span></span>
+      </div>
+      <div class="diff-line">
+        <span class="diff-minus">−</span>
+        <span class="diff-text">UI tightly coupled via polling<span class="diff-comment">  // should emit events, not query state each frame</span></span>
+      </div>
+      <div class="diff-line">
+        <span class="diff-minus">−</span>
+        <span class="diff-text">Graphics-based map rendering<span class="diff-comment">  // no tilemap layer — performance headroom is limited</span></span>
+      </div>
+      <div class="diff-line">
+        <span class="diff-minus">−</span>
+        <span class="diff-text">Car collision always axis-aligned<span class="diff-comment">  // Arcade limitation; rotating cars clip corners</span></span>
+      </div>
+      <div class="diff-line">
+        <span class="diff-minus">−</span>
+        <span class="diff-text">Building destruction is visually abrupt<span class="diff-comment">  // no crack stages, no fire, just poof</span></span>
+      </div>
+      <div class="diff-line">
+        <span class="diff-minus">−</span>
+        <span class="diff-text">Flood tiles have no animation<span class="diff-comment">  // static color swap only</span></span>
+      </div>
+      <div class="diff-line">
+        <span class="diff-minus">−</span>
+        <span class="diff-text">Zombie AI is basic<span class="diff-comment">  // wander + chase only; no group awareness, no flanking</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Milestone Cards -->
+  <section id="s-milestones">
+    <div class="section-title">Planned Milestones M7 – M11</div>
+    <div class="milestone-grid">
+
+      <!-- M7 -->
+      <div class="m-card" style="--card-accent: #38bdf8;">
+        <div class="m-card-header">
+          <span class="m-num">M7</span>
+          <span class="priority-pill" style="--pill-bg:#0a1f35;--pill-color:#38bdf8;">HIGH PRIORITY</span>
+        </div>
+        <div class="m-title">Visual FX Pass</div>
+        <ul class="m-items">
+          <li>Explosion + debris particles on building collapse</li>
+          <li>Car fire and smoke from tornado damage</li>
+          <li>Flood tile ripple ring animations</li>
+          <li>Lightning strike events — scorch marks + flash</li>
+          <li>Enhanced tornado funnel with flying debris silhouettes</li>
+        </ul>
+        <div class="lightning-row">
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="bolt inactive">⚡</span>
+          <span class="bolt inactive">⚡</span>
+          <span class="complexity-label">COMPLEXITY 3/5</span>
+        </div>
+      </div>
+
+      <!-- M8 -->
+      <div class="m-card" style="--card-accent: #a855f7;">
+        <div class="m-card-header">
+          <span class="m-num">M8</span>
+          <span class="priority-pill" style="--pill-bg:#1a0a35;--pill-color:#a855f7;">HIGH PRIORITY</span>
+        </div>
+        <div class="m-title">Zombie Variants</div>
+        <ul class="m-items">
+          <li>Runner — 2× speed, 1 HP, charge attack (spawns 60s+)</li>
+          <li>Brute — 0.5× speed, 3-hit tank, knockback (spawns 120s+)</li>
+          <li>Screamer — alerts all zombies in 300px radius</li>
+          <li>Color-coded tint: red / dark purple / yellow</li>
+          <li>Spawn time gating for difficulty curve</li>
+        </ul>
+        <div class="lightning-row">
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="bolt inactive">⚡</span>
+          <span class="complexity-label">COMPLEXITY 4/5</span>
+        </div>
+      </div>
+
+      <!-- M9 -->
+      <div class="m-card" style="--card-accent: #22c55e;">
+        <div class="m-card-header">
+          <span class="m-num">M9</span>
+          <span class="priority-pill" style="--pill-bg:#052e16;--pill-color:#22c55e;">MEDIUM</span>
+        </div>
+        <div class="m-title">Power-ups</div>
+        <ul class="m-items">
+          <li>Medkit — restores 1 HP, respawns 60s</li>
+          <li>Flare — double-tap throw, repels zombies 200px / 8s</li>
+          <li>Wind-breaker vest — reduces suction 50% / 20s</li>
+          <li>1 of each per map at road intersections</li>
+          <li>Pulsing sprite indicator</li>
+        </ul>
+        <div class="lightning-row">
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="bolt inactive">⚡</span>
+          <span class="bolt inactive">⚡</span>
+          <span class="complexity-label">COMPLEXITY 3/5</span>
+        </div>
+      </div>
+
+      <!-- M10 -->
+      <div class="m-card" style="--card-accent: #f59e0b;">
+        <div class="m-card-header">
+          <span class="m-num">M10</span>
+          <span class="priority-pill" style="--pill-bg:#2a1800;--pill-color:#f59e0b;">STRETCH</span>
+        </div>
+        <div class="m-title">Dynamic Weather Events</div>
+        <ul class="m-items">
+          <li>Fog event — 200px radius visibility, 15s</li>
+          <li>Electrical storm — road tile bolts, stun player</li>
+          <li>Hailstorm — 0.5 HP/s unless in car, white particles</li>
+          <li>Dramatic banner + audio cue per event</li>
+          <li>Triggers randomized after 60s</li>
+        </ul>
+        <div class="lightning-row">
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="complexity-label">COMPLEXITY 5/5</span>
+        </div>
+      </div>
+
+      <!-- M11 -->
+      <div class="m-card" style="--card-accent: #ec4899;">
+        <div class="m-card-header">
+          <span class="m-num">M11</span>
+          <span class="priority-pill" style="--pill-bg:#2a0828;--pill-color:#ec4899;">HIGH PRIORITY</span>
+        </div>
+        <div class="m-title">Full Audio Pass</div>
+        <ul class="m-items">
+          <li>Generative ambient music — drone + rhythm layer (Web Audio)</li>
+          <li>Dynamic intensity: calm → tense → frantic</li>
+          <li>Car engine pitch scales with velocity</li>
+          <li>Footstep sounds — road vs flooded tile variants</li>
+          <li>ConvolverNode reverb: open street vs near buildings</li>
+        </ul>
+        <div class="lightning-row">
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="bolt active">⚡</span>
+          <span class="complexity-label">COMPLEXITY 5/5</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Risk Matrix -->
+  <section id="s-risk">
+    <div class="section-title">Risk Assessment Matrix</div>
+    <div class="risk-matrix-wrap">
+      <div class="risk-matrix-outer">
+        <div class="risk-axis-y">IMPACT</div>
+        <div class="risk-grid" id="risk-grid">
+
+          <!-- Zone overlays -->
+          <div class="risk-zone high" style="left:50%;top:0;width:50%;height:67%;"></div>
+          <div class="risk-zone med"  style="left:0;top:0;width:50%;height:50%;"></div>
+          <div class="risk-zone med"  style="left:50%;top:67%;width:50%;height:33%;"></div>
+          <div class="risk-zone low"  style="left:0;top:50%;width:50%;height:50%;"></div>
+
+          <!-- Risk dots: x=likelihood (0=left,1=right), y=impact (0=bottom,1=top) -->
+          <!-- Phaser particle explosion: likelihood med-high, impact med -->
+          <div class="risk-dot" style="left:40%;bottom:50%;background:#38bdf8;" title="M7: Phaser particle system complexity">
+            <div class="risk-label" style="color:#38bdf8;">M7 Particles</div>
+            M7
+          </div>
+          <!-- Brute knockback: likelihood high, impact high -->
+          <div class="risk-dot" style="left:72%;bottom:72%;background:#a855f7;" title="M8: Brute knockback clipping">
+            <div class="risk-label" style="color:#a855f7;">M8 Brute</div>
+            M8
+          </div>
+          <!-- Flare double-tap: likelihood high, impact med -->
+          <div class="risk-dot" style="left:65%;bottom:45%;background:#22c55e;" title="M9: Double-tap touch input">
+            <div class="risk-label" style="color:#22c55e;">M9 Flare</div>
+            M9
+          </div>
+          <!-- Fog of war: likelihood high, impact high -->
+          <div class="risk-dot" style="left:82%;bottom:78%;background:#f59e0b;" title="M10: Fog of war RenderTexture">
+            <div class="risk-label" style="color:#f59e0b;">M10 Fog</div>
+            M10
+          </div>
+          <!-- Generative music: likelihood med, impact med -->
+          <div class="risk-dot" style="left:55%;bottom:62%;background:#ec4899;" title="M11: Generative music scope">
+            <div class="risk-label" style="color:#ec4899;">M11 Music</div>
+            M11
+          </div>
+          <!-- Bundle size: likelihood med, impact low -->
+          <div class="risk-dot" style="left:45%;bottom:28%;background:#94a3b8;" title="Bundle size growth">
+            <div class="risk-label" style="color:#94a3b8;">Bundle Size</div>
+            📦
+          </div>
+        </div>
+        <div class="risk-axis-x">
+          <span>LOW LIKELIHOOD</span>
+          <span>HIGH LIKELIHOOD</span>
+        </div>
+      </div>
+      <div class="risk-legend">
+        <div class="risk-legend-item"><div class="risk-legend-dot" style="background:#38bdf8;"></div>M7 — Phaser particle system complexity</div>
+        <div class="risk-legend-item"><div class="risk-legend-dot" style="background:#a855f7;"></div>M8 — Brute knockback player clipping</div>
+        <div class="risk-legend-item"><div class="risk-legend-dot" style="background:#22c55e;"></div>M9 — Double-tap flare on mobile</div>
+        <div class="risk-legend-item"><div class="risk-legend-dot" style="background:#f59e0b;"></div>M10 — Fog of war without RenderTexture</div>
+        <div class="risk-legend-item"><div class="risk-legend-dot" style="background:#ec4899;"></div>M11 — Generative music scope creep</div>
+        <div class="risk-legend-item"><div class="risk-legend-dot" style="background:#94a3b8;"></div>Bundle size growth across milestones</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Feedback -->
+  <section id="s-feedback">
+    <div class="section-title">Team Feedback</div>
+    <div class="grid-2">
+
+      <!-- Alex Chen -->
+      <div class="feedback-card">
+        <div class="feedback-header">
+          <div class="avatar" style="background: linear-gradient(135deg, #a855f7, #6366f1);">A</div>
+          <div>
+            <div class="feedback-name">Alex Chen</div>
+            <div class="feedback-role">Game Developer</div>
+          </div>
+        </div>
+        <div class="feedback-body">
+          <p>Really excited about <strong>M8 zombie variants</strong> — this is the missing layer of tactical pressure. Right now every zombie plays the same way and the player learns to ignore them. Runners will force movement, Brutes will demand positioning, and the Screamer is a <em>fantastic</em> psychological threat.</p>
+          <div class="feedback-quote">
+            "The Screamer is my favorite design yet — it doesn't hurt you directly but it completely changes threat calculus. Players will waste stamina avoiding it."
+          </div>
+          <p>One concern: <span class="inline-tag tag-amber">M10 FOG</span> — implementing radius fog of war in Phaser without a RenderTexture mask layer is genuinely awkward. We'd need a full-screen Graphics overlay recalculated each frame. It works, but it's around 2–4ms of CPU overhead. I'd prototype it as a standalone scene before committing it to M10. If it's too expensive on mid-range phones, cut the fog radius or replace with a screen tint.</p>
+          <p>For <span class="inline-tag tag-purple">M11 MUSIC</span> — I'd scope it to: one base drone (sawtooth + low-pass), one kick-pattern OscillatorNode at 80bpm, one ambient texture pad. Dynamically crossfade between calm/tense/frantic mixes using GainNode automation. Don't try full generative melody — that's a rabbit hole.</p>
+        </div>
+      </div>
+
+      <!-- Jordan Rivera -->
+      <div class="feedback-card">
+        <div class="feedback-header">
+          <div class="avatar" style="background: linear-gradient(135deg, #38bdf8, #0ea5e9);">J</div>
+          <div>
+            <div class="feedback-name">Jordan Rivera</div>
+            <div class="feedback-role">Project Manager</div>
+          </div>
+        </div>
+        <div class="feedback-body">
+          <p>My strong recommendation: <strong>do M7 before M8</strong>. Visual debt is player-facing — right now building destruction is a puff of smoke and flooding is a color change. Players notice this. Fix the visuals first so M8 gameplay improvements land on a polished base.</p>
+          <div class="feedback-quote">
+            "If M7 ships before M8, the zombie variant launch will feel premium. If M8 ships on top of abrupt building collapses, reviews will say 'good ideas, janky execution.'"
+          </div>
+          <p>On <span class="inline-tag tag-red">M10</span>: I'm flagging this as an <strong>optional stretch goal</strong>. Fog of war is the highest complexity, highest risk item in the block. If M7–M9 + M11 ship clean, M10 as a bonus keeps the cycle on schedule. Don't sacrifice M11's audio pass for M10 fog.</p>
+          <p>For <span class="inline-tag tag-green">M9 POWER-UPS</span>: scope tight. One spawn per map, fixed locations, no inventory, no stacking. The flare mechanic is great but the double-tap needs a fallback dedicated button for accessibility — mobile Safari double-tap has a 300ms delay that hasn't fully gone away on all devices.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Architecture Improvements -->
+  <section id="s-arch">
+    <div class="section-title">Architecture Improvements</div>
+    <div class="arch-list">
+
+      <div class="arch-item">
+        <div class="arch-num">01</div>
+        <div class="arch-content">
+          <div class="arch-title">Event Bus — Decouple UI from Game State</div>
+          <div class="arch-desc">Replace per-frame polling in HUD and overlay components with a lightweight EventEmitter. Game emits <code>player:hp-changed</code>, <code>tornado:suction-entered</code>, <code>weather:event-start</code>. UI listens and updates. Reduces update loop overhead and makes adding M10 weather banners trivial.</div>
+        </div>
+      </div>
+
+      <div class="arch-item">
+        <div class="arch-num">02</div>
+        <div class="arch-content">
+          <div class="arch-title">Phaser Tilemap Layer for Map Rendering</div>
+          <div class="arch-desc">Current graphics-based map rendering draws every visible tile as a Graphics primitive. Migrate to a StaticTilemapLayer using a spritesheet atlas. GPU-batched, culls off-screen automatically, and opens the door for flood tile animations as a second layer without CPU cost.</div>
+        </div>
+      </div>
+
+      <div class="arch-item">
+        <div class="arch-num">03</div>
+        <div class="arch-content">
+          <div class="arch-title">Entity Component Pattern for Zombie Variants</div>
+          <div class="arch-desc">Before M8, refactor zombie behavior into composable strategy objects: <code>MovementStrategy</code>, <code>AttackStrategy</code>, <code>AlertStrategy</code>. Each variant assembles differently. Prevents M8 from becoming a chain of if/else branches in a 400-line zombie class.</div>
+        </div>
+      </div>
+
+      <div class="arch-item">
+        <div class="arch-num">04</div>
+        <div class="arch-content">
+          <div class="arch-title">AudioManager Singleton with State Machine</div>
+          <div class="arch-desc">Current Web Audio code is spread across scene init and update. Centralize in an AudioManager with states: SILENT → AMBIENT → TENSE → FRANTIC. M11 generative music slots cleanly into this without touching game logic. State transitions driven by the event bus from improvement #01.</div>
+        </div>
+      </div>
+
+      <div class="arch-item">
+        <div class="arch-num">05</div>
+        <div class="arch-content">
+          <div class="arch-title">Bundle Analysis + Asset Atlas Before M7</div>
+          <div class="arch-desc">Bundle is at 1.54 MB pre-M7. Run <code>vite-bundle-visualizer</code> and identify the largest contributors. Generate a single texture atlas (TexturePacker or free-tier Shoebox) for all sprite assets — this alone typically cuts texture memory 30–40% and speeds up Phaser scene load. Set a 2 MB hard cap enforced in CI.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Brainstorm Wall -->
+  <section id="s-brainstorm">
+    <div class="section-title">Brainstorm Wall — Ideas Sparked by M2–M6</div>
+    <div class="brainstorm-grid">
+
+      <div class="idea-card">
+        <span class="idea-emoji">🏃</span>
+        <div class="idea-title">Survivor Rescue Chains</div>
+        <div class="idea-desc">Rescued survivors follow the player in a chain formation. More survivors = slower movement but higher score multiplier. Creates a risk/reward convoy mechanic.</div>
+        <div class="idea-tag" style="background:#0a1f35;color:#38bdf8;">GAMEPLAY</div>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-emoji">🗺️</span>
+        <div class="idea-title">Procedural Neighborhood Types</div>
+        <div class="idea-desc">Tag map zones as Downtown, Suburbs, Industrial. Each zone spawns different building densities, zombie concentrations, and item frequencies. Seeds become more distinctive.</div>
+        <div class="idea-tag" style="background:#0a1f35;color:#38bdf8;">WORLD</div>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-emoji">📻</span>
+        <div class="idea-title">Radio as Hint System</div>
+        <div class="idea-desc">Emergency radio broadcasts reference specific map features — "Shelter spotted near the east road junction." Broadcasts give players directional info without a full compass.</div>
+        <div class="idea-tag" style="background:#052e16;color:#22c55e;">NARRATIVE</div>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-emoji">🌪️</span>
+        <div class="idea-title">Tornado Merge Event</div>
+        <div class="idea-desc">After 150s, two tornadoes merge into one mega-tornado with double suction radius and 3× debris. Acts as the final-minute escalation before helicopter arrival.</div>
+        <div class="idea-tag" style="background:#1a0a35;color:#a855f7;">ESCALATION</div>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-emoji">🚧</span>
+        <div class="idea-title">Barricade Placement</div>
+        <div class="idea-desc">Pick up debris from destroyed buildings and place it as a temporary barricade. Slows zombies 60%, breaks after 3 hits. Gives player a defensive tool without weapons.</div>
+        <div class="idea-tag" style="background:#0a1f35;color:#38bdf8;">GAMEPLAY</div>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-emoji">🌑</span>
+        <div class="idea-title">Night Mode</div>
+        <div class="idea-desc">A darkness overlay where only the player's immediate area is lit. Tornadoes are visible by lightning flashes only. Dramatically changes threat awareness and pacing.</div>
+        <div class="idea-tag" style="background:#2a1800;color:#f59e0b;">MODE</div>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-emoji">🏆</span>
+        <div class="idea-title">Ghost Replay</div>
+        <div class="idea-desc">Record player path data for best runs (position + action per 100ms). On next play, show a translucent ghost of the best run. Encourages replay and social comparison.</div>
+        <div class="idea-tag" style="background:#052e16;color:#22c55e;">META</div>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-emoji">🔊</span>
+        <div class="idea-title">3D Positional Audio</div>
+        <div class="idea-desc">Use Web Audio PannerNode to position tornado and zombie sounds in stereo space relative to the player. Hearing a tornado approach from the left is viscerally alarming.</div>
+        <div class="idea-tag" style="background:#2a0828;color:#ec4899;">AUDIO</div>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-emoji">💡</span>
+        <div class="idea-title">Power Grid Collapse</div>
+        <div class="idea-desc">Street lights glow at game start. Tornadoes touching power poles trigger a grid collapse sequence — lights flicker, then all go dark except the helicopter beacon.</div>
+        <div class="idea-tag" style="background:#0a1f35;color:#38bdf8;">ATMOSPHERE</div>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-emoji">🐕</span>
+        <div class="idea-title">Dog Companion</div>
+        <div class="idea-desc">A dog NPC that barks when zombies are within 150px off-screen, acting as an audio proximity radar. Can be "sent" to fetch an item once per run. Adds emotional stakes.</div>
+        <div class="idea-tag" style="background:#052e16;color:#22c55e;">NARRATIVE</div>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-emoji">📊</span>
+        <div class="idea-title">Post-Run Heatmap</div>
+        <div class="idea-desc">After death or escape, overlay a heatmap of where the player spent the most time and where they took damage. Teaches strategy passively and is shareable as an image.</div>
+        <div class="idea-tag" style="background:#2a1800;color:#f59e0b;">UX</div>
+      </div>
+
+      <div class="idea-card">
+        <span class="idea-emoji">🌊</span>
+        <div class="idea-title">Flash Flood Surge</div>
+        <div class="idea-desc">A one-time flood surge event at ~90s: water level rises for 5s, flooding more tiles temporarily and briefly slowing all non-car movement. Adds urgency without permanent consequence.</div>
+        <div class="idea-tag" style="background:#1a0a35;color:#a855f7;">ESCALATION</div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-glyph">✦</span>
+    Stormtown Dev Team
+    <span class="footer-glyph">|</span>
+    Planning M7–M11
+    <span class="footer-glyph">|</span>
+    2026-04-10
+  </footer>
+
+</div>
+
+<script>
+// ── Rain + Debris Canvas ──────────────────────────────────────
+const canvas = document.getElementById('rain-canvas');
+const ctx = canvas.getContext('2d');
+let drops = [];
+let debris = [];
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+function initDrops() {
+  drops = [];
+  for (let i = 0; i < 120; i++) {
+    drops.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      len: 8 + Math.random() * 14,
+      speed: 4 + Math.random() * 6,
+      opacity: 0.2 + Math.random() * 0.5,
+    });
+  }
+}
+
+function initDebris() {
+  debris = [];
+  for (let i = 0; i < 18; i++) {
+    debris.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      size: 1.5 + Math.random() * 3,
+      vx: -0.4 - Math.random() * 0.8,
+      vy: 0.6 + Math.random() * 1.2,
+      opacity: 0.15 + Math.random() * 0.3,
+      rotation: Math.random() * Math.PI * 2,
+      rotSpeed: (Math.random() - 0.5) * 0.08,
+    });
+  }
+}
+initDrops();
+initDebris();
+
+function drawFrame() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Rain drops
+  ctx.strokeStyle = '#7cb9e8';
+  drops.forEach(d => {
+    ctx.globalAlpha = d.opacity;
+    ctx.lineWidth = 0.8;
+    ctx.beginPath();
+    ctx.moveTo(d.x, d.y);
+    ctx.lineTo(d.x - 1, d.y + d.len);
+    ctx.stroke();
+    d.y += d.speed;
+    d.x -= 0.5;
+    if (d.y > H) { d.y = -d.len; d.x = Math.random() * W; }
+  });
+
+  // Debris
+  debris.forEach(db => {
+    ctx.globalAlpha = db.opacity;
+    ctx.fillStyle = '#a0a0b0';
+    ctx.save();
+    ctx.translate(db.x, db.y);
+    ctx.rotate(db.rotation);
+    ctx.fillRect(-db.size / 2, -db.size / 2, db.size, db.size * 0.4);
+    ctx.restore();
+    db.x += db.vx;
+    db.y += db.vy;
+    db.rotation += db.rotSpeed;
+    if (db.y > H || db.x < -10) {
+      db.x = W + 10;
+      db.y = Math.random() * H * 0.5;
+    }
+  });
+
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(drawFrame);
+}
+drawFrame();
+
+// ── IntersectionObserver reveals ─────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+// Stagger checklist animation
+document.querySelectorAll('.check-row').forEach((row, i) => {
+  row.style.animationDelay = `${i * 0.04}s`;
+  row.style.opacity = '0';
+  row.style.animation = `flickerIn 0.4s ease ${i * 0.05}s both`;
+});
+</script>
+</body>
+</html>

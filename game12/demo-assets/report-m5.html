@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PENNY PANIC — M1-M5 Report</title>
+<style>
+  :root {
+    --bg: #000000;
+    --bg-card: #0a0a0a;
+    --copper: #c8922a;
+    --copper-bright: #f5d06e;
+    --copper-dim: #7a5510;
+    --white: #ffffff;
+    --white-dim: rgba(255,255,255,0.5);
+    --white-muted: rgba(255,255,255,0.2);
+    --white-faint: rgba(255,255,255,0.06);
+    --border: rgba(200,146,42,0.18);
+    --border-bright: rgba(200,146,42,0.5);
+    --glow: 0 0 20px rgba(200,146,42,0.15);
+    --red: #ff2244;
+    --green: #44ff88;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: ui-monospace, 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  #void-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+  .hero {
+    text-align: center;
+    padding: 80px 0 48px;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-title {
+    font-size: clamp(36px, 8vw, 64px);
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 10px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-title span { color: var(--copper-bright); }
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--white-dim);
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .penny-icon {
+    display: inline-block;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 35%, var(--copper-bright), var(--copper) 55%, var(--copper-dim));
+    box-shadow: 0 0 30px rgba(200,146,42,0.4), 0 0 60px rgba(200,146,42,0.2);
+    animation: fadeUp 0.6s 0.3s ease both, pennySpin 6s linear infinite 1s;
+    margin-bottom: 30px;
+  }
+  @keyframes pennySpin {
+    0%,100% { box-shadow: 0 0 30px rgba(200,146,42,0.4); transform: scale(1); }
+    50% { box-shadow: 0 0 50px rgba(245,208,110,0.6); transform: scale(1.1); }
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.35s ease both;
+  }
+  .meta-item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .meta-label { font-size: 10px; letter-spacing: 0.15em; color: var(--white-muted); text-transform: uppercase; }
+  .meta-value { font-size: 13px; color: var(--copper-bright); font-weight: 700; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .section {
+    margin-top: 56px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .section.visible { opacity: 1; transform: translateY(0); }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-icon {
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    background: var(--white-faint);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--copper);
+    font-weight: 700;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { border-color: var(--border-bright); box-shadow: var(--glow); }
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--copper-bright);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+  .card p { color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.7; }
+  ul.feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  ul.feature-list li {
+    padding: 10px 14px;
+    background: var(--white-faint);
+    border-left: 2px solid var(--copper-dim);
+    border-radius: 4px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+  }
+  ul.feature-list li.done { border-left-color: var(--copper); }
+  ul.feature-list li::before { content: '▸ '; color: var(--copper); }
+  .milestone-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+  }
+  .ms-card {
+    background: var(--white-faint);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .ms-card.complete { border-color: var(--copper-dim); }
+  .ms-num { font-size: 10px; letter-spacing: 0.15em; color: var(--white-muted); text-transform: uppercase; }
+  .ms-label { font-size: 13px; font-weight: 700; color: var(--white-dim); margin-top: 4px; }
+  .ms-card.complete .ms-label { color: var(--copper-bright); }
+  .ms-status { font-size: 11px; color: var(--green); margin-top: 6px; }
+  .bug-tag {
+    display: inline-block;
+    background: rgba(255,34,68,0.12);
+    border: 1px solid rgba(255,34,68,0.3);
+    color: #ff6688;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-right: 6px;
+  }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+</style>
+</head>
+<body>
+<canvas id="void-canvas"></canvas>
+
+<div class="wrapper">
+  <div class="hero">
+    <div class="hero-eyebrow">Milestone Report · M1–M5</div>
+    <div class="hero-title">PENNY <span>PANIC</span></div>
+    <div class="hero-subtitle">Two players. One screen. Ten pennies in the void.</div>
+    <div class="penny-icon"></div>
+    <div class="hero-meta">
+      <div class="meta-item"><span class="meta-label">Milestone</span><span class="meta-value">M5</span></div>
+      <div class="meta-item"><span class="meta-label">Date</span><span class="meta-value">2026-04-10</span></div>
+      <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Vite + Vanilla JS</span></div>
+      <div class="meta-item"><span class="meta-label">Status</span><span class="meta-value" style="color:var(--green)">LIVE</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">✦</div>
+      <div class="section-title">Milestone Progress — M1 through M5</div>
+    </div>
+    <div class="milestone-grid">
+      <div class="ms-card complete"><div class="ms-num">M1</div><div class="ms-label">Core Gameplay</div><div class="ms-status">✓ COMPLETE</div></div>
+      <div class="ms-card complete"><div class="ms-num">M2</div><div class="ms-label">Bugs &amp; Audio</div><div class="ms-status">✓ COMPLETE</div></div>
+      <div class="ms-card complete"><div class="ms-num">M3</div><div class="ms-label">Juice &amp; Polish</div><div class="ms-status">✓ COMPLETE</div></div>
+      <div class="ms-card complete"><div class="ms-num">M4</div><div class="ms-label">Best-of-3 Match</div><div class="ms-status">✓ COMPLETE</div></div>
+      <div class="ms-card complete"><div class="ms-num">M5</div><div class="ms-label">Share + Void Depth</div><div class="ms-status">✓ COMPLETE</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">⚙</div>
+      <div class="section-title">What Was Built — M1 to M5</div>
+    </div>
+    <ul class="feature-list">
+      <li class="done"><strong>M1 — Core Gameplay:</strong> Split-screen canvas, Penny entity (drop-in animation, alpha fade, copper draw), Bug entity (AI path, sine wobble, wing flicker), Particle pool (128 slots), Spawner (10 pennies, 40/40/20 zone distribution), Difficulty wave system, Collision resolution (bugs before pennies, no ghost hits), Title/Game/RoundEnd screens, Flash FX.</li>
+      <li class="done"><strong>M2 — Audio:</strong> Web Audio API synth.js — playCoin (C5→E5), playBug (noise), playMiss (sawtooth), playWin (4-note arpeggio), playBeep (countdown). 3-2-1 countdown, mute toggle with localStorage, score scale animation on change, penny expiry flicker, fixed penny despawn round-end logic.</li>
+      <li class="done"><strong>M3 — Juice:</strong> Particle bursts on penny collect and bug kill, screen flash on round end, seam divider line, audio polished and wired throughout. Score number bounce animation. Round end shows score comparison and bugs shot per player.</li>
+      <li class="done"><strong>M4 — Best-of-3:</strong> roundWins[0/1] tracking, roundHistory per-round snapshots, Match End screen (src/screens/matchEnd.js) with series winner, per-round score breakdown, win dots. Series dots on round end screen (● ○). Correct round progression through best-of-3 arc. main.js wired with MATCH_END case.</li>
+      <li class="done"><strong>M5 — Share + Void Depth:</strong> Share button on Match End (navigator.share → clipboard fallback). Share text includes scores and URL. src/fx/voidDepth.js — 60 semi-transparent drift particles (rgba 0.035 opacity), wrapped at canvas edges, registered at draw layer 0. initVoidDepth() called from main.js.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">🐛</div>
+      <div class="section-title">Known Bugs</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Active Issues at M5</div>
+      <p>
+        <span class="bug-tag">MINOR</span>Round end series dots show current wins after the round is recorded — but if the round is a tie, no win is awarded. A series can theoretically never reach 2 wins if every round ties (unlikely but possible).<br><br>
+        <span class="bug-tag">MINOR</span>Void depth particles initialize size on first draw call rather than on resize. If canvas resizes mid-session, particles may cluster in a sub-rectangle until wrapping corrects them.<br><br>
+        <span class="bug-tag">MINOR</span>Share button hit area uses approximate Y coordinates relative to dot positions — may miss on very small or very large screens where seam is not at expected position.<br><br>
+        <span class="bug-tag">COSMETIC</span>Title screen pennyPulseAge still increments by ~16ms per draw call (not real dt). Slight drift at non-60fps displays.<br><br>
+        <span class="bug-tag">COSMETIC</span>Mute button visually appears in both P1 and P2 HUD halves — correct behavior but could confuse new players who don't realize either corner works.
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">✦</div>
+      <div class="section-title">Architecture Overview</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Module Map</div>
+      <p>
+        <strong>src/state.js</strong> — Single source of truth. gameState, freshRoundState, resetRound, resetMatch, SCREENS enum, roundHistory, roundWins.<br><br>
+        <strong>src/main.js</strong> — RAF game loop. Screen state machine. Wires all screens. Calls initVoidDepth() at startup.<br><br>
+        <strong>src/renderer.js</strong> — DPR-aware canvas. registerLayer(fn, priority). Layers drawn lowest→highest each frame. Seam divider drawn as a layer.<br><br>
+        <strong>src/entities/penny.js</strong> — Penny class. Drop-in cubic ease, lifetime alpha fade, urgent flicker, hit test.<br><br>
+        <strong>src/entities/bug.js</strong> — Bug class. Direction vector toward target half center, sine wobble, wing flicker, miss at canvas boundary.<br><br>
+        <strong>src/entities/particle.js</strong> — 128-slot pool, spawnBurst(), gravity, alpha fade.<br><br>
+        <strong>src/systems/spawner.js</strong> — 10 pennies/round, 1.2s interval, max 3 on screen, 40/40/20 zone distribution.<br><br>
+        <strong>src/systems/difficulty.js</strong> — Bug wave escalation: speed 80→180px/s, interval 5s→2s, wave 3+ side spawns.<br><br>
+        <strong>src/systems/collision.js</strong> — Bugs resolved before pennies, per-touch entity resolution.<br><br>
+        <strong>src/systems/scoring.js</strong> — claimPenny, shootBug, missBug, isRoundOver.<br><br>
+        <strong>src/fx/flash.js</strong> — Half/full screen color flash queue.<br><br>
+        <strong>src/fx/voidDepth.js</strong> — 60 drift particles at layer 0 (M5).<br><br>
+        <strong>src/audio/synth.js</strong> — Web Audio API synth. All sounds synthesized, zero audio files.<br><br>
+        <strong>src/screens/title.js, game.js, roundEnd.js, matchEnd.js</strong> — Screen logic + draw layers.
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">→</div>
+      <div class="section-title">Upcoming — M6 to M10</div>
+    </div>
+    <ul class="feature-list">
+      <li>M6 — Bug Variants: gold bug (+5 pts, 1.5× speed), fast silver bug (2× speed), rarity system via bugType field</li>
+      <li>M7 — Penny Types: wheat penny (+3 pts), silver penny (+2 pts), per-type colors/sizes</li>
+      <li>M8 — Combo System: consecutive penny streak, +3 pts on 3+ combo, combo counter in HUD</li>
+      <li>M9 — Visual Polish: penny pulse, animated dots, center seam amber pulse, vignette, bug death text</li>
+      <li>M10 — Difficulty Tuning + Animated Report: grace period, round number display, score differential indicator</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">💡</div>
+      <div class="section-title">Recommendations &amp; Ideas</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Technical Recommendations</div>
+      <p>
+        Before M6: Refactor penny/bug scoring to support per-type point values cleanly — scoring.js currently uses fixed constants (PENNY_POINTS=1, BUG_KILL_POINTS=2) but M7 needs per-entity point lookups.<br><br>
+        voidDepth.js should track canvas dimensions at init and re-initialize particles on resize rather than relying on wrap-around correction.<br><br>
+        Consider moving round type selection (M16) to state.js — roundType field alongside chaosMode.
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">Design Ideas</div>
+      <p>
+        Gold bugs + wheat pennies in the same round create a high-risk/high-reward moment — a player chasing a +5 gold bug while ignoring 3 pennies is a real strategic decision.<br><br>
+        The void depth particles at 0.035 opacity are barely visible — intentionally so. Consider adding 3-5 slightly brighter copper floaters (0.08 opacity) that drift more slowly as an easter egg depth layer.<br><br>
+        Share result text could include emoji for quick scanning: "🪙 Penny Panic: P1 7 – P2 12".
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+// Void canvas animation
+const canvas = document.getElementById('void-canvas')
+const ctx = canvas.getContext('2d')
+
+let W, H, particles = []
+
+function resize() {
+  W = canvas.width = window.innerWidth
+  H = canvas.height = window.innerHeight
+}
+resize()
+window.addEventListener('resize', resize)
+
+function initParticles() {
+  particles = []
+  for (let i = 0; i < 80; i++) {
+    particles.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: 0.5 + Math.random() * 1.5,
+      vx: (Math.random() - 0.5) * 8,
+      vy: (Math.random() - 0.5) * 8,
+      copper: Math.random() < 0.08
+    })
+  }
+}
+initParticles()
+
+let last = performance.now()
+function frame(ts) {
+  const dt = Math.min(ts - last, 33) / 1000
+  last = ts
+  ctx.clearRect(0, 0, W, H)
+  for (const p of particles) {
+    p.x += p.vx * dt
+    p.y += p.vy * dt
+    if (p.x < -5) p.x = W + 5
+    if (p.x > W + 5) p.x = -5
+    if (p.y < -5) p.y = H + 5
+    if (p.y > H + 5) p.y = -5
+    ctx.beginPath()
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
+    ctx.fillStyle = p.copper ? 'rgba(200,146,42,0.12)' : 'rgba(255,255,255,0.035)'
+    ctx.fill()
+  }
+  requestAnimationFrame(frame)
+}
+requestAnimationFrame(frame)
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  for (const e of entries) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible')
+      observer.unobserve(e.target)
+    }
+  }
+}, { threshold: 0.1 })
+
+document.querySelectorAll('.section').forEach(s => observer.observe(s))
+</script>
+</body>
+</html>
