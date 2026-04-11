@@ -1,5 +1,85 @@
 {
-  "game": "game13",
+  "game": "Emberveil",
   "assets": [],
-  "reports": []
+  "reports": [
+    {
+      "milestone": "Pre-Game Design Report",
+      "date": "2026-04-10",
+      "summary": "Full game design report covering all systems, 14 classes, 4 acts, tech stack, 50-milestone roadmap, risks, and creative possibilities.",
+      "changes": [
+        "Game title established: Emberveil",
+        "Story arc planned: 4 acts — goblin frontier, volcanic wastes, Shattered Hell, Cosmic Void",
+        "14 playable classes designed with full skill sets",
+        "Combat system: auto-play turn-based, AoE groups, status effects",
+        "Equipment system: 10 slots, 4 rarities, 5 quality tiers",
+        "50-milestone roadmap authored",
+        "Tech stack: Vite + Vanilla JS, Canvas + HTML UI, PixelLab, OpenAI, Web Audio"
+      ],
+      "bugs": [],
+      "suggestions": [
+        "Daily Challenge Mode with URL-shareable seed",
+        "Companion personality traits affecting combat AI",
+        "Void-Touched items exclusive to New Game+",
+        "Hidden optional bosses behind side quest completion"
+      ],
+      "recommendations": [
+        "Test on real iPhone Safari from M2 onward",
+        "Build tooltip system in M6 as shared infrastructure",
+        "Version save format from day one",
+        "Invest in combat AI priority system early"
+      ],
+      "ideas": [
+        "Multi-ending story based on dialog choices",
+        "Companion quest lines with unique ability rewards",
+        "Boss phases with battlefield-reshaping mechanics"
+      ],
+      "notes": "Design session completed April 10, 2026. 50 milestones planned."
+    },
+    {
+      "milestone": "Milestone 1 — Foundation",
+      "date": "2026-04-10",
+      "summary": "Project bootstrapped with title screen cinematic, 14-class character builder, first town (Emberglen), and prototype combat system.",
+      "changes": [
+        "Vite + Vanilla JS project initialized on port 5213",
+        "ScreenManager push/pop/replace navigation",
+        "InputManager: unified mouse/touch/keyboard on canvas",
+        "AudioManager: Web Audio API ambient music (title/combat/town) + SFX",
+        "TitleScreen: cloud pan → logo drop cinematic → main menu. Ember particle system.",
+        "Main menu: New Game, Load Game, Settings (all 44px+ touch targets)",
+        "SettingsScreen: volume sliders, reduce-motion toggle, auto-advance dialog",
+        "LoadGameScreen: 3-slot save picker",
+        "SaveManager: localStorage versioned saves",
+        "CharacterBuilderScreen: class grid (14 classes with SVG icons) + attribute distribution (8 base + 10 free with live preview)",
+        "14 classes defined: Warrior, Paladin, Ranger, Rogue, Cleric, Bard, Mage, Necromancer, Warlock, Demon Hunter, Scavenger, Swashbuckler, Dragon Knight, Pyromancer",
+        "TownScreen: Emberglen with 5 service cards, welcome banner, party bar, gold display",
+        "CombatScreen: side-view canvas, turn order, hit/dodge/armor resolution, 5 stances, hit flash, particles, combat log, HUD bars, victory/defeat modals",
+        "Animated pre-game design report at /pre-game-report.html"
+      ],
+      "bugs": [
+        "Town services are placeholder modals — not functional",
+        "Character portraits are geometric SVG placeholders — PixelLab not yet wired",
+        "Combat sprites are geometric shapes, not sprite art",
+        "No map screen — combat accessed directly from town",
+        "Gamepad support not yet implemented"
+      ],
+      "suggestions": [
+        "Add hover tooltips to class cards showing skill preview",
+        "Animate hero cards flying into combat position",
+        "Floating damage numbers on hit",
+        "Screen shake on heavy hits (respecting reduce-motion)"
+      ],
+      "recommendations": [
+        "M2: Wire town services before adding more combat content",
+        "M3: Equipment and inventory before skill system",
+        "Start PixelLab art generation in M2-M3 as batch",
+        "Combat AI needs smarter targeting: lowest HP priority, use AoE for groups"
+      ],
+      "ideas": [
+        "Zone-specific ambient particles (ash for volcanic, embers for hell)",
+        "Combat entrance animation for heroes",
+        "Damage type color coding in combat log"
+      ],
+      "notes": "Full game loop skeleton established: title → builder → town → combat → town. Build: 63.5KB JS (17.4KB gzip). Zero runtime dependencies."
+    }
+  ]
 }
