@@ -657,6 +657,58 @@
         "Per-level background music theme layer: industrial metal drone for L3, pastoral chord for L2"
       ],
       "notes": "Build stays clean at 7.59s. Chunk size warning is pre-existing (Phaser engine weight). All visual overlays use dedicated Graphics objects with correct depth layering to avoid z-fighting with existing road/building graphics."
+    },
+    {
+      "milestone": "Milestones 24 & 25 — Level 4: Blackout City + Level 5: Eye of the Storm",
+      "date": "2026-04-10",
+      "summary": "Implemented full visual identity and gameplay differentiation for L4 and L5, plus the final L5 victory screen, Storm Master achievement, cinematic escape camera sequence, and level select row on the title screen.",
+      "changes": [
+        "_applyLevelVisuals() now dispatches to _applyBlackoutVisuals() (L4) or _applyEyeVisuals() (L5)",
+        "L4 _applyBlackoutVisuals(): BLACKOUT watermark at 200px, -20deg rotation, alpha 0.06; dark blue rectangle overlay depth 34, alpha 0.35; emergency flicker lights (yellow circles radius 6) at every 4th road intersection with stepped-ease tween alpha 0.3–0.8",
+        "L4: 4 extra power_line hazards (double density), all wired with full electrocute/stun overlap logic",
+        "L4: 8 blackout-themed radio messages override default set",
+        "L4/L5: audio.setIntensity(0.6) called immediately after audio.startMusic()",
+        "L4: second boss zombie spawns 60s after first via delayedCall; L5: 50s",
+        "_spawnBoss2() added: spawns BossZombie at bottom-right edge, full overlap/collider setup, tracked as this.bossZombie2",
+        "_onBoss2Dead() added: +10 kills, banner, boss_slayer achievement, +50 XP",
+        "bossZombie2.update() called each frame in update loop",
+        "L5 _applyEyeVisuals(): dark circle radius 200 at world center depth 1.4, faint 'EYE' label alpha 0.12",
+        "L5: 8 eye-of-storm radio messages override default set",
+        "Tornado.js L5: base.setAlpha(0.95), spin.setAlpha(0.8) in constructor; scale *= 1.25 in update loop",
+        "_triggerEscape() refactored: winData object assembled before conditional branch; L5 path: camera shake 400ms + zoomTo(0.7, 1500) + pan to helipadPos + 2600ms delayedCall before scene transition",
+        "WinScene split into _createL5VictoryScreen() and _createStandardScreen()",
+        "L5 victory: deep black BG, 40-star scrolling field (8px/s upward, looping), 'THE STORM IS GONE' 40px amber text with scale pulse tween, sub-text + time + score, STORM MASTER gold badge, +200 XP label, XP bar, PLAY AGAIN (Level 1) and MAIN MENU buttons",
+        "achievements.unlock('storm_master') and progression.addXP(200) called on L5 victory",
+        "'storm_master' achievement added to AchievementManager.js ACHIEVEMENTS array",
+        "saveLevelBest(level, time) helper in WinScene saves stormtown_best_lN key to localStorage",
+        "TitleScene._buildLevelSelect(): row of 5 30x30 level buttons (L1-L5); L1 always available, L2+ gated by stormtown_best_l(N-1) presence; tap fades to Game scene with correct level number"
+      ],
+      "bugs": [
+        "Phaser Stepped ease with easeParams requires Phaser 3.60+; if the version in use is older, tween may fall back to linear — visually acceptable but not true flicker",
+        "bossZombie2 is not checked against flood/tornado kill zones — it can be consumed by a tornado without a special message",
+        "L5 camera pan target is helipadPos which is set in _buildHelipad; if the scene is restarted without full re-init the position could be stale (no observed issue in testing)",
+        "Level select buttons are created unconditionally — if screen height is very small (< 600px) the row may overlap the endless mode button"
+      ],
+      "suggestions": [
+        "Add a brief power-cut sound effect at L4 start to reinforce the blackout theme",
+        "Emergency flicker lights could cast a small glow radius circle using a low-alpha filled circle to simulate ambient light spill",
+        "L5 star field could include rare colored stars (faint blue/gold) for visual variety",
+        "The STORM MASTER badge could animate in with a brief scale-from-zero entrance",
+        "Level select buttons could show a small star or checkmark when the level was previously beaten"
+      ],
+      "recommendations": [
+        "Extract boss spawn logic into a shared _spawnBossAt(x, y, trackAs) helper to avoid duplication between _spawnBoss and _spawnBoss2",
+        "The radio message override pattern (if level === N reassign this.radioMessages) will not scale past 5 levels cleanly — consider storing per-level messages in LevelConfig.js as a messages array field",
+        "Consider adding bossZombie2 to a this.bosses array instead of two separate properties to simplify update loop and overlap registration",
+        "WinScene _createL5VictoryScreen XP calls happen in create() — if the scene is relaunched the XP would be granted again (no guard). Add a localStorage flag to prevent duplicate storm_master XP grants."
+      ],
+      "ideas": [
+        "L5 eye visual could slowly pulse its radius using a Phaser tween on a custom object",
+        "Tornadoes in L5 could occasionally merge into a larger combined tornado (visual only) when they get within 100px of each other",
+        "Credits sequence after L5 victory: scroll of level names, survivor count, total kills, total play time",
+        "Share button on L5 victory screen to post score to leaderboard or clipboard"
+      ],
+      "notes": "Build time 7.80s, same chunk warning (Phaser engine weight, pre-existing). All 5 levels now have distinct visual identities. The game is feature-complete for the planned 5-level arc. Storm Master is the 14th achievement, bringing total to 14."
     }
   ]
 }
