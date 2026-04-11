@@ -293,6 +293,158 @@
       "recommendations": [],
       "ideas": [],
       "notes": "The vignette is extremely subtle at 0.15 opacity — exactly right for the void aesthetic. The seam amber pulse communicates contested territory without distracting from gameplay."
+    },
+    {
+      "milestone": "Milestone 10 — Difficulty Tuning",
+      "date": "2026-04-10",
+      "summary": "Wave 1 bug interval tuned to 4s, 3s grace period before first bug, round number display in HUD, score differential ↑N indicator.",
+      "changes": [
+        "BUG_WAVE1_INTERVAL reduced from 5000ms to 4000ms in constants.js",
+        "BUG_GRACE_PERIOD=3000ms constant added",
+        "roundAge tracker added to difficulty.js; updateDifficulty() returns early during grace period",
+        "resetDifficulty() resets roundAge to 0",
+        "Round number 'R1'/'R2'/'R3' drawn in HUD center just above seam",
+        "Score differential indicator: if leading by 3+, show '↑N' in gold near player score",
+        "Animated HTML report generated at public/demo-assets/report-m10.html covering M1-M10"
+      ],
+      "bugs": [],
+      "suggestions": [
+        "Grace period could be communicated visually — brief 'get ready!' text in HUD during first 3s"
+      ],
+      "recommendations": [],
+      "ideas": [],
+      "notes": "The 3s grace period makes the opening feel less chaotic. Players can see the first pennies before bugs arrive."
+    },
+    {
+      "milestone": "Milestone 11 — Chaos Mode",
+      "date": "2026-04-10",
+      "summary": "Chaos Mode unlocks after match end — both players tap within 500ms to enter a single chaos round with 20 pennies, 2× bug speed, and 5s penny lifetime.",
+      "changes": [
+        "gameState.chaosMode bool + showChaosPrompt bool added to state.js",
+        "resetMatch() clears both chaos flags",
+        "spawner.js: pennyTarget=20 in chaos, maxOnScreen=5",
+        "Penny.constructor accepts chaosMode param — uses CHAOS_LIFETIME=5000ms / CHAOS_FADE_START=4000ms",
+        "difficulty.js: bug speed multiplied by 2× in chaos mode",
+        "game.js: pennyTarget from gameState.chaosMode, penny dot count 20 in chaos",
+        "matchEnd.js: enterMatchEnd sets showChaosPrompt=true; both-player simultaneous tap (within 500ms) detected per half, launches chaos round",
+        "Match end screen shows 'CHAOS?' in red with instructions when chaosMode not yet activated",
+        "HUD: 'CHAOS' in red at center instead of round number when chaos active"
+      ],
+      "bugs": [
+        "Chaos mode never clears if player enters chaos and then chaos round ends — round end sends to ROUND_END not MATCH_END, losing chaos state. Need to check: after chaos round, should it go to match end or regular round end?",
+        "20 penny dots in HUD overflow on narrow screens — total width may exceed canvas width"
+      ],
+      "suggestions": [
+        "Brief red flash on chaos entry would feel satisfying",
+        "Chaos mode could have a distortion/noise audio cue on entry (M13 feature)"
+      ],
+      "recommendations": [
+        "Fix chaos round end flow: after chaos round ends, always go to MATCH_END (not round end series) since it's a bonus single round"
+      ],
+      "ideas": [],
+      "notes": "Chaos mode is a fun post-match bonus. The simultaneous tap mechanic creates a moment of social interaction between players."
+    },
+    {
+      "milestone": "Milestone 12 — Tutorial First-Play Overlay",
+      "date": "2026-04-10",
+      "summary": "One-time tutorial overlay shown during first game countdown — penny and bug icons with point labels, fades after 4s or on first tap.",
+      "changes": [
+        "gameState.showTutorial bool added to state.js",
+        "enterGame() checks localStorage 'pp_played' — sets showTutorial true on first play, writes key",
+        "tutorialTimer tracked in game.js, resets each enterGame",
+        "Tutorial dismissed after TUTORIAL_DURATION=4000ms or on any tap event",
+        "drawTutorial() draws penny icon (+1, tap pennies) and bug icon (+2, shoot bugs, miss -1) in each half",
+        "Tutorial alpha fades out over last portion of duration",
+        "Tutorial drawn on top of countdown overlay so both are visible simultaneously"
+      ],
+      "bugs": [
+        "Tutorial draws a simplified bug ellipse, not the actual Bug.draw() — may look inconsistent with real bugs"
+      ],
+      "suggestions": [
+        "Tutorial arrow indicators ('→ tap here') pointing at actual in-game entities would be more intuitive",
+        "Show tutorial only on first round of a session, not every new game"
+      ],
+      "recommendations": [],
+      "ideas": [],
+      "notes": "Simple and effective. The fade-on-tap pattern ensures players who already understand can dismiss immediately."
+    },
+    {
+      "milestone": "Milestone 13 — Audio Improvements",
+      "date": "2026-04-10",
+      "summary": "Audio overhaul: positional panning, two-oscillator coin chord, filtered noise crunch for bugs, 8-note match win fanfare, chaos entry cluster, combo ascending tones.",
+      "changes": [
+        "playCoin(pan) now accepts stereo pan (-0.4 to +0.4): P1 collects pan -0.3, P2 pans +0.3, using StereoPannerNode",
+        "Coin uses two simultaneous oscillators (C5+E5 chord) for richer sound",
+        "playBug() now uses lowpass filter at 800Hz cutoff for 'crunch' texture",
+        "playMiss() uses sub-bass 60Hz sine + sawtooth 200Hz simultaneously",
+        "playMatchWin() added: 8-note ascending C major scale at 0.4 gain over 1.2s",
+        "playChaosEntry() added: sawtooth cluster [100-600Hz] + noise burst",
+        "playCombo(level) added: plays E5 at x2, G5 at x3, C6 at x4+",
+        "playDotTick() added: 1200Hz soft tick for penny counter dot animation (M9)",
+        "All gains normalized: coin 0.18/0.12, bug 0.25, miss 0.3/0.12, win 0.3",
+        "game.js wired: playCoin(pan) with playerIdx-based pan, playCombo(combo) after claim",
+        "matchEnd.js wired: playMatchWin() on enterMatchEnd, playChaosEntry() on chaos launch"
+      ],
+      "bugs": [
+        "StereoPannerNode may not be available in very old browsers — StereoPanner falls back gracefully (no crash, mono audio)",
+        "playDotTick not yet wired to actual dot animation — function exists but uncalled"
+      ],
+      "suggestions": [
+        "Ambient void hum (40Hz sine at 0.03 gain) while game is active would add subperceptual atmosphere"
+      ],
+      "recommendations": [],
+      "ideas": [],
+      "notes": "The two-oscillator coin chord is a significant improvement. The positional panning is subtle but correct — P1 pennies slightly left, P2 slightly right."
+    },
+    {
+      "milestone": "Milestone 14 — Seam Tension Mechanics",
+      "date": "2026-04-10",
+      "summary": "CONTESTED text at seam on center-zone penny spawn, CLASH! burst text on simultaneous taps, seam win tracking per player, seam wins shown on round end.",
+      "changes": [
+        "round.seam object added to freshRoundState: contestedTimer, seamWins[2], clashTexts[]",
+        "spawner.js sets round.seam.contestedTimer=1000ms on center-zone penny spawn (in addition to existing seamPulseTimer)",
+        "collision.js: clash detection — if second event hits already-claimed penny entity, pushes type:'clash' result",
+        "game.js: clash results spawn CLASH! text at penny location, first registrant still wins the penny",
+        "Seam wins tracked: penny claimed within 60px of seamY increments seamWins[playerIdx]",
+        "CONTESTED text drawn at seamY-14 with amber color, fades over 300ms",
+        "CLASH! text drawn in red #ff4444, floats up 20px, fades over 500ms",
+        "Round end screen now shows: '${bugsShot} bugs shot · ${seamWins} seam wins'"
+      ],
+      "bugs": [
+        "Clash detection fires when any second event touches an already-claimed entity — including the same player tapping the same penny twice in rapid succession",
+        "seam.clashTexts naming shadows local variable if misnamed"
+      ],
+      "suggestions": [
+        "Clash detection window could require both taps to be within 16ms for true simultaneous detection rather than same-frame detection"
+      ],
+      "recommendations": [],
+      "ideas": [],
+      "notes": "Seam tension is now visually communicated. CONTESTED and CLASH! are clear and brief, not intrusive."
+    },
+    {
+      "milestone": "Milestone 15 — Stats Screen",
+      "date": "2026-04-10",
+      "summary": "Match stats screen on match end, career stats in localStorage, career numbers on title screen, animated M15 report.",
+      "changes": [
+        "gameState.matchStats: penniesCollected[2], bugsShot[2], seamWins[2], biggestCombo[2]",
+        "resetMatch() resets matchStats",
+        "scoring.js: claimPenny increments matchStats.penniesCollected and updates biggestCombo",
+        "scoring.js: shootBug increments matchStats.bugsShot",
+        "matchEnd.js: showStats local bool, toggle on tap of [ STATS ] button area",
+        "drawHalfStats() draws 4 stats rows per player half in table layout",
+        "saveCareerStats() writes 'pp_career' to localStorage on match end entry",
+        "title.js: reads 'pp_career', shows games count + pennies collected per player half",
+        "report-m15.html generated covering M1-M15"
+      ],
+      "bugs": [
+        "matchStats.seamWins not being populated — seamWins tracking in game.js uses round.seam.seamWins, not gameState.matchStats.seamWins"
+      ],
+      "suggestions": [],
+      "recommendations": [
+        "Fix seamWins accumulation: game.js should also increment gameState.matchStats.seamWins when seam penny is claimed"
+      ],
+      "ideas": [],
+      "notes": "Stats tracking gives the game longevity. Career numbers on title create a visible sense of progression."
     }
   ]
 }

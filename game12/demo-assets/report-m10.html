@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PENNY PANIC — M1-M10 Report</title>
+<style>
+  :root {
+    --bg: #000000;
+    --bg-card: #0a0a0a;
+    --copper: #c8922a;
+    --copper-bright: #f5d06e;
+    --copper-dim: #7a5510;
+    --white: #ffffff;
+    --white-dim: rgba(255,255,255,0.5);
+    --white-muted: rgba(255,255,255,0.2);
+    --white-faint: rgba(255,255,255,0.06);
+    --border: rgba(200,146,42,0.18);
+    --border-bright: rgba(200,146,42,0.5);
+    --glow: 0 0 20px rgba(200,146,42,0.15);
+    --red: #ff2244;
+    --green: #44ff88;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: ui-monospace, 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  #void-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+  .wrapper { position: relative; z-index: 2; max-width: 860px; margin: 0 auto; padding: 0 20px 80px; }
+  .hero { text-align: center; padding: 80px 0 48px; }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 0.25em; color: var(--white-dim); text-transform: uppercase; margin-bottom: 20px; animation: fadeUp 0.6s ease both; }
+  .hero-title { font-size: clamp(36px, 8vw, 64px); font-weight: 900; letter-spacing: 0.05em; line-height: 1; color: var(--white); margin-bottom: 10px; animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-title span { color: var(--copper-bright); }
+  .hero-subtitle { font-size: 15px; color: var(--white-dim); margin-bottom: 32px; animation: fadeUp 0.6s 0.2s ease both; }
+  .penny-icon { display: inline-block; width: 56px; height: 56px; border-radius: 50%; background: radial-gradient(circle at 38% 35%, var(--copper-bright), var(--copper) 55%, var(--copper-dim)); box-shadow: 0 0 30px rgba(200,146,42,0.4); animation: fadeUp 0.6s 0.3s ease both, pennySpin 6s linear infinite 1s; margin-bottom: 30px; }
+  @keyframes pennySpin { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+  .hero-meta { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; animation: fadeUp 0.6s 0.35s ease both; }
+  .meta-item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .meta-label { font-size: 10px; letter-spacing: 0.15em; color: var(--white-muted); text-transform: uppercase; }
+  .meta-value { font-size: 13px; color: var(--copper-bright); font-weight: 700; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .section { margin-top: 56px; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .section.visible { opacity: 1; transform: translateY(0); }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .section-icon { width: 32px; height: 32px; border-radius: 6px; background: var(--white-faint); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .section-title { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--copper); font-weight: 700; }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin-bottom: 12px; transition: border-color 0.2s; }
+  .card:hover { border-color: var(--border-bright); box-shadow: var(--glow); }
+  .card-title { font-size: 13px; font-weight: 700; color: var(--copper-bright); margin-bottom: 8px; }
+  .card p { color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.7; }
+  .ms-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .ms { background: var(--white-faint); border: 1px solid var(--border); border-radius: 6px; padding: 12px; text-align: center; }
+  .ms.done { border-color: var(--copper-dim); }
+  .ms-n { font-size: 10px; color: var(--white-muted); letter-spacing: 0.1em; }
+  .ms-l { font-size: 12px; font-weight: 700; color: var(--copper-bright); margin-top: 4px; }
+  .ms-s { font-size: 10px; color: var(--green); margin-top: 4px; }
+  .feat-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .feat-list li { padding: 8px 12px; background: var(--white-faint); border-left: 2px solid var(--copper-dim); border-radius: 3px; font-size: 13px; color: rgba(255,255,255,0.7); }
+  .feat-list li::before { content: '▸ '; color: var(--copper); }
+  .bug-tag { display: inline-block; background: rgba(255,34,68,0.1); border: 1px solid rgba(255,34,68,0.3); color: #ff6688; font-size: 11px; padding: 1px 6px; border-radius: 3px; margin-right: 4px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 8px 12px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper); border-bottom: 1px solid var(--border); }
+  td { padding: 8px 12px; color: rgba(255,255,255,0.7); border-bottom: 1px solid rgba(255,255,255,0.04); }
+  td:first-child { color: var(--copper-bright); font-weight: 700; }
+</style>
+</head>
+<body>
+<canvas id="void-canvas"></canvas>
+<div class="wrapper">
+  <div class="hero">
+    <div class="hero-eyebrow">Milestone Report · M1–M10 · Halfpoint</div>
+    <div class="hero-title">PENNY <span>PANIC</span></div>
+    <div class="hero-subtitle">10 milestones complete. The void is very much in charge.</div>
+    <div class="penny-icon"></div>
+    <div class="hero-meta">
+      <div class="meta-item"><span class="meta-label">Report</span><span class="meta-value">M10</span></div>
+      <div class="meta-item"><span class="meta-label">Date</span><span class="meta-value">2026-04-10</span></div>
+      <div class="meta-item"><span class="meta-label">Milestones Done</span><span class="meta-value">10 / 25</span></div>
+      <div class="meta-item"><span class="meta-label">Source Files</span><span class="meta-value">~20</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-icon">✦</div><div class="section-title">Milestone Status — M1 through M10</div></div>
+    <div class="ms-grid">
+      <div class="ms done"><div class="ms-n">M1</div><div class="ms-l">Core</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M2</div><div class="ms-l">Audio</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M3</div><div class="ms-l">Juice</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M4</div><div class="ms-l">Match</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M5</div><div class="ms-l">Share</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M6</div><div class="ms-l">Bug Types</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M7</div><div class="ms-l">Penny Types</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M8</div><div class="ms-l">Combo</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M9</div><div class="ms-l">Polish</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M10</div><div class="ms-l">Tuning</div><div class="ms-s">✓</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-icon">⚙</div><div class="section-title">Entity & Scoring Summary</div></div>
+    <table>
+      <tr><th>Entity</th><th>Type</th><th>Value</th><th>Notes</th></tr>
+      <tr><td>Penny (normal)</td><td>normal</td><td>+1 pt</td><td>75% spawn rate</td></tr>
+      <tr><td>Penny (silver)</td><td>silver</td><td>+2 pts</td><td>15%, silver color #C0C0C0</td></tr>
+      <tr><td>Penny (wheat)</td><td>wheat</td><td>+3 pts</td><td>10%, larger, dark copper #8B4513</td></tr>
+      <tr><td>Bug (normal)</td><td>normal</td><td>+2 pts</td><td>75%, base speed</td></tr>
+      <tr><td>Bug (gold)</td><td>gold</td><td>+5 pts</td><td>15%, 1.5× speed, golden draw</td></tr>
+      <tr><td>Bug (fast)</td><td>fast</td><td>+2 pts</td><td>10%, 2× speed, 0.75× size</td></tr>
+      <tr><td>Bug miss</td><td>—</td><td>−1 pt</td><td>Breaks combo too</td></tr>
+      <tr><td>Combo x3+</td><td>—</td><td>3 pts</td><td>Overrides penny base value</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-icon">📋</div><div class="section-title">Full Feature List M1–M10</div></div>
+    <ul class="feat-list">
+      <li>Split-screen canvas, P2 rotated 180°, dynamic seam (canvasH/2)</li>
+      <li>Penny entity: drop-in cubic ease, lifetime 8s, alpha fade, urgent flicker, pulse animation ±3%</li>
+      <li>Penny types: wheat (+3, 1.2× radius, #8B4513), silver (+2, #C0C0C0), normal (+1)</li>
+      <li>Bug entity: sine wobble, wing flicker, direction AI toward target half center, miss detection</li>
+      <li>Bug types: gold (+5, 1.5× speed, golden), fast (+2, 2× speed, 0.75× size), normal (+2)</li>
+      <li>Particle pool 128 slots, spawnBurst with gravity + alpha fade</li>
+      <li>Spawner: 10 pennies/round, 1.2s interval, max 3 on screen, 40/40/20 zone distribution</li>
+      <li>Difficulty waves: speed 80→180px/s, interval 4s→2s, wave 3+ side spawns, 3s grace period (M10)</li>
+      <li>Round number display (R1/R2/R3) in HUD center (M10)</li>
+      <li>Score differential indicator ↑N when leading by 3+ (M10)</li>
+      <li>Collision: bugs resolved before pennies, per-touch, no ghost hits</li>
+      <li>Combo system: consecutive penny streak, x3+ = 3pts, breaks on miss or 4s timeout, HUD counter</li>
+      <li>Burst color: normal gold, x2 orange, x3+ red</li>
+      <li>Web Audio API synth: playCoin, playBug, playMiss, playWin, playBeep, playPennyAppear</li>
+      <li>3-2-1 countdown per round, GO! display</li>
+      <li>Score number bounce animation on change (1.35× → 1× over 200ms)</li>
+      <li>Mute toggle, persisted to localStorage</li>
+      <li>Best-of-3 match system: roundWins, roundHistory, Match End screen</li>
+      <li>Series dots on round end (● ○ showing wins)</li>
+      <li>Share result: navigator.share → clipboard fallback</li>
+      <li>Void depth layer: 60 particles at 0.035 opacity, drift, wrap</li>
+      <li>Vignette overlay: radial gradient 0→0.15 alpha at edges</li>
+      <li>Seam amber pulse: 400ms on center-zone penny spawn</li>
+      <li>Bug death × text: floats up and fades over 300ms</li>
+      <li>Flash FX: half/full screen color flash</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-icon">🐛</div><div class="section-title">Known Bugs at M10</div></div>
+    <div class="card">
+      <p>
+        <span class="bug-tag">MINOR</span>Death text variable named `dt` shadows outer dt in game.js tick loop — works but confusing naming.<br><br>
+        <span class="bug-tag">MINOR</span>Wheat penny at 3pts overrides combo bonus — collecting wheat at x3+ combo is the same as collecting at x1.<br><br>
+        <span class="bug-tag">MINOR</span>Series tie-round doesn't award a win — could theoretically drag a best-of-3 indefinitely if every round ties.<br><br>
+        <span class="bug-tag">MINOR</span>Penny pulse uses Date.now() directly — all pennies pulse in phase. Id-based offset would look better.<br><br>
+        <span class="bug-tag">COSMETIC</span>Title screen pennyPulseAge uses 16ms hardcoded increment, not real dt.
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-icon">→</div><div class="section-title">Next 5 Milestones — M11–M15</div></div>
+    <ul class="feat-list">
+      <li>M11 — Chaos Mode: 20 pennies, 2× bug speed, 5s lifetime — unlocked by tapping match end simultaneously</li>
+      <li>M12 — Tutorial First-Play: one-time localStorage-gated tutorial overlay with penny/bug labels</li>
+      <li>M13 — Audio Improvements: positional stereo panning, match win fanfare, combo sounds, volume normalization</li>
+      <li>M14 — Seam Tension: CONTESTED text, clash detection for simultaneous taps, seam win tracking</li>
+      <li>M15 — Stats Screen + Report: match stats tab, lifetime localStorage stats, career numbers on title</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-icon">💡</div><div class="section-title">Technical Recommendations</div></div>
+    <div class="card">
+      <p>
+        Before M11: add chaosMode bool to gameState — multiple systems will need to read it (spawner, difficulty, HUD).<br><br>
+        Before M13: normalize audio gain levels — current coin is louder than miss. All tones should feel balanced.<br><br>
+        Before M15: design the stats data structure — seam wins, biggest combo, pennies per type — these need tracking in round state from M14.<br><br>
+        Variable naming: rename dt2 / dt shadow in game.js tick loop before it causes a real bug.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('void-canvas')
+const ctx = canvas.getContext('2d')
+let W, H, particles = []
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight }
+resize(); window.addEventListener('resize', resize)
+function init() {
+  particles = []
+  for (let i = 0; i < 90; i++) particles.push({ x: Math.random()*W, y: Math.random()*H, r: 0.4+Math.random()*1.6, vx: (Math.random()-.5)*10, vy: (Math.random()-.5)*10, copper: Math.random()<0.06 })
+}
+init()
+let last = performance.now()
+function frame(ts) {
+  const dt = Math.min(ts-last,33)/1000; last = ts
+  ctx.clearRect(0,0,W,H)
+  for (const p of particles) {
+    p.x+=p.vx*dt; p.y+=p.vy*dt
+    if(p.x<-5)p.x=W+5; if(p.x>W+5)p.x=-5; if(p.y<-5)p.y=H+5; if(p.y>H+5)p.y=-5
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
+    ctx.fillStyle = p.copper ? 'rgba(200,146,42,0.1)' : 'rgba(255,255,255,0.03)'
+    ctx.fill()
+  }
+  requestAnimationFrame(frame)
+}
+requestAnimationFrame(frame)
+const obs = new IntersectionObserver(entries => { for(const e of entries) { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)} }},{threshold:0.1})
+document.querySelectorAll('.section').forEach(s=>obs.observe(s))
+</script>
+</body>
+</html>
