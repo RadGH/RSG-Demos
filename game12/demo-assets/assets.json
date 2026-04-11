@@ -1,0 +1,101 @@
+{
+  "game": "game12",
+  "assets": [],
+  "reports": [
+    {
+      "milestone": "Pre-Release — Design Complete",
+      "date": "2026-04-10",
+      "summary": "Game concept locked: Penny Panic is a 2-player same-device split-screen competitive tap game where players race to collect 10 pennies while shooting bugs in an infinite void.",
+      "changes": [
+        "Game concept defined by user: 2 players, 10 pennies, bug shooting, the void",
+        "Full game design document written — game.md populated with all entity definitions, systems, screen flow, audio design, visual design, and performance targets",
+        "4-milestone implementation plan written and tracked in memory/future_milestones.md",
+        "Vite project initialized on port 5212",
+        "Folder structure and module contracts defined: state.js, input.js, renderer.js, entities/, systems/, screens/, audio/, fx/",
+        "The Void aesthetic established as a design principle: pure #000000 background, no decorative elements, maximum contrast for game objects",
+        "Penny spawn distribution strategy: 40% P1 half / 40% P2 half / 20% center seam (contested territory)",
+        "Bug difficulty curve designed: wave 1 = 80px/s, caps at 180px/s by wave 6, escalating every 20 seconds",
+        "Audio design planned: zero audio files, all sounds via Web Audio API OscillatorNode + BufferSourceNode",
+        "Multitouch architecture planned: input.js processes TouchList, collision.js resolves all touches before advancing entity state",
+        "Best-of-3 round system planned for M4 with native share sheet integration"
+      ],
+      "bugs": [
+        "No bugs — pre-implementation report. See milestone reports for runtime bugs."
+      ],
+      "suggestions": [
+        "Center seam penny spawns (20% of total) create natural flashpoints — consider whether the seam zone should pulse visually to signal a contested penny is available",
+        "P2's rotated 180° HUD is elegant but may cause disorientation on first play — consider a brief tutorial overlay on first launch",
+        "Bug despawn-without-penalty if both players miss (vs guaranteed -1 pt) could reduce feel-bad moments in early rounds",
+        "A 3-second countdown before each round starts would give players time to position their fingers",
+        "Consider a 'practice mode' where bugs are disabled so new players can learn penny mechanics first"
+      ],
+      "recommendations": [
+        "Build state.js first — every other module depends on it. Define the full shape of gameState before writing any entity or system code.",
+        "Get multitouch working correctly in input.js before implementing any hit detection — it's the most fragile part of M1 and wrong assumptions compound across all systems",
+        "Use a fixed-timestep game loop from the start (accumulator pattern) — variable delta can cause physics drift and makes bug speed curves non-deterministic",
+        "Pre-allocate the particle pool in M1 even if particles aren't used yet — retrofitting a pool into an allocating system is harder than starting with one",
+        "Test on a real iPhone before M1 is 'done' — mobile Safari's touch coordinate model has subtle differences from desktop mouse emulation that matter for split-screen",
+        "For the void aesthetic: resist the temptation to add any background element. The emptiness is load-bearing. If the game 'feels empty' the solution is better game feel (particles, audio, screen flash), not visual noise."
+      ],
+      "ideas": [
+        "CHAOS MODE: penny count doubles to 20, bugs spawn 3× faster — unlock after winning a best-of-3",
+        "SUDDEN DEATH round: first player to miss a bug loses — triggered if series reaches 2-2 (for a best-of-5 expansion)",
+        "BUG VARIANTS: rare golden bug worth +5 pts, fast silver bug that weaves, slow fat bug that takes 2 taps",
+        "PENNY TYPES: rare 'wheat penny' worth 3 pts, 'silver penny' worth 2 pts — same tap mechanic, different glow color",
+        "VOID EVENTS: rare cosmetic — a penny falls impossibly slow, a bug spirals in, the void 'breathes' (barely perceptible scale pulse on all objects simultaneously)",
+        "REMATCH BUTTON with animated score history comparison across sessions (localStorage)"
+      ],
+      "notes": "The game's hook is the tension between two simultaneous activities: racing your opponent for pennies (tapping the same side of the screen as them) while also defending your own half from bugs. The void aesthetic is not laziness or minimalism for its own sake — it maximizes the cognitive load of the game objects by giving them zero competition for visual attention. Every design decision should serve that tension. The name 'Penny Panic' is a working title — something weirder and more specific to the void theme might emerge during implementation."
+    },
+    {
+      "milestone": "Milestone 1 — Core Gameplay",
+      "date": "2026-04-10",
+      "summary": "Fully playable round: two players compete for 10 pennies on a split-screen canvas with bug entities, score tracking, particle effects, screen flashes, and round end screen.",
+      "changes": [
+        "Vite project initialized on port 5212, vanilla JS (no TypeScript)",
+        "index.html: single canvas element, full-viewport CSS, portrait meta, touch-action:none",
+        "src/constants.js: all magic numbers defined — canvas dims, penny/bug specs, colors, timing",
+        "src/state.js: single gameState object as source of truth; freshRoundState(), resetRound(), announceScore()",
+        "src/input.js: touchstart + mousedown listeners, multi-touch via changedTouches, canvas coordinate conversion",
+        "src/renderer.js: DPR-aware canvas, clear-to-void each frame, layered draw fn registration by priority, dynamic seam line",
+        "src/entities/penny.js: Penny class with drop-in animation (ease-out cubic), alpha fade on lifetime expiry, copper+highlight draw, circular hit test",
+        "src/entities/bug.js: Bug class with direction vector to target half center, sinusoidal wobble, wing flicker (8-frame alternate), canvas-drawn body/legs/antennae, miss detection at canvas boundary",
+        "src/entities/particle.js: pre-allocated pool of 128 particles, spawnBurst(), gravity, alpha fade",
+        "src/systems/spawner.js: 10 pennies/round, 1.2s intervals, max 3 on screen, 40/40/20 zone distribution, min-distance check",
+        "src/systems/difficulty.js: bug wave escalation — speed 80→180px/s, interval 5s→2s, wave 3+ side edge spawns",
+        "src/systems/collision.js: bugs resolved before pennies, per-touch entity resolution, no ghost hits",
+        "src/systems/scoring.js: claimPenny, shootBug, missBug, isRoundOver",
+        "src/fx/flash.js: half-screen or full-screen color flash with linear alpha fade, multiple flashes queue correctly",
+        "src/screens/title.js: PENNY PANIC title both halves (P2 rotated 180°), pulsing center penny, tap to start",
+        "src/screens/game.js: full tick loop, penny+bug update, collision resolution, particle spawning on hits, round-over detection",
+        "src/screens/roundEnd.js: winner banner, side-by-side scores, bugs shot per player, tap-to-continue with 1.2s debounce",
+        "src/main.js: RAF game loop with 50ms dt cap, DPR-aware canvas, screen.orientation.lock, screen state machine",
+        "All coordinates dynamic (canvasH/2 seam) — works on any viewport, not hardcoded to 393×852"
+      ],
+      "bugs": [
+        "Penny counter dots show penniesResolved which counts both claimed AND despawned pennies — could be confusing if pennies expire without being collected (appears as claimed)",
+        "Bug wobble uses perpendicular drift accumulation per frame rather than absolute position, causing slight path drift over time — not noticeable in practice but technically incorrect",
+        "Title screen pennyPulseAge increments by hardcoded 16ms per draw call rather than using actual dt — will drift at non-60fps",
+        "P2 HUD label says 'P2' but the penny dots are shown in P1's rotated view — both halves show the same penniesResolved count which is correct, but visually redundant",
+        "Round end 'tap to continue' restarts a full new round (resets round state) — no best-of-3 series tracking yet (M4 feature)"
+      ],
+      "suggestions": [
+        "Add a 3-2-1 countdown before pennies start spawning — gives players time to get their thumbs in position",
+        "Penny despawn should probably NOT count as 'resolved' for scoring purposes — currently a penny timing out ends the round faster than expected",
+        "Consider showing which half a newly spawned penny belongs to with a brief flash at the seam — center seam pennies are natural conflict zones",
+        "The round end score display would benefit from a brief winner celebration animation before 'tap to continue' appears",
+        "Bug hit detection should prioritize bugs closest to the player boundary — bugs almost at the wall are more urgent"
+      ],
+      "recommendations": [
+        "Before M2, separate penny despawn tracking from penniesResolved — despawned pennies should not advance the round-end counter, only claimed pennies should. Otherwise rounds can end before all pennies were competed for.",
+        "Fix title screen pulse to use actual dt passed through from main loop rather than hardcoded 16ms increment",
+        "Consider adding a brief 'invincibility' window after a bug miss so one bug doesn't chain-penalty into multiple deductions"
+      ],
+      "ideas": [
+        "Visual indicator when a penny is about to expire (flash more urgently as lifetime approaches 8s)",
+        "Sound design for M3: the void should be near-silent except for game events — no ambient music, just sharp precise audio cues"
+      ],
+      "notes": "M1 is fully playable. The void aesthetic is working — pure black background, copper pennies, white bugs, everything immediately readable. The split-screen layout with P2 rotated 180° works well for same-device multiplayer. Main architectural win: all seam calculations are dynamic (canvasH/2) so the game works correctly on any screen size. Main outstanding issue before M2: the penny despawn/resolve tracking logic should be tightened up."
+    }
+  ]
+}
