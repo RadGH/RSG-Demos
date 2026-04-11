@@ -116,7 +116,7 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
 <main class="games-list" id="games-list">
 
 <section class="game-section" id="game13"
-  data-key="game13" data-date="2026-04-11" data-milestone="34" data-title="Emberveil"
+  data-key="game13" data-date="2026-04-11" data-milestone="36" data-title="Emberveil"
   style="--ga:#e8a020;--gab:#f0c060;--gad:#8a5010;--gg:rgba(232,160,32,0.3);--gbg:#0a0608;--gt:#f0e8d8;--gtm:#8a7a6a;--gbo:#f0e8d8;--gbr:rgba(232,160,32,0.3);--gpf:0 0 12px #e8a020, 0 0 28px #8a5010, 0 0 56px rgba(232,160,32,0.2);--gpt:0 0 20px #f0c060, 0 0 40px #e8a020, 0 0 80px rgba(240,192,96,0.3);background:#0a0608">
   <div class="game-bg">
     <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(192,64,48,0.12) 0%, transparent 70%), linear-gradient(180deg, #0a0608 0%, #1a1218 100%)"></div>
@@ -127,19 +127,20 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
     <div class="game-frame" style="--glow:rgba(232,160,32,0.3)">
       <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
       <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
-      <span class="frame-top">Milestone 34</span>
+      <span class="frame-top">Milestone 36</span>
       <span class="frame-bot">A High Fantasy Party RPG</span>
       <div class="game-eyebrow">A High Fantasy Party RPG</div>
       <h2 class="game-title">Emberveil</h2>
       <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
       <div class="game-badges">
-        <span class="gbadge gbadge-m">M34</span>
+        <span class="gbadge gbadge-m">M36</span>
         
         <span class="gbadge gbadge-date">2026-04-11</span>
       </div>
       <p class="game-desc">A high fantasy party RPG. Build a party of up to 8 heroes and companions, journey across four acts — goblin frontier, volcanic wastelands, the Shattered Hell, and the Cosmic Void — in cinematic auto-play combat against hordes of enemies. 14 playable classes, procedurally generated equipment, and a story-driven journey to stop the corruption tearing worlds apart.</p>
       <a href="./game13/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">We are creating a game involving a party of 1-4 heroes and up to 8 characters including pets. The game involves combat against hordes of enemies from just one big enemy to 50 small enemies. The combat takes place a round at a time. All characters in combat roll a turn order and auto-plays using the most appropriate skills available... [full prompt as described in design session April 2026]</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">• M34 (2026-04-11): Bug fixes — alreadyVisited check now captured BEFORE GameState.visitNode() (was always true causing every combat to give a random encounter); ctx.roundRect() replaced with ctx.rect() to fix silent crash on iOS &lt; 16 that prevented character rendering in combat; pause button emoji replaced with inline SVG icon.
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">We are creating a game involving a party of 1-4 heroes and up to 8 characters including pets. The game involves combat against hordes of enemies from just one big enemy to 50 small enemies. The combat takes place a round at a time. All characters in combat roll a turn order and auto-plays using the most appropriate skills available... [full prompt as described in design session April 2026]</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">• M35 (2026-04-11): Game info website SPA at /game-info/ — 10-section showcase (hero landing with ember particles, story lore, 14-class grid with role filter, combat system infographic, 4-act journey map, equipment/crafting overview, companions, development timeline, sprite gallery). 8 new PixelLab sprites: Warlock, Demon Hunter, Scavenger, Swashbuckler, Dragon Knight (heroes) + Goblin Warlord, Void Shade, Ash Wraith (enemies) — all 4-direction, wired to SPRITE_MAP. Combat mobile portrait zoom (scale factor based on canvas height + unit count). Disable Textures toggle in Settings (skips background rendering). Companion inventory disabled slots ([Companion] label, can't equip).
+• M34 (2026-04-11): Bug fixes — alreadyVisited check now captured BEFORE GameState.visitNode() (was always true causing every combat to give a random encounter); ctx.roundRect() replaced with ctx.rect() to fix silent crash on iOS &lt; 16 that prevented character rendering in combat; pause button emoji replaced with inline SVG icon.
 • M33 (2026-04-11): Potion system — 6 potion types (Healing Potion, Greater Healing, Mana Potion, Revival Flask, Group Tonic, Antidote) purchasable at Merchant. Potions displayed in combat pause menu; choose a potion then pick target(s). applyPotionEffect() handles HP/MP restore, revive, AoE, and cure poison.
 • M32 (2026-04-11): Custom mercenary hiring at Tavern — opens a mini character builder (choose class, name, distribute 10 attribute points), cost scales with attributes spent (100 + 15G per point). Double-tap / pinch zoom disabled on all interactive elements via touch-action: manipulation; canvas uses touch-action: none.
 • M31 (2026-04-11): Inventory weapon slot picker — 1H weapons show a dialog to choose Main Hand or Off Hand; 2H weapons auto-unequip the off hand; off hand slot shows as disabled (grayed with [2H] label) when a 2H weapon is equipped.
@@ -199,7 +200,8 @@ M31 COMPLETE (2026-04-11) — Inventory 1H slot picker dialog, 2H off-hand disab
 M32 COMPLETE (2026-04-11) — Custom mercenary builder at Tavern, touch zoom prevention
 M33 COMPLETE (2026-04-11) — Potion system (purchase at merchant, use in combat pause menu)
 M34 COMPLETE (2026-04-11) — Bug fixes: alreadyVisited check before visitNode (was always true), ctx.roundRect→ctx.rect iOS fix, pause button SVG icon
-Upcoming: Game info website/SPA, PixelLab art batch (all 14 classes, enemies, animations), inventory companion disabled slots, disable textures toggle, combat mobile portrait zoom</pre></details></div>
+M35 COMPLETE (2026-04-11) — Game info website, 8 new PixelLab sprites, combat zoom, disable textures, companion inventory slots
+Upcoming: Pyromancer sprite (only missing hero class), more enemy sprites, combat animations</pre></details></div>
     </div>
   </div>
 </section>
@@ -665,7 +667,7 @@ Phase 5: Biomes 3+4 — Forge of Ruin &amp; Void Sanctum (M49–M63)</pre></deta
 </main>
 <footer class="site-footer">Rad's Game Demos &mdash; 10 games &mdash; 2026</footer>
 <script>
-const SORT_DATA=[{"key":"game2","date":"2026-04-10","milestone":231,"title":"Roguelike"},{"key":"game3","date":"2026-04-01","milestone":3,"title":"Roguelike III"},{"key":"game4","date":"2026-04-02","milestone":32,"title":"Spellroads"},{"key":"game6","date":"2026-04-05","milestone":29,"title":"Astral Crypts"},{"key":"game7","date":"2026-04-05","milestone":13,"title":"Wanderlight"},{"key":"game8","date":"2026-04-10","milestone":80,"title":"Vagrant & Ash"},{"key":"game10","date":"2026-04-10","milestone":8,"title":"Aethermoor Chronicles"},{"key":"game11","date":"2026-04-10","milestone":19,"title":"Stormtown"},{"key":"game12","date":"2026-04-10","milestone":29,"title":"Penny Panic"},{"key":"game13","date":"2026-04-11","milestone":34,"title":"Emberveil"}];
+const SORT_DATA=[{"key":"game2","date":"2026-04-10","milestone":231,"title":"Roguelike"},{"key":"game3","date":"2026-04-01","milestone":3,"title":"Roguelike III"},{"key":"game4","date":"2026-04-02","milestone":32,"title":"Spellroads"},{"key":"game6","date":"2026-04-05","milestone":29,"title":"Astral Crypts"},{"key":"game7","date":"2026-04-05","milestone":13,"title":"Wanderlight"},{"key":"game8","date":"2026-04-10","milestone":80,"title":"Vagrant & Ash"},{"key":"game10","date":"2026-04-10","milestone":8,"title":"Aethermoor Chronicles"},{"key":"game11","date":"2026-04-10","milestone":19,"title":"Stormtown"},{"key":"game12","date":"2026-04-10","milestone":29,"title":"Penny Panic"},{"key":"game13","date":"2026-04-11","milestone":36,"title":"Emberveil"}];
 function reSort(by){
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('sort-'+by).classList.add('active');

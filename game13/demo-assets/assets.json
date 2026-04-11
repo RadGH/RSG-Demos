@@ -54,6 +54,294 @@
       "file": "../images/sprites/goblin_scout_east.png",
       "prompt": "small green-skinned goblin in leather scraps with a rusty dagger and wooden shield, yellow eyes, sneaky posture, pixel art side view",
       "notes": "PixelLab character ID: f590d4fb-2812-441b-a667-db28d0c2d878"
+    },
+    {
+      "id": "sprite_warlock_south",
+      "name": "Warlock — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/warlock_south.png",
+      "prompt": "Dark sorcerer warlock in black and crimson robes, horned skull mask on face, bone staff with glowing purple orb, shadowy dark magic corruption swirling around hands, sinister fantasy RPG character",
+      "notes": "PixelLab character ID: 452e0d0f-d945-4a76-8a2c-e7a54e5ce0b7, 68×68px canvas"
+    },
+    {
+      "id": "sprite_warlock_east",
+      "name": "Warlock — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/warlock_east.png",
+      "prompt": "Dark sorcerer warlock in black and crimson robes, horned skull mask on face, bone staff with glowing purple orb, shadowy dark magic corruption swirling around hands, sinister fantasy RPG character",
+      "notes": "PixelLab character ID: 452e0d0f-d945-4a76-8a2c-e7a54e5ce0b7"
+    },
+    {
+      "id": "sprite_warlock_north",
+      "name": "Warlock — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/warlock_north.png",
+      "prompt": "Dark sorcerer warlock in black and crimson robes, horned skull mask on face, bone staff with glowing purple orb, shadowy dark magic corruption swirling around hands, sinister fantasy RPG character",
+      "notes": "PixelLab character ID: 452e0d0f-d945-4a76-8a2c-e7a54e5ce0b7"
+    },
+    {
+      "id": "sprite_warlock_west",
+      "name": "Warlock — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/warlock_west.png",
+      "prompt": "Dark sorcerer warlock in black and crimson robes, horned skull mask on face, bone staff with glowing purple orb, shadowy dark magic corruption swirling around hands, sinister fantasy RPG character",
+      "notes": "PixelLab character ID: 452e0d0f-d945-4a76-8a2c-e7a54e5ce0b7"
+    },
+    {
+      "id": "sprite_demon_hunter_south",
+      "name": "Demon Hunter — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/demon_hunter_south.png",
+      "prompt": "Demon hunter in dark leather armor with twin crossbows holstered, dark hood over face, glowing magical sigil on chest, dark elf aesthetic with pointed ears, grim fantasy RPG hunter",
+      "notes": "PixelLab character ID: 729e9606-8825-48a8-b598-08586aadd131, 68×68px canvas"
+    },
+    {
+      "id": "sprite_demon_hunter_east",
+      "name": "Demon Hunter — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/demon_hunter_east.png",
+      "prompt": "Demon hunter in dark leather armor with twin crossbows holstered, dark hood over face, glowing magical sigil on chest, dark elf aesthetic with pointed ears, grim fantasy RPG hunter",
+      "notes": "PixelLab character ID: 729e9606-8825-48a8-b598-08586aadd131"
+    },
+    {
+      "id": "sprite_demon_hunter_north",
+      "name": "Demon Hunter — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/demon_hunter_north.png",
+      "prompt": "Demon hunter in dark leather armor with twin crossbows holstered, dark hood over face, glowing magical sigil on chest, dark elf aesthetic with pointed ears, grim fantasy RPG hunter",
+      "notes": "PixelLab character ID: 729e9606-8825-48a8-b598-08586aadd131"
+    },
+    {
+      "id": "sprite_demon_hunter_west",
+      "name": "Demon Hunter — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/demon_hunter_west.png",
+      "prompt": "Demon hunter in dark leather armor with twin crossbows holstered, dark hood over face, glowing magical sigil on chest, dark elf aesthetic with pointed ears, grim fantasy RPG hunter",
+      "notes": "PixelLab character ID: 729e9606-8825-48a8-b598-08586aadd131"
+    },
+    {
+      "id": "sprite_scavenger_south",
+      "name": "Scavenger — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/scavenger_south.png",
+      "prompt": "Scrappy scavenger survivor in patchwork mismatched leather armor, large oversized backpack with straps and pouches, throwing knives at belt, goggles pushed up on forehead, rugged fantasy RPG character",
+      "notes": "PixelLab character ID: fcc01eff-f264-4a26-bc5b-69742f839056, 68×68px canvas"
+    },
+    {
+      "id": "sprite_scavenger_east",
+      "name": "Scavenger — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/scavenger_east.png",
+      "prompt": "Scrappy scavenger survivor in patchwork mismatched leather armor, large oversized backpack with straps and pouches, throwing knives at belt, goggles pushed up on forehead, rugged fantasy RPG character",
+      "notes": "PixelLab character ID: fcc01eff-f264-4a26-bc5b-69742f839056"
+    },
+    {
+      "id": "sprite_scavenger_north",
+      "name": "Scavenger — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/scavenger_north.png",
+      "prompt": "Scrappy scavenger survivor in patchwork mismatched leather armor, large oversized backpack with straps and pouches, throwing knives at belt, goggles pushed up on forehead, rugged fantasy RPG character",
+      "notes": "PixelLab character ID: fcc01eff-f264-4a26-bc5b-69742f839056"
+    },
+    {
+      "id": "sprite_scavenger_west",
+      "name": "Scavenger — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/scavenger_west.png",
+      "prompt": "Scrappy scavenger survivor in patchwork mismatched leather armor, large oversized backpack with straps and pouches, throwing knives at belt, goggles pushed up on forehead, rugged fantasy RPG character",
+      "notes": "PixelLab character ID: fcc01eff-f264-4a26-bc5b-69742f839056"
+    },
+    {
+      "id": "sprite_swashbuckler_south",
+      "name": "Swashbuckler — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/swashbuckler_south.png",
+      "prompt": "Swashbuckler pirate with feathered hat, rapier sword, red and gold coat, fantasy RPG hero",
+      "notes": "PixelLab character ID: 3e23f6f9-ec35-4fff-a548-b1ac04b94364, 68×68px canvas"
+    },
+    {
+      "id": "sprite_swashbuckler_east",
+      "name": "Swashbuckler — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/swashbuckler_east.png",
+      "prompt": "Swashbuckler pirate with feathered hat, rapier sword, red and gold coat, fantasy RPG hero",
+      "notes": "PixelLab character ID: 3e23f6f9-ec35-4fff-a548-b1ac04b94364"
+    },
+    {
+      "id": "sprite_swashbuckler_north",
+      "name": "Swashbuckler — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/swashbuckler_north.png",
+      "prompt": "Swashbuckler pirate with feathered hat, rapier sword, red and gold coat, fantasy RPG hero",
+      "notes": "PixelLab character ID: 3e23f6f9-ec35-4fff-a548-b1ac04b94364"
+    },
+    {
+      "id": "sprite_swashbuckler_west",
+      "name": "Swashbuckler — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/swashbuckler_west.png",
+      "prompt": "Swashbuckler pirate with feathered hat, rapier sword, red and gold coat, fantasy RPG hero",
+      "notes": "PixelLab character ID: 3e23f6f9-ec35-4fff-a548-b1ac04b94364"
+    },
+    {
+      "id": "sprite_dragon_knight_south",
+      "name": "Dragon Knight — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/dragon_knight_south.png",
+      "prompt": "Dragon knight heavy armor with dragon scale pauldrons, carrying long lance, draconic fantasy RPG warrior",
+      "notes": "PixelLab character ID: 43b41c75-2fc2-4156-a63f-b3e7429260a9, 68×68px canvas"
+    },
+    {
+      "id": "sprite_dragon_knight_east",
+      "name": "Dragon Knight — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/dragon_knight_east.png",
+      "prompt": "Dragon knight heavy armor with dragon scale pauldrons, carrying long lance, draconic fantasy RPG warrior",
+      "notes": "PixelLab character ID: 43b41c75-2fc2-4156-a63f-b3e7429260a9"
+    },
+    {
+      "id": "sprite_dragon_knight_north",
+      "name": "Dragon Knight — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/dragon_knight_north.png",
+      "prompt": "Dragon knight heavy armor with dragon scale pauldrons, carrying long lance, draconic fantasy RPG warrior",
+      "notes": "PixelLab character ID: 43b41c75-2fc2-4156-a63f-b3e7429260a9"
+    },
+    {
+      "id": "sprite_dragon_knight_west",
+      "name": "Dragon Knight — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/dragon_knight_west.png",
+      "prompt": "Dragon knight heavy armor with dragon scale pauldrons, carrying long lance, draconic fantasy RPG warrior",
+      "notes": "PixelLab character ID: 43b41c75-2fc2-4156-a63f-b3e7429260a9"
+    },
+    {
+      "id": "sprite_goblin_warlord_south",
+      "name": "Goblin Warlord — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/goblin_warlord_south.png",
+      "prompt": "Armored goblin boss with crown, war axe, scar, dark plate armor, fantasy RPG enemy",
+      "notes": "PixelLab character ID: 2e92e2aa-c28c-4475-b1a9-e125937f994d, 52×52px canvas"
+    },
+    {
+      "id": "sprite_goblin_warlord_east",
+      "name": "Goblin Warlord — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/goblin_warlord_east.png",
+      "prompt": "Armored goblin boss with crown, war axe, scar, dark plate armor, fantasy RPG enemy",
+      "notes": "PixelLab character ID: 2e92e2aa-c28c-4475-b1a9-e125937f994d"
+    },
+    {
+      "id": "sprite_goblin_warlord_north",
+      "name": "Goblin Warlord — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/goblin_warlord_north.png",
+      "prompt": "Armored goblin boss with crown, war axe, scar, dark plate armor, fantasy RPG enemy",
+      "notes": "PixelLab character ID: 2e92e2aa-c28c-4475-b1a9-e125937f994d"
+    },
+    {
+      "id": "sprite_goblin_warlord_west",
+      "name": "Goblin Warlord — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/goblin_warlord_west.png",
+      "prompt": "Armored goblin boss with crown, war axe, scar, dark plate armor, fantasy RPG enemy",
+      "notes": "PixelLab character ID: 2e92e2aa-c28c-4475-b1a9-e125937f994d"
+    },
+    {
+      "id": "sprite_void_shade_south",
+      "name": "Void Shade — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/void_shade_south.png",
+      "prompt": "Dark purple shadow specter with glowing violet eyes, misty smoky ethereal form, haunting spirit fantasy RPG",
+      "notes": "PixelLab character ID: cce9ccbe-58cc-496b-92c7-e03d26641af2, 52×52px canvas"
+    },
+    {
+      "id": "sprite_void_shade_east",
+      "name": "Void Shade — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/void_shade_east.png",
+      "prompt": "Dark purple shadow specter with glowing violet eyes, misty smoky ethereal form, haunting spirit fantasy RPG",
+      "notes": "PixelLab character ID: cce9ccbe-58cc-496b-92c7-e03d26641af2"
+    },
+    {
+      "id": "sprite_void_shade_north",
+      "name": "Void Shade — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/void_shade_north.png",
+      "prompt": "Dark purple shadow specter with glowing violet eyes, misty smoky ethereal form, haunting spirit fantasy RPG",
+      "notes": "PixelLab character ID: cce9ccbe-58cc-496b-92c7-e03d26641af2"
+    },
+    {
+      "id": "sprite_void_shade_west",
+      "name": "Void Shade — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/void_shade_west.png",
+      "prompt": "Dark purple shadow specter with glowing violet eyes, misty smoky ethereal form, haunting spirit fantasy RPG",
+      "notes": "PixelLab character ID: cce9ccbe-58cc-496b-92c7-e03d26641af2"
+    },
+    {
+      "id": "sprite_ash_wraith_south",
+      "name": "Ash Wraith — South",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/ash_wraith_south.png",
+      "prompt": "Gray smoke wraith specter with glowing orange eyes, ashen smoky body, haunting undead spirit fantasy RPG",
+      "notes": "PixelLab character ID: 8b8cdbe3-7137-46d3-a1bf-ad333a719e2e, 52×52px canvas"
+    },
+    {
+      "id": "sprite_ash_wraith_east",
+      "name": "Ash Wraith — East",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/ash_wraith_east.png",
+      "prompt": "Gray smoke wraith specter with glowing orange eyes, ashen smoky body, haunting undead spirit fantasy RPG",
+      "notes": "PixelLab character ID: 8b8cdbe3-7137-46d3-a1bf-ad333a719e2e"
+    },
+    {
+      "id": "sprite_ash_wraith_north",
+      "name": "Ash Wraith — North",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/ash_wraith_north.png",
+      "prompt": "Gray smoke wraith specter with glowing orange eyes, ashen smoky body, haunting undead spirit fantasy RPG",
+      "notes": "PixelLab character ID: 8b8cdbe3-7137-46d3-a1bf-ad333a719e2e"
+    },
+    {
+      "id": "sprite_ash_wraith_west",
+      "name": "Ash Wraith — West",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites/ash_wraith_west.png",
+      "prompt": "Gray smoke wraith specter with glowing orange eyes, ashen smoky body, haunting undead spirit fantasy RPG",
+      "notes": "PixelLab character ID: 8b8cdbe3-7137-46d3-a1bf-ad333a719e2e"
     }
   ],
   "reports": [
@@ -371,6 +659,48 @@
         "Endless mode: infinite combat waves with escalating difficulty and high-score tracking"
       ],
       "notes": "Build: 264KB JS (70KB gzip). 33 modules. Full game stack: 4 acts × 8 zones × 5-7 nodes each, 32 enemy types, 14 hero classes, 56 pixel sprites, party+companions, full inventory/equip, skill trees, crafting, achievements (24), quests (8), codex (12), daily challenge, NG+. All systems integrated. Launch-ready."
+    },
+    {
+      "milestone": "Milestone 35 — Game Info Site, New Sprites & QoL",
+      "date": "2026-04-11",
+      "summary": "Full game info showcase website, 8 new PixelLab character sprites, combat mobile zoom, disable textures toggle, and companion equipment restrictions.",
+      "changes": [
+        "Game info website SPA at /game-info/ — 10 sections: hero landing with CSS ember particles, story lore, 14-class grid with role filter (Tank/DPS/Healer/Support), combat system infographic, 4-act journey visual path, equipment/crafting overview, companions section, development timeline (M1-M34), sprite gallery, footer",
+        "Sticky nav with smooth scroll and IntersectionObserver fade-in animations",
+        "Demo-assets page now links to game-info with 'Game Info ✦' button in header",
+        "8 new PixelLab sprites generated (4 directions each = 32 new PNGs): Warlock, Demon Hunter, Scavenger, Swashbuckler, Dragon Knight (heroes), Goblin Warlord, Void Shade, Ash Wraith (enemies)",
+        "SPRITE_MAP updated — 22 characters now have pixel art sprites (up from 14)",
+        "Combat mobile portrait zoom: scale factor = Math.min(1, canvas.height/900), further reduced 0.85× when >8 units — keeps all combatants visible on phone",
+        "Disable Textures toggle added to SettingsScreen — when on, combat background fills solid #050208 instead of rendering gradients/particles",
+        "Settings state stored in GameState.settings (persists across saves)",
+        "Companion inventory disabled slots — War Dog and other class:'companion' characters show all equip slots as disabled with [Companion] label, alert on equip attempt",
+        "Bug fix from M34: alreadyVisited now checked BEFORE GameState.visitNode() — first-time combat nodes use their authored encounter, revisits pull from zone pool",
+        "Bug fix from M34: ctx.roundRect() replaced with ctx.rect() for iOS < 16 compatibility",
+        "Pause button emoji replaced with inline SVG icon"
+      ],
+      "bugs": [
+        "Pyromancer is the only remaining hero class without a PixelLab sprite — falls back to geometric shape",
+        "Many enemy types still lack sprites (bandit, corrupted_bear, veil_warden, veil_sorcerer, cinder_hound, lava_titan, demon_brute, star_horror, cosmic_titan, archfiend_malgrath, the_unraveler, emberveil_sovereign)",
+        "Game info page loads Google Fonts via @import — may flash unstyled text briefly",
+        "Combat zoom scale applies globally — very wide desktop windows may make units smaller than intended"
+      ],
+      "suggestions": [
+        "Generate remaining enemy sprites in a future PixelLab batch",
+        "Add walk/attack animations for sprite characters",
+        "Game info page could have a dynamic 'live stats' section pulling from save data",
+        "Consider adding a boss gallery section to game-info with larger sprite renders"
+      ],
+      "recommendations": [
+        "Generate the Pyromancer sprite to complete the hero class set (13/14 done)",
+        "Combat zoom should clamp minimum scale to 0.5 to prevent units from becoming unreadable",
+        "Consider preloading sprite PNGs in the background on TitleScreen for faster combat rendering"
+      ],
+      "ideas": [
+        "Animated sprite preview in game-info class cards (cycle through directions on hover)",
+        "Interactive combat demo embedded in the game-info page",
+        "Shareable character builds via URL hash"
+      ],
+      "notes": "Build: 295KB JS (78KB gzip). 34 modules, 88 sprite PNGs. 22 of 35+ character types have full 4-direction pixel art. Game info site is 2019 lines of self-contained HTML/CSS/JS."
     }
   ]
 }
