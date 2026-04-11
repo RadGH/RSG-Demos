@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PENNY PANIC — M1-M20 Report</title>
+<style>
+  :root {
+    --bg:#000;--bg-card:#0a0a0a;--copper:#c8922a;--copper-bright:#f5d06e;--copper-dim:#7a5510;
+    --white:#fff;--white-dim:rgba(255,255,255,0.5);--white-muted:rgba(255,255,255,0.2);
+    --white-faint:rgba(255,255,255,0.06);--border:rgba(200,146,42,0.18);--border-bright:rgba(200,146,42,0.5);
+    --glow:0 0 20px rgba(200,146,42,0.15);--red:#ff2244;--green:#44ff88;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--white);font-family:ui-monospace,'Courier New',monospace;font-size:14px;line-height:1.65;overflow-x:hidden}
+  #void-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+  .wrapper{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:0 20px 80px}
+  .hero{text-align:center;padding:80px 0 48px}
+  .hero-eyebrow{font-size:11px;letter-spacing:0.25em;color:var(--white-dim);text-transform:uppercase;margin-bottom:20px;animation:fadeUp 0.6s ease both}
+  .hero-title{font-size:clamp(36px,8vw,64px);font-weight:900;letter-spacing:0.05em;color:var(--white);margin-bottom:10px;animation:fadeUp 0.6s 0.1s ease both}
+  .hero-title span{color:var(--copper-bright)}
+  .hero-subtitle{font-size:15px;color:var(--white-dim);margin-bottom:32px;animation:fadeUp 0.6s 0.2s ease both}
+  .penny-icon{display:inline-block;width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 38% 35%,var(--copper-bright),var(--copper) 55%,var(--copper-dim));box-shadow:0 0 30px rgba(200,146,42,0.4);animation:fadeUp 0.6s 0.3s ease both,pennySpin 6s linear infinite 1s;margin-bottom:30px}
+  @keyframes pennySpin{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+  .hero-meta{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;animation:fadeUp 0.6s 0.35s ease both}
+  .meta-item{display:flex;flex-direction:column;align-items:center;gap:3px}
+  .meta-label{font-size:10px;letter-spacing:0.15em;color:var(--white-muted);text-transform:uppercase}
+  .meta-value{font-size:13px;color:var(--copper-bright);font-weight:700}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  .section{margin-top:56px;opacity:0;transform:translateY(20px);transition:opacity 0.5s,transform 0.5s}
+  .section.visible{opacity:1;transform:translateY(0)}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  .section-icon{width:32px;height:32px;border-radius:6px;background:var(--white-faint);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+  .section-title{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--copper);font-weight:700}
+  .card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-bottom:12px;transition:border-color 0.2s}
+  .card:hover{border-color:var(--border-bright);box-shadow:var(--glow)}
+  .card-title{font-size:13px;font-weight:700;color:var(--copper-bright);margin-bottom:8px}
+  .card p{color:rgba(255,255,255,0.7);font-size:13px;line-height:1.7}
+  .ms-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .ms{background:var(--white-faint);border:1px solid var(--border);border-radius:5px;padding:10px;text-align:center}
+  .ms.done{border-color:var(--copper-dim)}
+  .ms-n{font-size:9px;color:var(--white-muted);letter-spacing:0.1em}
+  .ms-l{font-size:11px;font-weight:700;color:var(--copper-bright);margin-top:3px}
+  .ms-s{font-size:10px;color:var(--green);margin-top:3px}
+  .feat-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .feat-list li{padding:8px 12px;background:var(--white-faint);border-left:2px solid var(--copper-dim);border-radius:3px;font-size:13px;color:rgba(255,255,255,0.7)}
+  .feat-list li::before{content:'▸ ';color:var(--copper)}
+  .bug-tag{display:inline-block;background:rgba(255,34,68,0.1);border:1px solid rgba(255,34,68,0.3);color:#ff6688;font-size:11px;padding:1px 6px;border-radius:3px;margin-right:4px}
+  .void-event-demo{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+  .void-card{flex:1;min-width:160px;background:rgba(200,146,42,0.06);border:1px solid var(--copper-dim);border-radius:6px;padding:14px;text-align:center}
+  .void-card-label{font-size:11px;letter-spacing:0.1em;color:var(--copper-bright);font-weight:700;margin-bottom:6px}
+  .void-card p{font-size:12px;color:var(--white-dim)}
+</style>
+</head>
+<body>
+<canvas id="void-canvas"></canvas>
+<div class="wrapper">
+  <div class="hero">
+    <div class="hero-eyebrow">Milestone Report · M1–M20 · Four-Fifths Complete</div>
+    <div class="hero-title">PENNY <span>PANIC</span></div>
+    <div class="hero-subtitle">20 milestones. The void now has weather.</div>
+    <div class="penny-icon"></div>
+    <div class="hero-meta">
+      <div class="meta-item"><span class="meta-label">Report</span><span class="meta-value">M20</span></div>
+      <div class="meta-item"><span class="meta-label">Date</span><span class="meta-value">2026-04-10</span></div>
+      <div class="meta-item"><span class="meta-label">Done</span><span class="meta-value">20 / 25</span></div>
+      <div class="meta-item"><span class="meta-label">Bundle</span><span class="meta-value">~34 kB</span></div>
+      <div class="meta-item"><span class="meta-label">Source Files</span><span class="meta-value">~24</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-icon">✦</div><div class="section-title">Milestone Grid M1–M20</div></div>
+    <div class="ms-grid">
+      <div class="ms done"><div class="ms-n">M1</div><div class="ms-l">Core</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M2</div><div class="ms-l">Audio</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M3</div><div class="ms-l">Juice</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M4</div><div class="ms-l">Match</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M5</div><div class="ms-l">Share+Depth</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M6</div><div class="ms-l">Bug Types</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M7</div><div class="ms-l">Penny Types</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M8</div><div class="ms-l">Combo</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M9</div><div class="ms-l">Visual</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M10</div><div class="ms-l">Tuning</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M11</div><div class="ms-l">Chaos</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M12</div><div class="ms-l">Tutorial</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M13</div><div class="ms-l">Audio II</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M14</div><div class="ms-l">Seam</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M15</div><div class="ms-l">Stats</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M16</div><div class="ms-l">Round Types</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M17</div><div class="ms-l">Bug AI</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M18</div><div class="ms-l">Access</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M19</div><div class="ms-l">Perf</div><div class="ms-s">✓</div></div>
+      <div class="ms done"><div class="ms-n">M20</div><div class="ms-l">Void Events</div><div class="ms-s">✓</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-icon">✦</div><div class="section-title">M16–M20 Features</div></div>
+    <ul class="feat-list">
+      <li><strong>M16 Round Variety:</strong> STANDARD / BLITZ (6 pennies, 700ms, 1.5× bugs) / ENDURANCE (14 pennies, 1.6s). Rolled per round. Badge in HUD, labeled in countdown.</li>
+      <li><strong>M17 Bug AI:</strong> Dodge behavior — tap within 60px but not a hit triggers bug.dodge() (±30px perp offset over 400ms). Wave 5+ swarm event: 3 bugs simultaneously every 30s.</li>
+      <li><strong>M18 Accessibility:</strong> Tap feedback rings (8→40px expanding white ring, 200ms fade). Color-blind mode (long-press mute 500ms): pennies → blue #44aaff, gold bugs → yellow #ffdd44. Landscape overlay with rotate icon.</li>
+      <li><strong>M19 Performance:</strong> Off-screen culling (30px margin skips draw). FPS debug counter (?debug=1). gameState.debug tracking object.</li>
+      <li><strong>M20 Void Events:</strong> 0.3% per-frame chance. Types: SLOW PENNY (5s, penny ages 5× slower), BUG FREEZE (3s, bugs at 30% speed), DOUBLE POINTS (next 3 claims at 2×). Notification text at seam. voidEvents.js system with getSlowFactor/getBugFreezeFactor/getVoidEventMultiplier.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-icon">⚡</div><div class="section-title">Void Event System</div></div>
+    <div class="void-event-demo">
+      <div class="void-card"><div class="void-card-label">SLOW PENNY</div><p>5 seconds. Active penny ages at 0.2× rate — dramatically extended lifetime. Glows expectantly in the void.</p></div>
+      <div class="void-card"><div class="void-card-label">BUG FREEZE</div><p>3 seconds. All bugs move at 30% speed. Brief window to clean up the screen.</p></div>
+      <div class="void-card"><div class="void-card-label">DOUBLE POINTS</div><p>Next 3 penny claims worth 2× points. Counter decrements on each claim. Seam text announces it.</p></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-icon">🐛</div><div class="section-title">Known Bugs at M20</div></div>
+    <div class="card">
+      <p>
+        <span class="bug-tag">MINOR</span>Void event chance is per-frame at ~60fps, making it ~18% per second — higher than intended 0.3%/frame at 60fps (~0.3%). Actually correct but feels more frequent than expected.<br><br>
+        <span class="bug-tag">MINOR</span>Long-press color-blind toggle in game.js increments muteLongPressTimer per-event per-frame, but may fire both mute-toggle and color-blind-toggle simultaneously.<br><br>
+        <span class="bug-tag">MINOR</span>DOUBLE POINTS void event counter (doublePtsRemaining) is module-level state in voidEvents.js, not in gameState — won't reset correctly if resetVoidEvents is called mid-event.
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><div class="section-icon">→</div><div class="section-title">Final 5 — M21 through M25</div></div>
+    <ul class="feat-list">
+      <li>M21 — Match History: last 5 results in localStorage, RECORDS on title, LAST MATCH comparison</li>
+      <li>M22 — Sound Overhaul: richer oscillators, ambient void hum, stereo spread</li>
+      <li>M23 — Settings Screen: canvas-drawn settings panel, all prefs exposed</li>
+      <li>M24 — Final Polish: animated title letters, winner particle burst, round transition wipe, spring penny dots</li>
+      <li>M25 — Final QA + Comprehensive Report: audit, lint, full visual timeline, architecture diagram</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('void-canvas')
+const ctx = canvas.getContext('2d')
+let W, H, particles = []
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight }
+resize(); window.addEventListener('resize', resize)
+function init() {
+  particles = []
+  for (let i = 0; i < 100; i++) particles.push({
+    x: Math.random()*W, y: Math.random()*H,
+    r: 0.4+Math.random()*1.8,
+    vx: (Math.random()-.5)*10, vy: (Math.random()-.5)*10,
+    copper: Math.random() < 0.07, blue: Math.random() < 0.04
+  })
+}
+init()
+let last = performance.now()
+function frame(ts) {
+  const dt = Math.min(ts-last,33)/1000; last = ts
+  ctx.clearRect(0,0,W,H)
+  for (const p of particles) {
+    p.x+=p.vx*dt; p.y+=p.vy*dt
+    if(p.x<-5)p.x=W+5; if(p.x>W+5)p.x=-5; if(p.y<-5)p.y=H+5; if(p.y>H+5)p.y=-5
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
+    ctx.fillStyle = p.blue ? 'rgba(68,170,255,0.08)' : p.copper ? 'rgba(200,146,42,0.1)' : 'rgba(255,255,255,0.03)'
+    ctx.fill()
+  }
+  requestAnimationFrame(frame)
+}
+requestAnimationFrame(frame)
+const obs = new IntersectionObserver(e=>{for(const x of e){if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}}},{threshold:0.1})
+document.querySelectorAll('.section').forEach(s=>obs.observe(s))
+</script>
+</body>
+</html>

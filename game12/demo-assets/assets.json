@@ -3,12 +3,12 @@
   "assets": [],
   "reports": [
     {
-      "milestone": "Pre-Release — Design Complete",
+      "milestone": "Pre-Release \u2014 Design Complete",
       "date": "2026-04-10",
       "summary": "Game concept locked: Penny Panic is a 2-player same-device split-screen competitive tap game where players race to collect 10 pennies while shooting bugs in an infinite void.",
       "changes": [
         "Game concept defined by user: 2 players, 10 pennies, bug shooting, the void",
-        "Full game design document written — game.md populated with all entity definitions, systems, screen flow, audio design, visual design, and performance targets",
+        "Full game design document written \u2014 game.md populated with all entity definitions, systems, screen flow, audio design, visual design, and performance targets",
         "4-milestone implementation plan written and tracked in memory/future_milestones.md",
         "Vite project initialized on port 5212",
         "Folder structure and module contracts defined: state.js, input.js, renderer.js, entities/, systems/, screens/, audio/, fx/",
@@ -20,41 +20,41 @@
         "Best-of-3 round system planned for M4 with native share sheet integration"
       ],
       "bugs": [
-        "No bugs — pre-implementation report. See milestone reports for runtime bugs."
+        "No bugs \u2014 pre-implementation report. See milestone reports for runtime bugs."
       ],
       "suggestions": [
-        "Center seam penny spawns (20% of total) create natural flashpoints — consider whether the seam zone should pulse visually to signal a contested penny is available",
-        "P2's rotated 180° HUD is elegant but may cause disorientation on first play — consider a brief tutorial overlay on first launch",
+        "Center seam penny spawns (20% of total) create natural flashpoints \u2014 consider whether the seam zone should pulse visually to signal a contested penny is available",
+        "P2's rotated 180\u00b0 HUD is elegant but may cause disorientation on first play \u2014 consider a brief tutorial overlay on first launch",
         "Bug despawn-without-penalty if both players miss (vs guaranteed -1 pt) could reduce feel-bad moments in early rounds",
         "A 3-second countdown before each round starts would give players time to position their fingers",
         "Consider a 'practice mode' where bugs are disabled so new players can learn penny mechanics first"
       ],
       "recommendations": [
-        "Build state.js first — every other module depends on it. Define the full shape of gameState before writing any entity or system code.",
-        "Get multitouch working correctly in input.js before implementing any hit detection — it's the most fragile part of M1 and wrong assumptions compound across all systems",
-        "Use a fixed-timestep game loop from the start (accumulator pattern) — variable delta can cause physics drift and makes bug speed curves non-deterministic",
-        "Pre-allocate the particle pool in M1 even if particles aren't used yet — retrofitting a pool into an allocating system is harder than starting with one",
-        "Test on a real iPhone before M1 is 'done' — mobile Safari's touch coordinate model has subtle differences from desktop mouse emulation that matter for split-screen",
+        "Build state.js first \u2014 every other module depends on it. Define the full shape of gameState before writing any entity or system code.",
+        "Get multitouch working correctly in input.js before implementing any hit detection \u2014 it's the most fragile part of M1 and wrong assumptions compound across all systems",
+        "Use a fixed-timestep game loop from the start (accumulator pattern) \u2014 variable delta can cause physics drift and makes bug speed curves non-deterministic",
+        "Pre-allocate the particle pool in M1 even if particles aren't used yet \u2014 retrofitting a pool into an allocating system is harder than starting with one",
+        "Test on a real iPhone before M1 is 'done' \u2014 mobile Safari's touch coordinate model has subtle differences from desktop mouse emulation that matter for split-screen",
         "For the void aesthetic: resist the temptation to add any background element. The emptiness is load-bearing. If the game 'feels empty' the solution is better game feel (particles, audio, screen flash), not visual noise."
       ],
       "ideas": [
-        "CHAOS MODE: penny count doubles to 20, bugs spawn 3× faster — unlock after winning a best-of-3",
-        "SUDDEN DEATH round: first player to miss a bug loses — triggered if series reaches 2-2 (for a best-of-5 expansion)",
+        "CHAOS MODE: penny count doubles to 20, bugs spawn 3\u00d7 faster \u2014 unlock after winning a best-of-3",
+        "SUDDEN DEATH round: first player to miss a bug loses \u2014 triggered if series reaches 2-2 (for a best-of-5 expansion)",
         "BUG VARIANTS: rare golden bug worth +5 pts, fast silver bug that weaves, slow fat bug that takes 2 taps",
-        "PENNY TYPES: rare 'wheat penny' worth 3 pts, 'silver penny' worth 2 pts — same tap mechanic, different glow color",
-        "VOID EVENTS: rare cosmetic — a penny falls impossibly slow, a bug spirals in, the void 'breathes' (barely perceptible scale pulse on all objects simultaneously)",
+        "PENNY TYPES: rare 'wheat penny' worth 3 pts, 'silver penny' worth 2 pts \u2014 same tap mechanic, different glow color",
+        "VOID EVENTS: rare cosmetic \u2014 a penny falls impossibly slow, a bug spirals in, the void 'breathes' (barely perceptible scale pulse on all objects simultaneously)",
         "REMATCH BUTTON with animated score history comparison across sessions (localStorage)"
       ],
-      "notes": "The game's hook is the tension between two simultaneous activities: racing your opponent for pennies (tapping the same side of the screen as them) while also defending your own half from bugs. The void aesthetic is not laziness or minimalism for its own sake — it maximizes the cognitive load of the game objects by giving them zero competition for visual attention. Every design decision should serve that tension. The name 'Penny Panic' is a working title — something weirder and more specific to the void theme might emerge during implementation."
+      "notes": "The game's hook is the tension between two simultaneous activities: racing your opponent for pennies (tapping the same side of the screen as them) while also defending your own half from bugs. The void aesthetic is not laziness or minimalism for its own sake \u2014 it maximizes the cognitive load of the game objects by giving them zero competition for visual attention. Every design decision should serve that tension. The name 'Penny Panic' is a working title \u2014 something weirder and more specific to the void theme might emerge during implementation."
     },
     {
-      "milestone": "Milestone 1 — Core Gameplay",
+      "milestone": "Milestone 1 \u2014 Core Gameplay",
       "date": "2026-04-10",
       "summary": "Fully playable round: two players compete for 10 pennies on a split-screen canvas with bug entities, score tracking, particle effects, screen flashes, and round end screen.",
       "changes": [
         "Vite project initialized on port 5212, vanilla JS (no TypeScript)",
         "index.html: single canvas element, full-viewport CSS, portrait meta, touch-action:none",
-        "src/constants.js: all magic numbers defined — canvas dims, penny/bug specs, colors, timing",
+        "src/constants.js: all magic numbers defined \u2014 canvas dims, penny/bug specs, colors, timing",
         "src/state.js: single gameState object as source of truth; freshRoundState(), resetRound(), announceScore()",
         "src/input.js: touchstart + mousedown listeners, multi-touch via changedTouches, canvas coordinate conversion",
         "src/renderer.js: DPR-aware canvas, clear-to-void each frame, layered draw fn registration by priority, dynamic seam line",
@@ -62,106 +62,106 @@
         "src/entities/bug.js: Bug class with direction vector to target half center, sinusoidal wobble, wing flicker (8-frame alternate), canvas-drawn body/legs/antennae, miss detection at canvas boundary",
         "src/entities/particle.js: pre-allocated pool of 128 particles, spawnBurst(), gravity, alpha fade",
         "src/systems/spawner.js: 10 pennies/round, 1.2s intervals, max 3 on screen, 40/40/20 zone distribution, min-distance check",
-        "src/systems/difficulty.js: bug wave escalation — speed 80→180px/s, interval 5s→2s, wave 3+ side edge spawns",
+        "src/systems/difficulty.js: bug wave escalation \u2014 speed 80\u2192180px/s, interval 5s\u21922s, wave 3+ side edge spawns",
         "src/systems/collision.js: bugs resolved before pennies, per-touch entity resolution, no ghost hits",
         "src/systems/scoring.js: claimPenny, shootBug, missBug, isRoundOver",
         "src/fx/flash.js: half-screen or full-screen color flash with linear alpha fade, multiple flashes queue correctly",
-        "src/screens/title.js: PENNY PANIC title both halves (P2 rotated 180°), pulsing center penny, tap to start",
+        "src/screens/title.js: PENNY PANIC title both halves (P2 rotated 180\u00b0), pulsing center penny, tap to start",
         "src/screens/game.js: full tick loop, penny+bug update, collision resolution, particle spawning on hits, round-over detection",
         "src/screens/roundEnd.js: winner banner, side-by-side scores, bugs shot per player, tap-to-continue with 1.2s debounce",
         "src/main.js: RAF game loop with 50ms dt cap, DPR-aware canvas, screen.orientation.lock, screen state machine",
-        "All coordinates dynamic (canvasH/2 seam) — works on any viewport, not hardcoded to 393×852"
+        "All coordinates dynamic (canvasH/2 seam) \u2014 works on any viewport, not hardcoded to 393\u00d7852"
       ],
       "bugs": [
-        "Penny counter dots show penniesResolved which counts both claimed AND despawned pennies — could be confusing if pennies expire without being collected (appears as claimed)",
-        "Bug wobble uses perpendicular drift accumulation per frame rather than absolute position, causing slight path drift over time — not noticeable in practice but technically incorrect",
-        "Title screen pennyPulseAge increments by hardcoded 16ms per draw call rather than using actual dt — will drift at non-60fps",
-        "P2 HUD label says 'P2' but the penny dots are shown in P1's rotated view — both halves show the same penniesResolved count which is correct, but visually redundant",
-        "Round end 'tap to continue' restarts a full new round (resets round state) — no best-of-3 series tracking yet (M4 feature)"
+        "Penny counter dots show penniesResolved which counts both claimed AND despawned pennies \u2014 could be confusing if pennies expire without being collected (appears as claimed)",
+        "Bug wobble uses perpendicular drift accumulation per frame rather than absolute position, causing slight path drift over time \u2014 not noticeable in practice but technically incorrect",
+        "Title screen pennyPulseAge increments by hardcoded 16ms per draw call rather than using actual dt \u2014 will drift at non-60fps",
+        "P2 HUD label says 'P2' but the penny dots are shown in P1's rotated view \u2014 both halves show the same penniesResolved count which is correct, but visually redundant",
+        "Round end 'tap to continue' restarts a full new round (resets round state) \u2014 no best-of-3 series tracking yet (M4 feature)"
       ],
       "suggestions": [
-        "Add a 3-2-1 countdown before pennies start spawning — gives players time to get their thumbs in position",
-        "Penny despawn should probably NOT count as 'resolved' for scoring purposes — currently a penny timing out ends the round faster than expected",
-        "Consider showing which half a newly spawned penny belongs to with a brief flash at the seam — center seam pennies are natural conflict zones",
+        "Add a 3-2-1 countdown before pennies start spawning \u2014 gives players time to get their thumbs in position",
+        "Penny despawn should probably NOT count as 'resolved' for scoring purposes \u2014 currently a penny timing out ends the round faster than expected",
+        "Consider showing which half a newly spawned penny belongs to with a brief flash at the seam \u2014 center seam pennies are natural conflict zones",
         "The round end score display would benefit from a brief winner celebration animation before 'tap to continue' appears",
-        "Bug hit detection should prioritize bugs closest to the player boundary — bugs almost at the wall are more urgent"
+        "Bug hit detection should prioritize bugs closest to the player boundary \u2014 bugs almost at the wall are more urgent"
       ],
       "recommendations": [
-        "Before M2, separate penny despawn tracking from penniesResolved — despawned pennies should not advance the round-end counter, only claimed pennies should. Otherwise rounds can end before all pennies were competed for.",
+        "Before M2, separate penny despawn tracking from penniesResolved \u2014 despawned pennies should not advance the round-end counter, only claimed pennies should. Otherwise rounds can end before all pennies were competed for.",
         "Fix title screen pulse to use actual dt passed through from main loop rather than hardcoded 16ms increment",
         "Consider adding a brief 'invincibility' window after a bug miss so one bug doesn't chain-penalty into multiple deductions"
       ],
       "ideas": [
         "Visual indicator when a penny is about to expire (flash more urgently as lifetime approaches 8s)",
-        "Sound design for M3: the void should be near-silent except for game events — no ambient music, just sharp precise audio cues"
+        "Sound design for M3: the void should be near-silent except for game events \u2014 no ambient music, just sharp precise audio cues"
       ],
-      "notes": "M1 is fully playable. The void aesthetic is working — pure black background, copper pennies, white bugs, everything immediately readable. The split-screen layout with P2 rotated 180° works well for same-device multiplayer. Main architectural win: all seam calculations are dynamic (canvasH/2) so the game works correctly on any screen size. Main outstanding issue before M2: the penny despawn/resolve tracking logic should be tightened up."
+      "notes": "M1 is fully playable. The void aesthetic is working \u2014 pure black background, copper pennies, white bugs, everything immediately readable. The split-screen layout with P2 rotated 180\u00b0 works well for same-device multiplayer. Main architectural win: all seam calculations are dynamic (canvasH/2) so the game works correctly on any screen size. Main outstanding issue before M2: the penny despawn/resolve tracking logic should be tightened up."
     },
     {
-      "milestone": "Milestone 2 — Juice & Audio",
+      "milestone": "Milestone 2 \u2014 Juice & Audio",
       "date": "2026-04-10",
       "summary": "Audio system live (Web Audio API, zero files), 3-2-1 countdown before each round, penny expiry flicker, score scale animation on change, mute toggle with localStorage persistence, fixed penny despawn round-end logic.",
       "changes": [
-        "src/audio/synth.js: Web Audio API synthesizer — playCoin (C5→E5 glide), playBug (white noise), playMiss (sawtooth thud), playWin (4-note arpeggio), playBeep (countdown), playPennyAppear",
+        "src/audio/synth.js: Web Audio API synthesizer \u2014 playCoin (C5\u2192E5 glide), playBug (white noise), playMiss (sawtooth thud), playWin (4-note arpeggio), playBeep (countdown), playPennyAppear",
         "AudioContext lazy-initialized on first touch (iOS Safari gate), setMuted() for global mute",
-        "3-2-1 countdown before each round — gameplay blocked during countdown, beep per number, high beep on GO",
+        "3-2-1 countdown before each round \u2014 gameplay blocked during countdown, beep per number, high beep on GO",
         "Penny expiry flicker: slow flicker at 6s, fast flicker at 7s (300ms/150ms), draws urgency without obscuring",
-        "Score number animates on change: scale 1.35× → 1.0× over 200ms, both players tracked independently",
+        "Score number animates on change: scale 1.35\u00d7 \u2192 1.0\u00d7 over 200ms, both players tracked independently",
         "Mute toggle button in top-right corner of each player's half (canvas-drawn speaker/X icon, ~44px target)",
         "Mute persisted to localStorage key 'pp_muted', restored on page load",
-        "Fixed penny despawn round-end bug: penniesResolved now counts only claimed pennies (p.owner !== null), not expired ones. Round ends when all 10 spawned AND no active pennies remain — expired pennies no longer prematurely end rounds",
+        "Fixed penny despawn round-end bug: penniesResolved now counts only claimed pennies (p.owner !== null), not expired ones. Round ends when all 10 spawned AND no active pennies remain \u2014 expired pennies no longer prematurely end rounds",
         "Small amber burst on penny expiry to indicate it vanished (not claimed)"
       ],
       "bugs": [
-        "Countdown is per-round but not shown on round-end screen — when tap-to-continue triggers a new round, the countdown appears but briefly overlaps with the transition",
-        "Mute button is drawn in both P1 and P2 HUD (each rotated half) — tapping either corner works, but visually appears in both halves which could be confusing",
-        "Score animation scale accumulates if score changes rapidly (back-to-back events reset timer before animation completes) — visually fine but mathematically incorrect",
-        "playPennyAppear not wired up — penny spawn has no sound yet",
-        "Bug wobble path drift still present (perpendicular accumulated per frame) — minor"
+        "Countdown is per-round but not shown on round-end screen \u2014 when tap-to-continue triggers a new round, the countdown appears but briefly overlaps with the transition",
+        "Mute button is drawn in both P1 and P2 HUD (each rotated half) \u2014 tapping either corner works, but visually appears in both halves which could be confusing",
+        "Score animation scale accumulates if score changes rapidly (back-to-back events reset timer before animation completes) \u2014 visually fine but mathematically incorrect",
+        "playPennyAppear not wired up \u2014 penny spawn has no sound yet",
+        "Bug wobble path drift still present (perpendicular accumulated per frame) \u2014 minor"
       ],
       "suggestions": [
         "Countdown 'GO!' text could flash green rather than white for more excitement",
         "A brief visual indicator on the seam when a contested (center-zone) penny spawns would add tension",
-        "Bug miss sound is quite loud relative to coin collect — consider normalizing gain levels across all sounds",
-        "Round end should show how many pennies each player collected vs expired — gives more information"
+        "Bug miss sound is quite loud relative to coin collect \u2014 consider normalizing gain levels across all sounds",
+        "Round end should show how many pennies each player collected vs expired \u2014 gives more information"
       ],
       "recommendations": [
         "Wire playPennyAppear to spawner.js spawn event before M3",
-        "Evaluate if the countdown 3s delay is too long for repeat play — consider reducing to 2s after first round",
+        "Evaluate if the countdown 3s delay is too long for repeat play \u2014 consider reducing to 2s after first round",
         "Consider adding a brief 'safe window' after round start before bugs spawn (give players time to orient)"
       ],
       "ideas": [
         "Combo system: collect 3 pennies in a row without a bug miss = bonus multiplier",
         "Bug sounds could vary by bug type if bug variants are added in a future milestone"
       ],
-      "notes": "The audio system works well. The void-plus-audio combination is exactly right — silence except for precise event sounds makes every collect feel satisfying. The countdown is essential for same-device multiplayer (players need a moment to get their thumbs positioned). The penny flicker is a small detail that reads immediately in play."
+      "notes": "The audio system works well. The void-plus-audio combination is exactly right \u2014 silence except for precise event sounds makes every collect feel satisfying. The countdown is essential for same-device multiplayer (players need a moment to get their thumbs positioned). The penny flicker is a small detail that reads immediately in play."
     },
     {
-      "milestone": "Milestone 4 — Best-of-3 Match System",
+      "milestone": "Milestone 4 \u2014 Best-of-3 Match System",
       "date": "2026-04-10",
       "summary": "Full best-of-3 match flow: round wins are tracked, Match End screen shows series winner and per-round breakdown, series dots display on round end screen.",
       "changes": [
         "Added SCREENS.MATCH_END to state.js (was already declared, now actually wired)",
-        "Added roundHistory array to gameState — stores {scores:[p1,p2]} per completed round",
+        "Added roundHistory array to gameState \u2014 stores {scores:[p1,p2]} per completed round",
         "resetMatch() now clears roundHistory on new match",
         "enterRoundEnd() now records round result and awards roundWins before showing screen",
-        "handleRoundEndInput() checks roundWins — if either player has 2 wins, goes to MATCH_END; otherwise increments currentRound and continues",
-        "Created src/screens/matchEnd.js — draws match winner, per-round score breakdown, win dots, tap-to-play-again",
-        "matchEnd draws both P1 and P2 halves (P2 rotated 180°) so both players can read the result",
-        "Round end screen now shows series dots (● ○) reflecting each player's current round wins",
-        "main.js wired to handle MATCH_END screen in game loop — enterMatchEnd, tickMatchEnd, handleMatchEndInput"
+        "handleRoundEndInput() checks roundWins \u2014 if either player has 2 wins, goes to MATCH_END; otherwise increments currentRound and continues",
+        "Created src/screens/matchEnd.js \u2014 draws match winner, per-round score breakdown, win dots, tap-to-play-again",
+        "matchEnd draws both P1 and P2 halves (P2 rotated 180\u00b0) so both players can read the result",
+        "Round end screen now shows series dots (\u25cf \u25cb) reflecting each player's current round wins",
+        "main.js wired to handle MATCH_END screen in game loop \u2014 enterMatchEnd, tickMatchEnd, handleMatchEndInput"
       ],
       "bugs": [
-        "If a round ends in a tie, no roundWin is awarded — series could theoretically never reach 2 wins (edge case, unlikely in practice)",
-        "Match end tap target is whole screen — players could accidentally restart by grazing the screen"
+        "If a round ends in a tie, no roundWin is awarded \u2014 series could theoretically never reach 2 wins (edge case, unlikely in practice)",
+        "Match end tap target is whole screen \u2014 players could accidentally restart by grazing the screen"
       ],
       "suggestions": [
         "Add a brief celebration animation on the winning half at match end (particle burst from score)",
         "Show round number in game HUD so players know which round they're in mid-game"
       ],
       "recommendations": [
-        "Consider adding chaosMode unlock trigger at match end (M11 feature) — the match end screen is the right place for this prompt",
-        "roundHistory could accumulate across matches if resetMatch isn't called correctly — verify the flow from title → game → round_end → match_end → title"
+        "Consider adding chaosMode unlock trigger at match end (M11 feature) \u2014 the match end screen is the right place for this prompt",
+        "roundHistory could accumulate across matches if resetMatch isn't called correctly \u2014 verify the flow from title \u2192 game \u2192 round_end \u2192 match_end \u2192 title"
       ],
       "ideas": [
         "Best-of-5 mode for longer sessions",
@@ -170,48 +170,48 @@
       "notes": "The best-of-3 flow works correctly. Rounds now advance through a proper match arc. The series dots on round end are a clear communication of match state."
     },
     {
-      "milestone": "Milestone 5 — Share + Void Depth",
+      "milestone": "Milestone 5 \u2014 Share + Void Depth",
       "date": "2026-04-10",
       "summary": "Share result button on Match End screen and ambient void depth particle layer (60 semi-transparent drifting dots at draw layer 0).",
       "changes": [
         "src/fx/voidDepth.js: 60 particles, r=0.8-2px, rgba(255,255,255,0.035), slow drift (8-12px/s), wrap at canvas edges, registered at draw layer 0 via registerLayer",
         "initVoidDepth() called from main.js at startup before enterTitle()",
         "Share button rendered on Match End screen in each player's half near the dots",
-        "getShareText() builds share string: 'Penny Panic: P1 N – P2 N (P? wins the match). radgh.github.io/RSG-Demos/game12/'",
-        "handleMatchEndInput() checks share button hit area before restarting — uses navigator.share() with clipboard fallback",
+        "getShareText() builds share string: 'Penny Panic: P1 N \u2013 P2 N (P? wins the match). radgh.github.io/RSG-Demos/game12/'",
+        "handleMatchEndInput() checks share button hit area before restarting \u2014 uses navigator.share() with clipboard fallback",
         "Animated HTML report generated at public/demo-assets/report-m5.html covering M1-M5 with scroll-reveal, void particle canvas, milestone grid, architecture overview"
       ],
       "bugs": [
-        "Void particles initialize at first draw call — if canvas resizes before first draw, particles may cluster",
-        "Share hit area uses approximate Y coordinates — may miss on extreme aspect ratios"
+        "Void particles initialize at first draw call \u2014 if canvas resizes before first draw, particles may cluster",
+        "Share hit area uses approximate Y coordinates \u2014 may miss on extreme aspect ratios"
       ],
       "suggestions": [
         "Add 3-5 slightly brighter copper floaters (0.08 opacity) among the void depth particles for depth layering",
-        "Share text could include emoji for quick scanning: '🪙 Penny Panic'"
+        "Share text could include emoji for quick scanning: '\ud83e\ude99 Penny Panic'"
       ],
       "recommendations": [
-        "Before M6: refactor scoring.js to support per-entity point values — current fixed constants won't work for gold/wheat variants"
+        "Before M6: refactor scoring.js to support per-entity point values \u2014 current fixed constants won't work for gold/wheat variants"
       ],
       "ideas": [
-        "Void depth particles could react subtly to game events — briefly brightening on penny collect"
+        "Void depth particles could react subtly to game events \u2014 briefly brightening on penny collect"
       ],
       "notes": "Void depth effect is barely visible by design (0.035 opacity). It adds subperceptual motion to the otherwise static black background. The game loop runs cleanly at layer 0."
     },
     {
-      "milestone": "Milestone 6 — Bug Variants",
+      "milestone": "Milestone 6 \u2014 Bug Variants",
       "date": "2026-04-10",
-      "summary": "Three bug types: normal (75%), gold (15%, +5 pts, 1.5× speed), fast silver (10%, +2 pts, 2× speed, smaller). Each type has distinct visuals.",
+      "summary": "Three bug types: normal (75%), gold (15%, +5 pts, 1.5\u00d7 speed), fast silver (10%, +2 pts, 2\u00d7 speed, smaller). Each type has distinct visuals.",
       "changes": [
         "Bug class constructor now accepts bugType parameter ('normal'|'gold'|'fast')",
-        "Gold bug: radius unchanged, golden body color #f5d06e, copper legs #c8922a, gold highlight ring drawn around body, speed 1.5× base",
-        "Fast bug: radius 0.75× base, dimmer white body (rgba 0.7 opacity), speed 2× base, all geometry scaled proportionally",
+        "Gold bug: radius unchanged, golden body color #f5d06e, copper legs #c8922a, gold highlight ring drawn around body, speed 1.5\u00d7 base",
+        "Fast bug: radius 0.75\u00d7 base, dimmer white body (rgba 0.7 opacity), speed 2\u00d7 base, all geometry scaled proportionally",
         "rollBugType() in difficulty.js: 15% gold, 10% fast, 75% normal",
         "getBugPoints(bug) in scoring.js: gold=5, fast=2, normal=2",
         "shootBug() uses getBugPoints() instead of constant BUG_KILL_POINTS"
       ],
       "bugs": [
-        "Fast bugs are harder to tap due to smaller radius — combined with 2× speed, may be frustrating on first encounter",
-        "Bug variant type is not shown in any HUD tooltip — players discover by tapping"
+        "Fast bugs are harder to tap due to smaller radius \u2014 combined with 2\u00d7 speed, may be frustrating on first encounter",
+        "Bug variant type is not shown in any HUD tooltip \u2014 players discover by tapping"
       ],
       "suggestions": [
         "Brief text popup '+5!' at gold bug kill location (part of M8 combo system could handle this)",
@@ -221,23 +221,23 @@
       "ideas": [
         "Boss bug: huge slow bug worth +10 pts, takes 2 taps to kill"
       ],
-      "notes": "Gold bugs at 15% spawn rate and +5 pts create meaningful upside for aggressive play. Fast bugs at 2× speed are a real threat."
+      "notes": "Gold bugs at 15% spawn rate and +5 pts create meaningful upside for aggressive play. Fast bugs at 2\u00d7 speed are a real threat."
     },
     {
-      "milestone": "Milestone 7 — Penny Types",
+      "milestone": "Milestone 7 \u2014 Penny Types",
       "date": "2026-04-10",
       "summary": "Three penny types: normal (75%, +1 pt), silver (15%, +2 pts, silver color), wheat (10%, +3 pts, larger, dark copper).",
       "changes": [
         "Penny class constructor accepts pennyType ('normal'|'wheat'|'silver')",
-        "Wheat penny: radius 1.2× base, body color #8B4513, highlight rgba(200,120,60,0.35)",
+        "Wheat penny: radius 1.2\u00d7 base, body color #8B4513, highlight rgba(200,120,60,0.35)",
         "Silver penny: radius unchanged, body color #C0C0C0, highlight rgba(240,240,255,0.4)",
         "rollPennyType() in spawner.js: 10% wheat, 15% silver, 75% normal",
         "getPennyPoints(penny) in scoring.js: wheat=3, silver=2, normal=1",
         "claimPenny() uses getPennyPoints() for variable point awards"
       ],
       "bugs": [
-        "Wheat penny slightly larger radius makes it easier to tap — could be considered overpowered given higher value",
-        "Penny type not shown in any point popup — players don't know why they got 3 pts until they learn the visual distinction"
+        "Wheat penny slightly larger radius makes it easier to tap \u2014 could be considered overpowered given higher value",
+        "Penny type not shown in any point popup \u2014 players don't know why they got 3 pts until they learn the visual distinction"
       ],
       "suggestions": [
         "Brief '+3!' text burst at wheat penny claim location",
@@ -248,9 +248,9 @@
       "notes": "Penny variety adds strategic depth. Wheat pennies visible size difference makes them feel premium. Silver vs normal is subtler and rewards attentive players."
     },
     {
-      "milestone": "Milestone 8 — Combo System",
+      "milestone": "Milestone 8 \u2014 Combo System",
       "date": "2026-04-10",
-      "summary": "Consecutive penny claims build a combo counter per player — x3+ awards 3pts, breaks on bug miss or 4s inactivity.",
+      "summary": "Consecutive penny claims build a combo counter per player \u2014 x3+ awards 3pts, breaks on bug miss or 4s inactivity.",
       "changes": [
         "comboCount[2] and comboTimer[2] added to freshRoundState() in state.js",
         "tickCombos(dt) in scoring.js advances combo timers, resets combo at 4000ms",
@@ -260,8 +260,8 @@
         "Combo counter displayed in HUD when combo>=2: 'x2' in orange, 'x3+' in red, positioned right of score"
       ],
       "bugs": [
-        "Combo counter always shows combo at time of draw, not smoothly animated — it jumps in/out",
-        "Wheat penny at 3pt overrides combo bonus at 3pt — effectively no benefit for wheat+combo (same 3pts)"
+        "Combo counter always shows combo at time of draw, not smoothly animated \u2014 it jumps in/out",
+        "Wheat penny at 3pt overrides combo bonus at 3pt \u2014 effectively no benefit for wheat+combo (same 3pts)"
       ],
       "suggestions": [
         "Combo counter could pulse/scale briefly when it increments",
@@ -272,19 +272,19 @@
       "notes": "Combo system adds pace variance and rewards consistent play. The 4s timeout is forgiving enough to survive one bad spawn gap."
     },
     {
-      "milestone": "Milestone 9 — Visual Polish Pass",
+      "milestone": "Milestone 9 \u2014 Visual Polish Pass",
       "date": "2026-04-10",
-      "summary": "Penny pulse animation, center seam amber pulse on contested spawns, subtle vignette overlay, bug death × text that floats up and fades.",
+      "summary": "Penny pulse animation, center seam amber pulse on contested spawns, subtle vignette overlay, bug death \u00d7 text that floats up and fades.",
       "changes": [
-        "Penny.draw(): pulse = 1 + 0.03 * sin(Date.now/1200 * 2π) — radius scales ±3% on 1.2s sine wave",
-        "gameState.seamPulseTimer added — spawner.js sets it to 400ms on center-zone penny spawn",
+        "Penny.draw(): pulse = 1 + 0.03 * sin(Date.now/1200 * 2\u03c0) \u2014 radius scales \u00b13% on 1.2s sine wave",
+        "gameState.seamPulseTimer added \u2014 spawner.js sets it to 400ms on center-zone penny spawn",
         "renderer.js drawSeam uses seamPulseTimer to interpolate seam color from dim white to amber #c8922a",
-        "Vignette: radial gradient overlay (transparent center → rgba 0,0,0,0.15 at edges) drawn after all layers",
-        "Bug death text: deathTexts array in round state, × drawn at bug kill position, floats up 10px, fades over 300ms"
+        "Vignette: radial gradient overlay (transparent center \u2192 rgba 0,0,0,0.15 at edges) drawn after all layers",
+        "Bug death text: deathTexts array in round state, \u00d7 drawn at bug kill position, floats up 10px, fades over 300ms"
       ],
       "bugs": [
-        "Death texts are stored in round.deathTexts but the variable name `dt` shadows the outer `dt` parameter in the tick loop — works correctly but is confusing naming",
-        "Vignette redraws every frame via createRadialGradient — could be cached but not a perf issue at this scale"
+        "Death texts are stored in round.deathTexts but the variable name `dt` shadows the outer `dt` parameter in the tick loop \u2014 works correctly but is confusing naming",
+        "Vignette redraws every frame via createRadialGradient \u2014 could be cached but not a perf issue at this scale"
       ],
       "suggestions": [
         "Penny pulse phase could be offset per-penny (using penny.id as offset seed) so all pennies don't pulse in unison",
@@ -292,47 +292,47 @@
       ],
       "recommendations": [],
       "ideas": [],
-      "notes": "The vignette is extremely subtle at 0.15 opacity — exactly right for the void aesthetic. The seam amber pulse communicates contested territory without distracting from gameplay."
+      "notes": "The vignette is extremely subtle at 0.15 opacity \u2014 exactly right for the void aesthetic. The seam amber pulse communicates contested territory without distracting from gameplay."
     },
     {
-      "milestone": "Milestone 10 — Difficulty Tuning",
+      "milestone": "Milestone 10 \u2014 Difficulty Tuning",
       "date": "2026-04-10",
-      "summary": "Wave 1 bug interval tuned to 4s, 3s grace period before first bug, round number display in HUD, score differential ↑N indicator.",
+      "summary": "Wave 1 bug interval tuned to 4s, 3s grace period before first bug, round number display in HUD, score differential \u2191N indicator.",
       "changes": [
         "BUG_WAVE1_INTERVAL reduced from 5000ms to 4000ms in constants.js",
         "BUG_GRACE_PERIOD=3000ms constant added",
         "roundAge tracker added to difficulty.js; updateDifficulty() returns early during grace period",
         "resetDifficulty() resets roundAge to 0",
         "Round number 'R1'/'R2'/'R3' drawn in HUD center just above seam",
-        "Score differential indicator: if leading by 3+, show '↑N' in gold near player score",
+        "Score differential indicator: if leading by 3+, show '\u2191N' in gold near player score",
         "Animated HTML report generated at public/demo-assets/report-m10.html covering M1-M10"
       ],
       "bugs": [],
       "suggestions": [
-        "Grace period could be communicated visually — brief 'get ready!' text in HUD during first 3s"
+        "Grace period could be communicated visually \u2014 brief 'get ready!' text in HUD during first 3s"
       ],
       "recommendations": [],
       "ideas": [],
       "notes": "The 3s grace period makes the opening feel less chaotic. Players can see the first pennies before bugs arrive."
     },
     {
-      "milestone": "Milestone 11 — Chaos Mode",
+      "milestone": "Milestone 11 \u2014 Chaos Mode",
       "date": "2026-04-10",
-      "summary": "Chaos Mode unlocks after match end — both players tap within 500ms to enter a single chaos round with 20 pennies, 2× bug speed, and 5s penny lifetime.",
+      "summary": "Chaos Mode unlocks after match end \u2014 both players tap within 500ms to enter a single chaos round with 20 pennies, 2\u00d7 bug speed, and 5s penny lifetime.",
       "changes": [
         "gameState.chaosMode bool + showChaosPrompt bool added to state.js",
         "resetMatch() clears both chaos flags",
         "spawner.js: pennyTarget=20 in chaos, maxOnScreen=5",
-        "Penny.constructor accepts chaosMode param — uses CHAOS_LIFETIME=5000ms / CHAOS_FADE_START=4000ms",
-        "difficulty.js: bug speed multiplied by 2× in chaos mode",
+        "Penny.constructor accepts chaosMode param \u2014 uses CHAOS_LIFETIME=5000ms / CHAOS_FADE_START=4000ms",
+        "difficulty.js: bug speed multiplied by 2\u00d7 in chaos mode",
         "game.js: pennyTarget from gameState.chaosMode, penny dot count 20 in chaos",
         "matchEnd.js: enterMatchEnd sets showChaosPrompt=true; both-player simultaneous tap (within 500ms) detected per half, launches chaos round",
         "Match end screen shows 'CHAOS?' in red with instructions when chaosMode not yet activated",
         "HUD: 'CHAOS' in red at center instead of round number when chaos active"
       ],
       "bugs": [
-        "Chaos mode never clears if player enters chaos and then chaos round ends — round end sends to ROUND_END not MATCH_END, losing chaos state. Need to check: after chaos round, should it go to match end or regular round end?",
-        "20 penny dots in HUD overflow on narrow screens — total width may exceed canvas width"
+        "Chaos mode never clears if player enters chaos and then chaos round ends \u2014 round end sends to ROUND_END not MATCH_END, losing chaos state. Need to check: after chaos round, should it go to match end or regular round end?",
+        "20 penny dots in HUD overflow on narrow screens \u2014 total width may exceed canvas width"
       ],
       "suggestions": [
         "Brief red flash on chaos entry would feel satisfying",
@@ -345,12 +345,12 @@
       "notes": "Chaos mode is a fun post-match bonus. The simultaneous tap mechanic creates a moment of social interaction between players."
     },
     {
-      "milestone": "Milestone 12 — Tutorial First-Play Overlay",
+      "milestone": "Milestone 12 \u2014 Tutorial First-Play Overlay",
       "date": "2026-04-10",
-      "summary": "One-time tutorial overlay shown during first game countdown — penny and bug icons with point labels, fades after 4s or on first tap.",
+      "summary": "One-time tutorial overlay shown during first game countdown \u2014 penny and bug icons with point labels, fades after 4s or on first tap.",
       "changes": [
         "gameState.showTutorial bool added to state.js",
-        "enterGame() checks localStorage 'pp_played' — sets showTutorial true on first play, writes key",
+        "enterGame() checks localStorage 'pp_played' \u2014 sets showTutorial true on first play, writes key",
         "tutorialTimer tracked in game.js, resets each enterGame",
         "Tutorial dismissed after TUTORIAL_DURATION=4000ms or on any tap event",
         "drawTutorial() draws penny icon (+1, tap pennies) and bug icon (+2, shoot bugs, miss -1) in each half",
@@ -358,10 +358,10 @@
         "Tutorial drawn on top of countdown overlay so both are visible simultaneously"
       ],
       "bugs": [
-        "Tutorial draws a simplified bug ellipse, not the actual Bug.draw() — may look inconsistent with real bugs"
+        "Tutorial draws a simplified bug ellipse, not the actual Bug.draw() \u2014 may look inconsistent with real bugs"
       ],
       "suggestions": [
-        "Tutorial arrow indicators ('→ tap here') pointing at actual in-game entities would be more intuitive",
+        "Tutorial arrow indicators ('\u2192 tap here') pointing at actual in-game entities would be more intuitive",
         "Show tutorial only on first round of a session, not every new game"
       ],
       "recommendations": [],
@@ -369,7 +369,7 @@
       "notes": "Simple and effective. The fade-on-tap pattern ensures players who already understand can dismiss immediately."
     },
     {
-      "milestone": "Milestone 13 — Audio Improvements",
+      "milestone": "Milestone 13 \u2014 Audio Improvements",
       "date": "2026-04-10",
       "summary": "Audio overhaul: positional panning, two-oscillator coin chord, filtered noise crunch for bugs, 8-note match win fanfare, chaos entry cluster, combo ascending tones.",
       "changes": [
@@ -386,32 +386,32 @@
         "matchEnd.js wired: playMatchWin() on enterMatchEnd, playChaosEntry() on chaos launch"
       ],
       "bugs": [
-        "StereoPannerNode may not be available in very old browsers — StereoPanner falls back gracefully (no crash, mono audio)",
-        "playDotTick not yet wired to actual dot animation — function exists but uncalled"
+        "StereoPannerNode may not be available in very old browsers \u2014 StereoPanner falls back gracefully (no crash, mono audio)",
+        "playDotTick not yet wired to actual dot animation \u2014 function exists but uncalled"
       ],
       "suggestions": [
         "Ambient void hum (40Hz sine at 0.03 gain) while game is active would add subperceptual atmosphere"
       ],
       "recommendations": [],
       "ideas": [],
-      "notes": "The two-oscillator coin chord is a significant improvement. The positional panning is subtle but correct — P1 pennies slightly left, P2 slightly right."
+      "notes": "The two-oscillator coin chord is a significant improvement. The positional panning is subtle but correct \u2014 P1 pennies slightly left, P2 slightly right."
     },
     {
-      "milestone": "Milestone 14 — Seam Tension Mechanics",
+      "milestone": "Milestone 14 \u2014 Seam Tension Mechanics",
       "date": "2026-04-10",
       "summary": "CONTESTED text at seam on center-zone penny spawn, CLASH! burst text on simultaneous taps, seam win tracking per player, seam wins shown on round end.",
       "changes": [
         "round.seam object added to freshRoundState: contestedTimer, seamWins[2], clashTexts[]",
         "spawner.js sets round.seam.contestedTimer=1000ms on center-zone penny spawn (in addition to existing seamPulseTimer)",
-        "collision.js: clash detection — if second event hits already-claimed penny entity, pushes type:'clash' result",
+        "collision.js: clash detection \u2014 if second event hits already-claimed penny entity, pushes type:'clash' result",
         "game.js: clash results spawn CLASH! text at penny location, first registrant still wins the penny",
         "Seam wins tracked: penny claimed within 60px of seamY increments seamWins[playerIdx]",
         "CONTESTED text drawn at seamY-14 with amber color, fades over 300ms",
         "CLASH! text drawn in red #ff4444, floats up 20px, fades over 500ms",
-        "Round end screen now shows: '${bugsShot} bugs shot · ${seamWins} seam wins'"
+        "Round end screen now shows: '${bugsShot} bugs shot \u00b7 ${seamWins} seam wins'"
       ],
       "bugs": [
-        "Clash detection fires when any second event touches an already-claimed entity — including the same player tapping the same penny twice in rapid succession",
+        "Clash detection fires when any second event touches an already-claimed entity \u2014 including the same player tapping the same penny twice in rapid succession",
         "seam.clashTexts naming shadows local variable if misnamed"
       ],
       "suggestions": [
@@ -422,7 +422,7 @@
       "notes": "Seam tension is now visually communicated. CONTESTED and CLASH! are clear and brief, not intrusive."
     },
     {
-      "milestone": "Milestone 15 — Stats Screen",
+      "milestone": "Milestone 15 \u2014 Stats Screen",
       "date": "2026-04-10",
       "summary": "Match stats screen on match end, career stats in localStorage, career numbers on title screen, animated M15 report.",
       "changes": [
@@ -437,7 +437,7 @@
         "report-m15.html generated covering M1-M15"
       ],
       "bugs": [
-        "matchStats.seamWins not being populated — seamWins tracking in game.js uses round.seam.seamWins, not gameState.matchStats.seamWins"
+        "matchStats.seamWins not being populated \u2014 seamWins tracking in game.js uses round.seam.seamWins, not gameState.matchStats.seamWins"
       ],
       "suggestions": [],
       "recommendations": [
@@ -447,21 +447,21 @@
       "notes": "Stats tracking gives the game longevity. Career numbers on title create a visible sense of progression."
     },
     {
-      "milestone": "Milestone 16 — Round Variety System",
+      "milestone": "Milestone 16 \u2014 Round Variety System",
       "date": "2026-04-10",
-      "summary": "Three round types randomly rolled per round: STANDARD (10 pennies), BLITZ (6 pennies, 1.5× bugs), ENDURANCE (14 pennies). Badge in HUD and countdown.",
+      "summary": "Three round types randomly rolled per round: STANDARD (10 pennies), BLITZ (6 pennies, 1.5\u00d7 bugs), ENDURANCE (14 pennies). Badge in HUD and countdown.",
       "changes": [
         "round.roundType added to freshRoundState ('STANDARD'|'BLITZ'|'ENDURANCE')",
         "rollRoundType() in state.js: 1/3 chance each",
         "resetRound() calls rollRoundType() unless chaosMode active",
         "spawner.js: pennyTarget and spawnInterval vary by roundType",
-        "difficulty.js: BLITZ applies 1.5× bug speed multiplier",
+        "difficulty.js: BLITZ applies 1.5\u00d7 bug speed multiplier",
         "game.js: pennyTarget and dotCount vary by roundType",
         "HUD: round type badge shown below seam center for non-STANDARD rounds",
         "Countdown screen: round type label shown in each half during countdown"
       ],
       "bugs": [
-        "Round type is rolled when resetRound() is called, which happens before match even starts — so first round of a new match gets a random type immediately. This is fine but could confuse players expecting STANDARD to be the baseline."
+        "Round type is rolled when resetRound() is called, which happens before match even starts \u2014 so first round of a new match gets a random type immediately. This is fine but could confuse players expecting STANDARD to be the baseline."
       ],
       "suggestions": [
         "First round could always be STANDARD for new players to learn the baseline",
@@ -472,57 +472,57 @@
       "notes": "Round variety significantly increases replayability. BLITZ rounds feel hectic; ENDURANCE requires sustained attention."
     },
     {
-      "milestone": "Milestone 17 — Bug AI Improvements",
+      "milestone": "Milestone 17 \u2014 Bug AI Improvements",
       "date": "2026-04-10",
       "summary": "Bugs dodge when tapped near but not hit. Swarm event spawns 3 bugs simultaneously at wave 5+.",
       "changes": [
-        "Bug class: dodging bool, dodgeTimer ms, dodgeDir ±1 added",
+        "Bug class: dodging bool, dodgeTimer ms, dodgeDir \u00b11 added",
         "Bug.dodge() method: sets dodging=true, timer=400ms, random direction",
-        "Bug.update(): dodgeAmp = 30*dodgeDir*(timer/400) while dodging — perp offset added to wobble",
+        "Bug.update(): dodgeAmp = 30*dodgeDir*(timer/400) while dodging \u2014 perp offset added to wobble",
         "game.js: tap within 60px of active bug (not a hit) calls bug.dodge()",
         "difficulty.js: swarmTimer tracks 30s interval at wave 5+",
         "resetDifficulty() resets swarmTimer",
         "Swarm: 3 bugs spawned targeting same randomly chosen player, seam pulse triggers as visual warning"
       ],
       "bugs": [
-        "Dodge detection runs on all tap events including those that hit a bug — bug correctly takes damage but also dodges (dodge happens before hitTest, logically inconsistent)",
-        "Swarm does not have a pre-warning visual beyond seam pulse — red half-screen flash would be more obvious"
+        "Dodge detection runs on all tap events including those that hit a bug \u2014 bug correctly takes damage but also dodges (dodge happens before hitTest, logically inconsistent)",
+        "Swarm does not have a pre-warning visual beyond seam pulse \u2014 red half-screen flash would be more obvious"
       ],
       "suggestions": [
         "Swarm pre-warning: brief red flash on target player's half 1s before swarm spawns"
       ],
       "recommendations": [],
       "ideas": [],
-      "notes": "Bug dodge behavior is subtle but rewarding — good players will notice bugs veering on near-misses."
+      "notes": "Bug dodge behavior is subtle but rewarding \u2014 good players will notice bugs veering on near-misses."
     },
     {
-      "milestone": "Milestone 18 — Accessibility + Landscape",
+      "milestone": "Milestone 18 \u2014 Accessibility + Landscape",
       "date": "2026-04-10",
       "summary": "Tap feedback rings, color-blind mode (long-press mute to toggle), landscape rotation overlay.",
       "changes": [
         "round.tapRings[] added to freshRoundState",
-        "Every tap event pushes a ring {x,y,age,maxAge:200} — rings drawn as expanding white circles (8→40px, fades over 200ms)",
+        "Every tap event pushes a ring {x,y,age,maxAge:200} \u2014 rings drawn as expanding white circles (8\u219240px, fades over 200ms)",
         "Color-blind mode: gameState.colorBlind bool, toggled by 500ms long-press of mute button area",
-        "colorBlind=true: copper pennies → #44aaff blue, bugs unchanged except gold → #ffdd44 yellow",
+        "colorBlind=true: copper pennies \u2192 #44aaff blue, bugs unchanged except gold \u2192 #ffdd44 yellow",
         "'pp_colorblind' localStorage key persists preference",
-        "main.js: checkOrientation() runs on resize — shows landscape overlay div with 'ROTATE DEVICE' message in portrait-enforcing games",
+        "main.js: checkOrientation() runs on resize \u2014 shows landscape overlay div with 'ROTATE DEVICE' message in portrait-enforcing games",
         "Preferences restored from localStorage on page load (colorBlind and muted)"
       ],
       "bugs": [
-        "Long-press color-blind toggle also toggles mute since it fires the tap handler — the logic tries to handle this but timer accumulation per-event is awkward",
-        "Tap rings accumulate in round.tapRings permanently if many taps happen — cleared each frame via filter but never bounded"
+        "Long-press color-blind toggle also toggles mute since it fires the tap handler \u2014 the logic tries to handle this but timer accumulation per-event is awkward",
+        "Tap rings accumulate in round.tapRings permanently if many taps happen \u2014 cleared each frame via filter but never bounded"
       ],
       "suggestions": [],
       "recommendations": [],
       "ideas": [],
-      "notes": "Tap feedback rings are a significant feel improvement — every touch now has visible confirmation, even misses."
+      "notes": "Tap feedback rings are a significant feel improvement \u2014 every touch now has visible confirmation, even misses."
     },
     {
-      "milestone": "Milestone 19 — Performance + Architecture",
+      "milestone": "Milestone 19 \u2014 Performance + Architecture",
       "date": "2026-04-10",
       "summary": "Off-screen entity culling, FPS debug counter, particle pool peak tracking, debug mode via URL param.",
       "changes": [
-        "game.js drawGame: off-screen culling with 30px margin — skip draw if x/y outside canvas bounds",
+        "game.js drawGame: off-screen culling with 30px margin \u2014 skip draw if x/y outside canvas bounds",
         "gameState.debug: enabled, fps, frameCount, fpsTimer, particlePoolPeak",
         "debug.enabled set from URL param ?debug=1",
         "FPS counter: frameCount++, fpsTimer+=dt, compute fps at 1s intervals",
@@ -530,12 +530,222 @@
         "main.js checks URLSearchParams for debug param"
       ],
       "bugs": [
-        "FPS counter starts at 0 for first second — shows 0 until first 1s interval completes"
+        "FPS counter starts at 0 for first second \u2014 shows 0 until first 1s interval completes"
       ],
       "suggestions": [],
       "recommendations": [],
       "ideas": [],
-      "notes": "Culling is free performance — even at 30 entities it eliminates unnecessary draw calls for off-screen bugs."
+      "notes": "Culling is free performance \u2014 even at 30 entities it eliminates unnecessary draw calls for off-screen bugs."
+    },
+    {
+      "milestone": "Milestone 20 \u2014 Void Events",
+      "date": "2026-04-10",
+      "summary": "Added rare void event system: SLOW PENNY, BUG FREEZE, and DOUBLE POINTS events trigger at 0.3% per-frame chance with seam notification.",
+      "changes": [
+        "Created voidEvents.js: SLOW_PENNY (5s, 0.2x age rate), BUG_FREEZE (3s, 0.3x bug speed), DOUBLE_POINTS (3 claims at 2x)",
+        "0.3% per-frame event trigger chance",
+        "slowFactor applied to penny.update() \u2014 active penny ages slower",
+        "bugFreeze multiplier applied to bug.update(dt * freeze)",
+        "Seam notification text announced at void event start",
+        "resetVoidEvents() called on round start and advance",
+        "getSlowFactor / getBugFreezeFactor / getVoidEventMultiplier exported for game loop",
+        "doublePtsRemaining module-level counter decrements on each double-points claim",
+        "Created report-m20.html covering M1-M20 with void canvas animation"
+      ],
+      "bugs": [
+        "Void event chance is per-frame at 60fps \u2014 0.3% per frame is ~17% per second",
+        "Long-press color-blind toggle may fire both mute and color-blind toggle simultaneously",
+        "doublePtsRemaining is module-level state, not in gameState"
+      ],
+      "suggestions": [
+        "Add visual glow during active void event",
+        "Consider a brief fanfare sound when a void event fires",
+        "Per-second chance would be more predictable to balance"
+      ],
+      "recommendations": [
+        "Move doublePtsRemaining into gameState for clean reset",
+        "Consider a void event countdown indicator at the seam"
+      ],
+      "ideas": [
+        "MAGNET void event: pennies drift toward both players for 3s",
+        "PENNY RAIN: 5 extra pennies spawn in 2s burst"
+      ],
+      "notes": "M20 marks 80% completion. The void now has weather. 5 milestones remain."
+    },
+    {
+      "milestone": "Milestone 21 \u2014 Match History",
+      "date": "2026-04-10",
+      "summary": "Added localStorage match history (last 5 results) with LAST MATCH comparison on match end and RECORDS display on title screen.",
+      "changes": [
+        "saveMatchHistory() stores winner, per-round scores, totals, and date to pp_history (max 5 entries)",
+        "getLastMatch() / getBestScores() exported from matchEnd.js for use in title.js",
+        "Match end screen shows LAST MATCH comparison: previous total vs current with +/- diff (green/red)",
+        "Title screen shows LAST: X-Y and BEST: N per player half in small copper text",
+        "History written on match end, immediately visible on next title screen visit",
+        "Best score computed from all stored history entries per player independently"
+      ],
+      "bugs": [
+        "First match: no last match data to compare \u2014 comparison row correctly hidden",
+        "Best score tracks match totals, not per-round highs"
+      ],
+      "suggestions": [
+        "Show date of last match next to LAST label",
+        "History could show win/loss indicator per stored match"
+      ],
+      "recommendations": [
+        "Export getMatchHistory() for a potential future history screen",
+        "Add migration guard on localStorage parse for old schema"
+      ],
+      "ideas": [
+        "Settings screen could include a Clear History option",
+        "Shareable replay code encoded in URL hash"
+      ],
+      "notes": "M21 complete. 4 milestones remain: M22 Sound Overhaul, M23 Settings, M24 Final Polish, M25 QA + Report."
+    },
+    {
+      "milestone": "Milestone 22 \u2014 Sound Design Overhaul",
+      "date": "2026-04-10",
+      "summary": "Rewrote all audio synthesis with richer oscillator layering, ambient 40Hz void hum with LFO modulation, stereo spread, and a new void event trigger sound.",
+      "changes": [
+        "Ambient void hum: 40Hz sine oscillator with 0.07Hz LFO wobble (\u00b12Hz), low-pass filtered at 80Hz, fades in over 2s on audio unlock",
+        "setMuted() fades ambient gain smoothly via setTargetAtTime()",
+        "playCoin() rewritten: fundamental + 5th harmonic pair + high shimmer sweep, per-side stereo spread",
+        "toneWithHarmonic() helper: fundamental + 1.5x harmonic for warm timbre",
+        "playBug() now adds pitched sawtooth crack alongside noise burst",
+        "playMiss() adds low noise thud for more weight",
+        "playWin() uses dual oscillator per note for richness",
+        "playMatchWin() pans notes left-to-right sweep, triangle overtone layer, trailing shimmer noise",
+        "playChaosEntry() alternates left/right pan per frequency, more freqs",
+        "playCombo() uses toneWithHarmonic, noise crackle at x4+",
+        "playDotTick() adds micro noise burst for crispness",
+        "playPennyAppear() adds soft noise breath",
+        "playBeep() adds 5th harmonic shimmer",
+        "playVoidEvent() new: eerie descending tone pair (440->220, 220->110) + filtered noise",
+        "voidEvents.js calls playVoidEvent() when void event fires"
+      ],
+      "bugs": [
+        "Ambient oscillator never stops \u2014 could accumulate on repeated unlockAudio() calls if AudioContext is recreated (guarded by ambientRunning flag)",
+        "setTimeout in playMatchWin for trailing noise could fire after game state changes \u2014 minor"
+      ],
+      "suggestions": [
+        "Add a short attack transient to playWin for more punch",
+        "Ambient hum volume could swell during void events for atmosphere",
+        "BUG_FREEZE event could use a pitched-down version of ambient hum"
+      ],
+      "recommendations": [
+        "Consider an audio object pool pattern to avoid creating many nodes per second at high combo speeds",
+        "Reverb convolver would add depth but requires impulse response buffer \u2014 may not be worth complexity"
+      ],
+      "ideas": [
+        "Per-round type audio theme (BLITZ: faster higher pitch ambient, ENDURANCE: slower drone)",
+        "Crowd ambience sound on chaos mode entry"
+      ],
+      "notes": "M22 complete. Bundle grew from ~35kB to ~37kB (pure code, no audio files). 3 milestones remain: M23 Settings, M24 Polish, M25 QA."
+    },
+    {
+      "milestone": "Milestone 23 \u2014 Settings Screen",
+      "date": "2026-04-10",
+      "summary": "Added a full canvas-drawn settings screen accessible from the title via [settings] tap, with Sound, Color Blind Mode, Round Variety toggles, and a Clear Match History action.",
+      "changes": [
+        "Created settings.js: SCREENS.SETTINGS state, registerLayer(drawSettings, 30)",
+        "Settings panel draws on both halves (P1 top normal, P2 bottom rotated 180)",
+        "4 settings items: Sound toggle, Color Blind Mode toggle, Round Variety toggle, Clear History action",
+        "Toggle items render pill-style with animated dot position (copper when ON, dim when OFF)",
+        "Clear History action shows CLEARED confirmation for 1.5s after tap",
+        "Close: tap top edge of either half returns to SCREENS.TITLE",
+        "Settings button [settings] rendered in title screen bottom of each half",
+        "handleTitleInput checks settings button hit before starting game",
+        "Round variety respects pp_roundtypes localStorage: '0' forces STANDARD, else random",
+        "Sound toggle reads/writes pp_muted, colorBlind reads/writes pp_colorblind (existing keys)",
+        "roundRect used for row backgrounds (rounded corners)"
+      ],
+      "bugs": [
+        "SCREENS.SETTINGS case in main.js loop does not call enterTitle() on close \u2014 title draw layer is already registered so it works, but is slightly asymmetric",
+        "Settings tap region for P2 (mirrored) uses mirrored row Y but still checks ev.x vs W/2 \u2014 works for center-aligned buttons but may feel slightly off on edge rows"
+      ],
+      "suggestions": [
+        "Add slide-in animation for settings panel",
+        "Haptic feedback on toggle would improve mobile feel",
+        "Settings could display current values next to labels instead of just ON/OFF"
+      ],
+      "recommendations": [
+        "Extract a drawPill(ctx, x, y, w, h, on) helper if more toggle UI is added",
+        "Consider escape-to-close via a swipe-down gesture for better mobile UX"
+      ],
+      "ideas": [
+        "Bug speed slider (1x-3x) for difficulty control",
+        "Penny count selector (5/10/15) for shorter or longer rounds",
+        "Match length (first to 1/2/3 round wins)"
+      ],
+      "notes": "M23 complete. Bundle now ~40kB. 2 milestones remain: M24 Final Polish, M25 Final QA + Comprehensive Report."
+    },
+    {
+      "milestone": "Milestone 24 \u2014 Final Polish Pass",
+      "date": "2026-04-10",
+      "summary": "Full visual and feel polish pass: animated title letter drop-in, winner celebration particle burst, round-end fade wipe, spring-physics series dots, and improved bug anatomy.",
+      "changes": [
+        "PENNY PANIC title: staggered per-letter drop-in animation \u2014 each letter falls from 28px above with ease-out cubic + spring overshoot, delay 60ms/letter. PENNY draws in white, PANIC in gold (#f5d06e)",
+        "Winner celebration: 48 particles burst from match winner's half center on match end. Gold/copper/white colors, gravity 180-280, life 0.6-1.4s, fade with alpha",
+        "Round end wipe: wipeActive flag + 400ms fade-to-black before transitioning to ROUND_END screen",
+        "Spring-physics series dots: dotSpringScale starts at 0, spring constants K=300 Damp=12 per dot; dots pop in with overshoot bounce after 400ms wait",
+        "Bug anatomy improved: curved quadratic bezier antennae with tip dots, elbowed 3-per-side legs with alternating up/down animation, semi-transparent wing ellipses",
+        "Wing spread animation: full spread when wingFrame=0, compressed at 0.7x when wingFrame=1",
+        "titleAge timer in title.js drives letter drop-in, resets on enterTitle()"
+      ],
+      "bugs": [
+        "Letter drop-in uses monospace approx character width (measureText M) \u2014 may be slightly off for wide characters like W",
+        "Celebration particles are not clipped to winner half \u2014 they fall into opponent area which may feel odd",
+        "dotSpringScale uses per-player index but both dots use the same spring per player \u2014 a 2-win scenario would show both dots spring together rather than separately"
+      ],
+      "suggestions": [
+        "Clip celebration particles to winner half using ctx.save/clip",
+        "Add a subtle scale-up on the PENNY PANIC title on first render (title entrance)",
+        "Individual dot spring for each win position (dotSpringScale[playerIdx][dotIdx])"
+      ],
+      "recommendations": [
+        "The wipe transition is purely additive \u2014 consider allowing early skip via tap for faster experienced players",
+        "titleAge should be measured in real ms via a requestAnimationFrame delta, not a fixed +16"
+      ],
+      "ideas": [
+        "Confetti-style colored rectangles instead of circles for celebration particles",
+        "Screen shake on match win"
+      ],
+      "notes": "M24 complete. This is the last feature milestone. M25 is Final QA + Comprehensive Report. Bundle is now ~43kB gzipped ~14kB."
+    },
+    {
+      "milestone": "Milestone 25 \u2014 Final QA + Comprehensive Report",
+      "date": "2026-04-10",
+      "summary": "Full project QA audit, architecture review, localStorage key inventory, and generation of comprehensive M1-M25 final report with visual timeline.",
+      "changes": [
+        "Created report-m25.html: full animated report covering all 25 milestones",
+        "Report includes: milestone grid, architecture overview with node diagram, visual timeline M1-M25, project statistics, QA audit results, localStorage key reference, design philosophy section",
+        "Staggered milestone dot entrance animation in report via IntersectionObserver",
+        "Void canvas particles enhanced with gold color variant in final report",
+        "Confirmed all localStorage keys: pp_muted, pp_colorblind, pp_roundtypes, pp_played, pp_career, pp_history",
+        "Verified no circular imports in module graph",
+        "Confirmed build clean: 25 modules, 43kB raw, 14kB gzipped, zero warnings"
+      ],
+      "bugs": [
+        "Void event chance at 0.3%/frame = ~17%/s at 60fps \u2014 slightly misleading label",
+        "Letter drop-in measureText approximation for variable-width characters",
+        "Celebration particles not clipped to winner half",
+        "doublePtsRemaining module-level state could desync on rapid resetVoidEvents calls"
+      ],
+      "suggestions": [
+        "A per-second void event trigger (using a dedicated timer) would be cleaner than per-frame probability",
+        "Clip celebration particles to winner canvas half using ctx.beginPath + ctx.rect + ctx.clip",
+        "Consider moving doublePtsRemaining into gameState.round for clean per-round reset"
+      ],
+      "recommendations": [
+        "No breaking architectural changes needed \u2014 the layered renderer and single-state pattern held up well across 25 milestones",
+        "If extending further: add a game-variant system that can modify pennyTarget, bugCount, and lifetime independently from chaosMode and roundType"
+      ],
+      "ideas": [
+        "Online leaderboard via a lightweight serverless endpoint",
+        "Replay system: record tap timestamps and replay the match",
+        "Daily challenge mode with a fixed random seed for the day"
+      ],
+      "notes": "Penny Panic is complete. 25 milestones in a single session. The void has everything it needs. Two players, one phone, infinite copper."
     }
   ]
 }
