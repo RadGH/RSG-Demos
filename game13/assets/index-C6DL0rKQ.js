@@ -1535,44 +1535,47 @@ When the Emberveil began to fail, most orders fractured or scattered. Individual
   display: grid; grid-template-columns: 200px 1fr 140px;
   height: 100%; overflow: hidden;
 }
-/* Mobile: single scrollable column, actions as bottom bar */
+/* Mobile: flex column, center scrolls, actions bar pinned at bottom */
 @media (max-width: 600px) {
   .town-layout {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     overflow: hidden;
   }
   .party-panel { display: none; }
   .town-main {
+    flex: 1;
+    min-height: 0;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
-    grid-row: 1;
   }
-  .service-panel { overflow-y: visible !important; }
+  .service-panel {
+    overflow-y: visible !important;
+    padding: 0.9rem 1rem !important;
+  }
   .town-actions-panel {
-    grid-row: 2;
+    flex-shrink: 0;
     flex-direction: row !important;
     flex-wrap: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    padding: 0.4rem 0.5rem !important;
+    padding: 0.45rem 0.5rem !important;
     border-left: none !important;
-    border-top: 1px solid rgba(232,160,32,0.15) !important;
-    gap: 0.4rem !important;
-    flex-shrink: 0;
-    background: rgba(0,0,0,0.5) !important;
+    border-top: 1px solid rgba(232,160,32,0.2) !important;
+    gap: 0.35rem !important;
+    background: rgba(4,2,8,0.92) !important;
   }
   .action-btn {
-    min-height: 52px !important;
-    min-width: 56px !important;
-    padding: 0.4rem 0.35rem !important;
-    font-size: 0.62rem !important;
+    min-height: 54px !important;
+    min-width: 54px !important;
+    padding: 0.4rem 0.3rem !important;
+    font-size: 0.6rem !important;
     flex-shrink: 0;
-    gap: 0.2rem !important;
+    gap: 0.15rem !important;
     border-radius: 6px !important;
   }
-  .action-btn svg { width: 16px !important; height: 16px !important; }
+  .action-btn svg { width: 18px !important; height: 18px !important; }
   .action-separator { display: none !important; }
   .action-leave { margin-top: 0 !important; }
 }
