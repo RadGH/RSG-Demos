@@ -635,6 +635,13 @@
       <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Party formation system</span><div class="item-desc">Front row takes more damage, back row is safer for casters/healers</div></div></div>
       <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Skill cooldown indicators</span><div class="item-desc">Visual cooldown overlays on skill buttons during combat</div></div></div>
       <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Target priority AI</span><div class="item-desc">Healers target lowest HP ally, tanks auto-taunt, smarter enemy targeting</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Formation system</span><div class="item-desc">Front row and back row positioning — front row absorbs more damage, back row safer for casters</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Combo attacks between party members</span><div class="item-desc">Specific character pairings can chain abilities for a combined high-damage combo strike</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Environmental hazards</span><div class="item-desc">Zone-specific hazards in combat arenas (lava pools, spike traps, falling debris)</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Enemy AI skills and heals</span><div class="item-desc">Enemies use skill rotations, cast heals on allies, and react to player actions</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Combat speed slider</span><div class="item-desc">Continuous speed slider rather than fixed 1x/2x/4x steps</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Auto-battle toggle</span><div class="item-desc">Fully automated combat using AI behaviour for grinding without manual input</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Damage type system</span><div class="item-desc">Physical, magical, and elemental damage types with resistances and vulnerabilities per enemy</div></div></div>
       <div class="notes-area">
         <div class="notes-label">Additional Notes</div>
         <textarea placeholder="Any notes about combat..."></textarea>
@@ -826,6 +833,57 @@
     </div>
   </div>
 
+  <!-- ═══════════════ 10. ACT SYSTEM & PROGRESSION ═══════════════ -->
+  <div class="section" data-section="acts" data-prompt-title="Act System &amp; Progression">
+    <div class="section-header" onclick="toggleSection(this)">
+      <span class="section-arrow">▶</span>
+      <h2 class="section-title">◆ Act System & Progression</h2>
+      <span class="section-count">0 selected</span>
+    </div>
+    <div class="section-body">
+      <div class="section-actions">
+        <button onclick="selectAll(this)">Select all</button>
+        <button onclick="deselectAll(this)">Deselect all</button>
+      </div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Act-specific side quests</span><div class="item-desc">Each act has unique optional quests with thematic rewards not available elsewhere</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Act-specific merchants</span><div class="item-desc">Themed vendors in each act with inventory tied to that act's lore and zone</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Act completion summary screen</span><div class="item-desc">Stats recap on act clear: enemies defeated, gold earned, quests completed, time taken</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">World map with act travel</span><div class="item-desc">Full world map showing all five acts with ability to travel between completed acts</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Act-specific background music</span><div class="item-desc">Distinct music theme per act that reflects its tone and environment</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Boss rush mode</span><div class="item-desc">Unlocked after completing all acts — fight every act boss back-to-back for leaderboard rewards</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Act difficulty indicators</span><div class="item-desc">World map shows recommended level and difficulty rating for each act</div></div></div>
+      <div class="notes-area">
+        <div class="notes-label">Additional Notes</div>
+        <textarea placeholder="Any notes about the act system..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ 11. CLASS & SKILL SYSTEM ═══════════════ -->
+  <div class="section" data-section="class-skills" data-prompt-title="Class &amp; Skill System">
+    <div class="section-header" onclick="toggleSection(this)">
+      <span class="section-arrow">▶</span>
+      <h2 class="section-title">◆ Class & Skill System</h2>
+      <span class="section-count">0 selected</span>
+    </div>
+    <div class="section-body">
+      <div class="section-actions">
+        <button onclick="selectAll(this)">Select all</button>
+        <button onclick="deselectAll(this)">Deselect all</button>
+      </div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Class specialization at level 10</span><div class="item-desc">At level 10 choose a subclass that locks in a build identity with unique passives and a new skill</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Skill upgrade paths <span class="item-badge" style="background:rgba(64,160,96,0.2);color:var(--green)">DONE</span></span><div class="item-desc">Tiered skill upgrades already implemented — this item tracks further expansion of the system</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Cross-class skill sharing</span><div class="item-desc">Multiclass builds can equip one skill from a secondary class at reduced potency</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Ultimate abilities at max level</span><div class="item-desc">Each class unlocks a powerful signature ultimate when reaching the level cap</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Passive skill trees</span><div class="item-desc">Separate passive upgrade tree for stat bonuses and role-specific enhancements</div></div></div>
+      <div class="item"><input type="checkbox" onchange="updateCounts()"><div class="item-content"><span class="item-name">Class-specific equipment bonuses</span><div class="item-desc">Certain weapons and armor grant bonus stats or extra effects when equipped by their native class</div></div></div>
+      <div class="notes-area">
+        <div class="notes-label">Additional Notes</div>
+        <textarea placeholder="Any notes about class and skill design..."></textarea>
+      </div>
+    </div>
+  </div>
+
   <!-- ═══════════════ GENERAL NOTES ═══════════════ -->
   <div class="section open" data-section="general">
     <div class="section-header" onclick="toggleSection(this)">
@@ -920,21 +978,41 @@ function generatePrompt() {
 
   document.getElementById('nothing-msg').style.display = 'none';
 
-  // Check if any new classes were selected
+  // Check if any new classes were selected, or class/skill section has items
   const classSection = document.querySelector('.section[data-section="new-classes"]');
-  const hasNewClasses = classSection && classSection.querySelectorAll('.item input[type="checkbox"]:checked').length > 0;
+  const classSkillSection = document.querySelector('.section[data-section="class-skills"]');
+  const hasNewClasses = (classSection && classSection.querySelectorAll('.item input[type="checkbox"]:checked').length > 0)
+    || (classSkillSection && classSkillSection.querySelectorAll('.item input[type="checkbox"]:checked').length > 0);
+
+  const actsSection = document.querySelector('.section[data-section="acts"]');
+  const hasActItems = actsSection && actsSection.querySelectorAll('.item input[type="checkbox"]:checked').length > 0;
 
   let prompt = 'Continue working on Emberveil (game13). Here are the features and changes I\'d like implemented:\n\n';
   prompt += parts.join('\n\n');
 
+  prompt += '\n\n## Game System Context\n';
+  prompt += 'Key systems already in place — do not re-implement, extend them:\n';
+  prompt += '- **5-Act structure**: The game is divided into five acts, each with its own zone map, boss, and thematic identity. Acts unlock sequentially. The player returns to town between acts.\n';
+  prompt += '- **Skill upgrade tiers**: Skills have a tiered upgrade system (currently up to tier 3). Higher tiers cost more gold/resources and improve the skill\'s potency or add new effects.\n';
+  prompt += '- **Notification system**: A toast-style notification queue displays game events (level up, item found, quest complete). Use `showNotification(message, type)` — types: "info", "success", "warning", "danger".\n';
+
   if (hasNewClasses) {
-    prompt += '\n\n## Graphics Generation\nWhen adding new classes or visual elements, generate PixelLab sprites for all new characters:\n';
-    prompt += '- Use mcp__pixellab__create_character with size 68x68 for heroes, 52x52 for enemies\n';
-    prompt += '- Generate all 4 directions (south, east, north, west)\n';
-    prompt += '- Save to /public/images/sprites/{key}_{direction}.png\n';
-    prompt += '- Update SPRITE_MAP in CombatScreen.js\n';
-    prompt += '- Add entries to /public/demo-assets/assets.json\n';
-    prompt += '- All new classes MUST have sprites generated before release';
+    prompt += '\n\n## Graphics Generation\nWhen adding new classes, subclasses, or new enemy types, generate PixelLab sprites:\n';
+    prompt += '- Use mcp__pixellab__create_character with size 68x68 for hero/player classes\n';
+    prompt += '- Use mcp__pixellab__create_character with size 52x52 for enemies and bosses\n';
+    prompt += '- Generate all 4 directional views: south, east, west, north\n';
+    prompt += '- Save sprites to /public/images/sprites/{key}_{direction}.png\n';
+    prompt += '- Update SPRITE_MAP in CombatScreen.js with the new keys\n';
+    prompt += '- Add an entry to /public/demo-assets/assets.json for each generated image\n';
+    prompt += '- All new classes and enemies MUST have sprites generated before the milestone is considered complete';
+  }
+
+  if (hasActItems) {
+    prompt += '\n\n## Act System Notes\n';
+    prompt += '- Acts are accessed via the world map. Each act has a dedicated zone with its own node graph.\n';
+    prompt += '- Act bosses drop guaranteed unique loot and trigger an act completion cutscene.\n';
+    prompt += '- When adding act-specific content, keep it gated behind act unlock so players cannot access it prematurely.\n';
+    prompt += '- Music and ambient audio should fade/crossfade when transitioning between acts.';
   }
 
   const generalNotes = document.getElementById('general-notes').value.trim();
