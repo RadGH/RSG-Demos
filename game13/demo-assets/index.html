@@ -319,7 +319,7 @@
 </head>
 <body>
 
-<script src="./_header.js" data-base="demo-assets"></script>
+<script src="./_header.js?v=3" data-base="demo-assets"></script>
 
 <header>
   <h1 id="game-title" class="page-title">Emberveil</h1>
@@ -637,7 +637,7 @@ function renderReports(reports) {
 async function init() {
   let data;
   try {
-    const res = await fetch('assets.json');
+    const res = await fetch('assets.json?v=' + Date.now());
     data = await res.json();
   } catch {
     render([]);
