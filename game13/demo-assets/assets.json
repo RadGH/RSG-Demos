@@ -1399,6 +1399,43 @@
   ],
   "reports": [
     {
+      "milestone": "Milestone 62 \u2014 Cross-map fix, save rework, map variety, sneak checks",
+      "date": "2026-04-13",
+      "summary": "Root-cause fix for the cross-map party-position bug, unlimited auto-named saves, expanded node graphs across Acts 2\u20135 with mini-boss treasure detours, sneak skill-check option on revisited combat nodes, and demo-assets Reports anchor fix.",
+      "changes": [
+        "GameState.zoneNodeIds stores per-zone party positions so switching zone tabs no longer wipes nodeId; MapScreen constructor + tab-switch handler persist/restore correctly",
+        "GameState.load migrates legacy saves to seed zoneNodeIds from their last nodeId",
+        "CombatScreen post-boss zone transition no longer needs to set nodeId directly \u2014 MapScreen seeds from zone.nodes[0] when null",
+        "SaveManager rewritten: unique keyed saves (emberveil_save_<slug>_<timestamp>), startNewSave mints a new key on New Game so nothing is overwritten, listSaves scans all saves newest-first",
+        "LoadGameScreen lists every detected save (not 3 slots); level display uses fallback chain save.level \u2194 party[0].level so it never shows blank",
+        "TownScreen save modal offers \u2018Current save\u2019 / \u2018New save\u2019 buttons instead of 3 slots",
+        "MapScreen parallax cache drops the mid cloud layer; draw loop iterates only far+near",
+        "mapData.js expansions: thornwood + Queen Spider mini-boss + Silk Cache detour; dust_roads, ember_plateau, hell_breach, shattered_core, cosmic_rift, eternal_void, abyssal_depths, primordial_nexus each gained 3\u20135 nodes including a mini-boss-guarded treasure vault side path",
+        "Act 1 border_roads preserved exactly as requested",
+        "MapScreen._showSneakPrompt intercepts clicks on visited combat/ambush nodes; _sneakOptionsFor derives 2\u20133 skill-check variants (DEX/INT/STR/CON) per node by deterministic hash with DCs scaling by act",
+        "On successful sneak, gs.sneakedNodes is set and _navigateToNode skips the combat push for that arrival",
+        "demo-assets _header.js Reports link now points at ./index.html#reports-section (was ../demo-assets/#reports which did not match the section id)",
+        "#reports-section gains scroll-margin-top + html scroll-padding-top so the heading is not hidden under the fixed 52px nav"
+      ],
+      "bugs": [
+        "Silent shelving: this milestone ships only the 6 items from the user\u2019s latest message; the 21-item M56 queue (Spell Power, Attributes tab, dialog bg gradient, combat audio loop, Hire Custom parity, Town buttons, blacksmith equipped, party 4-group layout, etc.) is rolling forward to M63",
+        "Sneak outcome rewards are binary (skip or full combat); no partial XP for sneaked past nodes"
+      ],
+      "suggestions": [
+        "Sneaked-past nodes could grant a small stealth-XP or a one-time reward for finding an alternate route",
+        "Consider showing the full branch graph with a mini-legend so players can preview treasure-detour routes"
+      ],
+      "recommendations": [
+        "Audit every screen that reads gs.nodeId directly \u2014 confirm none assume it\u2019s always in the current zone\u2019s nodes array",
+        "Consider a visible zone-node-position debug overlay in dev builds to catch any future cross-zone state drift"
+      ],
+      "ideas": [
+        "Per-zone fog-of-war that hides unvisited branches until discovered",
+        "Second-pass biome tints on the map canvas to differentiate expanded zones visually"
+      ],
+      "notes": "Build: 566 KB JS (156 KB gzip), 37 modules. release.sh bumped to milestone_62."
+    },
+    {
       "milestone": "Milestone 56 \u2014 Spell/Attack Power, UI polish, combat audio fix",
       "date": "2026-04-13",
       "summary": "Added Spell/Attack Power aggregates, Attributes tab, dialog backgrounds, fixed combat audio leak, Hire Custom parity, blacksmith/enchanter equipped support, party screen rework, plus post-defeat and inter-map traversal bug fixes.",

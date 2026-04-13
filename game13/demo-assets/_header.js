@@ -3,7 +3,7 @@
     { href: '../../index.html', label: 'Play Game' },
     { href: '../demo-assets/', label: 'Demo Assets' },
     { href: '../game-info/', label: 'Game Info' },
-    { href: '../demo-assets/#reports', label: 'Reports' }
+    { href: '../demo-assets/index.html#reports-section', label: 'Reports' }
   ];
 
   function resolve(href) {
@@ -16,7 +16,7 @@
     }
     // rewrite ../ paths relative to current page base
     if (base === 'demo-assets') {
-      return href.replace('../demo-assets/', './').replace('../game-info/', '../game-info/').replace('../../index.html', '../../index.html');
+      return href.replace('../demo-assets/index.html', './index.html').replace('../demo-assets/', './').replace('../game-info/', '../game-info/').replace('../../index.html', '../../index.html');
     }
     if (base === 'game-info') {
       return href.replace('../demo-assets/', '../demo-assets/').replace('../game-info/', './').replace('../../index.html', '../../index.html');
