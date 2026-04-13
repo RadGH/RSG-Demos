@@ -1728,7 +1728,7 @@ When the Emberveil began to fail, most orders fractured or scattered. Individual
   .gm-btn.gm-primary { background: #4a2a60; border-color: #8060a0; }
   .gm-btn.gm-primary:hover { background: #5a3a70; }
   .gm-msg { font-size: 0.8rem; color: #a090c0; text-align: center; margin-top: 0.75rem; min-height: 1em; }
-`);class fe{constructor(e,t){this.manager=e,this.audio=t,this._el=null}onEnter(){this._el=C("div",{class:"gm-overlay"}),this._el.innerHTML=`
+`);class fe{constructor(e,t){this.manager=e,this.audio=t,this._el=null}onEnter(){this._el=C("div","gm-overlay"),this._el.innerHTML=`
       <div class="gm-panel">
         <h2 class="gm-title">Menu</h2>
         <button class="gm-btn gm-primary" data-act="resume">Resume</button>
