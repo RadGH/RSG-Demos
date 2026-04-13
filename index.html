@@ -116,7 +116,7 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
 <main class="games-list" id="games-list">
 
 <section class="game-section" id="game13"
-  data-key="game13" data-date="2026-04-13" data-milestone="63" data-title="Emberveil"
+  data-key="game13" data-date="2026-04-13" data-milestone="64" data-title="Emberveil"
   style="--ga:#e8a020;--gab:#f0c060;--gad:#8a5010;--gg:rgba(232,160,32,0.3);--gbg:#0a0608;--gt:#f0e8d8;--gtm:#8a7a6a;--gbo:#f0e8d8;--gbr:rgba(232,160,32,0.3);--gpf:0 0 12px #e8a020, 0 0 28px #8a5010, 0 0 56px rgba(232,160,32,0.2);--gpt:0 0 20px #f0c060, 0 0 40px #e8a020, 0 0 80px rgba(240,192,96,0.3);background:#0a0608">
   <div class="game-bg">
     <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(192,64,48,0.12) 0%, transparent 70%), linear-gradient(180deg, #0a0608 0%, #1a1218 100%)"></div>
@@ -127,19 +127,21 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
     <div class="game-frame" style="--glow:rgba(232,160,32,0.3)">
       <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
       <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
-      <span class="frame-top">Milestone 63</span>
+      <span class="frame-top">Milestone 64</span>
       <span class="frame-bot">A High Fantasy Party RPG</span>
       <div class="game-eyebrow">A High Fantasy Party RPG</div>
       <h2 class="game-title">Emberveil</h2>
       <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
       <div class="game-badges">
-        <span class="gbadge gbadge-m">M63</span>
+        <span class="gbadge gbadge-m">M64</span>
         
         <span class="gbadge gbadge-date">2026-04-13</span>
       </div>
       <p class="game-desc">A high fantasy party RPG. Build a party of up to 8 heroes and companions, journey across four acts — goblin frontier, volcanic wastelands, the Shattered Hell, and the Cosmic Void — in cinematic auto-play combat against hordes of enemies. 14 playable classes, procedurally generated equipment, and a story-driven journey to stop the corruption tearing worlds apart.</p>
       <a href="./game13/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">We are creating a game involving a party of 1-4 heroes and up to 8 characters including pets. The game involves combat against hordes of enemies from just one big enemy to 50 small enemies. The combat takes place a round at a time. All characters in combat roll a turn order and auto-plays using the most appropriate skills available... [full prompt as described in design session April 2026]</p><div class="prompt-entry"><span class="prompt-date">2026-04-13</span> M56: User requested Spell/Attack Power, Attributes tab, dialog bgs, combat audio fix, Hire parity, blacksmith equipped, party rework, portal gating, asset categorization, shared nav, logo gradient, game-info update; plus bugs (post-defeat map lock, inter-map traversal).</div></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">• M63 (2026-04-13): M56 queue audit pass — verified and hardened the remaining items from the big 21-item queue. Added GameState.sanitizeRoster() invariant (hero entities cannot occupy the companions list; CombatScreen calls it on enter to defensively re-home any misplaced heroes to bench). Combat audio boop-loop root-cause fix: all procedural music now routes through a dedicated per-track _trackGain that is ramped to 0 and disconnected on _stopCurrentTrack, reliably silencing pre-scheduled oscillators created by _addPulse/_addPad instead of relying on node.stop() against oscillators that never started. _victory() now calls _stopCombatAudio() immediately on win (not just in onExit), matching _defeat(). TownScreen overview cards now use delegated click handlers on the service panel so Merchant/Tavern big buttons keep working across re-renders. /game-info timeline extended to M62 with M57–M62 chips and phase label updated to M46–M62. No changes needed to already-complete items (spell/attack power, attributes tab, dialog bg wiring, hire custom parity, blacksmith equipped items, party 4-group layout, inventory filter, war dog sprite, demo-assets categorization, reports layout, logo gradient, portal gating).
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">We are creating a game involving a party of 1-4 heroes and up to 8 characters including pets. The game involves combat against hordes of enemies from just one big enemy to 50 small enemies. The combat takes place a round at a time. All characters in combat roll a turn order and auto-plays using the most appropriate skills available... [full prompt as described in design session April 2026]</p><div class="prompt-entry"><span class="prompt-date">2026-04-13</span> M56: User requested Spell/Attack Power, Attributes tab, dialog bgs, combat audio fix, Hire parity, blacksmith equipped, party rework, portal gating, asset categorization, shared nav, logo gradient, game-info update; plus bugs (post-defeat map lock, inter-map traversal).</div><div class="prompt-entry"><span class="prompt-date">2026-04-13</span> M64: User requested 19-item queue — skill rework, portal/travel fixes, companion system expansion, audio/art generation pass, town service consolidation, level-up summary, starting equipment, demo-assets polish.</div></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M64 — Skill talent rework (3/8/13/18/23/28 cadence, every skill has ≥2 talents, save migration), ring auto-slot, blue portal icons + portal-only return button, zone-specific travel indicator, 10 new companion encounters with AI-generated sprites, ~60 ElevenLabs SFX + 3 music tracks, 10 OpenAI map backgrounds, menu background + parallax clouds, purple black market (Act 4-5 unlock), forge as town service, town tab bar fix, Trophies→Achievements, weapon variety + starting equipment, split Disable Backgrounds/Sprites settings, demo-assets Play link → /game13/, level-up summary dialog per character.
+
+• M63 (2026-04-13): M56 queue audit pass — verified and hardened the remaining items from the big 21-item queue. Added GameState.sanitizeRoster() invariant (hero entities cannot occupy the companions list; CombatScreen calls it on enter to defensively re-home any misplaced heroes to bench). Combat audio boop-loop root-cause fix: all procedural music now routes through a dedicated per-track _trackGain that is ramped to 0 and disconnected on _stopCurrentTrack, reliably silencing pre-scheduled oscillators created by _addPulse/_addPad instead of relying on node.stop() against oscillators that never started. _victory() now calls _stopCombatAudio() immediately on win (not just in onExit), matching _defeat(). TownScreen overview cards now use delegated click handlers on the service panel so Merchant/Tavern big buttons keep working across re-renders. /game-info timeline extended to M62 with M57–M62 chips and phase label updated to M46–M62. No changes needed to already-complete items (spell/attack power, attributes tab, dialog bg wiring, hire custom parity, blacksmith equipped items, party 4-group layout, inventory filter, war dog sprite, demo-assets categorization, reports layout, logo gradient, portal gating).
 
 • M62 (2026-04-13): Cross-map party-position root-cause fix — per-zone nodeId map (zoneNodeIds) persists per-zone positions so navigating back to a prior map restores the party indicator instead of wiping it; save migration handles legacy saves. Unlimited auto-named save slots — every New Game creates a unique save key (no more overwrites), Load Game lists all detected saves (not limited to 3), level indicator shows with fallback so it no longer reads blank. Cloud parallax layer removed from map screen. Expanded node graphs for variety — Act 1 border_roads preserved; thornwood gains a Queen-Spider mini-boss → Silk Cache detour; Acts 2–5 zones each add 3–5 nodes, branching paths, and a mini-boss-guarded treasure vault side route (buried_cache/ember_hoard/demon_reliquary/shard_vault/void_vault/oblivion_cache/sunken_vault/final_reliquary); progressive complexity with Act 5 reaching ~13 nodes per zone. Sneak skill-check on revisited combat/ambush nodes — deterministic per-node variants pull 2–3 options from DEX/INT/STR/CON with DCs scaling by act; success skips combat, failure enters combat; Fight/Cancel buttons available. Demo-assets Reports link fixed — href now points at #reports-section with scroll-padding-top offset so the section isn't hidden under the fixed nav.
 
@@ -185,56 +187,7 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
 • M4 (2026-04-10): Skill tree UI (14 classes × 4 skills with talent nodes), inventory screen with equip/unequip logic per slot, save/load system (3 slots, versioned, migration), full GameState integration in combat (whole party fights, XP/gold awards, item drops, level-up detection).
 • M3 (2026-04-10): Node map on canvas, zone system, encounter router, boss setup (Grax), combat screen with full turn order, hit/dodge/armor resolution, visual stances, victory/defeat flow, procedural item generation.
 • M2 (2026-04-10): Town services (Merchant buy/sell, Tavern hiring, Cleric revive, Save modal), party panel, companion slots, map/inventory/skills navigation.
-• M1 (2026-04-10): Project scaffold, title screen cinematic (clouds→logo drop→menu), 14-class character builder, attribute distribution, first town, Web Audio procedural music. Pre-game design report at /demo-assets/pre-game-report.html.</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1 COMPLETE (2026-04-10) — Scaffold, title cinematic, character builder, town
-M2 COMPLETE (2026-04-10) — Town services, party panel, tavern hiring
-M3 COMPLETE (2026-04-10) — Map system, combat prototype, item generation
-M4 COMPLETE (2026-04-10) — Skill trees, inventory screen, save/load
-M5 COMPLETE (2026-04-10) — Dialog encounters, floating damage numbers, level-up screen
-M6 COMPLETE (2026-04-10) — Bug fix (saveSlot), combat skill AI, AoE, status effects
-M7 COMPLETE (2026-04-10) — Screen layering fix, full enemy roster, zone encounters
-M8 COMPLETE (2026-04-10) — Blacksmith and Enchanter services fully implemented
-M9 COMPLETE (2026-04-11) — Dialog UX fixes, opening cinematic, zone progression
-M10 COMPLETE (2026-04-11) — Zone progression gating, multi-zone map tabs
-M11 COMPLETE (2026-04-11) — Critical dialog→combat bug fix, companion fixes
-M12 COMPLETE (2026-04-11) — Act 2 zones and enemies (Ashen Wastes)
-M13 COMPLETE (2026-04-11) — Quest log screen with 4 authored quests
-M14 COMPLETE (2026-04-11) — Act 3 zones (Hell Breach + Shattered Core), PixelLab sprites integrated
-M15 COMPLETE (2026-04-11) — Zone backgrounds, speed toggle, rest service, companion inventory, Ranger+HellKnight sprites
-M16 COMPLETE (2026-04-11) — Fame system, weather effects, 4 new quests, Rogue sprite
-M17 COMPLETE (2026-04-11) — Achievements screen, personality traits, 9 more sprites
-M18 COMPLETE (2026-04-11) — Act 4 zones, item sets, shrine nodes, challenge nodes
-M19 COMPLETE (2026-04-11) — New Game+, NG+ stat scaling, title screen NG+ badge
-M20 COMPLETE (2026-04-11) — Audit, polish, bug fixes (boss detection, armor cap, zone loot)
-M21 COMPLETE (2026-04-11) — PartyScreen (bench swap, reorder, achievement fixes)
-M22 COMPLETE (2026-04-11) — World Codex screen (12 lore entries, unlock system)
-M23 COMPLETE (2026-04-11) — Forge (salvage, materials, 9 crafting recipes)
-M24 COMPLETE (2026-04-11) — Daily Challenge (seeded gauntlet, local leaderboard)
-M25 COMPLETE (2026-04-11) — Final polish: zone music, SFX, CSS animations, launch-ready ✦
-M26–M29 COMPLETE (2026-04-11) — Bug fixes: town mobile layout, combat background, TitleScreen onPause
-M30 COMPLETE (2026-04-11) — Bug fixes: ScreenManager only draws top screen, TitleScreen star scatter, map forward-path glow (animated dashed), random encounters on revisit, zone NEW badge, SkillTreeScreen mobile two-screen flow, combat pause menu with flee system
-M31 COMPLETE (2026-04-11) — Inventory 1H slot picker dialog, 2H off-hand disable
-M32 COMPLETE (2026-04-11) — Custom mercenary builder at Tavern, touch zoom prevention
-M33 COMPLETE (2026-04-11) — Potion system (purchase at merchant, use in combat pause menu)
-M34 COMPLETE (2026-04-11) — Bug fixes: alreadyVisited check before visitNode (was always true), ctx.roundRect→ctx.rect iOS fix, pause button SVG icon
-M35 COMPLETE (2026-04-11) — Game info website, 8 new PixelLab sprites, combat zoom, disable textures, companion inventory slots
-M36-37 COMPLETE (2026-04-11) — Game info emoji cleanup, assets.json report
-M38 COMPLETE (2026-04-11) — Dialog bug fix, 2H weapon fix, 8 new sprites (all 14 hero classes done)
-M39 COMPLETE (2026-04-11) — Early deploy for suggestions form
-M40 COMPLETE (2026-04-11) — 100 random events, town portal, combat layout, party bench, UI fixes, suggestions form
-M46 COMPLETE (2026-04-12) — Combat foundation + critical bug fixes: crit system, attack bob, mana regen + affix, formation targeting, healer AI, sprite rebalance, TPK fix, skill-check party-max, deferred attr spend, save v3, accessory affix floor
-M53 COMPLETE (2026-04-12) — 12 new sprites wired, Tactician/Chronomancer sprites still queued
-M52 COMPLETE (2026-04-12) — View Combat Log button
-M51 COMPLETE (2026-04-12) — Quest turn-in + completed bubble
-M50 COMPLETE (2026-04-12) — Boss intro cinematic
-M49 COMPLETE (2026-04-12) — Node-by-node travel + one-shot treasures
-M48 COMPLETE (2026-04-12) — 5 new classes (Stormcaller, Druid, Oracle, Tactician, Chronomancer) with full skill sets
-M47 COMPLETE (2026-04-12) — ESC/Menu screen, town menu trim, Party 2-col, Cleave replaces Shield Bash, Heal splash/barrier talents, skill points 1/3 levels, Necromancer Bone Spear, Hire Custom rename+disable
-Upcoming M47: ESC menu, party 2-col, Hire Custom rework, Cleave (Warrior), town menu trim, necro auto-skeleton
-Upcoming M48: 5 new classes (Stormcaller, Druid, Oracle, Tactician, Chronomancer)
-Upcoming M49-M53: node-by-node travel, boss cinematics, branching dialog, black market, QoL + verification, graphics expansion
-M56 COMPLETE (2026-04-13) — Spell/Attack Power, Attributes tab, dialog bgs, audio fix, Hire parity, blacksmith equipped, party rework, portal gating, demo-assets polish
-M62 COMPLETE (2026-04-13) — Cross-map party-position fix (per-zone nodeIds), unlimited auto-named saves + level fix, cloud removal, map graph expansion (thornwood + all Act 2–5), sneak skill checks, Reports anchor fix
-Upcoming M63 — original M56 queue resumes: Spell Power/Attack Power display verification, Attributes tab in Skills menu, dialog background gradient tweak, combat audio loop bug, Hire Custom parity, Town Merchant/Tavern routing, Blacksmith/Enchanter accepting equipped items, Party screen cleanup, Hired hero skill points scaling, Inventory inactive filter, Back-to-town gating, Companion slot hero guard, Party 4-group layout, war dog sprite, asset categorization, shared header, logo gradient, game-info update</pre></details></div>
+• M1 (2026-04-10): Project scaffold, title screen cinematic (clouds→logo drop→menu), 14-class character builder, attribute distribution, first town, Web Audio procedural music. Pre-game design report at /demo-assets/pre-game-report.html.</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1–M64 COMPLETE. Next: address any M64 follow-ups (companion walk/attack frames, black market art polish, forge hover tooltips).</pre></details></div>
     </div>
   </div>
 </section>
@@ -700,7 +653,7 @@ Phase 5: Biomes 3+4 — Forge of Ruin &amp; Void Sanctum (M49–M63)</pre></deta
 </main>
 <footer class="site-footer">Rad's Game Demos &mdash; 10 games &mdash; 2026</footer>
 <script>
-const SORT_DATA=[{"key":"game2","date":"2026-04-10","milestone":231,"title":"Roguelike"},{"key":"game3","date":"2026-04-01","milestone":3,"title":"Roguelike III"},{"key":"game4","date":"2026-04-02","milestone":32,"title":"Spellroads"},{"key":"game6","date":"2026-04-05","milestone":29,"title":"Astral Crypts"},{"key":"game7","date":"2026-04-05","milestone":13,"title":"Wanderlight"},{"key":"game8","date":"2026-04-10","milestone":80,"title":"Vagrant & Ash"},{"key":"game10","date":"2026-04-10","milestone":8,"title":"Aethermoor Chronicles"},{"key":"game11","date":"2026-04-10","milestone":19,"title":"Stormtown"},{"key":"game12","date":"2026-04-10","milestone":29,"title":"Penny Panic"},{"key":"game13","date":"2026-04-13","milestone":63,"title":"Emberveil"}];
+const SORT_DATA=[{"key":"game2","date":"2026-04-10","milestone":231,"title":"Roguelike"},{"key":"game3","date":"2026-04-01","milestone":3,"title":"Roguelike III"},{"key":"game4","date":"2026-04-02","milestone":32,"title":"Spellroads"},{"key":"game6","date":"2026-04-05","milestone":29,"title":"Astral Crypts"},{"key":"game7","date":"2026-04-05","milestone":13,"title":"Wanderlight"},{"key":"game8","date":"2026-04-10","milestone":80,"title":"Vagrant & Ash"},{"key":"game10","date":"2026-04-10","milestone":8,"title":"Aethermoor Chronicles"},{"key":"game11","date":"2026-04-10","milestone":19,"title":"Stormtown"},{"key":"game12","date":"2026-04-10","milestone":29,"title":"Penny Panic"},{"key":"game13","date":"2026-04-13","milestone":64,"title":"Emberveil"}];
 function reSort(by){
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('sort-'+by).classList.add('active');
