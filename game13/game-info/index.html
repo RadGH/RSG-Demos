@@ -1162,24 +1162,8 @@
 </head>
 <body>
 
-<!-- ── STICKY NAV ── -->
-<nav>
-  <div class="nav-inner">
-    <span class="nav-logo">✦ EMBERVEIL</span>
-    <ul class="nav-links">
-      <li><a href="#story">Story</a></li>
-      <li><a href="#classes">Classes</a></li>
-      <li><a href="#combat">Combat</a></li>
-      <li><a href="#journey">Journey</a></li>
-      <li><a href="#equipment">Equipment</a></li>
-      <li><a href="#companions">Companions</a></li>
-      <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="suggestions.html">Suggestions</a></li>
-    </ul>
-    <a href="../../index.html" class="nav-links nav-play">▶ Play Now</a>
-  </div>
-</nav>
+<!-- ── SHARED NAV ── -->
+<script src="../demo-assets/_header.js" data-base="game-info"></script>
 
 <!-- ── HERO ── -->
 <section id="hero">
@@ -1833,6 +1817,51 @@
         </div>
       </div>
 
+      <div class="timeline-phase">
+        <div class="phase-label">Phase 10 — Deep Systems &amp; Polish (M46–M56)</div>
+        <div class="milestones-row">
+          <div class="milestone-chip"><span class="chip-num">M46</span> Combat Foundation &amp; Crits</div>
+          <div class="milestone-chip"><span class="chip-num">M47</span> Affix Pool Expansion</div>
+          <div class="milestone-chip"><span class="chip-num">M48</span> Formation Targeting</div>
+          <div class="milestone-chip"><span class="chip-num">M49</span> Sprite Rebalance &amp; HUD</div>
+          <div class="milestone-chip"><span class="chip-num">M50</span> Companion Roster</div>
+          <div class="milestone-chip"><span class="chip-num">M51</span> Hire Custom Hero</div>
+          <div class="milestone-chip"><span class="chip-num">M52</span> Dialog Backgrounds</div>
+          <div class="milestone-chip"><span class="chip-num">M53</span> Deferred Resolution</div>
+          <div class="milestone-chip"><span class="chip-num">M54</span> Blacksmith / Enchanter</div>
+          <div class="milestone-chip"><span class="chip-num">M55</span> Party Management</div>
+          <div class="milestone-chip"><span class="chip-num">M56</span> Spell/Attack Power &amp; Polish</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+<div class="divider-glow"></div>
+
+<!-- ── RECENT ADDITIONS (M46–M56) ── -->
+<section id="recent">
+  <div class="section">
+    <div class="section-header fade-in">
+      <p class="section-eyebrow">What's New</p>
+      <h2 class="section-title">Recent Additions (M46–M56)</h2>
+      <p class="section-lead">The last batch of milestones focused on combat depth, party/companion systems, and UI polish.</p>
+    </div>
+    <div class="grid-3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem">
+      <div class="card"><h3 style="font-family:var(--font-display);color:var(--gold-bright);margin-bottom:.5rem">Spell &amp; Attack Power</h3><p>INT scales spell damage &amp; heals; STR scales melee. Both aggregates surfaced in Character Stats tooltips and the level-up preview.</p></div>
+      <div class="card"><h3 style="font-family:var(--font-display);color:var(--gold-bright);margin-bottom:.5rem">Crit System</h3><p>Natural-20 attacks deal 2× damage with a floating CRIT! label and a 0.35s screen shake.</p></div>
+      <div class="card"><h3 style="font-family:var(--font-display);color:var(--gold-bright);margin-bottom:.5rem">Formation Targeting</h3><p>Enemy AI targets companions first, then heroes in list order. Healer roles auto-pick lowest-HP allies; taunt overrides.</p></div>
+      <div class="card"><h3 style="font-family:var(--font-display);color:var(--gold-bright);margin-bottom:.5rem">Hire Custom Hero</h3><p>Full parity with Create Your Hero — class icons, descriptions, armor/weapon preferences, plus +2 skill points per starting level.</p></div>
+      <div class="card"><h3 style="font-family:var(--font-display);color:var(--gold-bright);margin-bottom:.5rem">Party Management Rework</h3><p>Four-group layout (Active/Inactive Heroes, Companions, Inactive Companions), inline Skills/Inventory buttons, hard companion-slot hero-reject invariant.</p></div>
+      <div class="card"><h3 style="font-family:var(--font-display);color:var(--gold-bright);margin-bottom:.5rem">Blacksmith &amp; Enchanter</h3><p>Services now accept equipped gear — items are grouped per character so you no longer have to unequip before upgrading.</p></div>
+      <div class="card"><h3 style="font-family:var(--font-display);color:var(--gold-bright);margin-bottom:.5rem">Dialog Backgrounds</h3><p>16 generated location art pieces (tavern, ruins, graveyard, throne room, void) wired into the dialog system per-event.</p></div>
+      <div class="card"><h3 style="font-family:var(--font-display);color:var(--gold-bright);margin-bottom:.5rem">Attributes Tab</h3><p>Unspent attribute points can be reopened from the Skills menu's new Attributes tab instead of waiting for the next level-up.</p></div>
+      <div class="card"><h3 style="font-family:var(--font-display);color:var(--gold-bright);margin-bottom:.5rem">Combat Audio Fix</h3><p>Resolved the repeating "boop" loop — all combat SFX/music are properly stopped on victory, defeat, and screen exit.</p></div>
+      <div class="card"><h3 style="font-family:var(--font-display);color:var(--gold-bright);margin-bottom:.5rem">Town Portals &amp; Maps</h3><p>Back-to-Town gated on zone start nodes; portal-return only available on portal tiles. Stale nodeIds no longer break inter-map travel.</p></div>
+      <div class="card"><h3 style="font-family:var(--font-display);color:var(--gold-bright);margin-bottom:.5rem">New Sprites</h3><p>War dog companion wired in combat, plus new boss/enemy sprites and the categorized /demo-assets/ gallery (Heroes, Companions, Enemies, Bosses).</p></div>
+      <div class="card"><h3 style="font-family:var(--font-display);color:var(--gold-bright);margin-bottom:.5rem">Shared Navigation</h3><p>Unified header across Game Info, Asset Gallery, and milestone reports — single source of truth in <code>_header.js</code>.</p></div>
     </div>
   </div>
 </section>

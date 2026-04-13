@@ -1399,6 +1399,49 @@
   ],
   "reports": [
     {
+      "milestone": "Milestone 56 \u2014 Spell/Attack Power, UI polish, combat audio fix",
+      "date": "2026-04-13",
+      "summary": "Added Spell/Attack Power aggregates, Attributes tab, dialog backgrounds, fixed combat audio leak, Hire Custom parity, blacksmith/enchanter equipped support, party screen rework, plus post-defeat and inter-map traversal bug fixes.",
+      "changes": [
+        "Spell Power aggregate (INT-based) applied to offensive spells and heals in CombatScreen._executeSkill",
+        "Attack Power aggregate (STR-based) surfaced alongside Spell Power",
+        "Attributes tab added to SkillTreeScreen so unspent attr points can be reopened",
+        "Tooltip numbers unified across skills.js, CombatScreen cast path, and InventoryScreen._renderCharStats",
+        "Dialog backgrounds wired: DialogScreen renders bg image from event.bg; mapData events tagged with bg keys (void, ruins, etc.)",
+        "Combat audio leak fixed: AudioManager.stopCombatMusic/stopAllSfx + CombatScreen._stopCombatAudio on onExit/destroy/defeat/victory",
+        "Hire Custom parity with Create Your Hero: class icons, hooks, armor/weapon prefs, description (HireBuilderScreen.js)",
+        "Town screen Merchant/Tavern big buttons wired via TownScreen._wireServiceEvents",
+        "Blacksmith accepts equipped items: equipped gear grouped per character with composite `ownerId|slot` refs (TownScreen.js _blacksmithHTML + handlers)",
+        "Enchanter accepts equipped items with same grouping + data-eq resolver (TownScreen.js _enchanterHTML + enchant handler)",
+        "Party screen tag cleanup: PARTY/COMPANION/RESERVE pills hidden, 'Call to Arms' renamed to 'Add to Party', detail panel with Skills/Inventory buttons (PartyScreen.js)",
+        "Hire Custom starting skill points now scale +2 per level (HireBuilderScreen.js newMerc pendingSkillPoints)",
+        "InventoryScreen respects gs.inventoryContext: 'party-inactive' shows inactive members; default hides them (InventoryScreen.js _render)",
+        "MapScreen Back-to-Town only shown at zone starting node; portal-return gated on portal node (already)",
+        "Companion slot hero-reject invariant: GameState.addToCompanions rejects non-companions; PartyScreen._doSwapWith guards both sides; CombatScreen roster filter enforces type",
+        "Party screen split into 4 groups (Active Heroes / Inactive Heroes / Companions / Inactive Companions) in two-column grid",
+        "War dog sprite rendered: CombatScreen sprite lookup extended to templateId fallback so `war_dog_<ts>` IDs resolve",
+        "Bug A fix: post-defeat map unclickable — CombatScreen._defeat sets nodeId = null; MapScreen._isAccessible falls back to first node when nodeId is stale",
+        "Bug B fix: inter-map node traversal — MapScreen zone-tab switch clears stale nodeId when it doesn't belong to target zone",
+        "Part 2 #17: /demo-assets/ gallery now derives Heroes/Companions/Enemies/Bosses sub-categories from sprite ids; filter buttons and section layout updated (demo-assets/index.html refineCategory + CATEGORY_ORDER)",
+        "Part 2 #18: Milestone Reports section renders featured HTML reports as large feature-boxes and collapses remaining reports into a sorted accordion (Pre-Game first, then M1, M2, …)",
+        "Part 2 #19: Shared header/submenu extracted to public/demo-assets/_header.js; demo-assets/index.html, pre-game-report.html, milestone-53-report.html, game-info/index.html, and game-info/suggestions.html now include it (single source of truth)",
+        "Part 2 #19b: demo-assets/ visual style brought closer to standalone reports (Cinzel + Inter fonts, Emberveil color palette, gold-to-ember gradients)",
+        "Part 2 #20: In-game TitleScreen EMBERVEIL logo now renders with gold-bright → gold → ember1 vertical gradient matching the /game-info/ hero title",
+        "Part 2 #21: /game-info/ updated with Phase 10 (M46–M56) milestone chips and a 'Recent Additions' card grid covering Spell/Attack Power, crits, formation targeting, hire custom parity, party rework, blacksmith/enchanter, dialog backgrounds, audio fix, portal gating, new sprites, and shared nav"
+      ],
+      "bugs": [],
+      "suggestions": [
+        "Consider surfacing Spell/Attack Power in level-up preview so allocation feedback is immediate",
+        "Party screen detail buttons could route SkillTree directly to the selected hero tab rather than default",
+        "Blacksmith equipped list could benefit from sorting by slot for consistency"
+      ],
+      "recommendations": [
+        "Unify 'hero vs companion' entity check into a single helper (isCompanionEntity already exported from PartyScreen) and use in gameState, CombatScreen, TownScreen",
+        "Consolidate equipped-item resolver (owner+slot) as a GameState utility so future services (cleric, blessing) can reuse it",
+        "Add a small integration test for the defeat \u2192 map re-entry path to prevent regression"
+      ]
+    },
+    {
       "milestone": "Milestone 46 \u2014 Combat Foundation & Critical Bug Fixes",
       "date": "2026-04-12",
       "summary": "Kickoff of the M46\u2013M53 batch: foundational combat upgrades, critical bug fixes, and setup for the next seven milestones.",

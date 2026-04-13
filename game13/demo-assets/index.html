@@ -3,30 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>game13 — Asset Gallery</title>
+  <title>Emberveil — Asset Gallery</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
     :root {
-      --bg:        #0a0a12;
-      --surface:   #12121e;
-      --card:      #1a1a2a;
-      --card-h:    #202038;
-      --accent:    #7766cc;
-      --accent-b:  #9988ee;
-      --text:      #ccc8e0;
-      --muted:     #776699;
-      --border:    rgba(119,102,204,0.2);
-      --radius:    8px;
+      --bg:        #0a0608;
+      --surface:   #12090d;
+      --card:      #1a1218;
+      --card-h:    #241a20;
+      --accent:    #e8a020;
+      --accent-b:  #f0c060;
+      --ember1:    #c04030;
+      --gold:      #e8a020;
+      --gold-bright:#f8d880;
+      --text:      #f0e8d8;
+      --muted:     #8a7a6a;
+      --border:    rgba(232,160,32,0.2);
+      --radius:    10px;
+      --font-display:'Cinzel',Georgia,serif;
+      --font-ui:'Inter','Segoe UI',sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: system-ui, -apple-system, sans-serif;
+      font-family: var(--font-ui);
       font-size: 14px;
       line-height: 1.5;
       min-height: 100vh;
     }
+    h1, h2, h3, .display { font-family: var(--font-display); }
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 40%, var(--ember1) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .feature-reports { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .feature-report {
+      display: block;
+      background: linear-gradient(135deg, rgba(232,160,32,0.08), rgba(192,64,48,0.06));
+      border: 1px solid rgba(232,160,32,0.3);
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .feature-report:hover { transform: translateY(-2px); border-color: rgba(232,160,32,0.6); box-shadow: 0 8px 24px rgba(232,160,32,0.12); }
+    .feature-report .fr-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+    .feature-report .fr-title { font-family: var(--font-display); font-size: 17px; font-weight: 700; margin: 6px 0 8px; color: var(--gold-bright); }
+    .feature-report .fr-summary { font-size: 13px; color: var(--text); opacity: 0.85; line-height: 1.5; }
+    .feature-report .fr-date { font-size: 11px; color: var(--muted); margin-top: 10px; }
 
     header {
       background: var(--surface);
@@ -286,11 +319,12 @@
 </head>
 <body>
 
+<script src="./_header.js" data-base="demo-assets"></script>
+
 <header>
-  <h1 id="game-title">game13</h1>
+  <h1 id="game-title" class="page-title">Emberveil</h1>
   <div class="sub">— Asset Gallery</div>
-  <a href="../game-info/" style="margin-left:auto; background:rgba(119,102,204,0.2); border:1px solid rgba(119,102,204,0.4); color:#9988ee; padding:6px 14px; border-radius:6px; font-size:13px; font-weight:600; text-decoration:none;">Game Info ✦</a>
-  <div id="total-count" style="margin-left:8px;"></div>
+  <div id="total-count" style="margin-left:auto;"></div>
 </header>
 
 <div class="toolbar" id="toolbar">
@@ -334,14 +368,48 @@ function sourceLabel(source) {
 let allAssets = [];
 let activeFilter = 'all';
 
+const HERO_CLASSES = new Set([
+  'warrior','mage','cleric','rogue','ranger','paladin','bard','druid','monk',
+  'warlock','pyromancer','demon_hunter','scavenger','swashbuckler','dragon_knight','necromancer'
+]);
+const COMPANION_IDS = new Set([
+  'war_dog','corrupted_wolf','giant_spider'
+]);
+const BOSS_IDS = new Set([
+  'emberveil_sovereign','archfiend_malgrath','star_horror','cosmic_titan',
+  'void_wraith','void_prophet','the_unraveler','primordial_elemental',
+  'abyssal_knight','reality_shard','genesis_worm','the_architect',
+  'grax_veil_touched','lava_titan','goblin_warlord','bandit_captain',
+  'veil_warden','veil_sorcerer'
+]);
+
+function refineCategory(asset) {
+  const cat = asset.category || 'other';
+  if (cat !== 'sprite') return cat;
+  const id = (asset.id || '').replace(/^sprite_/, '').replace(/_(south|north|east|west)(_flipped)?$/, '');
+  if (HERO_CLASSES.has(id)) return 'heroes';
+  if (COMPANION_IDS.has(id)) return 'companions';
+  if (BOSS_IDS.has(id)) return 'bosses';
+  // default remaining sprites to enemies
+  return 'enemies';
+}
+
 function groupByCategory(assets) {
   const groups = {};
   for (const a of assets) {
-    const cat = a.category || 'other';
+    const cat = refineCategory(a);
     if (!groups[cat]) groups[cat] = [];
     groups[cat].push(a);
   }
   return groups;
+}
+
+const CATEGORY_ORDER = ['heroes','companions','enemies','bosses','background','portrait','icon','ui','sprite','other'];
+function sortedCategoryEntries(groups) {
+  return Object.entries(groups).sort((a, b) => {
+    const ia = CATEGORY_ORDER.indexOf(a[0]); const ib = CATEGORY_ORDER.indexOf(b[0]);
+    return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+  });
 }
 
 function renderCard(asset) {
@@ -437,7 +505,7 @@ function render(assets) {
   }
 
   const groups = groupByCategory(assets);
-  for (const [cat, items] of Object.entries(groups)) {
+  for (const [cat, items] of sortedCategoryEntries(groups)) {
     const section = document.createElement('div');
     section.className = 'section';
     section.innerHTML = `<div class="section-title">${cat} <span>${items.length}</span></div>`;
@@ -452,8 +520,28 @@ function render(assets) {
 function applyFilter(cat) {
   activeFilter = cat;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-  const filtered = cat === 'all' ? allAssets : allAssets.filter(a => (a.category || 'other') === cat);
+  const filtered = cat === 'all' ? allAssets : allAssets.filter(a => refineCategory(a) === cat);
   render(filtered);
+}
+
+const REPORT_HTML_MAP = {
+  'pre-game design report': 'pre-game-report.html',
+  'milestone 53': 'milestone-53-report.html'
+};
+
+function reportHtmlFile(r) {
+  const name = (r.milestone || '').toLowerCase();
+  for (const key of Object.keys(REPORT_HTML_MAP)) {
+    if (name.startsWith(key)) return REPORT_HTML_MAP[key];
+  }
+  return null;
+}
+
+function milestoneSortKey(r) {
+  const name = (r.milestone || '').toLowerCase();
+  if (name.startsWith('pre-game')) return -1;
+  const m = name.match(/milestone\s*(\d+)/);
+  return m ? parseInt(m[1], 10) : 9999;
 }
 
 function renderReports(reports) {
@@ -465,8 +553,35 @@ function renderReports(reports) {
   }
   countEl.textContent = `(${reports.length})`;
   container.innerHTML = '';
-  // newest first
-  [...reports].reverse().forEach(r => {
+
+  // Split: feature reports (have dedicated HTML) vs accordion
+  const featured = [];
+  const accordion = [];
+  reports.forEach(r => {
+    if (reportHtmlFile(r)) featured.push(r); else accordion.push(r);
+  });
+  featured.sort((a, b) => milestoneSortKey(a) - milestoneSortKey(b));
+  accordion.sort((a, b) => milestoneSortKey(a) - milestoneSortKey(b));
+
+  if (featured.length) {
+    const wrap = document.createElement('div');
+    wrap.className = 'feature-reports';
+    featured.forEach(r => {
+      const href = reportHtmlFile(r);
+      const a = document.createElement('a');
+      a.className = 'feature-report';
+      a.href = href;
+      a.innerHTML = `
+        <div class="fr-label">Featured Report</div>
+        <div class="fr-title">${r.milestone || 'Report'}</div>
+        <div class="fr-summary">${r.summary || ''}</div>
+        <div class="fr-date">${r.date || ''}</div>`;
+      wrap.appendChild(a);
+    });
+    container.appendChild(wrap);
+  }
+
+  accordion.forEach(r => {
     const card = document.createElement('div');
     card.className = 'report-card';
 
@@ -540,7 +655,9 @@ async function init() {
   renderReports(data.reports || []);
 
   // Build filter buttons
-  const cats = [...new Set(allAssets.map(a => a.category || 'other'))].sort();
+  const catSet = new Set(allAssets.map(refineCategory));
+  const cats = CATEGORY_ORDER.filter(c => catSet.has(c));
+  [...catSet].forEach(c => { if (!cats.includes(c)) cats.push(c); });
   const toolbar = document.getElementById('toolbar');
   cats.forEach(cat => {
     const btn = document.createElement('button');
