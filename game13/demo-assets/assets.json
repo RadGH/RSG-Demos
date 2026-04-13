@@ -630,9 +630,69 @@
       "file": "../images/sprites/lava_titan_west.png",
       "prompt": "Enormous molten rock golem with glowing orange-red cracks, massive stone arms, magma dripping",
       "notes": "PixelLab character ID: 6c0e785e-4f79-4792-a694-27eb879ac513"
-    }
+    },
+    {"id":"sprite_necromancer","name":"Necromancer — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/necromancer_south.png","prompt":"Necromancer, dark robed figure with green glowing skull staff, purple and black robes","notes":"Hero class sprite, 68px canvas"},
+    {"id":"sprite_war_dog","name":"War Dog — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/war_dog_south.png","prompt":"War dog, armored battle hound with spiked collar and dark fur","notes":"Companion sprite, 52px canvas"},
+    {"id":"sprite_veil_sorcerer","name":"Veil Sorcerer — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/veil_sorcerer_south.png","prompt":"Veil sorcerer, dark robed mage with purple magic aura","notes":"Act 2 enemy sprite, 52px canvas"},
+    {"id":"sprite_bandit_captain","name":"Bandit Captain — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/bandit_captain_south.png","prompt":"Bandit captain, scarred human, leather armor, fur cloak, dual swords","notes":"Act 2 enemy sprite, 52px canvas"},
+    {"id":"sprite_veil_warden","name":"Veil Warden — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/veil_warden_south.png","prompt":"Dark armored guardian with purple crystal armor, glowing shield","notes":"Act 2 enemy sprite, 52px canvas"},
+    {"id":"sprite_giant_spider","name":"Giant Spider — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/giant_spider_south.png","prompt":"Giant dark brown spider with red eyes and large fangs","notes":"Act 2 enemy sprite, 52px canvas"},
+    {"id":"sprite_emberveil_sovereign","name":"Emberveil Sovereign — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/emberveil_sovereign_south.png","prompt":"King wearing black armor","notes":"Act 2 boss sprite, 68px canvas"},
+    {"id":"sprite_archfiend_malgrath","name":"Archfiend Malgrath — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/archfiend_malgrath_south.png","prompt":"Red skinned demon warrior with horns","notes":"Act 3 boss sprite, 68px canvas"},
+    {"id":"sprite_star_horror","name":"Star Horror — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/star_horror_south.png","prompt":"Dark robed wizard with purple magic aura","notes":"Act 4 enemy sprite, 52px canvas"},
+    {"id":"sprite_cosmic_titan","name":"Cosmic Titan — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/cosmic_titan_south.png","prompt":"Large armored stone golem with blue glowing runes","notes":"Act 4 enemy sprite, 68px canvas"},
+    {"id":"sprite_void_wraith","name":"Void Wraith — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/void_wraith_south.png","prompt":"Ghostly dark robed figure with purple glowing eyes","notes":"Act 4 enemy sprite, 52px canvas"},
+    {"id":"sprite_void_prophet","name":"Void Prophet — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/void_prophet_south.png","prompt":"Robed dark oracle with staff","notes":"Act 4 enemy sprite, 52px canvas"},
+    {"id":"sprite_the_unraveler","name":"The Unraveler — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/the_unraveler_south.png","prompt":"Shadow monster with claws","notes":"Act 4 boss sprite, 68px canvas"},
+    {"id":"sprite_primordial_elemental","name":"Primordial Elemental — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/primordial_elemental_south.png","prompt":"Blue glowing elemental spirit","notes":"Act 5 enemy sprite, 52px canvas"},
+    {"id":"sprite_abyssal_knight","name":"Abyssal Knight — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/abyssal_knight_south.png","prompt":"Blue armored knight","notes":"Act 5 enemy sprite, 52px canvas"},
+    {"id":"sprite_reality_shard","name":"Reality Shard — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/reality_shard_south.png","prompt":"Warrior made of purple crystals","notes":"Act 5 enemy sprite, 52px canvas"},
+    {"id":"sprite_genesis_worm","name":"Genesis Worm — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/genesis_worm_south.png","prompt":"Large worm monster","notes":"Act 5 enemy sprite, 52px canvas"},
+    {"id":"sprite_the_architect","name":"The Architect — All Directions","category":"sprite","source":"pixellab","file":"../images/sprites/the_architect_south.png","prompt":"Wizard with white beard and robes","notes":"Act 5 final boss sprite, 68px canvas"}
   ],
   "reports": [
+    {
+      "milestone": "Milestone 46 — Combat Foundation & Critical Bug Fixes",
+      "date": "2026-04-12",
+      "summary": "Kickoff of the M46–M53 batch: foundational combat upgrades, critical bug fixes, and setup for the next seven milestones.",
+      "changes": [
+        "Crit system: natural-20 roll on basic attacks → 2× damage, 'CRIT!' floating label (#ffe080), 0.35s screen shake",
+        "Attack bob / hit recoil: heroes lunge +12px on attack, recoil -8px while flash-hit (mirrored for enemies)",
+        "Mana regen per round scales with INT + new 'of Regeneration' suffix (mana_regen 1-3) in Act1 affix pool",
+        "Formation targeting: enemy AI attacks companions first, then heroes in list order; taunted override; healer role heals lowest-HP ally",
+        "Sprite rebalance: heroes 56, enemies 62, bosses ×1.75; HP bars raised; dead enemy HP bar hidden; enemy name labels removed",
+        "Combat HUD: 2×2 grid on narrow viewports, lightning-bolt removed from speed button, post-encounter ⭐ emoji removed",
+        "Companion sprite fallback: look up by class → id → className (fixes war-dog blank render)",
+        "TPK fix: party defeat restores full HP, stops combat audio, returns to town",
+        "Skill checks use highest party stat, exclude companions, visibly disable choices when party can't meet DC",
+        "Level-up flow: deferred attribute spend (pendingAttrPoints), autosave on confirm, _seenMembers set fixes 3-levelup/2-panel queue bug",
+        "PartyScreen autosaves after swap; ChallengeScreen guards against onResume double-advancing wave count",
+        "TitleScreen stars randomized per session",
+        "SaveManager bumped to v3 with migration (seenEvents, portals, claimedTreasures, completedQuests, pending*Points)",
+        "Accessory affix floor: rings/amulets get +1 affix at every rarity (white rings no longer useless)",
+        "Enchanter rebuilds display name after adding affix (no stale 'Sharp Sharp X of Y' strings)"
+      ],
+      "bugs": [
+        "Item set bonus tooltip deferred to M52",
+        "Animated cast-spell sprite frames still use single stance snap",
+        "War-dog sprite fallback works only if war_dog sprites exist — actual PNG art still queued for M53",
+        "Tactician and Chronomancer PixelLab jobs still in-flight, will be downloaded early M48"
+      ],
+      "suggestions": [
+        "Add a crit SFX to differentiate from normal hit",
+        "Consider longer bob for spell casts (currently 'spell' stance doesn't bob)",
+        "Boss intro cinematic (name flash) remains queued for M50"
+      ],
+      "recommendations": [
+        "Before M48, consolidate SPRITE_MAP so companion/class/id lookups happen in one helper to avoid future blank-sprite regressions",
+        "Introduce a proper status/animation state machine (idle/attack/cast/hit/death) before layering parallax backgrounds in M50"
+      ],
+      "ideas": [
+        "Formation-based AoE: heroes earlier in list take more splash damage — creates meaningful positioning decisions",
+        "Mana regen affix tier with percent-of-max instead of flat value"
+      ],
+      "notes": "First release of the M46–M53 batch. M47 kicks off immediately. Per user directive, proceeding through all eight milestones without re-prompting for scope."
+    },
     {
       "milestone": "Pre-Game Design Report",
       "date": "2026-04-10",
