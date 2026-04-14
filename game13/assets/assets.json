@@ -2093,6 +2093,44 @@
   ],
   "reports": [
     {
+      "milestone": "Milestone 72 \u2014 Tap Weapons",
+      "date": "2026-04-13",
+      "summary": "Single-tap combat tools: 10 weapons + 10 utilities, equippable party-wide, with proximity-targeted click handling, projectile/burst animations, cooldowns in turns or rounds, a dedicated town vendor, boss drops, and skill-check unlocks.",
+      "changes": [
+        "New data file src/game/tapWeapons.js with 20 items (TAP_WEAPONS, TAP_UTILITIES, TAP_ALL), canvas-drawn icons, and resolveTap() resolver.",
+        "GameState extended with tapInventory / equippedTapWeapon / equippedTapUtility / tapCooldown / tapCooldownUnit / tapUsedThisTurn plus helpers addTapItem, equipTapWeapon, equipTapUtility, canTap, useTap, tickTapCooldown, resetTapCombat. Save/load migrations included.",
+        "InventoryScreen shows Party Tap Weapon + Utility slots with canvas icons and a picker modal listing owned tap items.",
+        "TownScreen has a new 'Tap Weapons' service available in every act; sells Blade (free starter), Rejuvenate 200g, Shield 300g, Enchant 250g. Exotic items are only obtainable via bosses or skill checks.",
+        "CombatScreen click handler on manager.canvas: picks nearest enemy vs nearest ally, fires the matching equipped item, applies damage/heal/shield/enchant/cleanse/rally/haste/taunt/revive, plays SFX, spawns a fly+burst projectile effect, and starts the cooldown.",
+        "Cooldowns tick per-turn in _executeTurn and per-round at round rollover. Tap usage is also clamped to once per turn regardless of cooldown.",
+        "Boss victory now drops a tap weapon keyed to the zone (bow / fireball / catapult / star_caller / spirit_hammer / dragon_call) plus mini-boss rotation (ninja_stars / chain_lightning / void_lance).",
+        "Four new skill-check random events (tap_hermit_healer, tap_runestone_circle, tap_wind_dancer, tap_shield_bearer) reward heal / cleanse / phoenix_feather / haste / rally / taunt_totem / deflect.",
+        "DialogScreen handles the new reward.tapItem field (auto-equips into empty slots).",
+        "Standalone animated report page at public/assets/tap-weapons.html with shared nav header, IntersectionObserver reveals, pulsing hero glow, and SVG-animated gallery cards for all 20 items."
+      ],
+      "bugs": [
+        "Haste 'act twice next turn' schedules as a status tag but the turn-order rebuild does not yet duplicate the actor's slot \u2014 the buff flavor lands but the extra action is not wired.",
+        "Taunt totem tags allies with taunt_totem status, but enemy AI targeting does not yet consume it \u2014 visual + log only for now.",
+        "Shield barrier is stored as a status with power; existing damage pipeline does not yet subtract barrier before HP. Will be resolved in a combat pipeline pass.",
+        "Rally +15% damage buff is applied to allies but skill/basic attack damage formulas do not yet read the 'rally' status."
+      ],
+      "suggestions": [
+        "Show a cooldown ring on the tap weapon HUD so the player sees CD remaining without opening inventory.",
+        "Add a faint pulsing crosshair on the nearest enemy/ally the tap would resolve on, so players learn proximity targeting.",
+        "Consider tying Phoenix Feather cooldown to 1-per-combat instead of 10 rounds for clearer signalling."
+      ],
+      "recommendations": [
+        "Route all incoming damage through a single applyDamage(target, amount) helper so barrier/deflect/rally can be honored consistently.",
+        "Promote the tap-click handler to a tiny reusable overlay (could also host future tap-based meta screens).",
+        "Move the boss \u2192 tap drop map into a BOSS_REWARDS table so loot design can iterate without touching CombatScreen."
+      ],
+      "ideas": [
+        "Runeword-style upgrades: a Forge recipe that consumes gold + a tap item to reduce its cooldown by 1.",
+        "An endless 'Tap Training' challenge mode where the player only has tap weapons \u2014 no auto-combat."
+      ],
+      "notes": "Full animated gallery lives at /assets/tap-weapons.html (loaded relative to the game root). See CombatScreen.js near _onTapClick for the click pipeline and src/game/tapWeapons.js for item defs."
+    },
+    {
       "milestone": "Milestone 65 \u2014 Dragon Expansion",
       "date": "2026-04-13",
       "summary": "Full dragon expansion: a new dragon-themed Act VI, unique dragon mercenaries, dragon companions, dragon weapons & armor, dragon enemies, dragon SFX, dragon backgrounds, and the Dragon Knight hero class wired end-to-end.",
