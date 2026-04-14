@@ -1,0 +1,67 @@
+{
+  "game": "game14",
+  "assets": [
+    { "id":"basketball","name":"Basketball","category":"sprite","source":"pixellab","file":"../images/basketball.png","prompt":"orange basketball with dark seam lines, realistic pixel art","notes":"64x64 side view, used in-game and on landing" },
+    { "id":"hoop","name":"Hoop","category":"sprite","source":"pixellab","file":"../images/hoop.png","prompt":"basketball hoop with red rim, white net, square backboard, side view, clean pixel art","notes":"160x160 reference sprite; gameplay draws vector hoop on top" },
+    { "id":"trophy","name":"Trophy","category":"icon","source":"pixellab","file":"../images/trophy.png","prompt":"trophy gold cup pixel art icon","notes":"Used on landing credits area" },
+    { "id":"bg_arena","name":"Arena Background","category":"background","source":"openai","file":"../images/bg_arena.png","prompt":"Dramatic indoor basketball arena at night, wide-angle view from the free throw line toward the hoop end, bright stadium spotlights, polished wooden court floor with reflective shine, blurred crowd in the stands with glowing phone lights, confetti falling, cinematic sports poster art, vibrant orange and deep blue lighting, high detail digital painting","notes":"Main gameplay background" },
+    { "id":"bg_street","name":"Street Court Background","category":"background","source":"openai","file":"../images/bg_street.png","prompt":"Stylized street basketball court at sunset, graffiti-covered brick wall backdrop, chain-link fence, cracked asphalt, warm golden light, comic book illustration style, no people, no basketball, no hoop","notes":"Alternate backdrop in landing artwork strip" },
+    { "id":"logo_hoopshot","name":"HOOPSHOT Logo","category":"ui","source":"openai","file":"../images/logo_hoopshot.png","prompt":"Bold retro sports arcade logo for a basketball shooting game called HOOPSHOT, chunky 3D lettering with orange basketball textures, dripping neon highlights, blue and gold color scheme, comic pop-art style, on pure transparent background","notes":"Animated on landing hero" },
+    { "id":"sfx_swish","name":"Swish","category":"other","source":"other","file":"../audio/swish.mp3","prompt":"basketball swish through a net, clean, short","notes":"ElevenLabs sound generation" },
+    { "id":"sfx_bounce","name":"Bounce","category":"other","source":"other","file":"../audio/bounce.mp3","prompt":"basketball bouncing once on hardwood floor, short thump","notes":"ElevenLabs" },
+    { "id":"sfx_rim","name":"Rim Clang","category":"other","source":"other","file":"../audio/rim.mp3","prompt":"metallic clang of a basketball hitting a hoop rim","notes":"ElevenLabs" },
+    { "id":"sfx_backboard","name":"Backboard","category":"other","source":"other","file":"../audio/backboard.mp3","prompt":"thud of a basketball hitting wooden backboard","notes":"ElevenLabs" },
+    { "id":"sfx_cheer","name":"Crowd Cheer","category":"other","source":"other","file":"../audio/crowd_cheer.mp3","prompt":"short burst of a cheering crowd after a score","notes":"ElevenLabs" },
+    { "id":"sfx_ooh","name":"Crowd Ooh","category":"other","source":"other","file":"../audio/crowd_ooh.mp3","prompt":"crowd disappointed ooh sound, short","notes":"ElevenLabs" },
+    { "id":"sfx_buzzer","name":"Buzzer","category":"other","source":"other","file":"../audio/buzzer.mp3","prompt":"loud basketball game buzzer, end of quarter","notes":"ElevenLabs" },
+    { "id":"sfx_whistle","name":"Whistle","category":"other","source":"other","file":"../audio/whistle.mp3","prompt":"referee whistle tweet sharp","notes":"ElevenLabs" },
+    { "id":"sfx_charge","name":"Charge-up Whoosh","category":"other","source":"other","file":"../audio/swoosh_charge.mp3","prompt":"low whoosh charge-up energy sound, short","notes":"ElevenLabs, played when pulling back slingshot" },
+    { "id":"sfx_click","name":"UI Click","category":"other","source":"other","file":"../audio/click.mp3","prompt":"ui button click soft thud","notes":"ElevenLabs" }
+  ],
+  "reports": [
+    {
+      "milestone": "Milestone 1 — Full Game Ship",
+      "date": "2026-04-13",
+      "summary": "Shipped a complete slingshot basketball game vs CPU with 9 progressive rounds, landing page, generated art and sound, and full asset gallery in a single milestone.",
+      "changes": [
+        "Scaffolded Vite + vanilla JS project (port 5214)",
+        "Generated basketball, hoop, and trophy sprites via PixelLab map_object API",
+        "Generated arena background, street background, and HOOPSHOT logo via OpenAI gpt-image-1",
+        "Generated 10 sound effects via ElevenLabs sound-generation API",
+        "Canvas game engine: gravity, wind, rim collision with elastic reflection, backboard deflection, floor bounce, trajectory prediction arc",
+        "Slingshot input with drag-to-aim, dotted arc preview, power meter line, release-to-shoot (touch + mouse)",
+        "9-round alternating turn system with swish=3 / bank=2 scoring",
+        "CPU AI solves approximate launch toward hoop and applies per-round jitter that scales with round number",
+        "Progressive difficulty: hoop shrinks each round, moves starting round 3, wind kicks in starting round 4",
+        "HUD: player score, CPU score, round indicator, turn indicator, wind arrow, score banner, game-over overlay",
+        "Particle system: rim spark bursts and confetti on successful shots",
+        "Landing page with animated logo (float+pulse), orbiting spinning balls, starfield, IntersectionObserver reveal-on-scroll sections (pitch, features grid, how-to-play, artwork strip, credits)",
+        "Asset gallery populated in public/demo-assets/assets.json with all 16 assets"
+      ],
+      "bugs": [
+        "Ball can linger on rim when bouncing nearly vertically due to 1.6 restitution — intentional but can look floaty",
+        "Drags under 12px are silently cancelled with no UI hint",
+        "CPU aim doesn't fully lead a moving hoop, so late-round CPU accuracy drops",
+        "Resize during mid-shot doesn't reproject ball coordinates",
+        "Wind indicator shows arrow only, no numeric magnitude"
+      ],
+      "suggestions": [
+        "Add haptic vibration on mobile for scores and rim contact",
+        "Add a best-of-3 match mode and a daily-seed challenge",
+        "Render an in-canvas CPU thinking indicator",
+        "Scale ball trail length with shot power"
+      ],
+      "recommendations": [
+        "Factor physics constants into a tunable config object before adding more shot types",
+        "Replace custom pointer handlers with a small state machine if adding power-ups / multi-touch",
+        "Prerender backgrounds at smaller resolution — bg_arena.png is ~2.6MB"
+      ],
+      "ideas": [
+        "Power-ups: fireball shot that breaks the rim for bonus points",
+        "Unlockable courts using bg_street.png and other backdrops",
+        "Online high-score leaderboard keyed to a daily seed"
+      ],
+      "notes": "Everything generated from scratch in one pass: code, art (PixelLab + OpenAI), sound (ElevenLabs). No placeholder assets."
+    }
+  ]
+}
