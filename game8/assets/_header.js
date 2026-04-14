@@ -1,34 +1,51 @@
+/*
+ * RSG Game Hub — Shared Navigation Header
+ * ============================================================================
+ * SINGLE SOURCE OF TRUTH. Edit this file, then re-run `./release.sh <game>` (or
+ * `./deploy_pages.sh`) and every game picks up the change. Do NOT edit the
+ * per-game copy at public/assets/_header.js — it is overwritten on every build
+ * by release.sh.
+ *
+ * How it works:
+ *   - Each game's public/assets/*.html and public/game-info/*.html loads this
+ *     via `<script src="./_header.js" defer></script>` (or "../assets/_header.js"
+ *     from game-info/).
+ *   - The script injects a fixed top nav + padding class onto <body>.
+ *   - Links use relative paths so they work identically in dev, on the local
+ *     release server, and on GitHub Pages sub-paths.
+ *
+ * Menu: Play Game | Assets (Images / Audio / Reports) | Game Info
+ */
 (function () {
+  var SCRIPT = document.currentScript;
+  var GAME_LABEL =
+    (SCRIPT && SCRIPT.dataset.game) ||
+    (document.querySelector('meta[name="rsg-game"]') || {}).content ||
+    document.title.split(/[—|-]/)[0].trim() ||
+    'RSG GAME HUB';
+
+  // Figure out where we are so relative links resolve cleanly.
+  // Pages live under /<gameKey>/assets/… or /<gameKey>/game-info/…
+  var path = window.location.pathname;
+  var inAssets = /\/assets\//.test(path);
+  var inGameInfo = /\/game-info\//.test(path);
+  var GAME_ROOT = inAssets || inGameInfo ? '../' : './';
+  var ASSETS = GAME_ROOT + 'assets/';
+  var GAME_INFO = GAME_ROOT + 'game-info/';
+
   var MENU = [
-    { href: '../../game13/', label: 'Play Game' },
+    { href: GAME_ROOT, label: 'Play Game' },
     {
-      href: '../assets/',
+      href: ASSETS,
       label: 'Assets',
       children: [
-        { href: '../assets/#main', label: 'Images' },
-        { href: '../assets/#audio-section', label: 'Audio' },
-        { href: '../assets/#reports-section', label: 'Reports' }
+        { href: ASSETS + '#main', label: 'Images' },
+        { href: ASSETS + '#audio-section', label: 'Audio' },
+        { href: ASSETS + '#reports-section', label: 'Reports' }
       ]
     },
-    { href: '../game-info/', label: 'Game Info' }
+    { href: GAME_INFO, label: 'Game Info' }
   ];
-
-  function resolve(href) {
-    var base = (document.currentScript && document.currentScript.dataset.base) || '';
-    if (!base) {
-      var path = window.location.pathname;
-      if (path.indexOf('/assets/') !== -1) base = 'assets';
-      else if (path.indexOf('/game-info/') !== -1) base = 'game-info';
-      else base = '';
-    }
-    if (base === 'assets') {
-      return href.replace('../assets/', './');
-    }
-    if (base === 'game-info') {
-      return href.replace('../game-info/', './');
-    }
-    return href;
-  }
 
   function buildNav() {
     var nav = document.createElement('nav');
@@ -36,15 +53,15 @@
     var links = MENU.map(function (m) {
       if (m.children) {
         var sub = m.children.map(function (c) {
-          return '<li><a href="' + resolve(c.href) + '">' + c.label + '</a></li>';
+          return '<li><a href="' + c.href + '">' + c.label + '</a></li>';
         }).join('');
-        return '<li class="has-sub"><a href="' + resolve(m.href) + '">' + m.label + ' \u25BE</a><ul class="sub-menu">' + sub + '</ul></li>';
+        return '<li class="has-sub"><a href="' + m.href + '">' + m.label + ' \u25BE</a><ul class="sub-menu">' + sub + '</ul></li>';
       }
-      return '<li><a href="' + resolve(m.href) + '">' + m.label + '</a></li>';
+      return '<li><a href="' + m.href + '">' + m.label + '</a></li>';
     }).join('');
     nav.innerHTML =
       '<div class="nav-inner">' +
-        '<span class="nav-logo">&#x2726; EMBERVEIL</span>' +
+        '<a class="nav-logo" href="' + GAME_ROOT + '">&#x2726; ' + GAME_LABEL + '</a>' +
         '<ul class="nav-links">' + links + '</ul>' +
       '</div>';
     return nav;
@@ -54,9 +71,9 @@
     if (document.getElementById('rsg-shared-nav-style')) return;
     var css =
       '@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap");' +
-      'nav.rsg-shared-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,6,8,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,160,32,0.2);height:52px;display:flex;align-items:center;padding:0 2rem;font-family:"Inter","Segoe UI",sans-serif}' +
-      'nav.rsg-shared-nav .nav-inner{display:flex;align-items:center;gap:1.5rem;width:100%;max-width:1200px;margin:0 auto;min-width:0}' +
-      'nav.rsg-shared-nav .nav-logo{font-family:"Cinzel",Georgia,serif;font-size:1rem;font-weight:900;letter-spacing:0.15em;background:linear-gradient(180deg,#f8d880 0%,#e8a020 40%,#c04030 100%);-webkit-background-clip:text;background-clip:text;color:transparent;flex-shrink:0}' +
+      'nav.rsg-shared-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,6,8,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,160,32,0.2);height:52px;display:flex;align-items:center;padding:0 2rem;font-family:"Inter","Segoe UI",sans-serif}' +
+      'nav.rsg-shared-nav .nav-inner{display:flex;align-items:center;gap:1.5rem;width:100%;max-width:1400px;margin:0 auto;min-width:0}' +
+      'nav.rsg-shared-nav .nav-logo{font-family:"Cinzel",Georgia,serif;font-size:1rem;font-weight:900;letter-spacing:0.15em;background:linear-gradient(180deg,#f8d880 0%,#e8a020 40%,#c04030 100%);-webkit-background-clip:text;background-clip:text;color:transparent;flex-shrink:0;text-decoration:none;text-transform:uppercase}' +
       'nav.rsg-shared-nav .nav-links{display:flex;gap:1.25rem;list-style:none;margin:0;padding:0;flex-wrap:nowrap;min-width:0}' +
       'nav.rsg-shared-nav .nav-links > li{position:relative}' +
       'nav.rsg-shared-nav .nav-links a{color:#8a7a6a;text-decoration:none;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;white-space:nowrap;display:block}' +
@@ -94,7 +111,6 @@
       document.body.insertBefore(nav, document.body.firstChild);
     }
     document.body.classList.add('rsg-nav-padded');
-    // Click-to-toggle for has-sub items (mobile + click users)
     document.querySelectorAll('nav.rsg-shared-nav .has-sub > a').forEach(function (a) {
       a.addEventListener('click', function (e) {
         var li = a.parentNode;
