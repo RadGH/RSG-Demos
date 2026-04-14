@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emberveil — Asset Gallery</title>
+  <title>Emberveil — Assets</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
     :root {
@@ -96,7 +96,14 @@
       color: #fff;
     }
 
-    main { padding: 24px; }
+    main {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(232,160,32,0.04), rgba(192,64,48,0.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
 
     .empty-state {
       text-align: center;
@@ -274,11 +281,20 @@
       padding: 10px 12px;
     }
     .audio-row .audio-name { font-size: 12px; color: var(--text); font-family: monospace; word-break: break-all; }
-    .audio-row audio { width: 100%; height: 32px; }
+    .audio-row audio, #modal-audio {
+      width: 100%;
+      height: 32px;
+      filter: invert(0.88) hue-rotate(180deg) brightness(0.95) contrast(0.95);
+      border-radius: 6px;
+    }
+    audio::-webkit-media-controls-panel { background-color: #1a1014; }
     #reports-section {
-      border-top: 2px solid var(--border);
-      padding: 32px 24px 48px;
-      margin-top: 16px;
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(232,160,32,0.04), rgba(192,64,48,0.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       scroll-margin-top: 72px;
     }
     html { scroll-behavior: smooth; scroll-padding-top: 72px; }
@@ -366,11 +382,11 @@
 </head>
 <body>
 
-<script src="./_header.js?v=3" data-base="demo-assets"></script>
+<script src="./_header.js?v=3" data-base="assets"></script>
 
 <header>
   <h1 id="game-title" class="page-title">Emberveil</h1>
-  <div class="sub">— Asset Gallery</div>
+  <div class="sub">— Assets</div>
   <div id="total-count" style="margin-left:auto;"></div>
 </header>
 
@@ -442,8 +458,8 @@ const BOSS_IDS = new Set([
 
 function refineCategory(asset) {
   const cat = asset.category || 'other';
-  if (cat !== 'sprite') return cat;
-  const id = (asset.id || '').replace(/^sprite_/, '').replace(/_(south|north|east|west)(_flipped)?$/, '');
+  if (cat !== 'sprite' && cat !== 'icon' && cat !== 'portrait') return cat;
+  const id = (asset.id || '').replace(/^sprite_/, '').replace(/_(south|north|east|west|icon|portrait)(_flipped)?$/, '');
   if (HERO_CLASSES.has(id)) return 'heroes';
   if (COMPANION_IDS.has(id)) return 'companions';
   if (BOSS_IDS.has(id)) return 'bosses';
@@ -716,9 +732,9 @@ async function init() {
   }
 
   if (data.game) document.getElementById('game-title').textContent = data.game;
-  document.title = `${data.game || 'game13'} — Asset Gallery`;
+  document.title = `${data.game || 'game13'} — Assets`;
 
-  allAssets = data.assets || [];
+  allAssets = (data.assets || []).filter(a => !isAudioFile(a.file));
   document.getElementById('total-count').textContent = allAssets.length
     ? `${allAssets.length} asset${allAssets.length !== 1 ? 's' : ''}`
     : '';
