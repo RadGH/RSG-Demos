@@ -1649,6 +1649,15 @@
       "notes": "Regenerated calmer in M69"
     },
     {
+      "id": "music_intro_theme",
+      "name": "Music \u2014 Intro / New Game Transition",
+      "category": "other",
+      "source": "elevenlabs",
+      "file": "../../music/intro_theme.mp3",
+      "prompt": "Semi-calm tension-building fantasy RPG intro theme, slow strings rising, distant percussion, cinematic anticipation, mysterious and hopeful, instrumental, looping",
+      "notes": "M69: Plays during opening cinematic / text transition before town loads."
+    },
+    {
       "id": "music_overworld_act1",
       "name": "Music \u2014 Overworld Act I",
       "category": "other",
