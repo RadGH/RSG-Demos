@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="glow" cx="0.5" cy="0.6" r="0.8">
+      <stop offset="0" stop-color="#ffd060"/>
+      <stop offset="0.3" stop-color="#c04010"/>
+      <stop offset="1" stop-color="#100208"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#glow)"/>
+  <!-- throne pillars -->
+  <rect x="120" y="120" width="40" height="330" fill="#1a0204"/>
+  <rect x="640" y="120" width="40" height="330" fill="#1a0204"/>
+  <rect x="280" y="160" width="30" height="290" fill="#200608"/>
+  <rect x="490" y="160" width="30" height="290" fill="#200608"/>
+  <!-- throne -->
+  <path d="M320,280 L320,430 L480,430 L480,280 L460,260 L340,260 Z" fill="#0a0204"/>
+  <path d="M400,160 L360,260 L440,260 Z" fill="#0a0204"/>
+  <!-- dragon skull on throne -->
+  <g transform="translate(400,240)" fill="#e8c060">
+    <ellipse cx="0" cy="0" rx="35" ry="22"/>
+    <path d="M-35,-5 L-55,5 L-35,8 Z"/>
+    <path d="M35,-5 L55,5 L35,8 Z"/>
+    <circle cx="-10" cy="-3" r="4" fill="#c04010"/>
+    <circle cx="10" cy="-3" r="4" fill="#c04010"/>
+  </g>
+</svg>

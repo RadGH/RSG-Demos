@@ -2016,9 +2016,62 @@
       "file": "../../sfx/wolf_howl.mp3",
       "prompt": "retro SNES 16-bit chiptune wolf howl sound effect",
       "notes": "ElevenLabs Sound Generation (M64)"
-    }
+    },
+    { "id": "dragon_reach_bg", "name": "Dragon's Reach Background", "category": "background", "source": "svg", "file": "../images/dragon_expansion/dragon_reach_bg.svg", "notes": "M65 Dragon Expansion. Volcanic mountains with flying dragon silhouettes." },
+    { "id": "dragon_throne_bg", "name": "Dragon Throne Background", "category": "background", "source": "svg", "file": "../images/dragon_expansion/dragon_throne_bg.svg", "notes": "M65 Dragon Expansion. Dragon throne room with a dragon skull on a basalt throne." },
+    { "id": "dragon_sprite", "name": "Dragon Sprite", "category": "sprite", "source": "svg", "file": "../images/dragon_expansion/dragon_sprite.svg", "notes": "M65 Dragon Expansion. Generic dragon silhouette used for dragon enemies and dragon companions." },
+    { "id": "dragon_knight_icon", "name": "Dragon Knight Icon", "category": "icon", "source": "svg", "file": "../images/dragon_expansion/dragon_knight_icon.svg", "notes": "M65 Dragon Expansion. Dragon Knight class heraldry." },
+    { "id": "sfx_dragon_roar", "name": "SFX \u2014 dragon roar", "category": "other", "source": "other", "file": "../../sfx/dragon_roar.wav", "notes": "M65 Dragon Expansion. Procedurally generated WAV placeholder (low-freq sine decay)." },
+    { "id": "sfx_dragon_breath_fire", "name": "SFX \u2014 dragon fire breath", "category": "other", "source": "other", "file": "../../sfx/dragon_breath_fire.wav", "notes": "M65 Dragon Expansion. Procedural WAV." },
+    { "id": "sfx_dragon_breath_ice", "name": "SFX \u2014 dragon ice breath", "category": "other", "source": "other", "file": "../../sfx/dragon_breath_ice.wav", "notes": "M65 Dragon Expansion. Procedural WAV." },
+    { "id": "sfx_dragon_wing_flap", "name": "SFX \u2014 dragon wing flap", "category": "other", "source": "other", "file": "../../sfx/dragon_wing_flap.wav", "notes": "M65 Dragon Expansion. Procedural WAV." },
+    { "id": "sfx_dragon_claw", "name": "SFX \u2014 dragon claw strike", "category": "other", "source": "other", "file": "../../sfx/dragon_claw.wav", "notes": "M65 Dragon Expansion. Procedural WAV." },
+    { "id": "sfx_dragon_death", "name": "SFX \u2014 dragon death", "category": "other", "source": "other", "file": "../../sfx/dragon_death.wav", "notes": "M65 Dragon Expansion. Procedural WAV." }
   ],
   "reports": [
+    {
+      "milestone": "Milestone 65 \u2014 Dragon Expansion",
+      "date": "2026-04-13",
+      "summary": "Full dragon expansion: a new dragon-themed Act VI, unique dragon mercenaries, dragon companions, dragon weapons & armor, dragon enemies, dragon SFX, dragon backgrounds, and the Dragon Knight hero class wired end-to-end.",
+      "changes": [
+        "Added Act VI: The Dragon's Reach, with two new zones (dragons_reach, dragon_throne) totaling 21 nodes, dragon-flavored dialogs, two dragon bosses, treasure dragon-hoards and dragon shrines",
+        "Added 7 new dragon enemies in ENEMIES_ACT6 (dragon_whelp, wyrm_warrior, dragon_cultist, frost_wyrm, storm_dragon, ancient_dragon, Bahamorth the Dragon King)",
+        "Added 7 new encounter tables: dragon_patrol, wyrm_citadel, frost_wyrm_pack, storm_dragon_nest, dragon_elite, ancient_dragon_fight, dragon_king_fight",
+        "Wired Act VI into the unlock chain (primordial_nexus -> dragons_reach -> dragon_throne) and moved final-boss detection to dragonking_boss",
+        "Added 4 unique dragon mercenaries to the tavern: Kaldrek the Dragonborn, Syra Wyrmsworn, Vorin Emberjaw, Maelis Drakeblood (all Dragon Knight class)",
+        "Added 4 unique dragon companions: Crimson Dragon Hatchling, Frost Wyrmling, Storm Drake, Shadow Wyrm",
+        "Added 4 dragon companion-encounter random events keyed to dragons_reach / dragon_throne",
+        "Added 7 dragon weapon bases (dragonfang_dagger, dragonfang_sword, dragonfang_greatsword, wyrmscale_bow, dragonbone_staff, drakehammer, dragontooth_wand) and 8 dragon armor pieces (dragonscale_cloth, wyrmscale_helm, wyrmscale_chest, dragonsteel_chest, dragonhide_legs, dragonclaw_gauntlets, dragonheart_ring, dragontooth_amulet)",
+        "Confirmed the existing Dragon Knight hero class (id: dragon_knight) and its 4 skills (dragon_claw, breath_weapon, dragon_scales, draconic_fury) each ship with 2 talents matching the rest of the game",
+        "Added Drakehold as the Act VI town with full service slate (merchant, tavern, cleric, blacksmith, enchanter, forge, blackmarket)",
+        "Generated 4 SVG dragon assets (Dragon's Reach background, Dragon Throne background, dragon sprite, Dragon Knight class icon) under public/images/dragon_expansion/",
+        "Generated 6 dragon SFX placeholder WAVs (dragon_roar, dragon_breath_fire, dragon_breath_ice, dragon_wing_flap, dragon_claw, dragon_death) under public/sfx/",
+        "Cataloged all new assets in demo-assets/assets.json",
+        "Added a standalone dragon_expansion.html release page under public/demo-assets/",
+        "Updated game_meta.json with promptHistory entry, changelog line, and milestone bump"
+      ],
+      "bugs": [
+        "Dragon SFX are short procedurally-generated sine-decay WAVs, not real dragon recordings \u2014 they will sound stylized rather than realistic",
+        "No dedicated dragon sprite art in the combat scene yet \u2014 dragons render with the generic enemy sprite",
+        "The new dragon dialogs are linear, not branched (matches the rest of Act-gate dialogs)",
+        "Dragon Knight class was already present from a prior milestone \u2014 confirmed wired and 2-talent compliant; the expansion did not need to add it but verified it"
+      ],
+      "suggestions": [
+        "Commission real dragon-roar audio to replace the procedural placeholders",
+        "Add a visible dragon-cult faction reputation bar to the Drakehold town",
+        "Hover-preview tooltips on dragon weapons should call out the dragon: prefix in the affix list"
+      ],
+      "recommendations": [
+        "Move HIREABLES_ACT1 / COMPANIONS_ACT1 into a per-act registry now that the dragon entries make the constant name misleading",
+        "Pull Act VI enemy stats into the level-curve scaling table so they auto-tune against party level"
+      ],
+      "ideas": [
+        "Mounted-dragon travel nodes between Act VI zones",
+        "A dragon-egg incubator service at Drakehold that converts dragon loot into a custom dragon companion",
+        "Dragon Cult faction quest line where the player can side with Bahamorth instead of slaying him"
+      ],
+      "notes": "Implemented in a single autonomous run per the user's mandate. NO SILENT SHELVING audit at end of session: all 13 requested items shipped (see dragon_expansion.html for full audit)."
+    },
     {
       "milestone": "Milestone 62 \u2014 Cross-map fix, save rework, map variety, sneak checks",
       "date": "2026-04-13",
