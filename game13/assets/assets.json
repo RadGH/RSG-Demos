@@ -1627,26 +1627,80 @@
       "category": "other",
       "source": "elevenlabs",
       "file": "../../music/title_theme.mp3",
-      "prompt": "Epic high-fantasy orchestral main-menu theme, SNES-style 16-bit chiptune, heroic and mysterious",
-      "notes": "ElevenLabs Music API, 60s loop (M64)"
+      "prompt": "Peaceful medieval fantasy town theme (repurposed M69)",
+      "notes": "M69: now uses the previous M64 town_theme as the title screen track"
     },
     {
       "id": "music_combat_theme",
-      "name": "Music \u2014 Combat Theme",
+      "name": "Music \u2014 Combat Theme (calmer)",
       "category": "other",
       "source": "elevenlabs",
       "file": "../../music/combat_theme.mp3",
-      "prompt": "Intense SNES-style 16-bit RPG combat music, driving chiptune drums, heroic brass",
-      "notes": "ElevenLabs Music API, 60s loop (M64)"
+      "prompt": "Calm but tense fantasy RPG combat music, mid-tempo, light percussion, restrained strings, focused not frantic, looping",
+      "notes": "Regenerated calmer in M69"
     },
     {
-      "id": "music_town_theme",
-      "name": "Music \u2014 Town Theme",
+      "id": "music_boss_theme",
+      "name": "Music \u2014 Boss Theme (calmer)",
       "category": "other",
       "source": "elevenlabs",
-      "file": "../../music/town_theme.mp3",
-      "prompt": "Peaceful medieval fantasy town theme, SNES 16-bit chiptune, warm flutes and strings",
-      "notes": "ElevenLabs Music API, 60s loop (M64)"
+      "file": "../../music/boss_theme.mp3",
+      "prompt": "Dramatic but restrained fantasy RPG boss music, slow building tension, deep strings and timpani, ominous but not chaotic, looping",
+      "notes": "Regenerated calmer in M69"
+    },
+    {
+      "id": "music_overworld_act1",
+      "name": "Music \u2014 Overworld Act I",
+      "category": "other",
+      "source": "elevenlabs",
+      "file": "../../music/overworld_act1.mp3",
+      "prompt": "Calm fantasy RPG overworld: lighthearted medieval lute & harp, gentle pastoral, hopeful, looping",
+      "notes": "M69 overworld track"
+    },
+    {
+      "id": "music_overworld_act2",
+      "name": "Music \u2014 Overworld Act II",
+      "category": "other",
+      "source": "elevenlabs",
+      "file": "../../music/overworld_act2.mp3",
+      "prompt": "Calm desert / Aladdin-style: oud, duduk, hand drums, exotic Middle-Eastern modes, calm wandering, looping",
+      "notes": "M69 overworld track"
+    },
+    {
+      "id": "music_overworld_act3",
+      "name": "Music \u2014 Overworld Act III",
+      "category": "other",
+      "source": "elevenlabs",
+      "file": "../../music/overworld_act3.mp3",
+      "prompt": "Calm mystical highlands: pan flute, Celtic fiddle, soft bodhran, foggy and reflective, looping",
+      "notes": "M69 overworld track"
+    },
+    {
+      "id": "music_overworld_act4",
+      "name": "Music \u2014 Overworld Act IV",
+      "category": "other",
+      "source": "elevenlabs",
+      "file": "../../music/overworld_act4.mp3",
+      "prompt": "Calm dark forest / ominous: low strings, distant horn, light percussion, cautious unease, looping",
+      "notes": "M69 overworld track"
+    },
+    {
+      "id": "music_overworld_act5",
+      "name": "Music \u2014 Overworld Act V",
+      "category": "other",
+      "source": "elevenlabs",
+      "file": "../../music/overworld_act5.mp3",
+      "prompt": "Calm ethereal cosmic: shimmering pads, glass bells, soft choir, otherworldly drifting, looping",
+      "notes": "M69 overworld track"
+    },
+    {
+      "id": "music_overworld_act6",
+      "name": "Music \u2014 Overworld Act VI",
+      "category": "other",
+      "source": "elevenlabs",
+      "file": "../../music/overworld_act6.mp3",
+      "prompt": "Calm dragon volcanic: low taiko, brass swells, ember-crackle ambience, smouldering majesty, looping",
+      "notes": "M69 overworld track"
     },
     {
       "id": "sfx_block_shield",
