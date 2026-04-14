@@ -397,6 +397,11 @@
   <div id="total-count" style="margin-left:auto;"></div>
 </header>
 
+<section id="reports-section">
+  <h2>Milestone Reports <span id="report-count"></span></h2>
+  <div id="reports-list"><p class="reports-empty">No reports yet. Reports are added after each major milestone.</p></div>
+</section>
+
 <div class="toolbar" id="toolbar">
   <button class="filter-btn active" data-cat="all">All</button>
 </div>
@@ -413,10 +418,6 @@
   <div id="audio-list"></div>
 </section>
 
-<section id="reports-section">
-  <h2>Milestone Reports <span id="report-count"></span></h2>
-  <div id="reports-list"><p class="reports-empty">No reports yet. Reports are added after each major milestone.</p></div>
-</section>
 
 <div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
   <div class="modal">
@@ -606,7 +607,7 @@ function reportHtmlFile(r) {
 function milestoneSortKey(r) {
   const name = (r.milestone || '').toLowerCase();
   if (name.startsWith('pre-game')) return -1;
-  const m = name.match(/milestone\s*(\d+)/);
+  const m = name.match(/milestone\s*(\d+)/) || name.match(/\bm\s*(\d+)/);
   return m ? parseInt(m[1], 10) : 9999;
 }
 
