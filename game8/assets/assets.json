@@ -1,0 +1,168 @@
+{
+  "game": "Vagrant & Ash",
+  "assets": [
+    {
+      "id": "images_biomes_amber_forest",
+      "name": "Amber Forest",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/amber_forest.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "images_biomes_ashfields",
+      "name": "Ashfields",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/ashfields.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "images_biomes_cinderwaste",
+      "name": "Cinderwaste",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/cinderwaste.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "images_biomes_east_march",
+      "name": "East March",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/east_march.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "images_biomes_fens",
+      "name": "Fens",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/fens.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "images_biomes_greywood",
+      "name": "Greywood",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/greywood.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "images_biomes_hollow_reaches",
+      "name": "Hollow Reaches",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/hollow_reaches.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "images_biomes_hollows",
+      "name": "Hollows",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/hollows.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "images_biomes_ironmarch",
+      "name": "Ironmarch",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/ironmarch.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "images_biomes_mountains",
+      "name": "Mountains",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/mountains.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "images_biomes_salt_flats",
+      "name": "Salt Flats",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/salt_flats.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "images_biomes_steppe",
+      "name": "Steppe",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/steppe.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "images_biomes_storm_coast",
+      "name": "Storm Coast",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/storm_coast.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "images_biomes_thorn_mere",
+      "name": "Thorn Mere",
+      "category": "other",
+      "source": "other",
+      "file": "../images/biomes/thorn_mere.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_icon_192",
+      "name": "Icon 192",
+      "category": "icon",
+      "source": "other",
+      "file": "../icons/icon-192.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_icon_192",
+      "name": "Icon 192",
+      "category": "icon",
+      "source": "svg",
+      "file": "../icons/icon-192.svg",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_icon_512",
+      "name": "Icon 512",
+      "category": "icon",
+      "source": "other",
+      "file": "../icons/icon-512.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_icon_512",
+      "name": "Icon 512",
+      "category": "icon",
+      "source": "svg",
+      "file": "../icons/icon-512.svg",
+      "prompt": "",
+      "notes": ""
+    }
+  ],
+  "reports": []
+}
