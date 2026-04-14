@@ -489,11 +489,24 @@ function renderCard(asset) {
   return card;
 }
 
+function isAudioFile(f) { return /\.(mp3|wav|ogg|m4a)$/i.test(f || ''); }
 function openModal(asset) {
   const modal = document.getElementById('modal');
-  document.getElementById('modal-img').src = asset.file || '';
-  document.getElementById('modal-img').alt = asset.name;
-  document.getElementById('modal-img').style.display = asset.file ? 'block' : 'none';
+  const img = document.getElementById('modal-img');
+  const audio = isAudioFile(asset.file);
+  img.src = audio ? '' : (asset.file || '');
+  img.alt = asset.name;
+  img.style.display = (asset.file && !audio) ? 'block' : 'none';
+  let existingAudio = document.getElementById('modal-audio');
+  if (existingAudio) existingAudio.remove();
+  if (audio) {
+    const el = document.createElement('audio');
+    el.id = 'modal-audio';
+    el.controls = true;
+    el.src = asset.file;
+    el.style.cssText = 'width:100%;margin:12px 0;';
+    img.parentNode.insertBefore(el, img.nextSibling);
+  }
 
   let html = `<div class="modal-title">${asset.name}</div>`;
 
