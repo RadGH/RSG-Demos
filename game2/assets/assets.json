@@ -3773,15 +3773,6 @@
       "notes": ""
     },
     {
-      "id": "icons_ability_icons_sheet",
-      "name": "Ability Icons Sheet",
-      "category": "icon",
-      "source": "other",
-      "file": "icons/ability_icons_sheet.png",
-      "prompt": "",
-      "notes": ""
-    },
-    {
       "id": "icons_items_item_amulet",
       "name": "Item Amulet",
       "category": "item icon",
