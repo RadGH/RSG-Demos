@@ -3,34 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>game2 — Asset Gallery</title>
+  <title>Roguelike — Assets</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
     :root {
-      --bg:        #0a0a12;
-      --surface:   #12121e;
-      --card:      #1a1a2a;
-      --card-h:    #202038;
-      --accent:    #7766cc;
-      --accent-b:  #9988ee;
-      --text:      #ccc8e0;
-      --muted:     #776699;
-      --border:    rgba(119,102,204,0.2);
-      --radius:    8px;
+      --bg:        #080610;
+      --surface:   #0f0c1a;
+      --card:      #141020;
+      --card-h:    #141020;
+      --accent:    #9966ff;
+      --accent-b:  #bb88ff;
+      --ember1:    #5533aa;
+      --gold:      #9966ff;
+      --gold-bright:#bb88ff;
+      --text:      #d0c8e8;
+      --muted:     #7066aa;
+      --border:    rgba(153,102,255,0.3);
+      --radius:    10px;
+      --font-display:'Cinzel',Georgia,serif;
+      --font-ui:'Inter','Segoe UI',sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: system-ui, -apple-system, sans-serif;
+      font-family: var(--font-ui);
       font-size: 14px;
       line-height: 1.5;
       min-height: 100vh;
     }
+    h1, h2, h3, .display { font-family: var(--font-display); }
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 40%, var(--ember1) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .feature-reports { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .feature-report {
+      display: block;
+      background: linear-gradient(135deg, rgba(232,160,32,0.08), rgba(192,64,48,0.06));
+      border: 1px solid rgba(232,160,32,0.3);
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .feature-report:hover { transform: translateY(-2px); border-color: rgba(232,160,32,0.6); box-shadow: 0 8px 24px rgba(232,160,32,0.12); }
+    .feature-report .fr-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+    .feature-report .fr-title { font-family: var(--font-display); font-size: 17px; font-weight: 700; margin: 6px 0 8px; color: var(--gold-bright); }
+    .feature-report .fr-summary { font-size: 13px; color: var(--text); opacity: 0.85; line-height: 1.5; }
+    .feature-report .fr-date { font-size: 11px; color: var(--muted); margin-top: 10px; }
 
     header {
+      max-width: 1200px;
+      margin: 24px auto 20px;
       background: var(--surface);
-      border-bottom: 1px solid var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       padding: 20px 24px;
       display: flex;
       align-items: baseline;
@@ -40,13 +76,18 @@
     header .sub { font-size: 13px; color: var(--muted); }
 
     .toolbar {
+      max-width: 1200px;
+      margin: 0 auto 20px;
       padding: 14px 24px;
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      border-bottom: 1px solid var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       background: var(--surface);
     }
+    main { margin-top: 0 !important; }
+    #audio-section, #reports-section { margin-top: 24px !important; }
     .filter-btn {
       background: var(--card);
       border: 1px solid var(--border);
@@ -63,7 +104,14 @@
       color: #fff;
     }
 
-    main { padding: 24px; }
+    main {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(232,160,32,0.04), rgba(192,64,48,0.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
 
     .empty-state {
       text-align: center;
@@ -121,6 +169,11 @@
     }
     .asset-card:hover { background: var(--card-h); border-color: var(--accent); }
 
+    .thumb, #modal-img {
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
     .thumb {
       width: 100%;
       aspect-ratio: 1;
@@ -197,11 +250,61 @@
     #total-count { color: var(--muted); font-size: 13px; }
 
     /* Reports */
-    #reports-section {
-      border-top: 2px solid var(--border);
-      padding: 32px 24px 48px;
-      margin-top: 16px;
+    #audio-section {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(232,160,32,0.04), rgba(192,64,48,0.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
     }
+    #audio-section .audio-h {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--gold-bright);
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .audio-toolbar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+    .audio-filter {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: var(--font-ui);
+      font-size: 13px;
+    }
+    .audio-filter.active { background: var(--gold); color: #1a0a05; border-color: var(--gold-bright); font-weight: 600; }
+    .audio-group-title { font-family: var(--font-display); color: var(--accent-b); font-size: 1.05rem; margin: 18px 0 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .audio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+    .audio-row {
+      display: flex; flex-direction: column; gap: 6px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .audio-row .audio-name { font-size: 12px; color: var(--text); font-family: monospace; word-break: break-all; }
+    .audio-row audio, #modal-audio {
+      width: 100%;
+      height: 32px;
+      color-scheme: dark;
+      border-radius: 6px;
+    }
+    #reports-section {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(232,160,32,0.04), rgba(192,64,48,0.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      scroll-margin-top: 72px;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
     #reports-section h2 {
       font-size: 13px;
       font-weight: 700;
@@ -283,14 +386,15 @@
       font-style: italic;
     }
   </style>
-  <script src="./_header.js" defer></script>
 </head>
 <body>
 
+<script src="./_header.js?v=3" data-base="assets"></script>
+
 <header>
-  <h1 id="game-title">game2</h1>
-  <div class="sub">— Asset Gallery</div>
-  <div style="margin-left:auto;" id="total-count"></div>
+  <h1 id="game-title" class="page-title">Roguelike</h1>
+  <div class="sub">— Assets</div>
+  <div id="total-count" style="margin-left:auto;"></div>
 </header>
 
 <div class="toolbar" id="toolbar">
@@ -298,6 +402,16 @@
 </div>
 
 <main id="main"></main>
+
+<section id="audio-section">
+  <h2 class="audio-h">Audio Library <span id="audio-count"></span></h2>
+  <div class="audio-toolbar">
+    <button class="audio-filter active" data-atype="all">All</button>
+    <button class="audio-filter" data-atype="music">Music</button>
+    <button class="audio-filter" data-atype="sfx">SFX</button>
+  </div>
+  <div id="audio-list"></div>
+</section>
 
 <section id="reports-section">
   <h2>Milestone Reports <span id="report-count"></span></h2>
@@ -334,14 +448,24 @@ function sourceLabel(source) {
 let allAssets = [];
 let activeFilter = 'all';
 
+function refineCategory(a) { return a.category || 'other'; }
+
 function groupByCategory(assets) {
   const groups = {};
   for (const a of assets) {
-    const cat = a.category || 'other';
+    const cat = refineCategory(a);
     if (!groups[cat]) groups[cat] = [];
     groups[cat].push(a);
   }
   return groups;
+}
+
+const CATEGORY_ORDER = ['background','portrait','icon','ui','sprite','tile','other'];
+function sortedCategoryEntries(groups) {
+  return Object.entries(groups).sort((a, b) => {
+    const ia = CATEGORY_ORDER.indexOf(a[0]); const ib = CATEGORY_ORDER.indexOf(b[0]);
+    return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+  });
 }
 
 function renderCard(asset) {
@@ -369,11 +493,24 @@ function renderCard(asset) {
   return card;
 }
 
+function isAudioFile(f) { return /\.(mp3|wav|ogg|m4a)$/i.test(f || ''); }
 function openModal(asset) {
   const modal = document.getElementById('modal');
-  document.getElementById('modal-img').src = asset.file || '';
-  document.getElementById('modal-img').alt = asset.name;
-  document.getElementById('modal-img').style.display = asset.file ? 'block' : 'none';
+  const img = document.getElementById('modal-img');
+  const audio = isAudioFile(asset.file);
+  img.src = audio ? '' : (asset.file || '');
+  img.alt = asset.name;
+  img.style.display = (asset.file && !audio) ? 'block' : 'none';
+  let existingAudio = document.getElementById('modal-audio');
+  if (existingAudio) existingAudio.remove();
+  if (audio) {
+    const el = document.createElement('audio');
+    el.id = 'modal-audio';
+    el.controls = true;
+    el.src = asset.file;
+    el.style.cssText = 'width:100%;margin:12px 0;';
+    img.parentNode.insertBefore(el, img.nextSibling);
+  }
 
   let html = `<div class="modal-title">${asset.name}</div>`;
 
@@ -437,7 +574,7 @@ function render(assets) {
   }
 
   const groups = groupByCategory(assets);
-  for (const [cat, items] of Object.entries(groups)) {
+  for (const [cat, items] of sortedCategoryEntries(groups)) {
     const section = document.createElement('div');
     section.className = 'section';
     section.innerHTML = `<div class="section-title">${cat} <span>${items.length}</span></div>`;
@@ -452,8 +589,25 @@ function render(assets) {
 function applyFilter(cat) {
   activeFilter = cat;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-  const filtered = cat === 'all' ? allAssets : allAssets.filter(a => (a.category || 'other') === cat);
+  const filtered = cat === 'all' ? allAssets : allAssets.filter(a => refineCategory(a) === cat);
   render(filtered);
+}
+
+const REPORT_HTML_MAP = {};
+
+function reportHtmlFile(r) {
+  const name = (r.milestone || '').toLowerCase();
+  for (const key of Object.keys(REPORT_HTML_MAP)) {
+    if (name.startsWith(key)) return REPORT_HTML_MAP[key];
+  }
+  return null;
+}
+
+function milestoneSortKey(r) {
+  const name = (r.milestone || '').toLowerCase();
+  if (name.startsWith('pre-game')) return -1;
+  const m = name.match(/milestone\s*(\d+)/);
+  return m ? parseInt(m[1], 10) : 9999;
 }
 
 function renderReports(reports) {
@@ -465,8 +619,35 @@ function renderReports(reports) {
   }
   countEl.textContent = `(${reports.length})`;
   container.innerHTML = '';
-  // newest first
-  [...reports].reverse().forEach(r => {
+
+  // Split: feature reports (have dedicated HTML) vs accordion
+  const featured = [];
+  const accordion = [];
+  reports.forEach(r => {
+    if (reportHtmlFile(r)) featured.push(r); else accordion.push(r);
+  });
+  featured.sort((a, b) => milestoneSortKey(a) - milestoneSortKey(b));
+  accordion.sort((a, b) => milestoneSortKey(a) - milestoneSortKey(b));
+
+  if (featured.length) {
+    const wrap = document.createElement('div');
+    wrap.className = 'feature-reports';
+    featured.forEach(r => {
+      const href = reportHtmlFile(r);
+      const a = document.createElement('a');
+      a.className = 'feature-report';
+      a.href = href;
+      a.innerHTML = `
+        <div class="fr-label">Featured Report</div>
+        <div class="fr-title">${r.milestone || 'Report'}</div>
+        <div class="fr-summary">${r.summary || ''}</div>
+        <div class="fr-date">${r.date || ''}</div>`;
+      wrap.appendChild(a);
+    });
+    container.appendChild(wrap);
+  }
+
+  accordion.forEach(r => {
     const card = document.createElement('div');
     card.className = 'report-card';
 
@@ -522,7 +703,7 @@ function renderReports(reports) {
 async function init() {
   let data;
   try {
-    const res = await fetch('assets.json');
+    const res = await fetch('assets.json?v=' + Date.now());
     data = await res.json();
   } catch {
     render([]);
@@ -530,17 +711,20 @@ async function init() {
   }
 
   if (data.game) document.getElementById('game-title').textContent = data.game;
-  document.title = `${data.game || 'game2'} — Asset Gallery`;
+  document.title = `${data.game || 'Roguelike'} — Assets`;
 
-  allAssets = data.assets || [];
+  allAssets = (data.assets || []).filter(a => !isAudioFile(a.file));
   document.getElementById('total-count').textContent = allAssets.length
     ? `${allAssets.length} asset${allAssets.length !== 1 ? 's' : ''}`
     : '';
 
   renderReports(data.reports || []);
+  renderAudio();
 
   // Build filter buttons
-  const cats = [...new Set(allAssets.map(a => a.category || 'other'))].sort();
+  const catSet = new Set(allAssets.map(refineCategory));
+  const cats = CATEGORY_ORDER.filter(c => catSet.has(c));
+  [...catSet].forEach(c => { if (!cats.includes(c)) cats.push(c); });
   const toolbar = document.getElementById('toolbar');
   cats.forEach(cat => {
     const btn = document.createElement('button');
@@ -554,6 +738,34 @@ async function init() {
 
   render(allAssets);
 }
+
+const AUDIO_FILES = {
+  music: [],
+  sfx: [],
+};
+let audioFilter = 'all';
+function renderAudio() {
+  const list = document.getElementById('audio-list');
+  const total = AUDIO_FILES.music.length + AUDIO_FILES.sfx.length;
+  document.getElementById('audio-count').textContent = `(${total})`;
+  function group(label, type, files) {
+    if (audioFilter !== 'all' && audioFilter !== type) return '';
+    const rows = files.map(f => `
+      <div class="audio-row">
+        <div class="audio-name">${f}</div>
+        <audio controls preload="none" src="../${type}/${f}"></audio>
+      </div>`).join('');
+    return `<div class="audio-group-title">${label} (${files.length})</div><div class="audio-grid">${rows}</div>`;
+  }
+  list.innerHTML = group('Music', 'music', AUDIO_FILES.music) + group('SFX', 'sfx', AUDIO_FILES.sfx);
+}
+document.querySelectorAll('.audio-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    audioFilter = btn.dataset.atype;
+    document.querySelectorAll('.audio-filter').forEach(b => b.classList.toggle('active', b === btn));
+    renderAudio();
+  });
+});
 
 init();
 </script>

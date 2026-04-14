@@ -1,5 +1,4128 @@
 {
-  "game": "game2",
-  "assets": [],
+  "game": "Roguelike",
+  "assets": [
+    {
+      "id": "characters_companions_imp_rotations_south",
+      "name": "South",
+      "category": "companion",
+      "source": "pixellab",
+      "file": "characters/companions/imp/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_companions_wolf_rotations_south",
+      "name": "South",
+      "category": "companion",
+      "source": "pixellab",
+      "file": "characters/companions/wolf/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_blood_cultist_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/blood_cultist/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_blood_cultist_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/blood_cultist/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_blood_cultist_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/blood_cultist/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_blood_cultist_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/blood_cultist/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_blood_cultist_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/blood_cultist/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_blood_cultist_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/blood_cultist/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_blood_cultist_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/blood_cultist/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_blood_cultist_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/blood_cultist/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_bone_archer_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/bone_archer/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_bone_archer_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/bone_archer/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_bone_archer_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/bone_archer/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_bone_archer_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/bone_archer/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_bone_archer_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/bone_archer/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_bone_archer_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/bone_archer/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_bone_archer_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/bone_archer/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_bone_archer_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/bone_archer/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_knight_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_knight/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_knight_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_knight/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_knight_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_knight/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_knight_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_knight/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_knight_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_knight/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_knight_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_knight/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_knight_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_knight/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_knight_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_knight/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_titan_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_titan/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_titan_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_titan/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_titan_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_titan/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_titan_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_titan/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_titan_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_titan/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_titan_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_titan/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_titan_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_titan/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_chaos_titan_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/chaos_titan/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_crystal_golem_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/crystal_golem/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_crystal_golem_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/crystal_golem/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_crystal_golem_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/crystal_golem/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_crystal_golem_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/crystal_golem/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_crystal_golem_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/crystal_golem/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_crystal_golem_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/crystal_golem/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_crystal_golem_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/crystal_golem/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_crystal_golem_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/crystal_golem/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_crystal_warden_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/crystal_warden/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_demon_archer_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/demon_archer/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_demon_archer_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/demon_archer/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_demon_archer_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/demon_archer/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_demon_archer_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/demon_archer/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_demon_archer_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/demon_archer/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_demon_archer_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/demon_archer/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_demon_archer_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/demon_archer/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_demon_archer_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/demon_archer/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_fire_imp_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/fire_imp/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_fire_imp_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/fire_imp/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_fire_imp_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/fire_imp/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_fire_imp_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/fire_imp/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_fire_imp_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/fire_imp/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_fire_imp_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/fire_imp/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_fire_imp_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/fire_imp/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_fire_imp_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/fire_imp/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_forest_treant_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/forest_treant/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_forest_treant_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/forest_treant/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_forest_treant_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/forest_treant/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_forest_treant_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/forest_treant/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_forest_treant_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/forest_treant/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_forest_treant_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/forest_treant/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_forest_treant_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/forest_treant/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_forest_treant_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/forest_treant/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_frost_troll_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/frost_troll/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_frost_wraith_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/frost_wraith/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_melee_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_melee/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_melee_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_melee/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_melee_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_melee/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_melee_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_melee/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_melee_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_melee/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_melee_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_melee/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_melee_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_melee/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_melee_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_melee/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_ranged_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_ranged/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_ranged_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_ranged/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_ranged_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_ranged/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_ranged_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_ranged/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_ranged_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_ranged/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_ranged_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_ranged/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_ranged_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_ranged/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_ranged_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_ranged/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_shaman_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_shaman/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_shaman_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_shaman/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_shaman_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_shaman/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_shaman_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_shaman/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_shaman_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_shaman/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_shaman_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_shaman/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_shaman_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_shaman/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_goblin_shaman_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/goblin_shaman/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_herald_of_doom_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/herald_of_doom/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_herald_of_doom_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/herald_of_doom/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_herald_of_doom_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/herald_of_doom/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_herald_of_doom_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/herald_of_doom/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_herald_of_doom_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/herald_of_doom/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_herald_of_doom_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/herald_of_doom/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_herald_of_doom_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/herald_of_doom/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_herald_of_doom_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/herald_of_doom/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_iron_sentinel_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/iron_sentinel/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_iron_sentinel_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/iron_sentinel/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_iron_sentinel_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/iron_sentinel/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_iron_sentinel_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/iron_sentinel/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_iron_sentinel_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/iron_sentinel/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_iron_sentinel_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/iron_sentinel/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_iron_sentinel_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/iron_sentinel/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_iron_sentinel_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/iron_sentinel/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_lava_golem_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/lava_golem/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_lich_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/lich/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_lich_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/lich/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_lich_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/lich/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_lich_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/lich/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_lich_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/lich/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_lich_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/lich/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_lich_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/lich/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_lich_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/lich/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_orc_tank_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/orc_tank/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_orc_tank_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/orc_tank/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_orc_tank_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/orc_tank/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_orc_tank_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/orc_tank/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_orc_tank_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/orc_tank/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_orc_tank_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/orc_tank/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_orc_tank_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/orc_tank/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_orc_tank_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/orc_tank/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_phantom_wraith_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/phantom_wraith/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_phantom_wraith_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/phantom_wraith/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_phantom_wraith_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/phantom_wraith/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_phantom_wraith_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/phantom_wraith/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_phantom_wraith_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/phantom_wraith/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_phantom_wraith_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/phantom_wraith/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_phantom_wraith_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/phantom_wraith/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_phantom_wraith_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/phantom_wraith/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_plague_bearer_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/plague_bearer/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_plague_bearer_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/plague_bearer/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_plague_bearer_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/plague_bearer/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_plague_bearer_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/plague_bearer/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_plague_bearer_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/plague_bearer/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_plague_bearer_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/plague_bearer/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_plague_bearer_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/plague_bearer/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_plague_bearer_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/plague_bearer/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_archon_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_archon/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_assassin_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_assassin/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_assassin_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_assassin/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_assassin_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_assassin/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_assassin_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_assassin/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_assassin_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_assassin/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_assassin_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_assassin/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_assassin_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_assassin/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_assassin_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_assassin/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_stalker_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_stalker/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_stalker_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_stalker/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_stalker_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_stalker/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_stalker_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_stalker/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_stalker_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_stalker/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_stalker_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_stalker/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_stalker_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_stalker/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_shadow_stalker_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/shadow_stalker/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_skeleton_warrior_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/skeleton_warrior/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_skeleton_warrior_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/skeleton_warrior/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_skeleton_warrior_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/skeleton_warrior/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_skeleton_warrior_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/skeleton_warrior/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_skeleton_warrior_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/skeleton_warrior/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_skeleton_warrior_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/skeleton_warrior/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_skeleton_warrior_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/skeleton_warrior/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_skeleton_warrior_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/skeleton_warrior/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_stone_golem_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/stone_golem/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_stone_golem_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/stone_golem/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_stone_golem_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/stone_golem/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_stone_golem_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/stone_golem/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_stone_golem_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/stone_golem/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_stone_golem_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/stone_golem/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_stone_golem_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/stone_golem/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_stone_golem_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/stone_golem/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_storm_colossus_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/storm_colossus/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_storm_drake_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/storm_drake/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_swarm_bat_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/swarm_bat/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_thunder_imp_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/thunder_imp/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_troll_berserker_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/troll_berserker/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_troll_berserker_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/troll_berserker/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_troll_berserker_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/troll_berserker/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_troll_berserker_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/troll_berserker/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_troll_berserker_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/troll_berserker/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_troll_berserker_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/troll_berserker/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_troll_berserker_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/troll_berserker/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_troll_berserker_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/troll_berserker/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_mage_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_mage/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_mage_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_mage/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_mage_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_mage/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_mage_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_mage/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_mage_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_mage/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_mage_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_mage/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_mage_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_mage/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_mage_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_mage/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_overlord_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_overlord/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_overlord_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_overlord/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_overlord_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_overlord/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_overlord_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_overlord/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_overlord_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_overlord/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_overlord_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_overlord/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_overlord_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_overlord/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_overlord_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_overlord/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_wraith_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_wraith/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_wraith_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_wraith/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_wraith_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_wraith/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_wraith_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_wraith/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_wraith_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_wraith/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_wraith_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_wraith/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_wraith_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_wraith/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_void_wraith_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/void_wraith/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_war_chief_rotations_east",
+      "name": "East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/war_chief/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_war_chief_rotations_north_east",
+      "name": "North East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/war_chief/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_war_chief_rotations_north_west",
+      "name": "North West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/war_chief/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_war_chief_rotations_north",
+      "name": "North",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/war_chief/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_war_chief_rotations_south_east",
+      "name": "South East",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/war_chief/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_war_chief_rotations_south_west",
+      "name": "South West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/war_chief/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_war_chief_rotations_south",
+      "name": "South",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/war_chief/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_enemies_war_chief_rotations_west",
+      "name": "West",
+      "category": "enemy",
+      "source": "pixellab",
+      "file": "characters/enemies/war_chief/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_cleric_rotations_east",
+      "name": "East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_cleric/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_cleric_rotations_north_east",
+      "name": "North East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_cleric/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_cleric_rotations_north_west",
+      "name": "North West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_cleric/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_cleric_rotations_north",
+      "name": "North",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_cleric/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_cleric_rotations_south_east",
+      "name": "South East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_cleric/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_cleric_rotations_south_west",
+      "name": "South West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_cleric/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_cleric_rotations_south",
+      "name": "South",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_cleric/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_cleric_rotations_west",
+      "name": "West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_cleric/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_crossbowman_rotations_east",
+      "name": "East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_crossbowman/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_crossbowman_rotations_north_east",
+      "name": "North East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_crossbowman/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_crossbowman_rotations_north_west",
+      "name": "North West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_crossbowman/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_crossbowman_rotations_north",
+      "name": "North",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_crossbowman/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_crossbowman_rotations_south_east",
+      "name": "South East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_crossbowman/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_crossbowman_rotations_south_west",
+      "name": "South West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_crossbowman/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_crossbowman_rotations_south",
+      "name": "South",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_crossbowman/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_crossbowman_rotations_west",
+      "name": "West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_crossbowman/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_footsoldier_rotations_east",
+      "name": "East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_footsoldier/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_footsoldier_rotations_north_east",
+      "name": "North East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_footsoldier/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_footsoldier_rotations_north_west",
+      "name": "North West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_footsoldier/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_footsoldier_rotations_north",
+      "name": "North",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_footsoldier/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_footsoldier_rotations_south_east",
+      "name": "South East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_footsoldier/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_footsoldier_rotations_south_west",
+      "name": "South West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_footsoldier/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_footsoldier_rotations_south",
+      "name": "South",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_footsoldier/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_footsoldier_rotations_west",
+      "name": "West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_footsoldier/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_ice_mage_rotations_east",
+      "name": "East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_ice_mage/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_ice_mage_rotations_north_east",
+      "name": "North East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_ice_mage/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_ice_mage_rotations_north_west",
+      "name": "North West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_ice_mage/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_ice_mage_rotations_north",
+      "name": "North",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_ice_mage/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_ice_mage_rotations_south_east",
+      "name": "South East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_ice_mage/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_ice_mage_rotations_south_west",
+      "name": "South West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_ice_mage/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_ice_mage_rotations_south",
+      "name": "South",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_ice_mage/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_ice_mage_rotations_west",
+      "name": "West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_ice_mage/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_pyromancer_rotations_east",
+      "name": "East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_pyromancer/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_pyromancer_rotations_north_east",
+      "name": "North East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_pyromancer/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_pyromancer_rotations_north_west",
+      "name": "North West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_pyromancer/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_pyromancer_rotations_north",
+      "name": "North",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_pyromancer/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_pyromancer_rotations_south_east",
+      "name": "South East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_pyromancer/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_pyromancer_rotations_south_west",
+      "name": "South West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_pyromancer/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_pyromancer_rotations_south",
+      "name": "South",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_pyromancer/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_pyromancer_rotations_west",
+      "name": "West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_pyromancer/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_shadow_rogue_rotations_east",
+      "name": "East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_shadow_rogue/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_shadow_rogue_rotations_north_east",
+      "name": "North East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_shadow_rogue/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_shadow_rogue_rotations_north_west",
+      "name": "North West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_shadow_rogue/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_shadow_rogue_rotations_north",
+      "name": "North",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_shadow_rogue/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_shadow_rogue_rotations_south_east",
+      "name": "South East",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_shadow_rogue/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_shadow_rogue_rotations_south_west",
+      "name": "South West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_shadow_rogue/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_shadow_rogue_rotations_south",
+      "name": "South",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_shadow_rogue/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_mercenaries_merc_shadow_rogue_rotations_west",
+      "name": "West",
+      "category": "mercenary",
+      "source": "pixellab",
+      "file": "characters/mercenaries/merc_shadow_rogue/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_alchemist_rotations_east",
+      "name": "East",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/alchemist/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_alchemist_rotations_north",
+      "name": "North",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/alchemist/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_alchemist_rotations_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/alchemist/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_alchemist_rotations_west",
+      "name": "West",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/alchemist/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_arena_master_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/arena_master/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_ascendant_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/ascendant/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_blacksmith_rotations_east",
+      "name": "East",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/blacksmith/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_blacksmith_rotations_north",
+      "name": "North",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/blacksmith/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_blacksmith_rotations_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/blacksmith/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_blacksmith_rotations_west",
+      "name": "West",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/blacksmith/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_blacksmith_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/blacksmith/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_chronicler_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/chronicler/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_collector_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/collector/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_crafter_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/crafter/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_enchanter_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/enchanter/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_gambler_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/gambler/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_innkeeper_rotations_east",
+      "name": "East",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/innkeeper/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_innkeeper_rotations_north",
+      "name": "North",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/innkeeper/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_innkeeper_rotations_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/innkeeper/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_innkeeper_rotations_west",
+      "name": "West",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/innkeeper/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_mapkeeper_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/mapkeeper/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_merchant_rotations_east",
+      "name": "East",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/merchant/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_merchant_rotations_north",
+      "name": "North",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/merchant/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_merchant_rotations_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/merchant/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_merchant_rotations_west",
+      "name": "West",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/merchant/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_merchant_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/merchant/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_quest_giver_rotations_east",
+      "name": "East",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/quest_giver/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_quest_giver_rotations_north",
+      "name": "North",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/quest_giver/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_quest_giver_rotations_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/quest_giver/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_quest_giver_rotations_west",
+      "name": "West",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/quest_giver/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_questgiver_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/questgiver/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_recruiter_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/recruiter/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_runesmith_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/runesmith/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_stash_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/stash/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_npcs_trainer_south",
+      "name": "South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "characters/npcs/trainer/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_druid_rotations_east",
+      "name": "East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/druid/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_druid_rotations_north_east",
+      "name": "North East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/druid/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_druid_rotations_north_west",
+      "name": "North West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/druid/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_druid_rotations_north",
+      "name": "North",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/druid/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_druid_rotations_south_east",
+      "name": "South East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/druid/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_druid_rotations_south_west",
+      "name": "South West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/druid/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_druid_rotations_south",
+      "name": "South",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/druid/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_druid_rotations_west",
+      "name": "West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/druid/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_fighter_rotations_east",
+      "name": "East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/fighter/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_fighter_rotations_north_east",
+      "name": "North East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/fighter/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_fighter_rotations_north_west",
+      "name": "North West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/fighter/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_fighter_rotations_north",
+      "name": "North",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/fighter/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_fighter_rotations_south_east",
+      "name": "South East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/fighter/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_fighter_rotations_south_west",
+      "name": "South West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/fighter/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_fighter_rotations_south",
+      "name": "South",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/fighter/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_fighter_rotations_west",
+      "name": "West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/fighter/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_necromancer_rotations_east",
+      "name": "East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/necromancer/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_necromancer_rotations_north_east",
+      "name": "North East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/necromancer/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_necromancer_rotations_north_west",
+      "name": "North West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/necromancer/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_necromancer_rotations_north",
+      "name": "North",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/necromancer/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_necromancer_rotations_south_east",
+      "name": "South East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/necromancer/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_necromancer_rotations_south_west",
+      "name": "South West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/necromancer/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_necromancer_rotations_south",
+      "name": "South",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/necromancer/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_necromancer_rotations_west",
+      "name": "West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/necromancer/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_paladin_rotations_east",
+      "name": "East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/paladin/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_paladin_rotations_north_east",
+      "name": "North East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/paladin/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_paladin_rotations_north_west",
+      "name": "North West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/paladin/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_paladin_rotations_north",
+      "name": "North",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/paladin/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_paladin_rotations_south_east",
+      "name": "South East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/paladin/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_paladin_rotations_south_west",
+      "name": "South West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/paladin/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_paladin_rotations_south",
+      "name": "South",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/paladin/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_paladin_rotations_west",
+      "name": "West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/paladin/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_rogue_rotations_east",
+      "name": "East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/rogue/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_rogue_rotations_north_east",
+      "name": "North East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/rogue/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_rogue_rotations_north_west",
+      "name": "North West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/rogue/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_rogue_rotations_north",
+      "name": "North",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/rogue/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_rogue_rotations_south_east",
+      "name": "South East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/rogue/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_rogue_rotations_south_west",
+      "name": "South West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/rogue/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_rogue_rotations_south",
+      "name": "South",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/rogue/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_rogue_rotations_west",
+      "name": "West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/rogue/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_shaman_rotations_east",
+      "name": "East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/shaman/rotations/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_shaman_rotations_north_east",
+      "name": "North East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/shaman/rotations/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_shaman_rotations_north_west",
+      "name": "North West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/shaman/rotations/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_shaman_rotations_north",
+      "name": "North",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/shaman/rotations/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_shaman_rotations_south_east",
+      "name": "South East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/shaman/rotations/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_shaman_rotations_south_west",
+      "name": "South West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/shaman/rotations/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_shaman_rotations_south",
+      "name": "South",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/shaman/rotations/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_shaman_rotations_west",
+      "name": "West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/shaman/rotations/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_sorcerer_east",
+      "name": "East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/sorcerer/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_sorcerer_north_east",
+      "name": "North East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/sorcerer/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_sorcerer_north_west",
+      "name": "North West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/sorcerer/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_sorcerer_north",
+      "name": "North",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/sorcerer/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_sorcerer_south_east",
+      "name": "South East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/sorcerer/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_sorcerer_south_west",
+      "name": "South West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/sorcerer/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_sorcerer_south",
+      "name": "South",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/sorcerer/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_sorcerer_west",
+      "name": "West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/sorcerer/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_warlock_east",
+      "name": "East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/warlock/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_warlock_north_east",
+      "name": "North East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/warlock/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_warlock_north_west",
+      "name": "North West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/warlock/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_warlock_north",
+      "name": "North",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/warlock/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_warlock_south_east",
+      "name": "South East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/warlock/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_warlock_south_west",
+      "name": "South West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/warlock/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_warlock_south",
+      "name": "South",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/warlock/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_warlock_west",
+      "name": "West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/warlock/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_wizard_east",
+      "name": "East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/wizard/east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_wizard_north_east",
+      "name": "North East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/wizard/north-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_wizard_north_west",
+      "name": "North West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/wizard/north-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_wizard_north",
+      "name": "North",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/wizard/north.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_wizard_south_east",
+      "name": "South East",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/wizard/south-east.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_wizard_south_west",
+      "name": "South West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/wizard/south-west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_wizard_south",
+      "name": "South",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/wizard/south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_players_wizard_west",
+      "name": "West",
+      "category": "player",
+      "source": "pixellab",
+      "file": "characters/players/wizard/west.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_previews_druid",
+      "name": "Druid",
+      "category": "preview",
+      "source": "pixellab",
+      "file": "characters/previews/druid.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_previews_fighter",
+      "name": "Fighter",
+      "category": "preview",
+      "source": "pixellab",
+      "file": "characters/previews/fighter.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_previews_necromancer",
+      "name": "Necromancer",
+      "category": "preview",
+      "source": "pixellab",
+      "file": "characters/previews/necromancer.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_previews_paladin",
+      "name": "Paladin",
+      "category": "preview",
+      "source": "pixellab",
+      "file": "characters/previews/paladin.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_previews_rogue",
+      "name": "Rogue",
+      "category": "preview",
+      "source": "pixellab",
+      "file": "characters/previews/rogue.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_previews_shaman",
+      "name": "Shaman",
+      "category": "preview",
+      "source": "pixellab",
+      "file": "characters/previews/shaman.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_previews_sorcerer",
+      "name": "Sorcerer",
+      "category": "preview",
+      "source": "pixellab",
+      "file": "characters/previews/sorcerer.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_previews_warlock",
+      "name": "Warlock",
+      "category": "preview",
+      "source": "pixellab",
+      "file": "characters/previews/warlock.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "characters_previews_wizard",
+      "name": "Wizard",
+      "category": "preview",
+      "source": "pixellab",
+      "file": "characters/previews/wizard.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_arcane_burst",
+      "name": "Arcane Burst",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/arcane_burst.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_backstab",
+      "name": "Backstab",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/backstab.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_beacon_of_hope",
+      "name": "Beacon Of Hope",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/beacon_of_hope.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_bear_form",
+      "name": "Bear Form",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/bear_form.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_berserker_rage",
+      "name": "Berserker Rage",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/berserker_rage.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_blade_storm",
+      "name": "Blade Storm",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/blade_storm.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_blink",
+      "name": "Blink",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/blink.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_blizzard",
+      "name": "Blizzard",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/blizzard.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_bone_bolt",
+      "name": "Bone Bolt",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/bone_bolt.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_chain_lightning",
+      "name": "Chain Lightning",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/chain_lightning.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_charge",
+      "name": "Charge",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/charge.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_cleave",
+      "name": "Cleave",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/cleave.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_consecrate",
+      "name": "Consecrate",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/consecrate.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_death_coil",
+      "name": "Death Coil",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/death_coil.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_divine_shield",
+      "name": "Divine Shield",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/divine_shield.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_earth_shatter",
+      "name": "Earth Shatter",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/earth_shatter.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_entangle",
+      "name": "Entangle",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/entangle.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_fireball",
+      "name": "Fireball",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/fireball.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_frost_nova",
+      "name": "Frost Nova",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/frost_nova.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_holy_strike",
+      "name": "Holy Strike",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/holy_strike.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_life_drain",
+      "name": "Life Drain",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/life_drain.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_lightning_bolt",
+      "name": "Lightning Bolt",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/lightning_bolt.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_magic_missile",
+      "name": "Magic Missile",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/magic_missile.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_meteor",
+      "name": "Meteor",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/meteor.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_plague_nova",
+      "name": "Plague Nova",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/plague_nova.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_raise_dead",
+      "name": "Raise Dead",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/raise_dead.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_shadow_bolt",
+      "name": "Shadow Bolt",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/shadow_bolt.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_shadow_step",
+      "name": "Shadow Step",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/shadow_step.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_smoke_bomb",
+      "name": "Smoke Bomb",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/smoke_bomb.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_soul_explosion",
+      "name": "Soul Explosion",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/soul_explosion.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_storm_call",
+      "name": "Storm Call",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/storm_call.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_summon_imp",
+      "name": "Summon Imp",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/summon_imp.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_summon_wolf",
+      "name": "Summon Wolf",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/summon_wolf.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_thorn_whip",
+      "name": "Thorn Whip",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/thorn_whip.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_totemic_ward",
+      "name": "Totemic Ward",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/totemic_ward.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_abilities_whirlwind",
+      "name": "Whirlwind",
+      "category": "ability icon",
+      "source": "other",
+      "file": "icons/abilities/whirlwind.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_ability_icons_sheet",
+      "name": "Ability Icons Sheet",
+      "category": "icon",
+      "source": "other",
+      "file": "icons/ability_icons_sheet.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_amulet",
+      "name": "Item Amulet",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_amulet.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_axe",
+      "name": "Item Axe",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_axe.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_boots",
+      "name": "Item Boots",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_boots.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_chest",
+      "name": "Item Chest",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_chest.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_dagger",
+      "name": "Item Dagger",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_dagger.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_focus",
+      "name": "Item Focus",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_focus.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_gloves",
+      "name": "Item Gloves",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_gloves.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_helm",
+      "name": "Item Helm",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_helm.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_mace",
+      "name": "Item Mace",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_mace.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_potion",
+      "name": "Item Potion",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_potion.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_relic",
+      "name": "Item Relic",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_relic.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_ring",
+      "name": "Item Ring",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_ring.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_rune",
+      "name": "Item Rune",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_rune.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_staff",
+      "name": "Item Staff",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_staff.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_sword",
+      "name": "Item Sword",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_sword.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "icons_items_item_totem",
+      "name": "Item Totem",
+      "category": "item icon",
+      "source": "other",
+      "file": "icons/items/item_totem.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "npcs_collector_south",
+      "name": "Collector South",
+      "category": "npc",
+      "source": "pixellab",
+      "file": "npcs/collector_south.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "objects_alchemy_table",
+      "name": "Alchemy Table",
+      "category": "object",
+      "source": "other",
+      "file": "objects/alchemy_table.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "objects_anvil",
+      "name": "Anvil",
+      "category": "object",
+      "source": "other",
+      "file": "objects/anvil.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "objects_campfire",
+      "name": "Campfire",
+      "category": "object",
+      "source": "other",
+      "file": "objects/campfire.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "objects_magic_portal",
+      "name": "Magic Portal",
+      "category": "object",
+      "source": "other",
+      "file": "objects/magic_portal.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "objects_poison_mushrooms",
+      "name": "Poison Mushrooms",
+      "category": "object",
+      "source": "other",
+      "file": "objects/poison_mushrooms.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "objects_shop_counter",
+      "name": "Shop Counter",
+      "category": "object",
+      "source": "other",
+      "file": "objects/shop_counter.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "objects_stone_pillar",
+      "name": "Stone Pillar",
+      "category": "object",
+      "source": "other",
+      "file": "objects/stone_pillar.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "objects_wall_torch",
+      "name": "Wall Torch",
+      "category": "object",
+      "source": "other",
+      "file": "objects/wall_torch.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "tiles_isometric_dungeon_stone",
+      "name": "Dungeon Stone",
+      "category": "tile",
+      "source": "other",
+      "file": "tiles/isometric/dungeon_stone.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "tiles_isometric_grass_earth",
+      "name": "Grass Earth",
+      "category": "tile",
+      "source": "other",
+      "file": "tiles/isometric/grass_earth.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "tiles_isometric_ice_snow",
+      "name": "Ice Snow",
+      "category": "tile",
+      "source": "other",
+      "file": "tiles/isometric/ice_snow.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "tiles_isometric_lava_rock",
+      "name": "Lava Rock",
+      "category": "tile",
+      "source": "other",
+      "file": "tiles/isometric/lava_rock.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "tiles_isometric_portal",
+      "name": "Portal",
+      "category": "tile",
+      "source": "other",
+      "file": "tiles/isometric/portal.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "tiles_isometric_potion_crate",
+      "name": "Potion Crate",
+      "category": "tile",
+      "source": "other",
+      "file": "tiles/isometric/potion_crate.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "tiles_isometric_stone_altar",
+      "name": "Stone Altar",
+      "category": "tile",
+      "source": "other",
+      "file": "tiles/isometric/stone_altar.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "tiles_isometric_treasure_chest",
+      "name": "Treasure Chest",
+      "category": "tile",
+      "source": "other",
+      "file": "tiles/isometric/treasure_chest.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "tiles_isometric_void_dark",
+      "name": "Void Dark",
+      "category": "tile",
+      "source": "other",
+      "file": "tiles/isometric/void_dark.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "tiles_isometric_wooden_barrel",
+      "name": "Wooden Barrel",
+      "category": "tile",
+      "source": "other",
+      "file": "tiles/isometric/wooden_barrel.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "tilesets_dungeon_tileset",
+      "name": "Dungeon Tileset",
+      "category": "tile",
+      "source": "other",
+      "file": "tilesets/dungeon_tileset.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "tilesets_ice_tileset",
+      "name": "Ice Tileset",
+      "category": "tile",
+      "source": "other",
+      "file": "tilesets/ice_tileset.png",
+      "prompt": "",
+      "notes": ""
+    },
+    {
+      "id": "tilesets_lava_tileset",
+      "name": "Lava Tileset",
+      "category": "tile",
+      "source": "other",
+      "file": "tilesets/lava_tileset.png",
+      "prompt": "",
+      "notes": ""
+    }
+  ],
   "reports": []
 }
