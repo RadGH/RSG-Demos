@@ -68,8 +68,11 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
 .gbadge-tok,.gbadge-date{background:rgba(0,0,0,.3);color:var(--gtm);border:1px solid rgba(120,100,80,.2)}
 
 .game-desc{font-family:'Crimson Text',serif;font-style:italic;font-size:1.15rem;line-height:1.7;color:var(--gt);text-align:center;max-width:620px;margin:0 auto 28px;animation:fadeUp .8s ease 1.1s both}
-.play-btn{display:block;width:fit-content;margin:0 auto 36px;font-family:'Cinzel',serif;font-size:.875rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;padding:14px 48px;border:1px solid var(--ga);color:var(--gbo);background:rgba(0,0,0,.5);transition:background .2s,box-shadow .2s,color .2s;animation:fadeIn .8s ease 1.3s both}
+.game-cta-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;margin:0 auto 36px;animation:fadeIn .8s ease 1.3s both}
+.play-btn{display:inline-block;font-family:'Cinzel',serif;font-size:.875rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;padding:14px 48px;border:1px solid var(--ga);color:var(--gbo);background:rgba(0,0,0,.5);transition:background .2s,box-shadow .2s,color .2s}
 .play-btn:hover{background:var(--gad);color:#fff;box-shadow:0 0 24px var(--gg),0 0 48px var(--gg)}
+.assets-btn{display:inline-block;font-family:'Inter','Segoe UI',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;padding:10px 20px;border:1px solid rgba(255,255,255,.15);color:var(--gm);background:transparent;transition:color .2s,border-color .2s,background .2s}
+.assets-btn:hover{color:var(--gbo);border-color:var(--ga);background:rgba(0,0,0,.3)}
 .meta-sections{width:100%;max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:8px}
 .meta-collapse{border:1px solid rgba(120,100,80,.2);background:rgba(0,0,0,.35)}
 .meta-collapse summary{padding:10px 18px;cursor:pointer;list-style:none;font-family:'Cinzel',serif;font-size:.875rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gtm);display:flex;align-items:center;gap:8px;user-select:none}
@@ -115,6 +118,309 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
 </section>
 <main class="games-list" id="games-list">
 
+<section class="game-section" id="game2"
+  data-key="game2" data-date="2026-04-13" data-milestone="232" data-title="Roguelike"
+  style="--ga:#9966ff;--gab:#bb88ff;--gad:#5533aa;--gg:rgba(153, 102, 255, 0.3);--gbg:#080610;--gt:#d0c8e8;--gtm:#7066aa;--gbo:#e0d8f8;--gbr:rgba(153,102,255,0.3);--gpf:0 0 12px #9966ff, 0 0 28px #5533aa, 0 0 56px rgba(153,102,255,0.2);--gpt:0 0 20px #bb88ff, 0 0 40px #9966ff, 0 0 80px rgba(187,136,255,0.3);background:#080610">
+  <div class="game-bg">
+    <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(100,60,200,0.15) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(70,30,150,0.2) 0%, transparent 60%), linear-gradient(180deg, #080610 0%, #0d0c1a 60%, #100c20 100%)"></div>
+    <div class="game-bg-shot" style="background-image:url('screenshots/game2.png');"></div>
+    <div class="particle-field"><div class="particle" style="left:8%;animation-duration:6.2s;animation-delay:0s;--dx:15px;--dx2:-8px;background:#9966ff;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:15%;animation-duration:7.8s;animation-delay:1.2s;--dx:-20px;--dx2:12px;background:#bb88ff;"></div><div class="particle" style="left:24%;animation-duration:5.5s;animation-delay:2.4s;--dx:30px;--dx2:-18px;background:#7744dd;"></div><div class="particle" style="left:33%;animation-duration:8.1s;animation-delay:0.7s;--dx:-12px;--dx2:25px;background:#cc99ff;width:2px;height:2px"></div><div class="particle" style="left:42%;animation-duration:6.7s;animation-delay:3.1s;--dx:22px;--dx2:-5px;background:#6622cc;width:4px;height:4px"></div><div class="particle" style="left:51%;animation-duration:9.3s;animation-delay:1.8s;--dx:-25px;--dx2:15px;background:#9966ff;"></div><div class="particle" style="left:60%;animation-duration:5.9s;animation-delay:0.4s;--dx:18px;--dx2:-22px;background:#bb88ff;width:2px;height:2px"></div><div class="particle" style="left:68%;animation-duration:7.4s;animation-delay:2.6s;--dx:-8px;--dx2:20px;background:#7744dd;"></div><div class="particle" style="left:77%;animation-duration:6.1s;animation-delay:4.2s;--dx:28px;--dx2:-14px;background:#cc99ff;width:4px;height:4px"></div><div class="particle" style="left:86%;animation-duration:8.7s;animation-delay:1.5s;--dx:-18px;--dx2:10px;background:#6622cc;width:2px;height:2px"></div><div class="particle" style="left:93%;animation-duration:5.3s;animation-delay:3.8s;--dx:10px;--dx2:-28px;background:#9966ff;"></div><div class="particle" style="left:4%;animation-duration:10s;animation-delay:5.1s;--dx:-15px;--dx2:18px;background:#bb88ff;"></div><div class="particle" style="left:20%;animation-duration:6.8s;animation-delay:2s;--dx:25px;--dx2:-10px;background:#7744dd;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:46%;animation-duration:7.2s;animation-delay:0.9s;--dx:-20px;--dx2:30px;background:#cc99ff;"></div><div class="particle" style="left:72%;animation-duration:5.8s;animation-delay:4.7s;--dx:12px;--dx2:-20px;background:#6622cc;"></div></div>
+  </div>
+  <div class="game-outer">
+    <div class="game-frame" style="--glow:rgba(153, 102, 255, 0.3)">
+      <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
+      <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
+      <span class="frame-top">Milestone 232</span>
+      <span class="frame-bot">2.5D Isometric Dungeon Crawler</span>
+      <div class="game-eyebrow">2.5D Isometric Dungeon Crawler</div>
+      <h2 class="game-title">Roguelike</h2>
+      <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
+      <div class="game-badges">
+        <span class="gbadge gbadge-m">M232</span>
+        <span class="gbadge gbadge-tok">3.32B tokens</span>
+        <span class="gbadge gbadge-date">2026-04-13</span>
+      </div>
+      <p class="game-desc">A browser-based 2.5D isometric roguelike with local co-op (1–4 players). Fast runs (3–10 min/map), persistent progression, drop-in/out multiplayer. 9 classes with 5 abilities each, 200+ milestones of content including Mythic items, endless dungeons, arena mode, crafting, mercenaries, and AI pixel art sprites.</p>
+      <div class="game-cta-row">
+        <a href="./game2/" class="play-btn">Play Now</a>
+        <a href="./game2/assets/" class="assets-btn">Assets &rsaquo;</a>
+      </div>
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A browser-based 2.5D isometric roguelike with local co-op (1–4 players). Fast runs (3–10 min/map), persistent progression, drop-in/out multiplayer. Vivid, playful medieval fantasy with multiple classes.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">Recent highlights:
+- M231: How to Play screen fixed — close button was buried behind the panel (depth bug); added X button in top-right corner for touch/iPhone; ESC and gamepad B button now close the overlay
+- M230: New enemy sprites — 6 previously blob-shaped enemies now have distinct procedural art: Arcane Specter (glowing purple ghost), Blood Drake (crimson dragon), Mushroom Spore (cap with white spots), Shadow Lurker (dark amorphous with red eyes), Spectral Knight (ghostly armored), Void Lurker (void tentacle entity); added 3 new enemies to spawn pool
+- M229: UI zoom compensation — scrolling in/out no longer stretches inventory, quest HUD, room progression, or fixed UI panels
+- M228: Minimap now uses isometric projection — floor area appears as a diamond matching the 2.5D perspective</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">Completed: M1-M231 (231 milestones)
+M231: How to Play close button depth fix; X corner button for touch; gamepad B closes overlay
+M230: New distinct enemy sprites for Arcane Specter, Blood Drake, Mushroom Spore, Shadow Lurker, Spectral Knight, Void Lurker
+M229: UI zoom compensation fix
+M228: Isometric minimap projection fix
+M227: Ranged mob VFX fix, effect helpful/harmful visual clarity
+M226: Bug fix sweep — skill crash, Death Coil aim, HOW TO PLAY ESC, screen close consistency
+M207-225: Comprehensive mobile UX overhaul
+
+Future wishlist:
+- Online co-op multiplayer
+- New biomes and tilesets
+- Seasonal events and challenges
+- Hardcore permadeath mode
+- Sound effects and music
+- Additional classes and abilities
+- Expanded endgame content</pre></details></div>
+    </div>
+  </div>
+</section>
+<hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#5533aa 15%,#9966ff 50%,#5533aa 85%,transparent 100%)">
+
+<section class="game-section" id="game3"
+  data-key="game3" data-date="2026-04-13" data-milestone="4" data-title="Roguelike III"
+  style="--ga:#00bbdd;--gab:#44eeff;--gad:#007a99;--gg:rgba(0, 187, 221, 0.3);--gbg:#060910;--gt:#c8dce8;--gtm:#5577aa;--gbo:#d8eef8;--gbr:rgba(0,187,221,0.3);--gpf:0 0 12px #00bbdd, 0 0 28px #007a99, 0 0 56px rgba(0,187,221,0.2);--gpt:0 0 20px #44eeff, 0 0 40px #00bbdd, 0 0 80px rgba(68,238,255,0.3);background:#060910">
+  <div class="game-bg">
+    <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(0,150,200,0.12) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(0,100,150,0.18) 0%, transparent 60%), linear-gradient(180deg, #060910 0%, #080e18 60%, #0a1018 100%)"></div>
+    <div class="game-bg-shot" style="background-image:url('screenshots/game3.png');"></div>
+    <div class="particle-field"><div class="particle" style="left:8%;animation-duration:6.2s;animation-delay:0s;--dx:15px;--dx2:-8px;background:#00bbdd;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:15%;animation-duration:7.8s;animation-delay:1.2s;--dx:-20px;--dx2:12px;background:#44eeff;"></div><div class="particle" style="left:24%;animation-duration:5.5s;animation-delay:2.4s;--dx:30px;--dx2:-18px;background:#0077aa;"></div><div class="particle" style="left:33%;animation-duration:8.1s;animation-delay:0.7s;--dx:-12px;--dx2:25px;background:#00ddff;width:2px;height:2px"></div><div class="particle" style="left:42%;animation-duration:6.7s;animation-delay:3.1s;--dx:22px;--dx2:-5px;background:#005588;width:4px;height:4px"></div><div class="particle" style="left:51%;animation-duration:9.3s;animation-delay:1.8s;--dx:-25px;--dx2:15px;background:#00bbdd;"></div><div class="particle" style="left:60%;animation-duration:5.9s;animation-delay:0.4s;--dx:18px;--dx2:-22px;background:#44eeff;width:2px;height:2px"></div><div class="particle" style="left:68%;animation-duration:7.4s;animation-delay:2.6s;--dx:-8px;--dx2:20px;background:#0077aa;"></div><div class="particle" style="left:77%;animation-duration:6.1s;animation-delay:4.2s;--dx:28px;--dx2:-14px;background:#00ddff;width:4px;height:4px"></div><div class="particle" style="left:86%;animation-duration:8.7s;animation-delay:1.5s;--dx:-18px;--dx2:10px;background:#005588;width:2px;height:2px"></div><div class="particle" style="left:93%;animation-duration:5.3s;animation-delay:3.8s;--dx:10px;--dx2:-28px;background:#00bbdd;"></div><div class="particle" style="left:4%;animation-duration:10s;animation-delay:5.1s;--dx:-15px;--dx2:18px;background:#44eeff;"></div><div class="particle" style="left:20%;animation-duration:6.8s;animation-delay:2s;--dx:25px;--dx2:-10px;background:#0077aa;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:46%;animation-duration:7.2s;animation-delay:0.9s;--dx:-20px;--dx2:30px;background:#00ddff;"></div><div class="particle" style="left:72%;animation-duration:5.8s;animation-delay:4.7s;--dx:12px;--dx2:-20px;background:#005588;"></div></div>
+  </div>
+  <div class="game-outer">
+    <div class="game-frame" style="--glow:rgba(0, 187, 221, 0.3)">
+      <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
+      <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
+      <span class="frame-top">Milestone 4</span>
+      <span class="frame-bot">Twin-Stick Action RPG</span>
+      <div class="game-eyebrow">Twin-Stick Action RPG</div>
+      <h2 class="game-title">Roguelike III</h2>
+      <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
+      <div class="game-badges">
+        <span class="gbadge gbadge-m">M4</span>
+        <span class="gbadge gbadge-tok">2.15B tokens</span>
+        <span class="gbadge gbadge-date">2026-04-13</span>
+      </div>
+      <p class="game-desc">A third-person top-down twin-stick action RPG. Full conversion from the isometric Roguelike engine to fast-paced twin-stick combat with 7 classes, 360° aiming, dash/roll mechanics, and mobile virtual joystick support.</p>
+      <div class="game-cta-row">
+        <a href="./game3/" class="play-btn">Play Now</a>
+        <a href="./game3/assets/" class="assets-btn">Assets &rsaquo;</a>
+      </div>
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">Convert the isometric roguelike engine into a fast-paced twin-stick action RPG with 360° aiming, dash and roll mechanics, and mobile virtual joystick support.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M3: Kill combo system, boss intro cinematic, dedicated boss HP bar, 3 new enemies (Berserker, Hexer, Spider), touch controls polish
+- M2: Character creation fix, loading screen fix, viewport meta tag, JS/CSS caching
+- M1: Full engine conversion — top-down twin-stick, 8-dir movement, projectile combat, lighting, 6 enemy types, wave system</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">Continuing twin-stick action RPG development:
+- Additional enemy types and boss encounters
+- Loot and equipment system
+- Town hub and NPC interactions
+- Mobile touch controls refinement
+- Multiplayer co-op support</pre></details></div>
+    </div>
+  </div>
+</section>
+<hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#007a99 15%,#00bbdd 50%,#007a99 85%,transparent 100%)">
+
+<section class="game-section" id="game4"
+  data-key="game4" data-date="2026-04-13" data-milestone="33" data-title="Spellroads"
+  style="--ga:#c8a228;--gab:#e8c048;--gad:#8a6e18;--gg:rgba(200, 162, 40, 0.3);--gbg:#080a06;--gt:#d4cca8;--gtm:#7a7250;--gbo:#e8ddb8;--gbr:rgba(200,162,40,0.3);--gpf:0 0 12px #c8a228, 0 0 28px #8a6e18, 0 0 56px rgba(200,162,40,0.2);--gpt:0 0 20px #e8c048, 0 0 40px #c8a228, 0 0 80px rgba(232,192,72,0.3);background:#080a06">
+  <div class="game-bg">
+    <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(160,120,20,0.12) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(100,80,15,0.18) 0%, transparent 60%), linear-gradient(180deg, #080a06 0%, #0e1008 60%, #121408 100%)"></div>
+    <div class="game-bg-shot" style="background-image:url('screenshots/game4.png');"></div>
+    <div class="particle-field"><div class="particle" style="left:8%;animation-duration:6.2s;animation-delay:0s;--dx:15px;--dx2:-8px;background:#c8a228;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:15%;animation-duration:7.8s;animation-delay:1.2s;--dx:-20px;--dx2:12px;background:#e8c048;"></div><div class="particle" style="left:24%;animation-duration:5.5s;animation-delay:2.4s;--dx:30px;--dx2:-18px;background:#9a7a20;"></div><div class="particle" style="left:33%;animation-duration:8.1s;animation-delay:0.7s;--dx:-12px;--dx2:25px;background:#f0d060;width:2px;height:2px"></div><div class="particle" style="left:42%;animation-duration:6.7s;animation-delay:3.1s;--dx:22px;--dx2:-5px;background:#6a5010;width:4px;height:4px"></div><div class="particle" style="left:51%;animation-duration:9.3s;animation-delay:1.8s;--dx:-25px;--dx2:15px;background:#c8a228;"></div><div class="particle" style="left:60%;animation-duration:5.9s;animation-delay:0.4s;--dx:18px;--dx2:-22px;background:#e8c048;width:2px;height:2px"></div><div class="particle" style="left:68%;animation-duration:7.4s;animation-delay:2.6s;--dx:-8px;--dx2:20px;background:#9a7a20;"></div><div class="particle" style="left:77%;animation-duration:6.1s;animation-delay:4.2s;--dx:28px;--dx2:-14px;background:#f0d060;width:4px;height:4px"></div><div class="particle" style="left:86%;animation-duration:8.7s;animation-delay:1.5s;--dx:-18px;--dx2:10px;background:#6a5010;width:2px;height:2px"></div><div class="particle" style="left:93%;animation-duration:5.3s;animation-delay:3.8s;--dx:10px;--dx2:-28px;background:#c8a228;"></div><div class="particle" style="left:4%;animation-duration:10s;animation-delay:5.1s;--dx:-15px;--dx2:18px;background:#e8c048;"></div><div class="particle" style="left:20%;animation-duration:6.8s;animation-delay:2s;--dx:25px;--dx2:-10px;background:#9a7a20;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:46%;animation-duration:7.2s;animation-delay:0.9s;--dx:-20px;--dx2:30px;background:#f0d060;"></div><div class="particle" style="left:72%;animation-duration:5.8s;animation-delay:4.7s;--dx:12px;--dx2:-20px;background:#6a5010;"></div></div>
+  </div>
+  <div class="game-outer">
+    <div class="game-frame" style="--glow:rgba(200, 162, 40, 0.3)">
+      <span class="fc-tl">ᚱ︎</span><span class="fc-tr">ᚱ︎</span>
+      <span class="fc-bl">ᚱ︎</span><span class="fc-br">ᚱ︎</span>
+      <span class="frame-top">Milestone 33</span>
+      <span class="frame-bot">Open-World Norse Turn-Based RPG</span>
+      <div class="game-eyebrow">Open-World Norse Turn-Based RPG</div>
+      <h2 class="game-title">Spellroads</h2>
+      <div class="divider"><div class="divider-line"></div><span class="divider-glyph">ᚱ︎</span><div class="divider-line"></div></div>
+      <div class="game-badges">
+        <span class="gbadge gbadge-m">M33</span>
+        <span class="gbadge gbadge-tok">576.1M tokens</span>
+        <span class="gbadge gbadge-date">2026-04-13</span>
+      </div>
+      <p class="game-desc">An open-world turn-based RPG set in a procedurally generated Norse world. Assemble a party of adventurers, travel the Spellroads — ancient magical highways — and restore them from growing darkness. 2–4 player local co-op, formation-based combat, and deep character progression.</p>
+      <div class="game-cta-row">
+        <a href="./game4/" class="play-btn">Play Now</a>
+        <a href="./game4/assets/" class="assets-btn">Assets &rsaquo;</a>
+      </div>
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">An open-world turn-based RPG in a procedurally generated Norse world. Assemble a party and travel the Spellroads — ancient magical highways — restoring them from growing darkness. 2–4 player local co-op with formation-based combat and deep character progression.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M32: Companion system — 12 hireable companions with personality traits
+- M31: Random events &amp; loot tables — 15 Norse travel events, 8 loot tables
+- M30: Faction &amp; reputation system — 8 factions with standing tiers
+- M29: Crafting system — 20 recipes
+- M21: New biomes (swamp, crystal caves, cursed wastes)
+- M20: Desktop packaging (Electron)
+- M19: Prestige system + 10 new skill trees (44 total)
+- M17: Dungeon interiors — room-based procedural dungeons
+- M15: Save system, achievements, compendium
+- M6: Full turn-based grid combat with initiative and AI</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">No additional milestones currently defined beyond M32. Future focus areas:
+- Art generation pass for remaining placeholder sprites
+- Online co-op via WebSocket
+- Steam/itch.io release packaging
+- Additional quest content and regions
+- Balance pass and endgame content</pre></details></div>
+    </div>
+  </div>
+</section>
+<hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#8a6e18 15%,#c8a228 50%,#8a6e18 85%,transparent 100%)">
+
+<section class="game-section" id="game6"
+  data-key="game6" data-date="2026-04-13" data-milestone="30" data-title="Astral Crypts"
+  style="--ga:#8855ff;--gab:#aa77ff;--gad:#552299;--gg:rgba(136, 85, 255, 0.3);--gbg:#060608;--gt:#ccc0e0;--gtm:#6655aa;--gbo:#e0d8f0;--gbr:rgba(136,85,255,0.3);--gpf:0 0 12px #8855ff, 0 0 28px #552299, 0 0 56px rgba(136,85,255,0.2);--gpt:0 0 20px #aa77ff, 0 0 40px #8855ff, 0 0 80px rgba(170,119,255,0.3);background:#060608">
+  <div class="game-bg">
+    <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(120,60,220,0.12) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(80,30,160,0.18) 0%, transparent 60%), linear-gradient(180deg, #060608 0%, #0c0a14 60%, #0e0c18 100%)"></div>
+    <div class="game-bg-shot" style="background-image:url('screenshots/game6.png');"></div>
+    <div class="particle-field"><div class="particle" style="left:8%;animation-duration:6.2s;animation-delay:0s;--dx:15px;--dx2:-8px;background:#8855ff;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:15%;animation-duration:7.8s;animation-delay:1.2s;--dx:-20px;--dx2:12px;background:#aa77ff;"></div><div class="particle" style="left:24%;animation-duration:5.5s;animation-delay:2.4s;--dx:30px;--dx2:-18px;background:#5522cc;"></div><div class="particle" style="left:33%;animation-duration:8.1s;animation-delay:0.7s;--dx:-12px;--dx2:25px;background:#cc99ff;width:2px;height:2px"></div><div class="particle" style="left:42%;animation-duration:6.7s;animation-delay:3.1s;--dx:22px;--dx2:-5px;background:#331188;width:4px;height:4px"></div><div class="particle" style="left:51%;animation-duration:9.3s;animation-delay:1.8s;--dx:-25px;--dx2:15px;background:#8855ff;"></div><div class="particle" style="left:60%;animation-duration:5.9s;animation-delay:0.4s;--dx:18px;--dx2:-22px;background:#aa77ff;width:2px;height:2px"></div><div class="particle" style="left:68%;animation-duration:7.4s;animation-delay:2.6s;--dx:-8px;--dx2:20px;background:#5522cc;"></div><div class="particle" style="left:77%;animation-duration:6.1s;animation-delay:4.2s;--dx:28px;--dx2:-14px;background:#cc99ff;width:4px;height:4px"></div><div class="particle" style="left:86%;animation-duration:8.7s;animation-delay:1.5s;--dx:-18px;--dx2:10px;background:#331188;width:2px;height:2px"></div><div class="particle" style="left:93%;animation-duration:5.3s;animation-delay:3.8s;--dx:10px;--dx2:-28px;background:#8855ff;"></div><div class="particle" style="left:4%;animation-duration:10s;animation-delay:5.1s;--dx:-15px;--dx2:18px;background:#aa77ff;"></div><div class="particle" style="left:20%;animation-duration:6.8s;animation-delay:2s;--dx:25px;--dx2:-10px;background:#5522cc;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:46%;animation-duration:7.2s;animation-delay:0.9s;--dx:-20px;--dx2:30px;background:#cc99ff;"></div><div class="particle" style="left:72%;animation-duration:5.8s;animation-delay:4.7s;--dx:12px;--dx2:-20px;background:#331188;"></div></div>
+  </div>
+  <div class="game-outer">
+    <div class="game-frame" style="--glow:rgba(136, 85, 255, 0.3)">
+      <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
+      <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
+      <span class="frame-top">Milestone 30</span>
+      <span class="frame-bot">Pixel Action Roguelite</span>
+      <div class="game-eyebrow">Pixel Action Roguelite</div>
+      <h2 class="game-title">Astral Crypts</h2>
+      <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
+      <div class="game-badges">
+        <span class="gbadge gbadge-m">M30</span>
+        <span class="gbadge gbadge-tok">100.2M tokens</span>
+        <span class="gbadge gbadge-date">2026-04-13</span>
+      </div>
+      <p class="game-desc">A top-down action roguelite with procedural dungeon generation, 4 classes (Ironclad, Riftmage, Phantom, Voidpriest), and meta-progression. Built with PixiJS v8 at 480×270 internal resolution scaled to 3×. Features melee/ranged combat, boss encounters, equipment, and pixel art.</p>
+      <div class="game-cta-row">
+        <a href="./game6/" class="play-btn">Play Now</a>
+        <a href="./game6/assets/" class="assets-btn">Assets &rsaquo;</a>
+      </div>
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A top-down action roguelite where you descend through procedurally generated ancient crypts floating in a dimensional void. Each run is unique, death is permanent but unlocks persist. A lone adventurer chasing a mysterious signal through ruins of fallen civilizations.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M25: Character select screen with class descriptions
+- M24: HUD polish — health/mana/xp bars, class icon, floor display
+- M23: Minimap with room grid, fog of war, player position
+- M22: Level-up system with XP and stat point allocation
+- M21: Relic system — 10 starter relics with passive effects
+- M17: Boss encounter — Lord of Dust (3-phase fight)
+- M10: Save/load system with run state and meta-progression
+- M1: Project bootstrap — Vite + PixiJS v8, debug tools, test harness</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">Phase 3: First Art Pass (M26–M35)
+- M26: Player class sprites via PixelLab
+- M27: Stone Crypts enemy sprites
+- M28: Dungeon tiles
+- M29: Map objects (chest, torch, shrine, barrel, pillar)
+- M30–M31: Sprite animations (player + enemy)
+- M32–M34: Particle effects, dynamic lighting, screen shake
+- M35: Main menu with animated background
+
+Phase 4: Biome 2 — Arcane Archives (M36–M48)
+- New tileset, enemies, boss (The Archivist)
+- Secret rooms, challenge rooms, puzzle rooms, traps, lore tablets
+
+Phase 5: Biomes 3+4 — Forge of Ruin &amp; Void Sanctum (M49–M63)</pre></details></div>
+    </div>
+  </div>
+</section>
+<hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#552299 15%,#8855ff 50%,#552299 85%,transparent 100%)">
+
+<section class="game-section" id="game7"
+  data-key="game7" data-date="2026-04-13" data-milestone="14" data-title="Wanderlight"
+  style="--ga:#c87c30;--gab:#e8a050;--gad:#8a5018;--gg:rgba(200, 124, 48, 0.3);--gbg:#090806;--gt:#d8c8a8;--gtm:#806848;--gbo:#e8d8b8;--gbr:rgba(200,124,48,0.3);--gpf:0 0 12px #c87c30, 0 0 28px #8a5018, 0 0 56px rgba(200,124,48,0.2);--gpt:0 0 20px #e8a050, 0 0 40px #c87c30, 0 0 80px rgba(232,160,80,0.3);background:#090806">
+  <div class="game-bg">
+    <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(180,100,30,0.12) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(120,70,20,0.18) 0%, transparent 60%), linear-gradient(180deg, #090806 0%, #110e0a 60%, #160c08 100%)"></div>
+    <div class="game-bg-shot" style="background-image:url('screenshots/game7.png');"></div>
+    <div class="particle-field"><div class="particle" style="left:8%;animation-duration:6.2s;animation-delay:0s;--dx:15px;--dx2:-8px;background:#c87c30;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:15%;animation-duration:7.8s;animation-delay:1.2s;--dx:-20px;--dx2:12px;background:#e8a050;"></div><div class="particle" style="left:24%;animation-duration:5.5s;animation-delay:2.4s;--dx:30px;--dx2:-18px;background:#9a5e20;"></div><div class="particle" style="left:33%;animation-duration:8.1s;animation-delay:0.7s;--dx:-12px;--dx2:25px;background:#f0b870;width:2px;height:2px"></div><div class="particle" style="left:42%;animation-duration:6.7s;animation-delay:3.1s;--dx:22px;--dx2:-5px;background:#6a3c10;width:4px;height:4px"></div><div class="particle" style="left:51%;animation-duration:9.3s;animation-delay:1.8s;--dx:-25px;--dx2:15px;background:#c87c30;"></div><div class="particle" style="left:60%;animation-duration:5.9s;animation-delay:0.4s;--dx:18px;--dx2:-22px;background:#e8a050;width:2px;height:2px"></div><div class="particle" style="left:68%;animation-duration:7.4s;animation-delay:2.6s;--dx:-8px;--dx2:20px;background:#9a5e20;"></div><div class="particle" style="left:77%;animation-duration:6.1s;animation-delay:4.2s;--dx:28px;--dx2:-14px;background:#f0b870;width:4px;height:4px"></div><div class="particle" style="left:86%;animation-duration:8.7s;animation-delay:1.5s;--dx:-18px;--dx2:10px;background:#6a3c10;width:2px;height:2px"></div><div class="particle" style="left:93%;animation-duration:5.3s;animation-delay:3.8s;--dx:10px;--dx2:-28px;background:#c87c30;"></div><div class="particle" style="left:4%;animation-duration:10s;animation-delay:5.1s;--dx:-15px;--dx2:18px;background:#e8a050;"></div><div class="particle" style="left:20%;animation-duration:6.8s;animation-delay:2s;--dx:25px;--dx2:-10px;background:#9a5e20;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:46%;animation-duration:7.2s;animation-delay:0.9s;--dx:-20px;--dx2:30px;background:#f0b870;"></div><div class="particle" style="left:72%;animation-duration:5.8s;animation-delay:4.7s;--dx:12px;--dx2:-20px;background:#6a3c10;"></div></div>
+  </div>
+  <div class="game-outer">
+    <div class="game-frame" style="--glow:rgba(200, 124, 48, 0.3)">
+      <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
+      <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
+      <span class="frame-top">Milestone 14</span>
+      <span class="frame-bot">Turn-Based Caravan RPG</span>
+      <div class="game-eyebrow">Turn-Based Caravan RPG</div>
+      <h2 class="game-title">Wanderlight</h2>
+      <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
+      <div class="game-badges">
+        <span class="gbadge gbadge-m">M14</span>
+        <span class="gbadge gbadge-tok">463.7M tokens</span>
+        <span class="gbadge gbadge-date">2026-04-13</span>
+      </div>
+      <p class="game-desc">A turn-based caravan RPG with branching dialogs. Lead a party of adventurers across a medieval fantasy world threatened by demonic corruption. Features side-scrolling caravan travel, tactical grid combat, 12 skill trees, and context-sensitive dialog options.</p>
+      <div class="game-cta-row">
+        <a href="./game7/" class="play-btn">Play Now</a>
+        <a href="./game7/assets/" class="assets-btn">Assets &rsaquo;</a>
+      </div>
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A turn-based caravan RPG — lead a party of adventurers across a medieval fantasy world threatened by demonic corruption. Side-scrolling caravan travel, deep branching dialogs, tactical grid combat, and 12 skill trees. Tone: whimsical like Terry Pratchett meets D&amp;D.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M13: Combat bug fixes — enemy pathfinding, item picker, mobile UI, debug logging
+- M12: Combat AI &amp; difficulty scaling, sophisticated party AI
+- M11: Companions &amp; party travel, pack animals, vehicles, caravan visuals
+- M9: Town &amp; vendors — shops, inn, services
+- M8: Items &amp; equipment system
+- M7: Dialog system with branching choices
+- M6: Skills &amp; abilities — 12 skill trees
+- M5: Combat core — turn-based grid combat
+- M4: World travel — side-scrolling caravan
+- M1: Foundation — PixiJS v8, input system, test harness</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">MVP target: Milestone 15
+
+- M10: Quest system — main/side/companion quests, procedural generation
+- M13: All 12 regions with unique biomes, encounters, and bosses
+- M14: Save system &amp; death handling
+- M15: MVP integration &amp; polish — full game loop playable
+- M16+: Art generation via PixelLab, additional content</pre></details></div>
+    </div>
+  </div>
+</section>
+<hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#8a5018 15%,#c87c30 50%,#8a5018 85%,transparent 100%)">
+
+<section class="game-section" id="game10"
+  data-key="game10" data-date="2026-04-13" data-milestone="9" data-title="Aethermoor Chronicles"
+  style="--ga:#3ab88a;--gab:#5ddaaa;--gad:#1d7a5c;--gg:rgba(58, 184, 138, 0.3);--gbg:#060c09;--gt:#c4d9ce;--gtm:#4a7060;--gbo:#d4e8de;--gbr:rgba(58,184,138,0.3);--gpf:0 0 12px #3ab88a, 0 0 28px #1d7a5c, 0 0 56px rgba(58,184,138,0.2);--gpt:0 0 20px #5ddaaa, 0 0 40px #3ab88a, 0 0 80px rgba(93,218,170,0.3);background:#060c09">
+  <div class="game-bg">
+    <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(30,160,100,0.12) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(15,100,60,0.18) 0%, transparent 60%), linear-gradient(180deg, #060c09 0%, #09120d 60%, #0c1810 100%)"></div>
+    
+    <div class="particle-field"><div class="particle" style="left:8%;animation-duration:6.2s;animation-delay:0s;--dx:15px;--dx2:-8px;background:#3ab88a;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:15%;animation-duration:7.8s;animation-delay:1.2s;--dx:-20px;--dx2:12px;background:#5ddaaa;"></div><div class="particle" style="left:24%;animation-duration:5.5s;animation-delay:2.4s;--dx:30px;--dx2:-18px;background:#1d9966;"></div><div class="particle" style="left:33%;animation-duration:8.1s;animation-delay:0.7s;--dx:-12px;--dx2:25px;background:#80eec4;width:2px;height:2px"></div><div class="particle" style="left:42%;animation-duration:6.7s;animation-delay:3.1s;--dx:22px;--dx2:-5px;background:#0d5c40;width:4px;height:4px"></div><div class="particle" style="left:51%;animation-duration:9.3s;animation-delay:1.8s;--dx:-25px;--dx2:15px;background:#3ab88a;"></div><div class="particle" style="left:60%;animation-duration:5.9s;animation-delay:0.4s;--dx:18px;--dx2:-22px;background:#5ddaaa;width:2px;height:2px"></div><div class="particle" style="left:68%;animation-duration:7.4s;animation-delay:2.6s;--dx:-8px;--dx2:20px;background:#1d9966;"></div><div class="particle" style="left:77%;animation-duration:6.1s;animation-delay:4.2s;--dx:28px;--dx2:-14px;background:#80eec4;width:4px;height:4px"></div><div class="particle" style="left:86%;animation-duration:8.7s;animation-delay:1.5s;--dx:-18px;--dx2:10px;background:#0d5c40;width:2px;height:2px"></div><div class="particle" style="left:93%;animation-duration:5.3s;animation-delay:3.8s;--dx:10px;--dx2:-28px;background:#3ab88a;"></div><div class="particle" style="left:4%;animation-duration:10s;animation-delay:5.1s;--dx:-15px;--dx2:18px;background:#5ddaaa;"></div><div class="particle" style="left:20%;animation-duration:6.8s;animation-delay:2s;--dx:25px;--dx2:-10px;background:#1d9966;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:46%;animation-duration:7.2s;animation-delay:0.9s;--dx:-20px;--dx2:30px;background:#80eec4;"></div><div class="particle" style="left:72%;animation-duration:5.8s;animation-delay:4.7s;--dx:12px;--dx2:-20px;background:#0d5c40;"></div></div>
+  </div>
+  <div class="game-outer">
+    <div class="game-frame" style="--glow:rgba(58, 184, 138, 0.3)">
+      <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
+      <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
+      <span class="frame-top">Milestone 9</span>
+      <span class="frame-bot">Open-World Action RPG</span>
+      <div class="game-eyebrow">Open-World Action RPG</div>
+      <h2 class="game-title">Aethermoor Chronicles</h2>
+      <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
+      <div class="game-badges">
+        <span class="gbadge gbadge-m">M9</span>
+        <span class="gbadge gbadge-tok">56.0M tokens</span>
+        <span class="gbadge gbadge-date">2026-04-13</span>
+      </div>
+      <p class="game-desc">A vibrant action RPG with loot, levelling, skill trees, mining and crafting. Fight enemies in real-time combat across a large open world.</p>
+      <div class="game-cta-row">
+        <a href="./game10/" class="play-btn">Play Now</a>
+        <a href="./game10/assets/" class="assets-btn">Assets &rsaquo;</a>
+      </div>
+      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A colorful action RPG with real-time combat set in a world of rolling meadows, stone wastes, and glowing crystal caverns. Explore an open world, mine ores, craft gear, and battle increasingly dangerous enemies. Visual style inspired by Cat Quest — 2D overhead map with upright character sprites.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M1  — Engine Foundation: game loop, Wang-tile tilemap renderer, camera with smooth follow, player movement (WASD/touch), pixel-art sprite sheets, basic HUD
+M2  — World &amp; Objects: interactive world objects (chests, ore veins, trees), minimap, day/night lighting cycle, object spawn system
+M3  — Combat Core: melee and ranged attack modes, enemy AI FSM (goblin scout, forest sprite, stone golem), particle hit effects, floating damage numbers
+M4  — Loot System: item drops on kill, 5 rarity tiers (Common → Legendary), 25 item definitions, inventory panel with grid layout
+M5  — Equipment &amp; Stats: paper-doll equipment screen, full stat aggregation pipeline, experience and level-up with attribute allocation
+M6  — Skill Trees: Warrior / Ranger / Mage skill trees (12 nodes each, 36 total), active skills on hotbar, passive stat effects
+M7  — Mining &amp; Crafting: ore node mining with progress bars, 20 crafting recipes, smelting and crafting benches
+M8  — Spells &amp; Magic: 10 spell types (fireball, frost nova, blink, chain lightning, meteor, etc.), 6 status effects (burning/frozen/poisoned/shocked/bleeding/stunned), Elder Stone Golem multi-phase boss
+M9  — World Expansion &amp; Quests: 8 quests with quest log, world map overlay, elite enemy variants
+M10 — Polish &amp; Save System: save/load system, main menu with class selection, virtual joystick touch controls, gamepad support
+M16 — Content Expansion II: 4 new world objects (mithril_ore_node, sign_post, animated campfire, waystone); 8 new quests (total 16); ZoneEvents system with 4 rotating events + slide-in HUD notification
+M17 — Audio System: Web Audio API AudioManager with procedural tones for all game events (melee, spells, mining, loot, level-up, death, boss roar); lazy init on first user gesture
+M18 — Zones 4-5 + Final Boss: Ember Highlands (orange ambient tint, 4 enemy types, mithril/darkstone ores); The Void (purple tint, final boss arena); BossEmberDrake (3-phase, 2000 HP, fireball patterns, imp summons); BossFinal The Ancient One (4-phase, 4000 HP, spiral orbs, enrage timer, white flash death)
+M19 — Achievements + Persistence: AchievementSystem with 15 achievements + localStorage persistence + slide-in popup notifications; AchievementsUI panel; player title system (Adventurer/Void Slayer); enemiesKilled + itemsCollected tracking
+M20 — Feature Complete + QA: GAME_OVER state with You Died screen + respawn/menu buttons; combo counter system (hit streak x1-x10+, XP bonus); pickup range indicator ring; ambient zone tint via Renderer; globalAlpha resets; campfire HP regen (5/s nearby); audioInit on first gesture</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1   — Engine Foundation (Game loop, Wang tilemap, camera, player movement)
+M2   — World &amp; Objects (World objects, minimap, day/night cycle)
+M3   — Combat Core (Enemy AI FSM, melee/ranged, particles, damage numbers)
+M4   — Loot System (25 items, 5 rarity tiers, inventory panel, loot drops)
+M5   — Equipment &amp; Stats (Paper doll, stat aggregation, level-up + attribute points)
+M6   — Skill Trees (3 paths x 12 nodes, active skills on hotbar, passive effects)
+M7   — Mining &amp; Crafting (Ore mining with progress bar, 20 crafting recipes)
+M8   — Spells &amp; Magic (10 spells, status effects, Elder Stone Golem boss)
+M9   — World Expansion &amp; Quests (8 quests, quest log, world map, elite enemies)
+M10  — Polish &amp; Save System (Save/load, main menu, touch controls, gamepad)
+M11-M15 — COMPLETE (see prior releases)
+M16  — Content Expansion II (4 world objects, 8 quests, ZoneEvents)
+M17  — Audio System (Web Audio API, procedural SFX, lazy init)
+M18  — Zones 4-5 + Final Boss (BossEmberDrake, BossFinal/The Ancient One, ambient tints)
+M19  — Achievements + Persistence (15 achievements, AchievementsUI, player titles)
+M20  — Feature Complete + QA (Game Over screen, combo system, polish)</pre></details></div>
+    </div>
+  </div>
+</section>
+<hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#1d7a5c 15%,#3ab88a 50%,#1d7a5c 85%,transparent 100%)">
+
 <section class="game-section" id="game13"
   data-key="game13" data-date="2026-04-13" data-milestone="70" data-title="Emberveil"
   style="--ga:#e8a020;--gab:#f0c060;--gad:#8a5010;--gg:rgba(232,160,32,0.3);--gbg:#0a0608;--gt:#f0e8d8;--gtm:#8a7a6a;--gbo:#f0e8d8;--gbr:rgba(232,160,32,0.3);--gpf:0 0 12px #e8a020, 0 0 28px #8a5010, 0 0 56px rgba(232,160,32,0.2);--gpt:0 0 20px #f0c060, 0 0 40px #e8a020, 0 0 80px rgba(240,192,96,0.3);background:#0a0608">
@@ -138,7 +444,10 @@ body{background:#080810;color:#d4cce8;font-family:'Crimson Text',Georgia,serif;f
         <span class="gbadge gbadge-date">2026-04-13</span>
       </div>
       <p class="game-desc">A high fantasy party RPG. Build a party of up to 8 heroes and companions, journey across four acts — goblin frontier, volcanic wastelands, the Shattered Hell, and the Cosmic Void — in cinematic auto-play combat against hordes of enemies. 14 playable classes, procedurally generated equipment, and a story-driven journey to stop the corruption tearing worlds apart.</p>
-      <a href="./game13/" class="play-btn">Play Now</a>
+      <div class="game-cta-row">
+        <a href="./game13/" class="play-btn">Play Now</a>
+        <a href="./game13/assets/" class="assets-btn">Assets &rsaquo;</a>
+      </div>
       <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">We are creating a game involving a party of 1-4 heroes and up to 8 characters including pets. The game involves combat against hordes of enemies from just one big enemy to 50 small enemies. The combat takes place a round at a time. All characters in combat roll a turn order and auto-plays using the most appropriate skills available... [full prompt as described in design session April 2026]</p><div class="prompt-entry"><span class="prompt-date">2026-04-13</span> M56: User requested Spell/Attack Power, Attributes tab, dialog bgs, combat audio fix, Hire parity, blacksmith equipped, party rework, portal gating, asset categorization, shared nav, logo gradient, game-info update; plus bugs (post-defeat map lock, inter-map traversal).</div><div class="prompt-entry"><span class="prompt-date">2026-04-13</span> M64: User requested 19-item queue — skill rework, portal/travel fixes, companion system expansion, audio/art generation pass, town service consolidation, level-up summary, starting equipment, demo-assets polish.</div><div class="prompt-entry"><span class="prompt-date">2026-04-13</span> M65: NG+ difficulty overhaul, softer combat music variants + boss theme, punchy combat SFX replacing beeps, portal/back-to-town sync bug.</div><div class="prompt-entry"><span class="prompt-date">2026-04-13</span> M66 (Dragon Expansion): User asked for a full dragon expansion — dragon-themed Act VI, dragon mercenaries, dragon companions, dragon weapons &amp; armor, dragon SFX, dragon backgrounds, Dragon Knight hero class, lots of dragons. Deploy autonomously.</div></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M66 (Dragon Expansion) — Added Act VI: The Dragon's Reach (zones dragons_reach + dragon_throne, 21 nodes, dragon dialogs with skill checks). 7 new dragon enemies (Dragon Whelp, Wyrm Warrior, Dragon Cultist, Frost Wyrm, Storm Dragon, Ancient Dragon, Bahamorth the Dragon King). 7 dragon encounter tables wired into zone pools. Drakehold (Act VI town) with full service slate. 4 unique dragon mercenaries at the tavern (Kaldrek the Dragonborn, Syra Wyrmsworn, Vorin Emberjaw, Maelis Drakeblood — all Dragon Knight class). 4 unique dragon companions (Crimson Dragon Hatchling, Frost Wyrmling, Storm Drake, Shadow Wyrm) sold at the tavern AND obtainable via random dragon-zone encounters. 7 dragon weapon bases + 8 dragon armor pieces (Dragonfang/Wyrmscale/Dragonbone/Drakehammer/Dragontooth/Dragonsteel/Dragonscale/Dragonheart variants). Dragon Knight hero class verified 2-talent compliant. 4 SVG dragon assets, 6 procedural dragon SFX, dragon expansion HTML release page, M65 milestone report appended.
 
 M65 — NG+ rebalance (enemies ~4.5× hp / 2.8× dmg per tier + boss multiplier, guarantees NG+ Act 1 &gt; Normal Act 5), 3 calm combat music variants + dedicated boss theme (rotated by zone, boss triggers epic track), 28 new punchy combat SFX (clangs/booms/slashes) replacing procedural beeps via alias layer, back-to-town button sync fix (checks party zone not viewed tab).
@@ -220,62 +529,15 @@ M64 — Skill talent rework (3/8/13/18/23/28 cadence, every skill has ≥2 talen
         <span class="gbadge gbadge-date">2026-04-13</span>
       </div>
       <p class="game-desc">Slingshot basketball vs. CPU. Drag to aim, release to launch, and out-score the computer across 9 progressively wilder rounds with shrinking, moving hoops and wind. Touch + mouse. PixelLab art, OpenAI backgrounds, ElevenLabs sound.</p>
-      <a href="./game14/" class="play-btn">Play Now</a>
+      <div class="game-cta-row">
+        <a href="./game14/" class="play-btn">Play Now</a>
+        <a href="./game14/assets/" class="assets-btn">Assets &rsaquo;</a>
+      </div>
       <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">build a basketball game iphone and kbm pc support where you launch a basketball pokemon-go pokeball style with direction and force toward a hoop to earn points against a computer taking turns with progressive difficulty. Like a catapult or angry birds with your finger or mouse. include 2d graphics from pixellab and background graphics from openai and sounds from elevenlabs. Landing page with animated logo. Ship complete in one milestone regardless of size and deploy to GitHub Pages.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M1 (2026-04-13): Shipped complete game — slingshot physics, 9-round you-vs-CPU with progressive difficulty (shrinking / moving hoop, wind), PixelLab ball+hoop+trophy, OpenAI arena+street+logo, 10 ElevenLabs SFX, animated landing page, asset gallery, game-over overlay.</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1 COMPLETE — Full game shipped in a single milestone.</pre></details></div>
     </div>
   </div>
 </section>
 <hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#a53d00 15%,#ff7a2a 50%,#a53d00 85%,transparent 100%)">
-
-<section class="game-section" id="game2"
-  data-key="game2" data-date="2026-04-10" data-milestone="231" data-title="Roguelike"
-  style="--ga:#9966ff;--gab:#bb88ff;--gad:#5533aa;--gg:rgba(153, 102, 255, 0.3);--gbg:#080610;--gt:#d0c8e8;--gtm:#7066aa;--gbo:#e0d8f8;--gbr:rgba(153,102,255,0.3);--gpf:0 0 12px #9966ff, 0 0 28px #5533aa, 0 0 56px rgba(153,102,255,0.2);--gpt:0 0 20px #bb88ff, 0 0 40px #9966ff, 0 0 80px rgba(187,136,255,0.3);background:#080610">
-  <div class="game-bg">
-    <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(100,60,200,0.15) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(70,30,150,0.2) 0%, transparent 60%), linear-gradient(180deg, #080610 0%, #0d0c1a 60%, #100c20 100%)"></div>
-    <div class="game-bg-shot" style="background-image:url('screenshots/game2.png');"></div>
-    <div class="particle-field"><div class="particle" style="left:8%;animation-duration:6.2s;animation-delay:0s;--dx:15px;--dx2:-8px;background:#9966ff;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:15%;animation-duration:7.8s;animation-delay:1.2s;--dx:-20px;--dx2:12px;background:#bb88ff;"></div><div class="particle" style="left:24%;animation-duration:5.5s;animation-delay:2.4s;--dx:30px;--dx2:-18px;background:#7744dd;"></div><div class="particle" style="left:33%;animation-duration:8.1s;animation-delay:0.7s;--dx:-12px;--dx2:25px;background:#cc99ff;width:2px;height:2px"></div><div class="particle" style="left:42%;animation-duration:6.7s;animation-delay:3.1s;--dx:22px;--dx2:-5px;background:#6622cc;width:4px;height:4px"></div><div class="particle" style="left:51%;animation-duration:9.3s;animation-delay:1.8s;--dx:-25px;--dx2:15px;background:#9966ff;"></div><div class="particle" style="left:60%;animation-duration:5.9s;animation-delay:0.4s;--dx:18px;--dx2:-22px;background:#bb88ff;width:2px;height:2px"></div><div class="particle" style="left:68%;animation-duration:7.4s;animation-delay:2.6s;--dx:-8px;--dx2:20px;background:#7744dd;"></div><div class="particle" style="left:77%;animation-duration:6.1s;animation-delay:4.2s;--dx:28px;--dx2:-14px;background:#cc99ff;width:4px;height:4px"></div><div class="particle" style="left:86%;animation-duration:8.7s;animation-delay:1.5s;--dx:-18px;--dx2:10px;background:#6622cc;width:2px;height:2px"></div><div class="particle" style="left:93%;animation-duration:5.3s;animation-delay:3.8s;--dx:10px;--dx2:-28px;background:#9966ff;"></div><div class="particle" style="left:4%;animation-duration:10s;animation-delay:5.1s;--dx:-15px;--dx2:18px;background:#bb88ff;"></div><div class="particle" style="left:20%;animation-duration:6.8s;animation-delay:2s;--dx:25px;--dx2:-10px;background:#7744dd;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:46%;animation-duration:7.2s;animation-delay:0.9s;--dx:-20px;--dx2:30px;background:#cc99ff;"></div><div class="particle" style="left:72%;animation-duration:5.8s;animation-delay:4.7s;--dx:12px;--dx2:-20px;background:#6622cc;"></div></div>
-  </div>
-  <div class="game-outer">
-    <div class="game-frame" style="--glow:rgba(153, 102, 255, 0.3)">
-      <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
-      <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
-      <span class="frame-top">Milestone 231</span>
-      <span class="frame-bot">2.5D Isometric Dungeon Crawler</span>
-      <div class="game-eyebrow">2.5D Isometric Dungeon Crawler</div>
-      <h2 class="game-title">Roguelike</h2>
-      <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
-      <div class="game-badges">
-        <span class="gbadge gbadge-m">M231</span>
-        <span class="gbadge gbadge-tok">2.15B tokens</span>
-        <span class="gbadge gbadge-date">2026-04-10</span>
-      </div>
-      <p class="game-desc">A browser-based 2.5D isometric roguelike with local co-op (1–4 players). Fast runs (3–10 min/map), persistent progression, drop-in/out multiplayer. 9 classes with 5 abilities each, 200+ milestones of content including Mythic items, endless dungeons, arena mode, crafting, mercenaries, and AI pixel art sprites.</p>
-      <a href="./game2/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A browser-based 2.5D isometric roguelike with local co-op (1–4 players). Fast runs (3–10 min/map), persistent progression, drop-in/out multiplayer. Vivid, playful medieval fantasy with multiple classes.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">Recent highlights:
-- M231: How to Play screen fixed — close button was buried behind the panel (depth bug); added X button in top-right corner for touch/iPhone; ESC and gamepad B button now close the overlay
-- M230: New enemy sprites — 6 previously blob-shaped enemies now have distinct procedural art: Arcane Specter (glowing purple ghost), Blood Drake (crimson dragon), Mushroom Spore (cap with white spots), Shadow Lurker (dark amorphous with red eyes), Spectral Knight (ghostly armored), Void Lurker (void tentacle entity); added 3 new enemies to spawn pool
-- M229: UI zoom compensation — scrolling in/out no longer stretches inventory, quest HUD, room progression, or fixed UI panels
-- M228: Minimap now uses isometric projection — floor area appears as a diamond matching the 2.5D perspective</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">Completed: M1-M231 (231 milestones)
-M231: How to Play close button depth fix; X corner button for touch; gamepad B closes overlay
-M230: New distinct enemy sprites for Arcane Specter, Blood Drake, Mushroom Spore, Shadow Lurker, Spectral Knight, Void Lurker
-M229: UI zoom compensation fix
-M228: Isometric minimap projection fix
-M227: Ranged mob VFX fix, effect helpful/harmful visual clarity
-M226: Bug fix sweep — skill crash, Death Coil aim, HOW TO PLAY ESC, screen close consistency
-M207-225: Comprehensive mobile UX overhaul
-
-Future wishlist:
-- Online co-op multiplayer
-- New biomes and tilesets
-- Seasonal events and challenges
-- Hardcore permadeath mode
-- Sound effects and music
-- Additional classes and abilities
-- Expanded endgame content</pre></details></div>
-    </div>
-  </div>
-</section>
-<hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#5533aa 15%,#9966ff 50%,#5533aa 85%,transparent 100%)">
 
 <section class="game-section" id="game8"
   data-key="game8" data-date="2026-04-10" data-milestone="80" data-title="Vagrant &amp; Ash"
@@ -300,7 +562,10 @@ Future wishlist:
         <span class="gbadge gbadge-date">2026-04-10</span>
       </div>
       <p class="game-desc">A mobile-first dark fantasy survival RPG. Lead a party of 1–4 across a dying continent. Point-buy character creation, permadeath, emergent storytelling. Every choice costs something.</p>
-      <a href="./game8/" class="play-btn">Play Now</a>
+      <div class="game-cta-row">
+        <a href="./game8/" class="play-btn">Play Now</a>
+        <a href="./game8/assets/" class="assets-btn">Assets &rsaquo;</a>
+      </div>
       <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A mobile-first dark fantasy survival RPG. Lead a party of 1–4 across a dying continent. Point-buy character creation, permadeath, emergent storytelling. Every choice costs something.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M1  — Foundation: Vite 6 + React 19 scaffold, full CSS design system (Ashen Black palette), all game data (7 races, 15 backgrounds, 30 traits, 25 skills, 12 biomes), GameContext + 6 sub-reducers + seeded PRNG, title screen with procedural SVG ash background, character creation (point-buy, party 1–4, synergy detection), journey screen (biome art, HP bars, resource tracking, travel log)
 M2  — Encounter system: event cards, branching choices, stat checks, 20+ events, outcome resolutions, encounter history
 M3  — Camp screen + turn-based combat: rest mechanics, watch system, enemy data (20+ enemy types), combat turn order, ability system
@@ -362,65 +627,6 @@ M70     — Multiplayer foundation: shared-seed co-op run synchronisation (exper
 </section>
 <hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#8b4218 15%,#c7622a 50%,#8b4218 85%,transparent 100%)">
 
-<section class="game-section" id="game10"
-  data-key="game10" data-date="2026-04-10" data-milestone="8" data-title="Aethermoor Chronicles"
-  style="--ga:#3ab88a;--gab:#5ddaaa;--gad:#1d7a5c;--gg:rgba(58, 184, 138, 0.3);--gbg:#060c09;--gt:#c4d9ce;--gtm:#4a7060;--gbo:#d4e8de;--gbr:rgba(58,184,138,0.3);--gpf:0 0 12px #3ab88a, 0 0 28px #1d7a5c, 0 0 56px rgba(58,184,138,0.2);--gpt:0 0 20px #5ddaaa, 0 0 40px #3ab88a, 0 0 80px rgba(93,218,170,0.3);background:#060c09">
-  <div class="game-bg">
-    <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(30,160,100,0.12) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(15,100,60,0.18) 0%, transparent 60%), linear-gradient(180deg, #060c09 0%, #09120d 60%, #0c1810 100%)"></div>
-    
-    <div class="particle-field"><div class="particle" style="left:8%;animation-duration:6.2s;animation-delay:0s;--dx:15px;--dx2:-8px;background:#3ab88a;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:15%;animation-duration:7.8s;animation-delay:1.2s;--dx:-20px;--dx2:12px;background:#5ddaaa;"></div><div class="particle" style="left:24%;animation-duration:5.5s;animation-delay:2.4s;--dx:30px;--dx2:-18px;background:#1d9966;"></div><div class="particle" style="left:33%;animation-duration:8.1s;animation-delay:0.7s;--dx:-12px;--dx2:25px;background:#80eec4;width:2px;height:2px"></div><div class="particle" style="left:42%;animation-duration:6.7s;animation-delay:3.1s;--dx:22px;--dx2:-5px;background:#0d5c40;width:4px;height:4px"></div><div class="particle" style="left:51%;animation-duration:9.3s;animation-delay:1.8s;--dx:-25px;--dx2:15px;background:#3ab88a;"></div><div class="particle" style="left:60%;animation-duration:5.9s;animation-delay:0.4s;--dx:18px;--dx2:-22px;background:#5ddaaa;width:2px;height:2px"></div><div class="particle" style="left:68%;animation-duration:7.4s;animation-delay:2.6s;--dx:-8px;--dx2:20px;background:#1d9966;"></div><div class="particle" style="left:77%;animation-duration:6.1s;animation-delay:4.2s;--dx:28px;--dx2:-14px;background:#80eec4;width:4px;height:4px"></div><div class="particle" style="left:86%;animation-duration:8.7s;animation-delay:1.5s;--dx:-18px;--dx2:10px;background:#0d5c40;width:2px;height:2px"></div><div class="particle" style="left:93%;animation-duration:5.3s;animation-delay:3.8s;--dx:10px;--dx2:-28px;background:#3ab88a;"></div><div class="particle" style="left:4%;animation-duration:10s;animation-delay:5.1s;--dx:-15px;--dx2:18px;background:#5ddaaa;"></div><div class="particle" style="left:20%;animation-duration:6.8s;animation-delay:2s;--dx:25px;--dx2:-10px;background:#1d9966;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:46%;animation-duration:7.2s;animation-delay:0.9s;--dx:-20px;--dx2:30px;background:#80eec4;"></div><div class="particle" style="left:72%;animation-duration:5.8s;animation-delay:4.7s;--dx:12px;--dx2:-20px;background:#0d5c40;"></div></div>
-  </div>
-  <div class="game-outer">
-    <div class="game-frame" style="--glow:rgba(58, 184, 138, 0.3)">
-      <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
-      <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
-      <span class="frame-top">Milestone 8</span>
-      <span class="frame-bot">Open-World Action RPG</span>
-      <div class="game-eyebrow">Open-World Action RPG</div>
-      <h2 class="game-title">Aethermoor Chronicles</h2>
-      <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
-      <div class="game-badges">
-        <span class="gbadge gbadge-m">M8</span>
-        <span class="gbadge gbadge-tok">51.3M tokens</span>
-        <span class="gbadge gbadge-date">2026-04-10</span>
-      </div>
-      <p class="game-desc">A vibrant action RPG with loot, levelling, skill trees, mining and crafting. Fight enemies in real-time combat across a large open world.</p>
-      <a href="./game10/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A colorful action RPG with real-time combat set in a world of rolling meadows, stone wastes, and glowing crystal caverns. Explore an open world, mine ores, craft gear, and battle increasingly dangerous enemies. Visual style inspired by Cat Quest — 2D overhead map with upright character sprites.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M1  — Engine Foundation: game loop, Wang-tile tilemap renderer, camera with smooth follow, player movement (WASD/touch), pixel-art sprite sheets, basic HUD
-M2  — World &amp; Objects: interactive world objects (chests, ore veins, trees), minimap, day/night lighting cycle, object spawn system
-M3  — Combat Core: melee and ranged attack modes, enemy AI FSM (goblin scout, forest sprite, stone golem), particle hit effects, floating damage numbers
-M4  — Loot System: item drops on kill, 5 rarity tiers (Common → Legendary), 25 item definitions, inventory panel with grid layout
-M5  — Equipment &amp; Stats: paper-doll equipment screen, full stat aggregation pipeline, experience and level-up with attribute allocation
-M6  — Skill Trees: Warrior / Ranger / Mage skill trees (12 nodes each, 36 total), active skills on hotbar, passive stat effects
-M7  — Mining &amp; Crafting: ore node mining with progress bars, 20 crafting recipes, smelting and crafting benches
-M8  — Spells &amp; Magic: 10 spell types (fireball, frost nova, blink, chain lightning, meteor, etc.), 6 status effects (burning/frozen/poisoned/shocked/bleeding/stunned), Elder Stone Golem multi-phase boss
-M9  — World Expansion &amp; Quests: 8 quests with quest log, world map overlay, elite enemy variants
-M10 — Polish &amp; Save System: save/load system, main menu with class selection, virtual joystick touch controls, gamepad support
-M16 — Content Expansion II: 4 new world objects (mithril_ore_node, sign_post, animated campfire, waystone); 8 new quests (total 16); ZoneEvents system with 4 rotating events + slide-in HUD notification
-M17 — Audio System: Web Audio API AudioManager with procedural tones for all game events (melee, spells, mining, loot, level-up, death, boss roar); lazy init on first user gesture
-M18 — Zones 4-5 + Final Boss: Ember Highlands (orange ambient tint, 4 enemy types, mithril/darkstone ores); The Void (purple tint, final boss arena); BossEmberDrake (3-phase, 2000 HP, fireball patterns, imp summons); BossFinal The Ancient One (4-phase, 4000 HP, spiral orbs, enrage timer, white flash death)
-M19 — Achievements + Persistence: AchievementSystem with 15 achievements + localStorage persistence + slide-in popup notifications; AchievementsUI panel; player title system (Adventurer/Void Slayer); enemiesKilled + itemsCollected tracking
-M20 — Feature Complete + QA: GAME_OVER state with You Died screen + respawn/menu buttons; combo counter system (hit streak x1-x10+, XP bonus); pickup range indicator ring; ambient zone tint via Renderer; globalAlpha resets; campfire HP regen (5/s nearby); audioInit on first gesture</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">M1   — Engine Foundation (Game loop, Wang tilemap, camera, player movement)
-M2   — World &amp; Objects (World objects, minimap, day/night cycle)
-M3   — Combat Core (Enemy AI FSM, melee/ranged, particles, damage numbers)
-M4   — Loot System (25 items, 5 rarity tiers, inventory panel, loot drops)
-M5   — Equipment &amp; Stats (Paper doll, stat aggregation, level-up + attribute points)
-M6   — Skill Trees (3 paths x 12 nodes, active skills on hotbar, passive effects)
-M7   — Mining &amp; Crafting (Ore mining with progress bar, 20 crafting recipes)
-M8   — Spells &amp; Magic (10 spells, status effects, Elder Stone Golem boss)
-M9   — World Expansion &amp; Quests (8 quests, quest log, world map, elite enemies)
-M10  — Polish &amp; Save System (Save/load, main menu, touch controls, gamepad)
-M11-M15 — COMPLETE (see prior releases)
-M16  — Content Expansion II (4 world objects, 8 quests, ZoneEvents)
-M17  — Audio System (Web Audio API, procedural SFX, lazy init)
-M18  — Zones 4-5 + Final Boss (BossEmberDrake, BossFinal/The Ancient One, ambient tints)
-M19  — Achievements + Persistence (15 achievements, AchievementsUI, player titles)
-M20  — Feature Complete + QA (Game Over screen, combo system, polish)</pre></details></div>
-    </div>
-  </div>
-</section>
-<hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#1d7a5c 15%,#3ab88a 50%,#1d7a5c 85%,transparent 100%)">
-
 <section class="game-section" id="game11"
   data-key="game11" data-date="2026-04-10" data-milestone="19" data-title="Stormtown"
   style="--ga:#ffcc44;--gab:#ffe080;--gad:#aa8820;--gg:rgba(255,204,68,0.3);--gbg:#07070e;--gt:#e8e0c8;--gtm:#887744;--gbo:#f0ead8;--gbr:rgba(255,204,68,0.3);--gpf:0 0 12px #ffcc44, 0 0 28px #aa8820, 0 0 56px rgba(255,204,68,0.2);--gpt:0 0 20px #ffe080, 0 0 40px #ffcc44, 0 0 80px rgba(255,224,128,0.3);background:#07070e">
@@ -444,7 +650,10 @@ M20  — Feature Complete + QA (Game Over screen, combo system, polish)</pre></d
         <span class="gbadge gbadge-date">2026-04-10</span>
       </div>
       <p class="game-desc">Stormtown v1.0 — Survive massive tornadoes and zombie hordes in a procedural city. Rescue Sam, collect power-ups, drive cars, dodge weather events, and escape by helicopter. 20 milestones of content: 6 zombie variants, 6 map zones, night mode, ghost replay, achievements, XP progression, daily challenge seeds, endless survival mode, and a boss zombie.</p>
-      <a href="./game11/" class="play-btn">Play Now</a>
+      <div class="game-cta-row">
+        <a href="./game11/" class="play-btn">Play Now</a>
+        <a href="./game11/assets/" class="assets-btn">Assets &rsaquo;</a>
+      </div>
       <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">tornadoes + zombies + rescue friend + helicopter escape</p><div class="prompt-entry"><span class="prompt-date">2026-04-10</span> M19-20: User asked for environmental hazards (power lines, gas canisters) and an expanded 2-slot inventory with E-to-use and slot cycling.</div><div class="prompt-entry"><span class="prompt-date">2026-04-10</span> M22-23: User asked for Level 2 and Level 3 visual identity and gameplay differentiation on top of the existing LevelConfig parameters.</div><div class="prompt-entry"><span class="prompt-date">2026-04-10</span> M24-25: User asked for Level 4 (Blackout City) and Level 5 (Eye of the Storm) visual identity, second boss zombies, L5 cinematic escape, final victory screen, and level select on title.</div></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M24-25 (2026-04-10): Level 4 Blackout City — BLACKOUT watermark, emergency flickering lights at every 4th intersection, dark blue world overlay (depth 34), 4 extra power line hazards, level-specific radio messages, music intensity 0.6, second boss zombie 60s after first. Level 5 Eye of the Storm — 1.25x tornado scale, darker tornado base/spin, eye-of-storm dark circle at world center, level-specific radio messages, second boss 50s after first, cinematic camera shake/zoom/pan on escape. Final victory screen for L5 — starfield, 'THE STORM IS GONE' title with pulse, Storm Master badge, 200 XP bonus, achievements unlock. Level select row on title screen (L1-L5, unlock gated by previous level best time). Per-level best time saved to stormtown_best_lN localStorage keys.
 M22-23 (2026-04-10): Level 2 (Greenfield Suburbs) visual identity — green patches, park zones, yellow road dashes, suburb radio messages. Level 3 (Industrial District) — rust building stripes, chain-link fences, runway center lines, 3 extra gas canisters with warning markings, industrial radio messages. Level-aware zombie thresholds (brutes earlier on L3+, runners earlier on L2+). Level intro banners for L2+. Per-level Sam dialogue. Helipad scales with level.
 M20 (2026-04-10): Expanded 2-slot inventory — E key to use, double-tap to cycle, all power-ups storable.
@@ -496,7 +705,10 @@ M26+ PLANNED: tornado merge mechanic, companion AI, procedural challenge modes, 
         <span class="gbadge gbadge-date">2026-04-10</span>
       </div>
       <p class="game-desc">Two players, one phone. Split the screen in half — you own your side. Ten pennies fall into the void. Race your opponent to tap them first. Shoot the bugs that fly at you for bonus points. Miss one and lose a point. When the last penny is gone, highest score wins. First to win two rounds takes the match. Three round types, void events, chaos mode, career stats, and a settings screen — all in 43kB of pure JavaScript. No images. No audio files. Just the void.</p>
-      <a href="./game12/" class="play-btn">Play Now</a>
+      <div class="game-cta-row">
+        <a href="./game12/" class="play-btn">Play Now</a>
+        <a href="./game12/assets/" class="assets-btn">Assets &rsaquo;</a>
+      </div>
       <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">give me a prompt for a game, not 3d, don't get me banned lmao — uh — take a penny there's two players player 1 takes a penny player 2 takes a penny there are 10 pennies when all pennies are taken the player with the higher score wins and you can get more points by shooting bugs that fly at you — but the retarded layer of absolutely fucking nothing is absolutely fucking necessary</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">M24 (2026-04-10): Final Polish — animated letter drop-in title, winner celebration particles (48 gold/copper), round end wipe (400ms fade-to-black), spring-physics series dots, improved bug bezier antennae and elbowed legs with wings.
 M23 (2026-04-10): Settings Screen — canvas-drawn panel with Sound, Color Blind Mode, Round Variety toggles, Clear History action.
 M22 (2026-04-10): Sound Overhaul — ambient void hum, richer coin chord, wide stereo spread on match win, void event eerie descending tone.
@@ -508,186 +720,10 @@ M1-M18 (2026-04-10): Core gameplay.</pre></details><details class="meta-collapse
   </div>
 </section>
 <hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#8a6018 15%,#c8922a 50%,#8a6018 85%,transparent 100%)">
-
-<section class="game-section" id="game6"
-  data-key="game6" data-date="2026-04-05" data-milestone="29" data-title="Astral Crypts"
-  style="--ga:#8855ff;--gab:#aa77ff;--gad:#552299;--gg:rgba(136, 85, 255, 0.3);--gbg:#060608;--gt:#ccc0e0;--gtm:#6655aa;--gbo:#e0d8f0;--gbr:rgba(136,85,255,0.3);--gpf:0 0 12px #8855ff, 0 0 28px #552299, 0 0 56px rgba(136,85,255,0.2);--gpt:0 0 20px #aa77ff, 0 0 40px #8855ff, 0 0 80px rgba(170,119,255,0.3);background:#060608">
-  <div class="game-bg">
-    <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(120,60,220,0.12) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(80,30,160,0.18) 0%, transparent 60%), linear-gradient(180deg, #060608 0%, #0c0a14 60%, #0e0c18 100%)"></div>
-    <div class="game-bg-shot" style="background-image:url('screenshots/game6.png');"></div>
-    <div class="particle-field"><div class="particle" style="left:8%;animation-duration:6.2s;animation-delay:0s;--dx:15px;--dx2:-8px;background:#8855ff;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:15%;animation-duration:7.8s;animation-delay:1.2s;--dx:-20px;--dx2:12px;background:#aa77ff;"></div><div class="particle" style="left:24%;animation-duration:5.5s;animation-delay:2.4s;--dx:30px;--dx2:-18px;background:#5522cc;"></div><div class="particle" style="left:33%;animation-duration:8.1s;animation-delay:0.7s;--dx:-12px;--dx2:25px;background:#cc99ff;width:2px;height:2px"></div><div class="particle" style="left:42%;animation-duration:6.7s;animation-delay:3.1s;--dx:22px;--dx2:-5px;background:#331188;width:4px;height:4px"></div><div class="particle" style="left:51%;animation-duration:9.3s;animation-delay:1.8s;--dx:-25px;--dx2:15px;background:#8855ff;"></div><div class="particle" style="left:60%;animation-duration:5.9s;animation-delay:0.4s;--dx:18px;--dx2:-22px;background:#aa77ff;width:2px;height:2px"></div><div class="particle" style="left:68%;animation-duration:7.4s;animation-delay:2.6s;--dx:-8px;--dx2:20px;background:#5522cc;"></div><div class="particle" style="left:77%;animation-duration:6.1s;animation-delay:4.2s;--dx:28px;--dx2:-14px;background:#cc99ff;width:4px;height:4px"></div><div class="particle" style="left:86%;animation-duration:8.7s;animation-delay:1.5s;--dx:-18px;--dx2:10px;background:#331188;width:2px;height:2px"></div><div class="particle" style="left:93%;animation-duration:5.3s;animation-delay:3.8s;--dx:10px;--dx2:-28px;background:#8855ff;"></div><div class="particle" style="left:4%;animation-duration:10s;animation-delay:5.1s;--dx:-15px;--dx2:18px;background:#aa77ff;"></div><div class="particle" style="left:20%;animation-duration:6.8s;animation-delay:2s;--dx:25px;--dx2:-10px;background:#5522cc;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:46%;animation-duration:7.2s;animation-delay:0.9s;--dx:-20px;--dx2:30px;background:#cc99ff;"></div><div class="particle" style="left:72%;animation-duration:5.8s;animation-delay:4.7s;--dx:12px;--dx2:-20px;background:#331188;"></div></div>
-  </div>
-  <div class="game-outer">
-    <div class="game-frame" style="--glow:rgba(136, 85, 255, 0.3)">
-      <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
-      <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
-      <span class="frame-top">Milestone 29</span>
-      <span class="frame-bot">Pixel Action Roguelite</span>
-      <div class="game-eyebrow">Pixel Action Roguelite</div>
-      <h2 class="game-title">Astral Crypts</h2>
-      <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
-      <div class="game-badges">
-        <span class="gbadge gbadge-m">M29</span>
-        <span class="gbadge gbadge-tok">92.4M tokens</span>
-        <span class="gbadge gbadge-date">2026-04-05</span>
-      </div>
-      <p class="game-desc">A top-down action roguelite with procedural dungeon generation, 4 classes (Ironclad, Riftmage, Phantom, Voidpriest), and meta-progression. Built with PixiJS v8 at 480×270 internal resolution scaled to 3×. Features melee/ranged combat, boss encounters, equipment, and pixel art.</p>
-      <a href="./game6/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A top-down action roguelite where you descend through procedurally generated ancient crypts floating in a dimensional void. Each run is unique, death is permanent but unlocks persist. A lone adventurer chasing a mysterious signal through ruins of fallen civilizations.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M25: Character select screen with class descriptions
-- M24: HUD polish — health/mana/xp bars, class icon, floor display
-- M23: Minimap with room grid, fog of war, player position
-- M22: Level-up system with XP and stat point allocation
-- M21: Relic system — 10 starter relics with passive effects
-- M17: Boss encounter — Lord of Dust (3-phase fight)
-- M10: Save/load system with run state and meta-progression
-- M1: Project bootstrap — Vite + PixiJS v8, debug tools, test harness</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">Phase 3: First Art Pass (M26–M35)
-- M26: Player class sprites via PixelLab
-- M27: Stone Crypts enemy sprites
-- M28: Dungeon tiles
-- M29: Map objects (chest, torch, shrine, barrel, pillar)
-- M30–M31: Sprite animations (player + enemy)
-- M32–M34: Particle effects, dynamic lighting, screen shake
-- M35: Main menu with animated background
-
-Phase 4: Biome 2 — Arcane Archives (M36–M48)
-- New tileset, enemies, boss (The Archivist)
-- Secret rooms, challenge rooms, puzzle rooms, traps, lore tablets
-
-Phase 5: Biomes 3+4 — Forge of Ruin &amp; Void Sanctum (M49–M63)</pre></details></div>
-    </div>
-  </div>
-</section>
-<hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#552299 15%,#8855ff 50%,#552299 85%,transparent 100%)">
-
-<section class="game-section" id="game7"
-  data-key="game7" data-date="2026-04-05" data-milestone="13" data-title="Wanderlight"
-  style="--ga:#c87c30;--gab:#e8a050;--gad:#8a5018;--gg:rgba(200, 124, 48, 0.3);--gbg:#090806;--gt:#d8c8a8;--gtm:#806848;--gbo:#e8d8b8;--gbr:rgba(200,124,48,0.3);--gpf:0 0 12px #c87c30, 0 0 28px #8a5018, 0 0 56px rgba(200,124,48,0.2);--gpt:0 0 20px #e8a050, 0 0 40px #c87c30, 0 0 80px rgba(232,160,80,0.3);background:#090806">
-  <div class="game-bg">
-    <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(180,100,30,0.12) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(120,70,20,0.18) 0%, transparent 60%), linear-gradient(180deg, #090806 0%, #110e0a 60%, #160c08 100%)"></div>
-    <div class="game-bg-shot" style="background-image:url('screenshots/game7.png');"></div>
-    <div class="particle-field"><div class="particle" style="left:8%;animation-duration:6.2s;animation-delay:0s;--dx:15px;--dx2:-8px;background:#c87c30;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:15%;animation-duration:7.8s;animation-delay:1.2s;--dx:-20px;--dx2:12px;background:#e8a050;"></div><div class="particle" style="left:24%;animation-duration:5.5s;animation-delay:2.4s;--dx:30px;--dx2:-18px;background:#9a5e20;"></div><div class="particle" style="left:33%;animation-duration:8.1s;animation-delay:0.7s;--dx:-12px;--dx2:25px;background:#f0b870;width:2px;height:2px"></div><div class="particle" style="left:42%;animation-duration:6.7s;animation-delay:3.1s;--dx:22px;--dx2:-5px;background:#6a3c10;width:4px;height:4px"></div><div class="particle" style="left:51%;animation-duration:9.3s;animation-delay:1.8s;--dx:-25px;--dx2:15px;background:#c87c30;"></div><div class="particle" style="left:60%;animation-duration:5.9s;animation-delay:0.4s;--dx:18px;--dx2:-22px;background:#e8a050;width:2px;height:2px"></div><div class="particle" style="left:68%;animation-duration:7.4s;animation-delay:2.6s;--dx:-8px;--dx2:20px;background:#9a5e20;"></div><div class="particle" style="left:77%;animation-duration:6.1s;animation-delay:4.2s;--dx:28px;--dx2:-14px;background:#f0b870;width:4px;height:4px"></div><div class="particle" style="left:86%;animation-duration:8.7s;animation-delay:1.5s;--dx:-18px;--dx2:10px;background:#6a3c10;width:2px;height:2px"></div><div class="particle" style="left:93%;animation-duration:5.3s;animation-delay:3.8s;--dx:10px;--dx2:-28px;background:#c87c30;"></div><div class="particle" style="left:4%;animation-duration:10s;animation-delay:5.1s;--dx:-15px;--dx2:18px;background:#e8a050;"></div><div class="particle" style="left:20%;animation-duration:6.8s;animation-delay:2s;--dx:25px;--dx2:-10px;background:#9a5e20;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:46%;animation-duration:7.2s;animation-delay:0.9s;--dx:-20px;--dx2:30px;background:#f0b870;"></div><div class="particle" style="left:72%;animation-duration:5.8s;animation-delay:4.7s;--dx:12px;--dx2:-20px;background:#6a3c10;"></div></div>
-  </div>
-  <div class="game-outer">
-    <div class="game-frame" style="--glow:rgba(200, 124, 48, 0.3)">
-      <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
-      <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
-      <span class="frame-top">Milestone 13</span>
-      <span class="frame-bot">Turn-Based Caravan RPG</span>
-      <div class="game-eyebrow">Turn-Based Caravan RPG</div>
-      <h2 class="game-title">Wanderlight</h2>
-      <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
-      <div class="game-badges">
-        <span class="gbadge gbadge-m">M13</span>
-        <span class="gbadge gbadge-tok">422.9M tokens</span>
-        <span class="gbadge gbadge-date">2026-04-05</span>
-      </div>
-      <p class="game-desc">A turn-based caravan RPG with branching dialogs. Lead a party of adventurers across a medieval fantasy world threatened by demonic corruption. Features side-scrolling caravan travel, tactical grid combat, 12 skill trees, and context-sensitive dialog options.</p>
-      <a href="./game7/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">A turn-based caravan RPG — lead a party of adventurers across a medieval fantasy world threatened by demonic corruption. Side-scrolling caravan travel, deep branching dialogs, tactical grid combat, and 12 skill trees. Tone: whimsical like Terry Pratchett meets D&amp;D.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M13: Combat bug fixes — enemy pathfinding, item picker, mobile UI, debug logging
-- M12: Combat AI &amp; difficulty scaling, sophisticated party AI
-- M11: Companions &amp; party travel, pack animals, vehicles, caravan visuals
-- M9: Town &amp; vendors — shops, inn, services
-- M8: Items &amp; equipment system
-- M7: Dialog system with branching choices
-- M6: Skills &amp; abilities — 12 skill trees
-- M5: Combat core — turn-based grid combat
-- M4: World travel — side-scrolling caravan
-- M1: Foundation — PixiJS v8, input system, test harness</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">MVP target: Milestone 15
-
-- M10: Quest system — main/side/companion quests, procedural generation
-- M13: All 12 regions with unique biomes, encounters, and bosses
-- M14: Save system &amp; death handling
-- M15: MVP integration &amp; polish — full game loop playable
-- M16+: Art generation via PixelLab, additional content</pre></details></div>
-    </div>
-  </div>
-</section>
-<hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#8a5018 15%,#c87c30 50%,#8a5018 85%,transparent 100%)">
-
-<section class="game-section" id="game4"
-  data-key="game4" data-date="2026-04-02" data-milestone="32" data-title="Spellroads"
-  style="--ga:#c8a228;--gab:#e8c048;--gad:#8a6e18;--gg:rgba(200, 162, 40, 0.3);--gbg:#080a06;--gt:#d4cca8;--gtm:#7a7250;--gbo:#e8ddb8;--gbr:rgba(200,162,40,0.3);--gpf:0 0 12px #c8a228, 0 0 28px #8a6e18, 0 0 56px rgba(200,162,40,0.2);--gpt:0 0 20px #e8c048, 0 0 40px #c8a228, 0 0 80px rgba(232,192,72,0.3);background:#080a06">
-  <div class="game-bg">
-    <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(160,120,20,0.12) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(100,80,15,0.18) 0%, transparent 60%), linear-gradient(180deg, #080a06 0%, #0e1008 60%, #121408 100%)"></div>
-    <div class="game-bg-shot" style="background-image:url('screenshots/game4.png');"></div>
-    <div class="particle-field"><div class="particle" style="left:8%;animation-duration:6.2s;animation-delay:0s;--dx:15px;--dx2:-8px;background:#c8a228;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:15%;animation-duration:7.8s;animation-delay:1.2s;--dx:-20px;--dx2:12px;background:#e8c048;"></div><div class="particle" style="left:24%;animation-duration:5.5s;animation-delay:2.4s;--dx:30px;--dx2:-18px;background:#9a7a20;"></div><div class="particle" style="left:33%;animation-duration:8.1s;animation-delay:0.7s;--dx:-12px;--dx2:25px;background:#f0d060;width:2px;height:2px"></div><div class="particle" style="left:42%;animation-duration:6.7s;animation-delay:3.1s;--dx:22px;--dx2:-5px;background:#6a5010;width:4px;height:4px"></div><div class="particle" style="left:51%;animation-duration:9.3s;animation-delay:1.8s;--dx:-25px;--dx2:15px;background:#c8a228;"></div><div class="particle" style="left:60%;animation-duration:5.9s;animation-delay:0.4s;--dx:18px;--dx2:-22px;background:#e8c048;width:2px;height:2px"></div><div class="particle" style="left:68%;animation-duration:7.4s;animation-delay:2.6s;--dx:-8px;--dx2:20px;background:#9a7a20;"></div><div class="particle" style="left:77%;animation-duration:6.1s;animation-delay:4.2s;--dx:28px;--dx2:-14px;background:#f0d060;width:4px;height:4px"></div><div class="particle" style="left:86%;animation-duration:8.7s;animation-delay:1.5s;--dx:-18px;--dx2:10px;background:#6a5010;width:2px;height:2px"></div><div class="particle" style="left:93%;animation-duration:5.3s;animation-delay:3.8s;--dx:10px;--dx2:-28px;background:#c8a228;"></div><div class="particle" style="left:4%;animation-duration:10s;animation-delay:5.1s;--dx:-15px;--dx2:18px;background:#e8c048;"></div><div class="particle" style="left:20%;animation-duration:6.8s;animation-delay:2s;--dx:25px;--dx2:-10px;background:#9a7a20;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:46%;animation-duration:7.2s;animation-delay:0.9s;--dx:-20px;--dx2:30px;background:#f0d060;"></div><div class="particle" style="left:72%;animation-duration:5.8s;animation-delay:4.7s;--dx:12px;--dx2:-20px;background:#6a5010;"></div></div>
-  </div>
-  <div class="game-outer">
-    <div class="game-frame" style="--glow:rgba(200, 162, 40, 0.3)">
-      <span class="fc-tl">ᚱ︎</span><span class="fc-tr">ᚱ︎</span>
-      <span class="fc-bl">ᚱ︎</span><span class="fc-br">ᚱ︎</span>
-      <span class="frame-top">Milestone 32</span>
-      <span class="frame-bot">Open-World Norse Turn-Based RPG</span>
-      <div class="game-eyebrow">Open-World Norse Turn-Based RPG</div>
-      <h2 class="game-title">Spellroads</h2>
-      <div class="divider"><div class="divider-line"></div><span class="divider-glyph">ᚱ︎</span><div class="divider-line"></div></div>
-      <div class="game-badges">
-        <span class="gbadge gbadge-m">M32</span>
-        <span class="gbadge gbadge-tok">576.1M tokens</span>
-        <span class="gbadge gbadge-date">2026-04-02</span>
-      </div>
-      <p class="game-desc">An open-world turn-based RPG set in a procedurally generated Norse world. Assemble a party of adventurers, travel the Spellroads — ancient magical highways — and restore them from growing darkness. 2–4 player local co-op, formation-based combat, and deep character progression.</p>
-      <a href="./game4/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">An open-world turn-based RPG in a procedurally generated Norse world. Assemble a party and travel the Spellroads — ancient magical highways — restoring them from growing darkness. 2–4 player local co-op with formation-based combat and deep character progression.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M32: Companion system — 12 hireable companions with personality traits
-- M31: Random events &amp; loot tables — 15 Norse travel events, 8 loot tables
-- M30: Faction &amp; reputation system — 8 factions with standing tiers
-- M29: Crafting system — 20 recipes
-- M21: New biomes (swamp, crystal caves, cursed wastes)
-- M20: Desktop packaging (Electron)
-- M19: Prestige system + 10 new skill trees (44 total)
-- M17: Dungeon interiors — room-based procedural dungeons
-- M15: Save system, achievements, compendium
-- M6: Full turn-based grid combat with initiative and AI</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">No additional milestones currently defined beyond M32. Future focus areas:
-- Art generation pass for remaining placeholder sprites
-- Online co-op via WebSocket
-- Steam/itch.io release packaging
-- Additional quest content and regions
-- Balance pass and endgame content</pre></details></div>
-    </div>
-  </div>
-</section>
-<hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#8a6e18 15%,#c8a228 50%,#8a6e18 85%,transparent 100%)">
-
-<section class="game-section" id="game3"
-  data-key="game3" data-date="2026-04-01" data-milestone="3" data-title="Roguelike III"
-  style="--ga:#00bbdd;--gab:#44eeff;--gad:#007a99;--gg:rgba(0, 187, 221, 0.3);--gbg:#060910;--gt:#c8dce8;--gtm:#5577aa;--gbo:#d8eef8;--gbr:rgba(0,187,221,0.3);--gpf:0 0 12px #00bbdd, 0 0 28px #007a99, 0 0 56px rgba(0,187,221,0.2);--gpt:0 0 20px #44eeff, 0 0 40px #00bbdd, 0 0 80px rgba(68,238,255,0.3);background:#060910">
-  <div class="game-bg">
-    <div class="game-bg-grad" style="background:radial-gradient(ellipse 70% 60% at 50% 80%, rgba(0,150,200,0.12) 0%, transparent 70%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(0,100,150,0.18) 0%, transparent 60%), linear-gradient(180deg, #060910 0%, #080e18 60%, #0a1018 100%)"></div>
-    <div class="game-bg-shot" style="background-image:url('screenshots/game3.png');"></div>
-    <div class="particle-field"><div class="particle" style="left:8%;animation-duration:6.2s;animation-delay:0s;--dx:15px;--dx2:-8px;background:#00bbdd;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:15%;animation-duration:7.8s;animation-delay:1.2s;--dx:-20px;--dx2:12px;background:#44eeff;"></div><div class="particle" style="left:24%;animation-duration:5.5s;animation-delay:2.4s;--dx:30px;--dx2:-18px;background:#0077aa;"></div><div class="particle" style="left:33%;animation-duration:8.1s;animation-delay:0.7s;--dx:-12px;--dx2:25px;background:#00ddff;width:2px;height:2px"></div><div class="particle" style="left:42%;animation-duration:6.7s;animation-delay:3.1s;--dx:22px;--dx2:-5px;background:#005588;width:4px;height:4px"></div><div class="particle" style="left:51%;animation-duration:9.3s;animation-delay:1.8s;--dx:-25px;--dx2:15px;background:#00bbdd;"></div><div class="particle" style="left:60%;animation-duration:5.9s;animation-delay:0.4s;--dx:18px;--dx2:-22px;background:#44eeff;width:2px;height:2px"></div><div class="particle" style="left:68%;animation-duration:7.4s;animation-delay:2.6s;--dx:-8px;--dx2:20px;background:#0077aa;"></div><div class="particle" style="left:77%;animation-duration:6.1s;animation-delay:4.2s;--dx:28px;--dx2:-14px;background:#00ddff;width:4px;height:4px"></div><div class="particle" style="left:86%;animation-duration:8.7s;animation-delay:1.5s;--dx:-18px;--dx2:10px;background:#005588;width:2px;height:2px"></div><div class="particle" style="left:93%;animation-duration:5.3s;animation-delay:3.8s;--dx:10px;--dx2:-28px;background:#00bbdd;"></div><div class="particle" style="left:4%;animation-duration:10s;animation-delay:5.1s;--dx:-15px;--dx2:18px;background:#44eeff;"></div><div class="particle" style="left:20%;animation-duration:6.8s;animation-delay:2s;--dx:25px;--dx2:-10px;background:#0077aa;width:2px;height:2pxwidth:4px;height:4px"></div><div class="particle" style="left:46%;animation-duration:7.2s;animation-delay:0.9s;--dx:-20px;--dx2:30px;background:#00ddff;"></div><div class="particle" style="left:72%;animation-duration:5.8s;animation-delay:4.7s;--dx:12px;--dx2:-20px;background:#005588;"></div></div>
-  </div>
-  <div class="game-outer">
-    <div class="game-frame" style="--glow:rgba(0, 187, 221, 0.3)">
-      <span class="fc-tl">✦︎</span><span class="fc-tr">✦︎</span>
-      <span class="fc-bl">✦︎</span><span class="fc-br">✦︎</span>
-      <span class="frame-top">Milestone 3</span>
-      <span class="frame-bot">Twin-Stick Action RPG</span>
-      <div class="game-eyebrow">Twin-Stick Action RPG</div>
-      <h2 class="game-title">Roguelike III</h2>
-      <div class="divider"><div class="divider-line"></div><span class="divider-glyph">✦︎</span><div class="divider-line"></div></div>
-      <div class="game-badges">
-        <span class="gbadge gbadge-m">M3</span>
-        <span class="gbadge gbadge-tok">2.15B tokens</span>
-        <span class="gbadge gbadge-date">2026-04-01</span>
-      </div>
-      <p class="game-desc">A third-person top-down twin-stick action RPG. Full conversion from the isometric Roguelike engine to fast-paced twin-stick combat with 7 classes, 360° aiming, dash/roll mechanics, and mobile virtual joystick support.</p>
-      <a href="./game3/" class="play-btn">Play Now</a>
-      <div class="meta-sections"><details class="meta-collapse"><summary>Prompt History</summary><div class="prompt-history"><p class="prompt-first">Convert the isometric roguelike engine into a fast-paced twin-stick action RPG with 360° aiming, dash and roll mechanics, and mobile virtual joystick support.</p></div></details><details class="meta-collapse"><summary>Changelog</summary><pre class="meta-pre">- M3: Kill combo system, boss intro cinematic, dedicated boss HP bar, 3 new enemies (Berserker, Hexer, Spider), touch controls polish
-- M2: Character creation fix, loading screen fix, viewport meta tag, JS/CSS caching
-- M1: Full engine conversion — top-down twin-stick, 8-dir movement, projectile combat, lighting, 6 enemy types, wave system</pre></details><details class="meta-collapse"><summary>Planned Milestones</summary><pre class="meta-pre">Continuing twin-stick action RPG development:
-- Additional enemy types and boss encounters
-- Loot and equipment system
-- Town hub and NPC interactions
-- Mobile touch controls refinement
-- Multiplayer co-op support</pre></details></div>
-    </div>
-  </div>
-</section>
-<hr class="section-hr" style="background:linear-gradient(90deg,transparent 0%,#007a99 15%,#00bbdd 50%,#007a99 85%,transparent 100%)">
 </main>
 <footer class="site-footer">Rad's Game Demos &mdash; 11 games &mdash; 2026</footer>
 <script>
-const SORT_DATA=[{"key":"game2","date":"2026-04-10","milestone":231,"title":"Roguelike"},{"key":"game3","date":"2026-04-01","milestone":3,"title":"Roguelike III"},{"key":"game4","date":"2026-04-02","milestone":32,"title":"Spellroads"},{"key":"game6","date":"2026-04-05","milestone":29,"title":"Astral Crypts"},{"key":"game7","date":"2026-04-05","milestone":13,"title":"Wanderlight"},{"key":"game8","date":"2026-04-10","milestone":80,"title":"Vagrant & Ash"},{"key":"game10","date":"2026-04-10","milestone":8,"title":"Aethermoor Chronicles"},{"key":"game11","date":"2026-04-10","milestone":19,"title":"Stormtown"},{"key":"game12","date":"2026-04-10","milestone":29,"title":"Penny Panic"},{"key":"game13","date":"2026-04-13","milestone":70,"title":"Emberveil"},{"key":"game14","date":"2026-04-13","milestone":4,"title":"HOOPSHOT"}];
+const SORT_DATA=[{"key":"game2","date":"2026-04-13","milestone":232,"title":"Roguelike"},{"key":"game3","date":"2026-04-13","milestone":4,"title":"Roguelike III"},{"key":"game4","date":"2026-04-13","milestone":33,"title":"Spellroads"},{"key":"game6","date":"2026-04-13","milestone":30,"title":"Astral Crypts"},{"key":"game7","date":"2026-04-13","milestone":14,"title":"Wanderlight"},{"key":"game8","date":"2026-04-10","milestone":80,"title":"Vagrant & Ash"},{"key":"game10","date":"2026-04-13","milestone":9,"title":"Aethermoor Chronicles"},{"key":"game11","date":"2026-04-10","milestone":19,"title":"Stormtown"},{"key":"game12","date":"2026-04-10","milestone":29,"title":"Penny Panic"},{"key":"game13","date":"2026-04-13","milestone":70,"title":"Emberveil"},{"key":"game14","date":"2026-04-13","milestone":4,"title":"HOOPSHOT"}];
 function reSort(by){
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('sort-'+by).classList.add('active');

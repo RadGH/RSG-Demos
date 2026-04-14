@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>game7 — Asset Gallery</title>
+  <style>
+    :root {
+      --bg:        #0a0a12;
+      --surface:   #12121e;
+      --card:      #1a1a2a;
+      --card-h:    #202038;
+      --accent:    #7766cc;
+      --accent-b:  #9988ee;
+      --text:      #ccc8e0;
+      --muted:     #776699;
+      --border:    rgba(119,102,204,0.2);
+      --radius:    8px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    header h1 { font-size: 20px; font-weight: 700; color: var(--accent-b); }
+    header .sub { font-size: 13px; color: var(--muted); }
+
+    .toolbar {
+      padding: 14px 24px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .filter-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 4px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.15s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    main { padding: 24px; }
+
+    .empty-state {
+      text-align: center;
+      padding: 80px 24px;
+      color: var(--muted);
+    }
+    .empty-state h2 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
+    .empty-state p { font-size: 13px; max-width: 400px; margin: 0 auto; }
+    .empty-state code {
+      display: inline-block;
+      margin-top: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      font-family: monospace;
+      font-size: 12px;
+      color: var(--accent-b);
+    }
+
+    .section { margin-bottom: 40px; }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-title span {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 10px;
+      margin-left: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+
+    .asset-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .asset-card:hover { background: var(--card-h); border-color: var(--accent); }
+
+    .thumb {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      background: var(--surface);
+    }
+    .thumb-missing {
+      width: 100%;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 28px;
+    }
+
+    .card-body { padding: 10px 12px; }
+    .card-name { font-size: 13px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .card-meta { display: flex; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
+    .badge {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .badge-openai  { background: #1a3a2a; color: #5cbf7f; border: 1px solid #2a5a3a; }
+    .badge-pixellab{ background: #2a1a3a; color: #bf80ff; border: 1px solid #4a2a6a; }
+    .badge-svg     { background: #1a2a3a; color: #60aaee; border: 1px solid #2a4a6a; }
+    .badge-manual  { background: #2a2a1a; color: #ccbb60; border: 1px solid #4a4a2a; }
+    .badge-other   { background: #2a1a1a; color: #cc7777; border: 1px solid #4a2a2a; }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-img { width: 100%; max-height: 400px; object-fit: contain; background: var(--surface); border-radius: 12px 12px 0 0; }
+    .modal-body { padding: 20px; }
+    .modal-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .modal-row { margin-bottom: 10px; }
+    .modal-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+    .modal-value { font-size: 13px; color: var(--text); }
+    .modal-prompt { font-family: monospace; font-size: 12px; background: var(--surface); padding: 10px 12px; border-radius: 6px; border: 1px solid var(--border); white-space: pre-wrap; word-break: break-word; }
+    .modal-close {
+      float: right;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .modal-close:hover { color: var(--text); }
+
+    #total-count { color: var(--muted); font-size: 13px; }
+
+    /* Reports */
+    #reports-section {
+      border-top: 2px solid var(--border);
+      padding: 32px 24px 48px;
+      margin-top: 16px;
+    }
+    #reports-section h2 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .report-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .report-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    .report-header:hover { background: var(--card-h); }
+    .report-milestone {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-b);
+    }
+    .report-date { font-size: 12px; color: var(--muted); }
+    .report-summary { font-size: 12px; color: var(--text); flex: 1; opacity: 0.8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .report-toggle { font-size: 11px; color: var(--muted); margin-left: auto; flex-shrink: 0; }
+    .report-body {
+      display: none;
+      padding: 0 16px 16px;
+      border-top: 1px solid var(--border);
+    }
+    .report-body.open { display: block; }
+    .report-section-heading {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 14px 0 6px;
+    }
+    .report-text {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .report-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .report-list li {
+      font-size: 13px;
+      color: var(--text);
+      padding: 3px 0;
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .report-list li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    .reports-empty {
+      color: var(--muted);
+      font-size: 13px;
+      font-style: italic;
+    }
+  </style>
+  <script src="./_header.js" defer></script>
+</head>
+<body>
+
+<header>
+  <h1 id="game-title">game7</h1>
+  <div class="sub">— Asset Gallery</div>
+  <div style="margin-left:auto;" id="total-count"></div>
+</header>
+
+<div class="toolbar" id="toolbar">
+  <button class="filter-btn active" data-cat="all">All</button>
+</div>
+
+<main id="main"></main>
+
+<section id="reports-section">
+  <h2>Milestone Reports <span id="report-count"></span></h2>
+  <div id="reports-list"><p class="reports-empty">No reports yet. Reports are added after each major milestone.</p></div>
+</section>
+
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-body" style="padding-bottom:4px;">
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+    </div>
+    <img id="modal-img" class="modal-img" src="" alt="">
+    <div class="modal-body" id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+const BADGE_CLASSES = {
+  openai:   'badge-openai',
+  pixellab: 'badge-pixellab',
+  svg:      'badge-svg',
+  manual:   'badge-manual',
+};
+
+function badgeClass(source) {
+  return BADGE_CLASSES[source?.toLowerCase()] ?? 'badge-other';
+}
+
+function sourceLabel(source) {
+  const map = { openai: 'OpenAI', pixellab: 'PixelLab', svg: 'SVG', manual: 'Manual' };
+  return map[source?.toLowerCase()] ?? (source || 'Other');
+}
+
+let allAssets = [];
+let activeFilter = 'all';
+
+function groupByCategory(assets) {
+  const groups = {};
+  for (const a of assets) {
+    const cat = a.category || 'other';
+    if (!groups[cat]) groups[cat] = [];
+    groups[cat].push(a);
+  }
+  return groups;
+}
+
+function renderCard(asset) {
+  const card = document.createElement('div');
+  card.className = 'asset-card';
+  card.title = asset.name;
+
+  const thumbSrc = asset.file ? asset.file : null;
+  const thumbHtml = thumbSrc
+    ? `<img class="thumb" src="${thumbSrc}" alt="${asset.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+      + `<div class="thumb-missing" style="display:none">🖼</div>`
+    : `<div class="thumb-missing">🖼</div>`;
+
+  card.innerHTML = `
+    ${thumbHtml}
+    <div class="card-body">
+      <div class="card-name">${asset.name}</div>
+      <div class="card-meta">
+        <span class="badge ${badgeClass(asset.source)}">${sourceLabel(asset.source)}</span>
+        ${asset.category ? `<span class="badge badge-manual" style="background:#1e1e2a;color:var(--muted);border-color:var(--border)">${asset.category}</span>` : ''}
+      </div>
+    </div>`;
+
+  card.addEventListener('click', () => openModal(asset));
+  return card;
+}
+
+function openModal(asset) {
+  const modal = document.getElementById('modal');
+  document.getElementById('modal-img').src = asset.file || '';
+  document.getElementById('modal-img').alt = asset.name;
+  document.getElementById('modal-img').style.display = asset.file ? 'block' : 'none';
+
+  let html = `<div class="modal-title">${asset.name}</div>`;
+
+  if (asset.source) {
+    html += `<div class="modal-row">
+      <div class="modal-label">Source</div>
+      <div class="modal-value"><span class="badge ${badgeClass(asset.source)}">${sourceLabel(asset.source)}</span></div>
+    </div>`;
+  }
+  if (asset.category) {
+    html += `<div class="modal-row">
+      <div class="modal-label">Category</div>
+      <div class="modal-value">${asset.category}</div>
+    </div>`;
+  }
+  if (asset.prompt) {
+    html += `<div class="modal-row">
+      <div class="modal-label">Prompt</div>
+      <div class="modal-prompt">${asset.prompt}</div>
+    </div>`;
+  }
+  if (asset.notes) {
+    html += `<div class="modal-row">
+      <div class="modal-label">Notes</div>
+      <div class="modal-value">${asset.notes}</div>
+    </div>`;
+  }
+  if (asset.file) {
+    html += `<div class="modal-row">
+      <div class="modal-label">File</div>
+      <div class="modal-value" style="font-family:monospace;font-size:12px;color:var(--muted)">${asset.file}</div>
+    </div>`;
+  }
+
+  document.getElementById('modal-content').innerHTML = html;
+  modal.classList.add('open');
+}
+
+document.getElementById('modal-close').addEventListener('click', () => {
+  document.getElementById('modal').classList.remove('open');
+});
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('modal').classList.remove('open');
+});
+
+function render(assets) {
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+
+  if (!assets.length) {
+    main.innerHTML = `
+      <div class="empty-state">
+        <h2>No assets yet</h2>
+        <p>Generated images will appear here. Add entries to <strong>public/demo-assets/assets.json</strong> as you create assets.</p>
+        <code>{ "id": "...", "name": "...", "category": "...", "source": "openai|pixellab|svg", "file": "path.png", "prompt": "..." }</code>
+      </div>`;
+    return;
+  }
+
+  const groups = groupByCategory(assets);
+  for (const [cat, items] of Object.entries(groups)) {
+    const section = document.createElement('div');
+    section.className = 'section';
+    section.innerHTML = `<div class="section-title">${cat} <span>${items.length}</span></div>`;
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+    items.forEach(a => grid.appendChild(renderCard(a)));
+    section.appendChild(grid);
+    main.appendChild(section);
+  }
+}
+
+function applyFilter(cat) {
+  activeFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  const filtered = cat === 'all' ? allAssets : allAssets.filter(a => (a.category || 'other') === cat);
+  render(filtered);
+}
+
+function renderReports(reports) {
+  const container = document.getElementById('reports-list');
+  const countEl = document.getElementById('report-count');
+  if (!reports || !reports.length) {
+    container.innerHTML = '<p class="reports-empty">No reports yet. Reports are added after each major milestone.</p>';
+    return;
+  }
+  countEl.textContent = `(${reports.length})`;
+  container.innerHTML = '';
+  // newest first
+  [...reports].reverse().forEach(r => {
+    const card = document.createElement('div');
+    card.className = 'report-card';
+
+    function listHtml(items) {
+      if (!items || !items.length) return '';
+      return '<ul class="report-list">' + items.map(i => `<li>${i}</li>`).join('') + '</ul>';
+    }
+    function textHtml(val) {
+      return val ? `<div class="report-text">${val}</div>` : '';
+    }
+
+    const sections = [
+      { key: 'changes',        label: 'Recent Changes' },
+      { key: 'bugs',           label: 'Known Bugs' },
+      { key: 'suggestions',    label: 'Suggestions' },
+      { key: 'recommendations',label: 'Recommendations' },
+      { key: 'ideas',          label: 'Ideas' },
+      { key: 'notes',          label: 'Notes' },
+    ];
+
+    let bodyHtml = '';
+    for (const { key, label } of sections) {
+      const val = r[key];
+      if (!val || (Array.isArray(val) && !val.length)) continue;
+      bodyHtml += `<div class="report-section-heading">${label}</div>`;
+      bodyHtml += Array.isArray(val) ? listHtml(val) : textHtml(val);
+    }
+
+    card.innerHTML = `
+      <div class="report-header" role="button" tabindex="0" aria-expanded="false">
+        <span class="report-milestone">${r.milestone || 'Milestone'}</span>
+        <span class="report-date">${r.date || ''}</span>
+        <span class="report-summary">${r.summary || ''}</span>
+        <span class="report-toggle">▸ expand</span>
+      </div>
+      <div class="report-body">${bodyHtml || '<span style="color:var(--muted);font-size:13px">No details recorded.</span>'}</div>`;
+
+    const header = card.querySelector('.report-header');
+    const body = card.querySelector('.report-body');
+    const toggle = card.querySelector('.report-toggle');
+    function toggleReport() {
+      const open = body.classList.toggle('open');
+      toggle.textContent = open ? '▾ collapse' : '▸ expand';
+      header.setAttribute('aria-expanded', open);
+    }
+    header.addEventListener('click', toggleReport);
+    header.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleReport(); } });
+
+    container.appendChild(card);
+  });
+}
+
+async function init() {
+  let data;
+  try {
+    const res = await fetch('assets.json');
+    data = await res.json();
+  } catch {
+    render([]);
+    return;
+  }
+
+  if (data.game) document.getElementById('game-title').textContent = data.game;
+  document.title = `${data.game || 'game7'} — Asset Gallery`;
+
+  allAssets = data.assets || [];
+  document.getElementById('total-count').textContent = allAssets.length
+    ? `${allAssets.length} asset${allAssets.length !== 1 ? 's' : ''}`
+    : '';
+
+  renderReports(data.reports || []);
+
+  // Build filter buttons
+  const cats = [...new Set(allAssets.map(a => a.category || 'other'))].sort();
+  const toolbar = document.getElementById('toolbar');
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.dataset.cat = cat;
+    btn.textContent = cat;
+    btn.addEventListener('click', () => applyFilter(cat));
+    toolbar.appendChild(btn);
+  });
+  document.querySelector('[data-cat="all"]').addEventListener('click', () => applyFilter('all'));
+
+  render(allAssets);
+}
+
+init();
+</script>
+</body>
+</html>
