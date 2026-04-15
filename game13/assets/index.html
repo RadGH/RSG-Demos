@@ -1456,7 +1456,7 @@ async function init() {
   if (data.game) document.getElementById('game-title').textContent = data.game;
   document.title = `${data.game || 'game13'} — Assets`;
 
-  allAssets = (data.assets || []).filter(a => !isAudioFile(a.file));
+  allAssets = (data.images || []).filter(a => !isAudioFile(a.file));
   document.getElementById('total-count').textContent = allAssets.length
     ? `${allAssets.length} asset${allAssets.length !== 1 ? 's' : ''}`
     : '';
