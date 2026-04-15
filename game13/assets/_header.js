@@ -24,12 +24,38 @@
     document.title.split(/[—|-]/)[0].trim() ||
     'RSG GAME HUB';
 
-  // Figure out where we are so relative links resolve cleanly.
-  // Pages live under /<gameKey>/assets/… or /<gameKey>/game-info/…
+  // ---------------------------------------------------------------------------
+  // GAME ROOT DERIVATION — READ BEFORE EDITING
+  // ---------------------------------------------------------------------------
+  // Failure mode (has bitten TWICE — M79 News restructure, then again):
+  //   Previous logic used a relative GAME_ROOT ("./" or "../") based on whether
+  //   the URL contained "/assets/" or "/game-info/". This broke for any page
+  //   under "/news/" (or any new subdirectory) because GAME_ROOT defaulted to
+  //   "./", so clicking "Assets" from /game13/news/foo.html resolved to
+  //   /game13/news/assets/ (404) — the /news/ segment got doubled into every
+  //   subsequent menu href.
+  //
+  // Fix: anchor GAME_ROOT to an ABSOLUTE path derived from the /<gameKey>/
+  //   segment in location.pathname. Every menu link then becomes
+  //   "/<gameKey>/<target>" regardless of how deep the current page is, so no
+  //   double-prefixing is possible for ANY subdirectory, present or future.
+  //
+  // If the path does not contain /<gameKey>/ (e.g. loaded from a bare file://
+  // preview), fall back to the old relative heuristic as a last resort.
+  // ---------------------------------------------------------------------------
   var path = window.location.pathname;
-  var inAssets = /\/assets\//.test(path);
-  var inGameInfo = /\/game-info\//.test(path);
-  var GAME_ROOT = inAssets || inGameInfo ? '../' : './';
+  var gameKeyMatch = path.match(/\/(game[0-9a-z_]+)\//i);
+  var GAME_KEY = gameKeyMatch ? gameKeyMatch[1].toLowerCase() : '';
+  var GAME_ROOT;
+  if (gameKeyMatch) {
+    // Absolute anchor: everything up to and including /<gameKey>/
+    GAME_ROOT = path.slice(0, path.indexOf('/' + gameKeyMatch[1] + '/') + gameKeyMatch[1].length + 2);
+  } else {
+    var inAssetsFb = /\/assets\//.test(path);
+    var inGameInfoFb = /\/game-info\//.test(path);
+    var inNewsFb = /\/news\//.test(path);
+    GAME_ROOT = (inAssetsFb || inGameInfoFb || inNewsFb) ? '../' : './';
+  }
   var ASSETS = GAME_ROOT + 'assets/';
   var GAME_INFO = GAME_ROOT + 'game-info/';
 
@@ -38,7 +64,11 @@
   var TOOLS_BY_GAME = {
     game13: [
       { href: ASSETS + 'affix-survey.html', label: 'Affix Survey' },
-      { href: ASSETS + 'rebalance-survey.html', label: 'Rebalance Survey' }
+      { href: ASSETS + 'enemy-survey.html', label: 'Enemy Survey' },
+      { href: ASSETS + 'skill-audit.html', label: 'Skill Audit' },
+      { href: ASSETS + 'rebalance-survey.html', label: 'Rebalance Survey' },
+      { href: ASSETS + 'rebalance.html', label: 'Rebalance' },
+      { href: ASSETS + 'sprite-flip-review.html', label: 'Sprite Flip Review' }
     ]
   };
   // News registry — populated by the migration pass. Sorted newest first.
@@ -73,31 +103,27 @@
     game13: [
       { href: NEWS_ROOT + 'm79-redesign.html',       label: 'M79 Redesign Report',   date: '2026-04-01' },
       { href: NEWS_ROOT + 'tap-weapons.html',        label: 'Tap Weapons Design',    date: '2026-03-28' },
-      { href: NEWS_ROOT + 'sprite-flip-review.html', label: 'Sprite Flip Review',    date: '2026-03-25' },
       { href: NEWS_ROOT + 'simulation-overhaul.html',label: 'Simulation Overhaul',   date: '2026-03-20' },
       { href: NEWS_ROOT + 'dragon-expansion.html',   label: 'Dragon Expansion',      date: '2026-03-15' },
       { href: NEWS_ROOT + 'milestone-53.html',       label: 'Milestone 53 Report',   date: '2026-03-01' },
       { href: NEWS_ROOT + 'pre-game.html',           label: 'Pre-Game Brainstorm',   date: '2026-01-01' }
     ]
   };
-  var gameKeyMatch = path.match(/\/(game[0-9a-z_]+)\//i);
-  var GAME_KEY = gameKeyMatch ? gameKeyMatch[1].toLowerCase() : '';
   var TOOLS = TOOLS_BY_GAME[GAME_KEY] || [];
   var NEWS = NEWS_BY_GAME[GAME_KEY] || [];
 
   var MENU = [
     { href: GAME_ROOT, label: 'Play Game' },
+    { href: GAME_INFO, label: 'Game Info' },
     {
       href: ASSETS,
       label: 'Assets',
       children: [
         { href: ASSETS + '#main', label: 'Images' },
         { href: ASSETS + '#audio-section', label: 'Audio' },
-        { href: ASSETS + '#reports-section', label: 'Milestones' },
-        { href: ASSETS + 'rebalance.html', label: 'Rebalance' }
+        { href: ASSETS + '#reports-section', label: 'Milestones' }
       ]
     },
-    { href: GAME_INFO, label: 'Game Info' },
     { href: 'https://docs.google.com/forms/d/e/1FAIpQLScWHFEQ8Kbxvsxg5nKerJOPqkYntAkRLCihqQchypNdqayvmA/viewform?usp=publish-editor', label: 'Send Feedback', external: true }
   ];
   if (TOOLS.length) {
@@ -107,13 +133,15 @@
       children: TOOLS.slice()
     });
   }
-  // News dropdown: always present when the game has a news directory.
-  // Children = "All News" + each article (newest first; registry is already sorted).
-  var newsChildren = [{ href: NEWS_ROOT + 'index.html', label: 'All News' }];
-  NEWS.forEach(function (n) { newsChildren.push({ href: n.href, label: n.label }); });
-  if (NEWS.length || GAME_KEY) {
+  // News dropdown: articles only (no "All News" entry). Date-prefixed,
+  // newest first. Default to 2026-04-14 if a date is somehow missing.
+  if (NEWS.length) {
+    var newsChildren = NEWS.map(function (n) {
+      var d = n.date || '2026-04-14';
+      return { href: n.href, label: d + ' \u2014 ' + n.label };
+    });
     MENU.splice(MENU.length - 1, 0, {
-      href: NEWS_ROOT + 'index.html',
+      href: newsChildren[0].href,
       label: 'News',
       children: newsChildren
     });
