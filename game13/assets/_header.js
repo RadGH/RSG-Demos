@@ -33,6 +33,18 @@
   var ASSETS = GAME_ROOT + 'assets/';
   var GAME_INFO = GAME_ROOT + 'game-info/';
 
+  // Per-game tool lists. Keyed by the game key derived from the URL path
+  // (/gameNN/...). Keep hardcoded for now; generalize later.
+  var TOOLS_BY_GAME = {
+    game13: [
+      { href: ASSETS + 'affix-survey.html', label: 'Affix Survey' },
+      { href: ASSETS + 'rebalance-survey.html', label: 'Rebalance Survey' }
+    ]
+  };
+  var gameKeyMatch = path.match(/\/(game[0-9a-z_]+)\//i);
+  var GAME_KEY = gameKeyMatch ? gameKeyMatch[1].toLowerCase() : '';
+  var TOOLS = TOOLS_BY_GAME[GAME_KEY] || [];
+
   var MENU = [
     { href: GAME_ROOT, label: 'Play Game' },
     {
@@ -48,6 +60,13 @@
     { href: GAME_INFO, label: 'Game Info' },
     { href: 'https://docs.google.com/forms/d/e/1FAIpQLScWHFEQ8Kbxvsxg5nKerJOPqkYntAkRLCihqQchypNdqayvmA/viewform?usp=publish-editor', label: 'Send Feedback', external: true }
   ];
+  if (TOOLS.length) {
+    MENU.splice(MENU.length - 1, 0, {
+      href: TOOLS[0].href,
+      label: 'Tools',
+      children: TOOLS.slice()
+    });
+  }
 
   function buildNav() {
     var nav = document.createElement('nav');
