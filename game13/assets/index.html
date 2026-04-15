@@ -197,6 +197,217 @@
       font-family: var(--font-display);
     }
 
+    /* M79 Report style - larger portraits + smaller attack frames */
+    .characters-section {
+      margin-bottom: 40px;
+    }
+
+    .char-m79-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 24px;
+    }
+
+    .char-m79-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      transition: transform .3s, border-color .3s, box-shadow .3s;
+    }
+
+    .char-m79-block:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 40px rgba(232,160,32,0.15);
+    }
+
+    .char-m79-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .char-m79-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent-b);
+      font-family: var(--font-display);
+      text-transform: capitalize;
+    }
+
+    .char-m79-type {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .char-m79-content {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .char-m79-portrait {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      background: var(--bg);
+      cursor: pointer;
+      transition: border-color .3s;
+    }
+
+    .char-m79-portrait:hover {
+      border-color: var(--accent);
+    }
+
+    .char-m79-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .char-m79-portrait .portrait-missing {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 24px;
+      background: rgba(232,160,32,0.05);
+    }
+
+    .char-m79-frames {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+      gap: 8px;
+      max-width: 200px;
+    }
+
+    .char-m79-frame {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      cursor: pointer;
+      transition: border-color .3s, transform .2s;
+    }
+
+    .char-m79-frame:hover {
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    .char-m79-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .char-m79-frame .frame-missing {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 14px;
+      background: rgba(232,160,32,0.03);
+    }
+
+    .char-m79-frame .frame-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      font-size: 8px;
+      text-align: center;
+      padding: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .char-m79-info {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Background graphics section */
+    .bg-section {
+      margin-bottom: 40px;
+    }
+
+    .bg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .bg-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .3s, border-color .3s;
+    }
+
+    .bg-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .bg-preview {
+      width: 100%;
+      height: 120px;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .bg-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bg-info {
+      padding: 12px;
+    }
+
+    .bg-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .bg-usage {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
     .character-variants {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
@@ -675,11 +886,252 @@ function renderCharacterBlock(charName, assets) {
   return block;
 }
 
-const CATEGORY_ORDER = ['heroes','companions','enemies','bosses','background','portrait','icon','ui','sprite','other'];
+const CATEGORY_ORDER = ['characters','heroes','companions','enemies','bosses','backgrounds','background','portrait','icon','ui','sprite','other'];
 function sortedCategoryEntries(groups) {
   return Object.entries(groups).sort((a, b) => {
     const ia = CATEGORY_ORDER.indexOf(a[0]); const ib = CATEGORY_ORDER.indexOf(b[0]);
     return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+  });
+}
+
+// Load character definitions from game data
+async function loadGameCharacters() {
+  try {
+    // This would ideally load from the actual game files
+    // For now, we'll extract from the existing asset data
+    const companions = [
+      { id: 'dire_wolf', name: 'Dire Wolf', type: 'companion', className: 'Dire Wolf' },
+      { id: 'forest_owl', name: 'Forest Owl', type: 'companion', className: 'Forest Owl' },
+      { id: 'ember_drake', name: 'Ember Drake', type: 'companion', className: 'Ember Drake' },
+      { id: 'shadow_cat', name: 'Shadow Cat', type: 'companion', className: 'Shadow Cat' },
+      { id: 'crystal_golem', name: 'Crystal Golem', type: 'companion', className: 'Crystal Golem' },
+      { id: 'spirit_wisp', name: 'Spirit Wisp', type: 'companion', className: 'Spirit Wisp' },
+      { id: 'bone_hound', name: 'Bone Hound', type: 'companion', className: 'Bone Hound' },
+      { id: 'ice_sprite', name: 'Ice Sprite', type: 'companion', className: 'Ice Sprite' },
+      { id: 'swamp_frog', name: 'Swamp Frog', type: 'companion', className: 'Swamp Frog' },
+      { id: 'void_moth', name: 'Void Moth', type: 'companion', className: 'Void Moth' }
+    ];
+
+    // Extract heroes from assets (simplified - would be from game data in real implementation)
+    const heroes = [
+      { id: 'warrior', name: 'Warrior', type: 'hero', className: 'Warrior' },
+      { id: 'mage', name: 'Mage', type: 'hero', className: 'Mage' },
+      { id: 'rogue', name: 'Rogue', type: 'hero', className: 'Rogue' },
+      { id: 'cleric', name: 'Cleric', type: 'hero', className: 'Cleric' }
+    ];
+
+    return [...companions, ...heroes];
+  } catch (error) {
+    console.warn('Could not load game characters:', error);
+    return [];
+  }
+}
+
+function findCharacterAssets(character, assets) {
+  // Find all assets that match this character
+  const patterns = [
+    new RegExp(character.id, 'i'),
+    new RegExp(character.name.replace(/\s+/g, '_'), 'i'),
+    new RegExp(character.name.replace(/\s+/g, ''), 'i')
+  ];
+
+  const matches = assets.filter(asset => {
+    const searchText = [asset.id || '', asset.name || '', asset.file || ''].join(' ').toLowerCase();
+    return patterns.some(pattern => pattern.test(searchText));
+  });
+
+  // Categorize variants
+  const variants = {
+    portrait: null,
+    attack: [],
+    spell: [],
+    directional: [],
+    death: [],
+    other: []
+  };
+
+  matches.forEach(asset => {
+    const name = (asset.id || asset.name || '').toLowerCase();
+    if (name.includes('portrait') || name.includes('_portrait')) {
+      variants.portrait = asset;
+    } else if (name.includes('attack')) {
+      variants.attack.push(asset);
+    } else if (name.includes('spell') || name.includes('magic')) {
+      variants.spell.push(asset);
+    } else if (name.includes('_n') || name.includes('_s') || name.includes('_e') || name.includes('_w')) {
+      variants.directional.push(asset);
+    } else if (name.includes('death') || name.includes('dead')) {
+      variants.death.push(asset);
+    } else {
+      variants.other.push(asset);
+    }
+  });
+
+  return variants;
+}
+
+function renderM79CharacterBlock(character, variants) {
+  const block = document.createElement('div');
+  block.className = 'char-m79-block';
+
+  // Get primary portrait
+  const portrait = variants.portrait;
+  const portraitHtml = portrait && portrait.file
+    ? `<img src="${portrait.file}" alt="${character.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+      + `<div class="portrait-missing" style="display:none">👤</div>`
+    : `<div class="portrait-missing">👤</div>`;
+
+  // Render action frames (attack, spell, etc.)
+  const actionFrames = [
+    ...variants.attack.slice(0, 2),
+    ...variants.spell.slice(0, 1),
+    ...variants.directional.slice(0, 3)
+  ].slice(0, 6); // Limit to 6 frames
+
+  const framesHtml = actionFrames.map(frame => {
+    const frameType = getFrameType(frame);
+    const thumbHtml = frame.file
+      ? `<img src="${frame.file}" alt="${frameType}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+        + `<div class="frame-missing" style="display:none">⚔</div>`
+      : `<div class="frame-missing">⚔</div>`;
+
+    return `<div class="char-m79-frame" onclick="openModal(${JSON.stringify(frame).replace(/"/g, '&quot;')})">
+      ${thumbHtml}
+      <div class="frame-label">${frameType}</div>
+    </div>`;
+  }).join('');
+
+  const totalAssets = Object.values(variants).flat().filter(Boolean).length;
+
+  block.innerHTML = `
+    <div class="char-m79-header">
+      <div class="char-m79-name">${character.name}</div>
+      <div class="char-m79-type">${character.type}</div>
+    </div>
+    <div class="char-m79-content">
+      <div class="char-m79-portrait" ${portrait ? `onclick="openModal(${JSON.stringify(portrait).replace(/"/g, '&quot;')})"` : ''}>
+        ${portraitHtml}
+      </div>
+      <div class="char-m79-frames">
+        ${framesHtml}
+      </div>
+    </div>
+    <div class="char-m79-info">
+      <span>${totalAssets} assets</span>
+      <span>${character.className || character.type}</span>
+    </div>
+  `;
+
+  return block;
+}
+
+function getFrameType(asset) {
+  const name = (asset.id || asset.name || '').toLowerCase();
+  if (name.includes('attack')) return 'attack';
+  if (name.includes('spell') || name.includes('magic')) return 'spell';
+  if (name.includes('death')) return 'death';
+  if (name.includes('_n')) return 'north';
+  if (name.includes('_s')) return 'south';
+  if (name.includes('_e')) return 'east';
+  if (name.includes('_w')) return 'west';
+  return 'action';
+}
+
+function renderBackgroundsSection(assets) {
+  const backgrounds = assets.filter(asset => {
+    const name = (asset.name || '').toLowerCase();
+    const file = (asset.file || '').toLowerCase();
+    const id = (asset.id || '').toLowerCase();
+
+    return (asset.category && asset.category.toLowerCase().includes('background')) ||
+           file.includes('bg_') ||
+           file.includes('background') ||
+           file.includes('map_bg') ||
+           file.includes('menu_bg') ||
+           name.includes('background') ||
+           id.includes('background') ||
+           id.includes('map_bg') ||
+           id.includes('menu_bg');
+  });
+
+  if (!backgrounds.length) return null;
+
+  const section = document.createElement('div');
+  section.className = 'section bg-section';
+  section.innerHTML = `<div class="section-title">Background Graphics <span>${backgrounds.length}</span></div>`;
+
+  const grid = document.createElement('div');
+  grid.className = 'bg-grid';
+
+  backgrounds.forEach(asset => {
+    const card = document.createElement('div');
+    card.className = 'bg-card';
+    card.onclick = () => openModal(asset);
+
+    const usage = inferBackgroundUsage(asset);
+
+    card.innerHTML = `
+      <div class="bg-preview">
+        ${asset.file ? `<img src="${asset.file}" alt="${asset.name}" loading="lazy">` : '<div class="portrait-missing">🖼</div>'}
+      </div>
+      <div class="bg-info">
+        <div class="bg-name">${asset.name}</div>
+        <div class="bg-usage">${usage}</div>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+
+  section.appendChild(grid);
+  return section;
+}
+
+function inferBackgroundUsage(asset) {
+  const name = (asset.name || '').toLowerCase();
+  const file = (asset.file || '').toLowerCase();
+
+  if (name.includes('forest') || file.includes('forest')) return 'Forest areas';
+  if (name.includes('desert') || file.includes('desert')) return 'Desert zones';
+  if (name.includes('cave') || file.includes('cave')) return 'Underground areas';
+  if (name.includes('town') || file.includes('town')) return 'Town/settlement';
+  if (name.includes('menu') || file.includes('menu')) return 'Menu background';
+  if (name.includes('map') || file.includes('map')) return 'World map';
+  return 'Game background';
+}
+
+function detectUnusedAssets(assets) {
+  // More sophisticated heuristic for detecting potentially unused assets
+  return assets.filter(asset => {
+    const name = (asset.name || '').toLowerCase();
+    const file = (asset.file || '').toLowerCase();
+    const id = (asset.id || '').toLowerCase();
+
+    // Skip if it has clear usage patterns
+    if (asset.category && ['heroes', 'companions', 'enemies', 'bosses', 'background', 'ui', 'icon'].includes(asset.category)) return false;
+
+    // Skip character-related assets
+    if (name.includes('portrait') || name.includes('attack') || name.includes('spell') || name.includes('death')) return false;
+
+    // Skip background assets
+    if (file.includes('bg_') || file.includes('background') || file.includes('map_bg') || file.includes('menu_bg')) return false;
+
+    // Skip UI and icon assets
+    if (file.includes('icon') || file.includes('ui') || name.includes('icon') || name.includes('ui')) return false;
+
+    // Skip system assets
+    if (file.includes('font') || file.includes('system') || name.includes('font') || name.includes('system')) return false;
+
+    // Flag potential unused assets
+    const suspiciousPatterns = [
+      'test', 'unused', 'old', 'temp', 'draft', 'backup', 'copy', 'duplicate',
+      'experimental', 'wip', 'work_in_progress', 'sample', 'placeholder'
+    ];
+
+    const textToSearch = [name, file, id, asset.notes || ''].join(' ').toLowerCase();
+    return suspiciousPatterns.some(pattern => textToSearch.includes(pattern)) ||
+           (asset.notes && asset.notes.toLowerCase().includes('unused')) ||
+           (asset.notes && asset.notes.toLowerCase().includes('deprecated'));
   });
 }
 
@@ -774,7 +1226,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') document.getElementById('modal').classList.remove('open');
 });
 
-function render(assets) {
+async function render(assets) {
   const main = document.getElementById('main');
   main.innerHTML = '';
 
@@ -788,40 +1240,83 @@ function render(assets) {
     return;
   }
 
+  // First, render the unified Characters section using game data
+  await renderCharactersSection(assets, main);
+
+  // Then render Background Graphics section
+  const bgSection = renderBackgroundsSection(assets);
+  if (bgSection) main.appendChild(bgSection);
+
+  // Then render other categories (excluding the ones we handled separately)
   const groups = groupByCategory(assets);
+  const skipCategories = ['heroes', 'companions', 'enemies', 'bosses', 'background'];
+
   for (const [cat, items] of sortedCategoryEntries(groups)) {
+    if (skipCategories.includes(cat)) continue;
+
     const section = document.createElement('div');
     section.className = 'section';
 
-    // Use character blocks for character categories
-    const isCharacterCategory = ['heroes', 'companions', 'enemies', 'bosses'].includes(cat);
-
-    if (isCharacterCategory) {
-      const characters = groupAssetsByCharacter(items);
-      const charCount = Object.keys(characters).length;
-      section.innerHTML = `<div class="section-title">${cat} <span>${charCount} characters, ${items.length} assets</span></div>`;
-
-      const roster = document.createElement('div');
-      roster.className = 'character-roster';
-
-      // Sort characters alphabetically
-      const sortedCharNames = Object.keys(characters).sort();
-      sortedCharNames.forEach(charName => {
-        const charAssets = characters[charName];
-        roster.appendChild(renderCharacterBlock(charName, charAssets));
-      });
-
-      section.appendChild(roster);
-    } else {
-      // Use regular grid for non-character assets
-      section.innerHTML = `<div class="section-title">${cat} <span>${items.length}</span></div>`;
-      const grid = document.createElement('div');
-      grid.className = 'grid';
-      items.forEach(a => grid.appendChild(renderCard(a)));
-      section.appendChild(grid);
-    }
+    // Use regular grid for remaining assets
+    section.innerHTML = `<div class="section-title">${cat} <span>${items.length}</span></div>`;
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+    items.forEach(a => grid.appendChild(renderCard(a)));
+    section.appendChild(grid);
 
     main.appendChild(section);
+  }
+
+  // Finally, render unused assets section if any are detected
+  const unused = detectUnusedAssets(assets);
+  if (unused.length > 0) {
+    const unusedSection = document.createElement('div');
+    unusedSection.className = 'section';
+    unusedSection.innerHTML = `<div class="section-title">Unused Assets <span>${unused.length}</span></div>`;
+
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+    unused.forEach(a => grid.appendChild(renderCard(a)));
+    unusedSection.appendChild(grid);
+
+    main.appendChild(unusedSection);
+  }
+}
+
+async function renderCharactersSection(assets, container) {
+  try {
+    const gameCharacters = await loadGameCharacters();
+
+    if (!gameCharacters.length) {
+      console.warn('No game characters loaded, falling back to legacy display');
+      return;
+    }
+
+    const section = document.createElement('div');
+    section.className = 'section characters-section';
+
+    // Count total character assets
+    const charAssets = assets.filter(a =>
+      ['heroes', 'companions', 'enemies', 'bosses', 'companion_sprites'].includes(a.category)
+    );
+
+    section.innerHTML = `<div class="section-title">Characters <span>${gameCharacters.length} characters, ${charAssets.length} assets</span></div>`;
+
+    const grid = document.createElement('div');
+    grid.className = 'char-m79-grid';
+
+    // Render each character with its assets
+    gameCharacters.forEach(character => {
+      const variants = findCharacterAssets(character, assets);
+      const charBlock = renderM79CharacterBlock(character, variants);
+      grid.appendChild(charBlock);
+    });
+
+    section.appendChild(grid);
+    container.appendChild(section);
+
+  } catch (error) {
+    console.error('Failed to render characters section:', error);
   }
 }
 
@@ -829,7 +1324,9 @@ function applyFilter(cat) {
   activeFilter = cat;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
   const filtered = cat === 'all' ? allAssets : allAssets.filter(a => refineCategory(a) === cat);
-  render(filtered);
+  render(filtered).catch(error => {
+    console.error('Failed to apply filter:', error);
+  });
 }
 
 const REPORT_HTML_MAP = {
@@ -982,7 +1479,11 @@ async function init() {
   });
   document.querySelector('[data-cat="all"]').addEventListener('click', () => applyFilter('all'));
 
-  render(allAssets);
+  render(allAssets).catch(error => {
+    console.error('Failed to render assets:', error);
+    // Fallback to basic rendering if advanced features fail
+    document.getElementById('main').innerHTML = '<div class="empty-state"><h2>Rendering Error</h2><p>Assets could not be displayed. Check console for details.</p></div>';
+  });
 }
 
 const AUDIO_FILES = {
