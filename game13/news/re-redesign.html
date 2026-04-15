@@ -38,10 +38,15 @@
   .stat .num{font-size:28px;font-weight:700;color:var(--accent)}
   .stat .lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
 
-  main{max-width:1280px;margin:0 auto;padding:40px 20px 80px}
-  section{margin-bottom:64px;opacity:0;transform:translateY(24px);
-    transition:opacity .8s,transform .8s}
+  main{margin:0;padding:0}
+  section{padding:56px 24px;margin:0;opacity:0;transform:translateY(24px);
+    transition:opacity .8s,transform .8s;border-bottom:1px solid var(--border)}
   section.in{opacity:1;transform:none}
+  /* Alternate full-width gradient backgrounds */
+  section:nth-of-type(odd){background:linear-gradient(180deg,rgba(232,160,32,0.04),transparent 60%)}
+  section:nth-of-type(even){background:linear-gradient(180deg,rgba(192,64,48,0.05),transparent 60%)}
+  /* Constrain inner content while letting backgrounds run edge-to-edge */
+  section > *{max-width:1280px;margin-left:auto;margin-right:auto}
   h2{font-size:24px;margin-bottom:8px;border-left:4px solid var(--accent);padding-left:14px}
   .sectionDesc{color:var(--muted);margin-bottom:24px;max-width:720px;line-height:1.6}
 
