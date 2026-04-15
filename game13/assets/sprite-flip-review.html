@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sprite Flip Review</title>
+<style>
+  body { margin:0; background:#0b0810; color:#e8d8b8; font-family:-apple-system,system-ui,sans-serif; padding:1rem 1rem 6rem; }
+  h1 { color:#e8a020; font-size:1.1rem; margin:0 0 0.25rem; }
+  p.sub { color:#8a7a6a; font-size:0.75rem; margin:0 0 1rem; }
+  .controls { position:sticky; top:0; background:#0b0810; padding:0.5rem 0; z-index:10; display:flex; gap:0.5rem; flex-wrap:wrap; border-bottom:1px solid #2a1f30; }
+  .controls button, .controls input { background:#1a1220; color:#e8d8b8; border:1px solid #3a2a40; padding:0.4rem 0.7rem; border-radius:4px; font-size:0.75rem; cursor:pointer; }
+  .controls button.primary { background:#e8a020; color:#0b0810; border-color:#e8a020; font-weight:700; }
+  .controls input[type=search] { flex:1; min-width:140px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:0.6rem; margin-top:1rem; }
+  .card { background:#1a1220; border:2px solid #2a1f30; border-radius:6px; padding:0.4rem; cursor:pointer; user-select:none; transition:border-color .1s; text-align:center; }
+  .card.flagged { border-color:#e85020; background:#2a1210; }
+  .card img { width:100%; height:110px; object-fit:contain; image-rendering:pixelated; background:#050308; border-radius:3px; }
+  .card .name { font-size:0.6rem; color:#8a7a6a; margin-top:0.25rem; word-break:break-all; line-height:1.2; }
+  .card .arrow { position:absolute; pointer-events:none; }
+  .card { position:relative; }
+  .card::after { content:'→ should face east'; position:absolute; top:4px; right:4px; font-size:0.55rem; color:#e8a020; background:#0b0810cc; padding:1px 4px; border-radius:2px; }
+  .card.flagged::after { content:'✗ FLIP ME'; color:#ff6040; }
+  .output { position:fixed; left:0; right:0; bottom:0; background:#050308; border-top:2px solid #e8a020; padding:0.6rem 1rem; max-height:40vh; overflow:auto; }
+  .output textarea { width:100%; min-height:70px; background:#0b0810; color:#e8d8b8; border:1px solid #3a2a40; border-radius:3px; font-family:ui-monospace,monospace; font-size:0.7rem; padding:0.4rem; box-sizing:border-box; }
+  .count { color:#e8a020; font-weight:700; }
+</style>
+</head>
+<body>
+<h1>Sprite Flip Review</h1>
+<p class="sub">Tap any sprite whose art is facing <b>west (left)</b> despite being named <code>_east</code>. Flagged sprites will be listed at the bottom — copy the prompt and send it back to Claude to bake in the flips.</p>
+
+<div class="controls">
+  <input type="search" id="filter" placeholder="Filter by name…">
+  <button id="only-flagged">Show flagged only</button>
+  <button id="clear">Clear all</button>
+  <button class="primary" id="copy">Copy prompt</button>
+  <span style="align-self:center;font-size:0.75rem">Flagged: <span class="count" id="count">0</span></span>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="output">
+  <div style="font-size:0.7rem;color:#8a7a6a;margin-bottom:0.3rem">Prompt to paste back to Claude:</div>
+  <textarea id="out" readonly></textarea>
+</div>
+
+<script>
+const STORAGE_KEY = 'sprite_flip_flagged_v1';
+let flagged = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
+let files = [];
+let filterText = '';
+let onlyFlagged = false;
+
+fetch('./_east_sprites.json').then(r => r.json()).then(list => {
+  files = list;
+  render();
+});
+
+const grid = document.getElementById('grid');
+const out = document.getElementById('out');
+const countEl = document.getElementById('count');
+
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify([...flagged]));
+}
+
+function render() {
+  const visible = files.filter(f => {
+    if (onlyFlagged && !flagged.has(f)) return false;
+    if (filterText && !f.toLowerCase().includes(filterText)) return false;
+    return true;
+  });
+  grid.innerHTML = visible.map(f => `
+    <div class="card${flagged.has(f)?' flagged':''}" data-f="${f}">
+      <img src="../images/sprites/${f}" loading="lazy" alt="">
+      <div class="name">${f.replace('.png','').replace(/_east/,'')}</div>
+    </div>
+  `).join('');
+  grid.querySelectorAll('.card').forEach(c => {
+    c.addEventListener('click', () => {
+      const f = c.dataset.f;
+      if (flagged.has(f)) flagged.delete(f); else flagged.add(f);
+      save();
+      c.classList.toggle('flagged');
+      updateOutput();
+    });
+  });
+  updateOutput();
+}
+
+function updateOutput() {
+  countEl.textContent = flagged.size;
+  const list = [...flagged].sort();
+  if (list.length === 0) {
+    out.value = '(no sprites flagged yet — tap any sprite facing the wrong way)';
+    return;
+  }
+  out.value =
+`The following sprites are named "_east" but the art faces west. Please flip them horizontally at render time (add a flipX override in the sprite config so they match the other east-facing sprites). Do NOT modify the PNG files — handle it in code so it's easy to revert.
+
+${list.map(f => '- ' + f).join('\n')}`;
+}
+
+document.getElementById('filter').addEventListener('input', e => {
+  filterText = e.target.value.toLowerCase();
+  render();
+});
+document.getElementById('only-flagged').addEventListener('click', e => {
+  onlyFlagged = !onlyFlagged;
+  e.target.textContent = onlyFlagged ? 'Show all' : 'Show flagged only';
+  render();
+});
+document.getElementById('clear').addEventListener('click', () => {
+  if (!confirm('Clear all flags?')) return;
+  flagged.clear();
+  save();
+  render();
+});
+document.getElementById('copy').addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText(out.value); alert('Copied!'); }
+  catch { out.select(); document.execCommand('copy'); alert('Copied!'); }
+});
+</script>
+</body>
+</html>
