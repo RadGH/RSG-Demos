@@ -41,9 +41,49 @@
       { href: ASSETS + 'rebalance-survey.html', label: 'Rebalance Survey' }
     ]
   };
+  // News registry — populated by the migration pass. Sorted newest first.
+  var NEWS_ROOT = GAME_ROOT + 'news/';
+  var NEWS_BY_GAME = {
+    game8: [
+      { href: NEWS_ROOT + 'report-5.html', label: 'Milestone Report 5', date: '2025-06-01' },
+      { href: NEWS_ROOT + 'report-4.html', label: 'Milestone Report 4', date: '2025-05-01' },
+      { href: NEWS_ROOT + 'report-3.html', label: 'Milestone Report 3', date: '2025-04-01' },
+      { href: NEWS_ROOT + 'report-2.html', label: 'Milestone Report 2', date: '2025-03-01' },
+      { href: NEWS_ROOT + 'report-1.html', label: 'Milestone Report 1', date: '2025-02-01' }
+    ],
+    game11: [
+      { href: NEWS_ROOT + 'post-m25.html',    label: 'Post-M25 Report',        date: '2025-10-15' },
+      { href: NEWS_ROOT + 'pre-m21.html',     label: 'Pre-M21 Planning',       date: '2025-09-20' },
+      { href: NEWS_ROOT + 'final-m20.html',   label: 'M20 Final Report',       date: '2025-09-15' },
+      { href: NEWS_ROOT + 'pre-m12.html',     label: 'Pre-M12 Planning',       date: '2025-08-05' },
+      { href: NEWS_ROOT + 'post-m11.html',    label: 'Post-M11 Report',        date: '2025-08-01' },
+      { href: NEWS_ROOT + 'pre-m7.html',      label: 'Pre-M7 Planning',        date: '2025-07-05' },
+      { href: NEWS_ROOT + 'post-m6.html',     label: 'Post-M6 Report',         date: '2025-07-01' },
+      { href: NEWS_ROOT + 'pre-m2.html',      label: 'Pre-M2 Planning',        date: '2025-06-10' },
+      { href: NEWS_ROOT + 'pre-creation.html',label: 'Pre-Creation Brainstorm',date: '2025-06-01' }
+    ],
+    game12: [
+      { href: NEWS_ROOT + 'pre-release.html', label: 'Pre-Release Report',  date: '2026-02-15' },
+      { href: NEWS_ROOT + 'm25.html',         label: 'Milestone 25 Report', date: '2026-02-01' },
+      { href: NEWS_ROOT + 'm20.html',         label: 'Milestone 20 Report', date: '2026-01-01' },
+      { href: NEWS_ROOT + 'm15.html',         label: 'Milestone 15 Report', date: '2025-12-01' },
+      { href: NEWS_ROOT + 'm10.html',         label: 'Milestone 10 Report', date: '2025-11-01' },
+      { href: NEWS_ROOT + 'm5.html',          label: 'Milestone 5 Report',  date: '2025-10-01' }
+    ],
+    game13: [
+      { href: NEWS_ROOT + 'm79-redesign.html',       label: 'M79 Redesign Report',   date: '2026-04-01' },
+      { href: NEWS_ROOT + 'tap-weapons.html',        label: 'Tap Weapons Design',    date: '2026-03-28' },
+      { href: NEWS_ROOT + 'sprite-flip-review.html', label: 'Sprite Flip Review',    date: '2026-03-25' },
+      { href: NEWS_ROOT + 'simulation-overhaul.html',label: 'Simulation Overhaul',   date: '2026-03-20' },
+      { href: NEWS_ROOT + 'dragon-expansion.html',   label: 'Dragon Expansion',      date: '2026-03-15' },
+      { href: NEWS_ROOT + 'milestone-53.html',       label: 'Milestone 53 Report',   date: '2026-03-01' },
+      { href: NEWS_ROOT + 'pre-game.html',           label: 'Pre-Game Brainstorm',   date: '2026-01-01' }
+    ]
+  };
   var gameKeyMatch = path.match(/\/(game[0-9a-z_]+)\//i);
   var GAME_KEY = gameKeyMatch ? gameKeyMatch[1].toLowerCase() : '';
   var TOOLS = TOOLS_BY_GAME[GAME_KEY] || [];
+  var NEWS = NEWS_BY_GAME[GAME_KEY] || [];
 
   var MENU = [
     { href: GAME_ROOT, label: 'Play Game' },
@@ -51,9 +91,9 @@
       href: ASSETS,
       label: 'Assets',
       children: [
-        { href: ASSETS + '#reports-section', label: 'Reports' },
         { href: ASSETS + '#main', label: 'Images' },
         { href: ASSETS + '#audio-section', label: 'Audio' },
+        { href: ASSETS + '#reports-section', label: 'Milestones' },
         { href: ASSETS + 'rebalance.html', label: 'Rebalance' }
       ]
     },
@@ -65,6 +105,17 @@
       href: TOOLS[0].href,
       label: 'Tools',
       children: TOOLS.slice()
+    });
+  }
+  // News dropdown: always present when the game has a news directory.
+  // Children = "All News" + each article (newest first; registry is already sorted).
+  var newsChildren = [{ href: NEWS_ROOT + 'index.html', label: 'All News' }];
+  NEWS.forEach(function (n) { newsChildren.push({ href: n.href, label: n.label }); });
+  if (NEWS.length || GAME_KEY) {
+    MENU.splice(MENU.length - 1, 0, {
+      href: NEWS_ROOT + 'index.html',
+      label: 'News',
+      children: newsChildren
     });
   }
 

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="rsg-news-date" content="2026-01-01">
+<meta name="rsg-news-title" content="Pre-Game Brainstorm">
+
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Emberveil — Pre-Game Design Report</title>
@@ -186,7 +189,7 @@ footer strong{color:var(--muted)}
 
 <canvas id="particle-canvas"></canvas>
 
-<script src="./_header.js?v=3" data-base="assets"></script>
+<script src="../assets/_header.js?v=3" data-base="assets"></script>
 
 <main>
 
@@ -665,7 +668,8 @@ logo.innerHTML = text.split('').map((c,i) =>
   `<span style="display:inline-block;animation:letterDrop 0.6s ease ${i*0.07}s both">${c}</span>`
 ).join('');
 const style = document.createElement('style');
-style.textContent = `@keyframes letterDrop{from{opacity:0;transform:translateY(-40px) rotate(-5deg)}to{opacity:1;transform:none}}`;
+style.textContent = `@keyframes letterDrop{from{opacity:0;transform:translateY(-40px) rotate(-5deg)}to{opacity:1;transform:none}}
+.hero-logo span{background:linear-gradient(135deg,#f0c060,#e8a020,#c04030,#e8a020,#f0c060);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}`;
 document.head.appendChild(style);
 </script>
 </body>

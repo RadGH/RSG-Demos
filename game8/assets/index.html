@@ -397,11 +397,6 @@
   <div id="total-count" style="margin-left:auto;"></div>
 </header>
 
-<section id="reports-section">
-  <h2>Milestone Reports <span id="report-count"></span></h2>
-  <div id="reports-list"><p class="reports-empty">No reports yet. Reports are added after each major milestone.</p></div>
-</section>
-
 <div class="toolbar" id="toolbar">
   <button class="filter-btn active" data-cat="all">All</button>
 </div>
@@ -417,6 +412,11 @@
   </div>
   <div id="audio-list"></div>
 </section>
+<section id="reports-section">
+  <h2>Milestone Reports <span id="report-count"></span></h2>
+  <div id="reports-list"><p class="reports-empty">No reports yet. Reports are added after each major milestone.</p></div>
+</section>
+
 
 
 <div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
@@ -625,7 +625,7 @@ function renderReports(reports) {
   const featured = [];
   const accordion = [];
   reports.forEach(r => {
-    if (reportHtmlFile(r)) featured.push(r); else accordion.push(r);
+    accordion.push(r);
   });
   featured.sort((a, b) => milestoneSortKey(a) - milestoneSortKey(b));
   accordion.sort((a, b) => milestoneSortKey(a) - milestoneSortKey(b));
