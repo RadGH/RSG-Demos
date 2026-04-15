@@ -20,6 +20,60 @@
       "notes": "PixelLab character ID: 3a3845f5-8cc3-4ddd-ba0c-663f1bbe7044"
     },
     {
+      "id": "pixellab_test_warrior_portrait",
+      "name": "Warrior Test — Portrait",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites_pixellab_test/warrior_portrait.png",
+      "prompt": "Viking warrior in dark fantasy armor with chainmail, metal helmet with horns, battle-worn leather and metal plates, holding an axe, dark medieval fantasy pixel art style",
+      "notes": "PixelLab test case — Character ID: 912e9048-802d-4299-b988-02a1815c20b3, south rotation, 108×108px canvas"
+    },
+    {
+      "id": "pixellab_test_warrior_front_idle",
+      "name": "Warrior Test — Front Idle",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites_pixellab_test/warrior_front_idle.png",
+      "prompt": "Viking warrior in dark fantasy armor with chainmail, metal helmet with horns, battle-worn leather and metal plates, holding an axe, dark medieval fantasy pixel art style",
+      "notes": "PixelLab test case — Character ID: 912e9048-802d-4299-b988-02a1815c20b3, south rotation"
+    },
+    {
+      "id": "pixellab_test_warrior_east_idle",
+      "name": "Warrior Test — East Idle",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites_pixellab_test/warrior_east_idle.png",
+      "prompt": "Viking warrior in dark fantasy armor with chainmail, metal helmet with horns, battle-worn leather and metal plates, holding an axe, dark medieval fantasy pixel art style",
+      "notes": "PixelLab test case — Character ID: 912e9048-802d-4299-b988-02a1815c20b3, east rotation"
+    },
+    {
+      "id": "pixellab_test_warrior_east_attack",
+      "name": "Warrior Test — East Attack",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites_pixellab_test/warrior_east_attack.png",
+      "prompt": "Viking warrior in dark fantasy armor with chainmail, metal helmet with horns, battle-worn leather and metal plates, holding an axe, dark medieval fantasy pixel art style",
+      "notes": "PixelLab test case — Character ID: 912e9048-802d-4299-b988-02a1815c20b3, cross-punch animation frame 0"
+    },
+    {
+      "id": "pixellab_test_warrior_east_spell",
+      "name": "Warrior Test — East Spell",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites_pixellab_test/warrior_east_spell.png",
+      "prompt": "Viking warrior in dark fantasy armor with chainmail, metal helmet with horns, battle-worn leather and metal plates, holding an axe, dark medieval fantasy pixel art style",
+      "notes": "PixelLab test case — Character ID: 912e9048-802d-4299-b988-02a1815c20b3, fireball animation frame 0"
+    },
+    {
+      "id": "pixellab_test_warrior_east_down",
+      "name": "Warrior Test — East Down",
+      "category": "sprite",
+      "source": "pixellab",
+      "file": "../images/sprites_pixellab_test/warrior_east_down.png",
+      "prompt": "Viking warrior in dark fantasy armor with chainmail, metal helmet with horns, battle-worn leather and metal plates, holding an axe, dark medieval fantasy pixel art style",
+      "notes": "PixelLab test case — Character ID: 912e9048-802d-4299-b988-02a1815c20b3, falling-back-death animation frame 6 (final down state)"
+    },
+    {
       "id": "sprite_mage_south",
       "name": "Mage Hero \u2014 South",
       "category": "sprite",
