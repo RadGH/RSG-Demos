@@ -167,6 +167,89 @@
       cursor: pointer;
       transition: border-color 0.15s, background 0.15s;
     }
+
+    /* Character blocks styling */
+    .character-roster {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .character-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      transition: transform .3s, border-color .3s, box-shadow .3s;
+    }
+
+    .character-block:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 32px rgba(232,160,32,0.18);
+    }
+
+    .character-block h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      text-transform: capitalize;
+      color: var(--accent-b);
+      font-family: var(--font-display);
+    }
+
+    .character-variants {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 8px;
+    }
+
+    .variant-box {
+      background: linear-gradient(135deg, #1a0f08, #0a0504);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .variant-box:hover {
+      transform: scale(1.05);
+    }
+
+    .variant-box img {
+      max-width: 100%;
+      max-height: 100%;
+      image-rendering: pixelated;
+      transition: transform .3s;
+    }
+
+    .variant-box .variant-label {
+      position: absolute;
+      bottom: 2px;
+      left: 2px;
+      right: 2px;
+      font-size: 8px;
+      color: var(--muted);
+      text-align: center;
+      background: rgba(0,0,0,0.7);
+      border-radius: 3px;
+      padding: 1px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .variant-missing {
+      color: var(--muted);
+      font-size: 10px;
+      text-align: center;
+      opacity: 0.5;
+    }
     .asset-card:hover { background: var(--card-h); border-color: var(--accent); }
 
     .thumb, #modal-img {
@@ -492,6 +575,106 @@ function groupByCategory(assets) {
   return groups;
 }
 
+function extractCharacterName(asset) {
+  // Extract character name from asset id, name, or file path
+  const id = asset.id || '';
+  const name = asset.name || '';
+  const file = asset.file || '';
+
+  // Try to extract from id first
+  if (id) {
+    let charName = id.replace(/^(sprite_|portrait_|icon_)/, '');
+    charName = charName.replace(/_(north|south|east|west|attack|spell|death|idle|down)(_flipped|_alpha)?$/, '');
+    if (charName) return charName;
+  }
+
+  // Try to extract from file path
+  if (file) {
+    const filename = file.split('/').pop().replace(/\.[^.]+$/, '');
+    let charName = filename.replace(/_(north|south|east|west|attack|spell|death|idle|down)(_flipped|_alpha)?$/, '');
+    if (charName) return charName;
+  }
+
+  // Fallback to name
+  return name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+}
+
+function groupAssetsByCharacter(assets) {
+  const characters = {};
+  for (const asset of assets) {
+    const charName = extractCharacterName(asset);
+    if (!characters[charName]) {
+      characters[charName] = [];
+    }
+    characters[charName].push(asset);
+  }
+  return characters;
+}
+
+function detectVariantType(asset) {
+  const id = asset.id || '';
+  const file = asset.file || '';
+  const combined = id + ' ' + file;
+
+  if (combined.includes('portrait')) return 'portrait';
+  if (combined.includes('_attack')) return 'attack';
+  if (combined.includes('_spell')) return 'spell';
+  if (combined.includes('_death') || combined.includes('_down')) return 'death';
+  if (combined.includes('_south')) return 'south';
+  if (combined.includes('_east')) return 'east';
+  if (combined.includes('_north')) return 'north';
+  if (combined.includes('_west')) return 'west';
+  if (combined.includes('_idle')) return 'idle';
+
+  return 'default';
+}
+
+function renderCharacterBlock(charName, assets) {
+  const block = document.createElement('div');
+  block.className = 'character-block';
+
+  const displayName = charName.replace(/_/g, ' ');
+
+  // Group assets by variant type
+  const variants = {};
+  assets.forEach(asset => {
+    const varType = detectVariantType(asset);
+    if (!variants[varType]) variants[varType] = [];
+    variants[varType].push(asset);
+  });
+
+  // Define preferred order of variants
+  const variantOrder = ['portrait', 'south', 'north', 'east', 'west', 'idle', 'attack', 'spell', 'death', 'default'];
+
+  let variantsHtml = '';
+  variantOrder.forEach(varType => {
+    if (variants[varType]) {
+      variants[varType].forEach(asset => {
+        const thumbSrc = asset.file ? asset.file : null;
+        const label = varType === 'default' ? 'main' : varType;
+
+        if (thumbSrc) {
+          variantsHtml += `
+            <div class="variant-box" onclick="openModal(${JSON.stringify(asset).replace(/"/g, '&quot;')})">
+              <img src="${thumbSrc}" alt="${asset.name || charName}" loading="lazy"
+                   onerror="this.parentElement.innerHTML='<div class=variant-missing>${label}</div>'">
+              <div class="variant-label">${label}</div>
+            </div>`;
+        } else {
+          variantsHtml += `<div class="variant-box"><div class="variant-missing">${label}</div></div>`;
+        }
+      });
+    }
+  });
+
+  block.innerHTML = `
+    <h3>${displayName}</h3>
+    <div class="character-variants">${variantsHtml}</div>
+  `;
+
+  return block;
+}
+
 const CATEGORY_ORDER = ['heroes','companions','enemies','bosses','background','portrait','icon','ui','sprite','other'];
 function sortedCategoryEntries(groups) {
   return Object.entries(groups).sort((a, b) => {
@@ -599,7 +782,7 @@ function render(assets) {
     main.innerHTML = `
       <div class="empty-state">
         <h2>No assets yet</h2>
-        <p>Generated images will appear here. Add entries to <strong>public/demo-assets/assets.json</strong> as you create assets.</p>
+        <p>Generated images will appear here. Add entries to <strong>public/assets/assets.json</strong> as you create assets.</p>
         <code>{ "id": "...", "name": "...", "category": "...", "source": "openai|pixellab|svg", "file": "path.png", "prompt": "..." }</code>
       </div>`;
     return;
@@ -609,11 +792,35 @@ function render(assets) {
   for (const [cat, items] of sortedCategoryEntries(groups)) {
     const section = document.createElement('div');
     section.className = 'section';
-    section.innerHTML = `<div class="section-title">${cat} <span>${items.length}</span></div>`;
-    const grid = document.createElement('div');
-    grid.className = 'grid';
-    items.forEach(a => grid.appendChild(renderCard(a)));
-    section.appendChild(grid);
+
+    // Use character blocks for character categories
+    const isCharacterCategory = ['heroes', 'companions', 'enemies', 'bosses'].includes(cat);
+
+    if (isCharacterCategory) {
+      const characters = groupAssetsByCharacter(items);
+      const charCount = Object.keys(characters).length;
+      section.innerHTML = `<div class="section-title">${cat} <span>${charCount} characters, ${items.length} assets</span></div>`;
+
+      const roster = document.createElement('div');
+      roster.className = 'character-roster';
+
+      // Sort characters alphabetically
+      const sortedCharNames = Object.keys(characters).sort();
+      sortedCharNames.forEach(charName => {
+        const charAssets = characters[charName];
+        roster.appendChild(renderCharacterBlock(charName, charAssets));
+      });
+
+      section.appendChild(roster);
+    } else {
+      // Use regular grid for non-character assets
+      section.innerHTML = `<div class="section-title">${cat} <span>${items.length}</span></div>`;
+      const grid = document.createElement('div');
+      grid.className = 'grid';
+      items.forEach(a => grid.appendChild(renderCard(a)));
+      section.appendChild(grid);
+    }
+
     main.appendChild(section);
   }
 }

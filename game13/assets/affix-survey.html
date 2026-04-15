@@ -6,13 +6,113 @@
 <meta name="rsg-game" content="game13">
 <title>Affix Survey — game13</title>
 <script src="./_header.js" defer></script>
-<link rel="stylesheet" href="./_tool-styles.css">
+<link rel="stylesheet" href="./_shared-styles.css">
 <style>
-  .status.removed { background:#3a3a3a; color:#c0c0c0; border:1px solid #555; }
+/* Tool-specific styles */
+.status {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status.ok { background: #2a5a2a; color: #a0f0a0; }
+.status.partial { background: #6a5a20; color: #ffe080; }
+.status.broken { background: #6a2020; color: #ffa0a0; }
+.status.removed { background: #3a3a3a; color: #c0c0c0; border: 1px solid #555; }
+
+.affix {
+  background: var(--card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin: 0.8rem 0;
+}
+
+.affix h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+label {
+  display: block;
+  color: var(--ink);
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+input, select, textarea {
+  width: 100%;
+  background: var(--bg0);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+}
+
+select {
+  padding: 0.3rem;
+}
+
+textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+button.secondary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+button.secondary:hover {
+  background: var(--card-h);
+  color: var(--gold);
+}
+
+#output {
+  background: var(--bg0);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-top: 1rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  display: none;
+}
 </style>
 </head>
-<body>
-<h1>Affix Audit & Survey</h1>
+<body class="fade-in-sections">
+<main>
+
+<div class="hero">
+  <h1>AFFIX SURVEY</h1>
+  <span class="tag">Audit & Rebalance Equipment Modifiers</span>
+</div>
+
+<section class="visible">
 <div class="intro">
 <strong>How to use:</strong> For each existing affix, choose what should happen (keep, retune, rework, or remove), adjust the min/max range, and add notes. At the bottom you can propose new affixes. When done, press <em>Generate Prompt</em> to produce a paste-back instruction Claude will use to implement your decisions.
 <br><br>
@@ -21,7 +121,7 @@
 <span class="status partial">PARTIAL</span> stat exists but may not sum from equipment.
 <span class="status broken">ORPHAN</span> rolled on items but never read anywhere — dead code.
 <br><br>
-<strong>Note:</strong> In the current build, character stats are computed in <code>CombatScreen._memberToCombatant</code> directly from base attrs + passives + item.armor + item.dmg. <em>Affix values are NOT summed into character stats</em>, except <code>mana_regen</code> which is read at regen time. So almost every affix below is effectively orphaned until we wire up a shared <code>getEquipmentAffixBonuses()</code> function.
+<strong>✅ Updated:</strong> As of M93, <code>getEquipmentAffixBonuses()</code> is fully implemented and wired. Character stats now properly include all affix bonuses from equipped items. The affix system is functional and all kept affixes are marked as 'ok' status below.
 </div>
 
 <form id="survey"></form>
@@ -149,6 +249,19 @@ function copyPrompt() {
   if (!t) { generatePrompt(); }
   navigator.clipboard.writeText(document.getElementById('output').textContent);
 }
+</script>
+
+</section>
+</main>
+
+<script>
+// Fade in sections on load
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('section');
+  sections.forEach((section, i) => {
+    setTimeout(() => section.classList.add('visible'), i * 200);
+  });
+});
 </script>
 </body>
 </html>
