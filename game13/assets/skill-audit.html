@@ -57,6 +57,7 @@
 .b-wired { background: #2a5a2a; color: #a0f0a0; }
 .b-partial { background: #6a5a20; color: #ffe080; }
 .b-orphan { background: #6a2020; color: #ffa0a0; }
+.b-blocked { background: #402060; color: #d0a0ff; border: 1px solid #8060c0; cursor: help; }
 
 .summary {
   background: var(--surface);
@@ -124,6 +125,7 @@ select {
 <code>skill.aoe</code> fully handles ALL types including <code>chain, chain3, random3, multi3, pierce_row, single_overflow, adjacent2, group2, row2</code>. Magic Missile fires 3 bolts, Multi-Shot fires 3 shots, Chain Lightning chains properly.<br><br>
 <code>eff.extraAction</code> is properly consumed by the turn loop. Haste, Rally Action, Masterstroke, Time Stop, Ballad of Valor all grant extra actions correctly.<br><br>
 <strong>Remaining issues are mostly in specialized skill types (zone, utility, passive, counter, debuff) — not core combat mechanics.</strong></div>
+<p><button onclick="copyIssuePrompt()">Copy Issue Prompt</button> <span id="cipMsg" style="color:#80e080;font-size:0.8rem;"></span></p>
 <div class="summary" id="summary"></div>
 <h2>Per-class</h2><div id="classRollup"></div>
 <h2>Skills</h2><form id="survey"></form>
@@ -161,7 +163,7 @@ const SK=[
 ['aimed_shot','Aimed Shot','ranger','ranged','150% DEX',['damageStat','damageMult','armorPen'],[],[['Pierce','dead'],['Barbed','dead']],'wired','Wired in m94 — effect.armorPen now flows through. See skills_m94.test.js.'],
 ['multi_shot','Multi-Shot','ranger','ranged','3 targets',['damageStat','damageMult'],[],[['Quiver','targets dead'],['Bleeding','dead']],'wired','CORRECTED: aoe:multi3 implemented correctly, fires 3 shots at same target'],
 ['smoke_trap','Smoke Trap','ranger','trap','Blind',[],['type:trap UNHANDLED','blind has no hit penalty'],[['Choking','dead'],['Double','dead']],'orphan',''],
-['rain_of_arrows','Rain of Arrows','ranger','ranged','All 3r',['aoe:all','damageStat'],['duration unread — no volley tick'],[['Serrated','dead'],['Endless','dead']],'partial',''],
+['rain_of_arrows','Rain of Arrows','ranger','ranged','All 3 volleys',['aoe:all','damageStat','multiHits'],[],[['Serrated','dead'],['Endless','dead']],'wired','M95: duration drives multiHits → 3 volleys × all enemies.'],
 ['backstab','Backstab','rogue','melee','vs stunned',['damageStat','damageMult','conditionBonus'],[],[['Vitals','crit dead'],['Retreat','dead']],'wired','Wired in m94 — conditionBonus 1.5× vs debuffed targets. See skills_m94.test.js.'],
 ['poison_blade','Poison Blade','rogue','buff','Next 3 poison',['effect.onHitStatus'],[],[['Venom','dead'],['Coated','dead']],'wired','Wired in m94 — onHitStatus applies poison on basic attacks. See skills_m94.test.js.'],
 ['shadow_step','Shadow Step','rogue','melee','Teleport',['aoe:single','damageStat','damageMult'],[],[['Veil','dead'],['Cloak','dead']],'wired',''],
@@ -174,24 +176,24 @@ const SK=[
 ['discordant_wail','Discordant Wail','bard','debuff','-30% dmg',[],['type:debuff UNHANDLED'],[['Piercing','dead'],['Screech','dead']],'orphan',''],
 ['ballad_of_valor','Ballad of Valor','bard','buff','Double actions',['effect.extraAction','effect.dmgBuff'],[],[['Verse','dead'],['Chorus','dead']],'wired','Wired in m94 — extraAction consumer from m92 + dmgBuff. See skills_m94.test.js.'],
 ['song_of_ruin','Song of Ruin','bard','magic','147% all + strip',['aoe:all','damageStat','damageMult'],['"removes all buffs" never executed'],[['Dirge','dead'],['Silencing','dead']],'partial',''],
-['corruption','Corruption','warlock','magic','DoT 4r',['damageStat','damageMult'],['DoT never ticks — one burst','spread on death never fires'],[['Blight','dead'],['Virulent','dead']],'partial','⚠ DoT is a lie'],
+['corruption','Corruption','warlock','magic','DoT 4r',['damageStat','damageMult','statusEffects'],['spread-on-death hook missing'],[['Blight','dead'],['Virulent','dead']],'partial','DoT lands via statusEffects/poison; spread-on-death requires death-event hook — BLOCKED on 100%.','Spread-on-death needs an onEnemyDeath event bus.'],
 ['hellfire','Hellfire','warlock','magic','Group+burn',['aoe:group','damageStat','damageMult','statusEffects'],[],[['Searing','dead'],['Expanding','dead']],'wired','Wired in m94 — burn statusEffects added. See skills_m94.test.js.'],
 ['soul_pact','Soul Pact','warlock','buff','Self-DoT + dmgBuff',['effect.selfDamagePct','effect.dmgBuff'],[],[['Hardened','dead'],['Feast','dead']],'wired','Wired in m94. See skills_m94.test.js.'],
 ['void_rift','Void Rift','warlock','zone','DoT+stun',[],['type:zone UNHANDLED'],[['Widening','dead'],['Collapsing','dead']],'partial',''],
 ['demon_bolt','Demon Bolt','demon_hunter','ranged','DEX+INT vs demons',['damageMult','damageStat:dex_int','bonusVsDemon'],[],[['Demonbane','dead'],['Piercing','dead']],'wired','Wired in m94 — dex_int in _getSkillStat (m92) + effect.bonusVsDemon. See skills_m94.test.js.'],
 ['glaive_toss','Glaive Toss','demon_hunter','ranged','Row+bleed',['aoe:row','damageStat','damageMult','statusEffects'],[],[['Return','dead'],['Jagged','dead']],'wired','Wired in m94 — bleed statusEffects added. See skills_m94.test.js.'],
 ['fel_sight','Fel Sight','demon_hunter','buff','Crit+hit',['effect.critBonus','effect.hitBonus'],[],[['Eternal','dead'],['Seer','dead']],'wired','Wired in m94 — crit/hit buff + decay. See skills_m94.test.js.'],
-['vengeance','Vengeance','demon_hunter','melee','Baseline +15%',['aoe:single','damageStat','damageMult','effect.dmgBuff'],['per-death stacking deferred to m95'],[['Unbroken','dead'],['Blood','dead']],'partial','Baseline wired in m94; per-death stacker deferred to m95.'],
-['scrounge','Scrounge','scavenger','utility','Find item',[],['type:utility UNHANDLED'],[['Keen','dead'],['Double','dead']],'orphan',''],
+['vengeance','Vengeance','demon_hunter','melee','+15% per fallen ally',['aoe:single','damageStat','damageMult','stackBonusPerDeath'],[],[['Unbroken','dead'],['Blood','dead']],'wired','M95: _allyDeathCount tracked on combat; Vengeance mult scales with stackBonusPerDeath × deaths.'],
+['scrounge','Scrounge','scavenger','utility','Find item',['type:utility router','findChance log'],[],[['Keen','findChance'],['Double','findChance']],'partial','M95: utility router logs a result; real inventory loot hook lives in inventory.js (outside combat) — BLOCKED on 100%.','Real loot hook requires inventory.js integration outside combat scope.'],
 ['thrown_junk','Thrown Junk','scavenger','ranged','Group 30% stun',['aoe:group','damageStat','damageMult','statusEffects'],[],[['Scrap','dead'],['Wild','dead']],'wired','Wired in m94 — stun statusEffects added. See skills_m94.test.js.'],
 ['makeshift_bomb','Makeshift Bomb','scavenger','ranged','DEX+CON group',['damageMult','aoe:group','damageStat:dex_con','statusEffects'],[],[['Boom','dead'],['Shrapnel','dead']],'wired','Wired in m94 — dex_con stat + burn statusEffects. See skills_m94.test.js.'],
-['jackpot','Jackpot','scavenger','passive','Loot on kill',[],['no passive-on-kill hook'],[['Fortune','dead'],['Coin','dead']],'orphan',''],
-['riposte_s','Riposte (Swash)','swashbuckler','counter','Counter',[],['type:counter UNHANDLED'],[['Double','dead'],['Disarming','dead']],'orphan',''],
-['flourish','Flourish','swashbuckler','melee','3 strikes',['aoe:single','damageStat','damageMult'],['buildsFlairStacks dead','strikeCount unread → 1 hit'],[['Hands','dead'],['Flashy','dead']],'partial',''],
-['taunt','Taunt','swashbuckler','buff','Force target',['effect.tauntedBy'],['enemy AI taunt honoring deferred to m95'],[['Mockery','dead'],['Pride','dead']],'partial','Status applies + decays in m94; enemy AI honors deferred to m95.'],
-['grandeur','Grandeur','swashbuckler','melee','Consume stacks',['aoe:single','damageStat'],['consumesFlairStacks dead','no damageMult'],[['Reserve','dead'],['Theatrical','dead']],'partial',''],
+['jackpot','Jackpot','scavenger','passive','Loot on kill',['type:passive router'],['passive-on-kill hook missing'],[['Fortune','dead'],['Coin','dead']],'partial','M95: passive router logs; on-kill loot requires combat death-hook scaffolding — BLOCKED on 100%.','Needs on-kill event bus in CombatScreen to award bonus loot.'],
+['riposte_s','Riposte (Swash)','swashbuckler','counter','Counter',['type:counter router','parryStance','reflect','onHitStatus'],[],[['Double','parryCount read'],['Disarming','onHitStatus']],'wired','M95: counter router sets parryStance/reflect + imprints disarm/stun onHitStatus.'],
+['flourish','Flourish','swashbuckler','melee','N strikes + Flair',['aoe:single','damageStat','damageMult','strikeCount','buildsFlairStacks'],[],[['Hands','strikeCount'],['Flashy','buildsFlairStacks']],'wired','M95: strikeCount → multiHits; buildsFlairStacks → actor.flairStacks.'],
+['taunt','Taunt','swashbuckler','buff','Force target',['effect.tauntedBy','enemyAI honors'],[],[['Mockery','targets'],['Pride','thorns (partial)']],'wired','M95: _enemyAI checks actor.tauntedBy and targets the caster. Thorns talent is still unread (minor).'],
+['grandeur','Grandeur','swashbuckler','melee','Consume Flair',['aoe:single','damageStat','consumesFlairStacks','stackDmgMult','keepStacks'],[],[['Reserve','keepStacks'],['Theatrical','stackDmgMult']],'wired','M95: reads actor.flairStacks, applies (1 + stacks × stackDmgMult) mult, consumes (keepStacks retained).'],
 ['dragon_claw','Dragon Claw','dragon_knight','melee','Adj+pen',['aoe:adjacent','damageStat:str_dex','damageMult','armorPen'],[],[['Sunder','dead'],['Talons','dead']],'wired','Wired in m94 — effect.armorPen now flows through. See skills_m94.test.js.'],
-['breath_weapon','Breath Weapon','dragon_knight','magic','Cone',['aoe:group','damageStat:str_int','damageMult'],['element never checked'],[['Maw','dead'],['Surge','dead']],'wired',''],
+['breath_weapon','Breath Weapon','dragon_knight','magic','Cone + element',['aoe:group','damageStat:str_int','damageMult','element→status'],[],[['Maw','aoe:group2'],['Surge','elementStatusMult']],'wired','M95: element (fire/ice/lightning/poison) → burn/chill/shock/poison status appended.'],
 ['dragon_scales','Dragon Scales','dragon_knight','buff','Armor+MR',['effect.armorBonus','effect.magicResistBonus'],[],[['Enduring','dead'],['Reflective','dead']],'wired','Wired in m94 — armor/MR buff + decay. See skills_m94.test.js.'],
 ['draconic_fury','Draconic Fury','dragon_knight','buff','+dmg+extraAction',['effect.dmgBuff','effect.extraAction'],[],[['Endurance','dead'],['Wrath','dead']],'wired','Wired in m94 — consumes m92 extraAction path. See skills_m94.test.js.'],
 ['chain_lightning','Chain Lightning','stormcaller','magic','Leap to 3',['damageStat','damageMult'],[],[['Arc','chainTargets dead'],['Shocking','dead']],'wired','CORRECTED: aoe:chain implemented correctly, chains to 3 targets'],
@@ -225,12 +227,13 @@ function render(){
  document.getElementById('classRollup').innerHTML=Object.entries(bc).sort((a,b)=>(a[1].wired/a[1].t)-(b[1].wired/b[1].t)).map(([c,st])=>{const p=Math.round(st.wired/st.t*100);return `<div class="class-row"><span><strong>${c}</strong> (${st.t})</span><span>${st.wired}W ${st.partial}P ${st.orphan}O · <strong style="color:${p>=75?'#80e080':p>=40?'#e8c060':'#e06060'}">${p}%</strong></span></div>`;}).join('');
  const f=document.getElementById('survey');f.innerHTML='';
  for(const sk of SK){
-  const[id,n,c,t,d,ok,o,tal,s,nt]=sk;
+  const[id,n,c,t,d,ok,o,tal,s,nt,blocked]=sk;
   const el=document.createElement('div');el.className='sk-card';
   const okR=ok.map(k=>`<tr><td><code>${k}</code></td><td class="key-on">consumed</td></tr>`).join('');
   const oR=o.map(k=>`<tr><td><code>${k}</code></td><td class="key-off">ORPHAN</td></tr>`).join('');
   const tR=tal.map(x=>`<tr><td>⚠ talent <strong>${x[0]}</strong></td><td class="key-off">${x[1]}</td></tr>`).join('');
-  el.innerHTML=`<h3>${n} <span class="badge ${CL[s]}">${LBL[s]}</span></h3>
+  const bb = blocked ? ` <span class="badge b-blocked" title="${blocked.replace(/"/g,'&quot;')}">BLOCKED</span>` : '';
+  el.innerHTML=`<h3>${n} <span class="badge ${CL[s]}">${LBL[s]}</span>${bb}</h3>
    <div class="sk-meta">class <code>${c}</code> · type <code>${t}</code> · id <code>${id}</code></div>
    <div class="sk-desc">${d}</div>
    <table class="sk-table">${okR}${oR}${tR}</table>
@@ -277,6 +280,25 @@ function gen(){
  const o=document.getElementById('output');o.textContent=L.join('\n');o.style.display='block';
 }
 function cp(){const t=document.getElementById('output').textContent;if(!t)gen();navigator.clipboard.writeText(document.getElementById('output').textContent);}
+function copyIssuePrompt(){
+  const flagged = SK.filter(s => s[8] !== 'wired' && !s[10]).map(s => `${s[1]} (${s[2]}, ${s[8]})`);
+  const blocked = SK.filter(s => s[10]).map(s => `${s[1]} — BLOCKED: ${s[10]}`);
+  const body = [
+    'Re-audit game13 skills and fix anything not 100% wired.',
+    '',
+    'Non-wired skills to focus on:',
+    ...flagged.map(f => `- ${f}`),
+    '',
+    'Architecturally blocked (design input needed — do not silently shelve, ask user):',
+    ...blocked.map(b => `- ${b}`),
+    '',
+    'See public/assets/skill-audit.html for current state. NO SILENT SHELVING — implement every item or flag deferrals up front.'
+  ].join('\n');
+  navigator.clipboard.writeText(body).then(()=>{
+    const m=document.getElementById('cipMsg');m.textContent=`Copied ${flagged.length} flagged + ${blocked.length} blocked to clipboard.`;
+    setTimeout(()=>{m.textContent='';},4000);
+  });
+}
 render();
 </script>
 
