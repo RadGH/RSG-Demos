@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="rsg-news-date" content="2026-04-14">
+<meta name="rsg-news-title" content="Re-redesign — Pixel Engine">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="rsg-game" content="Emberveil">
+<title>Re-redesign — Consistent Character Art via Pixel Engine</title>
+<link rel="stylesheet" href="../assets/_tool-styles.css">
+<script src="../assets/_header.js" defer></script>
+<style>
+  :root {
+    --bg:#0a0608; --surface:#12090d; --card:#1a1218; --card-h:#241a20;
+    --border:rgba(232,160,32,0.2);
+    --accent:#e8a020; --accent2:#f0c060; --gold-bright:#f8d880;
+    --ember1:#c04030; --ok:#5ef2a8; --fg:#f0e8d8; --muted:#8a7a6a;
+    --font-display:'Cinzel',Georgia,serif;
+    --font-ui:'Inter','Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;font-family:var(--font-ui);
+    background:radial-gradient(ellipse at top,#1a0b07 0%,var(--bg) 60%);
+    color:var(--fg);min-height:100vh}
+  h1,h2,h3{font-family:var(--font-display)}
+  .hero{padding:60px 24px 40px;text-align:center;
+    background:linear-gradient(180deg,rgba(232,160,32,0.12),transparent);
+    border-bottom:1px solid var(--border)}
+  .hero h1{font-size:clamp(28px,6vw,52px);margin:0 0 12px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shimmer 3s ease-in-out infinite}
+  @keyframes shimmer{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
+  .hero p{color:var(--muted);max-width:720px;margin:0 auto;font-size:16px;line-height:1.6}
+  .stats{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin:32px auto 0;max-width:900px}
+  .stat{background:var(--card);border:1px solid var(--border);padding:16px 24px;border-radius:12px;min-width:140px}
+  .stat .num{font-size:28px;font-weight:700;color:var(--accent)}
+  .stat .lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+
+  main{max-width:1280px;margin:0 auto;padding:40px 20px 80px}
+  section{margin-bottom:64px;opacity:0;transform:translateY(24px);
+    transition:opacity .8s,transform .8s}
+  section.in{opacity:1;transform:none}
+  h2{font-size:24px;margin-bottom:8px;border-left:4px solid var(--accent);padding-left:14px}
+  .sectionDesc{color:var(--muted);margin-bottom:24px;max-width:720px;line-height:1.6}
+
+  .pipeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:24px}
+  .step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;position:relative;
+    transition:transform .3s,border-color .3s,box-shadow .3s}
+  .step:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 8px 32px rgba(232,160,32,0.18)}
+  .step .n{font-family:var(--font-display);font-size:34px;color:var(--accent);line-height:1}
+  .step h3{margin:8px 0 6px;font-size:15px}
+  .step p{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+
+  .reredesign-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+  .reredesign-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;
+    transition:transform .3s,border-color .3s,box-shadow .3s}
+  .reredesign-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 8px 32px rgba(232,160,32,0.18)}
+  .reredesign-card h3{margin:0 0 12px;font-size:18px;text-transform:capitalize}
+  .compareGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .imgBox{background:linear-gradient(135deg,#1a0f08,#0a0504);border:1px solid var(--border);border-radius:8px;
+    aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:8px;position:relative;overflow:hidden}
+  .imgBox img{max-width:100%;max-height:100%;image-rendering:pixelated;transition:transform .4s}
+  .imgBox:hover img{transform:scale(1.15)}
+  .tag{position:absolute;top:6px;left:6px;font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600;
+    text-transform:uppercase;letter-spacing:0.5px}
+  .tag.old{background:#3a1a0e;color:#d88040}
+  .tag.new{background:#2a1e08;color:var(--gold-bright)}
+  .tag.todo{background:#2a1a08;color:var(--muted)}
+  .variants{margin-top:12px;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .variants .imgBox{aspect-ratio:1;padding:4px}
+  .variants .lbl{position:absolute;bottom:2px;font-size:9px;color:var(--muted)}
+  .placeholder{color:var(--muted);font-size:11px;text-align:center}
+
+  .callout{background:rgba(192,64,48,0.08);border-left:3px solid var(--ember1);
+    padding:16px 20px;border-radius:8px;margin:20px 0;color:var(--fg);line-height:1.6}
+  .callout h3{margin:0 0 8px;color:var(--ember1);font-size:16px}
+  .callout .catline{color:var(--muted);font-style:italic;margin-top:6px;font-size:13px}
+
+  .petList{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:16px}
+  .petCard{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+  .petCard .c{font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:1px}
+  .petCard .n{font-size:14px;color:var(--fg);margin-top:2px}
+  .petCard .s{font-size:11px;color:var(--muted);margin-top:4px}
+
+  .note{background:rgba(232,160,32,0.08);border-left:3px solid var(--accent);
+    padding:12px 16px;border-radius:6px;font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.55}
+
+  @media (max-width:600px){.reredesign-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Re-redesign &mdash; Consistent Character Art</h1>
+  <p>Pixel Engine generates a coherent animation set from each character&rsquo;s portrait. One source of truth for every pose, so the warrior stops losing his helmet mid-swing and the cat stops attacking with a sword.</p>
+  <div class="stats">
+    <div class="stat"><div class="num" id="stat-chars">82</div><div class="lbl">Characters</div></div>
+    <div class="stat"><div class="num" id="stat-vars">492</div><div class="lbl">Variants</div></div>
+    <div class="stat"><div class="num">~5.9k</div><div class="lbl">Est. Credits</div></div>
+    <div class="stat"><div class="num">6</div><div class="lbl">Poses / char</div></div>
+  </div>
+</div>
+
+<main>
+
+<section>
+  <h2>Why we&rsquo;re redoing it</h2>
+  <p class="sectionDesc">M79 shipped an OpenAI-generated roster that looked great at a glance but broke down under scrutiny. Every pose of every character was generated independently, so nothing held together frame-to-frame.</p>
+  <div class="note">
+    Helmets appeared and disappeared between idle and attack. Weapons swapped mid-animation. Armor palettes drifted between poses. The Rogue wore three different cloaks depending on which angle you looked at. And then there was the cat.
+  </div>
+  <div class="callout">
+    <h3>Cat hall of shame</h3>
+    The Shadow Cat companion spawned with a longsword clamped awkwardly between its paws. A domestic feline, attacking with a two-handed weapon, because the prompt generator didn&rsquo;t know animals shouldn&rsquo;t hold steel.
+    <div class="catline">&ldquo;Filter the prompt by character type so the generator never gives a paw a sword.&rdquo; &mdash; the plan doc, finally</div>
+  </div>
+</section>
+
+<section>
+  <h2>The pipeline</h2>
+  <p class="sectionDesc">Portrait in, animated set out. Five steps, mostly free operations wrapped around one paid Pixel Engine call per variant (or one bulk <code>/keyframes</code> call per character &mdash; whichever costs less on the test run).</p>
+  <div class="pipeline">
+    <div class="step"><div class="n">1</div><h3>Source portrait</h3><p>Existing <code>public/images/portraits/&lt;id&gt;.png</code>. Tactician &amp; Chronomancer regenerated via OpenAI this pass.</p></div>
+    <div class="step"><div class="n">2</div><h3>Pixelate</h3><p><code>POST /pixelate</code> &mdash; free &mdash; normalize to ~256px clean pixel base with a tight 32&ndash;48 color palette.</p></div>
+    <div class="step"><div class="n">3</div><h3>Generate variants</h3><p><code>POST /animate</code> with the portrait as reference &mdash; 6 poses: front idle, east idle, east attack, east spell, east down, portrait.</p></div>
+    <div class="step"><div class="n">4</div><h3>Green-screen key</h3><p><code>matte_color: "00ff00"</code> forces a bright green backdrop. ffmpeg <code>colorkey</code> strips it locally.</p></div>
+    <div class="step"><div class="n">5</div><h3>Optimize</h3><p>Existing <code>optimize_images.sh</code> crushes the final PNGs before the build picks them up.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Before / after roster</h2>
+  <p class="sectionDesc">Cards populate as the generation batch lands. Each card shows the old M79 portrait, the new Pixel Engine set, and a 5-variant strip along the bottom.</p>
+  <div class="reredesign-grid" id="reredesign-grid">
+    <!-- TODO: fill once art lands. Example card shape below. -->
+    <div class="reredesign-card" data-id="warrior">
+      <h3>Warrior</h3>
+      <div class="compareGrid">
+        <div class="imgBox"><span class="tag old">M79</span><img src="../images/portraits/warrior.png" alt="Warrior M79"></div>
+        <div class="imgBox"><span class="tag new">New</span><span class="placeholder">pending</span></div>
+      </div>
+      <div class="variants">
+        <div class="imgBox"><span class="tag todo">front</span></div>
+        <div class="imgBox"><span class="tag todo">east</span></div>
+        <div class="imgBox"><span class="tag todo">atk</span></div>
+        <div class="imgBox"><span class="tag todo">spell</span></div>
+        <div class="imgBox"><span class="tag todo">down</span></div>
+      </div>
+    </div>
+    <!-- /TODO -->
+  </div>
+</section>
+
+<section>
+  <h2>Coming soon: class pets</h2>
+  <p class="sectionDesc">These summoned companions wait on the m95 skill rewiring. Once passive trees are live, each class that can summon gets its own pet running through the same Pixel Engine pipeline.</p>
+  <div class="petList">
+    <div class="petCard"><div class="c">Necromancer</div><div class="n">Skeletal Warrior</div><div class="s">Bone-armored, rusty blade.</div></div>
+    <div class="petCard"><div class="c">Necromancer</div><div class="n">Bone Golem</div><div class="s">Slow, heavy, fearless.</div></div>
+    <div class="petCard"><div class="c">Druid</div><div class="n">Wolf</div><div class="s">Claws and bite only.</div></div>
+    <div class="petCard"><div class="c">Druid</div><div class="n">Bear</div><div class="s">Scales with rank.</div></div>
+    <div class="petCard"><div class="c">Warlock</div><div class="n">Imp</div><div class="s">Fire-spitting minion.</div></div>
+    <div class="petCard"><div class="c">Warlock</div><div class="n">Demon</div><div class="s">High-rank summon.</div></div>
+    <div class="petCard"><div class="c">Ranger</div><div class="n">War Hound</div><div class="s">Trained, obedient, vicious.</div></div>
+    <div class="petCard"><div class="c">Pyromancer</div><div class="n">Fire Elemental</div><div class="s">Pure flame silhouette.</div></div>
+    <div class="petCard"><div class="c">Stormcaller</div><div class="n">Lightning Elemental</div><div class="s">Crackling arc-body.</div></div>
+    <div class="petCard"><div class="c">Mage</div><div class="n">Top-Hat Familiar</div><div class="s">A domestic cat in a top hat that casts spells. This one is serious.</div></div>
+  </div>
+  <div class="note" style="margin-top:20px">Generated after the skill rework lands. Pet stats inherit from summoner skill ranks; gear can roll % pet damage / % pet HP in a later pass.</div>
+</section>
+
+</main>
+
+<script>
+  // IntersectionObserver reveal, matches m79-redesign DNA
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('section').forEach(s => io.observe(s));
+</script>
+</body>
+</html>

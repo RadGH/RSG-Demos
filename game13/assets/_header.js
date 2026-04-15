@@ -101,6 +101,7 @@
       { href: NEWS_ROOT + 'm5.html',          label: 'Milestone 5 Report',  date: '2025-10-01' }
     ],
     game13: [
+      { href: NEWS_ROOT + 're-redesign.html',        label: 'Re-redesign — Pixel Engine', date: '2026-04-14' },
       { href: NEWS_ROOT + 'm79-redesign.html',       label: 'M79 Redesign Report',   date: '2026-04-01' },
       { href: NEWS_ROOT + 'tap-weapons.html',        label: 'Tap Weapons Design',    date: '2026-03-28' },
       { href: NEWS_ROOT + 'simulation-overhaul.html',label: 'Simulation Overhaul',   date: '2026-03-20' },
