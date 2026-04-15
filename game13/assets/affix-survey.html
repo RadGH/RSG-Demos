@@ -139,9 +139,9 @@ button.secondary:hover {
 
 <script>
 const AFFIXES = [
-  { id:'of_str', name:'Sturdy (+STR)', stat:'str', min:1, max:4, kind:'prefix', status:'ok', note:"Wired in M93 via getEquipmentAffixBonuses — flows into CombatScreen._memberToCombatant STR." },
-  { id:'of_dex', name:'Swift (+DEX)', stat:'dex', min:1, max:4, kind:'prefix', status:'ok', note:"Wired in M93 via getEquipmentAffixBonuses — flows into DEX (and thus hit/dodge/init)." },
-  { id:'of_int', name:'Wise (+INT)', stat:'int', min:1, max:4, kind:'prefix', status:'ok', note:"Wired in M93 via getEquipmentAffixBonuses — flows into INT (and thus maxMp)." },
+  { id:'of_str', name:'Sturdy (+STR)', stat:'str', min:1, max:4, kind:'prefix', status:'ok', note:"M93: flows into CombatScreen._memberToCombatant STR. M95: STR only drives basic-attack damage when the equipped weapon is category 'heavy' (sword/axe/hammer/greatsword/polearm). With a 'light' weapon DEX drives damage; with a 'magic' weapon INT does." },
+  { id:'of_dex', name:'Swift (+DEX)', stat:'dex', min:1, max:4, kind:'prefix', status:'ok', note:"M93: flows into DEX (and thus hit/dodge/init). M95: DEX also drives basic-attack damage when the equipped weapon is category 'light' (dagger/rapier/bow/crossbow/spear/javelin)." },
+  { id:'of_int', name:'Wise (+INT)', stat:'int', min:1, max:4, kind:'prefix', status:'ok', note:"M93: flows into INT (and thus maxMp). M95: INT drives basic-attack damage when the equipped weapon is category 'magic' (wand/staff/orb/tome/scepter). Wands additionally contribute round(INT*0.5) spell-power on top of the range." },
   { id:'of_con', name:'Hardy (+CON)', stat:'con', min:1, max:4, kind:'prefix', status:'ok', note:"Wired in M93 via getEquipmentAffixBonuses — CON affix now folds into computeMaxHp at 10 HP per point." },
   { id:'sharp', name:'Sharp (+dmg)', stat:'dmg', min:1, max:3, kind:'prefix', status:'ok', note:"Wired in M93 via getEquipmentAffixBonuses — added to eqpDmgBonus in _memberToCombatant." },
   { id:'sturdy', name:'Reinforced (+armor)', stat:'armor', min:1, max:3, kind:'prefix', status:'ok', note:"Wired in M93 via getEquipmentAffixBonuses — added on top of computeHeroArmor." },
