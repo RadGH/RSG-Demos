@@ -68,7 +68,8 @@
       { href: ASSETS + 'skill-audit.html', label: 'Skill Audit' },
       { href: ASSETS + 'rebalance-survey.html', label: 'Rebalance Survey' },
       { href: ASSETS + 'rebalance.html', label: 'Rebalance' },
-      { href: ASSETS + 'sprite-flip-review.html', label: 'Sprite Flip Review' }
+      { href: ASSETS + 'sprite-flip-review.html', label: 'Sprite Flip Review' },
+      { href: ASSETS + 'redesign-survey.html', label: 'Redesign Survey' }
     ]
   };
   // News registry — populated by the migration pass. Sorted newest first.
