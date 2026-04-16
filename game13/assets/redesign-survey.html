@@ -93,7 +93,7 @@
   /* Desktop: one row with 5 columns */
   .survey-head, .survey-row {
     display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1.2fr 1fr 1fr;
     gap: 0.75rem;
     align-items: center;
   }
@@ -336,7 +336,7 @@
 
 <div class="intro">
   <p>Vote on which art-generation service produced the best sprite for each character. Your feedback helps determine which graphics to use for future projects. Skip any sprite you're unsure about &mdash; it will appear as "Skipped" in the report.</p>
-  <p class="muted" style="margin-bottom:0;">Four candidate services are compared: <strong style="color:var(--gold-glow);">OpenAI</strong>, <strong style="color:var(--gold-glow);">PixelLab</strong>, <strong style="color:var(--gold-glow);">Pixel Engine</strong>, and <strong style="color:var(--gold-glow);">SpriteCook</strong>. A dashed &ldquo;&mdash;&rdquo; cell means that service has no sprite for this character.</p>
+  <p class="muted" style="margin-bottom:0;">Two candidate services are compared: <strong style="color:var(--gold-glow);">OpenAI</strong> and <strong style="color:var(--gold-glow);">SpriteCook</strong>. A dashed &ldquo;&mdash;&rdquo; cell means that service has no sprite for this character.</p>
 </div>
 
 <div class="counter">
@@ -349,8 +349,6 @@
 <div class="survey-head">
   <div>Sprite</div>
   <div>OpenAI</div>
-  <div>PixelLab</div>
-  <div>Pixel Engine</div>
   <div>SpriteCook</div>
 </div>
 
@@ -377,60 +375,58 @@
 <script>
   // -------------------------------------------------------------------------
   // Row data. Verified against disk at build time.
-  // Each row: { id, name, openai, pixellab, pixelengine, spritecook }
+  // Each row: { id, name, openai, spritecook }
   // A null field means that service has no image for this sprite.
   // -------------------------------------------------------------------------
   const ROWS = [
     // Heroes (20)
-    { id:'warrior',       name:'Warrior',        openai:'../images/portraits/warrior.png',       pixellab:'../images/sprites_pixellab_archive/warrior_south.png',       pixelengine:'../images/sprites_pixelengine/warrior_portrait.png', spritecook:'../images/spritecook/warrior_portrait.png' },
-    { id:'mage',          name:'Mage',           openai:'../images/portraits/mage.png',          pixellab:'../images/sprites_pixellab_archive/mage_south.png',          pixelengine:null, spritecook:'../images/spritecook/mage_portrait.png' },
-    { id:'rogue',         name:'Rogue',          openai:'../images/portraits/rogue.png',         pixellab:'../images/sprites_pixellab_archive/rogue_south.png',         pixelengine:null, spritecook:'../images/spritecook/rogue_portrait.png' },
-    { id:'cleric',        name:'Cleric',         openai:'../images/portraits/cleric.png',        pixellab:'../images/sprites_pixellab_archive/cleric_south.png',        pixelengine:null, spritecook:'../images/spritecook/cleric_portrait.png' },
-    { id:'ranger',        name:'Ranger',         openai:'../images/portraits/ranger.png',        pixellab:'../images/sprites_pixellab_archive/ranger_south.png',        pixelengine:null, spritecook:'../images/spritecook/ranger_portrait.png' },
-    { id:'paladin',       name:'Paladin',        openai:'../images/portraits/paladin.png',       pixellab:'../images/sprites_pixellab_archive/paladin_south.png',       pixelengine:null, spritecook:'../images/spritecook/paladin_portrait.png' },
-    { id:'necromancer',   name:'Necromancer',    openai:'../images/portraits/necromancer.png',   pixellab:'../images/sprites_pixellab_archive/necromancer_south.png',   pixelengine:null, spritecook:'../images/spritecook/necromancer_portrait.png' },
-    { id:'bard',          name:'Bard',           openai:'../images/portraits/bard.png',          pixellab:'../images/sprites_pixellab_archive/bard_south.png',          pixelengine:null, spritecook:'../images/spritecook/bard_portrait.png' },
-    { id:'druid',         name:'Druid',          openai:'../images/portraits/druid.png',         pixellab:'../images/sprites_pixellab_archive/druid_south.png',         pixelengine:null, spritecook:'../images/spritecook/druid_portrait.png' },
-    { id:'demon_hunter',  name:'Demon Hunter',   openai:'../images/portraits/demon_hunter.png',  pixellab:'../images/sprites_pixellab_archive/demon_hunter_south.png',  pixelengine:null, spritecook:'../images/spritecook/demon_hunter_portrait.png' },
-    { id:'tactician',     name:'Tactician',      openai:'../images/portraits/tactician.png',     pixellab:null, pixelengine:null, spritecook:'../images/spritecook/tactician_portrait.png' },
-    { id:'chronomancer',  name:'Chronomancer',   openai:'../images/portraits/chronomancer.png',  pixellab:null, pixelengine:null, spritecook:'../images/spritecook/chronomancer_portrait.png' },
-    { id:'stormcaller',   name:'Stormcaller',    openai:'../images/portraits/stormcaller.png',   pixellab:'../images/sprites_pixellab_archive/stormcaller_south.png',   pixelengine:null, spritecook:'../images/spritecook/stormcaller_portrait.png' },
-    { id:'dragon_knight', name:'Dragon Knight',  openai:'../images/portraits/dragon_knight.png', pixellab:'../images/sprites_pixellab_archive/dragon_knight_south.png', pixelengine:null, spritecook:'../images/spritecook/dragon_knight_portrait.png' },
-    { id:'swashbuckler',  name:'Swashbuckler',   openai:'../images/portraits/swashbuckler.png',  pixellab:'../images/sprites_pixellab_archive/swashbuckler_south.png',  pixelengine:null, spritecook:'../images/spritecook/swashbuckler_portrait.png' },
-    { id:'scavenger',     name:'Scavenger',      openai:'../images/portraits/scavenger.png',     pixellab:'../images/sprites_pixellab_archive/scavenger_south.png',     pixelengine:null, spritecook:'../images/spritecook/scavenger_portrait.png' },
-    { id:'pyromancer',    name:'Pyromancer',     openai:'../images/portraits/pyromancer.png',    pixellab:'../images/sprites_pixellab_archive/pyromancer_south.png',    pixelengine:null, spritecook:'../images/spritecook/pyromancer_portrait.png' },
-    { id:'warlock',       name:'Warlock',        openai:'../images/portraits/warlock.png',       pixellab:'../images/sprites_pixellab_archive/warlock_south.png',       pixelengine:null, spritecook:'../images/spritecook/warlock_portrait.png' },
-    { id:'fighter',       name:'Fighter',        openai:'../images/portraits/fighter.png',       pixellab:'../images/sprites_pixellab_archive/fighter_south.png',       pixelengine:null, spritecook:'../images/spritecook/fighter_portrait.png' },
-    { id:'oracle',        name:'Oracle',         openai:'../images/portraits/oracle.png',        pixellab:'../images/sprites_pixellab_archive/oracle_south.png',        pixelengine:null, spritecook:'../images/spritecook/oracle_portrait.png' },
+    { id:'warrior',       name:'Warrior',        openai:'../images/portraits/warrior.png',       spritecook:'../images/spritecook/warrior_portrait.png' },
+    { id:'mage',          name:'Mage',           openai:'../images/portraits/mage.png',          spritecook:'../images/spritecook/mage_portrait.png' },
+    { id:'rogue',         name:'Rogue',          openai:'../images/portraits/rogue.png',         spritecook:'../images/spritecook/rogue_portrait.png' },
+    { id:'cleric',        name:'Cleric',         openai:'../images/portraits/cleric.png',        spritecook:'../images/spritecook/cleric_portrait.png' },
+    { id:'ranger',        name:'Ranger',         openai:'../images/portraits/ranger.png',        spritecook:'../images/spritecook/ranger_portrait.png' },
+    { id:'paladin',       name:'Paladin',        openai:'../images/portraits/paladin.png',       spritecook:'../images/spritecook/paladin_portrait.png' },
+    { id:'necromancer',   name:'Necromancer',    openai:'../images/portraits/necromancer.png',   spritecook:'../images/spritecook/necromancer_portrait.png' },
+    { id:'bard',          name:'Bard',           openai:'../images/portraits/bard.png',          spritecook:'../images/spritecook/bard_portrait.png' },
+    { id:'druid',         name:'Druid',          openai:'../images/portraits/druid.png',         spritecook:'../images/spritecook/druid_portrait.png' },
+    { id:'demon_hunter',  name:'Demon Hunter',   openai:'../images/portraits/demon_hunter.png',  spritecook:'../images/spritecook/demon_hunter_portrait.png' },
+    { id:'tactician',     name:'Tactician',      openai:'../images/portraits/tactician.png',     spritecook:'../images/spritecook/tactician_portrait.png' },
+    { id:'chronomancer',  name:'Chronomancer',   openai:'../images/portraits/chronomancer.png',  spritecook:'../images/spritecook/chronomancer_portrait.png' },
+    { id:'stormcaller',   name:'Stormcaller',    openai:'../images/portraits/stormcaller.png',   spritecook:'../images/spritecook/stormcaller_portrait.png' },
+    { id:'dragon_knight', name:'Dragon Knight',  openai:'../images/portraits/dragon_knight.png', spritecook:'../images/spritecook/dragon_knight_portrait.png' },
+    { id:'swashbuckler',  name:'Swashbuckler',   openai:'../images/portraits/swashbuckler.png',  spritecook:'../images/spritecook/swashbuckler_portrait.png' },
+    { id:'scavenger',     name:'Scavenger',      openai:'../images/portraits/scavenger.png',     spritecook:'../images/spritecook/scavenger_portrait.png' },
+    { id:'pyromancer',    name:'Pyromancer',     openai:'../images/portraits/pyromancer.png',    spritecook:'../images/spritecook/pyromancer_portrait.png' },
+    { id:'warlock',       name:'Warlock',        openai:'../images/portraits/warlock.png',       spritecook:'../images/spritecook/warlock_portrait.png' },
+    { id:'fighter',       name:'Fighter',        openai:'../images/portraits/fighter.png',       spritecook:'../images/spritecook/fighter_portrait.png' },
+    { id:'oracle',        name:'Oracle',         openai:'../images/portraits/oracle.png',        spritecook:'../images/spritecook/oracle_portrait.png' },
 
     // Bosses & enemies
-    { id:'ancient_dragon',      name:'Ancient Dragon',      openai:'../images/portraits/ancient_dragon.png',      pixellab:null,                                                                 pixelengine:null, spritecook:null },
-    { id:'archfiend_malgrath',  name:'Archfiend Malgrath',  openai:'../images/portraits/archfiend_malgrath.png',  pixellab:'../images/sprites_pixellab_archive/archfiend_malgrath_south.png',   pixelengine:null, spritecook:null },
-    { id:'ash_wraith',          name:'Ash Wraith',          openai:'../images/portraits/ash_wraith.png',          pixellab:'../images/sprites_pixellab_archive/ash_wraith_south.png',           pixelengine:null, spritecook:null },
-    { id:'bandit_captain',      name:'Bandit Captain',      openai:'../images/portraits/bandit_captain.png',      pixellab:'../images/sprites_pixellab_archive/bandit_captain_south.png',       pixelengine:null, spritecook:null },
-    { id:'dragon_king',         name:'Dragon King',         openai:'../images/portraits/dragon_king.png',         pixellab:null,                                                                 pixelengine:null, spritecook:null },
-    { id:'emberveil_sovereign', name:'Emberveil Sovereign', openai:'../images/portraits/emberveil_sovereign.png', pixellab:'../images/sprites_pixellab_archive/emberveil_sovereign_south.png',  pixelengine:null, spritecook:null },
-    { id:'goblin_warlord',      name:'Goblin Warlord',      openai:'../images/portraits/goblin_warlord.png',      pixellab:'../images/sprites_pixellab_archive/goblin_warlord_south.png',       pixelengine:null, spritecook:null },
-    { id:'hell_knight',         name:'Hell Knight',         openai:'../images/portraits/hell_knight.png',         pixellab:'../images/sprites_pixellab_archive/hell_knight_south.png',          pixelengine:null, spritecook:null },
-    { id:'lava_titan',          name:'Lava Titan',          openai:'../images/portraits/lava_titan.png',          pixellab:'../images/sprites_pixellab_archive/lava_titan_south.png',           pixelengine:null, spritecook:null },
-    { id:'cosmic_titan',        name:'Cosmic Titan',        openai:'../images/portraits/cosmic_titan.png',        pixellab:'../images/sprites_pixellab_archive/cosmic_titan_south.png',         pixelengine:null, spritecook:null },
-    { id:'crystal_golem',       name:'Crystal Golem',       openai:'../images/portraits/crystal_golem.png',       pixellab:'../images/sprites_pixellab_archive/crystal_golem_south.webp',       pixelengine:null, spritecook:null },
-    { id:'dire_wolf',           name:'Dire Wolf',           openai:'../images/portraits/dire_wolf.png',           pixellab:'../images/sprites_pixellab_archive/dire_wolf_south.webp',           pixelengine:null, spritecook:null },
-    { id:'ember_drake',         name:'Ember Drake',         openai:'../images/portraits/ember_drake.png',         pixellab:'../images/sprites_pixellab_archive/ember_drake_south.webp',         pixelengine:null, spritecook:null },
-    { id:'forest_owl',          name:'Forest Owl',          openai:'../images/portraits/forest_owl.png',          pixellab:'../images/sprites_pixellab_archive/forest_owl_south.webp',          pixelengine:null, spritecook:null },
-    { id:'shadow_cat',          name:'Shadow Cat',          openai:'../images/portraits/shadow_cat.png',          pixellab:'../images/sprites_pixellab_archive/shadow_cat_south.webp',          pixelengine:null, spritecook:null },
-    { id:'spirit_wisp',         name:'Spirit Wisp',         openai:'../images/portraits/spirit_wisp.png',         pixellab:'../images/sprites_pixellab_archive/spirit_wisp_south.webp',         pixelengine:null, spritecook:null },
-    { id:'bone_hound',          name:'Bone Hound',          openai:'../images/portraits/bone_hound.png',          pixellab:'../images/sprites_pixellab_archive/bone_hound_south.webp',          pixelengine:null, spritecook:null },
-    { id:'ice_sprite',          name:'Ice Sprite',          openai:'../images/portraits/ice_sprite.png',          pixellab:'../images/sprites_pixellab_archive/ice_sprite_south.webp',          pixelengine:null, spritecook:null },
-    { id:'swamp_frog',          name:'Swamp Frog',          openai:'../images/portraits/swamp_frog.png',          pixellab:'../images/sprites_pixellab_archive/swamp_frog_south.webp',          pixelengine:null, spritecook:null },
-    { id:'void_moth',           name:'Void Moth',           openai:'../images/portraits/void_moth.png',           pixellab:'../images/sprites_pixellab_archive/void_moth_south.webp',           pixelengine:null, spritecook:null }
+    { id:'ancient_dragon',      name:'Ancient Dragon',      openai:'../images/portraits/ancient_dragon.png',      spritecook:null },
+    { id:'archfiend_malgrath',  name:'Archfiend Malgrath',  openai:'../images/portraits/archfiend_malgrath.png',  spritecook:null },
+    { id:'ash_wraith',          name:'Ash Wraith',          openai:'../images/portraits/ash_wraith.png',          spritecook:null },
+    { id:'bandit_captain',      name:'Bandit Captain',      openai:'../images/portraits/bandit_captain.png',      spritecook:null },
+    { id:'dragon_king',         name:'Dragon King',         openai:'../images/portraits/dragon_king.png',         spritecook:null },
+    { id:'emberveil_sovereign', name:'Emberveil Sovereign', openai:'../images/portraits/emberveil_sovereign.png', spritecook:null },
+    { id:'goblin_warlord',      name:'Goblin Warlord',      openai:'../images/portraits/goblin_warlord.png',      spritecook:null },
+    { id:'hell_knight',         name:'Hell Knight',         openai:'../images/portraits/hell_knight.png',         spritecook:null },
+    { id:'lava_titan',          name:'Lava Titan',          openai:'../images/portraits/lava_titan.png',          spritecook:null },
+    { id:'cosmic_titan',        name:'Cosmic Titan',        openai:'../images/portraits/cosmic_titan.png',        spritecook:null },
+    { id:'crystal_golem',       name:'Crystal Golem',       openai:'../images/portraits/crystal_golem.png',       spritecook:null },
+    { id:'dire_wolf',           name:'Dire Wolf',           openai:'../images/portraits/dire_wolf.png',           spritecook:null },
+    { id:'ember_drake',         name:'Ember Drake',         openai:'../images/portraits/ember_drake.png',         spritecook:null },
+    { id:'forest_owl',          name:'Forest Owl',          openai:'../images/portraits/forest_owl.png',          spritecook:null },
+    { id:'shadow_cat',          name:'Shadow Cat',          openai:'../images/portraits/shadow_cat.png',          spritecook:null },
+    { id:'spirit_wisp',         name:'Spirit Wisp',         openai:'../images/portraits/spirit_wisp.png',         spritecook:null },
+    { id:'bone_hound',          name:'Bone Hound',          openai:'../images/portraits/bone_hound.png',          spritecook:null },
+    { id:'ice_sprite',          name:'Ice Sprite',          openai:'../images/portraits/ice_sprite.png',          spritecook:null },
+    { id:'swamp_frog',          name:'Swamp Frog',          openai:'../images/portraits/swamp_frog.png',          spritecook:null },
+    { id:'void_moth',           name:'Void Moth',           openai:'../images/portraits/void_moth.png',           spritecook:null }
   ];
 
-  const SERVICE_KEYS = ['openai', 'pixellab', 'pixelengine', 'spritecook'];
+  const SERVICE_KEYS = ['openai', 'spritecook'];
   const SERVICE_LABELS = {
     openai: 'OpenAI',
-    pixellab: 'PixelLab',
-    pixelengine: 'Pixel Engine',
     spritecook: 'SpriteCook'
   };
 
@@ -519,12 +515,16 @@
   function buildReport() {
     const now = new Date();
     const iso = now.toISOString().slice(0, 16).replace('T', ' ');
-    const counts = { openai: 0, pixellab: 0, pixelengine: 0, spritecook: 0, skipped: 0 };
+    const counts = { openai: 0, spritecook: 0, skipped: 0 };
     const lines = [];
     for (const row of ROWS) {
       const pick = choices[row.id];
-      if (pick) counts[pick]++; else counts.skipped++;
-      lines.push('  ' + pad(row.name) + ' ' + (pick ? SERVICE_LABELS[pick] : '(skipped)'));
+      if (pick) {
+        counts[pick]++;
+        lines.push('  ' + pad(row.name) + ' ' + SERVICE_LABELS[pick]);
+      } else {
+        counts.skipped++;
+      }
     }
     const out = [];
     out.push('Redesign Survey — Emberveil');
@@ -532,13 +532,12 @@
     out.push('');
     out.push('Summary:');
     out.push('  OpenAI:        ' + counts.openai + ' choice' + (counts.openai === 1 ? '' : 's'));
-    out.push('  PixelLab:      ' + counts.pixellab + ' choice' + (counts.pixellab === 1 ? '' : 's'));
-    out.push('  Pixel Engine:  ' + counts.pixelengine + ' choice' + (counts.pixelengine === 1 ? '' : 's'));
     out.push('  SpriteCook:    ' + counts.spritecook + ' choice' + (counts.spritecook === 1 ? '' : 's'));
     out.push('  (Skipped):     ' + counts.skipped);
     out.push('');
     out.push('Choices:');
-    out.push(...lines);
+    if (lines.length) out.push(...lines);
+    else out.push('  (none)');
     out.push('');
     out.push('Total sprites surveyed: ' + ROWS.length);
     return out.join('\n');
