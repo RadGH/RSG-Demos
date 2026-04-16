@@ -18,9 +18,46 @@
       "file": "oracle_east_attack.png"
     },
     "east_spell": {
-      "asset_id": "565622e2-d01c-4986-8763-a7ca5d9851e1",
+      "asset_id": "0fbaf2ea-832b-4fa1-9c54-0700c158a842",
       "file": "oracle_east_spell.png",
-      "note": "pixel URL was 16x16; used raw URL scaled to 256x256 nearest-neighbor"
+      "note": "v2 regeneration, proper RGBA transparency"
+    },
+    "east_ko": {
+      "asset_id": "a37ea3b9-9285-4cb2-8bf1-3daa2bfb150c",
+      "file": "oracle_east_ko.png"
+    }
+  },
+  "paladin": {
+    "portrait": {
+      "asset_id": "4b7220f1-a3a1-41a2-a47b-1d8e48f2d205",
+      "file": "paladin_portrait.png",
+      "role": "canonical_reference"
+    },
+    "south": {
+      "asset_id": "23e184c1-19d6-42d7-bb5a-dab82a995c59",
+      "file": "paladin_south.png"
+    },
+    "east": {
+      "asset_id": "e3ebe81d-39e0-4d88-85e2-a4391b21935b",
+      "file": "paladin_east.png"
+    },
+    "east_attack": {
+      "asset_id": "30e6329c-a5e9-46a4-8b49-ea52f7e14e57",
+      "file": "paladin_east_attack.png"
+    },
+    "east_spell": {
+      "asset_id": "5e378c85-0b61-4fbe-9987-4bc08f3c106f",
+      "file": "paladin_east_spell.png",
+      "note": "pixel URL was 24x24; used raw + sharp bg removal"
+    },
+    "east_ko": {
+      "asset_id": "85f892a9-d27b-4f6e-913b-0ff39627dbeb",
+      "file": "paladin_east_ko.png",
+      "note": "pixel URL was 26x26; used raw + sharp bg removal"
+    },
+    "east_block": {
+      "asset_id": "f78e5610-15cc-4fe3-baf7-f5c36a637644",
+      "file": "paladin_east_block.png"
     }
   },
   "_meta": {
@@ -29,6 +66,7 @@
     "style": "16-bit SNES RPG style",
     "theme": "dark fantasy medieval",
     "target_size": "256x256",
-    "scale_method": "nearest-neighbor"
+    "scale_method": "nearest-neighbor",
+    "bg_removal": "sharp corner-pixel tolerance=30 for raw URLs without alpha"
   }
 }
