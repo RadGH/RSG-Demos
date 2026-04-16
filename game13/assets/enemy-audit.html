@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="rsg-game" content="game13">
-<title>Enemy Survey — game13</title>
+<title>Enemy Audit — game13</title>
 <script src="./_header.js" defer></script>
 <link rel="stylesheet" href="./_tool-styles.css">
 <style>
@@ -48,6 +48,22 @@
   button:hover { filter:brightness(1.2); }
   pre#output { background:#0b0d14; color:#dce3f0; border:1px solid #333a4a; border-radius:6px; padding:12px; max-height:420px; overflow:auto; font-size:11px; white-space:pre-wrap; display:none; }
   .count-summary { color:#ffcf7a; font-size:12px; margin-bottom:8px; }
+  /* Bulk Adjust */
+  .bulk-adjust { background:#131620; border:1px solid #3a4050; border-radius:8px; padding:14px; margin-bottom:14px; }
+  .bulk-adjust h3 { margin:0 0 10px 0; font-size:14px; color:#ffcf7a; letter-spacing:0.5px; }
+  .bulk-adjust-row { display:flex; flex-wrap:wrap; gap:8px; align-items:flex-end; }
+  .bulk-adjust-row label { font-size:11px; color:#8b93a8; display:flex; flex-direction:column; gap:2px; }
+  .bulk-adjust-row input, .bulk-adjust-row select { background:#0e1018; color:#e6e8ee; border:1px solid #3a4050; border-radius:4px; padding:5px 7px; font-size:12px; min-width:90px; }
+  .bulk-adjust-row input[type="number"] { width:80px; min-width:60px; }
+  .bulk-adjust-row input[type="text"] { width:200px; min-width:140px; }
+  .bulk-adjust-actions { display:flex; gap:6px; align-items:flex-end; padding-bottom:1px; }
+  .bulk-adjust-actions button { padding:5px 12px; font-size:12px; }
+  .bulk-adjust-log { margin-top:8px; font-size:11px; color:#c9d2e3; line-height:1.5; }
+  .bulk-adjust-log .adj-entry { background:#1a1d28; border:1px solid #2d3445; border-radius:4px; padding:4px 8px; margin-top:4px; display:flex; justify-content:space-between; align-items:center; }
+  .bulk-adjust-log .adj-entry button { padding:2px 8px; font-size:10px; background:#2a1a1a; border-color:#8b4040; color:#ff9e9e; }
+  @media (min-width:768px) {
+    .bulk-adjust { position:sticky; top:52px; z-index:40; }
+  }
   @media (min-width:720px) {
     .enemy-head { align-items:center; }
     .sprite { width:80px; height:80px; }
@@ -56,7 +72,7 @@
 </style>
 </head>
 <body>
-<h1>Enemy Audit & Survey</h1>
+<h1>Enemy Audit</h1>
 <div class="intro">
 <strong>How to use:</strong> Review every enemy in game13 and mark whether their current stats feel <em>balanced</em>, <em>overtuned</em>, or <em>undertuned</em>. Edit any field that needs to change, add notes, and optionally describe a visual rework. When finished, click <em>Generate Prompt</em> to produce a paste-back instruction Claude will use to apply the changes via <code>src/maps/mapData.js</code>.
 <br><br>
@@ -85,6 +101,56 @@
     <div class="chart-block"><strong style="font-size:11px;color:#8b93a8;">by role</strong><svg id="chart_role" viewBox="0 0 300 120"></svg></div>
     <div class="chart-block"><strong style="font-size:11px;color:#8b93a8;">by tier</strong><svg id="chart_tier" viewBox="0 0 300 120"></svg></div>
   </div>
+</div>
+
+<div class="bulk-adjust" id="bulkAdjust">
+  <h3>Bulk Adjust</h3>
+  <div class="bulk-adjust-row">
+    <label>Filter by
+      <select id="ba_filterKey">
+        <option value="">All enemies</option>
+        <option value="zone">Zone</option>
+        <option value="role">Role</option>
+        <option value="tier">Tier</option>
+        <option value="isBoss">Boss</option>
+        <option value="tag">Tag</option>
+      </select>
+    </label>
+    <label>Value
+      <select id="ba_filterVal" disabled><option value="">(select filter first)</option></select>
+    </label>
+    <label>Property
+      <select id="ba_prop">
+        <option value="hp">HP</option>
+        <option value="dmgMin">Dmg Min</option>
+        <option value="dmgMax">Dmg Max</option>
+        <option value="armor">Armor</option>
+        <option value="hit">Hit</option>
+        <option value="dodge">Dodge</option>
+        <option value="magicResist">Magic Resist</option>
+        <option value="xpValue">XP Reward</option>
+        <option value="level">Level</option>
+      </select>
+    </label>
+    <label>Mode
+      <select id="ba_mode">
+        <option value="pct">Percentage (+/- %)</option>
+        <option value="flat">Flat amount (+/- N)</option>
+        <option value="formula">Formula</option>
+      </select>
+    </label>
+    <label id="ba_amountLabel">Amount
+      <input type="number" id="ba_amount" value="10" step="any">
+    </label>
+    <label id="ba_formulaLabel" style="display:none">Formula
+      <input type="text" id="ba_formula" placeholder="1.5 * level" title="Variables: hp, dmgMin, dmgMax, armor, hit, dodge, magicResist, xpValue, level, tier, act">
+    </label>
+    <div class="bulk-adjust-actions">
+      <button type="button" class="primary" onclick="applyBulkAdjust()">Apply</button>
+      <button type="button" class="secondary" onclick="resetBulkAdjust()">Reset All</button>
+    </div>
+  </div>
+  <div class="bulk-adjust-log" id="ba_log"></div>
 </div>
 
 <div class="count-summary" id="countSummary"></div>
@@ -377,7 +443,7 @@ function generatePrompt() {
   const lines = [
     '# Enemy Rebalance Plan',
     '',
-    '_Survey results from enemy-survey.html. Apply these changes to `src/maps/mapData.js` (ENEMIES + ENEMIES_ACT5 + any inline encounter overrides in ENCOUNTERS)._',
+    '_Survey results from enemy-audit.html. Apply these changes to `src/maps/mapData.js` (ENEMIES + ENEMIES_ACT5 + any inline encounter overrides in ENCOUNTERS)._',
     '',
     'Instructions for Claude:',
     '1. For each enemy listed below, update the template in `src/maps/mapData.js`. Inline stat blocks inside ENCOUNTERS (e.g. Act 4/6 dragons) must be updated alongside the base template.',
@@ -437,7 +503,7 @@ function exportState() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `game13-enemy-survey-${new Date().toISOString().slice(0,10)}.json`;
+  a.download = `game13-enemy-audit-${new Date().toISOString().slice(0,10)}.json`;
   a.click();
   URL.revokeObjectURL(url);
 }
@@ -462,6 +528,143 @@ function importState(ev) {
     }
   };
   reader.readAsText(file);
+}
+
+// ── Bulk Adjust ──────────────────────────────────────────────────────────────
+const bulkAdjustments = []; // {label, filterKey, filterVal, prop, mode, amount, formula}
+const ADJUSTABLE_PROPS = ['hp','dmgMin','dmgMax','armor','hit','dodge','magicResist','xpValue','level'];
+
+// Wire filter-key → filter-value dropdown
+document.getElementById('ba_filterKey').addEventListener('change', function() {
+  const valSel = document.getElementById('ba_filterVal');
+  valSel.innerHTML = '';
+  const key = this.value;
+  if (!key) { valSel.disabled = true; valSel.innerHTML = '<option value="">(all)</option>'; return; }
+  valSel.disabled = false;
+  let options = [];
+  if (key === 'zone') options = [...new Set(ENEMIES.map(e => e.zone))].sort();
+  else if (key === 'role') options = ROLE_OPTIONS;
+  else if (key === 'tier') options = ['1','2','3','4','5'];
+  else if (key === 'isBoss') options = ['true','false'];
+  else if (key === 'tag') options = TAG_OPTIONS;
+  for (const o of options) valSel.insertAdjacentHTML('beforeend', `<option value="${o}">${o}</option>`);
+});
+
+// Wire mode toggle between amount and formula inputs
+document.getElementById('ba_mode').addEventListener('change', function() {
+  document.getElementById('ba_amountLabel').style.display = this.value === 'formula' ? 'none' : '';
+  document.getElementById('ba_formulaLabel').style.display = this.value === 'formula' ? '' : 'none';
+});
+
+function matchesBulkFilter(enemy, filterKey, filterVal) {
+  if (!filterKey) return true;
+  if (filterKey === 'zone') return enemy.zone === filterVal;
+  if (filterKey === 'role') return enemy.role === filterVal;
+  if (filterKey === 'tier') return String(enemy.tier) === filterVal;
+  if (filterKey === 'isBoss') return String(enemy.isBoss) === filterVal;
+  if (filterKey === 'tag') return enemy.tags.includes(filterVal);
+  return true;
+}
+
+function getActFromZone(zone) {
+  const m = zone.match(/Act(\d+)/);
+  return m ? parseInt(m[1]) : 1;
+}
+
+function applyBulkAdjust() {
+  const filterKey = document.getElementById('ba_filterKey').value;
+  const filterVal = document.getElementById('ba_filterVal').value;
+  const prop = document.getElementById('ba_prop').value;
+  const mode = document.getElementById('ba_mode').value;
+  const amount = parseFloat(document.getElementById('ba_amount').value) || 0;
+  const formula = document.getElementById('ba_formula').value.trim();
+
+  if (mode === 'formula' && !formula) { alert('Enter a formula.'); return; }
+  if (mode !== 'formula' && amount === 0) { alert('Enter a non-zero amount.'); return; }
+
+  // Build label
+  const propLabel = document.getElementById('ba_prop').selectedOptions[0].textContent;
+  let filterLabel = 'all enemies';
+  if (filterKey) {
+    filterLabel = filterKey === 'isBoss' ? (filterVal === 'true' ? 'bosses' : 'non-bosses') : filterVal + ' enemies';
+  }
+  let modeLabel;
+  if (mode === 'pct') modeLabel = (amount > 0 ? '+' : '') + amount + '%';
+  else if (mode === 'flat') modeLabel = (amount > 0 ? '+' : '') + amount;
+  else modeLabel = '= ' + formula;
+
+  const adj = { filterKey, filterVal, prop, mode, amount, formula, label: `${propLabel}: ${modeLabel} to ${filterLabel}` };
+  bulkAdjustments.push(adj);
+
+  // Apply to state
+  applyOneAdjustment(adj);
+  renderBulkLog();
+  render();
+}
+
+function applyOneAdjustment(adj) {
+  for (const e of ENEMIES) {
+    if (!matchesBulkFilter(e, adj.filterKey, adj.filterVal)) continue;
+    const entry = state.entries[e.id];
+    const oldVal = entry[adj.prop] ?? e[adj.prop] ?? 0;
+    let newVal;
+    if (adj.mode === 'pct') {
+      newVal = oldVal * (1 + adj.amount / 100);
+    } else if (adj.mode === 'flat') {
+      newVal = oldVal + adj.amount;
+    } else {
+      // Formula mode — expose enemy stats as variables
+      try {
+        const vars = { hp: entry.hp, dmgMin: entry.dmgMin, dmgMax: entry.dmgMax, armor: entry.armor,
+          hit: entry.hit, dodge: entry.dodge, magicResist: entry.magicResist, xpValue: e.xpValue,
+          level: entry.level, tier: entry.tier, act: getActFromZone(e.zone) };
+        const fn = new Function(...Object.keys(vars), 'return ' + adj.formula);
+        newVal = fn(...Object.values(vars));
+      } catch (err) {
+        console.warn('Formula error for', e.id, err);
+        return;
+      }
+    }
+    entry[adj.prop] = Math.round(newVal);
+  }
+  saveState();
+}
+
+function removeBulkAdjustment(index) {
+  bulkAdjustments.splice(index, 1);
+  // Reset to original values then replay remaining adjustments
+  for (const e of ENEMIES) {
+    const entry = state.entries[e.id];
+    for (const p of ADJUSTABLE_PROPS) {
+      entry[p] = e[p] ?? 0;
+    }
+  }
+  for (const adj of bulkAdjustments) applyOneAdjustment(adj);
+  saveState();
+  renderBulkLog();
+  render();
+}
+
+function resetBulkAdjust() {
+  bulkAdjustments.length = 0;
+  for (const e of ENEMIES) {
+    const entry = state.entries[e.id];
+    for (const p of ADJUSTABLE_PROPS) {
+      entry[p] = e[p] ?? 0;
+    }
+  }
+  saveState();
+  renderBulkLog();
+  render();
+}
+
+function renderBulkLog() {
+  const logEl = document.getElementById('ba_log');
+  if (!bulkAdjustments.length) { logEl.innerHTML = ''; return; }
+  logEl.innerHTML = '<strong style="color:#8b93a8;">Applied adjustments:</strong>' +
+    bulkAdjustments.map((a, i) =>
+      `<div class="adj-entry"><span>${a.label}</span><button type="button" onclick="removeBulkAdjustment(${i})">Remove</button></div>`
+    ).join('');
 }
 
 render();

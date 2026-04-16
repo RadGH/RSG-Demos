@@ -114,6 +114,10 @@
   .source-badge.spritecook{background:rgba(94,242,168,0.12);color:#5ef2a8;border:1px solid rgba(94,242,168,0.3)}
   .source-badge.openai{background:rgba(120,120,255,0.12);color:#a0a0ff;border:1px solid rgba(120,120,255,0.3)}
 
+  .status{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;
+    text-transform:uppercase;letter-spacing:0.5px;vertical-align:middle;margin:0 4px}
+  .status.ok{background:rgba(94,242,168,0.15);color:#5ef2a8;border:1px solid rgba(94,242,168,0.3)}
+
   @media (max-width:600px){.reredesign-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -215,31 +219,152 @@
     </div>
 
     <div class="reredesign-card" data-id="warrior">
-      <h3>Warrior</h3>
+      <h3>Warrior <span class="status ok">COMPLETE</span> <span class="source-badge spritecook">SpriteCook</span></h3>
       <div class="compareGrid">
-        <div class="imgBox"><span class="tag old">Old</span><img src="../images/portraits/warrior.png" alt="Warrior old"></div>
-        <div class="imgBox"><span class="tag todo">Queued</span><span class="placeholder">pending</span></div>
+        <div class="imgBox"><span class="tag old">Old</span><img src="../images/portraits/warrior.png" alt="Warrior old portrait"></div>
+        <div class="imgBox"><span class="tag new">New</span><img src="../images/spritecook/warrior_portrait.png" alt="Warrior SpriteCook portrait"></div>
       </div>
       <div class="variants">
-        <div class="imgBox"><span class="tag todo">front</span></div>
-        <div class="imgBox"><span class="tag todo">east</span></div>
-        <div class="imgBox"><span class="tag todo">atk</span></div>
-        <div class="imgBox"><span class="tag todo">spell</span></div>
-        <div class="imgBox"><span class="tag todo">KO</span></div>
+        <div class="imgBox"><span class="lbl">portrait</span><img src="../images/spritecook/warrior_portrait.png" alt="portrait"></div>
+        <div class="imgBox"><span class="lbl">south</span><img src="../images/spritecook/warrior_south.png" alt="south idle"></div>
+        <div class="imgBox"><span class="lbl">east</span><img src="../images/spritecook/warrior_east.png" alt="east idle"></div>
+        <div class="imgBox"><span class="lbl">atk</span><img src="../images/spritecook/warrior_east_attack.png" alt="east attack"></div>
+        <div class="imgBox"><span class="lbl">spell</span><img src="../images/spritecook/warrior_east_spell.png" alt="east spell"></div>
+        <div class="imgBox"><span class="lbl">KO</span><img src="../images/spritecook/warrior_east_ko.png" alt="east KO"></div>
+        <div class="imgBox"><span class="lbl">block</span><img src="../images/spritecook/warrior_east_block.png" alt="east block"></div>
       </div>
+      <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--muted);font-size:12px">Generation prompts</summary>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:6px">
+          <p><b>Style:</b> 16-bit SNES RPG style, steel grey and iron palette with crimson accents</p>
+          <p><b>Portrait:</b> Warrior character portrait, heavy plate armor, broad-shouldered, stern face, iron helm with visor, greatsword</p>
+          <p><b>Attack:</b> east-facing attack pose, swinging greatsword in powerful horizontal slash, aggressive forward stance</p>
+          <p><b>Spell:</b> east-facing spellcasting pose, war cry with weapon raised, crimson energy radiating outward</p>
+          <p><b>Block:</b> east-facing defensive block pose, raising heavy shield, braced defensive stance</p>
+          <p><b>KO:</b> east-facing fallen unconscious pose, collapsed on ground face down, defeated and limp body, arms sprawled</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="reredesign-card" data-id="fighter">
+      <h3>Fighter <span class="status ok">COMPLETE</span> <span class="source-badge spritecook">SpriteCook</span></h3>
+      <div class="compareGrid">
+        <div class="imgBox"><span class="tag old">Old</span><img src="../images/portraits/fighter.png" alt="Fighter old portrait"></div>
+        <div class="imgBox"><span class="tag new">New</span><img src="../images/spritecook/fighter_portrait.png" alt="Fighter SpriteCook portrait"></div>
+      </div>
+      <div class="variants">
+        <div class="imgBox"><span class="lbl">portrait</span><img src="../images/spritecook/fighter_portrait.png" alt="portrait"></div>
+        <div class="imgBox"><span class="lbl">south</span><img src="../images/spritecook/fighter_south.png" alt="south idle"></div>
+        <div class="imgBox"><span class="lbl">east</span><img src="../images/spritecook/fighter_east.png" alt="east idle"></div>
+        <div class="imgBox"><span class="lbl">atk</span><img src="../images/spritecook/fighter_east_attack.png" alt="east attack"></div>
+        <div class="imgBox"><span class="lbl">spell</span><img src="../images/spritecook/fighter_east_spell.png" alt="east spell"></div>
+        <div class="imgBox"><span class="lbl">KO</span><img src="../images/spritecook/fighter_east_ko.png" alt="east KO"></div>
+        <div class="imgBox"><span class="lbl">block</span><img src="../images/spritecook/fighter_east_block.png" alt="east block"></div>
+      </div>
+      <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--muted);font-size:12px">Generation prompts</summary>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:6px">
+          <p><b>Style:</b> 16-bit SNES RPG style, warm brown and steel palette with leather accents</p>
+          <p><b>Portrait:</b> Fighter character portrait, chain mail armor, athletic build, battle-scarred, leather bracers, longsword and shield</p>
+          <p><b>Attack:</b> east-facing attack pose, lunging forward with longsword in aggressive thrust, shield at side</p>
+          <p><b>Spell:</b> east-facing spellcasting pose, rallying battle shout with weapon raised, energy pulsing from body</p>
+          <p><b>Block:</b> east-facing defensive block pose, shield raised high, braced behind shield in defensive stance</p>
+          <p><b>KO:</b> east-facing fallen unconscious pose, collapsed on ground face down, defeated and limp body, arms sprawled</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="reredesign-card" data-id="ranger">
+      <h3>Ranger <span class="status ok">COMPLETE</span> <span class="source-badge spritecook">SpriteCook</span></h3>
+      <div class="compareGrid">
+        <div class="imgBox"><span class="tag old">Old</span><img src="../images/portraits/ranger.png" alt="Ranger old portrait"></div>
+        <div class="imgBox"><span class="tag new">New</span><img src="../images/spritecook/ranger_portrait.png" alt="Ranger SpriteCook portrait"></div>
+      </div>
+      <div class="variants">
+        <div class="imgBox"><span class="lbl">portrait</span><img src="../images/spritecook/ranger_portrait.png" alt="portrait"></div>
+        <div class="imgBox"><span class="lbl">south</span><img src="../images/spritecook/ranger_south.png" alt="south idle"></div>
+        <div class="imgBox"><span class="lbl">east</span><img src="../images/spritecook/ranger_east.png" alt="east idle"></div>
+        <div class="imgBox"><span class="lbl">atk</span><img src="../images/spritecook/ranger_east_attack.png" alt="east attack"></div>
+        <div class="imgBox"><span class="lbl">spell</span><img src="../images/spritecook/ranger_east_spell.png" alt="east spell"></div>
+        <div class="imgBox"><span class="lbl">KO</span><img src="../images/spritecook/ranger_east_ko.png" alt="east KO"></div>
+        <div class="imgBox"><span class="lbl">block</span><img src="../images/spritecook/ranger_east_block.png" alt="east block"></div>
+      </div>
+      <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--muted);font-size:12px">Generation prompts</summary>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:6px">
+          <p><b>Style:</b> 16-bit SNES RPG style, forest green and brown palette with emerald accents</p>
+          <p><b>Portrait:</b> Ranger character portrait, green leather armor, hooded cloak, quiver on back, lean build, bow drawn with arrow</p>
+          <p><b>Attack:</b> east-facing attack pose, drawing bow with arrow nocked, aiming forward in firing stance</p>
+          <p><b>Spell:</b> east-facing spellcasting pose, channeling nature energy through bow, emerald aura swirling around arrow tip</p>
+          <p><b>Block:</b> east-facing defensive dodge pose, dodging sideways with cloak flowing, evasive stance</p>
+          <p><b>KO:</b> east-facing fallen unconscious pose, collapsed on ground face down, defeated and limp body, arms sprawled</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="reredesign-card" data-id="rogue">
+      <h3>Rogue <span class="status ok">COMPLETE</span> <span class="source-badge spritecook">SpriteCook</span></h3>
+      <div class="compareGrid">
+        <div class="imgBox"><span class="tag old">Old</span><img src="../images/portraits/rogue.png" alt="Rogue old portrait"></div>
+        <div class="imgBox"><span class="tag new">New</span><img src="../images/spritecook/rogue_portrait.png" alt="Rogue SpriteCook portrait"></div>
+      </div>
+      <div class="variants">
+        <div class="imgBox"><span class="lbl">portrait</span><img src="../images/spritecook/rogue_portrait.png" alt="portrait"></div>
+        <div class="imgBox"><span class="lbl">south</span><img src="../images/spritecook/rogue_south.png" alt="south idle"></div>
+        <div class="imgBox"><span class="lbl">east</span><img src="../images/spritecook/rogue_east.png" alt="east idle"></div>
+        <div class="imgBox"><span class="lbl">atk</span><img src="../images/spritecook/rogue_east_attack.png" alt="east attack"></div>
+        <div class="imgBox"><span class="lbl">spell</span><img src="../images/spritecook/rogue_east_spell.png" alt="east spell"></div>
+        <div class="imgBox"><span class="lbl">KO</span><img src="../images/spritecook/rogue_east_ko.png" alt="east KO"></div>
+        <div class="imgBox"><span class="lbl">block</span><img src="../images/spritecook/rogue_east_block.png" alt="east block"></div>
+      </div>
+      <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--muted);font-size:12px">Generation prompts</summary>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:6px">
+          <p><b>Style:</b> 16-bit SNES RPG style, dark charcoal and shadow palette with violet accents</p>
+          <p><b>Portrait:</b> Rogue character portrait, dark leather armor, masked face, twin daggers at belt, agile build</p>
+          <p><b>Attack:</b> east-facing attack pose, dual daggers slashing in rapid cross-slash, aggressive forward lunge</p>
+          <p><b>Spell:</b> east-facing spellcasting pose, throwing shadow energy from hands, violet dark magic swirling</p>
+          <p><b>Block:</b> east-facing defensive block pose, crossing daggers in X block, braced parry stance</p>
+          <p><b>KO:</b> east-facing fallen unconscious pose, collapsed on ground face down, defeated and limp body, arms sprawled</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="reredesign-card" data-id="mage">
+      <h3>Mage <span class="status ok">COMPLETE</span> <span class="source-badge spritecook">SpriteCook</span></h3>
+      <div class="compareGrid">
+        <div class="imgBox"><span class="tag old">Old</span><img src="../images/portraits/mage.png" alt="Mage old portrait"></div>
+        <div class="imgBox"><span class="tag new">New</span><img src="../images/spritecook/mage_portrait.png" alt="Mage SpriteCook portrait"></div>
+      </div>
+      <div class="variants">
+        <div class="imgBox"><span class="lbl">portrait</span><img src="../images/spritecook/mage_portrait.png" alt="portrait"></div>
+        <div class="imgBox"><span class="lbl">south</span><img src="../images/spritecook/mage_south.png" alt="south idle"></div>
+        <div class="imgBox"><span class="lbl">east</span><img src="../images/spritecook/mage_east.png" alt="east idle"></div>
+        <div class="imgBox"><span class="lbl">atk</span><img src="../images/spritecook/mage_east_attack.png" alt="east attack"></div>
+        <div class="imgBox"><span class="lbl">spell</span><img src="../images/spritecook/mage_east_spell.png" alt="east spell"></div>
+        <div class="imgBox"><span class="lbl">KO</span><img src="../images/spritecook/mage_east_ko.png" alt="east KO"></div>
+        <div class="imgBox"><span class="lbl">block</span><img src="../images/spritecook/mage_east_block.png" alt="east block"></div>
+      </div>
+      <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--muted);font-size:12px">Generation prompts</summary>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:6px">
+          <p><b>Style:</b> 16-bit SNES RPG style, deep blue and silver palette with arcane purple accents</p>
+          <p><b>Portrait:</b> Mage character portrait, blue robes with silver trim, pointed hat, ancient tome, arcane energy</p>
+          <p><b>Attack:</b> east-facing attack pose, launching arcane energy bolt from outstretched hand, purple magical projectile</p>
+          <p><b>Spell:</b> east-facing spellcasting pose, both hands raised channeling large arcane sigil above head, purple and blue energy swirling</p>
+          <p><b>Block:</b> east-facing defensive block pose, conjuring magical barrier shield of light, translucent arcane ward in front</p>
+          <p><b>KO:</b> east-facing fallen unconscious pose, collapsed on ground face down, defeated and limp body, arms sprawled, hat fallen off</p>
+        </div>
+      </details>
     </div>
 
   </div>
 </section>
 
 <section>
-  <h2>Cost estimate</h2>
-  <p class="sectionDesc">Full roster regeneration with the cheapest model.</p>
+  <h2>Progress and cost</h2>
+  <p class="sectionDesc">7 of 73 characters complete (Oracle, Paladin, Warrior, Fighter, Ranger, Rogue, Mage). 66 remaining.</p>
   <div class="note">
-    <strong>73 characters &times; 7 poses &times; 8 credits = ~4,088 credits</strong><br>
+    <strong>Progress: 7 / 73 characters complete (49 of ~511 poses generated)</strong><br><br>
+    <strong>Remaining: 66 characters &times; 7 poses &times; 8 credits = ~3,696 credits</strong><br>
     Apprentice ($6/mo, 800 credits) &mdash; ~5 months<br>
     Adventurer ($24/mo, 3,000 credits) &mdash; ~2 months<br>
-    <strong>Archmage ($56/mo, 7,000 credits) &mdash; 1 month, with headroom for retries</strong>
+    <strong>Archmage ($56/mo, 7,000 credits) &mdash; under 1 month</strong>
   </div>
 </section>
 

@@ -60,6 +60,71 @@
       "file": "paladin_east_block.png"
     }
   },
+  "warrior": {
+    "portrait": {
+      "asset_id": "13c446e3-2c51-41b5-97d7-3169fa9e5bc7",
+      "file": "warrior_portrait.png",
+      "role": "canonical_reference"
+    },
+    "south": { "file": "warrior_south.png" },
+    "east": { "file": "warrior_east.png" },
+    "east_attack": { "file": "warrior_east_attack.png" },
+    "east_spell": { "file": "warrior_east_spell.png" },
+    "east_ko": { "file": "warrior_east_ko.png" },
+    "east_block": { "file": "warrior_east_block.png" }
+  },
+  "fighter": {
+    "portrait": {
+      "asset_id": "eaa95a48-5fe1-4579-9243-c8d101d57583",
+      "file": "fighter_portrait.png",
+      "role": "canonical_reference"
+    },
+    "south": { "file": "fighter_south.png" },
+    "east": { "file": "fighter_east.png" },
+    "east_attack": { "file": "fighter_east_attack.png" },
+    "east_spell": { "file": "fighter_east_spell.png" },
+    "east_ko": { "file": "fighter_east_ko.png" },
+    "east_block": { "file": "fighter_east_block.png" }
+  },
+  "ranger": {
+    "portrait": {
+      "asset_id": "6e256f9c-87e7-48da-8514-6eedddab2aa1",
+      "file": "ranger_portrait.png",
+      "role": "canonical_reference"
+    },
+    "south": { "file": "ranger_south.png" },
+    "east": { "file": "ranger_east.png" },
+    "east_attack": { "file": "ranger_east_attack.png" },
+    "east_spell": { "file": "ranger_east_spell.png" },
+    "east_ko": { "file": "ranger_east_ko.png" },
+    "east_block": { "file": "ranger_east_block.png" }
+  },
+  "rogue": {
+    "portrait": {
+      "asset_id": "83783e34-3dfb-4f3a-af8f-3a1528028707",
+      "file": "rogue_portrait.png",
+      "role": "canonical_reference"
+    },
+    "south": { "file": "rogue_south.png" },
+    "east": { "file": "rogue_east.png" },
+    "east_attack": { "file": "rogue_east_attack.png" },
+    "east_spell": { "file": "rogue_east_spell.png" },
+    "east_ko": { "file": "rogue_east_ko.png" },
+    "east_block": { "file": "rogue_east_block.png" }
+  },
+  "mage": {
+    "portrait": {
+      "asset_id": "04800b33-afd3-4b81-83dd-c2ff3f1091bb",
+      "file": "mage_portrait.png",
+      "role": "canonical_reference"
+    },
+    "south": { "file": "mage_south.png" },
+    "east": { "file": "mage_east.png" },
+    "east_attack": { "file": "mage_east_attack.png" },
+    "east_spell": { "file": "mage_east_spell.png" },
+    "east_ko": { "file": "mage_east_ko.png" },
+    "east_block": { "file": "mage_east_block.png" }
+  },
   "_meta": {
     "model": "gemini-2.5-flash-image",
     "credits_per_generation": 8,
