@@ -463,7 +463,8 @@
     }
     .asset-card:hover { background: var(--card-h); border-color: var(--accent); }
 
-    .thumb, #modal-img {
+    .thumb, #modal-img,
+    .bg-preview img, .char-m79-portrait img, .char-m79-frame img {
       image-rendering: pixelated;
       image-rendering: -moz-crisp-edges;
       image-rendering: crisp-edges;
@@ -738,6 +739,22 @@ const BADGE_CLASSES = {
   manual:   'badge-manual',
 };
 
+// Rewrite a source image path to its 256x256 nearest-neighbor thumb under
+// public/images/_thumbs/. Generated at build time by scripts/generate_thumbnails.js.
+// Falls back to the original file via <img onerror> if a thumb is missing.
+function thumbPath(file) {
+  if (!file) return file;
+  const m = file.match(/^(\.\.\/)(images\/)(.+)$/);
+  if (!m) return file;
+  const rel = m[3].replace(/\.(jpe?g|png|webp)$/i, '.png');
+  return `${m[1]}${m[2]}_thumbs/${rel}`;
+}
+function thumbOnError(origFile) {
+  // On first error, swap to the original. Clear the handler so a broken
+  // original doesn't loop. Callers also append their own missing-state markup.
+  return `this.onerror=null;this.src='${origFile.replace(/'/g, "\\'")}'`;
+}
+
 function badgeClass(source) {
   return BADGE_CLASSES[source?.toLowerCase()] ?? 'badge-other';
 }
@@ -918,8 +935,8 @@ function renderCharacterBlock(charName, assets) {
         if (thumbSrc) {
           variantsHtml += `
             <div class="variant-box" onclick="openModal(${JSON.stringify(asset).replace(/"/g, '&quot;')})">
-              <img src="${thumbSrc}" alt="${asset.name || charName}" loading="lazy"
-                   onerror="this.parentElement.innerHTML='<div class=variant-missing>${label}</div>'">
+              <img src="${thumbPath(thumbSrc)}" data-orig="${thumbSrc}" alt="${asset.name || charName}" loading="lazy"
+                   onerror="if(this.dataset.fallback){this.parentElement.innerHTML='<div class=variant-missing>${label}</div>'}else{this.dataset.fallback=1;this.src=this.dataset.orig}">
               <div class="variant-label">${label}</div>
             </div>`;
         } else {
@@ -985,14 +1002,14 @@ function renderM79CharacterBlock(character, bundle) {
   const total = bundle ? bundle.all.length : 0;
 
   const portraitHtml = portrait && portrait.file
-    ? `<img src="${portrait.file}" alt="${character.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+    ? `<img src="${thumbPath(portrait.file)}" data-orig="${portrait.file}" alt="${character.name}" loading="lazy" onerror="if(this.dataset.fallback){this.style.display='none';this.nextElementSibling.style.display='flex'}else{this.dataset.fallback=1;this.src=this.dataset.orig}">`
       + `<div class="portrait-missing" style="display:none">?</div>`
     : `<div class="portrait-missing">?</div>`;
 
   const framesHtml = frames.map(frame => {
     const frameType = getFrameType(frame);
     const thumbHtml = frame.file
-      ? `<img src="${frame.file}" alt="${frameType}" loading="lazy">`
+      ? `<img src="${thumbPath(frame.file)}" data-orig="${frame.file}" alt="${frameType}" loading="lazy" onerror="if(!this.dataset.fallback){this.dataset.fallback=1;this.src=this.dataset.orig}">`
       : `<div class="frame-missing">.</div>`;
     return `<div class="char-m79-frame" onclick="openModal(${JSON.stringify(frame).replace(/"/g, '&quot;')})">
       ${thumbHtml}
@@ -1092,7 +1109,7 @@ function renderBackgroundsSection(assets) {
       card.onclick = () => openModal(asset);
       card.innerHTML = `
         <div class="bg-preview">
-          <img src="${asset.file}" alt="${asset.name}" loading="lazy">
+          <img src="${thumbPath(asset.file)}" data-orig="${asset.file}" alt="${asset.name}" loading="lazy" onerror="if(!this.dataset.fallback){this.dataset.fallback=1;this.src=this.dataset.orig}">
         </div>
         <div class="bg-info">
           <div class="bg-name">${asset.name}</div>
@@ -1164,7 +1181,7 @@ function renderCard(asset) {
 
   const thumbSrc = asset.file ? asset.file : null;
   const thumbHtml = thumbSrc
-    ? `<img class="thumb" src="${thumbSrc}" alt="${asset.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+    ? `<img class="thumb" src="${thumbPath(thumbSrc)}" data-orig="${thumbSrc}" alt="${asset.name}" loading="lazy" onerror="if(this.dataset.fallback){this.style.display='none';this.nextElementSibling.style.display='flex'}else{this.dataset.fallback=1;this.src=this.dataset.orig}">`
       + `<div class="thumb-missing" style="display:none">🖼</div>`
     : `<div class="thumb-missing">🖼</div>`;
 
