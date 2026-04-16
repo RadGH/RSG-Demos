@@ -1,20 +1,18 @@
 {
   "_meta": {
-    "generated": "2026-04-16T21:17:20.401Z",
+    "generated": "2026-04-16T22:04:03.468Z",
     "counts": {
-      "total": 353,
+      "total": 343,
       "by_status": {
         "ready": 273,
-        "pending": 70,
-        "orphaned": 10
+        "pending": 70
       },
       "by_category": {
         "hero": 140,
         "companion": 50,
         "boss": 95,
         "enemy": 17,
-        "background": 41,
-        "orphan": 10
+        "background": 41
       }
     },
     "source": "scripts/build-image-review-manifest.js"
@@ -1735,8 +1733,8 @@
       "category": "boss",
       "group": "primordial_elemental",
       "pose": "portrait",
-      "file": "../images/portraits/primordial_elemental.png",
-      "prompt": null,
+      "file": "../images/spritecook/primordial_elemental_portrait.png",
+      "prompt": "A primordial elemental of swirling raw cosmic energy, nebula core, crackling arms of plasma, dark fantasy RPG enemy portrait",
       "status": "ready"
     },
     {
@@ -1780,8 +1778,8 @@
       "category": "boss",
       "group": "abyssal_knight",
       "pose": "portrait",
-      "file": "../images/portraits/abyssal_knight.png",
-      "prompt": null,
+      "file": "../images/spritecook/abyssal_knight_portrait.png",
+      "prompt": "An abyssal knight in deep-sea black coral armor, trident, glowing void eyes under helm, dark fantasy RPG enemy portrait",
       "status": "ready"
     },
     {
@@ -1825,8 +1823,8 @@
       "category": "boss",
       "group": "reality_shard",
       "pose": "portrait",
-      "file": "../images/portraits/reality_shard.png",
-      "prompt": null,
+      "file": "../images/spritecook/reality_shard_portrait.png",
+      "prompt": "A floating reality shard entity, fragments of shattered mirror glass arranged as humanoid form, prismatic glow, dark fantasy RPG enemy portrait",
       "status": "ready"
     },
     {
@@ -1870,8 +1868,8 @@
       "category": "boss",
       "group": "genesis_worm",
       "pose": "portrait",
-      "file": "../images/portraits/genesis_worm.png",
-      "prompt": null,
+      "file": "../images/spritecook/genesis_worm_portrait.png",
+      "prompt": "A colossal genesis worm, segmented chitinous body, toothy sucker maw, glowing pink interior, dark fantasy RPG enemy portrait",
       "status": "ready"
     },
     {
@@ -2140,8 +2138,8 @@
       "category": "boss",
       "group": "veil_warden",
       "pose": "portrait",
-      "file": "../images/portraits/veil_warden.png",
-      "prompt": null,
+      "file": "../images/spritecook/veil_warden_portrait.png",
+      "prompt": "A veil warden in ornate plate with glowing runes, crystal halberd, grim stoic visor, dark fantasy RPG enemy portrait",
       "status": "ready"
     },
     {
@@ -2275,8 +2273,8 @@
       "category": "boss",
       "group": "cosmic_titan",
       "pose": "portrait",
-      "file": "../images/portraits/cosmic_titan.png",
-      "prompt": null,
+      "file": "../images/spritecook/cosmic_titan_portrait.png",
+      "prompt": "A cosmic titan of stone and galaxies, giant humanoid wreathed in nebulae, star-lit runes, dark fantasy RPG enemy portrait",
       "status": "ready"
     },
     {
@@ -3106,96 +3104,6 @@
       "file": "../images/menu_bg/menu_wide.jpg",
       "prompt": null,
       "status": "ready"
-    },
-    {
-      "id": "orphan_images_spritecook_bone_hound_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/bone_hound_south.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_crystal_golem_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/crystal_golem_south.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_dire_wolf_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/dire_wolf_south.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_ember_drake_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/ember_drake_south.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_forest_owl_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/forest_owl_south.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_ice_sprite_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/ice_sprite_south.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_shadow_cat_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/shadow_cat_south.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_spirit_wisp_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/spirit_wisp_south.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_swamp_frog_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/swamp_frog_south.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_void_moth_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/void_moth_south.png",
-      "prompt": null,
-      "status": "orphaned"
     }
   ]
 }

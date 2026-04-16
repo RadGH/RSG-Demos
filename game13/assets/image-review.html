@@ -97,6 +97,7 @@
   }
   .img-card:hover { border-color: var(--gold-dim); }
   .img-card.active { border-color: var(--gold); }
+  .img-card.selected { outline: 2px solid var(--gold); outline-offset: 2px; }
   .img-card.has-action { border-color: var(--accent); }
   .img-card.status-pending { opacity: 0.55; }
   .img-card.status-pending img { filter: grayscale(1); }
@@ -430,36 +431,66 @@ function renderCard(e) {
   </div>`;
 }
 
+const selection = new Set();
+
 function wireCards(host) {
   host.querySelectorAll('.img-card').forEach(el => {
     el.addEventListener('click', (ev) => {
       if (ev.target.closest('.editor')) return;
       const id = el.dataset.id;
-      toggleEditor(id, el);
+      toggleSelection(id, el);
     });
   });
 }
 
-function toggleEditor(id, cardEl) {
-  // Close any existing editor
+function toggleSelection(id, cardEl) {
+  if (selection.has(id)) {
+    selection.delete(id);
+    cardEl.classList.remove('selected');
+  } else {
+    selection.add(id);
+    cardEl.classList.add('selected');
+  }
+  renderSelectionEditor();
+}
+
+function renderSelectionEditor() {
+  // Remove any existing editor
   const existing = document.querySelector('.editor');
-  const existingFor = existing && existing.dataset.id;
   if (existing) existing.remove();
-  document.querySelectorAll('.img-card.active').forEach(c => c.classList.remove('active'));
-  if (existingFor === id) return; // toggle off
+  if (selection.size === 0) return;
 
-  cardEl.classList.add('active');
-  const entry = entries.find(e => e.id === id);
-  if (!entry) return;
+  // Use the first selected entry as template for the editor (prompt line, refs, status)
+  const firstId = [...selection][0];
+  const templateEntry = entries.find(e => e.id === firstId);
+  if (!templateEntry) return;
 
-  const parent = cardEl.parentElement;
+  // Append editor after the last selected card's containing row
+  const lastId = [...selection][selection.size - 1];
+  const lastCard = document.querySelector(`.img-card[data-id="${CSS.escape(lastId)}"]`);
+  const parent = lastCard ? lastCard.parentElement : document.body;
+
   const editor = document.createElement('div');
   editor.className = 'editor';
-  editor.dataset.id = id;
-  editor.innerHTML = renderEditor(entry);
-  // Insert AFTER the card's containing row (.poses or .bg-grid)
+  editor.dataset.id = firstId;
+  editor.dataset.multi = '1';
+  const banner = selection.size > 1
+    ? `<div style="color:var(--gold);font-size:0.75rem;margin-bottom:0.4rem">Editing ${selection.size} selected images — same action applies to all. <a href="#" data-act="clear-sel" style="color:var(--accent);margin-left:0.5rem">Clear selection</a></div>`
+    : `<div style="color:var(--muted);font-size:0.7rem;margin-bottom:0.4rem">Tip: click more cards to apply the same action to multiple images. <a href="#" data-act="clear-sel" style="color:var(--accent);margin-left:0.5rem">Clear</a></div>`;
+  editor.innerHTML = banner + renderEditor(templateEntry);
   parent.appendChild(editor);
-  wireEditor(editor, entry);
+  wireEditor(editor, templateEntry);
+  editor.addEventListener('click', (ev) => {
+    const a = ev.target.closest('[data-act="clear-sel"]');
+    if (!a) return;
+    ev.preventDefault();
+    selection.forEach(id => {
+      const c = document.querySelector(`.img-card[data-id="${CSS.escape(id)}"]`);
+      if (c) c.classList.remove('selected');
+    });
+    selection.clear();
+    renderSelectionEditor();
+  });
   editor.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
 
@@ -542,10 +573,13 @@ function wireEditor(editor, entry) {
       if (el.type === 'checkbox') s[f] = el.checked;
       else s[f] = el.value;
     });
-    if (!s.action || s.action === 'none') delete state[entry.id];
-    else state[entry.id] = s;
+    const targets = selection.size > 0 ? [...selection] : [entry.id];
+    targets.forEach(tid => {
+      if (!s.action || s.action === 'none') delete state[tid];
+      else state[tid] = { ...s };
+      updateCardAction(tid);
+    });
     saveState();
-    updateCardAction(entry.id);
     updateCounts();
     // Toggle sub-panels
     editor.querySelectorAll('.sub-panel').forEach(sp => {

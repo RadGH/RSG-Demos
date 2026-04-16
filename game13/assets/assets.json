@@ -9771,6 +9771,555 @@
       "file": "../images/spritecook/dragonking_boss_east_ko.png",
       "prompt": "Pixel-art RPG sprite: Bahamorth Dragon King boss defeated \u2014 sovereign collapsed to knees, crown tilting off, wings crumpled, obsidian greatsword embedded in ground beside him, side-view facing east. Full-body sprite, centered, transparent background.",
       "notes": "Boss asset generated via SpriteCook on 2026-04-16; asset_id 1375dc8a-7c6e-47d0-8fc9-9e411fe4f5a9"
+    },
+    {
+      "id": "sc_dire_wolf_south",
+      "name": "Dire Wolf (south)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/dire_wolf_south.png",
+      "prompt": "dire wolf companion, side view, pixel art",
+      "notes": "companion, asset_id:e29a5204-be06-44f8-87ad-4b7e9a1bb429"
+    },
+    {
+      "id": "sc_dire_wolf_walk",
+      "name": "Dire Wolf (walk anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/dire_wolf_walk.webp",
+      "prompt": "Walk cycle: dire wolf trotting forward, side view, pixel loop",
+      "notes": "walk cycle webp"
+    },
+    {
+      "id": "sc_dire_wolf_attack",
+      "name": "Dire Wolf (attack anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/dire_wolf_attack.webp",
+      "prompt": "Attack: dire wolf lunges biting forward, pixel loop",
+      "notes": "attack anim webp"
+    },
+    {
+      "id": "sc_forest_owl_south",
+      "name": "Forest Owl (south)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/forest_owl_south.png",
+      "prompt": "forest owl companion, side view, pixel art",
+      "notes": "companion, asset_id:69d7dd81-16c6-4775-9c3c-dc571b964c9f"
+    },
+    {
+      "id": "sc_forest_owl_walk",
+      "name": "Forest Owl (walk anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/forest_owl_walk.webp",
+      "prompt": "Walk cycle: forest owl flapping forward, wing beats, pixel loop",
+      "notes": "walk cycle webp"
+    },
+    {
+      "id": "sc_forest_owl_attack",
+      "name": "Forest Owl (attack anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/forest_owl_attack.webp",
+      "prompt": "Attack: forest owl dive attack with talons, pixel loop",
+      "notes": "attack anim webp"
+    },
+    {
+      "id": "sc_ember_drake_south",
+      "name": "Ember Drake (south)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/ember_drake_south.png",
+      "prompt": "ember drake companion, side view, pixel art",
+      "notes": "companion, asset_id:72e27a36-572f-4917-a1ec-32e5a387d99a"
+    },
+    {
+      "id": "sc_ember_drake_walk",
+      "name": "Ember Drake (walk anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/ember_drake_walk.webp",
+      "prompt": "Walk cycle: ember drake stalking forward, wings folded, pixel loop",
+      "notes": "walk cycle webp"
+    },
+    {
+      "id": "sc_ember_drake_attack",
+      "name": "Ember Drake (attack anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/ember_drake_attack.webp",
+      "prompt": "Attack: ember drake breathes fire forward, pixel loop",
+      "notes": "attack anim webp"
+    },
+    {
+      "id": "sc_shadow_cat_south",
+      "name": "Shadow Cat (south)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/shadow_cat_south.png",
+      "prompt": "shadow cat companion, side view, pixel art",
+      "notes": "companion, asset_id:afb3f72f-c2c9-46b8-bc65-ec9d421a379c"
+    },
+    {
+      "id": "sc_shadow_cat_walk",
+      "name": "Shadow Cat (walk anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/shadow_cat_walk.webp",
+      "prompt": "Walk cycle: shadow cat prowling forward, tail low, pixel loop",
+      "notes": "walk cycle webp"
+    },
+    {
+      "id": "sc_shadow_cat_attack",
+      "name": "Shadow Cat (attack anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/shadow_cat_attack.webp",
+      "prompt": "Attack: shadow cat swipes claws forward, pixel loop",
+      "notes": "attack anim webp"
+    },
+    {
+      "id": "sc_crystal_golem_south",
+      "name": "Crystal Golem (south)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/crystal_golem_south.png",
+      "prompt": "crystal golem companion, side view, pixel art",
+      "notes": "companion, asset_id:da312f14-a114-43b2-9ea8-b576291b08fb"
+    },
+    {
+      "id": "sc_crystal_golem_walk",
+      "name": "Crystal Golem (walk anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/crystal_golem_walk.webp",
+      "prompt": "Walk cycle: crystal golem lumbering forward, side view, pixel loop",
+      "notes": "walk cycle webp"
+    },
+    {
+      "id": "sc_crystal_golem_attack",
+      "name": "Crystal Golem (attack anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/crystal_golem_attack.webp",
+      "prompt": "Attack: crystal golem slams fists forward, pixel loop",
+      "notes": "attack anim webp"
+    },
+    {
+      "id": "sc_spirit_wisp_south",
+      "name": "Spirit Wisp (south)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/spirit_wisp_south.png",
+      "prompt": "spirit wisp companion, side view, pixel art",
+      "notes": "companion, asset_id:dc965ece-817c-4a5f-9500-877b0fc13b13"
+    },
+    {
+      "id": "sc_spirit_wisp_walk",
+      "name": "Spirit Wisp (walk anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/spirit_wisp_walk.webp",
+      "prompt": "Walk cycle: spirit wisp drifting forward, ethereal trail, pixel loop",
+      "notes": "walk cycle webp"
+    },
+    {
+      "id": "sc_spirit_wisp_attack",
+      "name": "Spirit Wisp (attack anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/spirit_wisp_attack.webp",
+      "prompt": "Attack: spirit wisp emits radiant burst forward, pixel loop",
+      "notes": "attack anim webp"
+    },
+    {
+      "id": "sc_bone_hound_south",
+      "name": "Bone Hound (south)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/bone_hound_south.png",
+      "prompt": "bone hound skeletal companion, side view, pixel art",
+      "notes": "companion, asset_id:e8626ff0-9533-4195-8f6e-04e3734e13bd"
+    },
+    {
+      "id": "sc_bone_hound_walk",
+      "name": "Bone Hound (walk anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/bone_hound_walk.webp",
+      "prompt": "Walk cycle: bone hound trotting forward, skeletal legs, pixel loop",
+      "notes": "walk cycle webp"
+    },
+    {
+      "id": "sc_bone_hound_attack",
+      "name": "Bone Hound (attack anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/bone_hound_attack.webp",
+      "prompt": "Attack: bone hound lunges jaws snapping, pixel loop",
+      "notes": "attack anim webp"
+    },
+    {
+      "id": "sc_ice_sprite_south",
+      "name": "Ice Sprite (south)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/ice_sprite_south.png",
+      "prompt": "ice sprite companion, floating, pixel art",
+      "notes": "companion, asset_id:b2ea28cc-480e-4c3d-af9d-4a0ffca70153"
+    },
+    {
+      "id": "sc_ice_sprite_walk",
+      "name": "Ice Sprite (walk anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/ice_sprite_walk.webp",
+      "prompt": "Walk cycle: ice sprite floating forward, frost particles, pixel loop",
+      "notes": "walk cycle webp"
+    },
+    {
+      "id": "sc_ice_sprite_attack",
+      "name": "Ice Sprite (attack anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/ice_sprite_attack.webp",
+      "prompt": "Attack: ice sprite hurls ice shard, pixel loop",
+      "notes": "attack anim webp"
+    },
+    {
+      "id": "sc_swamp_frog_south",
+      "name": "Swamp Frog (south)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/swamp_frog_south.png",
+      "prompt": "swamp frog companion, side view, pixel art",
+      "notes": "companion, asset_id:0a78ed10-8626-4174-b1d4-7a0f02464f24"
+    },
+    {
+      "id": "sc_swamp_frog_walk",
+      "name": "Swamp Frog (walk anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/swamp_frog_walk.webp",
+      "prompt": "Walk cycle: swamp frog hopping forward, small splash, pixel loop",
+      "notes": "walk cycle webp"
+    },
+    {
+      "id": "sc_swamp_frog_attack",
+      "name": "Swamp Frog (attack anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/swamp_frog_attack.webp",
+      "prompt": "Attack: swamp frog tongue lash forward, pixel loop",
+      "notes": "attack anim webp"
+    },
+    {
+      "id": "sc_void_moth_south",
+      "name": "Void Moth (south)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/void_moth_south.png",
+      "prompt": "void moth companion, fluttering, pixel art",
+      "notes": "companion, asset_id:0057da7c-1857-43fa-98c8-ccb7a8e845cb"
+    },
+    {
+      "id": "sc_void_moth_walk",
+      "name": "Void Moth (walk anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/void_moth_walk.webp",
+      "prompt": "Walk cycle: void moth fluttering forward, dark sparkles, pixel loop",
+      "notes": "walk cycle webp"
+    },
+    {
+      "id": "sc_void_moth_attack",
+      "name": "Void Moth (attack anim)",
+      "category": "sprite",
+      "source": "spritecook",
+      "file": "../images/spritecook/anim/void_moth_attack.webp",
+      "prompt": "Attack: void moth darts forward with void dust burst, pixel loop",
+      "notes": "attack anim webp"
+    },
+    {
+      "id": "sc_goblin_scout_portrait",
+      "name": "Goblin Scout portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/goblin_scout_portrait.png",
+      "prompt": "A scrawny goblin scout with leather armor, small dagger, mischievous yellow eyes, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:653374f2-17e5-4df8-a2a4-535007bd0019"
+    },
+    {
+      "id": "sc_goblin_warrior_portrait",
+      "name": "Goblin Warrior portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/goblin_warrior_portrait.png",
+      "prompt": "A muscular goblin warrior wielding a crude iron sword, chipped shield, scarred green skin, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:194306a2-f5ce-4429-b019-eeb2de3d2f46"
+    },
+    {
+      "id": "sc_goblin_shaman_portrait",
+      "name": "Goblin Shaman portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/goblin_shaman_portrait.png",
+      "prompt": "A hunched goblin shaman in bone-fetish robes holding a glowing skull staff, feral eyes, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:5e849665-06c6-4adf-b82a-3912c8633987"
+    },
+    {
+      "id": "sc_goblin_warlord_portrait",
+      "name": "Goblin Warlord portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/goblin_warlord_portrait.png",
+      "prompt": "A massive goblin warlord in plate armor with a two-handed axe, tusked snarl, war paint, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:77f7bb23-d477-4f27-9e6c-6de773862af7"
+    },
+    {
+      "id": "sc_corrupted_wolf_portrait",
+      "name": "Corrupted Wolf portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/corrupted_wolf_portrait.png",
+      "prompt": "A rabid wolf with shadow-corrupted fur, glowing purple eyes, bared dripping fangs, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:cc2125bb-1c19-429a-9830-f15715459d25"
+    },
+    {
+      "id": "sc_corrupted_bear_portrait",
+      "name": "Corrupted Bear portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/corrupted_bear_portrait.png",
+      "prompt": "A hulking bear with blackened corrupted hide, glowing red rune wounds, snarling maw, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:f9a3e9f4-5f13-4eba-8a93-006c53d7ad8b"
+    },
+    {
+      "id": "sc_bandit_portrait",
+      "name": "Bandit portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/bandit_portrait.png",
+      "prompt": "A rough human bandit in patched leather, hooded, clutching a shortsword, stubbled face, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:2bed1e70-5fbe-47df-a480-ab708d0cd48d"
+    },
+    {
+      "id": "sc_bandit_captain_portrait",
+      "name": "Bandit Captain portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/bandit_captain_portrait.png",
+      "prompt": "A grim bandit captain with a scarred face, studded leather coat, dual blades at belt, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:762cf07f-0d52-4af9-9db2-fb8ae2dd10e9"
+    },
+    {
+      "id": "sc_imp_portrait",
+      "name": "Imp portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/imp_portrait.png",
+      "prompt": "A small winged demonic imp with barbed tail, clawed hands wreathed in hellfire, wicked grin, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:9b94dbae-89f0-4849-9a03-78c4d07aa4b2"
+    },
+    {
+      "id": "sc_hell_knight_portrait",
+      "name": "Hell Knight portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/hell_knight_portrait.png",
+      "prompt": "A hell knight in blackened infernal plate armor, horned helm, flaming longsword, glowing red visor, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:14a0ac2a-4cc5-48ee-870f-3ce72f0cb8cb"
+    },
+    {
+      "id": "sc_void_shade_portrait",
+      "name": "Void Shade portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/void_shade_portrait.png",
+      "prompt": "A ghostly void shade, translucent body of swirling black mist, hollow glowing eyes, wispy tendrils, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:19e3e61d-d3ae-4b3e-a2c4-557ff403180f"
+    },
+    {
+      "id": "sc_demon_brute_portrait",
+      "name": "Demon Brute portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/demon_brute_portrait.png",
+      "prompt": "A massive demon brute with red hide, broken horns, scarred muscular torso, clenched stone fists, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:a77d83cb-d964-40b0-8c22-2aaa87fac2ae"
+    },
+    {
+      "id": "sc_ash_wraith_portrait",
+      "name": "Ash Wraith portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/ash_wraith_portrait.png",
+      "prompt": "An ash wraith of smoldering gray smoke, burning ember eyes, drifting ash form, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:8f5dec61-d530-4537-83cc-f04507c7cf06"
+    },
+    {
+      "id": "sc_cinder_hound_portrait",
+      "name": "Cinder Hound portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/cinder_hound_portrait.png",
+      "prompt": "A cinder hound dog with obsidian skin cracked by glowing lava veins, smoldering breath, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:1216371f-1cc0-4fd4-80fb-296294154780"
+    },
+    {
+      "id": "sc_molten_golem_portrait",
+      "name": "Molten Golem portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/molten_golem_portrait.png",
+      "prompt": "A lumbering molten golem of obsidian rock plates with lava flowing between the cracks, glowing core, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:c139f299-e604-4940-a967-ed722f549c64"
+    },
+    {
+      "id": "sc_veil_cultist_portrait",
+      "name": "Veil Cultist portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/veil_cultist_portrait.png",
+      "prompt": "A veil cultist in dark hooded robes with glowing sigils, pale chanting face, ceremonial dagger, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:534ee4b8-b725-4a45-85d6-d1599d4d718b"
+    },
+    {
+      "id": "sc_veil_sorcerer_portrait",
+      "name": "Veil Sorcerer portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/veil_sorcerer_portrait.png",
+      "prompt": "A veil sorcerer in flowing violet robes summoning arcane purple flames, skeletal hands, masked face, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:5b56e7f9-6efe-4e93-bd42-1204706c85ec"
+    },
+    {
+      "id": "sc_veil_warden_portrait",
+      "name": "Veil Warden portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/veil_warden_portrait.png",
+      "prompt": "A veil warden in ornate plate with glowing runes, crystal halberd, grim stoic visor, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:9f4873da-7fe5-4fe0-89b3-fae2d9e34c7f"
+    },
+    {
+      "id": "sc_primordial_elemental_portrait",
+      "name": "Primordial Elemental portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/primordial_elemental_portrait.png",
+      "prompt": "A primordial elemental of swirling raw cosmic energy, nebula core, crackling arms of plasma, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:6270b28a-e4ee-4616-9ec4-9307543ae709"
+    },
+    {
+      "id": "sc_abyssal_knight_portrait",
+      "name": "Abyssal Knight portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/abyssal_knight_portrait.png",
+      "prompt": "An abyssal knight in deep-sea black coral armor, trident, glowing void eyes under helm, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:badba202-7e5c-44e4-a3aa-7361d195429d"
+    },
+    {
+      "id": "sc_reality_shard_portrait",
+      "name": "Reality Shard portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/reality_shard_portrait.png",
+      "prompt": "A floating reality shard entity, fragments of shattered mirror glass arranged as humanoid form, prismatic glow, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:fcd219b9-7aca-44b8-9c88-8d44b5725df0"
+    },
+    {
+      "id": "sc_genesis_worm_portrait",
+      "name": "Genesis Worm portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/genesis_worm_portrait.png",
+      "prompt": "A colossal genesis worm, segmented chitinous body, toothy sucker maw, glowing pink interior, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:72cf4561-9bd0-4c86-87a5-193f84a79b59"
+    },
+    {
+      "id": "sc_void_wraith_portrait",
+      "name": "Void Wraith portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/void_wraith_portrait.png",
+      "prompt": "A void wraith of pure black emptiness, starlike pinpoints for eyes, tattered cosmic cloak, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:3b94b4a0-5b13-44ed-b55c-78981168b391"
+    },
+    {
+      "id": "sc_star_horror_portrait",
+      "name": "Star Horror portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/star_horror_portrait.png",
+      "prompt": "A cosmic star horror with many glowing eyes, writhing tentacles dotted with stars, nebulous body, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:0c6d8b75-e23c-4148-b2a1-641b8c36f77b"
+    },
+    {
+      "id": "sc_cosmic_titan_portrait",
+      "name": "Cosmic Titan portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/cosmic_titan_portrait.png",
+      "prompt": "A cosmic titan of stone and galaxies, giant humanoid wreathed in nebulae, star-lit runes, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:58dc1250-6775-49f4-8be1-c2261e383e16"
+    },
+    {
+      "id": "sc_void_prophet_portrait",
+      "name": "Void Prophet portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/void_prophet_portrait.png",
+      "prompt": "A void prophet in tattered robes, blindfold of stars, third eye opening, levitating, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:7486a7d4-6200-4f59-978b-676ca68d2443"
+    },
+    {
+      "id": "sc_dragon_whelp_portrait",
+      "name": "Dragon Whelp portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/dragon_whelp_portrait.png",
+      "prompt": "A small dragon whelp with iridescent scales, wings unfurling, puffing tiny flame, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:0d65797f-c635-4dcd-9132-942b4e1bb61a"
+    },
+    {
+      "id": "sc_wyrm_warrior_portrait",
+      "name": "Wyrm Warrior portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/wyrm_warrior_portrait.png",
+      "prompt": "A bipedal dragonfolk wyrm warrior in bronze scale armor, serpent snout, curved blade, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:4a96ad7b-ea4e-4f67-bff5-20933c9db8b1"
+    },
+    {
+      "id": "sc_dragon_cultist_portrait",
+      "name": "Dragon Cultist portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/dragon_cultist_portrait.png",
+      "prompt": "A dragon cultist in red-and-gold robes with scale patterns, reverent pose, clutching a dragon-tooth amulet, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:712fb66d-b666-4aec-ae84-b58eb3858297"
+    },
+    {
+      "id": "sc_frost_wyrm_portrait",
+      "name": "Frost Wyrm portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/frost_wyrm_portrait.png",
+      "prompt": "A frost wyrm dragon with icy blue scales, frost breath spilling from its jaws, icicles on spines, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:a6e7275a-8b35-448d-9813-dbed2152e241"
+    },
+    {
+      "id": "sc_storm_dragon_portrait",
+      "name": "Storm Dragon portrait",
+      "category": "portrait",
+      "source": "spritecook",
+      "file": "../images/spritecook/storm_dragon_portrait.png",
+      "prompt": "A storm dragon with dark slate scales, lightning crackling along its wings, glowing yellow eyes, dark fantasy RPG enemy portrait",
+      "notes": "enemy, asset_id:a4f64daa-48f5-41f4-b054-73ce9c70914b"
     }
   ],
   "reports": [
