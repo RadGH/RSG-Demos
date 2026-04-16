@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="rsg-news-date" content="2026-04-14">
-<meta name="rsg-news-title" content="Re-redesign — Pixel Engine">
+<meta name="rsg-news-date" content="2026-04-15">
+<meta name="rsg-news-title" content="Re-redesign — SpriteCook">
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="rsg-game" content="Emberveil">
-<title>Re-redesign — Consistent Character Art via Pixel Engine</title>
+<title>Re-redesign — Consistent Character Art via SpriteCook</title>
 <link rel="stylesheet" href="../assets/_tool-styles.css">
 <script src="../assets/_header.js" defer></script>
 <style>
@@ -24,17 +24,36 @@
     background:radial-gradient(ellipse at top,#1a0b07 0%,var(--bg) 60%);
     color:var(--fg);min-height:100vh}
   h1,h2,h3{font-family:var(--font-display)}
-  .hero{padding:60px 24px 40px;text-align:center;
-    background:linear-gradient(180deg,rgba(232,160,32,0.12),transparent);
+
+  /* ── Animated hero ── */
+  .hero{position:relative;padding:80px 24px 60px;text-align:center;overflow:hidden;
     border-bottom:1px solid var(--border)}
-  .hero h1{font-size:clamp(28px,6vw,52px);margin:0 0 12px;
-    background:linear-gradient(90deg,var(--accent),var(--accent2));
+  .hero::before{content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 20%,rgba(232,160,32,0.18) 0%,transparent 60%),
+               radial-gradient(circle at 30% 80%,rgba(192,64,48,0.12) 0%,transparent 50%),
+               radial-gradient(circle at 70% 70%,rgba(232,160,32,0.08) 0%,transparent 40%);
+    animation:heroPulse 4s ease-in-out infinite}
+  @keyframes heroPulse{0%,100%{opacity:0.6}50%{opacity:1}}
+  .hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .hero h1{position:relative;font-size:clamp(28px,6vw,52px);margin:0 0 12px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent));
+    background-size:200% 100%;
     -webkit-background-clip:text;background-clip:text;color:transparent;
-    animation:shimmer 3s ease-in-out infinite}
-  @keyframes shimmer{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
-  .hero p{color:var(--muted);max-width:720px;margin:0 auto;font-size:16px;line-height:1.6}
-  .stats{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin:32px auto 0;max-width:900px}
-  .stat{background:var(--card);border:1px solid var(--border);padding:16px 24px;border-radius:12px;min-width:140px}
+    animation:titleShimmer 3s ease-in-out infinite;
+    text-shadow:0 0 40px rgba(232,160,32,0.3)}
+  @keyframes titleShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .hero p{position:relative;color:var(--muted);max-width:720px;margin:0 auto;font-size:16px;line-height:1.6}
+  .hero .glow-ring{position:absolute;top:50%;left:50%;width:400px;height:400px;
+    transform:translate(-50%,-50%);border-radius:50%;
+    border:1px solid rgba(232,160,32,0.15);
+    box-shadow:0 0 60px rgba(232,160,32,0.08),inset 0 0 60px rgba(232,160,32,0.04);
+    animation:ringPulse 6s ease-in-out infinite;pointer-events:none}
+  @keyframes ringPulse{0%,100%{transform:translate(-50%,-50%) scale(0.9);opacity:0.4}50%{transform:translate(-50%,-50%) scale(1.1);opacity:0.8}}
+
+  .stats{position:relative;display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin:32px auto 0;max-width:900px}
+  .stat{background:var(--card);border:1px solid var(--border);padding:16px 24px;border-radius:12px;min-width:140px;
+    transition:border-color .3s,box-shadow .3s}
+  .stat:hover{border-color:var(--accent);box-shadow:0 0 20px rgba(232,160,32,0.15)}
   .stat .num{font-size:28px;font-weight:700;color:var(--accent)}
   .stat .lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
 
@@ -42,10 +61,8 @@
   section{padding:56px 24px;margin:0;opacity:0;transform:translateY(24px);
     transition:opacity .8s,transform .8s;border-bottom:1px solid var(--border)}
   section.in{opacity:1;transform:none}
-  /* Alternate full-width gradient backgrounds */
   section:nth-of-type(odd){background:linear-gradient(180deg,rgba(232,160,32,0.04),transparent 60%)}
   section:nth-of-type(even){background:linear-gradient(180deg,rgba(192,64,48,0.05),transparent 60%)}
-  /* Constrain inner content while letting backgrounds run edge-to-edge */
   section > *{max-width:1280px;margin-left:auto;margin-right:auto}
   h2{font-size:24px;margin-bottom:8px;border-left:4px solid var(--accent);padding-left:14px}
   .sectionDesc{color:var(--muted);margin-bottom:24px;max-width:720px;line-height:1.6}
@@ -79,7 +96,7 @@
   .placeholder{color:var(--muted);font-size:11px;text-align:center}
 
   .callout{background:rgba(192,64,48,0.08);border-left:3px solid var(--ember1);
-    padding:16px 20px;border-radius:8px;margin:20px 0;color:var(--fg);line-height:1.6}
+    padding:16px 20px;border-radius:8px;margin:20px auto;color:var(--fg);line-height:1.6;max-width:960px}
   .callout h3{margin:0 0 8px;color:var(--ember1);font-size:16px}
   .callout .catline{color:var(--muted);font-style:italic;margin-top:6px;font-size:13px}
 
@@ -90,7 +107,12 @@
   .petCard .s{font-size:11px;color:var(--muted);margin-top:4px}
 
   .note{background:rgba(232,160,32,0.08);border-left:3px solid var(--accent);
-    padding:12px 16px;border-radius:6px;font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.55}
+    padding:12px 16px;border-radius:6px;font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.55;max-width:960px;margin-left:auto;margin-right:auto}
+
+  .source-badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:600;
+    letter-spacing:0.06em;margin:0 4px}
+  .source-badge.spritecook{background:rgba(94,242,168,0.12);color:#5ef2a8;border:1px solid rgba(94,242,168,0.3)}
+  .source-badge.openai{background:rgba(120,120,255,0.12);color:#a0a0ff;border:1px solid rgba(120,120,255,0.3)}
 
   @media (max-width:600px){.reredesign-grid{grid-template-columns:1fr}}
 </style>
@@ -98,69 +120,97 @@
 <body>
 
 <div class="hero">
-  <h1>Re-redesign &mdash; Consistent Character Art</h1>
-  <p>Pixel Engine generates a coherent animation set from each character&rsquo;s portrait. One source of truth for every pose, so the warrior stops losing his helmet mid-swing and the cat stops attacking with a sword.</p>
+  <canvas id="hero-particles"></canvas>
+  <div class="glow-ring"></div>
+  <h1>Re-redesign &mdash; SpriteCook</h1>
+  <p>SpriteCook generates a coherent character set from a single canonical portrait. One reference asset drives every pose, so equipment and anatomy stay consistent across all sprites.</p>
   <div class="stats">
-    <div class="stat"><div class="num" id="stat-chars">82</div><div class="lbl">Characters</div></div>
-    <div class="stat"><div class="num" id="stat-vars">492</div><div class="lbl">Variants</div></div>
-    <div class="stat"><div class="num">~5.9k</div><div class="lbl">Est. Credits</div></div>
-    <div class="stat"><div class="num">6</div><div class="lbl">Poses / char</div></div>
+    <div class="stat"><div class="num" id="stat-chars">73</div><div class="lbl">Characters</div></div>
+    <div class="stat"><div class="num" id="stat-vars">~510</div><div class="lbl">Variants</div></div>
+    <div class="stat"><div class="num">8</div><div class="lbl">Credits / pose</div></div>
+    <div class="stat"><div class="num">7</div><div class="lbl">Poses / char</div></div>
   </div>
 </div>
 
 <main>
 
 <section>
-  <h2>Why we&rsquo;re redoing it</h2>
-  <p class="sectionDesc">M79 shipped an OpenAI-generated roster that looked great at a glance but broke down under scrutiny. Every pose of every character was generated independently, so nothing held together frame-to-frame.</p>
+  <h2>Why we&rsquo;re redoing it (again)</h2>
+  <p class="sectionDesc">M79 shipped an OpenAI-generated roster that looked great at a glance but broke down under scrutiny. Every pose was generated independently &mdash; helmets vanished, weapons swapped, palettes drifted. A second pass with Pixel Engine helped but still struggled with cross-pose consistency.</p>
   <div class="note">
-    Helmets appeared and disappeared between idle and attack. Weapons swapped mid-animation. Armor palettes drifted between poses. The Rogue wore three different cloaks depending on which angle you looked at. And then there was the cat.
+    SpriteCook solves this with <code>reference_asset_id</code>: generate one canonical portrait, then every follow-up pose inherits that character&rsquo;s exact design. The Oracle test below proves the concept.
   </div>
   <div class="callout">
-    <h3>Cat hall of shame</h3>
-    The Shadow Cat companion spawned with a longsword clamped awkwardly between its paws. A domestic feline, attacking with a two-handed weapon, because the prompt generator didn&rsquo;t know animals shouldn&rsquo;t hold steel.
-    <div class="catline">&ldquo;Filter the prompt by character type so the generator never gives a paw a sword.&rdquo; &mdash; the plan doc, finally</div>
+    <h3>Art pipeline split</h3>
+    <span class="source-badge spritecook">SpriteCook</span> All character sprites &mdash; portraits, idle, attack, spell, unconscious, block. Reference-based generation keeps every pose on-model.<br><br>
+    <span class="source-badge openai">OpenAI</span> Background art, map tiles, environment art. These don&rsquo;t need cross-frame consistency so OpenAI&rsquo;s DALL-E still works well here.
   </div>
 </section>
 
 <section>
   <h2>The pipeline</h2>
-  <p class="sectionDesc">Portrait in, animated set out. Five steps, mostly free operations wrapped around one paid Pixel Engine call per variant (or one bulk <code>/keyframes</code> call per character &mdash; whichever costs less on the test run).</p>
+  <p class="sectionDesc">Portrait in, full sprite set out. Each character costs ~56 credits (7 poses &times; 8 credits). Model: <code>gemini-2.5-flash-image</code> (cheapest tier).</p>
   <div class="pipeline">
-    <div class="step"><div class="n">1</div><h3>Source portrait</h3><p>Existing <code>public/images/portraits/&lt;id&gt;.png</code>. Tactician &amp; Chronomancer regenerated via OpenAI this pass.</p></div>
-    <div class="step"><div class="n">2</div><h3>Pixelate</h3><p><code>POST /pixelate</code> &mdash; free &mdash; normalize to ~256px clean pixel base with a tight 32&ndash;48 color palette.</p></div>
-    <div class="step"><div class="n">3</div><h3>Generate variants</h3><p><code>POST /animate</code> with the portrait as reference &mdash; 6 poses: front idle, east idle, east attack, east spell, east down, portrait.</p></div>
-    <div class="step"><div class="n">4</div><h3>Green-screen key</h3><p><code>matte_color: "00ff00"</code> forces a bright green backdrop. ffmpeg <code>colorkey</code> strips it locally.</p></div>
-    <div class="step"><div class="n">5</div><h3>Optimize</h3><p>Existing <code>optimize_images.sh</code> crushes the final PNGs before the build picks them up.</p></div>
+    <div class="step"><div class="n">1</div><h3>Canonical portrait</h3><p><code>generate_game_art</code> &mdash; 256&times;256 pixel art, dark fantasy theme. This becomes the <code>reference_asset_id</code> for all follow-up poses.</p></div>
+    <div class="step"><div class="n">2</div><h3>Generate poses</h3><p>6 more calls with the portrait as reference: south idle, east idle, east attack, east spell, east unconscious, east block.</p></div>
+    <div class="step"><div class="n">3</div><h3>Scale &amp; crop</h3><p>SpriteCook smart-crops output. ffmpeg <code>scale=256:256:flags=neighbor</code> normalizes to 256&times;256 for game use.</p></div>
+    <div class="step"><div class="n">4</div><h3>West = flip east</h3><p>West-facing sprites generated by horizontal flip &mdash; no extra credits needed.</p></div>
+    <div class="step"><div class="n">5</div><h3>Optimize &amp; deploy</h3><p><code>optimize_images.js</code> compresses, <code>release.sh</code> generates 256&times;256 thumbnails, deploy to GitHub Pages.</p></div>
   </div>
 </section>
 
 <section>
   <h2>Before / after roster</h2>
-  <p class="sectionDesc">Cards populate as the generation batch lands. Each card shows the old M79 portrait, the new Pixel Engine set, and a 5-variant strip along the bottom.</p>
+  <p class="sectionDesc">The Oracle is the first character through the SpriteCook pipeline. Compare the old OpenAI/PixelLab art with the new SpriteCook set below.</p>
   <div class="reredesign-grid" id="reredesign-grid">
-    <!-- TODO: fill once art lands. Example card shape below. -->
+
+    <div class="reredesign-card" data-id="oracle">
+      <h3>Oracle <span class="source-badge spritecook">SpriteCook</span></h3>
+      <div class="compareGrid">
+        <div class="imgBox"><span class="tag old">Old</span><img src="../images/portraits/oracle.png" alt="Oracle old portrait"></div>
+        <div class="imgBox"><span class="tag new">New</span><img src="../images/spritecook/oracle_portrait.png" alt="Oracle SpriteCook portrait"></div>
+      </div>
+      <div class="variants">
+        <div class="imgBox"><span class="lbl">south</span><img src="../images/spritecook/oracle_south.png" alt="south idle"></div>
+        <div class="imgBox"><span class="lbl">east</span><img src="../images/spritecook/oracle_east.png" alt="east idle"></div>
+        <div class="imgBox"><span class="lbl">atk</span><img src="../images/spritecook/oracle_east_attack.png" alt="east attack"></div>
+        <div class="imgBox"><span class="lbl">spell</span><img src="../images/spritecook/oracle_east_spell.png" alt="east spell"></div>
+        <div class="imgBox"><span class="tag todo">KO</span><span class="placeholder">needs credits</span></div>
+      </div>
+    </div>
+
     <div class="reredesign-card" data-id="warrior">
       <h3>Warrior</h3>
       <div class="compareGrid">
-        <div class="imgBox"><span class="tag old">M79</span><img src="../images/portraits/warrior.png" alt="Warrior M79"></div>
-        <div class="imgBox"><span class="tag new">New</span><span class="placeholder">pending</span></div>
+        <div class="imgBox"><span class="tag old">Old</span><img src="../images/portraits/warrior.png" alt="Warrior old"></div>
+        <div class="imgBox"><span class="tag todo">Queued</span><span class="placeholder">pending</span></div>
       </div>
       <div class="variants">
         <div class="imgBox"><span class="tag todo">front</span></div>
         <div class="imgBox"><span class="tag todo">east</span></div>
         <div class="imgBox"><span class="tag todo">atk</span></div>
         <div class="imgBox"><span class="tag todo">spell</span></div>
-        <div class="imgBox"><span class="tag todo">down</span></div>
+        <div class="imgBox"><span class="tag todo">KO</span></div>
       </div>
     </div>
-    <!-- /TODO -->
+
+  </div>
+</section>
+
+<section>
+  <h2>Cost estimate</h2>
+  <p class="sectionDesc">Full roster regeneration with the cheapest model.</p>
+  <div class="note">
+    <strong>73 characters &times; 7 poses &times; 8 credits = ~4,088 credits</strong><br>
+    Apprentice ($6/mo, 800 credits) &mdash; ~5 months<br>
+    Adventurer ($24/mo, 3,000 credits) &mdash; ~2 months<br>
+    <strong>Archmage ($56/mo, 7,000 credits) &mdash; 1 month, with headroom for retries</strong>
   </div>
 </section>
 
 <section>
   <h2>Coming soon: class pets</h2>
-  <p class="sectionDesc">These summoned companions wait on the m95 skill rewiring. Once passive trees are live, each class that can summon gets its own pet running through the same Pixel Engine pipeline.</p>
+  <p class="sectionDesc">These summoned companions wait on the skill rewiring. Once passive trees are live, each class that can summon gets its own pet running through the same SpriteCook pipeline.</p>
   <div class="petList">
     <div class="petCard"><div class="c">Necromancer</div><div class="n">Skeletal Warrior</div><div class="s">Bone-armored, rusty blade.</div></div>
     <div class="petCard"><div class="c">Necromancer</div><div class="n">Bone Golem</div><div class="s">Slow, heavy, fearless.</div></div>
@@ -179,11 +229,62 @@
 </main>
 
 <script>
-  // IntersectionObserver reveal, matches m79-redesign DNA
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('section').forEach(s => io.observe(s));
+// Particle system for hero section
+(function(){
+  const canvas = document.getElementById('hero-particles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  const particles = [];
+  const COUNT = 50;
+
+  function resize(){
+    const r = canvas.parentElement.getBoundingClientRect();
+    W = canvas.width = r.width;
+    H = canvas.height = r.height;
+  }
+  function spawn(){
+    return {
+      x: Math.random()*W, y: Math.random()*H,
+      vx: (Math.random()-0.5)*0.3, vy: -Math.random()*0.6 - 0.2,
+      r: Math.random()*2+1, life: Math.random(),
+      hue: Math.random()>0.5 ? 36 : 16
+    };
+  }
+  function init(){
+    resize();
+    for(let i=0;i<COUNT;i++) particles.push(spawn());
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(const p of particles){
+      p.x += p.vx; p.y += p.vy; p.life -= 0.003;
+      if(p.life <= 0 || p.y < -10){
+        Object.assign(p, spawn());
+        p.y = H + 10;
+        p.life = 1;
+      }
+      const a = p.life * 0.7;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = `hsla(${p.hue},80%,60%,${a})`;
+      ctx.shadowColor = `hsla(${p.hue},90%,50%,${a*0.5})`;
+      ctx.shadowBlur = 8;
+      ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+    requestAnimationFrame(draw);
+  }
+  init();
+  window.addEventListener('resize', resize);
+  draw();
+})();
+
+// IntersectionObserver reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('section').forEach(s => io.observe(s));
 </script>
 </body>
 </html>

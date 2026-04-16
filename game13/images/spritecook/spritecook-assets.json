@@ -1,0 +1,34 @@
+{
+  "oracle": {
+    "portrait": {
+      "asset_id": "5bf384b9-a663-4d62-be8b-20b77db7a166",
+      "file": "oracle_portrait.png",
+      "role": "canonical_reference"
+    },
+    "south": {
+      "asset_id": "0825cb75-ad56-4110-a874-6b93918d329a",
+      "file": "oracle_south.png"
+    },
+    "east": {
+      "asset_id": "6a11bdd2-16b1-4637-aa8c-74a76e95f719",
+      "file": "oracle_east.png"
+    },
+    "east_attack": {
+      "asset_id": "74f3ddc0-52ea-4e65-995d-037df53cb22f",
+      "file": "oracle_east_attack.png"
+    },
+    "east_spell": {
+      "asset_id": "565622e2-d01c-4986-8763-a7ca5d9851e1",
+      "file": "oracle_east_spell.png",
+      "note": "pixel URL was 16x16; used raw URL scaled to 256x256 nearest-neighbor"
+    }
+  },
+  "_meta": {
+    "model": "gemini-2.5-flash-image",
+    "credits_per_generation": 8,
+    "style": "16-bit SNES RPG style",
+    "theme": "dark fantasy medieval",
+    "target_size": "256x256",
+    "scale_method": "nearest-neighbor"
+  }
+}
