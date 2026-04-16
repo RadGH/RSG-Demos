@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="rsg-news-date" content="2026-03-01">
+<meta name="rsg-featured-image" content="../images/map_bg/ember_plateau_1.png">
+<meta name="rsg-news-date" content="2026-04-11">
 <meta name="rsg-news-title" content="Milestone 53 Report">
 
 <meta charset="UTF-8">
@@ -445,5 +446,22 @@
   </footer>
 
 </div>
+<!-- rsg-featured-image-applied -->
+<script>
+(function(){
+  var m=document.querySelector("meta[name='rsg-featured-image']");
+  if(!m)return;
+  var hero=document.querySelector(".hero");
+  if(!hero)return;
+  var ov=document.createElement("div");
+  ov.style.cssText="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,5,8,0.55) 0%,rgba(8,5,8,0.3) 40%,rgba(8,5,8,0.85) 100%);pointer-events:none;z-index:0;";
+  hero.style.position="relative";
+  hero.insertBefore(ov,hero.firstChild);
+  var bgImg=new Image();bgImg.src=m.content;
+  bgImg.onload=function(){hero.style.backgroundImage="url("+JSON.stringify(m.content)+")";
+  hero.style.backgroundSize="cover";
+  hero.style.backgroundPosition="center";};
+})();
+</script>
 </body>
 </html>

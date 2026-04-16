@@ -93,9 +93,13 @@
   /* Desktop: one row with 5 columns */
   .survey-head, .survey-row {
     display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr;
-    gap: 0.75rem;
+    grid-template-columns: 1.2fr 130px 130px;
+    gap: 0.5rem;
     align-items: center;
+    justify-content: start;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .survey-head {
     padding: 0.7rem 0.75rem;
@@ -336,7 +340,7 @@
 
 <div class="intro">
   <p>Vote on which art-generation service produced the best sprite for each character. Your feedback helps determine which graphics to use for future projects. Skip any sprite you're unsure about &mdash; it will appear as "Skipped" in the report.</p>
-  <p class="muted" style="margin-bottom:0;">Two candidate services are compared: <strong style="color:var(--gold-glow);">OpenAI</strong> and <strong style="color:var(--gold-glow);">SpriteCook</strong>. A dashed &ldquo;&mdash;&rdquo; cell means that service has no sprite for this character.</p>
+  <p class="muted" style="margin-bottom:0;">Two candidate services are compared: <strong style="color:var(--gold-glow);">OpenAI</strong> and <strong style="color:var(--gold-glow);">SpriteCook</strong>.</p>
 </div>
 
 <div class="counter">
@@ -399,29 +403,7 @@
     { id:'pyromancer',    name:'Pyromancer',     openai:'../images/portraits/pyromancer.png',    spritecook:'../images/spritecook/pyromancer_portrait.png' },
     { id:'warlock',       name:'Warlock',        openai:'../images/portraits/warlock.png',       spritecook:'../images/spritecook/warlock_portrait.png' },
     { id:'fighter',       name:'Fighter',        openai:'../images/portraits/fighter.png',       spritecook:'../images/spritecook/fighter_portrait.png' },
-    { id:'oracle',        name:'Oracle',         openai:'../images/portraits/oracle.png',        spritecook:'../images/spritecook/oracle_portrait.png' },
-
-    // Bosses & enemies
-    { id:'ancient_dragon',      name:'Ancient Dragon',      openai:'../images/portraits/ancient_dragon.png',      spritecook:null },
-    { id:'archfiend_malgrath',  name:'Archfiend Malgrath',  openai:'../images/portraits/archfiend_malgrath.png',  spritecook:null },
-    { id:'ash_wraith',          name:'Ash Wraith',          openai:'../images/portraits/ash_wraith.png',          spritecook:null },
-    { id:'bandit_captain',      name:'Bandit Captain',      openai:'../images/portraits/bandit_captain.png',      spritecook:null },
-    { id:'dragon_king',         name:'Dragon King',         openai:'../images/portraits/dragon_king.png',         spritecook:null },
-    { id:'emberveil_sovereign', name:'Emberveil Sovereign', openai:'../images/portraits/emberveil_sovereign.png', spritecook:null },
-    { id:'goblin_warlord',      name:'Goblin Warlord',      openai:'../images/portraits/goblin_warlord.png',      spritecook:null },
-    { id:'hell_knight',         name:'Hell Knight',         openai:'../images/portraits/hell_knight.png',         spritecook:null },
-    { id:'lava_titan',          name:'Lava Titan',          openai:'../images/portraits/lava_titan.png',          spritecook:null },
-    { id:'cosmic_titan',        name:'Cosmic Titan',        openai:'../images/portraits/cosmic_titan.png',        spritecook:null },
-    { id:'crystal_golem',       name:'Crystal Golem',       openai:'../images/portraits/crystal_golem.png',       spritecook:null },
-    { id:'dire_wolf',           name:'Dire Wolf',           openai:'../images/portraits/dire_wolf.png',           spritecook:null },
-    { id:'ember_drake',         name:'Ember Drake',         openai:'../images/portraits/ember_drake.png',         spritecook:null },
-    { id:'forest_owl',          name:'Forest Owl',          openai:'../images/portraits/forest_owl.png',          spritecook:null },
-    { id:'shadow_cat',          name:'Shadow Cat',          openai:'../images/portraits/shadow_cat.png',          spritecook:null },
-    { id:'spirit_wisp',         name:'Spirit Wisp',         openai:'../images/portraits/spirit_wisp.png',         spritecook:null },
-    { id:'bone_hound',          name:'Bone Hound',          openai:'../images/portraits/bone_hound.png',          spritecook:null },
-    { id:'ice_sprite',          name:'Ice Sprite',          openai:'../images/portraits/ice_sprite.png',          spritecook:null },
-    { id:'swamp_frog',          name:'Swamp Frog',          openai:'../images/portraits/swamp_frog.png',          spritecook:null },
-    { id:'void_moth',           name:'Void Moth',           openai:'../images/portraits/void_moth.png',           spritecook:null }
+    { id:'oracle',        name:'Oracle',         openai:'../images/portraits/oracle.png',        spritecook:'../images/spritecook/oracle_portrait.png' }
   ];
 
   const SERVICE_KEYS = ['openai', 'spritecook'];

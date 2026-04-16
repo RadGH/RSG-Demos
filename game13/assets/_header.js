@@ -66,10 +66,11 @@
       { href: ASSETS + 'affix-survey.html', label: 'Affix Survey' },
       { href: ASSETS + 'enemy-audit.html', label: 'Enemy Audit' },
       { href: ASSETS + 'skill-audit.html', label: 'Skill Audit' },
-      { href: ASSETS + 'rebalance-survey.html', label: 'Rebalance Survey' },
-      { href: ASSETS + 'rebalance.html', label: 'Rebalance' },
       { href: ASSETS + 'sprite-flip-review.html', label: 'Sprite Flip Review' },
-      { href: ASSETS + 'redesign-survey.html', label: 'Redesign Survey' }
+      { href: ASSETS + 'redesign-survey.html', label: 'Redesign Survey' },
+      { href: ASSETS + 'image-review.html', label: 'Image Review' },
+      { separator: true, label: 'Archived' },
+      { href: ASSETS + 'rebalance.html', label: 'Rebalance' }
     ]
   };
   // News registry — populated by the migration pass. Sorted newest first.
@@ -102,13 +103,15 @@
       { href: NEWS_ROOT + 'm5.html',          label: 'Milestone 5 Report',  date: '2025-10-01' }
     ],
     game13: [
-      { href: NEWS_ROOT + 're-redesign.html',        label: 'Re-redesign — Pixel Engine', date: '2026-04-14' },
-      { href: NEWS_ROOT + 'm79-redesign.html',       label: 'M79 Redesign Report',   date: '2026-04-01' },
-      { href: NEWS_ROOT + 'tap-weapons.html',        label: 'Tap Weapons Design',    date: '2026-03-28' },
-      { href: NEWS_ROOT + 'simulation-overhaul.html',label: 'Simulation Overhaul',   date: '2026-03-20' },
-      { href: NEWS_ROOT + 'dragon-expansion.html',   label: 'Dragon Expansion',      date: '2026-03-15' },
-      { href: NEWS_ROOT + 'milestone-53.html',       label: 'Milestone 53 Report',   date: '2026-03-01' },
-      { href: NEWS_ROOT + 'pre-game.html',           label: 'Pre-Game Brainstorm',   date: '2026-01-01' }
+      { href: NEWS_ROOT + 'milestone-report.html',   label: 'Major Milestone Report',date: '2026-04-15' },
+      { href: NEWS_ROOT + 're-redesign.html',        label: 'Re-redesign — SpriteCook', date: '2026-04-14' },
+      { href: NEWS_ROOT + 'm79-redesign.html',       label: 'M79 Redesign Report',   date: '2026-04-14' },
+      { href: NEWS_ROOT + 'balance-report.html',     label: 'Balance Report',        date: '2026-04-14' },
+      { href: NEWS_ROOT + 'tap-weapons.html',        label: 'Tap Weapons Design',    date: '2026-04-13' },
+      { href: NEWS_ROOT + 'simulation-overhaul.html',label: 'Simulation Overhaul',   date: '2026-04-13' },
+      { href: NEWS_ROOT + 'dragon-expansion.html',   label: 'Dragon Expansion',      date: '2026-04-13' },
+      { href: NEWS_ROOT + 'milestone-53.html',       label: 'Milestone 53 Report',   date: '2026-04-11' },
+      { href: NEWS_ROOT + 'pre-game.html',           label: 'Pre-Game Brainstorm',   date: '2026-04-10' }
     ]
   };
   var TOOLS = TOOLS_BY_GAME[GAME_KEY] || [];
@@ -126,6 +129,7 @@
         { href: ASSETS + '#reports-section', label: 'Milestones' }
       ]
     },
+    { href: GAME_ROOT + 'contact.html', label: 'Contact' },
     { href: 'https://docs.google.com/forms/d/e/1FAIpQLScWHFEQ8Kbxvsxg5nKerJOPqkYntAkRLCihqQchypNdqayvmA/viewform?usp=publish-editor', label: 'Send Feedback', external: true }
   ];
   if (TOOLS.length) {
@@ -155,6 +159,9 @@
     var links = MENU.map(function (m) {
       if (m.children) {
         var sub = m.children.map(function (c) {
+          if (c.separator) {
+            return '<li class="sub-sep"><span>' + c.label + '</span></li>';
+          }
           return '<li><a href="' + c.href + '">' + c.label + '</a></li>';
         }).join('');
         return '<li class="has-sub"><a href="' + m.href + '">' + m.label + ' \u25BE</a><ul class="sub-menu">' + sub + '</ul></li>';
@@ -185,6 +192,8 @@
       'nav.rsg-shared-nav .sub-menu{display:none;position:absolute;top:100%;left:0;background:rgba(10,6,8,0.98);border:1px solid rgba(232,160,32,0.25);border-radius:6px;padding:0.4rem 0;list-style:none;margin:0;min-width:140px;box-shadow:0 8px 24px rgba(0,0,0,0.5)}' +
       'nav.rsg-shared-nav .has-sub:hover .sub-menu,nav.rsg-shared-nav .has-sub:focus-within .sub-menu,nav.rsg-shared-nav .has-sub.open .sub-menu{display:block}' +
       'nav.rsg-shared-nav .sub-menu a{padding:0.4rem 0.9rem;font-size:0.7rem}' +
+      'nav.rsg-shared-nav .sub-menu .sub-sep{padding:0.45rem 0.9rem 0.2rem;margin-top:0.25rem;border-top:1px solid rgba(232,160,32,0.2)}' +
+      'nav.rsg-shared-nav .sub-menu .sub-sep span{color:#e8a020;font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;opacity:0.8}' +
       'body.rsg-nav-padded{padding-top:52px}' +
       '@media (max-width:720px){' +
         'nav.rsg-shared-nav{height:auto;padding:0.4rem 0.75rem;align-items:stretch}' +
