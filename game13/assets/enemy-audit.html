@@ -14,7 +14,7 @@
   .status.overtuned { background:#4b1e1e; color:#ff9e9e; }
   .status.undertuned { background:#4b421e; color:#ffe48b; }
   .status.unset { background:#2a2f3e; color:#8b93a8; }
-  .filter-bar { position:sticky; top:52px; z-index:50; background:#0e1018; border:1px solid #333a4a; border-radius:8px; padding:10px 12px; margin-bottom:14px; display:flex; flex-wrap:wrap; gap:8px; }
+  .filter-bar { background:#0e1018; border:1px solid #333a4a; border-radius:8px; padding:10px 12px; margin-bottom:14px; display:flex; flex-wrap:wrap; gap:8px; }
   .filter-bar label { font-size:11px; color:#8b93a8; display:flex; flex-direction:column; gap:2px; }
   .filter-bar input, .filter-bar select { background:#181a22; color:#e6e8ee; border:1px solid #3a4050; border-radius:4px; padding:4px 6px; font-size:12px; min-width:100px; }
   .aggregate { background:#131620; border:1px solid #333a4a; border-radius:8px; padding:12px; margin-bottom:14px; }
@@ -499,7 +499,25 @@ function copyPrompt() {
 }
 
 function exportState() {
-  const blob = new Blob([JSON.stringify(state, null, 2)], { type:'application/json' });
+  // Export in a format compatible with Combat Simulator import (SettingsScreen._applySimData)
+  // The simulator expects { ENEMIES: { id: { name, hp, dmg, armor, ... } } } or an array with id fields
+  const enemies = {};
+  for (const e of ENEMIES) {
+    const s = state.entries[e.id];
+    enemies[e.id] = {
+      name: e.name, hp: s.hp, dmg: [s.dmgMin, s.dmgMax], armor: s.armor,
+      hit: s.hit, dodge: s.dodge, magicResist: s.magicResist, xpValue: e.xpValue,
+      level: s.level, isBoss: e.isBoss, role: s.role, tier: s.tier, tags: s.tags,
+      zone: e.zone
+    };
+  }
+  const exportData = {
+    _source: 'enemy-audit',
+    _version: SCHEMA_VERSION,
+    _auditState: state,
+    ENEMIES: enemies
+  };
+  const blob = new Blob([JSON.stringify(exportData, null, 2)], { type:'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -515,10 +533,12 @@ function importState(ev) {
   reader.onload = () => {
     try {
       const parsed = JSON.parse(reader.result);
-      if (parsed.version !== SCHEMA_VERSION) {
-        if (!confirm(`Schema mismatch (file v${parsed.version}, current v${SCHEMA_VERSION}). Import anyway?`)) return;
+      // Support new export format with _auditState
+      const auditData = parsed._auditState || parsed;
+      if (auditData.version !== SCHEMA_VERSION) {
+        if (!confirm(`Schema mismatch (file v${auditData.version}, current v${SCHEMA_VERSION}). Import anyway?`)) return;
       }
-      state = parsed;
+      state = auditData;
       for (const e of ENEMIES) if (!state.entries[e.id]) state.entries[e.id] = defaultEntry(e);
       saveState();
       genEl.value = state.generalNotes || '';
@@ -661,10 +681,23 @@ function resetBulkAdjust() {
 function renderBulkLog() {
   const logEl = document.getElementById('ba_log');
   if (!bulkAdjustments.length) { logEl.innerHTML = ''; return; }
-  logEl.innerHTML = '<strong style="color:#8b93a8;">Applied adjustments:</strong>' +
+  const count = bulkAdjustments.length;
+  const collapsed = count > 5;
+  logEl.innerHTML = `<div style="display:flex;align-items:center;gap:8px;"><strong style="color:#8b93a8;">Applied Adjustments (${count})</strong><button type="button" class="secondary" style="padding:2px 8px;font-size:10px;" onclick="toggleAdjList()">` +
+    (collapsed ? 'Expand' : 'Collapse') + `</button></div>` +
+    `<div id="ba_list" style="${collapsed ? 'display:none' : ''}">` +
     bulkAdjustments.map((a, i) =>
       `<div class="adj-entry"><span>${a.label}</span><button type="button" onclick="removeBulkAdjustment(${i})">Remove</button></div>`
-    ).join('');
+    ).join('') + '</div>';
+}
+
+function toggleAdjList() {
+  const list = document.getElementById('ba_list');
+  if (!list) return;
+  const hidden = list.style.display === 'none';
+  list.style.display = hidden ? '' : 'none';
+  const btn = list.previousElementSibling.querySelector('button');
+  if (btn) btn.textContent = hidden ? 'Collapse' : 'Expand';
 }
 
 render();

@@ -64,7 +64,7 @@
   var TOOLS_BY_GAME = {
     game13: [
       { href: ASSETS + 'affix-survey.html', label: 'Affix Survey' },
-      { href: ASSETS + 'enemy-survey.html', label: 'Enemy Survey' },
+      { href: ASSETS + 'enemy-audit.html', label: 'Enemy Audit' },
       { href: ASSETS + 'skill-audit.html', label: 'Skill Audit' },
       { href: ASSETS + 'rebalance-survey.html', label: 'Rebalance Survey' },
       { href: ASSETS + 'rebalance.html', label: 'Rebalance' },

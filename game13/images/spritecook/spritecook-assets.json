@@ -125,6 +125,123 @@
     "east_ko": { "file": "mage_east_ko.png" },
     "east_block": { "file": "mage_east_block.png" }
   },
+  "necromancer": {
+    "portrait": { "asset_id": "602609b8-524b-40d4-b0f1-7a1a5ee1b2b0", "file": "necromancer_portrait.png", "role": "canonical_reference" },
+    "south": { "file": "necromancer_south.png" },
+    "east": { "file": "necromancer_east.png" },
+    "east_attack": { "file": "necromancer_east_attack.png" },
+    "east_spell": { "file": "necromancer_east_spell.png" },
+    "east_ko": { "file": "necromancer_east_ko.png" },
+    "east_block": { "file": "necromancer_east_block.png" }
+  },
+  "bard": {
+    "portrait": { "asset_id": "20f30802-cbf3-4dee-bd7b-3559de28b67a", "file": "bard_portrait.png", "role": "canonical_reference" },
+    "south": { "file": "bard_south.png" },
+    "east": { "file": "bard_east.png" },
+    "east_attack": { "file": "bard_east_attack.png" },
+    "east_spell": { "file": "bard_east_spell.png" },
+    "east_ko": { "file": "bard_east_ko.png" },
+    "east_block": { "file": "bard_east_block.png" }
+  },
+  "druid": {
+    "portrait": { "asset_id": "31e8dbf9-8111-4f53-a092-b8e3cab0ce64", "file": "druid_portrait.png", "role": "canonical_reference" },
+    "south": { "file": "druid_south.png" },
+    "east": { "file": "druid_east.png" },
+    "east_attack": { "file": "druid_east_attack.png" },
+    "east_spell": { "file": "druid_east_spell.png" },
+    "east_ko": { "file": "druid_east_ko.png" },
+    "east_block": { "file": "druid_east_block.png" }
+  },
+  "demon_hunter": {
+    "portrait": { "asset_id": "2ef1591a-4d0c-4a5d-bef3-d7a1cd627ec5", "file": "demon_hunter_portrait.png", "role": "canonical_reference" },
+    "south": { "file": "demon_hunter_south.png" },
+    "east": { "file": "demon_hunter_east.png" },
+    "east_attack": { "file": "demon_hunter_east_attack.png" },
+    "east_spell": { "file": "demon_hunter_east_spell.png" },
+    "east_ko": { "file": "demon_hunter_east_ko.png" },
+    "east_block": { "file": "demon_hunter_east_block.png" }
+  },
+  "tactician": {
+    "portrait": { "asset_id": "313eab72-b70b-4bf3-a971-3c2bb66cab80", "file": "tactician_portrait.png", "role": "canonical_reference" },
+    "south": { "file": "tactician_south.png" },
+    "east": { "file": "tactician_east.png" },
+    "east_attack": { "file": "tactician_east_attack.png" },
+    "east_spell": { "file": "tactician_east_spell.png" },
+    "east_ko": { "file": "tactician_east_ko.png" },
+    "east_block": { "file": "tactician_east_block.png" }
+  },
+  "chronomancer": {
+    "portrait": { "asset_id": "c7d102e2-473a-4ffa-a702-488423cc7028", "file": "chronomancer_portrait.png", "role": "canonical_reference" },
+    "south": { "file": "chronomancer_south.png" },
+    "east": { "file": "chronomancer_east.png" },
+    "east_attack": { "file": "chronomancer_east_attack.png" },
+    "east_spell": { "file": "chronomancer_east_spell.png" },
+    "east_ko": { "file": "chronomancer_east_ko.png" },
+    "east_block": { "file": "chronomancer_east_block.png" }
+  },
+  "stormcaller": {
+    "portrait": { "asset_id": "b77d1806-428e-4ba3-a138-61e1cf4c4f0b", "file": "stormcaller_portrait.png", "role": "canonical_reference" },
+    "south": { "file": "stormcaller_south.png" },
+    "east": { "file": "stormcaller_east.png" },
+    "east_attack": { "file": "stormcaller_east_attack.png" },
+    "east_spell": { "file": "stormcaller_east_spell.png" },
+    "east_ko": { "file": "stormcaller_east_ko.png" },
+    "east_block": { "file": "stormcaller_east_block.png" }
+  },
+  "dragon_knight": {
+    "portrait": { "asset_id": "23ce88d1-5821-4142-a198-96d56dff4839", "file": "dragon_knight_portrait.png", "role": "canonical_reference" },
+    "south": { "file": "dragon_knight_south.png" },
+    "east": { "file": "dragon_knight_east.png" },
+    "east_attack": { "file": "dragon_knight_east_attack.png" },
+    "east_spell": { "file": "dragon_knight_east_spell.png" },
+    "east_ko": { "file": "dragon_knight_east_ko.png" },
+    "east_block": { "file": "dragon_knight_east_block.png" }
+  },
+  "swashbuckler": {
+    "portrait": { "asset_id": "885156f2-97da-4f67-9b18-5b595984f405", "file": "swashbuckler_portrait.png", "role": "canonical_reference" },
+    "south": { "file": "swashbuckler_south.png" },
+    "east": { "file": "swashbuckler_east.png" },
+    "east_attack": { "file": "swashbuckler_east_attack.png" },
+    "east_spell": { "file": "swashbuckler_east_spell.png" },
+    "east_ko": { "file": "swashbuckler_east_ko.png" },
+    "east_block": { "file": "swashbuckler_east_block.png" }
+  },
+  "scavenger": {
+    "portrait": { "asset_id": "52b834f0-358b-4ffb-b943-bfe45098d50f", "file": "scavenger_portrait.png", "role": "canonical_reference" },
+    "south": { "file": "scavenger_south.png" },
+    "east": { "file": "scavenger_east.png" },
+    "east_attack": { "file": "scavenger_east_attack.png" },
+    "east_spell": { "file": "scavenger_east_spell.png" },
+    "east_ko": { "file": "scavenger_east_ko.png" },
+    "east_block": { "file": "scavenger_east_block.png" }
+  },
+  "pyromancer": {
+    "portrait": { "asset_id": "ddc04435-d862-468d-b974-7f98f17ab3f0", "file": "pyromancer_portrait.png", "role": "canonical_reference" },
+    "south": { "file": "pyromancer_south.png" },
+    "east": { "file": "pyromancer_east.png" },
+    "east_attack": { "file": "pyromancer_east_attack.png" },
+    "east_spell": { "file": "pyromancer_east_spell.png" },
+    "east_ko": { "file": "pyromancer_east_ko.png" },
+    "east_block": { "file": "pyromancer_east_block.png" }
+  },
+  "warlock": {
+    "portrait": { "asset_id": "b780621a-bd9d-45b7-94c1-7d5c14f60e56", "file": "warlock_portrait.png", "role": "canonical_reference" },
+    "south": { "file": "warlock_south.png" },
+    "east": { "file": "warlock_east.png" },
+    "east_attack": { "file": "warlock_east_attack.png" },
+    "east_spell": { "file": "warlock_east_spell.png" },
+    "east_ko": { "file": "warlock_east_ko.png" },
+    "east_block": { "file": "warlock_east_block.png" }
+  },
+  "cleric": {
+    "portrait": { "asset_id": "a325f327-069f-46b4-bc8d-2c03cf89e3b7", "file": "cleric_portrait.png", "role": "canonical_reference" },
+    "south": { "file": "cleric_south.png" },
+    "east": { "file": "cleric_east.png" },
+    "east_attack": { "file": "cleric_east_attack.png" },
+    "east_spell": { "file": "cleric_east_spell.png" },
+    "east_ko": { "file": "cleric_east_ko.png" },
+    "east_block": { "file": "cleric_east_block.png" }
+  },
   "_meta": {
     "model": "gemini-2.5-flash-image",
     "credits_per_generation": 8,

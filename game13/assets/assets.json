@@ -7511,6 +7511,214 @@
       "source": "openai",
       "file": "../images/sprites/void_moth_south_attack.png",
       "notes": "Generated companion attack animation frame for void_moth"
+    },
+    {
+      "id": "combat_bg_border_roads_1",
+      "name": "Border Roads - Crossroads at Twilight",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/border_roads_1.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_border_roads_2",
+      "name": "Border Roads - Ruined Watchtower",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/border_roads_2.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_thornwood_1",
+      "name": "Thornwood Forest - Dense Dark Woods",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/thornwood_1.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_thornwood_2",
+      "name": "Thornwood Forest - Standing Stones Clearing",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/thornwood_2.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_thornwood_3",
+      "name": "Thornwood Forest - Deep Gnarled Roots",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/thornwood_3.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_dust_roads_1",
+      "name": "Dust Roads - Arid Wasteland",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/dust_roads_1.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_dust_roads_2",
+      "name": "Dust Roads - Desert Canyon Pass",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/dust_roads_2.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_ember_plateau_1",
+      "name": "Ember Plateau - Volcanic Plateau",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/ember_plateau_1.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_ember_plateau_2",
+      "name": "Ember Plateau - Obsidian Formations",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/ember_plateau_2.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_ember_plateau_3",
+      "name": "Ember Plateau - Ashen Wasteland",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/ember_plateau_3.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_hell_breach_1",
+      "name": "Hell Breach - Obsidian Spires and Lava",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/hell_breach_1.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_hell_breach_2",
+      "name": "Hell Breach - Hellfire Rift",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/hell_breach_2.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_shattered_core_1",
+      "name": "Shattered Core - Broken Dimension",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/shattered_core_1.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_shattered_core_2",
+      "name": "Shattered Core - Ruined Throne Room",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/shattered_core_2.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_cosmic_rift_1",
+      "name": "Cosmic Rift - Tear in Reality",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/cosmic_rift_1.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_cosmic_rift_2",
+      "name": "Cosmic Rift - Shattered Starfield",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/cosmic_rift_2.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_eternal_void_1",
+      "name": "Eternal Void - Dying Stars",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/eternal_void_1.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_eternal_void_2",
+      "name": "Eternal Void - Impossible Geometry",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/eternal_void_2.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_abyssal_depths_1",
+      "name": "Abyssal Depths - Bioluminescent Cavern",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/abyssal_depths_1.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_abyssal_depths_2",
+      "name": "Abyssal Depths - Fossilized Abyss",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/abyssal_depths_2.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_primordial_nexus_1",
+      "name": "Primordial Nexus - Energy Vortex",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/primordial_nexus_1.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_primordial_nexus_2",
+      "name": "Primordial Nexus - Genesis Chamber",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/primordial_nexus_2.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_dragons_reach_1",
+      "name": "Dragon Reach - Mountain Lair Entrance",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/dragons_reach_1.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_dragons_reach_2",
+      "name": "Dragon Reach - Mountain Pass Nests",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/dragons_reach_2.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_dragon_throne_1",
+      "name": "Dragon Throne - Treasure Hoard Hall",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/dragon_throne_1.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
+    },
+    {
+      "id": "combat_bg_dragon_throne_2",
+      "name": "Dragon Throne - Volcano Summit",
+      "category": "background",
+      "source": "openai",
+      "file": "../images/combat_bg/dragon_throne_2.png",
+      "notes": "Combat background generated via DALL-E 3, 256x256 pixel art"
     }
   ],
   "reports": [
