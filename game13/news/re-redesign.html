@@ -90,7 +90,7 @@
   .tag.old{background:#3a1a0e;color:#d88040}
   .tag.new{background:#2a1e08;color:var(--gold-bright)}
   .tag.todo{background:#2a1a08;color:var(--muted)}
-  .variants{margin-top:12px;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .variants{margin-top:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(50px,1fr));gap:6px}
   .variants .imgBox{aspect-ratio:1;padding:4px}
   .variants .lbl{position:absolute;bottom:2px;font-size:9px;color:var(--muted)}
   .placeholder{color:var(--muted);font-size:11px;text-align:center}
@@ -177,6 +177,15 @@
         <div class="imgBox"><span class="lbl">spell</span><img src="../images/spritecook/oracle_east_spell.png" alt="east spell"></div>
         <div class="imgBox"><span class="lbl">KO</span><img src="../images/spritecook/oracle_east_ko.png" alt="east KO"></div>
       </div>
+      <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--muted);font-size:12px">Generation prompts</summary>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:6px">
+          <p><b>Style:</b> 16-bit SNES RPG style, cool-toned palette with cyan and gold accents</p>
+          <p><b>Portrait:</b> Oracle character portrait, mystical seer in flowing white hooded robes, golden diadem circlet on forehead, long wavy golden-brown hair, glowing bright cyan eyes, serene yet powerful expression, action-ready demeanor</p>
+          <p><b>Attack:</b> east-facing attack pose, casting magic spell with right hand extended forward, glowing cyan magical energy orb in hand, action pose leaning forward</p>
+          <p><b>Spell:</b> east-facing spellcasting pose, both hands raised channeling a large glowing cyan magical aura above head, mystical energy swirling around hands, powerful channeling stance</p>
+          <p><b>KO:</b> east-facing fallen unconscious pose, collapsed on ground face down, defeated and limp body, arms sprawled, hood fallen back</p>
+        </div>
+      </details>
     </div>
 
     <div class="reredesign-card" data-id="paladin">
@@ -190,8 +199,19 @@
         <div class="imgBox"><span class="lbl">east</span><img src="../images/spritecook/paladin_east.png" alt="east idle"></div>
         <div class="imgBox"><span class="lbl">atk</span><img src="../images/spritecook/paladin_east_attack.png" alt="east attack"></div>
         <div class="imgBox"><span class="lbl">spell</span><img src="../images/spritecook/paladin_east_spell.png" alt="east spell"></div>
+        <div class="imgBox"><span class="lbl">block</span><img src="../images/spritecook/paladin_east_block.png" alt="east block"></div>
         <div class="imgBox"><span class="lbl">KO</span><img src="../images/spritecook/paladin_east_ko.png" alt="east KO"></div>
       </div>
+      <details style="margin-top:10px"><summary style="cursor:pointer;color:var(--muted);font-size:12px">Generation prompts</summary>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:6px">
+          <p><b>Style:</b> 16-bit SNES RPG style, warm gold and white palette with divine light accents</p>
+          <p><b>Portrait:</b> Paladin character portrait, holy warrior in white and gold plate armor, golden shoulder pauldrons, glowing holy symbol on breastplate, short cropped brown hair, strong jawline, determined expression, warm amber eyes, white cape</p>
+          <p><b>Attack:</b> east-facing attack pose, swinging a glowing holy warhammer forward in aggressive overhead strike, golden divine energy trailing from weapon</p>
+          <p><b>Spell:</b> east-facing spellcasting pose, both hands raised channeling a large glowing golden divine aura above head, holy light radiating from palms</p>
+          <p><b>Block:</b> east-facing defensive block pose, raising a large golden divine shield with holy symbol, braced defensive stance behind shield</p>
+          <p><b>KO:</b> east-facing fallen unconscious pose, collapsed on ground face down, defeated and limp body, arms sprawled</p>
+        </div>
+      </details>
     </div>
 
     <div class="reredesign-card" data-id="warrior">
