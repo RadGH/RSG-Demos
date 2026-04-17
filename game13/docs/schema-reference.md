@@ -1,8 +1,8 @@
-# Schema Reference
+## Schema Reference
 
 v1 JSON schemas live in `public/schemas/v1/`. Point any editor at them via `$schema` for inline validation.
 
-## File index
+### File index
 
 | Schema            | Describes                                           |
 |-------------------|-----------------------------------------------------|
@@ -16,7 +16,7 @@ v1 JSON schemas live in `public/schemas/v1/`. Point any editor at them via `$sch
 | `character.json`  | A specific hero/companion/NPC                       |
 | `loot.json`       | A loot table (deterministic or rolled)              |
 
-## Pack formats accepted
+### Pack formats accepted
 
 The registry accepts three shapes:
 
@@ -24,16 +24,16 @@ The registry accepts three shapes:
 2. **Bare array** — `[ {...}, {...} ]` — kind inferred from the first entity's shape
 3. **Single entity** — `{ id: ..., mpCost: ... }` — kind inferred
 
-## Effect DSL ops (15)
+### Effect DSL ops (15)
 
 `damage`, `heal`, `applyStatus`, `buff`, `setFlag`, `requireFlag`, `consumeStatus`, `resourceSwap`, `echo`, `ritual`, `modifyTurnOrder`, `onHit`, `onCrit`, `onKill`, `onEvent`.
 
 Runtime: `src/mods/dsl.js`. Each op receives a context `{ caster, targets, rng, flags, log, emit, skillsById }` and mutates actors or queues triggers.
 
-## Canonical stat names
+### Canonical stat names
 
 Use short lowercase keys everywhere: `str`, `dex`, `int`, `con`. Pack loader will eventually warn-normalize `strength→str` etc. (wishlist — M131).
 
-## Not yet validated
+### Not yet validated
 
 In-browser JSON-Schema validation via AJV is **shelved** (120KB cost). Current validation is structural (unknown-op detection). To upgrade later: lazy-load AJV only when `custom-content.html` opens; see wishlist "AJV full JSON-Schema validation" entry for the spec.

@@ -1,8 +1,8 @@
-# Mod Authoring Guide
+## Mod Authoring Guide
 
 How to write a mod pack for Emberveil.
 
-## Quickstart
+### Quickstart
 
 1. Download the schemas from `/assets/custom-content.html` → Schemas tab.
 2. Write a JSON pack:
@@ -31,11 +31,11 @@ How to write a mod pack for Emberveil.
 3. Open `/assets/custom-content.html`, paste, click **Validate** then **Load into runtime**.
 4. Your content is now live in the current session. (Persistence across sessions is wishlist — see "Wire new content into runtime" on the mod-system board.)
 
-## Reference pack
+### Reference pack
 
 `public/mods/examples/starter-pack.json` demonstrates every DSL op across 24 skills + 5 event chains + 2 loot tables. Copy any entry as a starting point.
 
-## Asking Claude to write a pack for you
+### Asking Claude to write a pack for you
 
 Send Claude the schemas and a prose description:
 
@@ -43,7 +43,7 @@ Send Claude the schemas and a prose description:
 
 Claude can read the schemas and produce a structurally-valid pack. Validate with custom-content.html before loading.
 
-## Common pitfalls
+### Common pitfalls
 
 - **Unknown op** — a typo in `op:` silently misfires. Structural check catches this on load.
 - **Missing id** — any entity without `id` is skipped with a telemetry hit.

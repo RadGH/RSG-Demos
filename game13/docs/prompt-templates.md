@@ -1,10 +1,10 @@
-# Prompt Templates
+## Prompt Templates
 
 Reusable prompt templates for SpriteCook / image generation. Consistency across batches is the whole point — substitute the variables, keep the surrounding text intact.
 
-## Character frames
+### Character frames
 
-### Portrait (reference frame for a new character)
+#### Portrait (reference frame for a new character)
 
 ```
 Detailed fantasy RPG character portrait of {descriptor}, {palette} palette,
@@ -12,7 +12,7 @@ Detailed fantasy RPG character portrait of {descriptor}, {palette} palette,
 consistent with Emberveil art style (painterly, atmospheric, high contrast).
 ```
 
-### South (map/idle)
+#### South (map/idle)
 
 ```
 Same {descriptor} as reference, same outfit and palette, full-body standing
@@ -20,7 +20,7 @@ pose facing the camera (south), neutral background, consistent proportions
 and lighting with the reference portrait.
 ```
 
-### East (combat idle)
+#### East (combat idle)
 
 ```
 Same {descriptor} as reference, full-body side view facing east (right),
@@ -28,7 +28,7 @@ combat idle stance, weapon readied, neutral background, consistent with
 reference portrait.
 ```
 
-### East attack
+#### East attack
 
 ```
 Same {descriptor} as reference, full-body side view facing east, mid-swing
@@ -36,7 +36,7 @@ attack frame with weapon extended toward the target, dynamic pose, neutral
 background, matching palette and lighting.
 ```
 
-### East spell
+#### East spell
 
 ```
 Same {descriptor} as reference, full-body side view facing east, casting
@@ -44,7 +44,7 @@ a spell — hands raised with visible arcane/elemental energy matching
 {element}, neutral background, matching palette.
 ```
 
-### East block
+#### East block
 
 ```
 Same {descriptor} as reference, full-body side view facing east, defensive
@@ -52,7 +52,7 @@ block pose — weapon or shield raised to intercept an attack, bracing stance,
 neutral background, matching palette.
 ```
 
-### East KO
+#### East KO
 
 ```
 Same {descriptor} as reference, full-body side view facing east, knocked-out
@@ -60,7 +60,7 @@ pose — collapsed on the ground or kneeling with head down, weapon dropped
 or dropped beside them, neutral background, matching palette.
 ```
 
-## Combat background
+### Combat background
 
 ```
 Atmospheric fantasy RPG combat environment: {zone descriptor}. Wide cinematic
@@ -78,7 +78,7 @@ Examples of `{zone descriptor}`:
 - `volcanic_waste` → "a cooled lava field under a smoky red sky, obsidian shards, distant active volcano"
 - `cosmic_rift` → "an interstellar void with floating rock islands, stars and nebulae, broken reality geometry"
 
-## Map background
+### Map background
 
 ```
 Atmospheric fantasy zone wallpaper: {zone descriptor}. Wide cinematic
@@ -86,7 +86,7 @@ composition, 1536×1024 aspect. No midground requirement — pure atmosphere.
 No characters. No UI. Mood: {mood}. Palette: {palette}.
 ```
 
-## Tap weapon / effect icon
+### Tap weapon / effect icon
 
 ```
 Clean fantasy RPG item icon: {weapon descriptor}. Centered on a transparent

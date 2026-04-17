@@ -15,8 +15,10 @@
 .doc-nav a:hover { background: var(--card-h); color: var(--gold-glow); }
 .doc-nav a.active { background: var(--card); color: var(--gold-glow); border-left: 3px solid var(--gold); }
 .doc-view { background: var(--card); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 1.2rem 1.6rem; min-height: 400px; }
-.doc-view h1 { font-family: var(--font-display); color: var(--gold-glow); margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: .5rem; }
+/* Article interior: only h2+ (h1 is the page title — one per page for SEO). */
+.doc-view h2:first-child { margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: .5rem; color: var(--gold-glow); font-size: 42px; }
 .doc-view h2 { font-family: var(--font-display); color: var(--gold); margin-top: 1.6rem; }
+.doc-view ul, .doc-view ol { padding-left: 1.6rem; margin-left: 0; }
 .doc-view h3 { color: var(--gold-glow); margin-top: 1.2rem; }
 .doc-view code { background: #0a0608; color: #ffc070; padding: 1px 5px; border-radius: 3px; font-size: .9em; }
 .doc-view pre { background: #0a0608; border: 1px solid var(--border-subtle); border-radius: 6px; padding: .8rem 1rem; overflow-x: auto; }

@@ -1,8 +1,8 @@
-# No Silent Shelving
+## No Silent Shelving
 
 The core delivery rule. Restated here so it lives in versioned docs, not just in CLAUDE.md.
 
-## The rule
+### The rule
 
 When the user sends a list of requests (bug fixes, features, suggestions), the default contract is:
 
@@ -12,7 +12,7 @@ When the user sends a list of requests (bug fixes, features, suggestions), the d
 4. **No milestone is "shipped" until every item from the user's last message is either implemented or explicitly deferred with confirmation.** Do not run `release.sh` before that.
 5. **At the end of a multi-item request, audit your own work** against the original list — ✅ done with file:line, or ⚠️ deferred with reason.
 
-## Where deferred items go
+### Where deferred items go
 
 Anything deferred must land in the **wishlist** (`public/assets/wishlist.html`) with:
 
@@ -22,7 +22,7 @@ Anything deferred must land in the **wishlist** (`public/assets/wishlist.html`) 
 
 The wishlist is the single source of truth for "things we agreed to do later." Changelog deferrals are not acceptable.
 
-## Related
+### Related
 
 - `no-silent-shelving` rule is quoted at the top of `CLAUDE.md` and `/home/radgh/claude/CLAUDE.md`.
 - Wishlist tool: `public/assets/wishlist.html` — audited every milestone.
