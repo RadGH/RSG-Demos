@@ -393,6 +393,7 @@ const heroStrip = document.getElementById('heroPortraits');
 let mixBase='warrior', mixFace='mage';
 function buildPicker(id, which){
   const el=document.getElementById(id);
+  el.innerHTML='';
   HERO_CLASSES.forEach(c=>{
     const d=document.createElement('div'); d.className='p'+( (which==='body'&&c===mixBase) || (which==='face'&&c===mixFace) ? ' sel':'');
     d.innerHTML=`<img src="${HERO_PORTRAIT(c)}" alt="${c}" onerror="this.style.opacity=.3"><div class="lbl">${c}</div>`;

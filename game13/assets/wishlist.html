@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="rsg-game" content="Emberveil">
+  <title>Emberveil — Wishlist</title>
+  <link rel="stylesheet" href="./_tool-styles.css">
+  <style>
+    .wl-section { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 20px; }
+    .wl-section h2 { font-family: var(--font-display); color: var(--gold-bright); font-size: 20px; margin-bottom: 6px; letter-spacing: 0.05em; }
+    .wl-section .sub { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+    .wl-group { margin-bottom: 14px; }
+    .wl-group h3 { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+    .wl-item { display: flex; align-items: flex-start; gap: 10px; padding: 7px 10px; border-radius: 6px; line-height: 1.45; }
+    .wl-item:hover { background: var(--card-h); }
+    .wl-item .box { flex: 0 0 18px; width: 18px; height: 18px; border: 2px solid var(--border-hi); border-radius: 4px; margin-top: 2px; position: relative; background: var(--surface); pointer-events: none; }
+    .wl-item.done .box { background: var(--gold); border-color: var(--gold); }
+    .wl-item.done .box::after { content: "\2713"; position: absolute; top: -4px; left: 1px; color: #0a0608; font-size: 16px; font-weight: 900; }
+    .wl-item.dropped .box { border-color: #5a4238; background: transparent; }
+    .wl-item.dropped .box::after { content: "\2715"; position: absolute; top: -4px; left: 1px; color: #8a5a4a; font-size: 16px; font-weight: 900; }
+    .wl-item.partial .box { background: repeating-linear-gradient(45deg, var(--gold) 0 3px, transparent 3px 6px); border-color: var(--gold); }
+    .wl-item .body { flex: 1; font-size: 14px; }
+    .wl-item .label { font-weight: 600; color: var(--text); }
+    .wl-item .desc { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+    .wl-item.done .label { color: var(--gold-bright); }
+    .wl-item.dropped .label { text-decoration: line-through; color: #7a6a5a; }
+    .wl-item .tag { font-size: 10px; padding: 2px 8px; border-radius: 10px; background: var(--surface); color: var(--muted); margin-left: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .wl-item .tag.status-todo { color: #8a7a6a; }
+    .wl-item .tag.status-wip  { color: #e8a020; background: rgba(232,160,32,0.1); }
+    .wl-item .tag.status-done { color: #7ec67e; background: rgba(126,198,126,0.1); }
+    .wl-item .tag.status-drop { color: #8a5a4a; background: rgba(138,90,74,0.1); }
+    .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-top: 12px; }
+    .legend-key { display: inline-flex; align-items: center; gap: 6px; }
+    .legend-key .box { width: 14px; height: 14px; border: 2px solid var(--border-hi); border-radius: 3px; }
+    .legend-key.done .box { background: var(--gold); border-color: var(--gold); }
+    .legend-key.dropped .box { border-color: #5a4238; }
+    .legend-key.partial .box { background: repeating-linear-gradient(45deg, var(--gold) 0 2px, transparent 2px 4px); border-color: var(--gold); }
+    .hero-note { background: linear-gradient(135deg, rgba(232,160,32,0.08), rgba(192,64,48,0.06)); border: 1px solid rgba(232,160,32,0.3); padding: 14px 18px; border-radius: 10px; font-size: 13px; color: var(--text); margin-bottom: 22px; }
+    .hero-note strong { color: var(--gold-bright); }
+    .page-title { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; letter-spacing: 0.12em; background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 40%, var(--ember1) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 4px; }
+    .page-sub { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+  </style>
+  <script src="./_header.js" defer></script>
+</head>
+<body>
+  <h1 class="page-title">Emberveil — Wishlist</h1>
+  <p class="page-sub">AI-maintained tracker of planned, in-progress, and abandoned features. Checkboxes are read-only — Claude updates them as work lands.</p>
+
+  <div class="hero-note">
+    <strong>How this works.</strong> Items start as <em>todo</em>. When work begins, they become <em>wip</em>. When shipped, they flip to <em>done</em> with the milestone tag. When a direction is abandoned, they flip to <em>dropped</em> with a strikethrough. Claude reviews this list at each milestone and surfaces items that have aged out or drifted.
+    <div class="legend">
+      <span class="legend-key"><span class="box"></span>Todo</span>
+      <span class="legend-key partial"><span class="box"></span>In progress</span>
+      <span class="legend-key done"><span class="box"></span>Done</span>
+      <span class="legend-key dropped"><span class="box"></span>Dropped / Abandoned</span>
+    </div>
+  </div>
+
+  <!-- ========== MOD SYSTEM ========== -->
+  <section class="wl-section">
+    <h2>Mod System (M66 — in development)</h2>
+    <p class="sub">Extensibility layer: JSON schemas + effect DSL that let anyone describe a character/spell/item/event and drop it into the game.</p>
+
+    <div class="wl-group">
+      <h3>Schemas &amp; Foundation</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">v1 schemas under <code>/schemas/v1/</code></span><span class="tag status-todo">todo</span><div class="desc">character.json, skill.json, item.json, event.json, class.json, appearance.json. Loaded by custom-content page via $schema URLs.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Effect DSL (~14 ops)</span><span class="tag status-todo">todo</span><div class="desc">damage, heal, applyStatus, buff, setFlag, requireFlag, onHit/onCrit/onKill/onEvent, echo, consumeStatus, resourceSwap, ritual, modifyTurnOrder.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Event chain flag ledger</span><span class="tag status-todo">todo</span><div class="desc">GameState.flags with requires/setFlags/consumesFlag/incrementFlag.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">JSON-Schema + warn-mode normalization</span><span class="tag status-todo">todo</span><div class="desc">Canonical stat naming: short lowercase (str, dex, int, con). Normalize all inputs.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Custom content page <code>/assets/custom-content.html</code></span><span class="tag status-todo">todo</span><div class="desc">Unlisted, tabs + JSON import/export + validation UI.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Example mods + downloadable schemas</span><span class="tag status-todo">todo</span><div class="desc">One example per system (character, spell, item, event, class pack). User sends schema to any Claude instance, describes character, gets JSON, imports.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Upload packs (array of entities or single-object)</span><span class="tag status-todo">todo</span><div class="desc">moon_expansion_heroes.json-style. File-per-entity also accepted.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>Supporting Mechanics (unlock mod authorship)</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Unify status model</span><span class="tag status-todo">todo</span><div class="desc">Move dmgBuff, critBonus, etc. into statuses[]. One tick site, one serialization path.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Per-skill cooldown map</span><span class="tag status-todo">todo</span><div class="desc">actor.cooldowns[skillId] replaces single skillCooldown slot. Enables 4+ active skills.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Seeded RNG exposed</span><span class="tag status-todo">todo</span><div class="desc">Simulator supports it — expose seed so mod authors can share reproducible bug reports.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Shim-hit telemetry</span><span class="tag status-todo">todo</span><div class="desc">Count every legacy-name loader call. Dashboard shows which mods need cleanup.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Combat sim diff view vs. nearest vanilla</span><span class="tag status-todo">todo</span><div class="desc">When a mod character/spell loads, sim shows side-by-side DPS vs. nearest vanilla equivalent.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Overheal → barrier</span><span class="tag status-todo">todo</span><div class="desc">Supporting mechanic for Cleric / Oracle. Priority: the underlying mechanic matters more than the spells that use it.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Loot specifier</span><span class="tag status-todo">todo</span><div class="desc">Encounter/quest offers loot by: type, base, quality range (weighted), rarity range (weighted). Random-roll OR specific list OR deterministic seed.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>Spells (24 — mechanically distinct)</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Active reflect (next hit on ally returns 200%)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Damage-on-dodge trigger</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Resource swap (HP↔MP)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Delayed payload (detonate in N rounds)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Chain-link buffs (stack rewards stacking)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Dispel + steal buff</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Persistent AoE aura</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Soulbind (split ally damage)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Momentum (scale with unique hits)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Counter-stance (150% back to attackers)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Targeted silence</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Mark-and-chain</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Soul tether (mutual revive)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Second wind (auto-revive at 1 HP)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Channel ramp (+25%/round idle)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Conditional multi (+1 target per status)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Armor-shred stacking</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Sacrifice companion</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Ritual (multi-round, interruptible)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Dash-strike (hit back row)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Phase (untargetable, can't act)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Guard link (redirect 1-round)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Overheal → barrier (spell)</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Counter-magic screen</span><span class="tag status-todo">todo</span></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>Event Chains (5)</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Rescue Bessa → she hunts you down → rare ring → rescue her AGAIN</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Spare bandit Grenn → warns of ambush → joins party at L10</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Cursed Coin → whispers rewards for corruption → boss at corruption ≥ 5</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Spare dragon whelp → circles in act 3 → allied in act 5 boss</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Rival adventurer → 3-way branch: ally / neutral / boss</span><span class="tag status-todo">todo</span></div></div>
+    </div>
+  </section>
+
+  <!-- ========== CLASS / APPEARANCE ========== -->
+  <section class="wl-section">
+    <h2>Class &amp; Appearance System</h2>
+    <p class="sub">Decouple character class (skills/talents) from appearance (portrait + animation frames). Play a cleric who looks like a lightning mage.</p>
+
+    <div class="wl-item partial"><div class="box"></div><div class="body"><span class="label">Appearance registry separate from Class</span><span class="tag status-wip">wip — m65</span><div class="desc">New <code>src/game/appearances.js</code> with 20 base appearances (one per existing class) plus 1 extension: "Cleric Priestess" (female, silver hair, white/gold robes) to prove extensibility.</div></div></div>
+    <div class="wl-item partial"><div class="box"></div><div class="body"><span class="label">Appearance picker on Create Hero</span><span class="tag status-wip">wip — m65</span><div class="desc">Class pick and Appearance pick are independent dropdowns.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Appearance-per-companion schema</span><span class="tag status-todo">todo</span><div class="desc">Companions currently have only a south view. Add east/east_attack/east_ko to match hero schema.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Companions: block + spell views</span><span class="tag status-todo">todo</span><div class="desc">Can companions even block or cast? If yes, artwork gen + schema update required.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Swap tavern NPC appearances per roster refresh</span><span class="tag status-todo">todo</span><div class="desc">Currently hirables use class default. Enable per-NPC appearance override.</div></div></div>
+  </section>
+
+  <!-- ========== NEW CHARACTERS ========== -->
+  <section class="wl-section">
+    <h2>New Characters</h2>
+    <p class="sub">Previously referenced in milestone-report.html but never implemented. Require both class-data work (skills, talents) and art gen.</p>
+
+    <div class="wl-group">
+      <h3>Heroes (7 phantom classes)</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Monk</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Shaman</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Witch Hunter</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Knight</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Sorcerer</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Runesmith</span><span class="tag status-todo">todo</span></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Shadow Dancer</span><span class="tag status-todo">todo</span></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>Appearance Variants (no new class needed)</h3>
+      <div class="wl-item partial"><div class="box"></div><div class="body"><span class="label">Cleric Priestess (female, silver hair, white/gold)</span><span class="tag status-wip">wip — m65</span><div class="desc">Used to seed the Appearance extensibility story. 7 sprites generated in M65.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Additional female appearance variants for under-represented classes</span><span class="tag status-todo">todo</span></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>Companions</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Generate east/attack/ko sprites for 10 existing companions</span><span class="tag status-todo">todo</span><div class="desc">dire_wolf, forest_owl, ember_drake, shadow_cat, crystal_golem, spirit_wisp, bone_hound, ice_sprite, swamp_frog, void_moth — only south view exists.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>Bosses &amp; Enemies</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Additional named act-bosses for expansion content</span><span class="tag status-todo">todo</span><div class="desc">Placeholder until the full expansion scope is defined.</div></div></div>
+    </div>
+  </section>
+
+  <!-- ========== CUSTOM CONTENT UPLOAD ========== -->
+  <section class="wl-section">
+    <h2>Custom Content Upload</h2>
+    <p class="sub">Structured schema pipeline that makes content generation easy and low-bug.</p>
+
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Upload custom sprites (portrait + 6 sprite variants)</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Upload custom item types (weapons, armor, trinkets)</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Upload custom enemies</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Upload custom classes (with skills + passives)</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Upload custom events / quest chains</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Downloadable schema + example mod for each system</span><span class="tag status-todo">todo</span><div class="desc">So users can Claude-generate a character offline and import.</div></div></div>
+  </section>
+
+  <!-- ========== AI INTEGRATION ========== -->
+  <section class="wl-section">
+    <h2>AI Integration</h2>
+    <p class="sub">In-game AI that reads the mod schemas + currently-loaded modules and generates new content on demand.</p>
+
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Content-generation AI — describe a character or spell, AI writes the JSON</span><span class="tag status-todo">todo</span><div class="desc">AI has read access to `/schemas/v1/` and the active module set. It validates against the schema before returning. Used for quick custom heroes, spells, companions, encounters.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Portrait-generation AI — reference photo + directional frames</span><span class="tag status-todo">todo</span><div class="desc">Separate generator that follows the current SpriteCook flow: one reference image, then derived portrait/south/east/east_attack/east_spell/east_block/east_ko frames with style consistency.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Image review tool — whole-sprite prompt mode</span><span class="tag status-todo">todo</span><div class="desc">Selecting the whole sprite in `/assets/image-review.html` applies one prompt to all connected views (portrait, south, east, east_attack, …). Reference image optional — leave blank to regenerate from scratch with the prompt.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Image review tool — archive / library / delete per image</span><span class="tag status-todo">todo</span><div class="desc">Checkbox on each image: move to library (keeps as selectable alternate appearance, no longer linked to a Hero), archive, or delete. Supports cleanup after iteration.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Image review tool — "Unassigned" appearance category</span><span class="tag status-todo">todo</span><div class="desc">Bottom section of Appearances listing entries not linked to any class but still selectable for custom characters in-game.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Image review tool — "Archived / Unattached" category</span><span class="tag status-todo">todo</span><div class="desc">Catch-all for orphan images — shows what's on disk but not wired to anything, with delete / restore / assign actions so the pool can be cleaned or completed.</div></div></div>
+  </section>
+
+  <!-- ========== FEATURES (PRIOR BATCHES) ========== -->
+  <section class="wl-section">
+    <h2>Prior Feature Backlog</h2>
+    <p class="sub">Items surfaced in earlier batches that are still open.</p>
+
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Hover-preview tooltips on Forge upgrade list</span><span class="tag status-todo">todo</span><div class="desc">Flagged after M64.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Animation frames for walk/attack on 10 companions</span><span class="tag status-todo">todo</span><div class="desc">Flagged after M64, now merged with Appearance system schema unification above.</div></div></div>
+  </section>
+
+  <!-- ========== SHELVED ========== -->
+  <section class="wl-section">
+    <h2>Shelved / Revisit</h2>
+    <p class="sub">Items deferred because the current system couldn't host them cleanly. Surface when the foundation catches up.</p>
+
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">(empty — shelf items are added here by Claude as they come up)</span><span class="tag status-todo">todo</span></div></div>
+  </section>
+
+</body>
+</html>

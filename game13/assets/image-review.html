@@ -74,7 +74,17 @@
     font-family: 'Cinzel',Georgia,serif;
     color: var(--gold); font-size: 0.85rem; margin: 0 0 0.5rem;
     letter-spacing: 0.05em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 0.6rem;
   }
+  .group-title .whole-btn {
+    background: var(--panel-alt); color: var(--parchment);
+    border: 1px solid var(--border); border-radius: 3px;
+    padding: 0.15rem 0.5rem; cursor: pointer; font: inherit;
+    font-size: 0.65rem; letter-spacing: 0.04em;
+    text-transform: none; font-weight: 500;
+  }
+  .group-title .whole-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+  .group-title .whole-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(232,160,32,0.08); }
   .poses {
     display: grid;
     grid-template-columns: repeat(7, minmax(90px, 1fr));
@@ -401,12 +411,23 @@ function renderSections() {
     ? `<div class="bg-grid">${pending.map(renderCard).join('')}</div>`
     : `<div class="empty-note">No pending images.</div>`);
 
-  // 8) Orphaned
-  const orphans = filterEntries(entries.filter(e => e.status === 'orphaned'));
-  html.push(`<h2>Orphaned Images <span class="count">${orphans.length}</span></h2>`);
-  html.push(orphans.length
-    ? `<div class="bg-grid">${orphans.map(renderCard).join('')}</div>`
-    : `<div class="empty-note">No orphaned files detected.</div>`);
+  // 8) Unassigned Appearances — images flagged as "library" (detached from heroes, selectable as alt)
+  const libraryIds = new Set(Object.entries(state).filter(([,v]) => v && v.action === 'library').map(([k]) => k));
+  const libraryEntries = filterEntries(entries.filter(e => libraryIds.has(e.id) || e.unassigned === true));
+  html.push(`<h2>Unassigned Appearances <span class="count">${libraryEntries.length}</span></h2>`);
+  html.push(`<div class="empty-note" style="font-style:normal;color:var(--muted);font-size:0.7rem;margin-bottom:0.3rem">Images moved to the library — no longer linked to a Hero, but selectable as custom-character appearances in-game.</div>`);
+  html.push(libraryEntries.length
+    ? `<div class="bg-grid">${libraryEntries.map(renderCard).join('')}</div>`
+    : `<div class="empty-note">No library entries yet. Use the "Move to Library" action on any Ready image.</div>`);
+
+  // 9) Archived / Unattached — images flagged "archive" + existing orphans
+  const archivedIds = new Set(Object.entries(state).filter(([,v]) => v && v.action === 'archive').map(([k]) => k));
+  const archivedList = filterEntries(entries.filter(e => archivedIds.has(e.id) || e.status === 'orphaned'));
+  html.push(`<h2>Archived / Unattached <span class="count">${archivedList.length}</span></h2>`);
+  html.push(`<div class="empty-note" style="font-style:normal;color:var(--muted);font-size:0.7rem;margin-bottom:0.3rem">Orphaned files on disk + images the user archived. Click any card to delete or restore (assign).</div>`);
+  html.push(archivedList.length
+    ? `<div class="bg-grid">${archivedList.map(renderCard).join('')}</div>`
+    : `<div class="empty-note">No archived or orphaned files.</div>`);
 
   host.innerHTML = html.join('');
   wireCards(host);
@@ -422,8 +443,12 @@ function renderGroupedSection(title, cat, list) {
     const items = sortPoses(by.get(g));
     const filtered = onlyFlagged ? items.filter(isFlagged) : items;
     if (onlyFlagged && !filtered.length) continue;
-    out.push(`<div class="group">
-      <div class="group-title">${esc(g)}</div>
+    const groupIds = filtered.map(e => e.id);
+    out.push(`<div class="group" data-group-ids="${esc(groupIds.join(','))}">
+      <div class="group-title">
+        <span>${esc(g)}</span>
+        <button type="button" class="whole-btn" data-act="select-whole">Select whole sprite</button>
+      </div>
       <div class="poses">${filtered.map(renderCard).join('')}</div>
     </div>`);
   }
@@ -457,6 +482,23 @@ function wireCards(host) {
       if (ev.target.closest('.editor')) return;
       const id = el.dataset.id;
       toggleSelection(id, el);
+    });
+  });
+  host.querySelectorAll('[data-act="select-whole"]').forEach(btn => {
+    btn.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      const group = btn.closest('.group');
+      if (!group) return;
+      const ids = (group.dataset.groupIds || '').split(',').filter(Boolean);
+      const allSelected = ids.length && ids.every(id => selection.has(id));
+      ids.forEach(id => {
+        const card = document.querySelector(`.img-card[data-id="${CSS.escape(id)}"]`);
+        if (!card) return;
+        if (allSelected) { selection.delete(id); card.classList.remove('selected'); }
+        else { selection.add(id); card.classList.add('selected'); }
+      });
+      btn.classList.toggle('active', !allSelected);
+      renderSelectionEditor();
     });
   });
 }
@@ -558,6 +600,9 @@ function renderEditor(entry) {
     <label class="inline"><input type="radio" name="a-${entry.id}" value="flip" ${s.action==='flip'?'checked':''}> Flip</label>
     ${removeBgAllowed ? `<label class="inline"><input type="radio" name="a-${entry.id}" value="remove_bg" ${s.action==='remove_bg'?'checked':''}> Remove Background</label>` : ''}
     <label class="inline"><input type="radio" name="a-${entry.id}" value="regenerate" ${s.action==='regenerate' || (isBg && !s.action) ? 'checked':''}> Re-Generate</label>
+    <label class="inline"><input type="radio" name="a-${entry.id}" value="library" ${s.action==='library'?'checked':''}> Move to Library</label>
+    <label class="inline"><input type="radio" name="a-${entry.id}" value="archive" ${s.action==='archive'?'checked':''}> Archive</label>
+    <label class="inline"><input type="radio" name="a-${entry.id}" value="delete" ${s.action==='delete'?'checked':''}> Delete</label>
 
     <div class="sub-panel" data-sub="flip" style="${s.action==='flip'?'':'display:none'}">
       <label class="inline"><input type="radio" name="flip-${entry.id}" value="horizontal" ${s.flipDir!=='vertical'?'checked':''}> Horizontal</label>
@@ -599,6 +644,17 @@ function wireEditor(editor, entry) {
     });
     saveState();
     updateCounts();
+    // Library/archive changes affect bottom sections — rerender full view
+    if (['library','archive','none'].includes(s.action)) {
+      const preserved = new Set(selection);
+      renderSections();
+      preserved.forEach(id => {
+        const c = document.querySelector(`.img-card[data-id="${CSS.escape(id)}"]`);
+        if (c) c.classList.add('selected');
+      });
+      renderSelectionEditor();
+      return;
+    }
     // Toggle sub-panels
     editor.querySelectorAll('.sub-panel').forEach(sp => {
       sp.style.display = sp.dataset.sub === s.action ? '' : 'none';
@@ -634,7 +690,7 @@ function buildPrompt() {
 
   if (!items.length) return 'Image Review Tool — no actions selected.';
 
-  const byAction = { flip: [], remove_bg: [], regenerate: [], generate: [], delete: [], other: [] };
+  const byAction = { flip: [], remove_bg: [], regenerate: [], generate: [], library: [], archive: [], delete: [], other: [] };
   for (const it of items) {
     if (byAction[it.action]) byAction[it.action].push(it);
   }
@@ -672,6 +728,16 @@ function buildPrompt() {
     if (include && it.entry.prompt) line += `\n    Previous prompt: ${JSON.stringify(it.entry.prompt)}`;
     if (it.details) line += `\n    New prompt / details: ${it.details}`;
     return line;
+  });
+  section('MOVE TO LIBRARY (unassigned appearance)', byAction.library, it => {
+    const parts = [it.entry.id, it.entry.file.replace(/^\.\.\//,'')];
+    if (it.details) parts.push(`(details: ${it.details})`);
+    return parts.join(' — ');
+  });
+  section('ARCHIVE', byAction.archive, it => {
+    const parts = [it.entry.id, it.entry.file.replace(/^\.\.\//,'')];
+    if (it.details) parts.push(`(details: ${it.details})`);
+    return parts.join(' — ');
   });
   section('DELETE', byAction.delete, it => it.entry.file.replace(/^\.\.\//,''));
   section('OTHER', byAction.other, it => {

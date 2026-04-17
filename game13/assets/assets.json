@@ -11025,6 +11025,47 @@
         "Use the auto-computed outliers as the starting list for the M78 rebalance pass"
       ],
       "notes": "Loads ./rebalance_snapshots/m77.json at runtime; snapshot file already lives in the assets directory."
+    },
+    {
+      "milestone": "M127 \u2014 Class/Appearance Decouple + Wishlist",
+      "date": "2026-04-16",
+      "summary": "Decoupled cosmetic Appearance from Class so any class can use any class's sprite; launched the AI-maintained /assets/wishlist.html tracker; refreshed /game-info portraits; shipped image-review tool enhancements.",
+      "changes": [
+        "Added src/game/appearances.js \u2014 21 appearance entries (20 class defaults + cleric_priestess).",
+        "Updated src/game/spriteUtils.js:getPortraitPaths to resolve from member.appearance first, fall back to class.",
+        "Updated src/ui/screens/CombatScreen.js:_memberToCombatant to carry member.appearance; _preloadSprites + spriteKey resolution use appearance when set.",
+        "Added appearance picker UI to CharacterBuilderScreen (stats step). Hero object now persists `appearance` field.",
+        "Generated cleric_priestess full sprite set (portrait, south, east, east_attack, east_spell, east_block, east_ko) via SpriteCook.",
+        "Generated 10 companion east-facing sprites via SpriteCook.",
+        "Created public/assets/wishlist.html \u2014 AI-maintained tracker with 4-state boxes (todo/wip/done/dropped) per item.",
+        "Fixed public/assets/mod-system-report.html portrait-mixer duplication bug (innerHTML cleared before repopulating).",
+        "Cleaned public/news/milestone-report.html \u2014 removed 7 phantom classes whose art was never generated; they now live on the Wishlist.",
+        "public/game-info/index.html: switched 15 portrait refs to /images/spritecook/{id}_portrait.png with onerror fallback to legacy /images/portraits/{id}.png.",
+        "Wishlist: added AI Integration section (content-gen AI + portrait-gen AI) + 4 image-review tool enhancement items.",
+        "Enhanced image-review.html: added Select-Whole-Sprite button per group, Move-to-Library / Archive / Delete actions on Ready cards, new Unassigned Appearances + Archived/Unattached bottom sections.",
+        "Saved memory files wishlist_review.md and mod_system_shelving.md so future sessions audit the wishlist each milestone and shelve hard items with reasons."
+      ],
+      "bugs": [
+        "Companion walk/attack/ko sprites still missing for the 10 new companions (only east view exists) \u2014 deferred to M128.",
+        "image-review.html Unassigned/Archived sections are populated from localStorage state only; persistence across sessions relies on localStorage (no server-side move yet).",
+        "SpriteCook credit spend was sizeable; may need budget reminder before M128 bulk generation."
+      ],
+      "suggestions": [
+        "Add a one-click 'populate all appearances from same class' button so a new appearance variant can reuse existing sprites as a baseline.",
+        "Show an appearance-preview thumbnail in the Character sheet header so the user sees who's in the party at a glance.",
+        "Add a server-side or build-step script that performs the library/archive/delete actions the image-review tool generates, instead of pasting prompts."
+      ],
+      "recommendations": [
+        "Before M128 mod system v1: lock in the member schema shape (classId vs appearance vs templateId) \u2014 add a one-time migration for saved characters that sets appearance = class when missing.",
+        "Treat the wishlist.html file as the single source of truth at milestone boundaries. Flip boxes at end of milestone, and audit any items still in wip/todo that drifted.",
+        "Introduce /schemas/v1/appearance.json in M128 so appearances can be shipped as mods alongside classes."
+      ],
+      "ideas": [
+        "Unlock alternate appearances via achievements (e.g., finish Act 2 to unlock cleric_priestess).",
+        "Per-party-member aesthetic theme (dragon-kin, undead, verdant) that re-skins sprites batch-wide.",
+        "Appearance DLC packs \u2014 art + metadata bundled as a single JSON manifest the user can drop in."
+      ],
+      "notes": "M127 is the scaffolding release for the mod system that lands in M128: schemas under /schemas/v1/, effect DSL, event chains, loot specifier, and custom-content upload page. The wishlist tool is explicitly the anti-silent-shelving mechanism the user demanded after M46\u2013M53."
     }
   ]
 }
