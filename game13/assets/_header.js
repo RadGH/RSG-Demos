@@ -75,6 +75,7 @@
       { href: ASSETS + 'image-review.html', label: 'Image Review' },
       { href: ASSETS + 'custom-content.html', label: 'Custom Content' },
       { href: ASSETS + 'docs.html', label: 'Documentation' },
+      { href: ASSETS + 'wishlist.html', label: 'Wishlist' },
       { separator: true, label: 'Archived' },
       { href: ASSETS + 'rebalance.html', label: 'Rebalance' }
     ]
