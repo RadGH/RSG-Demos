@@ -73,6 +73,7 @@
       { href: ASSETS + 'sprite-flip-review.html', label: 'Sprite Flip Review' },
       { href: ASSETS + 'redesign-survey.html', label: 'Redesign Survey' },
       { href: ASSETS + 'image-review.html', label: 'Image Review' },
+      { href: ASSETS + 'custom-content.html', label: 'Custom Content' },
       { separator: true, label: 'Archived' },
       { href: ASSETS + 'rebalance.html', label: 'Rebalance' }
     ]

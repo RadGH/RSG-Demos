@@ -896,13 +896,15 @@ function detectVariantType(asset) {
   const combined = id + ' ' + file;
 
   if (combined.includes('portrait')) return 'portrait';
-  if (combined.includes('_attack')) return 'attack';
-  if (combined.includes('_spell')) return 'spell';
+  if (combined.includes('_east_attack') || combined.includes('_attack')) return 'attack';
+  if (combined.includes('_east_spell') || combined.includes('_spell')) return 'spell';
+  if (combined.includes('_east_block') || combined.includes('_block')) return 'block';
+  if (combined.includes('_east_ko') || combined.includes('_ko')) return 'ko';
   if (combined.includes('_death') || combined.includes('_down')) return 'death';
   if (combined.includes('_south')) return 'south';
   if (combined.includes('_east')) return 'east';
-  if (combined.includes('_north')) return 'north';
-  if (combined.includes('_west')) return 'west';
+  // Legacy PixelLab directions (_north, _west) are no longer used in-game — skip.
+  if (combined.includes('_north') || combined.includes('_west')) return null;
   if (combined.includes('_idle')) return 'idle';
 
   return 'default';
@@ -918,12 +920,13 @@ function renderCharacterBlock(charName, assets) {
   const variants = {};
   assets.forEach(asset => {
     const varType = detectVariantType(asset);
+    if (!varType) return; // skip unused legacy directions
     if (!variants[varType]) variants[varType] = [];
     variants[varType].push(asset);
   });
 
-  // Define preferred order of variants
-  const variantOrder = ['portrait', 'south', 'north', 'east', 'west', 'idle', 'attack', 'spell', 'death', 'default'];
+  // Preferred order of variants — matches the in-game sprite set.
+  const variantOrder = ['portrait', 'south', 'east', 'attack', 'spell', 'block', 'ko', 'death', 'idle', 'default'];
 
   let variantsHtml = '';
   variantOrder.forEach(varType => {
@@ -974,11 +977,14 @@ function indexAssetsByCharacter(assets) {
     if (isPortraitAsset(a) && !idx[base].portrait) {
       idx[base].portrait = a;
     } else if (isSpriteAsset(a)) {
+      // Drop legacy PixelLab directions we no longer use in-game.
+      const fid = (a.id || '').toLowerCase();
+      if (fid.endsWith('_north') || fid.endsWith('_west')) continue;
       idx[base].frames.push(a);
     }
   }
-  // Dedup + sort frames: attack, spell, directions, death.
-  const order = ['east_attack','east_spell','south','east','west','north','death'];
+  // Dedup + sort frames: attack, spell, block, ko, directions, death.
+  const order = ['east_attack','east_spell','east_block','east_ko','south','east','death'];
   for (const k of Object.keys(idx)) {
     const seen = new Set();
     idx[k].frames = idx[k].frames.filter(f => {
@@ -1044,11 +1050,11 @@ function getFrameType(asset) {
   const id = (asset.id || '').toLowerCase();
   if (id.endsWith('_east_attack')) return 'attack';
   if (id.endsWith('_east_spell')) return 'spell';
+  if (id.endsWith('_east_block')) return 'block';
+  if (id.endsWith('_east_ko')) return 'ko';
   if (id.endsWith('_death')) return 'death';
-  if (id.endsWith('_north')) return 'N';
   if (id.endsWith('_south')) return 'S';
   if (id.endsWith('_east')) return 'E';
-  if (id.endsWith('_west')) return 'W';
   if (id.endsWith('_east_flipped')) return 'E-flip';
   return 'frame';
 }

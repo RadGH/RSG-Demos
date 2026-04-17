@@ -108,7 +108,12 @@
   .img-card:hover { border-color: var(--gold-dim); }
   .img-card.active { border-color: var(--gold); }
   .img-card.selected { outline: 2px solid var(--gold); outline-offset: 2px; }
-  .img-card.has-action { border-color: var(--accent); }
+  .img-card.has-action::before {
+    content: ''; position: absolute; top: 4px; left: 4px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 0 2px #050308;
+    z-index: 2;
+  }
   .img-card.status-pending { opacity: 0.55; }
   .img-card.status-pending img { filter: grayscale(1); }
   .img-card.status-orphaned { border-color: var(--warn); }
@@ -573,9 +578,10 @@ function renderEditor(entry) {
 
   if (entry.status === 'orphaned') {
     return `<div class="eid">${esc(entry.id)} — ${esc(entry.file)}</div>
-      <label class="inline"><input type="radio" name="a-${entry.id}" value="none" ${!s.action || s.action==='none' ? 'checked':''}> No action</label>
       <label class="inline"><input type="radio" name="a-${entry.id}" value="delete" ${s.action==='delete'?'checked':''}> Delete</label>
-      <label class="inline"><input type="radio" name="a-${entry.id}" value="other" ${s.action==='other'?'checked':''}> Other</label>
+      <label class="inline"><input type="radio" name="a-${entry.id}" value="library" ${s.action==='library'?'checked':''}> Move to Library</label>
+      <label class="inline"><input type="radio" name="a-${entry.id}" value="other" ${s.action==='other'?'checked':''}> Other (describe below)</label>
+      <button type="button" data-act="clear-action" style="margin-left:0.5rem;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:0.15rem 0.5rem;cursor:pointer;font-size:0.7rem">Clear action</button>
       <label>Details <textarea data-field="details">${esc(s.details || '')}</textarea></label>`;
   }
 
@@ -594,15 +600,26 @@ function renderEditor(entry) {
   const isBg = cat === 'background';
   const removeBgAllowed = !isBg;
 
+  // Mixed-state banner for multi-select where selected cards already have different actions.
+  let mixedBanner = '';
+  if (selection.size > 1) {
+    const actions = new Set([...selection].map(id => (state[id] && state[id].action) || '').filter(Boolean));
+    if (actions.size > 1) {
+      mixedBanner = `<div style="color:var(--warn);font-size:0.7rem;margin:0.2rem 0 0.4rem">⚠ Mixed actions across selection (${[...actions].join(', ')}) — choosing an action below will overwrite all.</div>`;
+    }
+  }
+
   return `<div class="eid">${esc(entry.id)} — ${esc(entry.file)}</div>
     ${promptLine}
-    <label class="inline"><input type="radio" name="a-${entry.id}" value="none" ${!s.action || s.action==='none' ? 'checked':''}> No action</label>
+    ${mixedBanner}
     <label class="inline"><input type="radio" name="a-${entry.id}" value="flip" ${s.action==='flip'?'checked':''}> Flip</label>
     ${removeBgAllowed ? `<label class="inline"><input type="radio" name="a-${entry.id}" value="remove_bg" ${s.action==='remove_bg'?'checked':''}> Remove Background</label>` : ''}
-    <label class="inline"><input type="radio" name="a-${entry.id}" value="regenerate" ${s.action==='regenerate' || (isBg && !s.action) ? 'checked':''}> Re-Generate</label>
+    <label class="inline"><input type="radio" name="a-${entry.id}" value="regenerate" ${s.action==='regenerate' ? 'checked':''}> Re-Generate</label>
     <label class="inline"><input type="radio" name="a-${entry.id}" value="library" ${s.action==='library'?'checked':''}> Move to Library</label>
     <label class="inline"><input type="radio" name="a-${entry.id}" value="archive" ${s.action==='archive'?'checked':''}> Archive</label>
     <label class="inline"><input type="radio" name="a-${entry.id}" value="delete" ${s.action==='delete'?'checked':''}> Delete</label>
+    <label class="inline"><input type="radio" name="a-${entry.id}" value="other" ${s.action==='other'?'checked':''}> Other (describe below)</label>
+    <button type="button" data-act="clear-action" style="margin-left:0.5rem;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:0.15rem 0.5rem;cursor:pointer;font-size:0.7rem">Clear action</button>
 
     <div class="sub-panel" data-sub="flip" style="${s.action==='flip'?'':'display:none'}">
       <label class="inline"><input type="radio" name="flip-${entry.id}" value="horizontal" ${s.flipDir!=='vertical'?'checked':''}> Horizontal</label>
@@ -627,25 +644,28 @@ function wireEditor(editor, entry) {
   function snap() {
     const s = {};
     const actionEl = editor.querySelector('input[name^="a-"]:checked') || editor.querySelector('[data-field="action"]');
-    s.action = actionEl ? actionEl.value : 'none';
+    s.action = actionEl ? actionEl.value : '';
     const flipEl = editor.querySelector('input[name^="flip-"]:checked');
     if (flipEl) s.flipDir = flipEl.value;
     editor.querySelectorAll('[data-field]').forEach(el => {
       const f = el.dataset.field;
-      if (f === 'action') return; // handled
+      if (f === 'action') return;
       if (el.type === 'checkbox') s[f] = el.checked;
       else s[f] = el.value;
     });
     const targets = selection.size > 0 ? [...selection] : [entry.id];
     targets.forEach(tid => {
-      if (!s.action || s.action === 'none') delete state[tid];
-      else state[tid] = { ...s };
+      if (!s.action) {
+        // No radio checked — preserve whatever state the card already has (e.g. detail text updates).
+        if (state[tid] && s.details !== undefined) state[tid].details = s.details;
+      } else {
+        state[tid] = { ...s };
+      }
       updateCardAction(tid);
     });
     saveState();
     updateCounts();
-    // Library/archive changes affect bottom sections — rerender full view
-    if (['library','archive','none'].includes(s.action)) {
+    if (['library','archive'].includes(s.action)) {
       const preserved = new Set(selection);
       renderSections();
       preserved.forEach(id => {
@@ -655,13 +675,22 @@ function wireEditor(editor, entry) {
       renderSelectionEditor();
       return;
     }
-    // Toggle sub-panels
     editor.querySelectorAll('.sub-panel').forEach(sp => {
       sp.style.display = sp.dataset.sub === s.action ? '' : 'none';
     });
   }
   editor.addEventListener('change', snap);
   editor.addEventListener('input', snap);
+  editor.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('[data-act="clear-action"]');
+    if (!btn) return;
+    ev.preventDefault();
+    const targets = selection.size > 0 ? [...selection] : [entry.id];
+    targets.forEach(tid => { delete state[tid]; updateCardAction(tid); });
+    saveState();
+    updateCounts();
+    renderSelectionEditor();
+  });
 }
 
 function updateCardAction(id) {
@@ -740,9 +769,10 @@ function buildPrompt() {
     return parts.join(' — ');
   });
   section('DELETE', byAction.delete, it => it.entry.file.replace(/^\.\.\//,''));
-  section('OTHER', byAction.other, it => {
-    const parts = [it.entry.file.replace(/^\.\.\//,'')];
-    if (it.details) parts.push(`details: ${it.details}`);
+  section('OTHER (free-form request)', byAction.other, it => {
+    const parts = [it.entry.id, it.entry.file.replace(/^\.\.\//,'')];
+    if (it.details) parts.push(`request: ${it.details}`);
+    else parts.push('(no details provided — author should describe)');
     return parts.join(' — ');
   });
 

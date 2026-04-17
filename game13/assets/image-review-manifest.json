@@ -1,18 +1,20 @@
 {
   "_meta": {
-    "generated": "2026-04-16T22:04:03.468Z",
+    "generated": "2026-04-17T05:03:59.428Z",
     "counts": {
-      "total": 343,
+      "total": 361,
       "by_status": {
-        "ready": 273,
-        "pending": 70
+        "ready": 275,
+        "pending": 69,
+        "orphaned": 17
       },
       "by_category": {
         "hero": 140,
         "companion": 50,
         "boss": 95,
         "enemy": 17,
-        "background": 41
+        "background": 42,
+        "orphan": 17
       }
     },
     "source": "scripts/build-image-review-manifest.js"
@@ -1141,7 +1143,7 @@
       "pose": "east_block",
       "file": "../images/spritecook/oracle_east_block.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "hero_oracle_east_ko",
@@ -3079,6 +3081,15 @@
       "status": "ready"
     },
     {
+      "id": "bg_menu_clouds_02",
+      "category": "background",
+      "group": "menu",
+      "pose": null,
+      "file": "../images/menu_bg/clouds_02.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
       "id": "bg_menu_clouds_03",
       "category": "background",
       "group": "menu",
@@ -3104,6 +3115,159 @@
       "file": "../images/menu_bg/menu_wide.jpg",
       "prompt": null,
       "status": "ready"
+    },
+    {
+      "id": "orphan_images_spritecook_bone_hound_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/bone_hound_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_cleric_priestess_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/cleric_priestess_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_cleric_priestess_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/cleric_priestess_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_cleric_priestess_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/cleric_priestess_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_cleric_priestess_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/cleric_priestess_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_cleric_priestess_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/cleric_priestess_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_cleric_priestess_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/cleric_priestess_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_cleric_priestess_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/cleric_priestess_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_crystal_golem_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/crystal_golem_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dire_wolf_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dire_wolf_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ember_drake_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ember_drake_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_forest_owl_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/forest_owl_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ice_sprite_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ice_sprite_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shadow_cat_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shadow_cat_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_spirit_wisp_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/spirit_wisp_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_swamp_frog_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/swamp_frog_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_void_moth_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/void_moth_east.png",
+      "prompt": null,
+      "status": "orphaned"
     }
   ]
 }
