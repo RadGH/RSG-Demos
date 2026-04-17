@@ -653,7 +653,15 @@ function wireEditor(editor, entry) {
       if (el.type === 'checkbox') s[f] = el.checked;
       else s[f] = el.value;
     });
-    const targets = selection.size > 0 ? [...selection] : [entry.id];
+    // Per-section isolation: when multiple cards are selected across categories,
+    // only apply to cards sharing the template entry's category. Prevents hero
+    // details / actions from leaking onto background cards (and vice versa).
+    const templateCat = entry.category;
+    const rawTargets = selection.size > 0 ? [...selection] : [entry.id];
+    const targets = rawTargets.filter(tid => {
+      const e = entries.find(en => en.id === tid);
+      return !e || e.category === templateCat;
+    });
     targets.forEach(tid => {
       if (!s.action) {
         // No radio checked — preserve whatever state the card already has (e.g. detail text updates).

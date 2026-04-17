@@ -198,8 +198,76 @@
     <h2>Prior Feature Backlog</h2>
     <p class="sub">Items surfaced in earlier batches that are still open.</p>
 
-    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Hover-preview tooltips on Forge upgrade list</span><span class="tag status-todo">todo</span><div class="desc">Flagged after M64.</div></div></div>
-    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Animation frames for walk/attack on 10 companions</span><span class="tag status-todo">todo</span><div class="desc">Flagged after M64, now merged with Appearance system schema unification above.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Hover-preview tooltips — apply broadly</span><span class="tag status-todo">todo</span><div class="desc">Not just Forge/Blacksmith Upgrade list — apply across UI surfaces (skill list, inventory, party slots). Tooltips are a design primitive we should use more regularly.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Animation frames for walk/attack on 10 companions</span><span class="tag status-todo">todo</span><div class="desc">Flagged after M64, merged with appearance-per-companion schema.</div></div></div>
+  </section>
+
+  <!-- ========== ASSET PIPELINE ========== -->
+  <section class="wl-section">
+    <h2>Asset Pipeline &amp; Image Regen (M129+)</h2>
+    <p class="sub">Move off pixellab archive entirely. All assets indexed in image-review. Rigid per-type spec documented in /docs/.</p>
+
+    <div class="wl-group">
+      <h3>Image Regeneration Queue</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">19 boss east_spell + east_block frames (38 images)</span><span class="tag status-todo">todo</span><div class="desc">SpriteCook with per-boss reference + tone/color descriptor. Bosses: abyss_boss, abyssal_knight, ancient_dragon, archfiend_malgrath, architect_boss, border_boss, breach_boss, cosmic_titan, dragon_king, dragon_knight, dragon_throne_boss, emberveil_sovereign, genesis_worm, grax_veil_touched, lava_titan, primordial_elemental, reality_shard, the_architect, veil_warden.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">17 enemies full sprite regen (119 images = 17 × 7 frames)</span><span class="tag status-todo">todo</span><div class="desc">Currently portrait-only in spritecook; south/east served from sprites_pixellab_archive. Regenerate full sets via SpriteCook: ash_wraith, bandit, bandit_captain, cinder_hound, corrupted_bear, corrupted_wolf, demon_brute, goblin_scout, goblin_shaman, goblin_warlord, goblin_warrior, hell_knight, imp, molten_golem, veil_cultist, plus 2 more in manifest.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">All combat backgrounds regenerated at 1536×1024</span><span class="tag status-todo">todo</span><div class="desc">Currently 256×256 with fake UI baked in. Use template prompt (same approach as map backgrounds worked) — environment, atmospheric, empty focal midground where combat takes place. Reference menu_wide.jpg for composition bar. Thumbnail crop to square for mobile.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">warlock_east_spell background removal</span><span class="tag status-todo">todo</span><div class="desc">Current bg is multi-color pixels — background removal needs flexibility (tolerance/multi-sample), not single-color-key.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>Image Catalog &amp; Policy</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Rigid asset-type definitions in /docs/image-policy.md</span><span class="tag status-todo">todo</span><div class="desc">Character art: 7 frames (portrait, south, east, east_attack, east_spell, east_block, east_ko) — same spec for heroes, companions, bosses, enemies. Background art: 1536×1024, atmospheric, empty midground, square thumbnail. Map art: 1536×1024, atmospheric, no midground rule. Tap Weapon/Equipment icons: icon + projectile/effect artwork.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Every generated image auto-added to image-review manifest</span><span class="tag status-todo">todo</span><div class="desc">Rule: whenever any image is generated or replaced, it MUST be registered in image-review-manifest.json (and assets.json if applicable) in the same change. Add a pre-commit or workflow hook that catches unregistered images.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Tap Weapons + Tap Equipment icons in image-review</span><span class="tag status-todo">todo</span><div class="desc">Index icons AND spell artwork (projectile, explosion, effects) under a new 'tap-weapons' category in image-review-manifest.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Image-review per-section custom details (bug fix)</span><span class="tag status-todo">todo</span><div class="desc">Currently when I describe a hero portrait regen then switch to combat backgrounds, the hero details leak. Each category (hero, companion, boss, enemy, background, map, tap-icon) needs its own independent custom-details field keyed by category.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Restore 'Remove Background' action to image-review</span><span class="tag status-todo">todo</span><div class="desc">Lost in the M127 refactor — add it back to the action radio list alongside archive/library/delete/other.</div></div></div>
+    </div>
+  </section>
+
+  <!-- ========== DOCUMENTATION ========== -->
+  <section class="wl-section">
+    <h2>Documentation &amp; Policy</h2>
+    <p class="sub">Markdown policy files live in /docs/. Tools > Documentation renders them in-browser.</p>
+
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">/docs/ folder scaffolding</span><span class="tag status-todo">todo</span><div class="desc">image-policy.md, prompt-templates.md, schema-reference.md, mod-authoring.md, asset-types.md, no-silent-shelving.md. Committed to repo so they render on GitHub + in-app.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">/assets/docs.html viewer</span><span class="tag status-todo">todo</span><div class="desc">Client-side markdown renderer. Links into Tools > Documentation. Lists every /docs/ file.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">CLAUDE.md references /docs/</span><span class="tag status-todo">todo</span><div class="desc">Add pointer: 'Policies live in /docs/ — update them when behavior changes.' + rule to maintain docs when relevant code changes.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">New-tool / new-dependency flag rule</span><span class="tag status-todo">todo</span><div class="desc">Auto-approve libraries ≤25KB. For &gt;25KB, drop a scope-change message (name, size, reason) and wait. Document in CLAUDE.md.</div></div></div>
+  </section>
+
+  <!-- ========== SPELL / SKILL SYSTEM ========== -->
+  <section class="wl-section">
+    <h2>Skill System Overhaul</h2>
+    <p class="sub">Move skills out of hardcoded class definitions into a swappable, data-driven system. Variable skill count per character. Spell catalog tool mirroring image-review.</p>
+
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">/assets/spell-catalog.html tool</span><span class="tag status-todo">todo</span><div class="desc">Mirror image-review UX: select skill(s), action radios (Alter, Regenerate, Reassign to another class, Archive, Delete, Other-describe), Generate Prompt (read-only — user sends to Claude). Protected core-mechanic list prevents deletion of underlying mechanics (e.g. can remove 'Poison Nova' skill but not the Nova/Poison primitives).</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Protected core-mechanics list</span><span class="tag status-todo">todo</span><div class="desc">Enforced at delete-action in spell catalog. Mechanics like damage types, status kinds, targeting patterns cannot be deleted — only skills that use them.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Skills as standalone data (not hardcoded to classes)</span><span class="tag status-todo">todo</span><div class="desc">skills.json or pack-based store keyed by skillId; classes reference skillIds. Enables reassignment, sharing, hybrid classes.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Variable skill count per character (not hardcoded to 4)</span><span class="tag status-todo">todo</span><div class="desc">Support more or fewer skills per class/hero. UI (skill tree, combat skill picker, character builder) must not assume 4. Future-enables hybrid-class builder where user picks any N skills. Hybrid builder itself is NOT a wishlist item — just keep the door open.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">24-spell mechanic catalog doc</span><span class="tag status-todo">todo</span><div class="desc">Authorship reference: map each distinct mechanic (reflect, damage-on-dodge, echo, ritual, pact, mark, etc.) to a DSL recipe in starter-pack. Lives in /docs/spell-mechanics.md.</div></div></div>
+  </section>
+
+  <!-- ========== COMBAT SYSTEMS ========== -->
+  <section class="wl-section">
+    <h2>Combat System Migration</h2>
+    <p class="sub">Finishing the mod-system-ready combat primitives. Each item below is a separate milestone.</p>
+
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Per-skill cooldown map</span><span class="tag status-todo">todo</span><div class="desc">actor.cooldowns[skillId] replaces single actor.skillCooldown slot. Enables characters to use multiple skills on rotation. Save-migration: read both, prefer map, drop slot after one release. User: 'otherwise characters would only ever use one spell.'</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Event chain flag ledger</span><span class="tag status-todo">todo</span><div class="desc">GameState.flags persistent store with requires/setFlags/consumesFlag/incrementFlag semantics. DSL setFlag/requireFlag currently per-cast — needs persistent path so event chains actually chain across encounters.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">CombatScreen → statusModel migration (per-family)</span><span class="tag status-todo">todo</span><div class="desc">Migrate dmgBuff/critBonus/burning/poisoned/bleeding/stunned/barrierHp/regen into statuses[] one family per milestone. Start with burn/poison/bleed (shared tick loops). Shim telemetry tracks legacy-field hits; remove shim when zero hits for a full milestone.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Schema warn-mode normalization</span><span class="tag status-todo">todo</span><div class="desc">Canonicalize strength→str, dexterity→dex, etc. at pack load time. Warn via telemetry when a non-canonical name is seen. ~50 LOC standalone (would come 'for free' with AJV, but we're keeping AJV shelved).</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Combat sim diff view vs nearest vanilla</span><span class="tag status-todo">todo</span><div class="desc">When a mod skill loads, sim shows side-by-side DPS/crit%/burst vs closest vanilla equivalent (by targeting + stat + mult).</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Combat sim — save/load encounter settings + results</span><span class="tag status-todo">todo</span><div class="desc">Export an encounter setup (party, gear, enemy config, seed) + result as a JSON file; reload later to compare. Stores a per-milestone benchmark snapshot so balance drift across milestones is measurable.</div></div></div>
+  </section>
+
+  <!-- ========== TECHNICAL DEBT / SHELVED ========== -->
+  <section class="wl-section">
+    <h2>Technical Debt Registry</h2>
+    <p class="sub">Items deliberately shelved. Keep them visible so they're not forgotten — and so we don't add more without naming the tradeoff.</p>
+
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">AJV full JSON-Schema validation (shelved)</span><span class="tag status-todo">shelved</span><div class="desc">~120KB. Benefits: required-field errors, type/enum violations, oneOf mismatch messages, $ref resolution, free schema normalization via custom keywords. Path back in: lazy-load only when custom-content.html opens (doesn't cost main bundle). Revisit when structural check starts producing confusing errors for authors.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Technical-debt discipline</span><span class="tag status-todo">todo</span><div class="desc">Rule: before adding any new library/tool &gt;25KB, name it + size + reason and get approval. Libraries ≤25KB auto-approved but still prefer lean. Document in CLAUDE.md. Log each accepted addition here with its tradeoff.</div></div></div>
   </section>
 
   <!-- ========== SHELVED ========== -->
@@ -207,7 +275,15 @@
     <h2>Shelved / Revisit</h2>
     <p class="sub">Items deferred because the current system couldn't host them cleanly. Surface when the foundation catches up.</p>
 
-    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">(empty — shelf items are added here by Claude as they come up)</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Hire Custom — unify UX with Create Hero</span><span class="tag status-todo">todo</span><div class="desc">Town "Hire Custom" class list uses a different layout + color scheme than Create Hero. Should be identical. Quick fix: `.hb-class-grid` grid-template-columns min should be 150px (not 100px) — fits 10 cols × 2 rows cleanly on 1920×1080. Also: Hire Custom should offer the same appearance picker as Create Hero (currently skipped).</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Starting attribute points not persisted after level-up (RESOLVED — was "Base" toggle)</span><span class="tag status-ok">fixed-ish</span><div class="desc">User had the "Base" checkbox checked, which hides allocation deltas. Fix applied: Base toggle is now session-only, defaults off on page load so stale state can't confuse later.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Pet sprite placeholders: Skeletal Warrior + Wolf</span><span class="tag status-todo">todo</span><div class="desc">In-game these pets render as placeholder SVG instead of real sprites. Check companions/pets data → appearance pointer → image file path. Likely need SpriteCook art + manifest rows.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Druid + Necromancer battle sprites desync from image-review</span><span class="tag status-todo">todo</span><div class="desc">Combat screen appears to use legacy sprite paths for Druid and Necromancer rather than the new appearance-based spritecook wiring shown in image-review. Audit appearance resolver vs. CombatScreen sprite lookup for these two classes.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Goblin shaman attack frame flipped (backwards)</span><span class="tag status-todo">todo</span><div class="desc">During combat, the goblin shaman's attack pose appears mirrored. But the character does not surface in image-review.html — which is the real bug: image-review must be driven by actual in-game dataset (enemies.js, bosses.js, companions.js, appearances.js, classes.js) instead of a parallel list, to prevent desync. Fix the shaman frame AFTER the audit so we aren't chasing ghosts.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Image-review must mirror game dataset (structural)</span><span class="tag status-todo">todo</span><div class="desc">image-review.html currently uses its own manifest (image-review-manifest.json). User's rule: "The image review page needs to accurately reflect all the images currently used in the game data set, not a separate list — too easy to get desync." Rewrite image-review to derive its character/sprite list at runtime from game data imports (classes, appearances, companions, enemies, bosses), falling back to filesystem scan for unused art. Manifest becomes computed, not authored.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Click handlers scroll to top throughout UI</span><span class="tag status-todo">todo</span><div class="desc">Clicking +1 attribute / buy talent / other interactive buttons frequently scrolls the page to the top. Suspect: anchor tags with href="#" or forms auto-submitting. Audit event handlers to add preventDefault and ensure <button> uses type="button". Affects attributes screen and likely others.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Combat reward mismatch: text says X, inventory gets Y</span><span class="tag status-todo">todo</span><div class="desc">User reported winning a combat where the reward toast said "war bow" but a ring ended up in inventory. Reward-display code is decoupled from actual item grant — they're rolling/looking-up different sources. Trace: CombatScreen reward roll → display text vs. Player.inventory.add(). Log both sides to confirm.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Tavern war_dog portrait — wrong path</span><span class="tag status-todo">todo</span><div class="desc">Town tavern menu 404s on `images/sprites/companion_east.png` for the war_dog hire card; after hiring, the same character loads correctly from `images/portraits/war_dog.png`. Tavern hire-preview is using a stale pointer — route through the same portrait resolver used post-hire.</div></div></div>
   </section>
 
 </body>
