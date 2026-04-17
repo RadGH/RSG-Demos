@@ -114,7 +114,7 @@ const getAll = (k) => Object.values(store[k] || {});
 const listPacks = () => Object.values(packs);
 const clear = () => { for (const k of KINDS) store[k] = {}; for (const id of Object.keys(packs)) delete packs[id]; };
 const SCHEMAS = ['pack','skill','effect-dsl','class','item','event-chain','appearance','character','loot'];
-const EXAMPLES = ['starter-pack'];
+const EXAMPLES = ['starter-pack', 'custom-weapons', 'custom-enemies', 'custom-event'];
 
 document.querySelectorAll('.tab').forEach(btn => {
   btn.addEventListener('click', () => {
