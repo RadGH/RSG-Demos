@@ -6,6 +6,20 @@
   "description": "Ten additional archetype spells (M151) continuing the DSL-authored catalog from archetype-spells.json. Covers mutual revive, auto-revive, idle ramp, stacking armor shred, companion sacrifice, multi-round rituals, phase, guard-link redirect, overheal-to-barrier, and counter-magic. All authored purely in the v1 Effect DSL — two items (Conditional multi, Dash back-row strike) are shelved with explicit reasons because the DSL has no dynamic-target-count or row-targeting primitive yet; see /assets/wishlist.html.",
   "skills": [
     {
+      "id": "arch_targeted_silence",
+      "name": "Hush",
+      "class": "enchanter",
+      "unlockLevel": 3,
+      "mpCost": 4,
+      "cooldown": 3,
+      "description": "Applies 'silenced' to one enemy for 2 rounds. While silenced, AI skill-picker (M171) skips any magic/heal/mp-costing skill for that target; basic attacks still resolve.",
+      "targeting": { "side": "enemy", "count": 1 },
+      "effects": [
+        { "op": "applyStatus", "status": "silenced", "duration": 2, "stacks": 1, "target": "target" }
+      ],
+      "tags": ["silence", "debuff", "control"]
+    },
+    {
       "id": "arch_soul_tether",
       "name": "Soul Tether",
       "class": "cleric",
