@@ -1,20 +1,21 @@
 {
   "_meta": {
-    "generated": "2026-04-17T05:03:59.428Z",
+    "generated": "2026-04-17T20:24:37.448Z",
     "counts": {
-      "total": 361,
+      "total": 498,
       "by_status": {
-        "ready": 275,
-        "pending": 69,
-        "orphaned": 17
+        "ready": 414,
+        "pending": 31,
+        "orphaned": 53
       },
       "by_category": {
-        "hero": 140,
+        "hero": 189,
         "companion": 50,
-        "boss": 95,
+        "boss": 133,
         "enemy": 17,
-        "background": 42,
-        "orphan": 17
+        "background": 47,
+        "tap-weapons": 9,
+        "orphan": 53
       }
     },
     "source": "scripts/build-image-review-manifest.js"
@@ -1281,6 +1282,447 @@
       "status": "ready"
     },
     {
+      "id": "hero_monk_portrait",
+      "category": "hero",
+      "group": "monk",
+      "pose": "portrait",
+      "file": "../images/spritecook/monk_portrait.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_monk_south",
+      "category": "hero",
+      "group": "monk",
+      "pose": "south",
+      "file": "../images/spritecook/monk_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_monk_east",
+      "category": "hero",
+      "group": "monk",
+      "pose": "east",
+      "file": "../images/spritecook/monk_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_monk_east_attack",
+      "category": "hero",
+      "group": "monk",
+      "pose": "east_attack",
+      "file": "../images/spritecook/monk_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_monk_east_spell",
+      "category": "hero",
+      "group": "monk",
+      "pose": "east_spell",
+      "file": "../images/spritecook/monk_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_monk_east_block",
+      "category": "hero",
+      "group": "monk",
+      "pose": "east_block",
+      "file": "../images/spritecook/monk_east_block.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_monk_east_ko",
+      "category": "hero",
+      "group": "monk",
+      "pose": "east_ko",
+      "file": "../images/spritecook/monk_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_shaman_portrait",
+      "category": "hero",
+      "group": "shaman",
+      "pose": "portrait",
+      "file": "../images/spritecook/shaman_portrait.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_shaman_south",
+      "category": "hero",
+      "group": "shaman",
+      "pose": "south",
+      "file": "../images/spritecook/shaman_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_shaman_east",
+      "category": "hero",
+      "group": "shaman",
+      "pose": "east",
+      "file": "../images/spritecook/shaman_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_shaman_east_attack",
+      "category": "hero",
+      "group": "shaman",
+      "pose": "east_attack",
+      "file": "../images/spritecook/shaman_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_shaman_east_spell",
+      "category": "hero",
+      "group": "shaman",
+      "pose": "east_spell",
+      "file": "../images/spritecook/shaman_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_shaman_east_block",
+      "category": "hero",
+      "group": "shaman",
+      "pose": "east_block",
+      "file": "../images/spritecook/shaman_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "hero_shaman_east_ko",
+      "category": "hero",
+      "group": "shaman",
+      "pose": "east_ko",
+      "file": "../images/spritecook/shaman_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_witch_hunter_portrait",
+      "category": "hero",
+      "group": "witch_hunter",
+      "pose": "portrait",
+      "file": "../images/spritecook/witch_hunter_portrait.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_witch_hunter_south",
+      "category": "hero",
+      "group": "witch_hunter",
+      "pose": "south",
+      "file": "../images/spritecook/witch_hunter_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_witch_hunter_east",
+      "category": "hero",
+      "group": "witch_hunter",
+      "pose": "east",
+      "file": "../images/spritecook/witch_hunter_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_witch_hunter_east_attack",
+      "category": "hero",
+      "group": "witch_hunter",
+      "pose": "east_attack",
+      "file": "../images/spritecook/witch_hunter_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_witch_hunter_east_spell",
+      "category": "hero",
+      "group": "witch_hunter",
+      "pose": "east_spell",
+      "file": "../images/spritecook/witch_hunter_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_witch_hunter_east_block",
+      "category": "hero",
+      "group": "witch_hunter",
+      "pose": "east_block",
+      "file": "../images/spritecook/witch_hunter_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "hero_witch_hunter_east_ko",
+      "category": "hero",
+      "group": "witch_hunter",
+      "pose": "east_ko",
+      "file": "../images/spritecook/witch_hunter_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_knight_portrait",
+      "category": "hero",
+      "group": "knight",
+      "pose": "portrait",
+      "file": "../images/spritecook/knight_portrait.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_knight_south",
+      "category": "hero",
+      "group": "knight",
+      "pose": "south",
+      "file": "../images/spritecook/knight_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_knight_east",
+      "category": "hero",
+      "group": "knight",
+      "pose": "east",
+      "file": "../images/spritecook/knight_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_knight_east_attack",
+      "category": "hero",
+      "group": "knight",
+      "pose": "east_attack",
+      "file": "../images/spritecook/knight_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_knight_east_spell",
+      "category": "hero",
+      "group": "knight",
+      "pose": "east_spell",
+      "file": "../images/spritecook/knight_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_knight_east_block",
+      "category": "hero",
+      "group": "knight",
+      "pose": "east_block",
+      "file": "../images/spritecook/knight_east_block.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_knight_east_ko",
+      "category": "hero",
+      "group": "knight",
+      "pose": "east_ko",
+      "file": "../images/spritecook/knight_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_sorcerer_portrait",
+      "category": "hero",
+      "group": "sorcerer",
+      "pose": "portrait",
+      "file": "../images/spritecook/sorcerer_portrait.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_sorcerer_south",
+      "category": "hero",
+      "group": "sorcerer",
+      "pose": "south",
+      "file": "../images/spritecook/sorcerer_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_sorcerer_east",
+      "category": "hero",
+      "group": "sorcerer",
+      "pose": "east",
+      "file": "../images/spritecook/sorcerer_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_sorcerer_east_attack",
+      "category": "hero",
+      "group": "sorcerer",
+      "pose": "east_attack",
+      "file": "../images/spritecook/sorcerer_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_sorcerer_east_spell",
+      "category": "hero",
+      "group": "sorcerer",
+      "pose": "east_spell",
+      "file": "../images/spritecook/sorcerer_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_sorcerer_east_block",
+      "category": "hero",
+      "group": "sorcerer",
+      "pose": "east_block",
+      "file": "../images/spritecook/sorcerer_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "hero_sorcerer_east_ko",
+      "category": "hero",
+      "group": "sorcerer",
+      "pose": "east_ko",
+      "file": "../images/spritecook/sorcerer_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_runesmith_portrait",
+      "category": "hero",
+      "group": "runesmith",
+      "pose": "portrait",
+      "file": "../images/spritecook/runesmith_portrait.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_runesmith_south",
+      "category": "hero",
+      "group": "runesmith",
+      "pose": "south",
+      "file": "../images/spritecook/runesmith_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_runesmith_east",
+      "category": "hero",
+      "group": "runesmith",
+      "pose": "east",
+      "file": "../images/spritecook/runesmith_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_runesmith_east_attack",
+      "category": "hero",
+      "group": "runesmith",
+      "pose": "east_attack",
+      "file": "../images/spritecook/runesmith_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_runesmith_east_spell",
+      "category": "hero",
+      "group": "runesmith",
+      "pose": "east_spell",
+      "file": "../images/spritecook/runesmith_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_runesmith_east_block",
+      "category": "hero",
+      "group": "runesmith",
+      "pose": "east_block",
+      "file": "../images/spritecook/runesmith_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "hero_runesmith_east_ko",
+      "category": "hero",
+      "group": "runesmith",
+      "pose": "east_ko",
+      "file": "../images/spritecook/runesmith_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_shadow_dancer_portrait",
+      "category": "hero",
+      "group": "shadow_dancer",
+      "pose": "portrait",
+      "file": "../images/spritecook/shadow_dancer_portrait.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_shadow_dancer_south",
+      "category": "hero",
+      "group": "shadow_dancer",
+      "pose": "south",
+      "file": "../images/spritecook/shadow_dancer_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_shadow_dancer_east",
+      "category": "hero",
+      "group": "shadow_dancer",
+      "pose": "east",
+      "file": "../images/spritecook/shadow_dancer_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_shadow_dancer_east_attack",
+      "category": "hero",
+      "group": "shadow_dancer",
+      "pose": "east_attack",
+      "file": "../images/spritecook/shadow_dancer_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_shadow_dancer_east_spell",
+      "category": "hero",
+      "group": "shadow_dancer",
+      "pose": "east_spell",
+      "file": "../images/spritecook/shadow_dancer_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_shadow_dancer_east_block",
+      "category": "hero",
+      "group": "shadow_dancer",
+      "pose": "east_block",
+      "file": "../images/spritecook/shadow_dancer_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "hero_shadow_dancer_east_ko",
+      "category": "hero",
+      "group": "shadow_dancer",
+      "pose": "east_ko",
+      "file": "../images/spritecook/shadow_dancer_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
       "id": "companion_pet_skeletal_warrior_portrait",
       "category": "companion",
       "group": "pet_skeletal_warrior",
@@ -1746,7 +2188,7 @@
       "pose": "south",
       "file": "../images/spritecook/primordial_elemental_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_primordial_elemental_east",
@@ -1755,7 +2197,7 @@
       "pose": "east",
       "file": "../images/spritecook/primordial_elemental_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_primordial_elemental_east_attack",
@@ -1763,6 +2205,24 @@
       "group": "primordial_elemental",
       "pose": "east_attack",
       "file": "../images/spritecook/primordial_elemental_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_primordial_elemental_east_spell",
+      "category": "boss",
+      "group": "primordial_elemental",
+      "pose": "east_spell",
+      "file": "../images/spritecook/primordial_elemental_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_primordial_elemental_east_block",
+      "category": "boss",
+      "group": "primordial_elemental",
+      "pose": "east_block",
+      "file": "../images/spritecook/primordial_elemental_east_block.png",
       "prompt": null,
       "status": "pending"
     },
@@ -1773,7 +2233,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/primordial_elemental_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_abyssal_knight_portrait",
@@ -1791,7 +2251,7 @@
       "pose": "south",
       "file": "../images/spritecook/abyssal_knight_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_abyssal_knight_east",
@@ -1800,7 +2260,7 @@
       "pose": "east",
       "file": "../images/spritecook/abyssal_knight_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_abyssal_knight_east_attack",
@@ -1808,6 +2268,24 @@
       "group": "abyssal_knight",
       "pose": "east_attack",
       "file": "../images/spritecook/abyssal_knight_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_abyssal_knight_east_spell",
+      "category": "boss",
+      "group": "abyssal_knight",
+      "pose": "east_spell",
+      "file": "../images/spritecook/abyssal_knight_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_abyssal_knight_east_block",
+      "category": "boss",
+      "group": "abyssal_knight",
+      "pose": "east_block",
+      "file": "../images/spritecook/abyssal_knight_east_block.png",
       "prompt": null,
       "status": "pending"
     },
@@ -1818,7 +2296,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/abyssal_knight_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_reality_shard_portrait",
@@ -1836,7 +2314,7 @@
       "pose": "south",
       "file": "../images/spritecook/reality_shard_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_reality_shard_east",
@@ -1845,7 +2323,7 @@
       "pose": "east",
       "file": "../images/spritecook/reality_shard_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_reality_shard_east_attack",
@@ -1853,6 +2331,24 @@
       "group": "reality_shard",
       "pose": "east_attack",
       "file": "../images/spritecook/reality_shard_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_reality_shard_east_spell",
+      "category": "boss",
+      "group": "reality_shard",
+      "pose": "east_spell",
+      "file": "../images/spritecook/reality_shard_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_reality_shard_east_block",
+      "category": "boss",
+      "group": "reality_shard",
+      "pose": "east_block",
+      "file": "../images/spritecook/reality_shard_east_block.png",
       "prompt": null,
       "status": "pending"
     },
@@ -1863,7 +2359,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/reality_shard_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_genesis_worm_portrait",
@@ -1881,7 +2377,7 @@
       "pose": "south",
       "file": "../images/spritecook/genesis_worm_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_genesis_worm_east",
@@ -1890,7 +2386,7 @@
       "pose": "east",
       "file": "../images/spritecook/genesis_worm_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_genesis_worm_east_attack",
@@ -1898,6 +2394,24 @@
       "group": "genesis_worm",
       "pose": "east_attack",
       "file": "../images/spritecook/genesis_worm_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_genesis_worm_east_spell",
+      "category": "boss",
+      "group": "genesis_worm",
+      "pose": "east_spell",
+      "file": "../images/spritecook/genesis_worm_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_genesis_worm_east_block",
+      "category": "boss",
+      "group": "genesis_worm",
+      "pose": "east_block",
+      "file": "../images/spritecook/genesis_worm_east_block.png",
       "prompt": null,
       "status": "pending"
     },
@@ -1908,7 +2422,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/genesis_worm_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_the_architect_portrait",
@@ -1926,7 +2440,7 @@
       "pose": "south",
       "file": "../images/spritecook/the_architect_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_the_architect_east",
@@ -1935,7 +2449,7 @@
       "pose": "east",
       "file": "../images/spritecook/the_architect_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_the_architect_east_attack",
@@ -1943,6 +2457,24 @@
       "group": "the_architect",
       "pose": "east_attack",
       "file": "../images/spritecook/the_architect_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_the_architect_east_spell",
+      "category": "boss",
+      "group": "the_architect",
+      "pose": "east_spell",
+      "file": "../images/spritecook/the_architect_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_the_architect_east_block",
+      "category": "boss",
+      "group": "the_architect",
+      "pose": "east_block",
+      "file": "../images/spritecook/the_architect_east_block.png",
       "prompt": null,
       "status": "pending"
     },
@@ -1953,7 +2485,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/the_architect_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_archfiend_malgrath_portrait",
@@ -1971,7 +2503,7 @@
       "pose": "south",
       "file": "../images/spritecook/archfiend_malgrath_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_archfiend_malgrath_east",
@@ -1980,7 +2512,7 @@
       "pose": "east",
       "file": "../images/spritecook/archfiend_malgrath_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_archfiend_malgrath_east_attack",
@@ -1988,6 +2520,24 @@
       "group": "archfiend_malgrath",
       "pose": "east_attack",
       "file": "../images/spritecook/archfiend_malgrath_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_archfiend_malgrath_east_spell",
+      "category": "boss",
+      "group": "archfiend_malgrath",
+      "pose": "east_spell",
+      "file": "../images/spritecook/archfiend_malgrath_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_archfiend_malgrath_east_block",
+      "category": "boss",
+      "group": "archfiend_malgrath",
+      "pose": "east_block",
+      "file": "../images/spritecook/archfiend_malgrath_east_block.png",
       "prompt": null,
       "status": "pending"
     },
@@ -1998,7 +2548,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/archfiend_malgrath_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_emberveil_sovereign_portrait",
@@ -2016,7 +2566,7 @@
       "pose": "south",
       "file": "../images/spritecook/emberveil_sovereign_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_emberveil_sovereign_east",
@@ -2025,7 +2575,7 @@
       "pose": "east",
       "file": "../images/spritecook/emberveil_sovereign_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_emberveil_sovereign_east_attack",
@@ -2033,6 +2583,24 @@
       "group": "emberveil_sovereign",
       "pose": "east_attack",
       "file": "../images/spritecook/emberveil_sovereign_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_emberveil_sovereign_east_spell",
+      "category": "boss",
+      "group": "emberveil_sovereign",
+      "pose": "east_spell",
+      "file": "../images/spritecook/emberveil_sovereign_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_emberveil_sovereign_east_block",
+      "category": "boss",
+      "group": "emberveil_sovereign",
+      "pose": "east_block",
+      "file": "../images/spritecook/emberveil_sovereign_east_block.png",
       "prompt": null,
       "status": "pending"
     },
@@ -2043,7 +2611,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/emberveil_sovereign_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_lava_titan_portrait",
@@ -2061,7 +2629,7 @@
       "pose": "south",
       "file": "../images/spritecook/lava_titan_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_lava_titan_east",
@@ -2070,7 +2638,7 @@
       "pose": "east",
       "file": "../images/spritecook/lava_titan_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_lava_titan_east_attack",
@@ -2078,6 +2646,24 @@
       "group": "lava_titan",
       "pose": "east_attack",
       "file": "../images/spritecook/lava_titan_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_lava_titan_east_spell",
+      "category": "boss",
+      "group": "lava_titan",
+      "pose": "east_spell",
+      "file": "../images/spritecook/lava_titan_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_lava_titan_east_block",
+      "category": "boss",
+      "group": "lava_titan",
+      "pose": "east_block",
+      "file": "../images/spritecook/lava_titan_east_block.png",
       "prompt": null,
       "status": "pending"
     },
@@ -2088,7 +2674,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/lava_titan_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_grax_veil_touched_portrait",
@@ -2106,7 +2692,7 @@
       "pose": "south",
       "file": "../images/spritecook/grax_veil_touched_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_grax_veil_touched_east",
@@ -2115,7 +2701,7 @@
       "pose": "east",
       "file": "../images/spritecook/grax_veil_touched_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_grax_veil_touched_east_attack",
@@ -2123,6 +2709,24 @@
       "group": "grax_veil_touched",
       "pose": "east_attack",
       "file": "../images/spritecook/grax_veil_touched_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_grax_veil_touched_east_spell",
+      "category": "boss",
+      "group": "grax_veil_touched",
+      "pose": "east_spell",
+      "file": "../images/spritecook/grax_veil_touched_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_grax_veil_touched_east_block",
+      "category": "boss",
+      "group": "grax_veil_touched",
+      "pose": "east_block",
+      "file": "../images/spritecook/grax_veil_touched_east_block.png",
       "prompt": null,
       "status": "pending"
     },
@@ -2133,7 +2737,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/grax_veil_touched_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_veil_warden_portrait",
@@ -2151,7 +2755,7 @@
       "pose": "south",
       "file": "../images/spritecook/veil_warden_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_veil_warden_east",
@@ -2160,7 +2764,7 @@
       "pose": "east",
       "file": "../images/spritecook/veil_warden_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_veil_warden_east_attack",
@@ -2168,6 +2772,24 @@
       "group": "veil_warden",
       "pose": "east_attack",
       "file": "../images/spritecook/veil_warden_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_veil_warden_east_spell",
+      "category": "boss",
+      "group": "veil_warden",
+      "pose": "east_spell",
+      "file": "../images/spritecook/veil_warden_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_veil_warden_east_block",
+      "category": "boss",
+      "group": "veil_warden",
+      "pose": "east_block",
+      "file": "../images/spritecook/veil_warden_east_block.png",
       "prompt": null,
       "status": "pending"
     },
@@ -2178,7 +2800,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/veil_warden_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_ancient_dragon_portrait",
@@ -2196,7 +2818,7 @@
       "pose": "south",
       "file": "../images/spritecook/ancient_dragon_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_ancient_dragon_east",
@@ -2205,7 +2827,7 @@
       "pose": "east",
       "file": "../images/spritecook/ancient_dragon_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_ancient_dragon_east_attack",
@@ -2213,6 +2835,24 @@
       "group": "ancient_dragon",
       "pose": "east_attack",
       "file": "../images/spritecook/ancient_dragon_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_ancient_dragon_east_spell",
+      "category": "boss",
+      "group": "ancient_dragon",
+      "pose": "east_spell",
+      "file": "../images/spritecook/ancient_dragon_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_ancient_dragon_east_block",
+      "category": "boss",
+      "group": "ancient_dragon",
+      "pose": "east_block",
+      "file": "../images/spritecook/ancient_dragon_east_block.png",
       "prompt": null,
       "status": "pending"
     },
@@ -2223,7 +2863,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/ancient_dragon_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_dragon_king_portrait",
@@ -2241,7 +2881,7 @@
       "pose": "south",
       "file": "../images/spritecook/dragon_king_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_dragon_king_east",
@@ -2250,7 +2890,7 @@
       "pose": "east",
       "file": "../images/spritecook/dragon_king_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_dragon_king_east_attack",
@@ -2258,6 +2898,24 @@
       "group": "dragon_king",
       "pose": "east_attack",
       "file": "../images/spritecook/dragon_king_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_dragon_king_east_spell",
+      "category": "boss",
+      "group": "dragon_king",
+      "pose": "east_spell",
+      "file": "../images/spritecook/dragon_king_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_dragon_king_east_block",
+      "category": "boss",
+      "group": "dragon_king",
+      "pose": "east_block",
+      "file": "../images/spritecook/dragon_king_east_block.png",
       "prompt": null,
       "status": "pending"
     },
@@ -2268,7 +2926,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/dragon_king_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_cosmic_titan_portrait",
@@ -2286,7 +2944,7 @@
       "pose": "south",
       "file": "../images/spritecook/cosmic_titan_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_cosmic_titan_east",
@@ -2295,7 +2953,7 @@
       "pose": "east",
       "file": "../images/spritecook/cosmic_titan_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_cosmic_titan_east_attack",
@@ -2303,6 +2961,24 @@
       "group": "cosmic_titan",
       "pose": "east_attack",
       "file": "../images/spritecook/cosmic_titan_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_cosmic_titan_east_spell",
+      "category": "boss",
+      "group": "cosmic_titan",
+      "pose": "east_spell",
+      "file": "../images/spritecook/cosmic_titan_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_cosmic_titan_east_block",
+      "category": "boss",
+      "group": "cosmic_titan",
+      "pose": "east_block",
+      "file": "../images/spritecook/cosmic_titan_east_block.png",
       "prompt": null,
       "status": "pending"
     },
@@ -2313,7 +2989,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/cosmic_titan_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_dragon_knight_portrait",
@@ -2348,6 +3024,24 @@
       "group": "dragon_knight",
       "pose": "east_attack",
       "file": "../images/spritecook/dragon_knight_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_dragon_knight_east_spell",
+      "category": "boss",
+      "group": "dragon_knight",
+      "pose": "east_spell",
+      "file": "../images/spritecook/dragon_knight_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_dragon_knight_east_block",
+      "category": "boss",
+      "group": "dragon_knight",
+      "pose": "east_block",
+      "file": "../images/spritecook/dragon_knight_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -2397,6 +3091,24 @@
       "status": "ready"
     },
     {
+      "id": "boss_border_boss_east_spell",
+      "category": "boss",
+      "group": "border_boss",
+      "pose": "east_spell",
+      "file": "../images/spritecook/border_boss_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_border_boss_east_block",
+      "category": "boss",
+      "group": "border_boss",
+      "pose": "east_block",
+      "file": "../images/spritecook/border_boss_east_block.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
       "id": "boss_border_boss_east_ko",
       "category": "boss",
       "group": "border_boss",
@@ -2421,7 +3133,7 @@
       "pose": "south",
       "file": "../images/spritecook/breach_boss_south.png",
       "prompt": "Pixel-art RPG sprite: Archfiend Malgrath boss, towering demon lord with charcoal skin, curled ram horns, burning crimson eyes, obsidian chestplate with hellfire runes, torn leathery wings, jagged flaming black longsword. Standing idle pose facing the camera (south/front view). Full-body sprite, centered, transparent background.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_breach_boss_east",
@@ -2430,7 +3142,7 @@
       "pose": "east",
       "file": "../images/spritecook/breach_boss_east.png",
       "prompt": "Pixel-art RPG sprite: Archfiend Malgrath boss, demon lord, side-view walking east (right), wings slightly unfurled, flaming black longsword held low, mid-stride. Full-body sprite, centered, transparent background.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_breach_boss_east_attack",
@@ -2439,7 +3151,25 @@
       "pose": "east_attack",
       "file": "../images/spritecook/breach_boss_east_attack.png",
       "prompt": "Pixel-art RPG sprite: Archfiend Malgrath boss attacking — demon lord, side-view facing east, wings spread wide, swinging flaming black longsword in powerful overhead slash, hellfire trailing. Full-body sprite, centered, transparent background.",
-      "status": "pending"
+      "status": "ready"
+    },
+    {
+      "id": "boss_breach_boss_east_spell",
+      "category": "boss",
+      "group": "breach_boss",
+      "pose": "east_spell",
+      "file": "../images/spritecook/breach_boss_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_breach_boss_east_block",
+      "category": "boss",
+      "group": "breach_boss",
+      "pose": "east_block",
+      "file": "../images/spritecook/breach_boss_east_block.png",
+      "prompt": null,
+      "status": "ready"
     },
     {
       "id": "boss_breach_boss_east_ko",
@@ -2448,7 +3178,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/breach_boss_east_ko.png",
       "prompt": "Pixel-art RPG sprite: Archfiend Malgrath boss defeated — demon lord collapsed on ground, wings tattered and crumpled, horns dim, flaming sword extinguished, side-view facing east. Full-body sprite, centered, transparent background.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_abyss_boss_portrait",
@@ -2466,7 +3196,7 @@
       "pose": "south",
       "file": "../images/spritecook/abyss_boss_south.png",
       "prompt": "Pixel-art RPG sprite: The Primordial King boss, ancient leviathan king with barnacle crown, shell-plated head, four glowing cyan eyes, tentacle beard, rusted regalia, broken trident. Standing idle pose facing the camera (south/front view). Full-body sprite, centered, transparent background.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_abyss_boss_east",
@@ -2475,7 +3205,7 @@
       "pose": "east",
       "file": "../images/spritecook/abyss_boss_east.png",
       "prompt": "Pixel-art RPG sprite: The Primordial King boss, leviathan king, side-view facing east, mid-stride walking forward, trident held low, tentacles trailing, water dripping. Full-body sprite, centered, transparent background.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_abyss_boss_east_attack",
@@ -2484,7 +3214,25 @@
       "pose": "east_attack",
       "file": "../images/spritecook/abyss_boss_east_attack.png",
       "prompt": "Pixel-art RPG sprite: The Primordial King boss attacking — leviathan king, side-view facing east, thrusting broken trident forward in a powerful stab, torrent of water blasting from trident tips. Full-body sprite, centered, transparent background.",
-      "status": "pending"
+      "status": "ready"
+    },
+    {
+      "id": "boss_abyss_boss_east_spell",
+      "category": "boss",
+      "group": "abyss_boss",
+      "pose": "east_spell",
+      "file": "../images/spritecook/abyss_boss_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_abyss_boss_east_block",
+      "category": "boss",
+      "group": "abyss_boss",
+      "pose": "east_block",
+      "file": "../images/spritecook/abyss_boss_east_block.png",
+      "prompt": null,
+      "status": "ready"
     },
     {
       "id": "boss_abyss_boss_east_ko",
@@ -2493,7 +3241,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/abyss_boss_east_ko.png",
       "prompt": "Pixel-art RPG sprite: The Primordial King boss defeated — leviathan king collapsed, crown toppled, trident broken beside him, glowing eyes dim, side-view facing east. Full-body sprite, centered, transparent background.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_architect_boss_portrait",
@@ -2511,7 +3259,7 @@
       "pose": "south",
       "file": "../images/spritecook/architect_boss_south.png",
       "prompt": "Pixel-art RPG sprite: The Architect boss, godlike artificer entity, body of floating interlocking obsidian geometric panels, silver mask with gold constellation eye, rotating rune rings halo, gilded compass-scepter. Standing idle pose facing the camera (south/front view). Full-body sprite, centered, transparent background.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_architect_boss_east",
@@ -2520,7 +3268,7 @@
       "pose": "east",
       "file": "../images/spritecook/architect_boss_east.png",
       "prompt": "Pixel-art RPG sprite: The Architect boss, geometric artificer entity, side-view facing east, gliding forward, panels shifting in sync, compass-scepter held ready, halo rings rotating. Full-body sprite, centered, transparent background.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_architect_boss_east_attack",
@@ -2529,7 +3277,25 @@
       "pose": "east_attack",
       "file": "../images/spritecook/architect_boss_east_attack.png",
       "prompt": "Pixel-art RPG sprite: The Architect boss attacking — geometric artificer, side-view facing east, compass-scepter extended projecting glowing gold blueprint-matrix beam of cosmic construction, panels flaring outward. Full-body sprite, centered, transparent background.",
-      "status": "pending"
+      "status": "ready"
+    },
+    {
+      "id": "boss_architect_boss_east_spell",
+      "category": "boss",
+      "group": "architect_boss",
+      "pose": "east_spell",
+      "file": "../images/spritecook/architect_boss_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_architect_boss_east_block",
+      "category": "boss",
+      "group": "architect_boss",
+      "pose": "east_block",
+      "file": "../images/spritecook/architect_boss_east_block.png",
+      "prompt": null,
+      "status": "ready"
     },
     {
       "id": "boss_architect_boss_east_ko",
@@ -2538,7 +3304,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/architect_boss_east_ko.png",
       "prompt": "Pixel-art RPG sprite: The Architect boss defeated — panels shattered and scattered on ground, mask cracked showing dim light within, halo rings broken, scepter fallen, side-view facing east. Full-body sprite, centered, transparent background.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_dragon_throne_boss_portrait",
@@ -2547,7 +3313,7 @@
       "pose": "portrait",
       "file": "../images/spritecook/dragon_throne_boss_portrait.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_dragon_throne_boss_south",
@@ -2556,7 +3322,7 @@
       "pose": "south",
       "file": "../images/spritecook/dragon_throne_boss_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_dragon_throne_boss_east",
@@ -2565,7 +3331,7 @@
       "pose": "east",
       "file": "../images/spritecook/dragon_throne_boss_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "boss_dragon_throne_boss_east_attack",
@@ -2574,7 +3340,25 @@
       "pose": "east_attack",
       "file": "../images/spritecook/dragon_throne_boss_east_attack.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
+    },
+    {
+      "id": "boss_dragon_throne_boss_east_spell",
+      "category": "boss",
+      "group": "dragon_throne_boss",
+      "pose": "east_spell",
+      "file": "../images/spritecook/dragon_throne_boss_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_dragon_throne_boss_east_block",
+      "category": "boss",
+      "group": "dragon_throne_boss",
+      "pose": "east_block",
+      "file": "../images/spritecook/dragon_throne_boss_east_block.png",
+      "prompt": null,
+      "status": "ready"
     },
     {
       "id": "boss_dragon_throne_boss_east_ko",
@@ -2583,7 +3367,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/dragon_throne_boss_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_goblin_scout_portrait",
@@ -2775,6 +3559,15 @@
       "status": "ready"
     },
     {
+      "id": "bg_combat_border_roads_hd",
+      "category": "background",
+      "group": "combat",
+      "pose": null,
+      "file": "../images/combat_bg/border_roads_hd.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
       "id": "bg_combat_cosmic_rift_1",
       "category": "background",
       "group": "combat",
@@ -2789,6 +3582,24 @@
       "group": "combat",
       "pose": null,
       "file": "../images/combat_bg/cosmic_rift_2.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_combat_cosmic_rift_hd",
+      "category": "background",
+      "group": "combat",
+      "pose": null,
+      "file": "../images/combat_bg/cosmic_rift_hd.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_combat_desert_plateau_hd",
+      "category": "background",
+      "group": "combat",
+      "pose": null,
+      "file": "../images/combat_bg/desert_plateau_hd.png",
       "prompt": null,
       "status": "ready"
     },
@@ -2973,6 +3784,24 @@
       "status": "ready"
     },
     {
+      "id": "bg_combat_thornwood_forest_hd",
+      "category": "background",
+      "group": "combat",
+      "pose": null,
+      "file": "../images/combat_bg/thornwood_forest_hd.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_combat_volcanic_waste_hd",
+      "category": "background",
+      "group": "combat",
+      "pose": null,
+      "file": "../images/combat_bg/volcanic_waste_hd.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
       "id": "bg_map_abyssal_depths",
       "category": "background",
       "group": "map",
@@ -3117,11 +3946,110 @@
       "status": "ready"
     },
     {
+      "id": "tap_tap_fx_blade",
+      "category": "tap-weapons",
+      "group": "tap_fx",
+      "pose": null,
+      "file": "../images/tap_fx/blade.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "tap_tap_fx_bow",
+      "category": "tap-weapons",
+      "group": "tap_fx",
+      "pose": null,
+      "file": "../images/tap_fx/bow.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "tap_tap_fx_catapult",
+      "category": "tap-weapons",
+      "group": "tap_fx",
+      "pose": null,
+      "file": "../images/tap_fx/catapult.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "tap_tap_fx_dragon_call",
+      "category": "tap-weapons",
+      "group": "tap_fx",
+      "pose": null,
+      "file": "../images/tap_fx/dragon_call.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "tap_tap_fx_fireball",
+      "category": "tap-weapons",
+      "group": "tap_fx",
+      "pose": null,
+      "file": "../images/tap_fx/fireball.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "tap_tap_fx_ninja_stars",
+      "category": "tap-weapons",
+      "group": "tap_fx",
+      "pose": null,
+      "file": "../images/tap_fx/ninja_stars.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "tap_tap_fx_spirit_hammer",
+      "category": "tap-weapons",
+      "group": "tap_fx",
+      "pose": null,
+      "file": "../images/tap_fx/spirit_hammer.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "tap_tap_fx_star_caller",
+      "category": "tap-weapons",
+      "group": "tap_fx",
+      "pose": null,
+      "file": "../images/tap_fx/star_caller.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "tap_tap_fx_void_lance",
+      "category": "tap-weapons",
+      "group": "tap_fx",
+      "pose": null,
+      "file": "../images/tap_fx/void_lance.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
       "id": "orphan_images_spritecook_bone_hound_east",
       "category": "orphan",
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/bone_hound_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_bone_hound_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/bone_hound_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_bone_hound_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/bone_hound_east_ko.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -3189,11 +4117,47 @@
       "status": "orphaned"
     },
     {
+      "id": "orphan_images_spritecook_core_boss_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/core_boss_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_core_boss_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/core_boss_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
       "id": "orphan_images_spritecook_crystal_golem_east",
       "category": "orphan",
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/crystal_golem_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_crystal_golem_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/crystal_golem_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_crystal_golem_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/crystal_golem_east_ko.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -3207,11 +4171,101 @@
       "status": "orphaned"
     },
     {
+      "id": "orphan_images_spritecook_dire_wolf_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dire_wolf_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dire_wolf_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dire_wolf_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dragon_boss_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dragon_boss_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dragon_boss_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dragon_boss_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dragonking_boss_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dragonking_boss_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dragonking_boss_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dragonking_boss_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dust_boss_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dust_boss_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dust_boss_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dust_boss_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
       "id": "orphan_images_spritecook_ember_drake_east",
       "category": "orphan",
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/ember_drake_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ember_drake_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ember_drake_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ember_drake_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ember_drake_east_ko.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -3225,11 +4279,83 @@
       "status": "orphaned"
     },
     {
+      "id": "orphan_images_spritecook_forest_owl_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/forest_owl_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_forest_owl_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/forest_owl_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
       "id": "orphan_images_spritecook_ice_sprite_east",
       "category": "orphan",
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/ice_sprite_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ice_sprite_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ice_sprite_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ice_sprite_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ice_sprite_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_plateau_boss_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/plateau_boss_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_plateau_boss_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/plateau_boss_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_rift_boss_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/rift_boss_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_rift_boss_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/rift_boss_east_spell.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -3243,11 +4369,47 @@
       "status": "orphaned"
     },
     {
+      "id": "orphan_images_spritecook_shadow_cat_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shadow_cat_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shadow_cat_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shadow_cat_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
       "id": "orphan_images_spritecook_spirit_wisp_east",
       "category": "orphan",
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/spirit_wisp_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_spirit_wisp_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/spirit_wisp_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_spirit_wisp_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/spirit_wisp_east_ko.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -3261,11 +4423,83 @@
       "status": "orphaned"
     },
     {
+      "id": "orphan_images_spritecook_swamp_frog_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/swamp_frog_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_swamp_frog_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/swamp_frog_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_thornwood_boss_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/thornwood_boss_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_thornwood_boss_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/thornwood_boss_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_void_boss_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/void_boss_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_void_boss_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/void_boss_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
       "id": "orphan_images_spritecook_void_moth_east",
       "category": "orphan",
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/void_moth_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_void_moth_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/void_moth_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_void_moth_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/void_moth_east_ko.png",
       "prompt": null,
       "status": "orphaned"
     }

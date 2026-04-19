@@ -86,7 +86,8 @@ function inferKind(e) {
   if (e.dmg || e.armor || e.weaponCategory) return 'items';
   if (Array.isArray(e.nodes) && e.actRange) return 'events';
   if (e.sprite && e.classDefault !== undefined) return 'appearances';
-  if (e.classId) return 'characters';
+  if (e.portrait || e.south || e.east_attack || e.east_ko) return 'appearances';
+  if (e.classId || (e.hp != null && e.tier != null)) return 'characters';
   if (e.roll || e.items) return 'loot';
   return null;
 }
@@ -114,7 +115,7 @@ const getAll = (k) => Object.values(store[k] || {});
 const listPacks = () => Object.values(packs);
 const clear = () => { for (const k of KINDS) store[k] = {}; for (const id of Object.keys(packs)) delete packs[id]; };
 const SCHEMAS = ['pack','skill','effect-dsl','class','item','event-chain','appearance','character','loot'];
-const EXAMPLES = ['starter-pack', 'custom-weapons', 'custom-enemies', 'custom-event'];
+const EXAMPLES = ['starter-pack', 'archetype-spells', 'archetype-spells-2', 'custom-weapons', 'custom-enemies', 'custom-event', 'event-chains'];
 
 document.querySelectorAll('.tab').forEach(btn => {
   btn.addEventListener('click', () => {

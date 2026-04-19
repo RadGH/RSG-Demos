@@ -20,7 +20,21 @@ What Emberveil considers a managed asset, where it lives, and how it's indexed.
 - `public/assets/assets.json` — human-browsable catalog rendered by `/assets/`
 - `public/assets/image-review-manifest.json` — canonical pose coverage per character, drives `/assets/image-review.html`
 
-**Rule:** every image added to disk MUST be added to BOTH indexes in the same change. No silent drops. A CI check is on the wishlist.
+**Rule:** every image added to disk MUST be added to BOTH indexes in the same change. No silent drops.
+
+CI / pre-commit check: `node scripts/check-unregistered-images.cjs` walks `public/images/` and exits non-zero if any file is not referenced by `assets.json`, `image-review-manifest.json`, `spritecook-assets.json`, or any source/public file. Run it before committing an asset batch.
+
+### Image categories in image-review
+
+The image-review manifest groups every entry by `category`:
+
+- `hero` — 14 classes × 7 poses
+- `companion` — class-pet list × 5 poses
+- `boss` — boss roster × 5 poses
+- `enemy` — portrait-only
+- `background` — `combat_bg/`, `map_bg/`, `menu_bg/`
+- `tap-weapons` — icons + projectile/effect frames under `tap_fx/`, `tap_weapons/`, `tap_effects/`
+- `orphan` — files on disk not referenced anywhere
 
 ### Character IDs
 
