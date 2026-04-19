@@ -24,9 +24,9 @@ The registry accepts three shapes:
 2. **Bare array** — `[ {...}, {...} ]` — kind inferred from the first entity's shape
 3. **Single entity** — `{ id: ..., mpCost: ... }` — kind inferred
 
-### Effect DSL ops (15)
+### Effect DSL ops (18)
 
-`damage`, `heal`, `applyStatus`, `buff`, `setFlag`, `requireFlag`, `consumeStatus`, `resourceSwap`, `echo`, `ritual`, `modifyTurnOrder`, `onHit`, `onCrit`, `onKill`, `onEvent`.
+`damage`, `heal`, `applyStatus`, `buff`, `setFlag`, `requireFlag`, `consumeStatus`, `resourceSwap`, `echo`, `ritual`, `modifyTurnOrder`, `onHit`, `onCrit`, `onKill`, `onEvent`, `incrementFlag`, `consumeFlag`, `requireFlags`.
 
 Runtime: `src/mods/dsl.js`. Each op receives a context `{ caster, targets, rng, flags, log, emit, skillsById }` and mutates actors or queues triggers.
 
