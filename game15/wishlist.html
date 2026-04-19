@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="rsg-game" content="Stable Construct">
+<title>Wishlist — Stable Construct</title>
+<script src="./_layout.js" defer></script>
+<style>
+  .wl-section { background: var(--site-bg-panel); border: 1px solid var(--site-border); border-radius: 10px; padding: 1.2rem 1.4rem; margin-bottom: 1.2rem; }
+  .wl-section h2 { font-family: var(--site-font-display); color: var(--site-accent-bright); font-size: 1.2rem; margin: 0 0 0.3rem; letter-spacing: 0.05em; }
+  .wl-section .sub { color: var(--site-muted); font-size: 0.85rem; margin-bottom: 0.9rem; }
+  .wl-group { margin-bottom: 0.9rem; }
+  .wl-group h3 { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--site-accent); margin: 0 0 0.5rem; border-bottom: 1px solid var(--site-border); padding-bottom: 0.25rem; }
+  .wl-item { display: flex; align-items: flex-start; gap: 0.6rem; padding: 0.4rem 0.6rem; border-radius: 6px; line-height: 1.45; transition: background 0.12s; }
+  .wl-item:hover { background: rgba(255,255,255,0.03); }
+  .wl-item .box { flex: 0 0 18px; width: 18px; height: 18px; border: 2px solid var(--site-border); border-radius: 4px; margin-top: 2px; position: relative; background: var(--site-bg); }
+  .wl-item.done .box { background: var(--site-accent); border-color: var(--site-accent); }
+  .wl-item.done .box::after { content: "\2713"; position: absolute; top: -4px; left: 1px; color: #0a0608; font-size: 16px; font-weight: 900; }
+  .wl-item.dropped .box { border-color: #5a4238; background: transparent; }
+  .wl-item.dropped .box::after { content: "\2715"; position: absolute; top: -4px; left: 1px; color: #8a5a4a; font-size: 16px; font-weight: 900; }
+  .wl-item.wip .box { background: repeating-linear-gradient(45deg, var(--site-accent) 0 3px, transparent 3px 6px); border-color: var(--site-accent); }
+  .wl-item .body { flex: 1; font-size: 0.92rem; }
+  .wl-item .label { font-weight: 600; color: var(--site-text); }
+  .wl-item.done .label { color: var(--site-accent-bright); }
+  .wl-item.dropped .label { text-decoration: line-through; color: #7a6a5a; }
+  .wl-item .desc { color: var(--site-muted); font-size: 0.82rem; margin-top: 2px; }
+  .wl-item .tag { font-size: 0.65rem; padding: 2px 8px; border-radius: 10px; background: var(--site-bg); color: var(--site-muted); margin-left: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .tag.status-todo { color: #8a7a6a; }
+  .tag.status-wip  { color: #e8a020; background: rgba(232,160,32,0.1); }
+  .tag.status-done { color: #7ec67e; background: rgba(126,198,126,0.1); }
+  .tag.status-drop { color: #8a5a4a; background: rgba(138,90,74,0.1); }
+  .legend { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.78rem; color: var(--site-muted); margin-top: 0.8rem; }
+  .legend-key { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .legend-key .box { width: 14px; height: 14px; border: 2px solid var(--site-border); border-radius: 3px; }
+  .legend-key.done .box { background: var(--site-accent); border-color: var(--site-accent); }
+  .legend-key.dropped .box { border-color: #5a4238; }
+  .legend-key.wip .box { background: repeating-linear-gradient(45deg, var(--site-accent) 0 2px, transparent 2px 4px); border-color: var(--site-accent); }
+  .hero-note { background: linear-gradient(135deg, rgba(122,162,255,0.08), rgba(168,196,255,0.04)); border: 1px solid var(--site-border); padding: 1rem 1.2rem; border-radius: 10px; font-size: 0.88rem; color: var(--site-text); margin-bottom: 1.2rem; }
+  .hero-note strong { color: var(--site-accent-bright); }
+</style>
+</head>
+<body>
+<h1 style="font-family:var(--site-font-display);color:var(--site-accent-bright);letter-spacing:0.05em;">Wishlist</h1>
+<p style="color:var(--site-muted);">Living truth of planned, in-progress, shipped, and dropped features. <strong>Claude maintains this file</strong> — it's the resume-after-crash anchor for any session.</p>
+
+<div class="hero-note">
+  <strong>How this works.</strong> Items start as <em>todo</em>. Move to <em>wip</em> when work begins, <em>done</em> when shipped (with milestone tag), or <em>dropped</em> with a strikethrough + reason. Claude reviews this list at every milestone start and end. The <strong>NO SILENT SHELVING</strong> rule applies: if an item is dropped, the reason is visible, not hidden.
+  <div class="legend">
+    <span class="legend-key"><span class="box"></span>Todo</span>
+    <span class="legend-key wip"><span class="box"></span>In progress</span>
+    <span class="legend-key done"><span class="box"></span>Done</span>
+    <span class="legend-key dropped"><span class="box"></span>Dropped</span>
+  </div>
+</div>
+
+<section class="wl-section">
+  <h2>Milestone Plan (M1–M10)</h2>
+  <p class="sub">The full roadmap. Flip to <em>done</em> when each milestone ships.</p>
+  <div class="wl-group">
+    <h3>Vertical Slice → Polish</h3>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">M1 — Vertical slice</span><span class="tag status-todo">todo</span><div class="desc">Twin-stick move, one chain spell, one grunt enemy, death/retry loop, canvas renderer, touch + desktop controls.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">M2 — Rooms &amp; enemies</span><span class="tag status-todo">todo</span><div class="desc">Procedural corridor room-to-room, door transitions, 3 enemy archetypes (grunt, caster, rusher).</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">M3 — Spell system</span><span class="tag status-todo">todo</span><div class="desc">3 spells (chain zap, fireball AOE, frost freeze) with Magicka-style element combos, cooldown UI, mobile spell wheel.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">M4 — Loot</span><span class="tag status-todo">todo</span><div class="desc">Weapon/spell drops with rarity tiers, inventory, equip flow, persist via localStorage.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">M5 — Boss encounter</span><span class="tag status-todo">todo</span><div class="desc">Arena room with telegraphed boss fight, HP bar, guaranteed epic+ victory drop.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">M6 — Meta progression</span><span class="tag status-todo">todo</span><div class="desc">Run currency and permanent upgrade tree unlocked between runs.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">M7 — Audio pass</span><span class="tag status-todo">todo</span><div class="desc">ElevenLabs music bed + SFX, screenshake, hit-stop, damage numbers.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">M8 — Art pass</span><span class="tag status-todo">todo</span><div class="desc">Spritecook cultist/enemy sprites, OpenAI environment backgrounds, particle polish.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">M9 — Biomes + balance</span><span class="tag status-todo">todo</span><div class="desc">3 themed biomes, difficulty curve, save slots.</div></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">M10 — Polish release</span><span class="tag status-todo">todo</span><div class="desc">Tutorial, local leaderboard, accessibility, mobile UX tune, trailer-ready.</div></div></div>
+  </div>
+</section>
+
+<section class="wl-section">
+  <h2>Future Wishlist</h2>
+  <p class="sub">Post-M10 ideas. Surface for prioritization after the polished release.</p>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Co-op (2-player)</span><span class="tag status-todo">todo</span><div class="desc">Local and/or online co-op. Network architecture TBD.</div></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Daily seed runs</span><span class="tag status-todo">todo</span><div class="desc">Shared daily seed, global leaderboard, once-per-day submission.</div></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Cosmetic skins</span><span class="tag status-todo">todo</span><div class="desc">Unlockable player / spell / HUD skins.</div></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Controller support</span><span class="tag status-todo">todo</span><div class="desc">Gamepad API — rebindable, rumble, haptics.</div></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Cloud saves</span><span class="tag status-todo">todo</span><div class="desc">Sync meta progression across devices. Requires account system.</div></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Achievements</span><span class="tag status-todo">todo</span><div class="desc">In-game achievement system with popups and a gallery page.</div></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Mod support</span><span class="tag status-todo">todo</span><div class="desc">JSON-driven spell/enemy/room mods, hot-loaded from a mods folder.</div></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Steam port investigation</span><span class="tag status-todo">todo</span><div class="desc">Evaluate wrapping the web build (Electron/Tauri) for Steam release.</div></div></div>
+</section>
+
+<section class="wl-section">
+  <h2>Polish &amp; Aesthetics</h2>
+  <p class="sub">Hover effects, animations, lightboxes, charts, etc. See <code>docs/ui-aesthetics.md</code>.</p>
+</section>
+
+<section class="wl-section">
+  <h2>Bugs</h2>
+  <p class="sub">Known issues. Add new bugs here as you find them; check off when fixed.</p>
+</section>
+
+<section class="wl-section">
+  <h2>Technical Debt Registry</h2>
+  <p class="sub">Items deliberately shelved with the tradeoff named. Don't add more without naming the tradeoff.</p>
+</section>
+
+<section class="wl-section">
+  <h2>Shelved / Revisit</h2>
+  <p class="sub">Items deferred because the foundation isn't ready yet. Surface when prerequisites land.</p>
+</section>
+</body>
+</html>

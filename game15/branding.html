@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="rsg-game" content="Stable Construct">
+<title>Branding — Stable Construct</title>
+<script src="./_layout.js" defer></script>
+<style>
+  .b-section { background: var(--site-bg-panel); border: 1px solid var(--site-border); border-radius: 10px; padding: 1.4rem; margin-bottom: 1.2rem; }
+  .b-section h2 { font-family: var(--site-font-display); color: var(--site-accent-bright); margin: 0 0 0.8rem; letter-spacing: 0.06em; font-size: 1.3rem; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.8rem; }
+  .swatch { border-radius: 8px; padding: 1rem 0.8rem; border: 1px solid var(--site-border); transition: transform 0.15s, box-shadow 0.15s; }
+  .swatch:hover { transform: translateY(-2px); box-shadow: 0 0 24px rgba(255,43,214,0.25); }
+  .swatch .label { font-size: 0.78rem; color: var(--site-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .swatch .hex { font-family: monospace; font-size: 0.95rem; color: inherit; margin-top: 0.3rem; }
+  .font-sample { padding: 1rem 0; }
+  .font-display { font-family: var(--site-font-display); font-size: 2rem; letter-spacing: 0.05em; }
+  .font-ui { font-family: var(--site-font-ui); font-size: 1rem; line-height: 1.6; }
+  .atmosphere-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .atmosphere-tags .tag { background: var(--site-bg); border: 1px solid var(--site-accent); color: var(--site-accent-bright); padding: 0.4rem 0.9rem; border-radius: 100px; font-size: 0.85rem; text-shadow: 0 0 8px rgba(255,43,214,0.6); }
+  .logo-preview { font-family: var(--site-font-display); font-size: clamp(2.8rem, 9vw, 5rem); font-weight: 900; letter-spacing: 0.14em; background: linear-gradient(180deg, #ff7ee8 0%, #ff2bd6 60%, #7a1466 100%); -webkit-background-clip: text; background-clip: text; color: transparent; text-align: center; padding: 1rem 0; filter: drop-shadow(0 0 24px rgba(255,43,214,0.45)); }
+  .tagline { text-align: center; color: #22e8ff; font-family: var(--site-font-display); letter-spacing: 0.32em; text-transform: uppercase; font-size: 0.9rem; text-shadow: 0 0 12px rgba(34,232,255,0.6); }
+  p.body { color: var(--site-text); line-height: 1.7; font-size: 0.95rem; }
+  p.body + p.body { margin-top: 0.9rem; }
+</style>
+</head>
+<body>
+<h1 style="font-family:var(--site-font-display); color:var(--site-accent-bright); letter-spacing:0.05em;">Branding</h1>
+<p style="color:var(--site-muted);">Visual identity for <strong>Stable Construct</strong> — a neon occult action looter-shooter. Tokens live in <code>branding.json</code> and feed the shared site header.</p>
+
+<section class="b-section">
+  <h2>Logo</h2>
+  <div class="logo-preview" id="logo">Stable Construct</div>
+  <div class="tagline">Don't look back.</div>
+</section>
+
+<section class="b-section">
+  <h2>Identity</h2>
+  <p class="body"><strong style="color:#ff7ee8;">Stable Construct</strong> is Hotline Miami's muzzle-flash adrenaline welded to Magicka's element-chained spellwork, strained through a Diablo loot grinder. Every frame should feel like a neon sign short-circuiting in a cathedral basement: hot magenta on violet-black, cyan runes flickering in the corners, cultists lit only by the spell arcs tearing them apart.</p>
+  <p class="body">The palette is deliberately narrow — hot magenta <code>#ff2bd6</code> is the star, with <code>#ff7ee8</code> for highlights and <code>#7a1466</code> for depth. Cyan <code>#22e8ff</code> reads as "other": runes, spell tells, UI alerts, loot drops. Warm yellow <code>#ffe14a</code> shows up only as crit sparks and legendary drops. Everything else sinks into violet-black <code>#0a0612</code> so the action pops.</p>
+  <p class="body">Typography: <strong style="color:#22e8ff;">Orbitron</strong> carries display copy — wide, arcade-synth, slightly inhuman, at home on both a chrome grimoire and a CRT HUD. <strong>Inter</strong> does the heavy lifting for UI body text at small sizes so tooltips and inventory strings stay sharp on a 393-wide iPhone viewport.</p>
+  <p class="body">Atmosphere: <em>neon, occult, frantic, claustrophobic, synthwave</em>. Rooms are tight. Fights are short and loud. The player is always one wrong step from death — and one perfect chain from feeling like a god. The tagline is the rule of the game: <strong style="color:#ff2bd6;">Don't look back.</strong></p>
+</section>
+
+<section class="b-section">
+  <h2>Palette</h2>
+  <div class="swatches" id="swatches"></div>
+</section>
+
+<section class="b-section">
+  <h2>Typography</h2>
+  <div class="font-sample">
+    <div class="label" style="color:var(--site-muted);font-size:0.78rem;text-transform:uppercase;">Display — Orbitron</div>
+    <div class="font-display">CHAIN THE CULTISTS. DON'T LOOK BACK.</div>
+  </div>
+  <div class="font-sample">
+    <div class="label" style="color:var(--site-muted);font-size:0.78rem;text-transform:uppercase;">UI — Inter</div>
+    <div class="font-ui">Five-minute runs through cramped neon corridors. Twin-stick move, chain-zap the grunts, freeze the caster, loot the drop, sprint to the next door. 0123456789.</div>
+  </div>
+</section>
+
+<section class="b-section">
+  <h2>Atmosphere</h2>
+  <p style="color:var(--site-muted);font-size:0.9rem;">Mood descriptors that drive every art prompt and music brief.</p>
+  <div class="atmosphere-tags" id="atmosphere"></div>
+</section>
+
+<script>
+async function loadBranding() {
+  const r = await fetch('./branding.json');
+  if (!r.ok) return;
+  const b = await r.json();
+  if (b.logoText) document.getElementById('logo').textContent = b.logoText;
+  const swatchKeys = ['accent','accentBright','bg','bgPanel','text','muted','border'];
+  const sw = document.getElementById('swatches');
+  swatchKeys.forEach(k => {
+    if (!b[k]) return;
+    const isLight = /^#?[a-f0-9]{6}$/i.test(b[k]) && parseInt(b[k].replace('#',''), 16) > 0x888888;
+    sw.insertAdjacentHTML('beforeend',
+      `<div class="swatch" style="background:${b[k]};color:${isLight ? '#0a0612' : '#f2e8ff'};">
+        <div class="label" style="color:inherit;opacity:0.75;">${k}</div>
+        <div class="hex">${b[k]}</div>
+      </div>`);
+  });
+  const at = document.getElementById('atmosphere');
+  (b.atmosphere || []).forEach(t => at.insertAdjacentHTML('beforeend', `<span class="tag">${t}</span>`));
+}
+loadBranding();
+</script>
+</body>
+</html>

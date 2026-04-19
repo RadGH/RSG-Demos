@@ -1,0 +1,14 @@
+{
+  "logoText": "Stable Construct",
+  "tagline": "Don't look back.",
+  "atmosphere": ["neon", "occult", "frantic", "claustrophobic", "synthwave"],
+  "accent": "#ff2bd6",
+  "accentBright": "#ff7ee8",
+  "bg": "#0a0612",
+  "bgPanel": "#1a0f24",
+  "text": "#f2e8ff",
+  "muted": "#8a7a99",
+  "border": "rgba(255,43,214,0.28)",
+  "fontDisplay": "\"Orbitron\", \"Rajdhani\", Impact, sans-serif",
+  "fontUI": "\"Inter\", \"Segoe UI\", system-ui, sans-serif"
+}

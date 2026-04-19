@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="rsg-game" content="game15">
+<title>Images — game15</title>
+<script src="../_layout.js" defer></script>
+<style>
+  .filters { display: flex; gap: 0.4rem; flex-wrap: wrap; margin: 1rem 0; }
+  .filter { padding: 0.4rem 0.9rem; background: var(--site-bg-panel); border: 1px solid var(--site-border); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: var(--site-muted); transition: all 0.15s; }
+  .filter:hover { border-color: var(--site-accent); color: var(--site-text); }
+  .filter.active { background: var(--site-accent); color: #0a0a10; border-color: var(--site-accent); font-weight: 600; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.8rem; }
+  .card { background: var(--site-bg-panel); border: 1px solid var(--site-border); border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.18s, border-color 0.18s; position: relative; }
+  .card:hover { transform: translateY(-3px); border-color: var(--site-accent); }
+  .card .thumb { width: 100%; aspect-ratio: 1; background: #050509 center/cover no-repeat; display: block; }
+  .card .meta { padding: 0.5rem 0.7rem; font-size: 0.75rem; }
+  .card .name { color: var(--site-text); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card .src { color: var(--site-muted); font-size: 0.7rem; margin-top: 2px; }
+  .empty { padding: 3rem 1rem; text-align: center; color: var(--site-muted); }
+
+  /* Lightbox */
+  .lb { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 200; display: none; align-items: center; justify-content: center; flex-direction: column; padding: 1rem; }
+  .lb.open { display: flex; }
+  .lb img { max-width: min(100%, 90vw); max-height: 75vh; object-fit: contain; border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+  .lb .lb-meta { color: var(--site-text); margin-top: 1rem; max-width: 80vw; text-align: center; font-size: 0.9rem; }
+  .lb .lb-meta .lb-prompt { color: var(--site-muted); font-size: 0.82rem; margin-top: 0.5rem; max-height: 6em; overflow-y: auto; }
+  .lb .lb-close { position: absolute; top: 1rem; right: 1rem; background: var(--site-bg-panel); border: 1px solid var(--site-border); color: var(--site-text); font-size: 1.4rem; width: 2.4rem; height: 2.4rem; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .lb .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: var(--site-bg-panel); border: 1px solid var(--site-border); color: var(--site-text); font-size: 1.6rem; width: 3rem; height: 3rem; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .lb .lb-prev { left: 1rem; } .lb .lb-next { right: 1rem; }
+  .lb .lb-close:hover, .lb .lb-nav:hover { background: var(--site-accent); color: #0a0a10; border-color: var(--site-accent); }
+</style>
+</head>
+<body>
+<h1 style="font-family:var(--site-font-display);color:var(--site-accent-bright);letter-spacing:0.05em;">Images</h1>
+<p style="color:var(--site-muted);">Click a thumbnail for full preview. Each image's source + prompt + reference comes from its folder's <code>catalog.json</code>.</p>
+
+<div class="filters" id="filters"></div>
+<div class="grid" id="grid"><div class="empty">No images yet. Drop files into <code>public/images/&lt;category&gt;/</code> with a <code>catalog.json</code>.</div></div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
+  <img id="lbImg" alt="">
+  <div class="lb-meta">
+    <div id="lbName"></div>
+    <div class="lb-prompt" id="lbPrompt"></div>
+  </div>
+</div>
+
+<script>
+// Aggregator: reads /assets/images.json (built from per-folder catalogs).
+// Falls back to scanning known categories with their catalog.json directly.
+const KNOWN_CATEGORIES = ['portraits','backgrounds','sprites','icons','ui','menu_bg','combat_bg','map_bg'];
+let items = [];
+let activeFilter = 'all';
+let lbIndex = 0;
+
+async function loadAggregate() {
+  const r = await fetch('./images.json').catch(() => null);
+  if (r && r.ok) {
+    const j = await r.json();
+    return Array.isArray(j) ? j : (j.items || []);
+  }
+  return null;
+}
+
+async function loadFromCategories() {
+  const out = [];
+  for (const cat of KNOWN_CATEGORIES) {
+    try {
+      const r = await fetch(`../images/${cat}/catalog.json`);
+      if (!r.ok) continue;
+      const j = await r.json();
+      for (const it of (j.items || [])) {
+        out.push({
+          ...it,
+          category: it.category || j.category || cat,
+          file: `../images/${cat}/${it.file}`,
+          thumb: it.thumb ? `../images/${cat}/${it.thumb}` : `../images/${cat}/${it.file}`,
+        });
+      }
+    } catch {}
+  }
+  return out;
+}
+
+function render() {
+  const grid = document.getElementById('grid');
+  const filtered = activeFilter === 'all' ? items : items.filter(i => (i.category || 'other') === activeFilter);
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="empty">No images in this category yet.</div>';
+    return;
+  }
+  grid.innerHTML = filtered.map((it, idx) => `
+    <div class="card" data-idx="${idx}">
+      <div class="thumb" style="background-image:url('${it.thumb || it.file}')"></div>
+      <div class="meta">
+        <div class="name">${it.name || it.id || it.file.split('/').pop()}</div>
+        <div class="src">${it.source || '?'}${it.category ? ' · ' + it.category : ''}</div>
+      </div>
+    </div>
+  `).join('');
+  grid.querySelectorAll('.card').forEach(c => {
+    c.addEventListener('click', () => openLb(filtered, +c.dataset.idx));
+  });
+}
+
+function renderFilters() {
+  const cats = [...new Set(items.map(i => i.category || 'other'))].sort();
+  const f = document.getElementById('filters');
+  f.innerHTML = `<button class="filter ${activeFilter==='all'?'active':''}" data-cat="all">All (${items.length})</button>` +
+    cats.map(c => `<button class="filter ${activeFilter===c?'active':''}" data-cat="${c}">${c} (${items.filter(i=>(i.category||'other')===c).length})</button>`).join('');
+  f.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+    activeFilter = b.dataset.cat;
+    renderFilters();
+    render();
+  }));
+}
+
+let lbItems = [];
+function openLb(arr, idx) {
+  lbItems = arr; lbIndex = idx;
+  showLb();
+  document.getElementById('lb').classList.add('open');
+}
+function showLb() {
+  const it = lbItems[lbIndex];
+  document.getElementById('lbImg').src = it.file;
+  document.getElementById('lbImg').alt = it.name || it.id || '';
+  document.getElementById('lbName').textContent = (it.name || it.id || '') + (it.source ? ' — ' + it.source : '');
+  document.getElementById('lbPrompt').textContent = it.prompt || '';
+}
+function closeLb() { document.getElementById('lb').classList.remove('open'); }
+function nav(d) { lbIndex = (lbIndex + d + lbItems.length) % lbItems.length; showLb(); }
+
+document.getElementById('lbClose').addEventListener('click', closeLb);
+document.getElementById('lbPrev').addEventListener('click', () => nav(-1));
+document.getElementById('lbNext').addEventListener('click', () => nav(1));
+document.getElementById('lb').addEventListener('click', (e) => { if (e.target.id === 'lb') closeLb(); });
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('lb').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowLeft') nav(-1);
+  if (e.key === 'ArrowRight') nav(1);
+});
+
+// Touch swipe
+let tx = 0;
+document.getElementById('lb').addEventListener('touchstart', e => tx = e.touches[0].clientX);
+document.getElementById('lb').addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 50) nav(dx > 0 ? -1 : 1);
+});
+
+(async () => {
+  items = await loadAggregate();
+  if (!items) items = await loadFromCategories();
+  if (!items || !items.length) return;
+  renderFilters();
+  render();
+})();
+</script>
+</body>
+</html>

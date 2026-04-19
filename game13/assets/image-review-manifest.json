@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-04-19T16:45:27.532Z",
+    "generated": "2026-04-19T18:53:06.894Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (28 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (10 entries)",
@@ -9,20 +9,20 @@
       "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (12 bosses)"
     },
     "counts": {
-      "total": 533,
+      "total": 593,
       "by_status": {
-        "ready": 421,
-        "pending": 61,
-        "orphaned": 51
+        "ready": 437,
+        "pending": 121,
+        "orphaned": 35
       },
       "by_category": {
         "hero": 196,
         "companion": 120,
         "boss": 84,
-        "enemy": 19,
+        "enemy": 95,
         "background": 54,
         "tap-weapons": 9,
-        "orphan": 51
+        "orphan": 35
       }
     },
     "source": "scripts/build-image-review-manifest.cjs",
@@ -3639,6 +3639,42 @@
       "status": "ready"
     },
     {
+      "id": "enemy_goblin_scout_south",
+      "category": "enemy",
+      "group": "goblin_scout",
+      "pose": "south",
+      "file": "../images/spritecook/goblin_scout_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_goblin_scout_east",
+      "category": "enemy",
+      "group": "goblin_scout",
+      "pose": "east",
+      "file": "../images/spritecook/goblin_scout_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_goblin_scout_east_attack",
+      "category": "enemy",
+      "group": "goblin_scout",
+      "pose": "east_attack",
+      "file": "../images/spritecook/goblin_scout_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_goblin_scout_east_ko",
+      "category": "enemy",
+      "group": "goblin_scout",
+      "pose": "east_ko",
+      "file": "../images/spritecook/goblin_scout_east_ko.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
       "id": "enemy_goblin_warrior_portrait",
       "category": "enemy",
       "group": "goblin_warrior",
@@ -3646,6 +3682,42 @@
       "file": "../images/spritecook/goblin_warrior_portrait.png",
       "prompt": "A muscular goblin warrior wielding a crude iron sword, chipped shield, scarred green skin, dark fantasy RPG enemy portrait",
       "status": "ready"
+    },
+    {
+      "id": "enemy_goblin_warrior_south",
+      "category": "enemy",
+      "group": "goblin_warrior",
+      "pose": "south",
+      "file": "../images/spritecook/goblin_warrior_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_goblin_warrior_east",
+      "category": "enemy",
+      "group": "goblin_warrior",
+      "pose": "east",
+      "file": "../images/spritecook/goblin_warrior_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_goblin_warrior_east_attack",
+      "category": "enemy",
+      "group": "goblin_warrior",
+      "pose": "east_attack",
+      "file": "../images/spritecook/goblin_warrior_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_goblin_warrior_east_ko",
+      "category": "enemy",
+      "group": "goblin_warrior",
+      "pose": "east_ko",
+      "file": "../images/spritecook/goblin_warrior_east_ko.png",
+      "prompt": null,
+      "status": "pending"
     },
     {
       "id": "enemy_goblin_shaman_portrait",
@@ -3657,6 +3729,42 @@
       "status": "ready"
     },
     {
+      "id": "enemy_goblin_shaman_south",
+      "category": "enemy",
+      "group": "goblin_shaman",
+      "pose": "south",
+      "file": "../images/spritecook/goblin_shaman_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_goblin_shaman_east",
+      "category": "enemy",
+      "group": "goblin_shaman",
+      "pose": "east",
+      "file": "../images/spritecook/goblin_shaman_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_goblin_shaman_east_attack",
+      "category": "enemy",
+      "group": "goblin_shaman",
+      "pose": "east_attack",
+      "file": "../images/spritecook/goblin_shaman_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_goblin_shaman_east_ko",
+      "category": "enemy",
+      "group": "goblin_shaman",
+      "pose": "east_ko",
+      "file": "../images/spritecook/goblin_shaman_east_ko.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
       "id": "enemy_corrupted_wolf_portrait",
       "category": "enemy",
       "group": "corrupted_wolf",
@@ -3664,6 +3772,42 @@
       "file": "../images/spritecook/corrupted_wolf_portrait.png",
       "prompt": "A rabid wolf with shadow-corrupted fur, glowing purple eyes, bared dripping fangs, dark fantasy RPG enemy portrait",
       "status": "ready"
+    },
+    {
+      "id": "enemy_corrupted_wolf_south",
+      "category": "enemy",
+      "group": "corrupted_wolf",
+      "pose": "south",
+      "file": "../images/spritecook/corrupted_wolf_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_corrupted_wolf_east",
+      "category": "enemy",
+      "group": "corrupted_wolf",
+      "pose": "east",
+      "file": "../images/spritecook/corrupted_wolf_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_corrupted_wolf_east_attack",
+      "category": "enemy",
+      "group": "corrupted_wolf",
+      "pose": "east_attack",
+      "file": "../images/spritecook/corrupted_wolf_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_corrupted_wolf_east_ko",
+      "category": "enemy",
+      "group": "corrupted_wolf",
+      "pose": "east_ko",
+      "file": "../images/spritecook/corrupted_wolf_east_ko.png",
+      "prompt": null,
+      "status": "pending"
     },
     {
       "id": "enemy_corrupted_bear_portrait",
@@ -3675,6 +3819,42 @@
       "status": "ready"
     },
     {
+      "id": "enemy_corrupted_bear_south",
+      "category": "enemy",
+      "group": "corrupted_bear",
+      "pose": "south",
+      "file": "../images/spritecook/corrupted_bear_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_corrupted_bear_east",
+      "category": "enemy",
+      "group": "corrupted_bear",
+      "pose": "east",
+      "file": "../images/spritecook/corrupted_bear_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_corrupted_bear_east_attack",
+      "category": "enemy",
+      "group": "corrupted_bear",
+      "pose": "east_attack",
+      "file": "../images/spritecook/corrupted_bear_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_corrupted_bear_east_ko",
+      "category": "enemy",
+      "group": "corrupted_bear",
+      "pose": "east_ko",
+      "file": "../images/spritecook/corrupted_bear_east_ko.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
       "id": "enemy_bandit_portrait",
       "category": "enemy",
       "group": "bandit",
@@ -3682,6 +3862,42 @@
       "file": "../images/spritecook/bandit_portrait.png",
       "prompt": "A rough human bandit in patched leather, hooded, clutching a shortsword, stubbled face, dark fantasy RPG enemy portrait",
       "status": "ready"
+    },
+    {
+      "id": "enemy_bandit_south",
+      "category": "enemy",
+      "group": "bandit",
+      "pose": "south",
+      "file": "../images/spritecook/bandit_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_bandit_east",
+      "category": "enemy",
+      "group": "bandit",
+      "pose": "east",
+      "file": "../images/spritecook/bandit_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_bandit_east_attack",
+      "category": "enemy",
+      "group": "bandit",
+      "pose": "east_attack",
+      "file": "../images/spritecook/bandit_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_bandit_east_ko",
+      "category": "enemy",
+      "group": "bandit",
+      "pose": "east_ko",
+      "file": "../images/spritecook/bandit_east_ko.png",
+      "prompt": null,
+      "status": "pending"
     },
     {
       "id": "enemy_bandit_captain_portrait",
@@ -3693,6 +3909,42 @@
       "status": "ready"
     },
     {
+      "id": "enemy_bandit_captain_south",
+      "category": "enemy",
+      "group": "bandit_captain",
+      "pose": "south",
+      "file": "../images/spritecook/bandit_captain_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_bandit_captain_east",
+      "category": "enemy",
+      "group": "bandit_captain",
+      "pose": "east",
+      "file": "../images/spritecook/bandit_captain_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_bandit_captain_east_attack",
+      "category": "enemy",
+      "group": "bandit_captain",
+      "pose": "east_attack",
+      "file": "../images/spritecook/bandit_captain_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_bandit_captain_east_ko",
+      "category": "enemy",
+      "group": "bandit_captain",
+      "pose": "east_ko",
+      "file": "../images/spritecook/bandit_captain_east_ko.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
       "id": "enemy_imp_portrait",
       "category": "enemy",
       "group": "imp",
@@ -3700,6 +3952,42 @@
       "file": "../images/spritecook/imp_portrait.png",
       "prompt": "A small winged demonic imp with barbed tail, clawed hands wreathed in hellfire, wicked grin, dark fantasy RPG enemy portrait",
       "status": "ready"
+    },
+    {
+      "id": "enemy_imp_south",
+      "category": "enemy",
+      "group": "imp",
+      "pose": "south",
+      "file": "../images/spritecook/imp_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_imp_east",
+      "category": "enemy",
+      "group": "imp",
+      "pose": "east",
+      "file": "../images/spritecook/imp_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_imp_east_attack",
+      "category": "enemy",
+      "group": "imp",
+      "pose": "east_attack",
+      "file": "../images/spritecook/imp_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_imp_east_ko",
+      "category": "enemy",
+      "group": "imp",
+      "pose": "east_ko",
+      "file": "../images/spritecook/imp_east_ko.png",
+      "prompt": null,
+      "status": "pending"
     },
     {
       "id": "enemy_hell_knight_portrait",
@@ -3711,6 +3999,42 @@
       "status": "ready"
     },
     {
+      "id": "enemy_hell_knight_south",
+      "category": "enemy",
+      "group": "hell_knight",
+      "pose": "south",
+      "file": "../images/spritecook/hell_knight_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_hell_knight_east",
+      "category": "enemy",
+      "group": "hell_knight",
+      "pose": "east",
+      "file": "../images/spritecook/hell_knight_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_hell_knight_east_attack",
+      "category": "enemy",
+      "group": "hell_knight",
+      "pose": "east_attack",
+      "file": "../images/spritecook/hell_knight_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_hell_knight_east_ko",
+      "category": "enemy",
+      "group": "hell_knight",
+      "pose": "east_ko",
+      "file": "../images/spritecook/hell_knight_east_ko.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
       "id": "enemy_void_shade_portrait",
       "category": "enemy",
       "group": "void_shade",
@@ -3718,6 +4042,42 @@
       "file": "../images/spritecook/void_shade_portrait.png",
       "prompt": "A ghostly void shade, translucent body of swirling black mist, hollow glowing eyes, wispy tendrils, dark fantasy RPG enemy portrait",
       "status": "ready"
+    },
+    {
+      "id": "enemy_void_shade_south",
+      "category": "enemy",
+      "group": "void_shade",
+      "pose": "south",
+      "file": "../images/spritecook/void_shade_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_void_shade_east",
+      "category": "enemy",
+      "group": "void_shade",
+      "pose": "east",
+      "file": "../images/spritecook/void_shade_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_void_shade_east_attack",
+      "category": "enemy",
+      "group": "void_shade",
+      "pose": "east_attack",
+      "file": "../images/spritecook/void_shade_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_void_shade_east_ko",
+      "category": "enemy",
+      "group": "void_shade",
+      "pose": "east_ko",
+      "file": "../images/spritecook/void_shade_east_ko.png",
+      "prompt": null,
+      "status": "pending"
     },
     {
       "id": "enemy_demon_brute_portrait",
@@ -3729,6 +4089,42 @@
       "status": "ready"
     },
     {
+      "id": "enemy_demon_brute_south",
+      "category": "enemy",
+      "group": "demon_brute",
+      "pose": "south",
+      "file": "../images/spritecook/demon_brute_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_demon_brute_east",
+      "category": "enemy",
+      "group": "demon_brute",
+      "pose": "east",
+      "file": "../images/spritecook/demon_brute_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_demon_brute_east_attack",
+      "category": "enemy",
+      "group": "demon_brute",
+      "pose": "east_attack",
+      "file": "../images/spritecook/demon_brute_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_demon_brute_east_ko",
+      "category": "enemy",
+      "group": "demon_brute",
+      "pose": "east_ko",
+      "file": "../images/spritecook/demon_brute_east_ko.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
       "id": "enemy_ash_wraith_portrait",
       "category": "enemy",
       "group": "ash_wraith",
@@ -3736,6 +4132,42 @@
       "file": "../images/spritecook/ash_wraith_portrait.png",
       "prompt": "An ash wraith of smoldering gray smoke, burning ember eyes, drifting ash form, dark fantasy RPG enemy portrait",
       "status": "ready"
+    },
+    {
+      "id": "enemy_ash_wraith_south",
+      "category": "enemy",
+      "group": "ash_wraith",
+      "pose": "south",
+      "file": "../images/spritecook/ash_wraith_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_ash_wraith_east",
+      "category": "enemy",
+      "group": "ash_wraith",
+      "pose": "east",
+      "file": "../images/spritecook/ash_wraith_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_ash_wraith_east_attack",
+      "category": "enemy",
+      "group": "ash_wraith",
+      "pose": "east_attack",
+      "file": "../images/spritecook/ash_wraith_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_ash_wraith_east_ko",
+      "category": "enemy",
+      "group": "ash_wraith",
+      "pose": "east_ko",
+      "file": "../images/spritecook/ash_wraith_east_ko.png",
+      "prompt": null,
+      "status": "pending"
     },
     {
       "id": "enemy_cinder_hound_portrait",
@@ -3747,6 +4179,42 @@
       "status": "ready"
     },
     {
+      "id": "enemy_cinder_hound_south",
+      "category": "enemy",
+      "group": "cinder_hound",
+      "pose": "south",
+      "file": "../images/spritecook/cinder_hound_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_cinder_hound_east",
+      "category": "enemy",
+      "group": "cinder_hound",
+      "pose": "east",
+      "file": "../images/spritecook/cinder_hound_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_cinder_hound_east_attack",
+      "category": "enemy",
+      "group": "cinder_hound",
+      "pose": "east_attack",
+      "file": "../images/spritecook/cinder_hound_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_cinder_hound_east_ko",
+      "category": "enemy",
+      "group": "cinder_hound",
+      "pose": "east_ko",
+      "file": "../images/spritecook/cinder_hound_east_ko.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
       "id": "enemy_molten_golem_portrait",
       "category": "enemy",
       "group": "molten_golem",
@@ -3754,6 +4222,42 @@
       "file": "../images/spritecook/molten_golem_portrait.png",
       "prompt": "A lumbering molten golem of obsidian rock plates with lava flowing between the cracks, glowing core, dark fantasy RPG enemy portrait",
       "status": "ready"
+    },
+    {
+      "id": "enemy_molten_golem_south",
+      "category": "enemy",
+      "group": "molten_golem",
+      "pose": "south",
+      "file": "../images/spritecook/molten_golem_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_molten_golem_east",
+      "category": "enemy",
+      "group": "molten_golem",
+      "pose": "east",
+      "file": "../images/spritecook/molten_golem_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_molten_golem_east_attack",
+      "category": "enemy",
+      "group": "molten_golem",
+      "pose": "east_attack",
+      "file": "../images/spritecook/molten_golem_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_molten_golem_east_ko",
+      "category": "enemy",
+      "group": "molten_golem",
+      "pose": "east_ko",
+      "file": "../images/spritecook/molten_golem_east_ko.png",
+      "prompt": null,
+      "status": "pending"
     },
     {
       "id": "enemy_veil_cultist_portrait",
@@ -3765,11 +4269,83 @@
       "status": "ready"
     },
     {
+      "id": "enemy_veil_cultist_south",
+      "category": "enemy",
+      "group": "veil_cultist",
+      "pose": "south",
+      "file": "../images/spritecook/veil_cultist_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_veil_cultist_east",
+      "category": "enemy",
+      "group": "veil_cultist",
+      "pose": "east",
+      "file": "../images/spritecook/veil_cultist_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_veil_cultist_east_attack",
+      "category": "enemy",
+      "group": "veil_cultist",
+      "pose": "east_attack",
+      "file": "../images/spritecook/veil_cultist_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "enemy_veil_cultist_east_ko",
+      "category": "enemy",
+      "group": "veil_cultist",
+      "pose": "east_ko",
+      "file": "../images/spritecook/veil_cultist_east_ko.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
       "id": "enemy_grax_veil_touched_portrait",
       "category": "enemy",
       "group": "grax_veil_touched",
       "pose": "portrait",
       "file": "../images/portraits/grax_veil_touched.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "enemy_grax_veil_touched_south",
+      "category": "enemy",
+      "group": "grax_veil_touched",
+      "pose": "south",
+      "file": "../images/spritecook/grax_veil_touched_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "enemy_grax_veil_touched_east",
+      "category": "enemy",
+      "group": "grax_veil_touched",
+      "pose": "east",
+      "file": "../images/spritecook/grax_veil_touched_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "enemy_grax_veil_touched_east_attack",
+      "category": "enemy",
+      "group": "grax_veil_touched",
+      "pose": "east_attack",
+      "file": "../images/spritecook/grax_veil_touched_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "enemy_grax_veil_touched_east_ko",
+      "category": "enemy",
+      "group": "grax_veil_touched",
+      "pose": "east_ko",
+      "file": "../images/spritecook/grax_veil_touched_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -3783,6 +4359,42 @@
       "status": "ready"
     },
     {
+      "id": "enemy_abyssal_knight_south",
+      "category": "enemy",
+      "group": "abyssal_knight",
+      "pose": "south",
+      "file": "../images/spritecook/abyssal_knight_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "enemy_abyssal_knight_east",
+      "category": "enemy",
+      "group": "abyssal_knight",
+      "pose": "east",
+      "file": "../images/spritecook/abyssal_knight_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "enemy_abyssal_knight_east_attack",
+      "category": "enemy",
+      "group": "abyssal_knight",
+      "pose": "east_attack",
+      "file": "../images/spritecook/abyssal_knight_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "enemy_abyssal_knight_east_ko",
+      "category": "enemy",
+      "group": "abyssal_knight",
+      "pose": "east_ko",
+      "file": "../images/spritecook/abyssal_knight_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
       "id": "enemy_reality_shard_portrait",
       "category": "enemy",
       "group": "reality_shard",
@@ -3792,12 +4404,84 @@
       "status": "ready"
     },
     {
+      "id": "enemy_reality_shard_south",
+      "category": "enemy",
+      "group": "reality_shard",
+      "pose": "south",
+      "file": "../images/spritecook/reality_shard_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "enemy_reality_shard_east",
+      "category": "enemy",
+      "group": "reality_shard",
+      "pose": "east",
+      "file": "../images/spritecook/reality_shard_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "enemy_reality_shard_east_attack",
+      "category": "enemy",
+      "group": "reality_shard",
+      "pose": "east_attack",
+      "file": "../images/spritecook/reality_shard_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "enemy_reality_shard_east_ko",
+      "category": "enemy",
+      "group": "reality_shard",
+      "pose": "east_ko",
+      "file": "../images/spritecook/reality_shard_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
       "id": "enemy_genesis_worm_portrait",
       "category": "enemy",
       "group": "genesis_worm",
       "pose": "portrait",
       "file": "../images/spritecook/genesis_worm_portrait.png",
       "prompt": "A colossal genesis worm, segmented chitinous body, toothy sucker maw, glowing pink interior, dark fantasy RPG enemy portrait",
+      "status": "ready"
+    },
+    {
+      "id": "enemy_genesis_worm_south",
+      "category": "enemy",
+      "group": "genesis_worm",
+      "pose": "south",
+      "file": "../images/spritecook/genesis_worm_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "enemy_genesis_worm_east",
+      "category": "enemy",
+      "group": "genesis_worm",
+      "pose": "east",
+      "file": "../images/spritecook/genesis_worm_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "enemy_genesis_worm_east_attack",
+      "category": "enemy",
+      "group": "genesis_worm",
+      "pose": "east_attack",
+      "file": "../images/spritecook/genesis_worm_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "enemy_genesis_worm_east_ko",
+      "category": "enemy",
+      "group": "genesis_worm",
+      "pose": "east_ko",
+      "file": "../images/spritecook/genesis_worm_east_ko.png",
+      "prompt": null,
       "status": "ready"
     },
     {
@@ -4386,42 +5070,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_spritecook_abyssal_knight_east",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/abyssal_knight_east.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_abyssal_knight_east_attack",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/abyssal_knight_east_attack.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_abyssal_knight_east_ko",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/abyssal_knight_east_ko.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_abyssal_knight_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/abyssal_knight_south.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_spritecook_architect_boss_east_block",
       "category": "orphan",
       "group": "images/spritecook",
@@ -4647,78 +5295,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_spritecook_genesis_worm_east",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/genesis_worm_east.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_genesis_worm_east_attack",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/genesis_worm_east_attack.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_genesis_worm_east_ko",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/genesis_worm_east_ko.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_genesis_worm_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/genesis_worm_south.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_grax_veil_touched_east",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/grax_veil_touched_east.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_grax_veil_touched_east_attack",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/grax_veil_touched_east_attack.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_grax_veil_touched_east_ko",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/grax_veil_touched_east_ko.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_grax_veil_touched_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/grax_veil_touched_south.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_spritecook_plateau_boss_east_block",
       "category": "orphan",
       "group": "images/spritecook",
@@ -4733,42 +5309,6 @@
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/plateau_boss_east_spell.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_reality_shard_east",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/reality_shard_east.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_reality_shard_east_attack",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/reality_shard_east_attack.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_reality_shard_east_ko",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/reality_shard_east_ko.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_reality_shard_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/reality_shard_south.png",
       "prompt": null,
       "status": "orphaned"
     },

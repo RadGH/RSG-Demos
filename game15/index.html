@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="rsg-game" content="game15">
+<title>game15</title>
+<script src="./_layout.js" defer></script>
+<style>
+  .hero { text-align: center; padding: 3rem 1rem 2rem; }
+  .hero h1 { font-family: var(--site-font-display); font-size: clamp(2rem, 6vw, 3.6rem); margin: 0 0 0.5rem; letter-spacing: 0.08em; background: linear-gradient(180deg, var(--site-accent-bright) 0%, var(--site-accent) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero .tag { color: var(--site-muted); font-size: 1.05rem; margin-bottom: 2rem; }
+  .play-btn { display: inline-block; background: var(--site-accent); color: #0a0a10; padding: 0.9rem 2.4rem; border-radius: 10px; font-weight: 800; font-size: 1.15rem; text-decoration: none; letter-spacing: 0.04em; box-shadow: 0 4px 18px rgba(0,0,0,0.4); transition: transform 0.15s, box-shadow 0.15s, background 0.15s; }
+  .play-btn:hover { background: var(--site-accent-bright); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+  .panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 3rem; }
+  .panel { background: var(--site-bg-panel); border: 1px solid var(--site-border); border-radius: 10px; padding: 1.2rem; transition: transform 0.2s, border-color 0.2s; }
+  .panel:hover { transform: translateY(-3px); border-color: var(--site-accent); }
+  .panel h3 { font-family: var(--site-font-display); color: var(--site-accent-bright); margin: 0 0 0.4rem; font-size: 1.05rem; letter-spacing: 0.05em; }
+  .panel p { color: var(--site-muted); font-size: 0.9rem; margin: 0 0 0.6rem; line-height: 1.45; }
+  .panel a { color: var(--site-accent); text-decoration: none; font-size: 0.85rem; }
+  .panel a:hover { color: var(--site-accent-bright); }
+</style>
+</head>
+<body>
+  <section class="hero">
+    <h1 id="title">game15</h1>
+    <p class="tag" id="tagline">A new browser game.</p>
+    <a class="play-btn" href="./game.html">▶ Play</a>
+  </section>
+
+  <section class="panels">
+    <div class="panel">
+      <h3>Branding</h3>
+      <p>Logo, palette, fonts, and atmosphere references.</p>
+      <a href="./branding.html">View →</a>
+    </div>
+    <div class="panel">
+      <h3>Docs</h3>
+      <p>Project policies and reference for contributors and AI agents.</p>
+      <a href="./docs.html">Read →</a>
+    </div>
+    <div class="panel">
+      <h3>Wishlist</h3>
+      <p>Living truth of requested features, in-progress work, and shelved items.</p>
+      <a href="./wishlist.html">Open →</a>
+    </div>
+    <div class="panel">
+      <h3>Assets</h3>
+      <p>Image, audio, and video galleries with prompt + source for every file.</p>
+      <a href="./assets/">Browse →</a>
+    </div>
+  </section>
+
+<script>
+fetch('./branding.json').then(r => r.ok ? r.json() : null).then(b => {
+  if (!b) return;
+  if (b.logoText) document.getElementById('title').textContent = b.logoText;
+  if (b.tagline) document.getElementById('tagline').textContent = b.tagline;
+}).catch(() => {});
+</script>
+</body>
+</html>

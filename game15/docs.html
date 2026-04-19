@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="rsg-game" content="game15">
+<title>Docs — game15</title>
+<script src="./_layout.js" defer></script>
+<style>
+  .doc-wrap { display: grid; grid-template-columns: 240px 1fr; gap: 1.5rem; margin-top: 1rem; }
+  .doc-nav { border-right: 1px solid var(--site-border); padding-right: 1rem; }
+  .doc-nav h3 { font-family: var(--site-font-display); margin: 0 0 0.6rem; font-size: 0.85rem; color: var(--site-accent); letter-spacing: 0.08em; text-transform: uppercase; }
+  .doc-nav a { display: block; padding: 0.4rem 0.6rem; color: var(--site-text); text-decoration: none; border-radius: 4px; font-size: 0.9rem; cursor: pointer; transition: background 0.12s; }
+  .doc-nav a:hover { background: rgba(255,255,255,0.04); color: var(--site-accent-bright); }
+  .doc-nav a.active { background: var(--site-bg-panel); color: var(--site-accent-bright); border-left: 3px solid var(--site-accent); }
+  .doc-view { background: var(--site-bg-panel); border: 1px solid var(--site-border); border-radius: 10px; padding: 1.4rem 1.8rem; min-height: 400px; }
+  .doc-view h1, .doc-view h2 { font-family: var(--site-font-display); color: var(--site-accent-bright); }
+  .doc-view h1 { margin-top: 0; padding-bottom: 0.5rem; border-bottom: 1px solid var(--site-border); }
+  .doc-view h2 { margin-top: 1.6rem; color: var(--site-accent); }
+  .doc-view h3 { color: var(--site-accent-bright); margin-top: 1.2rem; }
+  .doc-view code { background: #050509; color: #ffc070; padding: 1px 6px; border-radius: 3px; font-size: 0.9em; }
+  .doc-view pre { background: #050509; border: 1px solid var(--site-border); border-radius: 6px; padding: 0.9rem 1.1rem; overflow-x: auto; }
+  .doc-view pre code { background: transparent; padding: 0; color: #e8d080; }
+  .doc-view table { border-collapse: collapse; margin: 0.8rem 0; }
+  .doc-view th, .doc-view td { border: 1px solid var(--site-border); padding: 0.4rem 0.7rem; text-align: left; }
+  .doc-view th { background: var(--site-bg); color: var(--site-accent); }
+  .doc-view blockquote { border-left: 3px solid var(--site-accent); padding-left: 1rem; color: var(--site-muted); margin: 1rem 0; }
+  .doc-view ul, .doc-view ol { padding-left: 1.6rem; line-height: 1.7; }
+  .doc-view a { color: var(--site-accent-bright); }
+  @media (max-width: 720px) {
+    .doc-wrap { grid-template-columns: 1fr; }
+    .doc-nav { border-right: none; border-bottom: 1px solid var(--site-border); padding-right: 0; padding-bottom: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+<h1 style="font-family:var(--site-font-display);color:var(--site-accent-bright);letter-spacing:0.05em;">Documentation</h1>
+<p style="color:var(--site-muted);">Source of truth: <code>public/docs/*.md</code>. Edits propagate to every Claude session.</p>
+
+<div class="doc-wrap">
+  <nav class="doc-nav" id="docNav">
+    <h3>Policy</h3>
+    <a data-doc="no-silent-shelving.md">No Silent Shelving</a>
+    <a data-doc="git-and-milestones.md">Git &amp; Milestones</a>
+    <a data-doc="api-keys.md">API Keys</a>
+    <a data-doc="wishlist-discipline.md">Wishlist Discipline</a>
+    <h3 style="margin-top:1rem">Structure</h3>
+    <a data-doc="file-structure.md">File Structure</a>
+    <a data-doc="media-catalog.md">Media Catalog</a>
+    <h3 style="margin-top:1rem">UX</h3>
+    <a data-doc="mobile-policy.md">Mobile Policy</a>
+    <a data-doc="ui-aesthetics.md">UI Aesthetics</a>
+    <h3 style="margin-top:1rem">Process</h3>
+    <a data-doc="quality-and-testing.md">Quality &amp; Testing</a>
+    <a data-doc="releasing.md">Releasing</a>
+  </nav>
+  <article class="doc-view" id="docView">
+    <p style="color:var(--site-muted);">Select a document.</p>
+  </article>
+</div>
+
+<script>
+function escHtml(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function renderInline(s){
+  s = s.replace(/`([^`]+)`/g, (_,c)=>'<code>'+escHtml(c)+'</code>');
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+  return s;
+}
+function renderMarkdown(md){
+  const lines = md.split('\n');
+  let out = [], i = 0, inCode = false, codeBuf = [];
+  function flushPara(buf){ if(buf.length){ out.push('<p>'+renderInline(escHtml(buf.join(' ')))+'</p>'); buf.length=0; } }
+  function isTableSep(l){ return /^\s*\|?(\s*:?-+:?\s*\|)+\s*:?-+:?\s*\|?\s*$/.test(l); }
+  let para = [];
+  while(i < lines.length){
+    const line = lines[i];
+    if(line.startsWith('```')){
+      flushPara(para);
+      if(inCode){ out.push('<pre><code>'+escHtml(codeBuf.join('\n'))+'</code></pre>'); codeBuf=[]; inCode=false; }
+      else inCode = true;
+      i++; continue;
+    }
+    if(inCode){ codeBuf.push(line); i++; continue; }
+    if(/^#{1,6}\s/.test(line)){
+      flushPara(para);
+      const m = line.match(/^(#{1,6})\s(.*)$/);
+      out.push(`<h${m[1].length}>${renderInline(escHtml(m[2]))}</h${m[1].length}>`);
+      i++; continue;
+    }
+    if(/^\s*$/.test(line)){ flushPara(para); i++; continue; }
+    if(/^>\s?/.test(line)){
+      flushPara(para);
+      const bq=[]; while(i<lines.length && /^>\s?/.test(lines[i])){ bq.push(lines[i].replace(/^>\s?/,'')); i++; }
+      out.push('<blockquote>'+renderInline(escHtml(bq.join(' ')))+'</blockquote>');
+      continue;
+    }
+    if(/^\s*[-*]\s/.test(line)){
+      flushPara(para);
+      const items=[]; while(i<lines.length && /^\s*[-*]\s/.test(lines[i])){ items.push(lines[i].replace(/^\s*[-*]\s/,'')); i++; }
+      out.push('<ul>'+items.map(it=>'<li>'+renderInline(escHtml(it))+'</li>').join('')+'</ul>');
+      continue;
+    }
+    if(/^\s*\d+\.\s/.test(line)){
+      flushPara(para);
+      const items=[]; while(i<lines.length && /^\s*\d+\.\s/.test(lines[i])){ items.push(lines[i].replace(/^\s*\d+\.\s/,'')); i++; }
+      out.push('<ol>'+items.map(it=>'<li>'+renderInline(escHtml(it))+'</li>').join('')+'</ol>');
+      continue;
+    }
+    if(line.includes('|') && i+1<lines.length && isTableSep(lines[i+1])){
+      flushPara(para);
+      const header = line.trim().replace(/^\||\|$/g,'').split('|').map(c=>c.trim());
+      i += 2;
+      const rows=[];
+      while(i<lines.length && lines[i].includes('|')){
+        rows.push(lines[i].trim().replace(/^\||\|$/g,'').split('|').map(c=>c.trim()));
+        i++;
+      }
+      let t='<table><thead><tr>'+header.map(h=>'<th>'+renderInline(escHtml(h))+'</th>').join('')+'</tr></thead><tbody>';
+      for(const r of rows) t+='<tr>'+r.map(c=>'<td>'+renderInline(escHtml(c))+'</td>').join('')+'</tr>';
+      t+='</tbody></table>';
+      out.push(t);
+      continue;
+    }
+    para.push(line);
+    i++;
+  }
+  flushPara(para);
+  if(inCode) out.push('<pre><code>'+escHtml(codeBuf.join('\n'))+'</code></pre>');
+  return out.join('\n');
+}
+const view = document.getElementById('docView');
+const nav = document.getElementById('docNav');
+async function load(name){
+  for(const a of nav.querySelectorAll('a')) a.classList.toggle('active', a.dataset.doc===name);
+  view.innerHTML = '<p style="color:var(--site-muted);">Loading…</p>';
+  try {
+    const r = await fetch('./docs/'+name);
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    view.innerHTML = renderMarkdown(await r.text());
+    if(location.hash !== '#'+name) history.replaceState(null,'', '#'+name);
+  } catch(e){
+    view.innerHTML = '<p style="color:#ff9090;">Failed to load '+name+': '+e.message+'</p>';
+  }
+}
+nav.addEventListener('click', e => {
+  const a = e.target.closest('a[data-doc]');
+  if(!a) return;
+  e.preventDefault();
+  load(a.dataset.doc);
+});
+load(location.hash.replace(/^#/,'') || 'no-silent-shelving.md');
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="rsg-game" content="game15">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0a0612">
+<title>Stable Construct</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sat: env(safe-area-inset-top, 0px);
+    --sab: env(safe-area-inset-bottom, 0px);
+    --sal: env(safe-area-inset-left, 0px);
+    --sar: env(safe-area-inset-right, 0px);
+  }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    background: #0a0612;
+    overflow: hidden;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  #game-root {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #game-canvas {
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    /* canvas positioned absolutely by main.js */
+  }
+</style>
+  <script type="module" crossorigin src="./assets/game-BWfPTsql.js"></script>
+</head>
+<body>
+<div id="game-root" role="application" aria-label="Stable Construct game">
+  <canvas id="game-canvas" role="img" aria-label="Stable Construct game canvas"></canvas>
+</div>
+</body>
+</html>

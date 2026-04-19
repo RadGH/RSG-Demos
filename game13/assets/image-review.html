@@ -251,16 +251,28 @@
   }
   .bg-grid .img-card img { height: 110px; image-rendering: auto; }
 
-  /* Editor panel appended under the clicked card's row */
+  /* Editor panel — sticky docked dialog (bottom-right), no layout shift */
   .editor {
-    grid-column: 1 / -1;
+    position: fixed;
+    right: 1rem;
+    bottom: 4.2rem;
+    width: min(420px, calc(100vw - 2rem));
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
     background: #050308;
-    border: 1px solid var(--gold-dim);
-    border-radius: 5px;
+    border: 1px solid var(--gold);
+    border-radius: 6px;
     padding: 0.7rem 0.8rem;
-    margin-top: 0.5rem;
     font-size: 0.75rem;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.6);
+    z-index: 50;
   }
+  .editor .editor-close {
+    position: absolute; top: 0.25rem; right: 0.45rem;
+    background: transparent; border: none; color: var(--muted);
+    font-size: 1.1rem; cursor: pointer; line-height: 1;
+  }
+  .editor .editor-close:hover { color: var(--gold); }
   .editor .eid {
     font-family: ui-monospace,monospace; color: var(--gold);
     font-size: 0.72rem; margin-bottom: 0.5rem;
@@ -603,12 +615,8 @@ function renderSections() {
   html.push(renderGroupedSection('Companions', 'companion', entries));
   // 4) Bosses
   html.push(renderGroupedSection('Bosses', 'boss', entries));
-  // 5) Enemies (flat grid — only portraits)
-  const enemies = filterEntries(entries.filter(e => e.category === 'enemy'));
-  html.push(`<h2>Enemies <span class="count">${enemies.length}</span></h2>`);
-  html.push(enemies.length
-    ? `<div class="bg-grid">${enemies.map(e => renderCard(e)).join('')}</div>`
-    : `<div class="empty-note">No enemies matched the current filter.</div>`);
+  // 5) Enemies (grouped by name, same layout as Companions)
+  html.push(renderGroupedSection('Enemies', 'enemy', entries));
 
   // 6) Backgrounds
   const bgs = filterEntries(entries.filter(e => e.category === 'background'));
@@ -931,11 +939,6 @@ function renderSelectionEditor() {
   const templateEntry = entries.find(e => e.id === firstId);
   if (!templateEntry) return;
 
-  // Append editor after the last selected card's containing row
-  const lastId = [...selection][selection.size - 1];
-  const lastCard = document.querySelector(`.img-card[data-id="${CSS.escape(lastId)}"]`);
-  const parent = lastCard ? lastCard.parentElement : document.body;
-
   const editor = document.createElement('div');
   editor.className = 'editor';
   editor.dataset.id = firstId;
@@ -943,10 +946,20 @@ function renderSelectionEditor() {
   const banner = selection.size > 1
     ? `<div style="color:var(--gold);font-size:0.75rem;margin-bottom:0.4rem">Editing ${selection.size} selected images — same action applies to all. <a href="#" data-act="clear-sel" style="color:var(--accent);margin-left:0.5rem">Clear selection</a></div>`
     : `<div style="color:var(--muted);font-size:0.7rem;margin-bottom:0.4rem">Tip: click more cards to apply the same action to multiple images. <a href="#" data-act="clear-sel" style="color:var(--accent);margin-left:0.5rem">Clear</a></div>`;
-  editor.innerHTML = banner + renderEditor(templateEntry);
-  parent.appendChild(editor);
+  editor.innerHTML = `<button type="button" class="editor-close" aria-label="Close">×</button>` + banner + renderEditor(templateEntry);
+  document.body.appendChild(editor);
   wireEditor(editor, templateEntry);
   editor.addEventListener('click', (ev) => {
+    if (ev.target.closest('.editor-close')) {
+      ev.preventDefault();
+      selection.forEach(id => {
+        const c = document.querySelector(`.img-card[data-id="${CSS.escape(id)}"]`);
+        if (c) c.classList.remove('selected');
+      });
+      selection.clear();
+      renderSelectionEditor();
+      return;
+    }
     const a = ev.target.closest('[data-act="clear-sel"]');
     if (!a) return;
     ev.preventDefault();
@@ -957,7 +970,6 @@ function renderSelectionEditor() {
     selection.clear();
     renderSelectionEditor();
   });
-  editor.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
 
 function sameGroupRefs(entry) {
