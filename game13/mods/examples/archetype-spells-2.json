@@ -6,6 +6,20 @@
   "description": "Ten additional archetype spells (M151) continuing the DSL-authored catalog from archetype-spells.json. Covers mutual revive, auto-revive, idle ramp, stacking armor shred, companion sacrifice, multi-round rituals, phase, guard-link redirect, overheal-to-barrier, and counter-magic. All authored purely in the v1 Effect DSL — two items (Conditional multi, Dash back-row strike) are shelved with explicit reasons because the DSL has no dynamic-target-count or row-targeting primitive yet; see /assets/wishlist.html.",
   "skills": [
     {
+      "id": "arch_counter_stance",
+      "name": "Iron Counter",
+      "class": "knight",
+      "unlockLevel": 4,
+      "mpCost": 5,
+      "cooldown": 3,
+      "description": "Self-buff: next 2 hits reflect 150% of incoming damage back to the attacker. Runtime: CombatScreen._applyDamage consumes counterStance status (M173).",
+      "targeting": { "side": "self" },
+      "effects": [
+        { "op": "applyStatus", "status": "counterStance", "amount": 150, "stacks": 2, "duration": 3, "target": "self" }
+      ],
+      "tags": ["counter", "reflect", "defense"]
+    },
+    {
       "id": "arch_dispel_steal",
       "name": "Thief's Whisper",
       "class": "rogue",
@@ -210,6 +224,21 @@
         ] }
       ],
       "tags": ["reflect", "magic", "party"]
+    },
+    {
+      "id": "arch_soulbind",
+      "name": "Soulbind",
+      "class": "cleric",
+      "unlockLevel": 6,
+      "mpCost": 7,
+      "cooldown": 5,
+      "description": "Caster and one ally share the weight of pain. While bound (4 rounds), 50% of damage taken by either is redirected to the other. Runtime: CombatScreen._applyDamage soulbind block (M175).",
+      "targeting": { "side": "ally", "count": 1 },
+      "effects": [
+        { "op": "applyStatus", "status": "soulbind", "amount": 50, "duration": 4, "stacks": 1, "target": "self" },
+        { "op": "applyStatus", "status": "soulbind", "amount": 50, "duration": 4, "stacks": 1, "target": "target" }
+      ],
+      "tags": ["soulbind", "redirect", "ally"]
     }
   ]
 }
