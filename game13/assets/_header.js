@@ -74,6 +74,7 @@
       { href: ASSETS + 'redesign-survey.html', label: 'Redesign Survey' },
       { href: ASSETS + 'image-review.html', label: 'Image Review' },
       { href: ASSETS + 'custom-content.html', label: 'Custom Content' },
+      { href: ASSETS + 'ai-content-gen.html', label: 'AI Content Generator' },
       { href: ASSETS + 'spell-catalog.html', label: 'Spell Catalog' },
       { href: ASSETS + 'enemy-catalog.html', label: 'Enemy Catalog' },
       { href: ASSETS + 'item-catalog.html', label: 'Item Catalog' },
