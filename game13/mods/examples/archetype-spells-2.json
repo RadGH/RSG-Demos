@@ -6,6 +6,20 @@
   "description": "Ten additional archetype spells (M151) continuing the DSL-authored catalog from archetype-spells.json. Covers mutual revive, auto-revive, idle ramp, stacking armor shred, companion sacrifice, multi-round rituals, phase, guard-link redirect, overheal-to-barrier, and counter-magic. All authored purely in the v1 Effect DSL — two items (Conditional multi, Dash back-row strike) are shelved with explicit reasons because the DSL has no dynamic-target-count or row-targeting primitive yet; see /assets/wishlist.html.",
   "skills": [
     {
+      "id": "arch_dispel_steal",
+      "name": "Thief's Whisper",
+      "class": "rogue",
+      "unlockLevel": 5,
+      "mpCost": 6,
+      "cooldown": 4,
+      "description": "Rip every stat buff (buff:str/int/dex/con/armor/etc) from one enemy and graft them onto the caster with the remaining duration intact. DSL: stealStatus with prefix='buff:'.",
+      "targeting": { "side": "enemy", "count": 1 },
+      "effects": [
+        { "op": "stealStatus", "prefix": "buff:", "from": "target", "to": "self" }
+      ],
+      "tags": ["dispel", "steal", "rogue"]
+    },
+    {
       "id": "arch_targeted_silence",
       "name": "Hush",
       "class": "enchanter",
