@@ -169,6 +169,7 @@ kbd { background: rgba(255,255,255,0.08); border: 1px solid var(--border); paddi
 .fh-stat label { display: block; color: var(--muted); font-size: 0.6rem; letter-spacing: 0.18em; }
 .fh-stat span { color: var(--neon-cyan-br); font-size: 1.1rem; font-weight: 700; }
 .fh-goal { align-self: center; background: rgba(5,3,26,0.7); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0.8rem; font-size: 0.8rem; color: var(--neon-gold); }
+.fh-goal:empty { display: none; }
 .fh-goal .goal-hit { color: var(--neon-green); }
 
 .fh-bars {
@@ -198,7 +199,7 @@ kbd { background: rgba(255,255,255,0.08); border: 1px solid var(--border); paddi
 }
 .fh-pad button:active { background: rgba(0,240,255,0.3); }
 .fh-throttle { display: flex; flex-direction: column; align-items: center; gap: 4px; background: rgba(5,3,26,0.7); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; }
-.fh-throttle input { writing-mode: bt-lr; -webkit-appearance: slider-vertical; appearance: slider-vertical; width: 24px; height: 110px; accent-color: var(--neon-gold); }
+.fh-throttle input { writing-mode: vertical-lr; direction: rtl; width: 24px; height: 110px; accent-color: var(--neon-gold); }
 .fh-throttle label { font-size: 0.6rem; color: var(--muted); letter-spacing: 0.15em; }
 
 @media (hover: hover) and (pointer: fine) { .fh-mobile { display: none; } }
