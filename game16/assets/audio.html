@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="rsg-game" content="game16">
+<title>Audio — game16</title>
+<script src="../_layout.js" defer></script>
+<style>
+  .tabs { display: flex; gap: 0.4rem; margin: 1rem 0; border-bottom: 1px solid var(--site-border); }
+  .tab { padding: 0.6rem 1.2rem; background: transparent; border: none; color: var(--site-muted); cursor: pointer; font-size: 0.95rem; border-bottom: 2px solid transparent; transition: all 0.15s; }
+  .tab:hover { color: var(--site-text); }
+  .tab.active { color: var(--site-accent-bright); border-bottom-color: var(--site-accent); font-weight: 600; }
+  .list { display: grid; gap: 0.6rem; }
+  .item { background: var(--site-bg-panel); border: 1px solid var(--site-border); border-radius: 8px; padding: 0.8rem 1rem; transition: border-color 0.15s; }
+  .item:hover { border-color: var(--site-accent); }
+  .item .row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .item .name { font-weight: 600; color: var(--site-text); flex: 1; min-width: 180px; }
+  .item .src { color: var(--site-muted); font-size: 0.78rem; }
+  .item audio { flex: 0 0 280px; max-width: 100%; }
+  .item .prompt { color: var(--site-muted); font-size: 0.82rem; margin-top: 0.4rem; }
+  .empty { padding: 3rem 1rem; text-align: center; color: var(--site-muted); }
+</style>
+</head>
+<body>
+<h1 style="font-family:var(--site-font-display);color:var(--site-accent-bright);letter-spacing:0.05em;">Audio</h1>
+<p style="color:var(--site-muted);">Inline players for music + sfx. Catalogs live at <code>public/music/catalog.json</code> and <code>public/sfx/catalog.json</code>.</p>
+
+<div class="tabs">
+  <button class="tab active" data-kind="music">Music</button>
+  <button class="tab" data-kind="sfx">SFX</button>
+</div>
+<div class="list" id="list"><div class="empty">Loading…</div></div>
+
+<script>
+let active = 'music';
+const cache = {};
+
+async function loadKind(kind) {
+  if (cache[kind]) return cache[kind];
+  const folder = kind === 'music' ? 'music' : 'sfx';
+  try {
+    const r = await fetch(`../${folder}/catalog.json`);
+    if (!r.ok) return [];
+    const j = await r.json();
+    return cache[kind] = (j.items || []).map(it => ({ ...it, file: `../${folder}/${it.file}` }));
+  } catch { return []; }
+}
+
+async function render() {
+  const items = await loadKind(active);
+  const list = document.getElementById('list');
+  if (!items.length) {
+    list.innerHTML = `<div class="empty">No ${active} yet. Drop files into <code>public/${active}/</code> and add to <code>catalog.json</code>.</div>`;
+    return;
+  }
+  list.innerHTML = items.map(it => `
+    <div class="item">
+      <div class="row">
+        <div class="name">${it.name || it.id || it.file.split('/').pop()}</div>
+        <audio controls preload="none" src="${it.file}"></audio>
+        <div class="src">${it.source || '?'}</div>
+      </div>
+      ${it.prompt ? `<div class="prompt">${it.prompt}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x === t));
+  active = t.dataset.kind;
+  render();
+}));
+render();
+</script>
+</body>
+</html>

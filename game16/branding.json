@@ -1,0 +1,18 @@
+{
+  "logoText": "Neonaut",
+  "tagline": "A goofy, physics-forward neon space sim. Build rockets, lift off, land on strange worlds.",
+  "atmosphere": ["goofy", "neon", "physics-forward", "cosmic", "curious"],
+  "accent": "#00F0FF",
+  "accentBright": "#5BF6FF",
+  "accentSecondary": "#FF2E9A",
+  "accentSupport": "#B14FFF",
+  "accentSignal": "#39FF88",
+  "accentDanger": "#E94F64",
+  "bg": "#05031A",
+  "bgPanel": "#0B0930",
+  "text": "#E8F4FF",
+  "muted": "#8A9BC8",
+  "border": "rgba(0,240,255,0.25)",
+  "fontDisplay": "\"Orbitron\", \"Rajdhani\", system-ui, sans-serif",
+  "fontUI": "\"Inter\", \"Segoe UI\", system-ui, sans-serif"
+}

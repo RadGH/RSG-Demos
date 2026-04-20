@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="rsg-game" content="game16">
+<title>Wishlist — Neonaut</title>
+<script src="./_layout.js" defer></script>
+<style>
+  .wl-section { background: var(--site-bg-panel); border: 1px solid var(--site-border); border-radius: 10px; padding: 1.2rem 1.4rem; margin-bottom: 1.2rem; }
+  .wl-section h2 { font-family: var(--site-font-display); color: var(--site-accent-bright); font-size: 1.2rem; margin: 0 0 0.3rem; letter-spacing: 0.05em; }
+  .wl-section .sub { color: var(--site-muted); font-size: 0.85rem; margin-bottom: 0.9rem; }
+  .wl-group { margin-bottom: 0.9rem; }
+  .wl-group h3 { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--site-accent); margin: 0 0 0.5rem; border-bottom: 1px solid var(--site-border); padding-bottom: 0.25rem; }
+  .wl-item { display: flex; align-items: flex-start; gap: 0.6rem; padding: 0.4rem 0.6rem; border-radius: 6px; line-height: 1.45; transition: background 0.12s; }
+  .wl-item:hover { background: rgba(255,255,255,0.03); }
+  .wl-item .box { flex: 0 0 18px; width: 18px; height: 18px; border: 2px solid var(--site-border); border-radius: 4px; margin-top: 2px; position: relative; background: var(--site-bg); }
+  .wl-item.done .box { background: var(--site-accent); border-color: var(--site-accent); }
+  .wl-item.done .box::after { content: "\2713"; position: absolute; top: -4px; left: 1px; color: #05031A; font-size: 16px; font-weight: 900; }
+  .wl-item.dropped .box { border-color: #5a4238; background: transparent; }
+  .wl-item.dropped .box::after { content: "\2715"; position: absolute; top: -4px; left: 1px; color: #8a5a4a; font-size: 16px; font-weight: 900; }
+  .wl-item.wip .box { background: repeating-linear-gradient(45deg, var(--site-accent) 0 3px, transparent 3px 6px); border-color: var(--site-accent); }
+  .wl-item .body { flex: 1; font-size: 0.92rem; }
+  .wl-item .label { font-weight: 600; color: var(--site-text); }
+  .wl-item.done .label { color: var(--site-accent-bright); }
+  .wl-item.dropped .label { text-decoration: line-through; color: #7a6a5a; }
+  .wl-item .desc { color: var(--site-muted); font-size: 0.82rem; margin-top: 2px; }
+  .wl-item .tag { font-size: 0.65rem; padding: 2px 8px; border-radius: 10px; background: var(--site-bg); color: var(--site-muted); margin-left: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .tag.status-todo { color: #8a9bc8; }
+  .tag.status-wip  { color: #FFB547; background: rgba(255,181,71,0.1); }
+  .tag.status-done { color: #39FF88; background: rgba(57,255,136,0.1); }
+  .tag.status-drop { color: #8a5a4a; background: rgba(138,90,74,0.1); }
+  .legend { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.78rem; color: var(--site-muted); margin-top: 0.8rem; }
+  .legend-key { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .legend-key .box { width: 14px; height: 14px; border: 2px solid var(--site-border); border-radius: 3px; }
+  .legend-key.done .box { background: var(--site-accent); border-color: var(--site-accent); }
+  .legend-key.dropped .box { border-color: #5a4238; }
+  .legend-key.wip .box { background: repeating-linear-gradient(45deg, var(--site-accent) 0 2px, transparent 2px 4px); border-color: var(--site-accent); }
+  .hero-note { background: linear-gradient(135deg, rgba(0,240,255,0.08), rgba(255,46,154,0.05)); border: 1px solid var(--site-border); padding: 1rem 1.2rem; border-radius: 10px; font-size: 0.88rem; color: var(--site-text); margin-bottom: 1.2rem; }
+  .hero-note strong { color: var(--site-accent-bright); }
+</style>
+</head>
+<body>
+<h1 style="font-family:var(--site-font-display);color:var(--site-accent-bright);letter-spacing:0.05em;">Wishlist</h1>
+<p style="color:var(--site-muted);">Living truth of planned, in-progress, shipped, and dropped features. <strong>Claude maintains this file</strong> — it's the resume-after-crash anchor for any session.</p>
+
+<div class="hero-note">
+  <strong>How this works.</strong> Items start as <em>todo</em>. Move to <em>wip</em> when work begins, <em>done</em> when shipped (with milestone tag), or <em>dropped</em> with a strikethrough + reason. Claude reviews this list at every milestone start and end. The <strong>NO SILENT SHELVING</strong> rule applies: if an item is dropped, the reason is visible, not hidden.
+  <div class="legend">
+    <span class="legend-key"><span class="box"></span>Todo</span>
+    <span class="legend-key wip"><span class="box"></span>In progress</span>
+    <span class="legend-key done"><span class="box"></span>Done</span>
+    <span class="legend-key dropped"><span class="box"></span>Dropped</span>
+  </div>
+</div>
+
+<section class="wl-section">
+  <h2>Milestone Roadmap</h2>
+  <p class="sub">The planned arc for Neonaut. Each milestone is deep; prior milestones are prerequisites for later ones.</p>
+
+  <div class="wl-group">
+    <h3>M1 — Workshop + Launch core</h3>
+    <div class="wl-item wip"><div class="box"></div><div class="body"><span class="label">Pixi.js + Matter.js boot, responsive canvas</span><span class="tag status-wip">wip</span></div></div>
+    <div class="wl-item wip"><div class="box"></div><div class="body"><span class="label">Part catalog: command pod, fuel tank, engine, radial fin, nose cone, decoupler, strut, landing gear</span><span class="tag status-wip">wip</span></div></div>
+    <div class="wl-item wip"><div class="box"></div><div class="body"><span class="label">Workshop: drag-drop parts onto a grid, snap to attach points, symmetry option</span><span class="tag status-wip">wip</span></div></div>
+    <div class="wl-item wip"><div class="box"></div><div class="body"><span class="label">Rocket templates saved to IndexedDB (name, save, load, delete)</span><span class="tag status-wip">wip</span></div></div>
+    <div class="wl-item wip"><div class="box"></div><div class="body"><span class="label">Launch scene: gravity, thrust, fuel burn, throttle, gimbal, stage separation</span><span class="tag status-wip">wip</span></div></div>
+    <div class="wl-item wip"><div class="box"></div><div class="body"><span class="label">Crash / land detection + mission summary</span><span class="tag status-wip">wip</span></div></div>
+    <div class="wl-item wip"><div class="box"></div><div class="body"><span class="label">HUD: altitude, velocity, throttle, fuel, apoapsis, control authority</span><span class="tag status-wip">wip</span></div></div>
+    <div class="wl-item wip"><div class="box"></div><div class="body"><span class="label">Playwright: smoke (no 404), workshop assemble, scripted launch reaches altitude</span><span class="tag status-wip">wip</span></div></div>
+  </div>
+
+  <div class="wl-group">
+    <h3>M2 — Atmosphere + Orbit + First Moon</h3>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Atmospheric drag layers (troposphere → exosphere)</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Parachutes (drogue + main), deployable at altitude</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Orbital mechanics + first low-orbit goal</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Space station rendezvous (simple approach check)</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Airless moon landing — counter-thrusters required</span><span class="tag status-todo">todo</span></div></div>
+  </div>
+
+  <div class="wl-group">
+    <h3>M3 — Scanning + Rovers + Rescue</h3>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Scanner satellite payload + star-map reveal mechanic</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Deploy rover on landing, drive + camera follow</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Surface resource nodes + gathering</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Rescue mission: ship stranded when fuel zero, bonus on recovery</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">First secret discovery on a planet (seed the mystery layer)</span><span class="tag status-todo">todo</span></div></div>
+  </div>
+
+  <div class="wl-group">
+    <h3>M4 — Part Crafting + Tech Tree</h3>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Resource → alloy → advanced-part fabrication chain</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Tech tree UI with unlock costs</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">20+ new parts: multi-stage decouplers, radial thrusters, ion engine, solar panels, heat shield, RCS, struts, etc.</span><span class="tag status-todo">todo</span></div></div>
+  </div>
+
+  <div class="wl-group">
+    <h3>M5 — Diverse Atmospheres</h3>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Lava planet (heat damage, thermal updrafts)</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Goo world (viscous drag, sticky landing)</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Ocean planet (splashdown, buoyancy, float pods)</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Cliff world (precision landing zones)</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Meteor-storm planet (dodging hazard)</span><span class="tag status-todo">todo</span></div></div>
+  </div>
+
+  <div class="wl-group">
+    <h3>M6 — Rover Variety + Planetary Equipment</h3>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Rover chassis: wheeled, tracked, legged, hover</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Deployable drills, sample-return pods, beacons, base modules</span><span class="tag status-todo">todo</span></div></div>
+  </div>
+
+  <div class="wl-group">
+    <h3>M7 — Quests + Missions</h3>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Contract board: satellite altitudes, sample retrieval, rescues</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Payouts fund R&amp;D + part unlocks</span><span class="tag status-todo">todo</span></div></div>
+  </div>
+
+  <div class="wl-group">
+    <h3>M8 — Space Stations + Docking</h3>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Docking physics (alignment, closing velocity, magnetic capture)</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Modular station expansion + fuel depots</span><span class="tag status-todo">todo</span></div></div>
+  </div>
+
+  <div class="wl-group">
+    <h3>M9 — Secrets + Anomalies</h3>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Derelict alien ship wrecks</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Floating monoliths + lore fragments</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Singing crystal planet</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Sentient goo-blob companion</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Ringed planet debris-field puzzle</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Kraken gravity anomaly easter egg</span><span class="tag status-todo">todo</span></div></div>
+  </div>
+
+  <div class="wl-group">
+    <h3>M10 — Career Polish + Deploy</h3>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Progression curve + balance pass</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Achievements + stats dashboard</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Photo mode</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Grand-tour endgame challenge</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Accessibility pass (contrast, reduced motion, input remap, colorblind icons)</span><span class="tag status-todo">todo</span></div></div>
+    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Run deploy_pages.sh → live on GitHub Pages</span><span class="tag status-todo">todo</span></div></div>
+  </div>
+</section>
+
+<section class="wl-section">
+  <h2>Long-term Shelf (post-M10)</h2>
+  <p class="sub">Things the user knows they want, not scheduled into M1–M10. Surface when a milestone comes close to ready.</p>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Off-world industry: mine on moon → build launchpad → launch new craft from local materials</span><span class="tag status-todo">todo</span><div class="desc">Long-term 4X-style loop. Tier progression: Home → Moon-tier → Rocky-planet-tier → Gas/exotic-tier. Each tier uses previous as staging base.</div></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Procedural galaxy beyond hand-authored planets</span><span class="tag status-todo">todo</span></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Rocket template share export/import (JSON)</span><span class="tag status-todo">todo</span></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Life support + crew morale (oxygen timers, food)</span><span class="tag status-todo">todo</span></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Weather: sandstorms, aurora, tidal quakes</span><span class="tag status-todo">todo</span></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Mod support (custom parts via JSON)</span><span class="tag status-todo">todo</span></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">In-game photo album + screenshot gallery</span><span class="tag status-todo">todo</span></div></div>
+</section>
+
+<section class="wl-section">
+  <h2>Polish &amp; Aesthetics</h2>
+  <p class="sub">Hover effects, animations, lightboxes, charts. See <code>docs/ui-aesthetics.md</code>.</p>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Physics visualization: thrust vectors, CoM marker, drag arrows</span><span class="tag status-todo">todo</span></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Parallax star background + neon particle trails for thrusters</span><span class="tag status-todo">todo</span></div></div>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Altitude/velocity telemetry chart at mission-end</span><span class="tag status-todo">todo</span></div></div>
+</section>
+
+<section class="wl-section">
+  <h2>Bugs</h2>
+  <p class="sub">Known issues. Add new bugs here as you find them; check off when fixed.</p>
+</section>
+
+<section class="wl-section">
+  <h2>Technical Debt Registry</h2>
+  <p class="sub">Items deliberately shelved with the tradeoff named. Don't add more without naming the tradeoff.</p>
+  <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Dependencies accepted: pixi.js (~230KB gz), matter-js (~90KB gz)</span><span class="tag status-todo">todo</span><div class="desc">Both are core to the game. Tradeoff: bundle size ~320KB gz vs hand-rolling 2D WebGL + rigid-body physics from scratch — not viable for project scope.</div></div></div>
+</section>
+
+<section class="wl-section">
+  <h2>Shelved / Revisit</h2>
+  <p class="sub">Items deferred because the foundation isn't ready yet. Surface when prerequisites land.</p>
+</section>
+</body>
+</html>

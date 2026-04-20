@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="rsg-game" content="Neonaut">
+<title>Branding — Neonaut</title>
+<script src="./_layout.js" defer></script>
+<style>
+  .b-section { background: var(--site-bg-panel); border: 1px solid var(--site-border); border-radius: 10px; padding: 1.4rem; margin-bottom: 1.2rem; }
+  .b-section h2 { font-family: var(--site-font-display); color: var(--site-accent-bright); margin: 0 0 0.8rem; letter-spacing: 0.06em; font-size: 1.3rem; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.8rem; }
+  .swatch { border-radius: 8px; padding: 1rem 0.8rem; border: 1px solid var(--site-border); transition: transform 0.15s; }
+  .swatch:hover { transform: translateY(-2px); }
+  .swatch .label { font-size: 0.78rem; color: var(--site-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .swatch .hex { font-family: monospace; font-size: 0.95rem; color: inherit; margin-top: 0.3rem; }
+  .font-sample { padding: 1rem 0; }
+  .font-display { font-family: var(--site-font-display); font-size: 2rem; letter-spacing: 0.05em; }
+  .font-ui { font-family: var(--site-font-ui); font-size: 1rem; line-height: 1.6; }
+  .atmosphere-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .atmosphere-tags .tag { background: var(--site-bg); border: 1px solid var(--site-accent); color: var(--site-accent-bright); padding: 0.4rem 0.9rem; border-radius: 100px; font-size: 0.85rem; }
+  .logo-preview { font-family: var(--site-font-display); font-size: clamp(2.4rem, 7vw, 4rem); font-weight: 900; letter-spacing: 0.1em; background: linear-gradient(180deg, var(--site-accent-bright) 0%, var(--site-accent) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; text-align: center; padding: 1rem 0; }
+</style>
+</head>
+<body>
+<h1 style="font-family:var(--site-font-display); color:var(--site-accent-bright); letter-spacing:0.05em;">Branding</h1>
+<p style="color:var(--site-muted);">Single source of truth for logo, palette, fonts, and atmosphere. Tokens live in <code>branding.json</code> and feed the shared site header.</p>
+
+<section class="b-section">
+  <h2>Logo</h2>
+  <div class="logo-preview" id="logo">Neonaut</div>
+  <p style="text-align:center;color:var(--site-muted);font-size:0.85rem;">Fill in <code>logoText</code> in <code>branding.json</code> + replace this with an SVG/PNG when art is ready.</p>
+</section>
+
+<section class="b-section">
+  <h2>Palette</h2>
+  <div class="swatches" id="swatches"></div>
+</section>
+
+<section class="b-section">
+  <h2>Typography</h2>
+  <div class="font-sample">
+    <div class="label" style="color:var(--site-muted);font-size:0.78rem;text-transform:uppercase;">Display</div>
+    <div class="font-display">The quick brown fox</div>
+  </div>
+  <div class="font-sample">
+    <div class="label" style="color:var(--site-muted);font-size:0.78rem;text-transform:uppercase;">UI</div>
+    <div class="font-ui">The quick brown fox jumps over the lazy dog. 0123456789. UI body copy at 1rem with 1.6 line-height for readable paragraphs.</div>
+  </div>
+</section>
+
+<section class="b-section">
+  <h2>Atmosphere</h2>
+  <p style="color:var(--site-muted);font-size:0.9rem;">Mood descriptors that should guide every art prompt and music brief.</p>
+  <div class="atmosphere-tags" id="atmosphere"></div>
+</section>
+
+<script>
+async function loadBranding() {
+  const r = await fetch('./branding.json');
+  if (!r.ok) return;
+  const b = await r.json();
+  if (b.logoText) document.getElementById('logo').textContent = b.logoText;
+  const swatchKeys = ['accent','accentBright','bg','bgPanel','text','muted','border'];
+  const sw = document.getElementById('swatches');
+  swatchKeys.forEach(k => {
+    if (!b[k]) return;
+    const isLight = /^#?[a-f0-9]{6}$/i.test(b[k]) && parseInt(b[k].replace('#',''), 16) > 0x888888;
+    sw.insertAdjacentHTML('beforeend',
+      `<div class="swatch" style="background:${b[k]};color:${isLight ? '#0a0a10' : '#e6e8f2'};">
+        <div class="label" style="color:inherit;opacity:0.7;">${k}</div>
+        <div class="hex">${b[k]}</div>
+      </div>`);
+  });
+  const at = document.getElementById('atmosphere');
+  (b.atmosphere || []).forEach(t => at.insertAdjacentHTML('beforeend', `<span class="tag">${t}</span>`));
+}
+loadBranding();
+</script>
+</body>
+</html>

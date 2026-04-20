@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="rsg-game" content="game16">
+<title>Assets — game16</title>
+<script src="../_layout.js" defer></script>
+<style>
+  .picker { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .pick { background: var(--site-bg-panel); border: 1px solid var(--site-border); border-radius: 10px; padding: 1.5rem 1.2rem; text-decoration: none; color: var(--site-text); transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s; display: block; }
+  .pick:hover { transform: translateY(-3px); border-color: var(--site-accent); box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
+  .pick h3 { font-family: var(--site-font-display); color: var(--site-accent-bright); margin: 0 0 0.4rem; font-size: 1.1rem; letter-spacing: 0.05em; }
+  .pick p { margin: 0; color: var(--site-muted); font-size: 0.88rem; line-height: 1.5; }
+  .pick .icon { font-size: 1.6rem; margin-bottom: 0.5rem; display: block; }
+</style>
+</head>
+<body>
+<h1 style="font-family:var(--site-font-display);color:var(--site-accent-bright);letter-spacing:0.05em;">Assets</h1>
+<p style="color:var(--site-muted);">Browse generated and authored media. Each gallery reads its own catalog (see <code>docs/media-catalog.md</code>).</p>
+
+<div class="picker">
+  <a class="pick" href="./images.html">
+    <span class="icon">🎨</span>
+    <h3>Images</h3>
+    <p>Backgrounds, portraits, UI, sprites, icons. Lightbox preview with prev/next.</p>
+  </a>
+  <a class="pick" href="./audio.html">
+    <span class="icon">🎵</span>
+    <h3>Audio</h3>
+    <p>Music tracks and sound effects with inline players.</p>
+  </a>
+  <a class="pick" href="./videos.html">
+    <span class="icon">🎬</span>
+    <h3>Videos</h3>
+    <p>Cinematics and clips with thumbnails and prompts.</p>
+  </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="rsg-game" content="game16">
+<title>Videos — game16</title>
+<script src="../_layout.js" defer></script>
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .card { background: var(--site-bg-panel); border: 1px solid var(--site-border); border-radius: 10px; overflow: hidden; transition: border-color 0.15s, transform 0.15s; }
+  .card:hover { border-color: var(--site-accent); transform: translateY(-2px); }
+  .card .thumb { width: 100%; aspect-ratio: 16/9; background: #050509 center/cover no-repeat; cursor: pointer; position: relative; }
+  .card .play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--site-accent-bright); font-size: 3rem; text-shadow: 0 4px 12px rgba(0,0,0,0.6); pointer-events: none; }
+  .card video { width: 100%; display: block; }
+  .card .meta { padding: 0.7rem 0.9rem; }
+  .card .name { font-weight: 600; color: var(--site-text); }
+  .card .src { color: var(--site-muted); font-size: 0.78rem; margin-top: 2px; }
+  .card .prompt { color: var(--site-muted); font-size: 0.8rem; margin-top: 0.4rem; }
+  .empty { padding: 3rem 1rem; text-align: center; color: var(--site-muted); grid-column: 1 / -1; }
+</style>
+</head>
+<body>
+<h1 style="font-family:var(--site-font-display);color:var(--site-accent-bright);letter-spacing:0.05em;">Videos</h1>
+<p style="color:var(--site-muted);">Click a thumbnail to play. Catalog lives at <code>public/video/catalog.json</code>.</p>
+
+<div class="grid" id="grid"><div class="empty">Loading…</div></div>
+
+<script>
+async function load() {
+  try {
+    const r = await fetch('../video/catalog.json');
+    if (!r.ok) return [];
+    const j = await r.json();
+    return (j.items || []).map(it => ({
+      ...it,
+      file: `../video/${it.file}`,
+      thumb: it.thumb ? `../video/${it.thumb}` : null,
+    }));
+  } catch { return []; }
+}
+
+async function render() {
+  const items = await load();
+  const grid = document.getElementById('grid');
+  if (!items.length) {
+    grid.innerHTML = '<div class="empty">No videos yet. Drop files into <code>public/video/</code> with a <code>catalog.json</code>.</div>';
+    return;
+  }
+  grid.innerHTML = items.map((it, i) => `
+    <div class="card" data-i="${i}">
+      <div class="thumb" data-i="${i}" ${it.thumb ? `style="background-image:url('${it.thumb}')"` : ''}>
+        <span class="play">▶</span>
+      </div>
+      <div class="meta">
+        <div class="name">${it.name || it.id || it.file.split('/').pop()}</div>
+        <div class="src">${it.source || '?'}</div>
+        ${it.prompt ? `<div class="prompt">${it.prompt}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
+  grid.querySelectorAll('.thumb').forEach(t => t.addEventListener('click', () => {
+    const card = t.parentElement;
+    const it = items[+t.dataset.i];
+    card.querySelector('.thumb').outerHTML = `<video controls autoplay src="${it.file}"></video>`;
+  }));
+}
+render();
+</script>
+</body>
+</html>
