@@ -72,9 +72,14 @@ kbd { background: rgba(255,255,255,0.08); border: 1px solid var(--border); paddi
 
 /* ---------- workshop ---------- */
 .screen-workshop { display: flex; flex-direction: column; background: linear-gradient(180deg, var(--bg-0), var(--bg-1)); }
-.ws-header { display: flex; gap: 0.6rem; align-items: center; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); background: rgba(5,3,26,0.8); backdrop-filter: blur(8px); }
-.ws-header .neon-input { flex: 1; max-width: 260px; }
-.ws-actions { display: flex; gap: 0.4rem; margin-left: auto; }
+.ws-header { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); background: rgba(5,3,26,0.8); backdrop-filter: blur(8px); }
+.ws-header .neon-input { flex: 1 1 160px; min-width: 0; max-width: 260px; }
+.ws-actions { display: flex; gap: 0.4rem; margin-left: auto; flex-wrap: wrap; }
+@media (max-width: 520px) {
+  .ws-header { gap: 0.4rem; padding: 0.5rem 0.6rem; }
+  .ws-header .neon-input { flex-basis: 100%; order: 3; max-width: 100%; }
+  .ws-actions { order: 2; width: 100%; justify-content: flex-end; margin-left: 0; }
+}
 .ws-body { display: flex; flex: 1; min-height: 0; overflow: hidden; }
 .ws-palette {
   width: 180px; background: rgba(11,9,48,0.7); border-right: 1px solid var(--border);
@@ -141,6 +146,9 @@ kbd { background: rgba(255,255,255,0.08); border: 1px solid var(--border); paddi
 .lp-easy { display: inline-flex; align-items: center; gap: 0.4rem; color: #FFD88A; font-size: 0.85rem; cursor: pointer; padding: 0.3rem 0.6rem; border: 1px solid rgba(255,181,71,0.4); border-radius: 6px; background: rgba(255,181,71,0.06); }
 .lp-easy small { color: var(--muted); }
 .lp-easy input { accent-color: #FFB547; }
+.icon { vertical-align: -3px; display: inline-block; stroke: currentColor; }
+.neon-btn { display: inline-flex; align-items: center; gap: 0.4rem; }
+.neon-btn .icon { flex-shrink: 0; }
 
 /* ---------- flight HUD ---------- */
 .flight-hud {
