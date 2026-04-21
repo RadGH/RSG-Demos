@@ -1,7 +1,7 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-21T18:00:00.000Z",
-  "creditsUsedTotal": 1056,
+  "updatedAt": "2026-04-21T19:00:00.000Z",
+  "creditsUsedTotal": 1308,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
@@ -43,21 +43,21 @@
     },
     "fighter": {
       "spriteId": "fighter",
-      "status": "reference_generated",
+      "status": "pending_approval",
       "referenceStatus": "reference_generated",
       "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
+        "portrait": "generated",
+        "south": "generated",
+        "east": "generated",
+        "east_attack": "generated",
+        "east_spell": "generated",
+        "east_block": "generated",
+        "east_ko": "generated"
       },
       "artDirectionPath": "data/art_direction/fighter.json",
       "candidateDir": "images/pixellab/fighter",
       "originalSpritecookPrefix": "images/spritecook/fighter_",
-      "creditsUsed": 60,
+      "creditsUsed": 144,
       "notes": "Monk-adjacent melee specialist with quarterstaff."
     },
     "paladin": {
@@ -309,21 +309,21 @@
     },
     "stormcaller": {
       "spriteId": "stormcaller",
-      "status": "reference_generated",
+      "status": "pending_approval",
       "referenceStatus": "reference_generated",
       "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
+        "portrait": "generated",
+        "south": "generated",
+        "east": "generated",
+        "east_attack": "generated",
+        "east_spell": "generated",
+        "east_block": "generated",
+        "east_ko": "generated"
       },
       "artDirectionPath": "data/art_direction/stormcaller.json",
       "candidateDir": "images/pixellab/stormcaller",
       "originalSpritecookPrefix": "images/spritecook/stormcaller_",
-      "creditsUsed": 48,
+      "creditsUsed": 132,
       "notes": "Lightning-palm caster. Zero held weapons."
     },
     "druid": {
@@ -974,21 +974,21 @@
     },
     "oracle_male": {
       "spriteId": "oracle_male",
-      "status": "reference_generated",
+      "status": "pending_approval",
       "referenceStatus": "reference_generated",
       "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
+        "portrait": "generated",
+        "south": "generated",
+        "east": "generated",
+        "east_attack": "generated",
+        "east_spell": "generated",
+        "east_block": "generated",
+        "east_ko": "generated"
       },
       "artDirectionPath": "data/art_direction/oracle_male.json",
       "candidateDir": "images/pixellab/oracle_male",
       "originalSpritecookPrefix": "images/spritecook/oracle_male_",
-      "creditsUsed": 12,
+      "creditsUsed": 96,
       "notes": "Oracle (Male) \u2014 gender variant of oracle"
     },
     "shaman_male": {

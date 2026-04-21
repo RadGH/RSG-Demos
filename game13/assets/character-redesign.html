@@ -74,6 +74,16 @@
   .pill.dry_run       { color: var(--warn);   border-color: var(--warn); }
   .pill.approved      { color: var(--green);  border-color: var(--green); }
   .pill.reference_generated { color: var(--purple); border-color: var(--purple); }
+  .pill.pending_approval { color: var(--gold); border-color: var(--gold); }
+  .section-header {
+    font-family: 'Cinzel',Georgia,serif; color: var(--gold);
+    font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase;
+    margin: 1.5rem 0 0.5rem; padding: 0.4rem 0.6rem;
+    border-left: 3px solid var(--gold); background: var(--panel-alt);
+    display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem;
+  }
+  .section-header .count { color: var(--muted); font-size: 0.7rem; font-weight: 400; letter-spacing: 0.06em; }
+  .section-header:first-child { margin-top: 0; }
   .body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   @media (max-width: 820px) { .body { grid-template-columns: 1fr; } }
   .refcol { background: var(--panel-alt); border: 1px solid var(--border); padding: 0.75rem; border-radius: 4px; display: flex; flex-direction: column; }
@@ -284,6 +294,7 @@ function renderSummary(state) {
     ['Characters', ids.length],
     ['Pending', byStatus('pending')],
     ['Reference Ready', byStatus('reference_generated')],
+    ['Pending Approval', byStatus('pending_approval')],
     ['Reference Approved', byStatus('reference_approved')],
     ['Fully Approved', byStatus('approved')],
     ['Credits Used', state.creditsUsedTotal || 0],
@@ -446,8 +457,42 @@ async function main() {
     groups.get(v.baseId).push(v);
   }
   const sortedBaseIds = [...groups.keys()].sort();
+
+  function bucketOf(variants) {
+    const statuses = variants.map(v => v.entry.status || 'pending');
+    if (statuses.includes('pending_approval')) return 'pending_approval';
+    const approvedCount = statuses.filter(s => s === 'approved').length;
+    if (approvedCount && approvedCount === statuses.length) return 'approved';
+    if (approvedCount > 0) return 'partial';
+    if (statuses.includes('reference_generated')) return 'reference_generated';
+    return 'pending';
+  }
+
+  const SECTIONS = [
+    { key: 'pending_approval',    label: 'Pending Approval' },
+    { key: 'approved',            label: 'Fully Approved' },
+    { key: 'partial',             label: 'Partially Approved' },
+    { key: 'reference_generated', label: 'Reference Generated' },
+    { key: 'pending',             label: 'Pending' },
+  ];
+  const buckets = Object.fromEntries(SECTIONS.map(s => [s.key, []]));
   for (const baseId of sortedBaseIds) {
-    root.appendChild(renderGroup(baseId, groups.get(baseId)));
+    const vs = groups.get(baseId);
+    buckets[bucketOf(vs)].push({ baseId, vs });
+  }
+
+  for (const sec of SECTIONS) {
+    const items = buckets[sec.key];
+    if (!items.length) continue;
+    const hdr = document.createElement('div');
+    hdr.className = 'section-header';
+    const lbl = document.createElement('span'); lbl.textContent = sec.label;
+    const cnt = document.createElement('span'); cnt.className = 'count'; cnt.textContent = items.length + ' ' + (items.length === 1 ? 'class' : 'classes');
+    hdr.appendChild(lbl); hdr.appendChild(cnt);
+    root.appendChild(hdr);
+    for (const { baseId, vs } of items) {
+      root.appendChild(renderGroup(baseId, vs));
+    }
   }
 }
 main().catch(e => {
