@@ -1,0 +1,84 @@
+{
+  "$schema": "../../schemas/v1/art-direction.json",
+  "spriteId": "bard",
+  "displayName": "Bard",
+  "class": "humanoid",
+  "pixelHeight": 180,
+  "identity": "Human male bard, charming grin, shoulder-length wavy chestnut hair, light beard, hazel eyes, slim build.",
+  "outfit": "Rich burgundy-and-gold embroidered doublet over a cream puffy-sleeved shirt, brown leather belt with a pouch, dark trousers, tall riding boots. A wide-brimmed feathered hat with a long red feather.",
+  "weapons": "A wooden lute slung across the back on a strap; a thin rapier at the hip in a decorative scabbard, not drawn.",
+  "attackStyle": "East-facing. Lute swung around in both hands and strummed mid-air, notes of golden musical energy flaring outward.",
+  "spellStyle": "East-facing. Lute held in both hands, strumming, floating golden musical notes swirling around his head.",
+  "blockStyle": "East-facing. Lute held horizontally across the torso as a shield, hat tipped forward. Confident smirk.",
+  "koStyle": "East-facing, fallen on his back, lute fallen beside him, hat dropped nearby. Arms splayed.",
+  "southStyle": "Facing camera (south), cocky showman idle. Lute held at the hip, one hand strumming, feathered hat tipped.",
+  "portraitStyle": "Bust shot from mid-chest up, three-quarter view. Charming face, feathered hat, embroidered doublet visible on shoulders.",
+  "bannedSubstrings": [
+    "great sword",
+    "heavy armor",
+    "axe",
+    "mace",
+    "bow"
+  ],
+  "referenceSheet": {
+    "path": "images/pixellab/bard/reference.png",
+    "spritecookAssetId": "53b190d5-032f-44a0-bacd-152dec519dc1",
+    "prompt": "IDENTITY (this image becomes the canonical identity anchor — preserve in every downstream frame): Human male bard, charming grin, shoulder-length wavy chestnut hair, light beard, hazel eyes, slim build.\n\nOUTFIT: Rich burgundy-and-gold embroidered doublet over a cream puffy-sleeved shirt, brown leather belt with a pouch, dark trousers, tall riding boots. A wide-brimmed feathered hat with a long red feather.\n\nWEAPONS: A wooden lute slung across the back on a strap; a thin rapier at the hip in a decorative scabbard, not drawn.\n\nCLASS: humanoid. Full-body view, head to feet visible. Character occupies ~70% of the canvas height. Feet aligned near the bottom; headroom above.\n\nPOSE: full-body side profile facing right (east), calm combat-ready idle. Head up, eyes visible. NOT a portrait bust, NOT a close-up — entire character from head to feet.\n\nSTYLE: detailed pixel art with clean readable silhouette, warm pixel-art palette, transparent background, no ground shadow.",
+    "bitforgeAssetId": null,
+    "sourcePortraitPath": "images/portraits/bard.png",
+    "generatedAt": "2026-04-21T08:15:39.764Z",
+    "approvedAt": null
+  },
+  "frames": {
+    "portrait": {
+      "path": "images/spritecook/bard_portrait.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male bard, charming grin, shoulder-length wavy chestnut hair, light beard, hazel eyes, slim build.\n\nOUTFIT: Rich burgundy-and-gold embroidered doublet over a cream puffy-sleeved shirt, brown leather belt with a pouch, dark trousers, tall riding boots. A wide-brimmed feathered hat with a long red feather.\n\nWEAPONS: A wooden lute slung across the back on a strap; a thin rapier at the hip in a decorative scabbard, not drawn.\n\nPOSE (portrait): Bust shot from mid-chest up, three-quarter view. Charming face, feathered hat, embroidered doublet visible on shoulders.\n\nFRAMING: bust shot from mid-chest up, three-quarter view, centered in a 256x256 canvas, shoulders fill the lower third.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "south": {
+      "path": "images/spritecook/bard_south.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male bard, charming grin, shoulder-length wavy chestnut hair, light beard, hazel eyes, slim build.\n\nOUTFIT: Rich burgundy-and-gold embroidered doublet over a cream puffy-sleeved shirt, brown leather belt with a pouch, dark trousers, tall riding boots. A wide-brimmed feathered hat with a long red feather.\n\nWEAPONS: A wooden lute slung across the back on a strap; a thin rapier at the hip in a decorative scabbard, not drawn.\n\nPOSE (south): Facing camera (south), cocky showman idle. Lute held at the hip, one hand strumming, feathered hat tipped.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east": {
+      "path": "images/spritecook/bard_east.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male bard, charming grin, shoulder-length wavy chestnut hair, light beard, hazel eyes, slim build.\n\nOUTFIT: Rich burgundy-and-gold embroidered doublet over a cream puffy-sleeved shirt, brown leather belt with a pouch, dark trousers, tall riding boots. A wide-brimmed feathered hat with a long red feather.\n\nWEAPONS: A wooden lute slung across the back on a strap; a thin rapier at the hip in a decorative scabbard, not drawn.\n\nPOSE (east): Neutral combat idle, consistent with reference sheet, full-body facing east.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_attack": {
+      "path": "images/spritecook/bard_east_attack.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male bard, charming grin, shoulder-length wavy chestnut hair, light beard, hazel eyes, slim build.\n\nOUTFIT: Rich burgundy-and-gold embroidered doublet over a cream puffy-sleeved shirt, brown leather belt with a pouch, dark trousers, tall riding boots. A wide-brimmed feathered hat with a long red feather.\n\nWEAPONS: A wooden lute slung across the back on a strap; a thin rapier at the hip in a decorative scabbard, not drawn.\n\nPOSE (east_attack): East-facing. Lute swung around in both hands and strummed mid-air, notes of golden musical energy flaring outward.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_spell": {
+      "path": "images/spritecook/bard_east_spell.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male bard, charming grin, shoulder-length wavy chestnut hair, light beard, hazel eyes, slim build.\n\nOUTFIT: Rich burgundy-and-gold embroidered doublet over a cream puffy-sleeved shirt, brown leather belt with a pouch, dark trousers, tall riding boots. A wide-brimmed feathered hat with a long red feather.\n\nWEAPONS: A wooden lute slung across the back on a strap; a thin rapier at the hip in a decorative scabbard, not drawn.\n\nPOSE (east_spell): East-facing. Lute held in both hands, strumming, floating golden musical notes swirling around his head.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_block": {
+      "path": "images/spritecook/bard_east_block.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male bard, charming grin, shoulder-length wavy chestnut hair, light beard, hazel eyes, slim build.\n\nOUTFIT: Rich burgundy-and-gold embroidered doublet over a cream puffy-sleeved shirt, brown leather belt with a pouch, dark trousers, tall riding boots. A wide-brimmed feathered hat with a long red feather.\n\nWEAPONS: A wooden lute slung across the back on a strap; a thin rapier at the hip in a decorative scabbard, not drawn.\n\nPOSE (east_block): East-facing. Lute held horizontally across the torso as a shield, hat tipped forward. Confident smirk.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_ko": {
+      "path": "images/spritecook/bard_east_ko.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male bard, charming grin, shoulder-length wavy chestnut hair, light beard, hazel eyes, slim build.\n\nOUTFIT: Rich burgundy-and-gold embroidered doublet over a cream puffy-sleeved shirt, brown leather belt with a pouch, dark trousers, tall riding boots. A wide-brimmed feathered hat with a long red feather.\n\nWEAPONS: A wooden lute slung across the back on a strap; a thin rapier at the hip in a decorative scabbard, not drawn.\n\nPOSE (east_ko): East-facing, fallen on his back, lute fallen beside him, hat dropped nearby. Arms splayed.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    }
+  },
+  "notes": "Performer archetype. Lute primary, rapier secondary."
+}

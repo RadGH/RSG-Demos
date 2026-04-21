@@ -1,20 +1,20 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-21T05:05:00.000Z",
-  "creditsUsedTotal": 0,
+  "updatedAt": "2026-04-21T08:15:39.764Z",
+  "creditsUsedTotal": 312,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
-      "status": "frames_generated",
-      "referenceStatus": "generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "generated",
-        "south": "generated",
-        "east": "generated",
-        "east_attack": "generated",
-        "east_spell": "generated",
-        "east_block": "generated",
-        "east_ko": "generated"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/oracle.json",
       "candidateDir": "images/pixellab/oracle",
@@ -40,6 +40,500 @@
       "originalSpritecookPrefix": "images/spritecook/shadow_cat_",
       "creditsUsed": 0,
       "notes": "User success criterion: east_attack uses CLAWS. Zero weapons, zero held props."
+    },
+    "warrior": {
+      "spriteId": "warrior",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/warrior.json",
+      "candidateDir": "images/pixellab/warrior",
+      "originalSpritecookPrefix": "images/spritecook/warrior_",
+      "creditsUsed": 12,
+      "notes": "Classic frontline tank archetype. Longsword only — no shield, no variant weapons."
+    },
+    "fighter": {
+      "spriteId": "fighter",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/fighter.json",
+      "candidateDir": "images/pixellab/fighter",
+      "originalSpritecookPrefix": "images/spritecook/fighter_",
+      "creditsUsed": 12,
+      "notes": "Monk-adjacent melee specialist with quarterstaff."
+    },
+    "paladin": {
+      "spriteId": "paladin",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/paladin.json",
+      "candidateDir": "images/pixellab/paladin",
+      "originalSpritecookPrefix": "images/spritecook/paladin_",
+      "creditsUsed": 12,
+      "notes": "Holy knight. Warhammer + sunburst motif only."
+    },
+    "ranger": {
+      "spriteId": "ranger",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/ranger.json",
+      "candidateDir": "images/pixellab/ranger",
+      "originalSpritecookPrefix": "images/spritecook/ranger_",
+      "creditsUsed": 12,
+      "notes": "Forest archer. Longbow only."
+    },
+    "rogue": {
+      "spriteId": "rogue",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/rogue.json",
+      "candidateDir": "images/pixellab/rogue",
+      "originalSpritecookPrefix": "images/spritecook/rogue_",
+      "creditsUsed": 12,
+      "notes": "Dual-dagger stealth attacker. Hood up in all frames except KO."
+    },
+    "cleric": {
+      "spriteId": "cleric",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/cleric.json",
+      "candidateDir": "images/pixellab/cleric",
+      "originalSpritecookPrefix": "images/spritecook/cleric_",
+      "creditsUsed": 12,
+      "notes": "Healer archetype. Silver mace + sunburst medallion."
+    },
+    "bard": {
+      "spriteId": "bard",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/bard.json",
+      "candidateDir": "images/pixellab/bard",
+      "originalSpritecookPrefix": "images/spritecook/bard_",
+      "creditsUsed": 12,
+      "notes": "Performer archetype. Lute primary, rapier secondary."
+    },
+    "mage": {
+      "spriteId": "mage",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/mage.json",
+      "candidateDir": "images/pixellab/mage",
+      "originalSpritecookPrefix": "images/spritecook/mage_",
+      "creditsUsed": 12,
+      "notes": "Archetypal wizard with pointed hat and star-patterned robes."
+    },
+    "necromancer": {
+      "spriteId": "necromancer",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/necromancer.json",
+      "candidateDir": "images/pixellab/necromancer",
+      "originalSpritecookPrefix": "images/spritecook/necromancer_",
+      "creditsUsed": 12,
+      "notes": "Death magic specialist. Bone/green/black palette."
+    },
+    "warlock": {
+      "spriteId": "warlock",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/warlock.json",
+      "candidateDir": "images/pixellab/warlock",
+      "originalSpritecookPrefix": "images/spritecook/warlock_",
+      "creditsUsed": 12,
+      "notes": "Pact-caster archetype. Violet/crimson fel-fire motif + floating grimoire."
+    },
+    "demon_hunter": {
+      "spriteId": "demon_hunter",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/demon_hunter.json",
+      "candidateDir": "images/pixellab/demon_hunter",
+      "originalSpritecookPrefix": "images/spritecook/demon_hunter_",
+      "creditsUsed": 12,
+      "notes": "Blindfolded elf warrior with twin warglaives. Bare midriff, demon-hunter tattoos."
+    },
+    "scavenger": {
+      "spriteId": "scavenger",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/scavenger.json",
+      "candidateDir": "images/pixellab/scavenger",
+      "originalSpritecookPrefix": "images/spritecook/scavenger_",
+      "creditsUsed": 12,
+      "notes": "Ragtag wasteland survivor. Crossbow + patchwork leathers."
+    },
+    "swashbuckler": {
+      "spriteId": "swashbuckler",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/swashbuckler.json",
+      "candidateDir": "images/pixellab/swashbuckler",
+      "originalSpritecookPrefix": "images/spritecook/swashbuckler_",
+      "creditsUsed": 12,
+      "notes": "Dashing pirate-duelist. Rapier + tricorn hat + crimson doublet."
+    },
+    "dragon_knight": {
+      "spriteId": "dragon_knight",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/dragon_knight.json",
+      "candidateDir": "images/pixellab/dragon_knight",
+      "originalSpritecookPrefix": "images/spritecook/dragon_knight_",
+      "creditsUsed": 12,
+      "notes": "Heavy draconic plate + flaming greatsword."
+    },
+    "pyromancer": {
+      "spriteId": "pyromancer",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/pyromancer.json",
+      "candidateDir": "images/pixellab/pyromancer",
+      "originalSpritecookPrefix": "images/spritecook/pyromancer_",
+      "creditsUsed": 12,
+      "notes": "Fire-palm caster. Zero held weapons — hands are the conduit."
+    },
+    "stormcaller": {
+      "spriteId": "stormcaller",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/stormcaller.json",
+      "candidateDir": "images/pixellab/stormcaller",
+      "originalSpritecookPrefix": "images/spritecook/stormcaller_",
+      "creditsUsed": 12,
+      "notes": "Lightning-palm caster. Zero held weapons."
+    },
+    "druid": {
+      "spriteId": "druid",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/druid.json",
+      "candidateDir": "images/pixellab/druid",
+      "originalSpritecookPrefix": "images/spritecook/druid_",
+      "creditsUsed": 12,
+      "notes": "Nature druid with antlers + living bark + leaf staff."
+    },
+    "tactician": {
+      "spriteId": "tactician",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/tactician.json",
+      "candidateDir": "images/pixellab/tactician",
+      "originalSpritecookPrefix": "images/spritecook/tactician_",
+      "creditsUsed": 12,
+      "notes": "Napoleonic officer archetype. Coat + epaulets + riding crop."
+    },
+    "chronomancer": {
+      "spriteId": "chronomancer",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/chronomancer.json",
+      "candidateDir": "images/pixellab/chronomancer",
+      "originalSpritecookPrefix": "images/spritecook/chronomancer_",
+      "creditsUsed": 12,
+      "notes": "Time-magic caster. Clock/hourglass/gear motifs + floating hair."
+    },
+    "monk": {
+      "spriteId": "monk",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/monk.json",
+      "candidateDir": "images/pixellab/monk",
+      "originalSpritecookPrefix": "images/spritecook/monk_",
+      "creditsUsed": 12,
+      "notes": "Bare-handed martial artist. Zero weapons. Bald shaven head."
+    },
+    "shaman": {
+      "spriteId": "shaman",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/shaman.json",
+      "candidateDir": "images/pixellab/shaman",
+      "originalSpritecookPrefix": "images/spritecook/shaman_",
+      "creditsUsed": 12,
+      "notes": "Tribal spirit caster. Feathers/bones/paint + spirit-staff."
+    },
+    "witch_hunter": {
+      "spriteId": "witch_hunter",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/witch_hunter.json",
+      "candidateDir": "images/pixellab/witch_hunter",
+      "originalSpritecookPrefix": "images/spritecook/witch_hunter_",
+      "creditsUsed": 12,
+      "notes": "Puritanical gun-and-saber inquisitor. Wide-brim hat always on except KO."
+    },
+    "knight": {
+      "spriteId": "knight",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/knight.json",
+      "candidateDir": "images/pixellab/knight",
+      "originalSpritecookPrefix": "images/spritecook/knight_",
+      "creditsUsed": 12,
+      "notes": "Classic female knight. Longsword + kite-shield with silver stag on blue tabard."
+    },
+    "sorcerer": {
+      "spriteId": "sorcerer",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/sorcerer.json",
+      "candidateDir": "images/pixellab/sorcerer",
+      "originalSpritecookPrefix": "images/spritecook/sorcerer_",
+      "creditsUsed": 12,
+      "notes": "Crystal-orb caster, more refined than the archetypal Mage (no hat/beard)."
+    },
+    "runesmith": {
+      "spriteId": "runesmith",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/runesmith.json",
+      "candidateDir": "images/pixellab/runesmith",
+      "originalSpritecookPrefix": "images/spritecook/runesmith_",
+      "creditsUsed": 12,
+      "notes": "Dwarf smith-caster. Rune-hammer + braided red beard + eye-patch."
+    },
+    "shadow_dancer": {
+      "spriteId": "shadow_dancer",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/shadow_dancer.json",
+      "candidateDir": "images/pixellab/shadow_dancer",
+      "originalSpritecookPrefix": "images/spritecook/shadow_dancer_",
+      "creditsUsed": 12,
+      "notes": "Violet-shadow elven duelist-dancer. Scimitar + silk wraps + shadow tattoos."
     }
   }
 }

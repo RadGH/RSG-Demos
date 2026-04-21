@@ -1,0 +1,83 @@
+{
+  "$schema": "../../schemas/v1/art-direction.json",
+  "spriteId": "shadow_dancer",
+  "displayName": "Shadow Dancer",
+  "class": "humanoid",
+  "pixelHeight": 180,
+  "identity": "Elven female shadow dancer, short choppy black hair swept to one side, sharp violet eyes, very pale porcelain skin with faint dark shadow-swirl tattoos curling up the arms and neck, pointed elf ears, lithe nimble build.",
+  "outfit": "Black silk wrapped outfit with dark-violet trim, bare midriff, long silk sleeves ending in fingerless wraps, a trailing silk sash-belt, soft silent silk slippers. A cowl of shadow-silk around the shoulders (not a hood).",
+  "weapons": "A single curved black-blade shadow scimitar in the right hand, wisps of dark-violet shadow trailing from the blade.",
+  "attackStyle": "East-facing. Mid-forward-pirouette with scimitar slashed forward, shadow wisps trailing. Silk sash whipping.",
+  "spellStyle": "East-facing. Scimitar held low, free hand raised with a cloud of dark-violet shadow swirling upward from the fingertips.",
+  "blockStyle": "East-facing. Scimitar held vertically in front, free hand palm-up, a translucent dark-violet shadow ribbon spiraling as a guard.",
+  "koStyle": "East-facing, collapsed on one knee, scimitar fallen beside her, silk sash splayed, shadow wisps fading.",
+  "southStyle": "Facing camera (south), lithe poised idle. Scimitar held tip-down in the right hand, left arm raised in a dancer's pose. Shadow wisps around the feet.",
+  "portraitStyle": "Bust shot from mid-chest up, three-quarter view. Short choppy black hair swept aside, violet eyes, shadow-swirl tattoos on neck and arms, black silk wrap visible.",
+  "bannedSubstrings": [
+    "great sword",
+    "bow",
+    "plate armor",
+    "hood up"
+  ],
+  "referenceSheet": {
+    "path": "images/pixellab/shadow_dancer/reference.png",
+    "spritecookAssetId": "ea17cfe5-e3d7-4cfc-961a-f7b28095e02a",
+    "prompt": "IDENTITY (this image becomes the canonical identity anchor — preserve in every downstream frame): Elven female shadow dancer, short choppy black hair swept to one side, sharp violet eyes, very pale porcelain skin with faint dark shadow-swirl tattoos curling up the arms and neck, pointed elf ears, lithe nimble build.\n\nOUTFIT: Black silk wrapped outfit with dark-violet trim, bare midriff, long silk sleeves ending in fingerless wraps, a trailing silk sash-belt, soft silent silk slippers. A cowl of shadow-silk around the shoulders (not a hood).\n\nWEAPONS: A single curved black-blade shadow scimitar in the right hand, wisps of dark-violet shadow trailing from the blade.\n\nCLASS: humanoid. Full-body view, head to feet visible. Character occupies ~70% of the canvas height. Feet aligned near the bottom; headroom above.\n\nPOSE: full-body side profile facing right (east), calm combat-ready idle. Head up, eyes visible. NOT a portrait bust, NOT a close-up — entire character from head to feet.\n\nSTYLE: detailed pixel art with clean readable silhouette, warm pixel-art palette, transparent background, no ground shadow.",
+    "bitforgeAssetId": null,
+    "sourcePortraitPath": "images/portraits/shadow_dancer.png",
+    "generatedAt": "2026-04-21T08:15:39.764Z",
+    "approvedAt": null
+  },
+  "frames": {
+    "portrait": {
+      "path": "images/spritecook/shadow_dancer_portrait.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female shadow dancer, short choppy black hair swept to one side, sharp violet eyes, very pale porcelain skin with faint dark shadow-swirl tattoos curling up the arms and neck, pointed elf ears, lithe nimble build.\n\nOUTFIT: Black silk wrapped outfit with dark-violet trim, bare midriff, long silk sleeves ending in fingerless wraps, a trailing silk sash-belt, soft silent silk slippers. A cowl of shadow-silk around the shoulders (not a hood).\n\nWEAPONS: A single curved black-blade shadow scimitar in the right hand, wisps of dark-violet shadow trailing from the blade.\n\nPOSE (portrait): Bust shot from mid-chest up, three-quarter view. Short choppy black hair swept aside, violet eyes, shadow-swirl tattoos on neck and arms, black silk wrap visible.\n\nFRAMING: bust shot from mid-chest up, three-quarter view, centered in a 256x256 canvas, shoulders fill the lower third.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "south": {
+      "path": "images/spritecook/shadow_dancer_south.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female shadow dancer, short choppy black hair swept to one side, sharp violet eyes, very pale porcelain skin with faint dark shadow-swirl tattoos curling up the arms and neck, pointed elf ears, lithe nimble build.\n\nOUTFIT: Black silk wrapped outfit with dark-violet trim, bare midriff, long silk sleeves ending in fingerless wraps, a trailing silk sash-belt, soft silent silk slippers. A cowl of shadow-silk around the shoulders (not a hood).\n\nWEAPONS: A single curved black-blade shadow scimitar in the right hand, wisps of dark-violet shadow trailing from the blade.\n\nPOSE (south): Facing camera (south), lithe poised idle. Scimitar held tip-down in the right hand, left arm raised in a dancer's pose. Shadow wisps around the feet.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east": {
+      "path": "images/spritecook/shadow_dancer_east.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female shadow dancer, short choppy black hair swept to one side, sharp violet eyes, very pale porcelain skin with faint dark shadow-swirl tattoos curling up the arms and neck, pointed elf ears, lithe nimble build.\n\nOUTFIT: Black silk wrapped outfit with dark-violet trim, bare midriff, long silk sleeves ending in fingerless wraps, a trailing silk sash-belt, soft silent silk slippers. A cowl of shadow-silk around the shoulders (not a hood).\n\nWEAPONS: A single curved black-blade shadow scimitar in the right hand, wisps of dark-violet shadow trailing from the blade.\n\nPOSE (east): Neutral combat idle, consistent with reference sheet, full-body facing east.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_attack": {
+      "path": "images/spritecook/shadow_dancer_east_attack.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female shadow dancer, short choppy black hair swept to one side, sharp violet eyes, very pale porcelain skin with faint dark shadow-swirl tattoos curling up the arms and neck, pointed elf ears, lithe nimble build.\n\nOUTFIT: Black silk wrapped outfit with dark-violet trim, bare midriff, long silk sleeves ending in fingerless wraps, a trailing silk sash-belt, soft silent silk slippers. A cowl of shadow-silk around the shoulders (not a hood).\n\nWEAPONS: A single curved black-blade shadow scimitar in the right hand, wisps of dark-violet shadow trailing from the blade.\n\nPOSE (east_attack): East-facing. Mid-forward-pirouette with scimitar slashed forward, shadow wisps trailing. Silk sash whipping.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_spell": {
+      "path": "images/spritecook/shadow_dancer_east_spell.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female shadow dancer, short choppy black hair swept to one side, sharp violet eyes, very pale porcelain skin with faint dark shadow-swirl tattoos curling up the arms and neck, pointed elf ears, lithe nimble build.\n\nOUTFIT: Black silk wrapped outfit with dark-violet trim, bare midriff, long silk sleeves ending in fingerless wraps, a trailing silk sash-belt, soft silent silk slippers. A cowl of shadow-silk around the shoulders (not a hood).\n\nWEAPONS: A single curved black-blade shadow scimitar in the right hand, wisps of dark-violet shadow trailing from the blade.\n\nPOSE (east_spell): East-facing. Scimitar held low, free hand raised with a cloud of dark-violet shadow swirling upward from the fingertips.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_block": {
+      "path": "images/spritecook/shadow_dancer_east_block.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female shadow dancer, short choppy black hair swept to one side, sharp violet eyes, very pale porcelain skin with faint dark shadow-swirl tattoos curling up the arms and neck, pointed elf ears, lithe nimble build.\n\nOUTFIT: Black silk wrapped outfit with dark-violet trim, bare midriff, long silk sleeves ending in fingerless wraps, a trailing silk sash-belt, soft silent silk slippers. A cowl of shadow-silk around the shoulders (not a hood).\n\nWEAPONS: A single curved black-blade shadow scimitar in the right hand, wisps of dark-violet shadow trailing from the blade.\n\nPOSE (east_block): East-facing. Scimitar held vertically in front, free hand palm-up, a translucent dark-violet shadow ribbon spiraling as a guard.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_ko": {
+      "path": "images/spritecook/shadow_dancer_east_ko.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female shadow dancer, short choppy black hair swept to one side, sharp violet eyes, very pale porcelain skin with faint dark shadow-swirl tattoos curling up the arms and neck, pointed elf ears, lithe nimble build.\n\nOUTFIT: Black silk wrapped outfit with dark-violet trim, bare midriff, long silk sleeves ending in fingerless wraps, a trailing silk sash-belt, soft silent silk slippers. A cowl of shadow-silk around the shoulders (not a hood).\n\nWEAPONS: A single curved black-blade shadow scimitar in the right hand, wisps of dark-violet shadow trailing from the blade.\n\nPOSE (east_ko): East-facing, collapsed on one knee, scimitar fallen beside her, silk sash splayed, shadow wisps fading.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    }
+  },
+  "notes": "Violet-shadow elven duelist-dancer. Scimitar + silk wraps + shadow tattoos."
+}

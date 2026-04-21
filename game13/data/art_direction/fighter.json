@@ -1,0 +1,84 @@
+{
+  "$schema": "../../schemas/v1/art-direction.json",
+  "spriteId": "fighter",
+  "displayName": "Fighter",
+  "class": "humanoid",
+  "pixelHeight": 180,
+  "identity": "Disciplined human male, clean-shaven, black hair tied in a topknot, sharp brown eyes, lean athletic build.",
+  "outfit": "Studded leather chestpiece over a dark tunic, leather pauldrons, bracers on both forearms, martial belt with hanging cloth sash. Brown trousers, leather boots.",
+  "weapons": "A polished wooden quarterstaff held diagonally across the body, both hands in a balanced grip.",
+  "attackStyle": "East-facing. Mid-strike, quarterstaff thrust forward at chest level, right foot lunged forward. Topknot streams back.",
+  "spellStyle": "East-facing. Quarterstaff planted vertically, left hand raised with palm open, faint inner-ki white glow around the fist.",
+  "blockStyle": "East-facing. Quarterstaff held horizontally across the chest, both hands gripping tight. Knees bent, squared stance.",
+  "koStyle": "East-facing, kneeling on the ground, quarterstaff fallen beside him. Head bowed, fists on the ground.",
+  "southStyle": "Facing camera (south), calm martial idle. Quarterstaff planted vertically beside him, left hand at his side. Topknot visible above forehead.",
+  "portraitStyle": "Bust shot from mid-chest up, three-quarter view. Sharp face, topknot, studded leather visible on shoulders.",
+  "bannedSubstrings": [
+    "sword",
+    "axe",
+    "bow",
+    "wand",
+    "pistol"
+  ],
+  "referenceSheet": {
+    "path": "images/pixellab/fighter/reference.png",
+    "spritecookAssetId": "0260be94-a726-40b5-af0e-3cddd746563b",
+    "prompt": "IDENTITY (this image becomes the canonical identity anchor — preserve in every downstream frame): Disciplined human male, clean-shaven, black hair tied in a topknot, sharp brown eyes, lean athletic build.\n\nOUTFIT: Studded leather chestpiece over a dark tunic, leather pauldrons, bracers on both forearms, martial belt with hanging cloth sash. Brown trousers, leather boots.\n\nWEAPONS: A polished wooden quarterstaff held diagonally across the body, both hands in a balanced grip.\n\nCLASS: humanoid. Full-body view, head to feet visible. Character occupies ~70% of the canvas height. Feet aligned near the bottom; headroom above.\n\nPOSE: full-body side profile facing right (east), calm combat-ready idle. Head up, eyes visible. NOT a portrait bust, NOT a close-up — entire character from head to feet.\n\nSTYLE: detailed pixel art with clean readable silhouette, warm pixel-art palette, transparent background, no ground shadow.",
+    "bitforgeAssetId": null,
+    "sourcePortraitPath": "images/portraits/fighter.png",
+    "generatedAt": "2026-04-21T08:15:39.764Z",
+    "approvedAt": null
+  },
+  "frames": {
+    "portrait": {
+      "path": "images/spritecook/fighter_portrait.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Disciplined human male, clean-shaven, black hair tied in a topknot, sharp brown eyes, lean athletic build.\n\nOUTFIT: Studded leather chestpiece over a dark tunic, leather pauldrons, bracers on both forearms, martial belt with hanging cloth sash. Brown trousers, leather boots.\n\nWEAPONS: A polished wooden quarterstaff held diagonally across the body, both hands in a balanced grip.\n\nPOSE (portrait): Bust shot from mid-chest up, three-quarter view. Sharp face, topknot, studded leather visible on shoulders.\n\nFRAMING: bust shot from mid-chest up, three-quarter view, centered in a 256x256 canvas, shoulders fill the lower third.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "south": {
+      "path": "images/spritecook/fighter_south.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Disciplined human male, clean-shaven, black hair tied in a topknot, sharp brown eyes, lean athletic build.\n\nOUTFIT: Studded leather chestpiece over a dark tunic, leather pauldrons, bracers on both forearms, martial belt with hanging cloth sash. Brown trousers, leather boots.\n\nWEAPONS: A polished wooden quarterstaff held diagonally across the body, both hands in a balanced grip.\n\nPOSE (south): Facing camera (south), calm martial idle. Quarterstaff planted vertically beside him, left hand at his side. Topknot visible above forehead.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east": {
+      "path": "images/spritecook/fighter_east.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Disciplined human male, clean-shaven, black hair tied in a topknot, sharp brown eyes, lean athletic build.\n\nOUTFIT: Studded leather chestpiece over a dark tunic, leather pauldrons, bracers on both forearms, martial belt with hanging cloth sash. Brown trousers, leather boots.\n\nWEAPONS: A polished wooden quarterstaff held diagonally across the body, both hands in a balanced grip.\n\nPOSE (east): Neutral combat idle, consistent with reference sheet, full-body facing east.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_attack": {
+      "path": "images/spritecook/fighter_east_attack.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Disciplined human male, clean-shaven, black hair tied in a topknot, sharp brown eyes, lean athletic build.\n\nOUTFIT: Studded leather chestpiece over a dark tunic, leather pauldrons, bracers on both forearms, martial belt with hanging cloth sash. Brown trousers, leather boots.\n\nWEAPONS: A polished wooden quarterstaff held diagonally across the body, both hands in a balanced grip.\n\nPOSE (east_attack): East-facing. Mid-strike, quarterstaff thrust forward at chest level, right foot lunged forward. Topknot streams back.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_spell": {
+      "path": "images/spritecook/fighter_east_spell.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Disciplined human male, clean-shaven, black hair tied in a topknot, sharp brown eyes, lean athletic build.\n\nOUTFIT: Studded leather chestpiece over a dark tunic, leather pauldrons, bracers on both forearms, martial belt with hanging cloth sash. Brown trousers, leather boots.\n\nWEAPONS: A polished wooden quarterstaff held diagonally across the body, both hands in a balanced grip.\n\nPOSE (east_spell): East-facing. Quarterstaff planted vertically, left hand raised with palm open, faint inner-ki white glow around the fist.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_block": {
+      "path": "images/spritecook/fighter_east_block.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Disciplined human male, clean-shaven, black hair tied in a topknot, sharp brown eyes, lean athletic build.\n\nOUTFIT: Studded leather chestpiece over a dark tunic, leather pauldrons, bracers on both forearms, martial belt with hanging cloth sash. Brown trousers, leather boots.\n\nWEAPONS: A polished wooden quarterstaff held diagonally across the body, both hands in a balanced grip.\n\nPOSE (east_block): East-facing. Quarterstaff held horizontally across the chest, both hands gripping tight. Knees bent, squared stance.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_ko": {
+      "path": "images/spritecook/fighter_east_ko.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Disciplined human male, clean-shaven, black hair tied in a topknot, sharp brown eyes, lean athletic build.\n\nOUTFIT: Studded leather chestpiece over a dark tunic, leather pauldrons, bracers on both forearms, martial belt with hanging cloth sash. Brown trousers, leather boots.\n\nWEAPONS: A polished wooden quarterstaff held diagonally across the body, both hands in a balanced grip.\n\nPOSE (east_ko): East-facing, kneeling on the ground, quarterstaff fallen beside him. Head bowed, fists on the ground.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    }
+  },
+  "notes": "Monk-adjacent melee specialist with quarterstaff."
+}

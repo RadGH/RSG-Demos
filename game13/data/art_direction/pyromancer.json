@@ -1,0 +1,86 @@
+{
+  "$schema": "../../schemas/v1/art-direction.json",
+  "spriteId": "pyromancer",
+  "displayName": "Pyromancer",
+  "class": "humanoid",
+  "pixelHeight": 180,
+  "identity": "Human female pyromancer, fiery orange-red hair flowing with ember trails and sparks, glowing amber eyes, fair skin with faint soot smudges, slim tall build.",
+  "outfit": "Orange-red layered robes with flame-pattern embroidery, gold sash at the waist, exposed forearms, a ragged scorched hem. Dark leather sandals. A short cape of flickering red-and-orange fabric.",
+  "weapons": "No held weapon. Both hands wreathed in bright orange-red flames as her \"weapon\".",
+  "attackStyle": "East-facing. Right arm thrust forward, a jet of orange-red fire erupting from the open palm. Hair whips back with heat-wind.",
+  "spellStyle": "East-facing. Both hands raised with a large swirling ball of orange-red fire hovering between them. Embers rain upward.",
+  "blockStyle": "East-facing. Arms crossed in front of chest with a wall of flickering flames between her and the camera-right edge.",
+  "koStyle": "East-facing, slumped forward on one knee, flame on hands extinguished to faint embers. Hair dulled.",
+  "southStyle": "Facing camera (south), fiery idle. Both palms held at waist level with small flames dancing above them. Fiery hair.",
+  "portraitStyle": "Bust shot from mid-chest up, three-quarter view. Fiery hair with ember trails, glowing amber eyes, flame-embroidered orange robes.",
+  "bannedSubstrings": [
+    "sword",
+    "axe",
+    "bow",
+    "ice",
+    "frost",
+    "holy",
+    "staff"
+  ],
+  "referenceSheet": {
+    "path": "images/pixellab/pyromancer/reference.png",
+    "spritecookAssetId": "b3fc741a-ebff-4642-8af4-da0f8e6bbaa0",
+    "prompt": "IDENTITY (this image becomes the canonical identity anchor — preserve in every downstream frame): Human female pyromancer, fiery orange-red hair flowing with ember trails and sparks, glowing amber eyes, fair skin with faint soot smudges, slim tall build.\n\nOUTFIT: Orange-red layered robes with flame-pattern embroidery, gold sash at the waist, exposed forearms, a ragged scorched hem. Dark leather sandals. A short cape of flickering red-and-orange fabric.\n\nWEAPONS: No held weapon. Both hands wreathed in bright orange-red flames as her \"weapon\".\n\nCLASS: humanoid. Full-body view, head to feet visible. Character occupies ~70% of the canvas height. Feet aligned near the bottom; headroom above.\n\nPOSE: full-body side profile facing right (east), calm combat-ready idle. Head up, eyes visible. NOT a portrait bust, NOT a close-up — entire character from head to feet.\n\nSTYLE: detailed pixel art with clean readable silhouette, warm pixel-art palette, transparent background, no ground shadow.",
+    "bitforgeAssetId": null,
+    "sourcePortraitPath": "images/portraits/pyromancer.png",
+    "generatedAt": "2026-04-21T08:15:39.764Z",
+    "approvedAt": null
+  },
+  "frames": {
+    "portrait": {
+      "path": "images/spritecook/pyromancer_portrait.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human female pyromancer, fiery orange-red hair flowing with ember trails and sparks, glowing amber eyes, fair skin with faint soot smudges, slim tall build.\n\nOUTFIT: Orange-red layered robes with flame-pattern embroidery, gold sash at the waist, exposed forearms, a ragged scorched hem. Dark leather sandals. A short cape of flickering red-and-orange fabric.\n\nWEAPONS: No held weapon. Both hands wreathed in bright orange-red flames as her \"weapon\".\n\nPOSE (portrait): Bust shot from mid-chest up, three-quarter view. Fiery hair with ember trails, glowing amber eyes, flame-embroidered orange robes.\n\nFRAMING: bust shot from mid-chest up, three-quarter view, centered in a 256x256 canvas, shoulders fill the lower third.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "south": {
+      "path": "images/spritecook/pyromancer_south.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human female pyromancer, fiery orange-red hair flowing with ember trails and sparks, glowing amber eyes, fair skin with faint soot smudges, slim tall build.\n\nOUTFIT: Orange-red layered robes with flame-pattern embroidery, gold sash at the waist, exposed forearms, a ragged scorched hem. Dark leather sandals. A short cape of flickering red-and-orange fabric.\n\nWEAPONS: No held weapon. Both hands wreathed in bright orange-red flames as her \"weapon\".\n\nPOSE (south): Facing camera (south), fiery idle. Both palms held at waist level with small flames dancing above them. Fiery hair.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east": {
+      "path": "images/spritecook/pyromancer_east.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human female pyromancer, fiery orange-red hair flowing with ember trails and sparks, glowing amber eyes, fair skin with faint soot smudges, slim tall build.\n\nOUTFIT: Orange-red layered robes with flame-pattern embroidery, gold sash at the waist, exposed forearms, a ragged scorched hem. Dark leather sandals. A short cape of flickering red-and-orange fabric.\n\nWEAPONS: No held weapon. Both hands wreathed in bright orange-red flames as her \"weapon\".\n\nPOSE (east): Neutral combat idle, consistent with reference sheet, full-body facing east.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_attack": {
+      "path": "images/spritecook/pyromancer_east_attack.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human female pyromancer, fiery orange-red hair flowing with ember trails and sparks, glowing amber eyes, fair skin with faint soot smudges, slim tall build.\n\nOUTFIT: Orange-red layered robes with flame-pattern embroidery, gold sash at the waist, exposed forearms, a ragged scorched hem. Dark leather sandals. A short cape of flickering red-and-orange fabric.\n\nWEAPONS: No held weapon. Both hands wreathed in bright orange-red flames as her \"weapon\".\n\nPOSE (east_attack): East-facing. Right arm thrust forward, a jet of orange-red fire erupting from the open palm. Hair whips back with heat-wind.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_spell": {
+      "path": "images/spritecook/pyromancer_east_spell.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human female pyromancer, fiery orange-red hair flowing with ember trails and sparks, glowing amber eyes, fair skin with faint soot smudges, slim tall build.\n\nOUTFIT: Orange-red layered robes with flame-pattern embroidery, gold sash at the waist, exposed forearms, a ragged scorched hem. Dark leather sandals. A short cape of flickering red-and-orange fabric.\n\nWEAPONS: No held weapon. Both hands wreathed in bright orange-red flames as her \"weapon\".\n\nPOSE (east_spell): East-facing. Both hands raised with a large swirling ball of orange-red fire hovering between them. Embers rain upward.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_block": {
+      "path": "images/spritecook/pyromancer_east_block.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human female pyromancer, fiery orange-red hair flowing with ember trails and sparks, glowing amber eyes, fair skin with faint soot smudges, slim tall build.\n\nOUTFIT: Orange-red layered robes with flame-pattern embroidery, gold sash at the waist, exposed forearms, a ragged scorched hem. Dark leather sandals. A short cape of flickering red-and-orange fabric.\n\nWEAPONS: No held weapon. Both hands wreathed in bright orange-red flames as her \"weapon\".\n\nPOSE (east_block): East-facing. Arms crossed in front of chest with a wall of flickering flames between her and the camera-right edge.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_ko": {
+      "path": "images/spritecook/pyromancer_east_ko.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human female pyromancer, fiery orange-red hair flowing with ember trails and sparks, glowing amber eyes, fair skin with faint soot smudges, slim tall build.\n\nOUTFIT: Orange-red layered robes with flame-pattern embroidery, gold sash at the waist, exposed forearms, a ragged scorched hem. Dark leather sandals. A short cape of flickering red-and-orange fabric.\n\nWEAPONS: No held weapon. Both hands wreathed in bright orange-red flames as her \"weapon\".\n\nPOSE (east_ko): East-facing, slumped forward on one knee, flame on hands extinguished to faint embers. Hair dulled.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    }
+  },
+  "notes": "Fire-palm caster. Zero held weapons — hands are the conduit."
+}

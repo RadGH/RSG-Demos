@@ -1,0 +1,83 @@
+{
+  "$schema": "../../schemas/v1/art-direction.json",
+  "spriteId": "demon_hunter",
+  "displayName": "Demon Hunter",
+  "class": "humanoid",
+  "pixelHeight": 180,
+  "identity": "Elven female demon hunter, long snow-white hair pulled back, a black cloth blindfold covering the eyes, sharp jawline, pale skin with faint black demon-hunter tattoos on the arms and temples, athletic toned build, pointed elf ears.",
+  "outfit": "Crimson-and-black leather harness across bare midriff, black leather pants with crimson straps, armored greaves. Twin horns or curved spikes rising from a crimson headband. A tattered black cloak trailing from the shoulders.",
+  "weapons": "Twin warglaives (curved double-bladed melee weapons) held one in each hand.",
+  "attackStyle": "East-facing. Mid-leap, both warglaives swung forward in a scissoring slash, cloak trailing behind. Blindfolded head forward.",
+  "spellStyle": "East-facing. Warglaives held down at sides, crimson demonic wings unfurling from the back in a flash.",
+  "blockStyle": "East-facing. Warglaives crossed in front of the face in an X, blades outward. Crouched low.",
+  "koStyle": "East-facing, fallen forward on one knee, one warglaive fallen beside her, blindfold still on. Cloak pooled around.",
+  "southStyle": "Facing camera (south), predatory idle. Warglaives held at her sides, blindfolded face forward, horn-headband visible. Tattoos on arms.",
+  "portraitStyle": "Bust shot from mid-chest up, three-quarter view. Black blindfold, snow-white hair pulled back, horned headband, tattooed temples, crimson-and-black harness.",
+  "bannedSubstrings": [
+    "sword",
+    "bow",
+    "gun",
+    "hood"
+  ],
+  "referenceSheet": {
+    "path": "images/pixellab/demon_hunter/reference.png",
+    "spritecookAssetId": "9f4f2546-429a-4745-ac0a-52acad05e60d",
+    "prompt": "IDENTITY (this image becomes the canonical identity anchor — preserve in every downstream frame): Elven female demon hunter, long snow-white hair pulled back, a black cloth blindfold covering the eyes, sharp jawline, pale skin with faint black demon-hunter tattoos on the arms and temples, athletic toned build, pointed elf ears.\n\nOUTFIT: Crimson-and-black leather harness across bare midriff, black leather pants with crimson straps, armored greaves. Twin horns or curved spikes rising from a crimson headband. A tattered black cloak trailing from the shoulders.\n\nWEAPONS: Twin warglaives (curved double-bladed melee weapons) held one in each hand.\n\nCLASS: humanoid. Full-body view, head to feet visible. Character occupies ~70% of the canvas height. Feet aligned near the bottom; headroom above.\n\nPOSE: full-body side profile facing right (east), calm combat-ready idle. Head up, eyes visible. NOT a portrait bust, NOT a close-up — entire character from head to feet.\n\nSTYLE: detailed pixel art with clean readable silhouette, warm pixel-art palette, transparent background, no ground shadow.",
+    "bitforgeAssetId": null,
+    "sourcePortraitPath": "images/portraits/demon_hunter.png",
+    "generatedAt": "2026-04-21T08:15:39.764Z",
+    "approvedAt": null
+  },
+  "frames": {
+    "portrait": {
+      "path": "images/spritecook/demon_hunter_portrait.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female demon hunter, long snow-white hair pulled back, a black cloth blindfold covering the eyes, sharp jawline, pale skin with faint black demon-hunter tattoos on the arms and temples, athletic toned build, pointed elf ears.\n\nOUTFIT: Crimson-and-black leather harness across bare midriff, black leather pants with crimson straps, armored greaves. Twin horns or curved spikes rising from a crimson headband. A tattered black cloak trailing from the shoulders.\n\nWEAPONS: Twin warglaives (curved double-bladed melee weapons) held one in each hand.\n\nPOSE (portrait): Bust shot from mid-chest up, three-quarter view. Black blindfold, snow-white hair pulled back, horned headband, tattooed temples, crimson-and-black harness.\n\nFRAMING: bust shot from mid-chest up, three-quarter view, centered in a 256x256 canvas, shoulders fill the lower third.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "south": {
+      "path": "images/spritecook/demon_hunter_south.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female demon hunter, long snow-white hair pulled back, a black cloth blindfold covering the eyes, sharp jawline, pale skin with faint black demon-hunter tattoos on the arms and temples, athletic toned build, pointed elf ears.\n\nOUTFIT: Crimson-and-black leather harness across bare midriff, black leather pants with crimson straps, armored greaves. Twin horns or curved spikes rising from a crimson headband. A tattered black cloak trailing from the shoulders.\n\nWEAPONS: Twin warglaives (curved double-bladed melee weapons) held one in each hand.\n\nPOSE (south): Facing camera (south), predatory idle. Warglaives held at her sides, blindfolded face forward, horn-headband visible. Tattoos on arms.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east": {
+      "path": "images/spritecook/demon_hunter_east.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female demon hunter, long snow-white hair pulled back, a black cloth blindfold covering the eyes, sharp jawline, pale skin with faint black demon-hunter tattoos on the arms and temples, athletic toned build, pointed elf ears.\n\nOUTFIT: Crimson-and-black leather harness across bare midriff, black leather pants with crimson straps, armored greaves. Twin horns or curved spikes rising from a crimson headband. A tattered black cloak trailing from the shoulders.\n\nWEAPONS: Twin warglaives (curved double-bladed melee weapons) held one in each hand.\n\nPOSE (east): Neutral combat idle, consistent with reference sheet, full-body facing east.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_attack": {
+      "path": "images/spritecook/demon_hunter_east_attack.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female demon hunter, long snow-white hair pulled back, a black cloth blindfold covering the eyes, sharp jawline, pale skin with faint black demon-hunter tattoos on the arms and temples, athletic toned build, pointed elf ears.\n\nOUTFIT: Crimson-and-black leather harness across bare midriff, black leather pants with crimson straps, armored greaves. Twin horns or curved spikes rising from a crimson headband. A tattered black cloak trailing from the shoulders.\n\nWEAPONS: Twin warglaives (curved double-bladed melee weapons) held one in each hand.\n\nPOSE (east_attack): East-facing. Mid-leap, both warglaives swung forward in a scissoring slash, cloak trailing behind. Blindfolded head forward.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_spell": {
+      "path": "images/spritecook/demon_hunter_east_spell.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female demon hunter, long snow-white hair pulled back, a black cloth blindfold covering the eyes, sharp jawline, pale skin with faint black demon-hunter tattoos on the arms and temples, athletic toned build, pointed elf ears.\n\nOUTFIT: Crimson-and-black leather harness across bare midriff, black leather pants with crimson straps, armored greaves. Twin horns or curved spikes rising from a crimson headband. A tattered black cloak trailing from the shoulders.\n\nWEAPONS: Twin warglaives (curved double-bladed melee weapons) held one in each hand.\n\nPOSE (east_spell): East-facing. Warglaives held down at sides, crimson demonic wings unfurling from the back in a flash.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_block": {
+      "path": "images/spritecook/demon_hunter_east_block.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female demon hunter, long snow-white hair pulled back, a black cloth blindfold covering the eyes, sharp jawline, pale skin with faint black demon-hunter tattoos on the arms and temples, athletic toned build, pointed elf ears.\n\nOUTFIT: Crimson-and-black leather harness across bare midriff, black leather pants with crimson straps, armored greaves. Twin horns or curved spikes rising from a crimson headband. A tattered black cloak trailing from the shoulders.\n\nWEAPONS: Twin warglaives (curved double-bladed melee weapons) held one in each hand.\n\nPOSE (east_block): East-facing. Warglaives crossed in front of the face in an X, blades outward. Crouched low.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_ko": {
+      "path": "images/spritecook/demon_hunter_east_ko.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Elven female demon hunter, long snow-white hair pulled back, a black cloth blindfold covering the eyes, sharp jawline, pale skin with faint black demon-hunter tattoos on the arms and temples, athletic toned build, pointed elf ears.\n\nOUTFIT: Crimson-and-black leather harness across bare midriff, black leather pants with crimson straps, armored greaves. Twin horns or curved spikes rising from a crimson headband. A tattered black cloak trailing from the shoulders.\n\nWEAPONS: Twin warglaives (curved double-bladed melee weapons) held one in each hand.\n\nPOSE (east_ko): East-facing, fallen forward on one knee, one warglaive fallen beside her, blindfold still on. Cloak pooled around.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    }
+  },
+  "notes": "Blindfolded elf warrior with twin warglaives. Bare midriff, demon-hunter tattoos."
+}

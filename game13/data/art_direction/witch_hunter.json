@@ -1,0 +1,84 @@
+{
+  "$schema": "../../schemas/v1/art-direction.json",
+  "spriteId": "witch_hunter",
+  "displayName": "Witch Hunter",
+  "class": "humanoid",
+  "pixelHeight": 180,
+  "identity": "Stern human male witch hunter, clean-shaven, sharp severe face, short dark hair mostly hidden under a hat, cold pale-blue eyes, pale skin, lean upright build.",
+  "outfit": "Long black leather trench coat with silver buckles and silver cross-sigils, wide-brimmed puritanical black hat, dark trousers, tall black boots. White high-collar shirt beneath. Bandolier of silver bullets across the chest.",
+  "weapons": "A flintlock pistol in the right hand, a curved silver saber at the left hip partially drawn.",
+  "attackStyle": "East-facing. Flintlock pistol raised and fired forward, a puff of smoke and a bright flash at the muzzle. Left hand steadying.",
+  "spellStyle": "East-facing. Pistol lowered, left hand raised holding a small silver cross that emits a pale-white holy light.",
+  "blockStyle": "East-facing. Pistol held crosswise in front, wide-brim hat tilted forward, coat pulled up as partial cover.",
+  "koStyle": "East-facing, fallen on his back, pistol fallen beside him, hat dropped nearby. Coat splayed.",
+  "southStyle": "Facing camera (south), stern menacing idle. Flintlock pistol held down at his side, free hand on the saber hilt. Wide-brim hat shadowing the eyes.",
+  "portraitStyle": "Bust shot from mid-chest up, three-quarter view. Wide-brim black hat, cold pale-blue eyes, black leather trench with silver cross-sigils, bandolier visible.",
+  "bannedSubstrings": [
+    "great sword",
+    "axe",
+    "bow",
+    "magic staff",
+    "hood"
+  ],
+  "referenceSheet": {
+    "path": "images/pixellab/witch_hunter/reference.png",
+    "spritecookAssetId": "06fccc20-6929-4a1c-a605-654605469fab",
+    "prompt": "IDENTITY (this image becomes the canonical identity anchor — preserve in every downstream frame): Stern human male witch hunter, clean-shaven, sharp severe face, short dark hair mostly hidden under a hat, cold pale-blue eyes, pale skin, lean upright build.\n\nOUTFIT: Long black leather trench coat with silver buckles and silver cross-sigils, wide-brimmed puritanical black hat, dark trousers, tall black boots. White high-collar shirt beneath. Bandolier of silver bullets across the chest.\n\nWEAPONS: A flintlock pistol in the right hand, a curved silver saber at the left hip partially drawn.\n\nCLASS: humanoid. Full-body view, head to feet visible. Character occupies ~70% of the canvas height. Feet aligned near the bottom; headroom above.\n\nPOSE: full-body side profile facing right (east), calm combat-ready idle. Head up, eyes visible. NOT a portrait bust, NOT a close-up — entire character from head to feet.\n\nSTYLE: detailed pixel art with clean readable silhouette, warm pixel-art palette, transparent background, no ground shadow.",
+    "bitforgeAssetId": null,
+    "sourcePortraitPath": "images/portraits/witch_hunter.png",
+    "generatedAt": "2026-04-21T08:15:39.764Z",
+    "approvedAt": null
+  },
+  "frames": {
+    "portrait": {
+      "path": "images/spritecook/witch_hunter_portrait.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stern human male witch hunter, clean-shaven, sharp severe face, short dark hair mostly hidden under a hat, cold pale-blue eyes, pale skin, lean upright build.\n\nOUTFIT: Long black leather trench coat with silver buckles and silver cross-sigils, wide-brimmed puritanical black hat, dark trousers, tall black boots. White high-collar shirt beneath. Bandolier of silver bullets across the chest.\n\nWEAPONS: A flintlock pistol in the right hand, a curved silver saber at the left hip partially drawn.\n\nPOSE (portrait): Bust shot from mid-chest up, three-quarter view. Wide-brim black hat, cold pale-blue eyes, black leather trench with silver cross-sigils, bandolier visible.\n\nFRAMING: bust shot from mid-chest up, three-quarter view, centered in a 256x256 canvas, shoulders fill the lower third.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "south": {
+      "path": "images/spritecook/witch_hunter_south.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stern human male witch hunter, clean-shaven, sharp severe face, short dark hair mostly hidden under a hat, cold pale-blue eyes, pale skin, lean upright build.\n\nOUTFIT: Long black leather trench coat with silver buckles and silver cross-sigils, wide-brimmed puritanical black hat, dark trousers, tall black boots. White high-collar shirt beneath. Bandolier of silver bullets across the chest.\n\nWEAPONS: A flintlock pistol in the right hand, a curved silver saber at the left hip partially drawn.\n\nPOSE (south): Facing camera (south), stern menacing idle. Flintlock pistol held down at his side, free hand on the saber hilt. Wide-brim hat shadowing the eyes.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east": {
+      "path": "images/spritecook/witch_hunter_east.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stern human male witch hunter, clean-shaven, sharp severe face, short dark hair mostly hidden under a hat, cold pale-blue eyes, pale skin, lean upright build.\n\nOUTFIT: Long black leather trench coat with silver buckles and silver cross-sigils, wide-brimmed puritanical black hat, dark trousers, tall black boots. White high-collar shirt beneath. Bandolier of silver bullets across the chest.\n\nWEAPONS: A flintlock pistol in the right hand, a curved silver saber at the left hip partially drawn.\n\nPOSE (east): Neutral combat idle, consistent with reference sheet, full-body facing east.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_attack": {
+      "path": "images/spritecook/witch_hunter_east_attack.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stern human male witch hunter, clean-shaven, sharp severe face, short dark hair mostly hidden under a hat, cold pale-blue eyes, pale skin, lean upright build.\n\nOUTFIT: Long black leather trench coat with silver buckles and silver cross-sigils, wide-brimmed puritanical black hat, dark trousers, tall black boots. White high-collar shirt beneath. Bandolier of silver bullets across the chest.\n\nWEAPONS: A flintlock pistol in the right hand, a curved silver saber at the left hip partially drawn.\n\nPOSE (east_attack): East-facing. Flintlock pistol raised and fired forward, a puff of smoke and a bright flash at the muzzle. Left hand steadying.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_spell": {
+      "path": "images/spritecook/witch_hunter_east_spell.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stern human male witch hunter, clean-shaven, sharp severe face, short dark hair mostly hidden under a hat, cold pale-blue eyes, pale skin, lean upright build.\n\nOUTFIT: Long black leather trench coat with silver buckles and silver cross-sigils, wide-brimmed puritanical black hat, dark trousers, tall black boots. White high-collar shirt beneath. Bandolier of silver bullets across the chest.\n\nWEAPONS: A flintlock pistol in the right hand, a curved silver saber at the left hip partially drawn.\n\nPOSE (east_spell): East-facing. Pistol lowered, left hand raised holding a small silver cross that emits a pale-white holy light.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_block": {
+      "path": "images/spritecook/witch_hunter_east_block.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stern human male witch hunter, clean-shaven, sharp severe face, short dark hair mostly hidden under a hat, cold pale-blue eyes, pale skin, lean upright build.\n\nOUTFIT: Long black leather trench coat with silver buckles and silver cross-sigils, wide-brimmed puritanical black hat, dark trousers, tall black boots. White high-collar shirt beneath. Bandolier of silver bullets across the chest.\n\nWEAPONS: A flintlock pistol in the right hand, a curved silver saber at the left hip partially drawn.\n\nPOSE (east_block): East-facing. Pistol held crosswise in front, wide-brim hat tilted forward, coat pulled up as partial cover.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_ko": {
+      "path": "images/spritecook/witch_hunter_east_ko.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stern human male witch hunter, clean-shaven, sharp severe face, short dark hair mostly hidden under a hat, cold pale-blue eyes, pale skin, lean upright build.\n\nOUTFIT: Long black leather trench coat with silver buckles and silver cross-sigils, wide-brimmed puritanical black hat, dark trousers, tall black boots. White high-collar shirt beneath. Bandolier of silver bullets across the chest.\n\nWEAPONS: A flintlock pistol in the right hand, a curved silver saber at the left hip partially drawn.\n\nPOSE (east_ko): East-facing, fallen on his back, pistol fallen beside him, hat dropped nearby. Coat splayed.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    }
+  },
+  "notes": "Puritanical gun-and-saber inquisitor. Wide-brim hat always on except KO."
+}

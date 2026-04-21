@@ -1,0 +1,85 @@
+{
+  "$schema": "../../schemas/v1/art-direction.json",
+  "spriteId": "mage",
+  "displayName": "Mage",
+  "class": "humanoid",
+  "pixelHeight": 180,
+  "identity": "Human male mage, wise kind face, long silver-grey beard, long silver hair falling past the shoulders, pale blue eyes, slender build.",
+  "outfit": "Deep blue floor-length robes patterned with silver stars and moons, a matching blue pointed wizard hat with silver trim. A grey wool cloak clasped at the shoulders. Cloth belt with pouches.",
+  "weapons": "A tall gnarled wooden staff with a glowing blue crystal orb at the top, held in the right hand.",
+  "attackStyle": "East-facing. Staff thrust forward, a bolt of blue arcane energy erupting from the crystal orb.",
+  "spellStyle": "East-facing. Staff raised high, free hand raised as well, a swirling blue arcane circle hovering between the orb and the open palm.",
+  "blockStyle": "East-facing. Staff planted vertically, free hand raised palm-outward, a translucent blue shimmering barrier forming in front.",
+  "koStyle": "East-facing, slumped on one knee, staff fallen beside him, hat askew. Head bowed, silver hair falling forward.",
+  "southStyle": "Facing camera (south), sage idle. Staff planted at his side, free hand stroking the beard. Kind thoughtful eyes.",
+  "portraitStyle": "Bust shot from mid-chest up, three-quarter view. Pointed wizard hat, long silver beard, starry blue robes clearly visible.",
+  "bannedSubstrings": [
+    "sword",
+    "axe",
+    "bow",
+    "dagger",
+    "heavy armor",
+    "muscular"
+  ],
+  "referenceSheet": {
+    "path": "images/pixellab/mage/reference.png",
+    "spritecookAssetId": "f07eac14-1edc-4bf6-9bfc-61cdd0e9c31a",
+    "prompt": "IDENTITY (this image becomes the canonical identity anchor — preserve in every downstream frame): Human male mage, wise kind face, long silver-grey beard, long silver hair falling past the shoulders, pale blue eyes, slender build.\n\nOUTFIT: Deep blue floor-length robes patterned with silver stars and moons, a matching blue pointed wizard hat with silver trim. A grey wool cloak clasped at the shoulders. Cloth belt with pouches.\n\nWEAPONS: A tall gnarled wooden staff with a glowing blue crystal orb at the top, held in the right hand.\n\nCLASS: humanoid. Full-body view, head to feet visible. Character occupies ~70% of the canvas height. Feet aligned near the bottom; headroom above.\n\nPOSE: full-body side profile facing right (east), calm combat-ready idle. Head up, eyes visible. NOT a portrait bust, NOT a close-up — entire character from head to feet.\n\nSTYLE: detailed pixel art with clean readable silhouette, warm pixel-art palette, transparent background, no ground shadow.",
+    "bitforgeAssetId": null,
+    "sourcePortraitPath": "images/portraits/mage.png",
+    "generatedAt": "2026-04-21T08:15:39.764Z",
+    "approvedAt": null
+  },
+  "frames": {
+    "portrait": {
+      "path": "images/spritecook/mage_portrait.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male mage, wise kind face, long silver-grey beard, long silver hair falling past the shoulders, pale blue eyes, slender build.\n\nOUTFIT: Deep blue floor-length robes patterned with silver stars and moons, a matching blue pointed wizard hat with silver trim. A grey wool cloak clasped at the shoulders. Cloth belt with pouches.\n\nWEAPONS: A tall gnarled wooden staff with a glowing blue crystal orb at the top, held in the right hand.\n\nPOSE (portrait): Bust shot from mid-chest up, three-quarter view. Pointed wizard hat, long silver beard, starry blue robes clearly visible.\n\nFRAMING: bust shot from mid-chest up, three-quarter view, centered in a 256x256 canvas, shoulders fill the lower third.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "south": {
+      "path": "images/spritecook/mage_south.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male mage, wise kind face, long silver-grey beard, long silver hair falling past the shoulders, pale blue eyes, slender build.\n\nOUTFIT: Deep blue floor-length robes patterned with silver stars and moons, a matching blue pointed wizard hat with silver trim. A grey wool cloak clasped at the shoulders. Cloth belt with pouches.\n\nWEAPONS: A tall gnarled wooden staff with a glowing blue crystal orb at the top, held in the right hand.\n\nPOSE (south): Facing camera (south), sage idle. Staff planted at his side, free hand stroking the beard. Kind thoughtful eyes.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east": {
+      "path": "images/spritecook/mage_east.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male mage, wise kind face, long silver-grey beard, long silver hair falling past the shoulders, pale blue eyes, slender build.\n\nOUTFIT: Deep blue floor-length robes patterned with silver stars and moons, a matching blue pointed wizard hat with silver trim. A grey wool cloak clasped at the shoulders. Cloth belt with pouches.\n\nWEAPONS: A tall gnarled wooden staff with a glowing blue crystal orb at the top, held in the right hand.\n\nPOSE (east): Neutral combat idle, consistent with reference sheet, full-body facing east.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_attack": {
+      "path": "images/spritecook/mage_east_attack.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male mage, wise kind face, long silver-grey beard, long silver hair falling past the shoulders, pale blue eyes, slender build.\n\nOUTFIT: Deep blue floor-length robes patterned with silver stars and moons, a matching blue pointed wizard hat with silver trim. A grey wool cloak clasped at the shoulders. Cloth belt with pouches.\n\nWEAPONS: A tall gnarled wooden staff with a glowing blue crystal orb at the top, held in the right hand.\n\nPOSE (east_attack): East-facing. Staff thrust forward, a bolt of blue arcane energy erupting from the crystal orb.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_spell": {
+      "path": "images/spritecook/mage_east_spell.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male mage, wise kind face, long silver-grey beard, long silver hair falling past the shoulders, pale blue eyes, slender build.\n\nOUTFIT: Deep blue floor-length robes patterned with silver stars and moons, a matching blue pointed wizard hat with silver trim. A grey wool cloak clasped at the shoulders. Cloth belt with pouches.\n\nWEAPONS: A tall gnarled wooden staff with a glowing blue crystal orb at the top, held in the right hand.\n\nPOSE (east_spell): East-facing. Staff raised high, free hand raised as well, a swirling blue arcane circle hovering between the orb and the open palm.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_block": {
+      "path": "images/spritecook/mage_east_block.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male mage, wise kind face, long silver-grey beard, long silver hair falling past the shoulders, pale blue eyes, slender build.\n\nOUTFIT: Deep blue floor-length robes patterned with silver stars and moons, a matching blue pointed wizard hat with silver trim. A grey wool cloak clasped at the shoulders. Cloth belt with pouches.\n\nWEAPONS: A tall gnarled wooden staff with a glowing blue crystal orb at the top, held in the right hand.\n\nPOSE (east_block): East-facing. Staff planted vertically, free hand raised palm-outward, a translucent blue shimmering barrier forming in front.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_ko": {
+      "path": "images/spritecook/mage_east_ko.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Human male mage, wise kind face, long silver-grey beard, long silver hair falling past the shoulders, pale blue eyes, slender build.\n\nOUTFIT: Deep blue floor-length robes patterned with silver stars and moons, a matching blue pointed wizard hat with silver trim. A grey wool cloak clasped at the shoulders. Cloth belt with pouches.\n\nWEAPONS: A tall gnarled wooden staff with a glowing blue crystal orb at the top, held in the right hand.\n\nPOSE (east_ko): East-facing, slumped on one knee, staff fallen beside him, hat askew. Head bowed, silver hair falling forward.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    }
+  },
+  "notes": "Archetypal wizard with pointed hat and star-patterned robes."
+}

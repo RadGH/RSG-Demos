@@ -48,7 +48,9 @@
   // Fallback: map rsg-game meta → game key so bare-domain hosts (e.g. emberveil.radgh.com)
   // still populate Tools/News dropdowns.
   var LABEL_TO_KEY = { 'emberveil': 'game13' };
-  var metaKey = LABEL_TO_KEY[String(GAME_LABEL).toLowerCase()] || '';
+  var rawLabel = String(GAME_LABEL).toLowerCase();
+  // If the meta/label is already a gameNN key, use it directly.
+  var metaKey = LABEL_TO_KEY[rawLabel] || (/^game[0-9a-z_]+$/.test(rawLabel) ? rawLabel : '');
   var GAME_KEY = gameKeyMatch ? gameKeyMatch[1].toLowerCase() : metaKey;
   var GAME_ROOT;
   if (gameKeyMatch) {
@@ -72,6 +74,7 @@
       { href: ASSETS + 'skill-audit.html', label: 'Skill Audit' },
       { href: ASSETS + 'redesign-survey.html', label: 'Redesign Survey' },
       { href: ASSETS + 'image-review.html', label: 'Image Review' },
+      { href: ASSETS + 'pixellab-redesign.html', label: 'Character Redesign' },
       { href: ASSETS + 'custom-content.html', label: 'Custom Content' },
       { href: ASSETS + 'ai-content-gen.html', label: 'AI Content Generator' },
       { href: ASSETS + 'spell-catalog.html', label: 'Spell Catalog' },

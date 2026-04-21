@@ -1,0 +1,83 @@
+{
+  "$schema": "../../schemas/v1/art-direction.json",
+  "spriteId": "runesmith",
+  "displayName": "Runesmith",
+  "class": "humanoid",
+  "pixelHeight": 180,
+  "identity": "Dwarven male runesmith, stocky powerful build, thick braided red beard reaching mid-chest with gold rings, bushy red eyebrows, ruddy skin, a leather eye-patch over one eye.",
+  "outfit": "Heavy forge-blackened plate armor with brass runes etched across the breastplate, thick leather smith's apron over the plate, wide leather belt with a rune-engraved buckle, iron boots. A small anvil-charm on a chain around the neck.",
+  "weapons": "A large two-handed warhammer with glowing orange runes etched along the head, held in both hands.",
+  "attackStyle": "East-facing. Warhammer swung in a downward overhead strike, glowing orange runes on the head trailing sparks.",
+  "spellStyle": "East-facing. Warhammer planted head-down, free hand raised with a spinning glowing-orange rune-sigil in the air.",
+  "blockStyle": "East-facing. Warhammer held horizontally in both hands as a guard across the chest, beard forward.",
+  "koStyle": "East-facing, fallen on both knees, warhammer dropped beside him, beard splayed forward.",
+  "southStyle": "Facing camera (south), sturdy idle. Warhammer head-down at his feet, both hands on the haft. Gold-ringed red beard.",
+  "portraitStyle": "Bust shot from mid-chest up, three-quarter view. Thick braided red beard with gold rings, eye-patch, forge-blackened plate + smith apron.",
+  "bannedSubstrings": [
+    "sword",
+    "bow",
+    "staff",
+    "magic robe"
+  ],
+  "referenceSheet": {
+    "path": "images/pixellab/runesmith/reference.png",
+    "spritecookAssetId": "74050130-7b28-4cda-a94b-7961796aad6b",
+    "prompt": "IDENTITY (this image becomes the canonical identity anchor — preserve in every downstream frame): Dwarven male runesmith, stocky powerful build, thick braided red beard reaching mid-chest with gold rings, bushy red eyebrows, ruddy skin, a leather eye-patch over one eye.\n\nOUTFIT: Heavy forge-blackened plate armor with brass runes etched across the breastplate, thick leather smith's apron over the plate, wide leather belt with a rune-engraved buckle, iron boots. A small anvil-charm on a chain around the neck.\n\nWEAPONS: A large two-handed warhammer with glowing orange runes etched along the head, held in both hands.\n\nCLASS: humanoid. Full-body view, head to feet visible. Character occupies ~70% of the canvas height. Feet aligned near the bottom; headroom above.\n\nPOSE: full-body side profile facing right (east), calm combat-ready idle. Head up, eyes visible. NOT a portrait bust, NOT a close-up — entire character from head to feet.\n\nSTYLE: detailed pixel art with clean readable silhouette, warm pixel-art palette, transparent background, no ground shadow.",
+    "bitforgeAssetId": null,
+    "sourcePortraitPath": "images/portraits/runesmith.png",
+    "generatedAt": "2026-04-21T08:15:39.764Z",
+    "approvedAt": null
+  },
+  "frames": {
+    "portrait": {
+      "path": "images/spritecook/runesmith_portrait.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Dwarven male runesmith, stocky powerful build, thick braided red beard reaching mid-chest with gold rings, bushy red eyebrows, ruddy skin, a leather eye-patch over one eye.\n\nOUTFIT: Heavy forge-blackened plate armor with brass runes etched across the breastplate, thick leather smith's apron over the plate, wide leather belt with a rune-engraved buckle, iron boots. A small anvil-charm on a chain around the neck.\n\nWEAPONS: A large two-handed warhammer with glowing orange runes etched along the head, held in both hands.\n\nPOSE (portrait): Bust shot from mid-chest up, three-quarter view. Thick braided red beard with gold rings, eye-patch, forge-blackened plate + smith apron.\n\nFRAMING: bust shot from mid-chest up, three-quarter view, centered in a 256x256 canvas, shoulders fill the lower third.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "south": {
+      "path": "images/spritecook/runesmith_south.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Dwarven male runesmith, stocky powerful build, thick braided red beard reaching mid-chest with gold rings, bushy red eyebrows, ruddy skin, a leather eye-patch over one eye.\n\nOUTFIT: Heavy forge-blackened plate armor with brass runes etched across the breastplate, thick leather smith's apron over the plate, wide leather belt with a rune-engraved buckle, iron boots. A small anvil-charm on a chain around the neck.\n\nWEAPONS: A large two-handed warhammer with glowing orange runes etched along the head, held in both hands.\n\nPOSE (south): Facing camera (south), sturdy idle. Warhammer head-down at his feet, both hands on the haft. Gold-ringed red beard.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east": {
+      "path": "images/spritecook/runesmith_east.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Dwarven male runesmith, stocky powerful build, thick braided red beard reaching mid-chest with gold rings, bushy red eyebrows, ruddy skin, a leather eye-patch over one eye.\n\nOUTFIT: Heavy forge-blackened plate armor with brass runes etched across the breastplate, thick leather smith's apron over the plate, wide leather belt with a rune-engraved buckle, iron boots. A small anvil-charm on a chain around the neck.\n\nWEAPONS: A large two-handed warhammer with glowing orange runes etched along the head, held in both hands.\n\nPOSE (east): Neutral combat idle, consistent with reference sheet, full-body facing east.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_attack": {
+      "path": "images/spritecook/runesmith_east_attack.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Dwarven male runesmith, stocky powerful build, thick braided red beard reaching mid-chest with gold rings, bushy red eyebrows, ruddy skin, a leather eye-patch over one eye.\n\nOUTFIT: Heavy forge-blackened plate armor with brass runes etched across the breastplate, thick leather smith's apron over the plate, wide leather belt with a rune-engraved buckle, iron boots. A small anvil-charm on a chain around the neck.\n\nWEAPONS: A large two-handed warhammer with glowing orange runes etched along the head, held in both hands.\n\nPOSE (east_attack): East-facing. Warhammer swung in a downward overhead strike, glowing orange runes on the head trailing sparks.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_spell": {
+      "path": "images/spritecook/runesmith_east_spell.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Dwarven male runesmith, stocky powerful build, thick braided red beard reaching mid-chest with gold rings, bushy red eyebrows, ruddy skin, a leather eye-patch over one eye.\n\nOUTFIT: Heavy forge-blackened plate armor with brass runes etched across the breastplate, thick leather smith's apron over the plate, wide leather belt with a rune-engraved buckle, iron boots. A small anvil-charm on a chain around the neck.\n\nWEAPONS: A large two-handed warhammer with glowing orange runes etched along the head, held in both hands.\n\nPOSE (east_spell): East-facing. Warhammer planted head-down, free hand raised with a spinning glowing-orange rune-sigil in the air.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_block": {
+      "path": "images/spritecook/runesmith_east_block.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Dwarven male runesmith, stocky powerful build, thick braided red beard reaching mid-chest with gold rings, bushy red eyebrows, ruddy skin, a leather eye-patch over one eye.\n\nOUTFIT: Heavy forge-blackened plate armor with brass runes etched across the breastplate, thick leather smith's apron over the plate, wide leather belt with a rune-engraved buckle, iron boots. A small anvil-charm on a chain around the neck.\n\nWEAPONS: A large two-handed warhammer with glowing orange runes etched along the head, held in both hands.\n\nPOSE (east_block): East-facing. Warhammer held horizontally in both hands as a guard across the chest, beard forward.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_ko": {
+      "path": "images/spritecook/runesmith_east_ko.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Dwarven male runesmith, stocky powerful build, thick braided red beard reaching mid-chest with gold rings, bushy red eyebrows, ruddy skin, a leather eye-patch over one eye.\n\nOUTFIT: Heavy forge-blackened plate armor with brass runes etched across the breastplate, thick leather smith's apron over the plate, wide leather belt with a rune-engraved buckle, iron boots. A small anvil-charm on a chain around the neck.\n\nWEAPONS: A large two-handed warhammer with glowing orange runes etched along the head, held in both hands.\n\nPOSE (east_ko): East-facing, fallen on both knees, warhammer dropped beside him, beard splayed forward.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    }
+  },
+  "notes": "Dwarf smith-caster. Rune-hammer + braided red beard + eye-patch."
+}

@@ -1,0 +1,88 @@
+{
+  "$schema": "../../schemas/v1/art-direction.json",
+  "spriteId": "warrior",
+  "displayName": "Warrior",
+  "class": "humanoid",
+  "pixelHeight": 180,
+  "identity": "Stalwart human male warrior, square-jawed, short-cropped brown hair, weathered face with a faint scar across the cheek. Muscular build. Confident brown eyes.",
+  "outfit": "Battle-worn steel plate armor with iron pauldrons, brown leather belt with a satchel, crimson surcoat over the breastplate. Heavy armored boots. Red cape clasped at the shoulders.",
+  "weapons": "A broad two-handed steel longsword, held upright in the right hand, point-down near his feet. No shield.",
+  "attackStyle": "East-facing. Mid-swing of the longsword, blade arcing forward at head height, both hands gripping the hilt. Red cape flares back.",
+  "spellStyle": "East-facing. Longsword raised overhead in both hands, tip pointed skyward, a faint golden glow along the blade. Head tilted up.",
+  "blockStyle": "East-facing. Longsword held vertically in front, both hands on the hilt, blade guarding the torso. Shoulders squared, chin down.",
+  "koStyle": "East-facing, fallen forward on one knee, longsword dropped beside him on the ground. Head bowed, one hand pressing into the dirt.",
+  "southStyle": "Facing camera (south), relaxed idle stance. Longsword resting point-down at his feet, both hands on the pommel. Calm confident gaze.",
+  "portraitStyle": "Bust shot from mid-chest up, three-quarter view. Weathered face, scar visible on cheek, short brown hair. Steel plate and red cape visible on shoulders.",
+  "bannedSubstrings": [
+    "axe",
+    "bow",
+    "crossbow",
+    "staff",
+    "wand",
+    "dagger",
+    "hammer",
+    "flail",
+    "mace"
+  ],
+  "referenceSheet": {
+    "path": "images/pixellab/warrior/reference.png",
+    "spritecookAssetId": "42de149a-4e7c-4537-8edf-1beba0d232a1",
+    "prompt": "IDENTITY (this image becomes the canonical identity anchor — preserve in every downstream frame): Stalwart human male warrior, square-jawed, short-cropped brown hair, weathered face with a faint scar across the cheek. Muscular build. Confident brown eyes.\n\nOUTFIT: Battle-worn steel plate armor with iron pauldrons, brown leather belt with a satchel, crimson surcoat over the breastplate. Heavy armored boots. Red cape clasped at the shoulders.\n\nWEAPONS: A broad two-handed steel longsword, held upright in the right hand, point-down near his feet. No shield.\n\nCLASS: humanoid. Full-body view, head to feet visible. Character occupies ~70% of the canvas height. Feet aligned near the bottom; headroom above.\n\nPOSE: full-body side profile facing right (east), calm combat-ready idle. Head up, eyes visible. NOT a portrait bust, NOT a close-up — entire character from head to feet.\n\nSTYLE: detailed pixel art with clean readable silhouette, warm pixel-art palette, transparent background, no ground shadow.",
+    "bitforgeAssetId": null,
+    "sourcePortraitPath": "images/portraits/warrior.png",
+    "generatedAt": "2026-04-21T08:15:39.764Z",
+    "approvedAt": null
+  },
+  "frames": {
+    "portrait": {
+      "path": "images/spritecook/warrior_portrait.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stalwart human male warrior, square-jawed, short-cropped brown hair, weathered face with a faint scar across the cheek. Muscular build. Confident brown eyes.\n\nOUTFIT: Battle-worn steel plate armor with iron pauldrons, brown leather belt with a satchel, crimson surcoat over the breastplate. Heavy armored boots. Red cape clasped at the shoulders.\n\nWEAPONS: A broad two-handed steel longsword, held upright in the right hand, point-down near his feet. No shield.\n\nPOSE (portrait): Bust shot from mid-chest up, three-quarter view. Weathered face, scar visible on cheek, short brown hair. Steel plate and red cape visible on shoulders.\n\nFRAMING: bust shot from mid-chest up, three-quarter view, centered in a 256x256 canvas, shoulders fill the lower third.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "south": {
+      "path": "images/spritecook/warrior_south.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stalwart human male warrior, square-jawed, short-cropped brown hair, weathered face with a faint scar across the cheek. Muscular build. Confident brown eyes.\n\nOUTFIT: Battle-worn steel plate armor with iron pauldrons, brown leather belt with a satchel, crimson surcoat over the breastplate. Heavy armored boots. Red cape clasped at the shoulders.\n\nWEAPONS: A broad two-handed steel longsword, held upright in the right hand, point-down near his feet. No shield.\n\nPOSE (south): Facing camera (south), relaxed idle stance. Longsword resting point-down at his feet, both hands on the pommel. Calm confident gaze.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east": {
+      "path": "images/spritecook/warrior_east.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stalwart human male warrior, square-jawed, short-cropped brown hair, weathered face with a faint scar across the cheek. Muscular build. Confident brown eyes.\n\nOUTFIT: Battle-worn steel plate armor with iron pauldrons, brown leather belt with a satchel, crimson surcoat over the breastplate. Heavy armored boots. Red cape clasped at the shoulders.\n\nWEAPONS: A broad two-handed steel longsword, held upright in the right hand, point-down near his feet. No shield.\n\nPOSE (east): Neutral combat idle, consistent with reference sheet, full-body facing east.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_attack": {
+      "path": "images/spritecook/warrior_east_attack.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stalwart human male warrior, square-jawed, short-cropped brown hair, weathered face with a faint scar across the cheek. Muscular build. Confident brown eyes.\n\nOUTFIT: Battle-worn steel plate armor with iron pauldrons, brown leather belt with a satchel, crimson surcoat over the breastplate. Heavy armored boots. Red cape clasped at the shoulders.\n\nWEAPONS: A broad two-handed steel longsword, held upright in the right hand, point-down near his feet. No shield.\n\nPOSE (east_attack): East-facing. Mid-swing of the longsword, blade arcing forward at head height, both hands gripping the hilt. Red cape flares back.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_spell": {
+      "path": "images/spritecook/warrior_east_spell.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stalwart human male warrior, square-jawed, short-cropped brown hair, weathered face with a faint scar across the cheek. Muscular build. Confident brown eyes.\n\nOUTFIT: Battle-worn steel plate armor with iron pauldrons, brown leather belt with a satchel, crimson surcoat over the breastplate. Heavy armored boots. Red cape clasped at the shoulders.\n\nWEAPONS: A broad two-handed steel longsword, held upright in the right hand, point-down near his feet. No shield.\n\nPOSE (east_spell): East-facing. Longsword raised overhead in both hands, tip pointed skyward, a faint golden glow along the blade. Head tilted up.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_block": {
+      "path": "images/spritecook/warrior_east_block.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stalwart human male warrior, square-jawed, short-cropped brown hair, weathered face with a faint scar across the cheek. Muscular build. Confident brown eyes.\n\nOUTFIT: Battle-worn steel plate armor with iron pauldrons, brown leather belt with a satchel, crimson surcoat over the breastplate. Heavy armored boots. Red cape clasped at the shoulders.\n\nWEAPONS: A broad two-handed steel longsword, held upright in the right hand, point-down near his feet. No shield.\n\nPOSE (east_block): East-facing. Longsword held vertically in front, both hands on the hilt, blade guarding the torso. Shoulders squared, chin down.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    },
+    "east_ko": {
+      "path": "images/spritecook/warrior_east_ko.png",
+      "prompt": "IDENTITY (must match reference sheet exactly): Stalwart human male warrior, square-jawed, short-cropped brown hair, weathered face with a faint scar across the cheek. Muscular build. Confident brown eyes.\n\nOUTFIT: Battle-worn steel plate armor with iron pauldrons, brown leather belt with a satchel, crimson surcoat over the breastplate. Heavy armored boots. Red cape clasped at the shoulders.\n\nWEAPONS: A broad two-handed steel longsword, held upright in the right hand, point-down near his feet. No shield.\n\nPOSE (east_ko): East-facing, fallen forward on one knee, longsword dropped beside him on the ground. Head bowed, one hand pressing into the dirt.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
+      "generatedAt": null,
+      "approvedAt": null,
+      "spritecookAssetId": null
+    }
+  },
+  "notes": "Classic frontline tank archetype. Longsword only — no shield, no variant weapons."
+}
