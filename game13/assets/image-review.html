@@ -77,6 +77,42 @@
     border: 1px solid var(--border); border-radius: 3px;
     padding: 0.2rem 0.4rem; font: inherit; font-size: 0.72rem;
   }
+  .filter-tree {
+    display: inline-block;
+    border: 1px solid var(--border); border-radius: 4px;
+    background: var(--panel-alt); padding: 0 0.5rem;
+    font-size: 0.72rem;
+  }
+  .filter-tree summary {
+    cursor: pointer; padding: 0.3rem 0.2rem;
+    color: var(--gold); font-weight: 700;
+    list-style: none; outline: none;
+  }
+  .filter-tree summary::before { content: '▸ '; color: var(--muted); font-size: 0.7em; }
+  .filter-tree[open] summary::before { content: '▾ '; }
+  .filter-tree[open] {
+    position: relative;
+    padding-bottom: 0.4rem;
+  }
+  .filter-tree[open] > .ft-group {
+    display: block;
+  }
+  .filter-tree .ft-group {
+    display: none;
+    padding: 0.25rem 0.4rem;
+    border-top: 1px solid var(--border);
+  }
+  .filter-tree .ft-group strong {
+    display: block; color: var(--parchment);
+    font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 0.06em; margin: 0.2rem 0 0.15rem;
+  }
+  .filter-tree label {
+    display: block; padding: 0.1rem 0;
+    color: var(--parchment);
+    cursor: pointer;
+  }
+  .filter-tree label input { margin-right: 0.4rem; }
   .display-modes { display: inline-flex; gap: 2px; }
   .display-modes button {
     background: var(--panel-alt); color: var(--muted);
@@ -456,18 +492,39 @@
         <option value="flagged">Any action flagged</option>
       </select>
     </label>
-    <label>Category:
-      <select id="filter-category">
-        <option value="all">All categories</option>
-        <option value="hero">Heroes / Portraits</option>
-        <option value="companion">Companions</option>
-        <option value="boss">Bosses</option>
-        <option value="enemy">Enemies</option>
-        <option value="background">Combat / Map Backgrounds</option>
-        <option value="tap-weapons">Tap Weapons</option>
-        <option value="orphan">Orphans / Unattached</option>
-      </select>
-    </label>
+    <details class="filter-tree" id="filter-tree-cats">
+      <summary>Categories</summary>
+      <div class="ft-group">
+        <strong>Characters</strong>
+        <label><input type="checkbox" data-fcat="hero" checked> Heroes</label>
+        <label><input type="checkbox" data-fcat="companion" checked> Companions</label>
+        <label><input type="checkbox" data-fcat="boss" checked> Bosses</label>
+        <label><input type="checkbox" data-fcat="enemy" checked> Enemies</label>
+      </div>
+      <div class="ft-group">
+        <strong>Backgrounds</strong>
+        <label><input type="checkbox" data-fcat="bg-combat" checked> Combat</label>
+        <label><input type="checkbox" data-fcat="bg-map" checked> Map</label>
+        <label><input type="checkbox" data-fcat="bg-other" checked> Other</label>
+      </div>
+      <div class="ft-group">
+        <strong>Other</strong>
+        <label><input type="checkbox" data-fcat="tap-weapons" checked> Tap Weapons</label>
+        <label><input type="checkbox" data-fcat="orphan" checked> Orphans</label>
+      </div>
+    </details>
+    <details class="filter-tree" id="filter-tree-poses">
+      <summary>Poses</summary>
+      <div class="ft-group">
+        <label><input type="checkbox" data-fpose="portrait" checked> Portrait</label>
+        <label><input type="checkbox" data-fpose="south" checked> South</label>
+        <label><input type="checkbox" data-fpose="east" checked> East</label>
+        <label><input type="checkbox" data-fpose="east_attack" checked> East attack</label>
+        <label><input type="checkbox" data-fpose="east_spell" checked> East spell</label>
+        <label><input type="checkbox" data-fpose="east_block" checked> East block</label>
+        <label><input type="checkbox" data-fpose="east_ko" checked> East ko</label>
+      </div>
+    </details>
     <label>Display:
       <span class="display-modes" id="display-modes">
         <button type="button" data-mode="hero">Hero</button>
@@ -479,6 +536,7 @@
         <button type="button" data-mode="list">List</button>
       </span>
     </label>
+    <label style="font-size:0.72rem"><input type="checkbox" id="filter-only-selected"> Filter selected only</label>
     <button type="button" id="btn-show-selection" class="qs-btn">Quick select (<span id="qs-count">0</span>)</button>
   </div>
 
@@ -652,13 +710,34 @@ function passesActionFilter(e) {
   }
 }
 
+function entryFilterCat(e) {
+  // Map entry → checkbox key
+  if (e.category === 'background') {
+    if (/combat_bg\//.test(e.file || '')) return 'bg-combat';
+    if (/map_bg\//.test(e.file || '')) return 'bg-map';
+    return 'bg-other';
+  }
+  return e.category;
+}
+function passesCatTree(e) {
+  if (!filterCats || !filterCats.size) return true;
+  return filterCats.has(entryFilterCat(e));
+}
+function passesPoseTree(e) {
+  if (!filterPoses || !filterPoses.size) return true;
+  // Only character entries have poses; non-character entries pass through
+  const charCats = new Set(['hero','companion','boss','enemy']);
+  if (!charCats.has(e.category)) return true;
+  if (!e.pose) return false;
+  return filterPoses.has(e.pose);
+}
+let filterOnlySelected = false;
 function filterEntries(list) {
   let result = list;
   if (onlyFlagged) result = result.filter(isFlagged);
   if (filterActionState !== 'all') result = result.filter(passesActionFilter);
-  if (typeof categoryFilter !== 'undefined' && categoryFilter !== 'all') {
-    result = result.filter(passesCategoryFilter);
-  }
+  result = result.filter(passesCatTree).filter(passesPoseTree);
+  if (filterOnlySelected) result = result.filter(e => selection.has(e.id));
   return result;
 }
 
@@ -1035,13 +1114,14 @@ function toggleSelection(id, cardEl) {
   if (typeof updateQsCount === 'function') updateQsCount();
 }
 
+let editorMode = localStorage.getItem('rsg.imageReview.editorMode') || 'batch';
+
 function renderSelectionEditor() {
   // Remove any existing editor
   const existing = document.querySelector('.editor');
   if (existing) existing.remove();
   if (selection.size === 0) return;
 
-  // Use the first selected entry as template for the editor (prompt line, refs, status)
   const firstId = [...selection][0];
   const templateEntry = entries.find(e => e.id === firstId);
   if (!templateEntry) return;
@@ -1050,12 +1130,52 @@ function renderSelectionEditor() {
   editor.className = 'editor';
   editor.dataset.id = firstId;
   editor.dataset.multi = '1';
+  const modeToggle = `<span style="margin-left:0.6rem;font-size:0.7rem">Mode:
+    <label class="inline" style="margin-left:0.3rem"><input type="radio" name="editor-mode" value="batch" ${editorMode==='batch'?'checked':''}> Batch (one prompt → all)</label>
+    <label class="inline"><input type="radio" name="editor-mode" value="multi" ${editorMode==='multi'?'checked':''}> Multi (per-item)</label>
+  </span>`;
   const banner = selection.size > 1
-    ? `<div style="color:var(--gold);font-size:0.75rem;margin-bottom:0.4rem">Editing ${selection.size} selected images — same action applies to all. <a href="#" data-act="clear-sel" style="color:var(--accent);margin-left:0.5rem">Clear selection</a></div>`
+    ? `<div style="color:var(--gold);font-size:0.75rem;margin-bottom:0.4rem">Editing ${selection.size} selected images. ${modeToggle} <a href="#" data-act="clear-sel" style="color:var(--accent);margin-left:0.5rem">Clear selection</a></div>`
     : `<div style="color:var(--muted);font-size:0.7rem;margin-bottom:0.4rem">Tip: click more cards to apply the same action to multiple images. <a href="#" data-act="clear-sel" style="color:var(--accent);margin-left:0.5rem">Clear</a></div>`;
-  editor.innerHTML = `<button type="button" class="editor-close" aria-label="Close">×</button>` + banner + renderEditor(templateEntry);
+
+  let body;
+  if (selection.size > 1 && editorMode === 'multi') {
+    // Per-item editors stacked
+    const blocks = [...selection].map(id => {
+      const e = entries.find(en => en.id === id);
+      if (!e) return '';
+      return `<div class="editor-item" data-item-id="${esc(id)}" style="border-top:1px solid var(--border);margin-top:0.5rem;padding-top:0.4rem">
+        ${renderEditor(e)}
+      </div>`;
+    }).join('');
+    body = blocks;
+  } else {
+    // Batch (default): single template editor; snap() writes to every selected id
+    body = renderEditor(templateEntry);
+    if (selection.size > 1) {
+      body = `<div style="color:var(--muted);font-size:0.68rem;margin-bottom:0.3rem">Batch override — the prompt and details below replace the per-item prompts for every selected image.</div>` + body;
+    }
+  }
+  editor.innerHTML = `<button type="button" class="editor-close" aria-label="Close">×</button>` + banner + body;
   document.body.appendChild(editor);
-  wireEditor(editor, templateEntry);
+  // Wire mode toggle
+  editor.querySelectorAll('input[name="editor-mode"]').forEach(r => {
+    r.addEventListener('change', (ev) => {
+      editorMode = ev.target.value;
+      localStorage.setItem('rsg.imageReview.editorMode', editorMode);
+      renderSelectionEditor();
+    });
+  });
+  if (selection.size > 1 && editorMode === 'multi') {
+    // Wire each per-item block to its own entry
+    editor.querySelectorAll('.editor-item').forEach(block => {
+      const id = block.dataset.itemId;
+      const e = entries.find(en => en.id === id);
+      if (e) wireEditor(block, e);
+    });
+  } else {
+    wireEditor(editor, templateEntry);
+  }
   editor.addEventListener('click', (ev) => {
     if (ev.target.closest('.editor-close')) {
       ev.preventDefault();
@@ -1272,7 +1392,39 @@ function buildPrompt() {
     if (byAction[it.action]) byAction[it.action].push(it);
   }
 
-  const lines = [`Image Review Tool — requested actions (${items.length} items)`, ''];
+  const lines = [`Image Review Tool — requested actions (${items.length} items, mode: ${editorMode})`, ''];
+
+  // Batch mode: when multiple items in the same action share identical details,
+  // emit a single block listing all affected ids + the shared prompt once.
+  function batchSection(title, arr) {
+    if (!arr.length) return;
+    const groups = new Map();
+    for (const it of arr) {
+      const key = (it.details || '').trim();
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(it);
+    }
+    lines.push(`${title} (${arr.length} items, ${groups.size} prompt group${groups.size===1?'':'s'}):`);
+    for (const [details, group] of groups) {
+      lines.push(`  Items (${group.length}):`);
+      for (const it of group) lines.push(`    - ${it.entry.id}  (${(it.entry.file||'').replace(/^\.\.\//,'')})`);
+      if (details) lines.push(`  Override prompt: ${details}`);
+      else lines.push(`  Override prompt: (none — keep each item's own previous prompt)`);
+      lines.push('');
+    }
+  }
+  if (editorMode === 'batch') {
+    batchSection('FLIP', byAction.flip);
+    batchSection('REMOVE BACKGROUND', byAction.remove_bg);
+    batchSection('RE-GENERATE', byAction.regenerate);
+    batchSection('GENERATE', byAction.generate);
+    batchSection('MOVE TO LIBRARY', byAction.library);
+    batchSection('ARCHIVE', byAction.archive);
+    batchSection('DELETE', byAction.delete);
+    batchSection('OTHER', byAction.other);
+    return lines.join('\n');
+  }
+
   function section(title, arr, fmt) {
     if (!arr.length) return;
     lines.push(title + ':');
@@ -1366,17 +1518,42 @@ document.addEventListener('DOMContentLoaded', () => {
     renderSections();
   });
 
-  // M188 — category filter
-  document.getElementById('filter-category').addEventListener('change', (ev) => {
-    categoryFilter = ev.target.value;
-    localStorage.setItem('rsg.imageReview.categoryFilter', categoryFilter);
+  // M188 — multi-select filter tree (categories + poses)
+  function readFilterTree() {
+    filterCats = new Set();
+    document.querySelectorAll('[data-fcat]').forEach(cb => { if (cb.checked) filterCats.add(cb.dataset.fcat); });
+    filterPoses = new Set();
+    document.querySelectorAll('[data-fpose]').forEach(cb => { if (cb.checked) filterPoses.add(cb.dataset.fpose); });
+    localStorage.setItem('rsg.imageReview.filterCats', JSON.stringify([...filterCats]));
+    localStorage.setItem('rsg.imageReview.filterPoses', JSON.stringify([...filterPoses]));
     renderSections();
-  });
-  const savedCat = localStorage.getItem('rsg.imageReview.categoryFilter');
-  if (savedCat) {
-    categoryFilter = savedCat;
-    document.getElementById('filter-category').value = savedCat;
   }
+  // Restore from localStorage
+  try {
+    const sc = JSON.parse(localStorage.getItem('rsg.imageReview.filterCats') || 'null');
+    const sp = JSON.parse(localStorage.getItem('rsg.imageReview.filterPoses') || 'null');
+    if (Array.isArray(sc)) {
+      const set = new Set(sc);
+      document.querySelectorAll('[data-fcat]').forEach(cb => { cb.checked = set.has(cb.dataset.fcat); });
+    }
+    if (Array.isArray(sp)) {
+      const set = new Set(sp);
+      document.querySelectorAll('[data-fpose]').forEach(cb => { cb.checked = set.has(cb.dataset.fpose); });
+    }
+  } catch (_) {}
+  document.querySelectorAll('[data-fcat],[data-fpose]').forEach(cb => cb.addEventListener('change', readFilterTree));
+  readFilterTree();
+
+  // M188 — filter-selected-only
+  document.getElementById('filter-only-selected').addEventListener('change', (ev) => {
+    filterOnlySelected = ev.target.checked;
+    renderSections();
+    // Re-restore selected outlines after re-render
+    selection.forEach(sid => {
+      const c = document.querySelector(`.img-card[data-id="${CSS.escape(sid)}"]`);
+      if (c) c.classList.add('selected');
+    });
+  });
 
   // M188 — display modes
   const savedMode = localStorage.getItem('rsg.imageReview.displayMode') || 'g4';
@@ -1423,12 +1600,9 @@ document.addEventListener('DOMContentLoaded', () => {
   boot();
 });
 
-// M188 — category filter state + count helpers
-let categoryFilter = 'all';
-function passesCategoryFilter(e) {
-  if (categoryFilter === 'all') return true;
-  return e.category === categoryFilter;
-}
+// M188 — filter tree state
+let filterCats = new Set();
+let filterPoses = new Set();
 function updateQsCount() {
   const el = document.getElementById('qs-count');
   if (el) el.textContent = selection.size;
