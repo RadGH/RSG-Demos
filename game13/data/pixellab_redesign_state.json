@@ -1,7 +1,7 @@
 {
   "schema": "pixellab_redesign_state/v1",
   "updatedAt": "2026-04-21T19:00:00.000Z",
-  "creditsUsedTotal": 2220,
+  "creditsUsedTotal": 2904,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
@@ -39,20 +39,20 @@
       "candidateDir": "images/pixellab/warrior",
       "originalSpritecookPrefix": "images/spritecook/warrior_",
       "creditsUsed": 24,
-      "notes": "Classic frontline tank archetype. Longsword only — no shield, no variant weapons."
+      "notes": "Classic frontline tank archetype. Longsword only \u2014 no shield, no variant weapons."
     },
     "fighter": {
       "spriteId": "fighter",
-      "status": "pending_approval",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "generated",
-        "south": "generated",
-        "east": "generated",
-        "east_attack": "generated",
-        "east_spell": "pending_approval",
-        "east_block": "generated",
-        "east_ko": "generated"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/fighter.json",
       "candidateDir": "images/pixellab/fighter",
@@ -118,36 +118,30 @@
       "notes": "Dual-dagger stealth attacker. Hood up in all frames except KO."
     },
     "cleric": {
-      "spriteId": "cleric",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
-      "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
-      },
-      "artDirectionPath": "data/art_direction/cleric.json",
-      "candidateDir": "images/pixellab/cleric",
-      "originalSpritecookPrefix": "images/spritecook/cleric_",
-      "creditsUsed": 24,
-      "notes": "Healer archetype. Silver mace + sunburst medallion."
+      "status": "pending_approval",
+      "generatedAt": "2026-04-21T22:34:14Z",
+      "poses": [
+        "east",
+        "east_attack",
+        "east_block",
+        "east_ko",
+        "east_spell",
+        "portrait",
+        "south"
+      ]
     },
     "bard": {
       "spriteId": "bard",
-      "status": "pending_approval",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/bard.json",
       "candidateDir": "images/pixellab/bard",
@@ -156,55 +150,43 @@
       "notes": "Performer archetype. Lute primary, rapier secondary."
     },
     "mage": {
-      "spriteId": "mage",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
-      "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
-      },
-      "artDirectionPath": "data/art_direction/mage.json",
-      "candidateDir": "images/pixellab/mage",
-      "originalSpritecookPrefix": "images/spritecook/mage_",
-      "creditsUsed": 36,
-      "notes": "Archetypal wizard with pointed hat and star-patterned robes."
+      "status": "pending_approval",
+      "generatedAt": "2026-04-21T22:34:14Z",
+      "poses": [
+        "east",
+        "east_attack",
+        "east_block",
+        "east_ko",
+        "east_spell",
+        "portrait",
+        "south"
+      ]
     },
     "necromancer": {
-      "spriteId": "necromancer",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
-      "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
-      },
-      "artDirectionPath": "data/art_direction/necromancer.json",
-      "candidateDir": "images/pixellab/necromancer",
-      "originalSpritecookPrefix": "images/spritecook/necromancer_",
-      "creditsUsed": 36,
-      "notes": "Death magic specialist. Bone/green/black palette."
+      "status": "pending_approval",
+      "generatedAt": "2026-04-21T22:34:14Z",
+      "poses": [
+        "east",
+        "east_attack",
+        "east_block",
+        "east_ko",
+        "east_spell",
+        "portrait",
+        "south"
+      ]
     },
     "warlock": {
       "spriteId": "warlock",
-      "status": "pending_approval",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/warlock.json",
       "candidateDir": "images/pixellab/warlock",
@@ -305,7 +287,7 @@
       "candidateDir": "images/pixellab/pyromancer",
       "originalSpritecookPrefix": "images/spritecook/pyromancer_",
       "creditsUsed": 24,
-      "notes": "Fire-palm caster. Zero held weapons — hands are the conduit."
+      "notes": "Fire-palm caster. Zero held weapons \u2014 hands are the conduit."
     },
     "stormcaller": {
       "spriteId": "stormcaller",
@@ -327,23 +309,17 @@
       "notes": "Lightning-palm caster. Zero held weapons."
     },
     "druid": {
-      "spriteId": "druid",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
-      "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
-      },
-      "artDirectionPath": "data/art_direction/druid.json",
-      "candidateDir": "images/pixellab/druid",
-      "originalSpritecookPrefix": "images/spritecook/druid_",
-      "creditsUsed": 24,
-      "notes": "Nature druid with antlers + living bark + leaf staff."
+      "status": "pending_approval",
+      "generatedAt": "2026-04-21T22:34:14Z",
+      "poses": [
+        "east",
+        "east_attack",
+        "east_block",
+        "east_ko",
+        "east_spell",
+        "portrait",
+        "south"
+      ]
     },
     "tactician": {
       "spriteId": "tactician",
@@ -442,16 +418,16 @@
     },
     "knight": {
       "spriteId": "knight",
-      "status": "pending_approval",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/knight.json",
       "candidateDir": "images/pixellab/knight",
@@ -533,26 +509,26 @@
       "candidateDir": "images/pixellab/ranger_male",
       "originalSpritecookPrefix": "images/spritecook/ranger_male_",
       "creditsUsed": 12,
-      "notes": "Ranger (Male) — companion variant"
+      "notes": "Ranger (Male) \u2014 companion variant"
     },
     "knight_male": {
       "spriteId": "knight_male",
-      "status": "pending_approval",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/knight_male.json",
       "candidateDir": "images/pixellab/knight_male",
       "originalSpritecookPrefix": "images/spritecook/knight_male_",
       "creditsUsed": 96,
-      "notes": "Knight (Male) — companion variant"
+      "notes": "Knight (Male) \u2014 companion variant"
     },
     "shadow_dancer_male": {
       "spriteId": "shadow_dancer_male",
@@ -571,7 +547,7 @@
       "candidateDir": "images/pixellab/shadow_dancer_male",
       "originalSpritecookPrefix": "images/spritecook/shadow_dancer_male_",
       "creditsUsed": 12,
-      "notes": "Shadow Dancer (Male) — companion variant"
+      "notes": "Shadow Dancer (Male) \u2014 companion variant"
     },
     "chronomancer_female": {
       "spriteId": "chronomancer_female",
@@ -590,7 +566,7 @@
       "candidateDir": "images/pixellab/chronomancer_female",
       "originalSpritecookPrefix": "images/spritecook/chronomancer_female_",
       "creditsUsed": 12,
-      "notes": "Chronomancer (Female) — companion variant"
+      "notes": "Chronomancer (Female) \u2014 companion variant"
     },
     "warrior_female": {
       "spriteId": "warrior_female",
@@ -609,26 +585,26 @@
       "candidateDir": "images/pixellab/warrior_female",
       "originalSpritecookPrefix": "images/spritecook/warrior_female_",
       "creditsUsed": 12,
-      "notes": "Warrior (Female) — gender variant"
+      "notes": "Warrior (Female) \u2014 gender variant"
     },
     "fighter_female": {
       "spriteId": "fighter_female",
-      "status": "pending_approval",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/fighter_female.json",
       "candidateDir": "images/pixellab/fighter_female",
       "originalSpritecookPrefix": "images/spritecook/fighter_female_",
       "creditsUsed": 96,
-      "notes": "Fighter (Female) — gender variant"
+      "notes": "Fighter (Female) \u2014 gender variant"
     },
     "paladin_female": {
       "spriteId": "paladin_female",
@@ -647,7 +623,7 @@
       "candidateDir": "images/pixellab/paladin_female",
       "originalSpritecookPrefix": "images/spritecook/paladin_female_",
       "creditsUsed": 12,
-      "notes": "Paladin (Female) — gender variant"
+      "notes": "Paladin (Female) \u2014 gender variant"
     },
     "rogue_male": {
       "spriteId": "rogue_male",
@@ -666,102 +642,84 @@
       "candidateDir": "images/pixellab/rogue_male",
       "originalSpritecookPrefix": "images/spritecook/rogue_male_",
       "creditsUsed": 12,
-      "notes": "Rogue (Male) — gender variant"
+      "notes": "Rogue (Male) \u2014 gender variant"
     },
     "cleric_male": {
-      "spriteId": "cleric_male",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
-      "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
-      },
-      "artDirectionPath": "data/art_direction/cleric_male.json",
-      "candidateDir": "images/pixellab/cleric_male",
-      "originalSpritecookPrefix": "images/spritecook/cleric_male_",
-      "creditsUsed": 12,
-      "notes": "Cleric (Male) — gender variant"
+      "status": "pending_approval",
+      "generatedAt": "2026-04-21T22:34:14Z",
+      "poses": [
+        "east",
+        "east_attack",
+        "east_block",
+        "east_ko",
+        "east_spell",
+        "portrait",
+        "south"
+      ]
     },
     "bard_female": {
       "spriteId": "bard_female",
-      "status": "pending_approval",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/bard_female.json",
       "candidateDir": "images/pixellab/bard_female",
       "originalSpritecookPrefix": "images/spritecook/bard_female_",
       "creditsUsed": 132,
-      "notes": "Bard (Female) — gender variant"
+      "notes": "Bard (Female) \u2014 gender variant"
     },
     "mage_female": {
-      "spriteId": "mage_female",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
-      "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
-      },
-      "artDirectionPath": "data/art_direction/mage_female.json",
-      "candidateDir": "images/pixellab/mage_female",
-      "originalSpritecookPrefix": "images/spritecook/mage_female_",
-      "creditsUsed": 12,
-      "notes": "Mage (Female) — gender variant"
+      "status": "pending_approval",
+      "generatedAt": "2026-04-21T22:34:14Z",
+      "poses": [
+        "east",
+        "east_attack",
+        "east_block",
+        "east_ko",
+        "east_spell",
+        "portrait",
+        "south"
+      ]
     },
     "necromancer_female": {
-      "spriteId": "necromancer_female",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
-      "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
-      },
-      "artDirectionPath": "data/art_direction/necromancer_female.json",
-      "candidateDir": "images/pixellab/necromancer_female",
-      "originalSpritecookPrefix": "images/spritecook/necromancer_female_",
-      "creditsUsed": 12,
-      "notes": "Necromancer (Female) — gender variant"
+      "status": "pending_approval",
+      "generatedAt": "2026-04-21T22:34:14Z",
+      "poses": [
+        "east",
+        "east_attack",
+        "east_block",
+        "east_ko",
+        "east_spell",
+        "portrait",
+        "south"
+      ]
     },
     "warlock_male": {
       "spriteId": "warlock_male",
-      "status": "pending_approval",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/warlock_male.json",
       "candidateDir": "images/pixellab/warlock_male",
       "originalSpritecookPrefix": "images/spritecook/warlock_male_",
       "creditsUsed": 132,
-      "notes": "Warlock (Male) — gender variant"
+      "notes": "Warlock (Male) \u2014 gender variant"
     },
     "demon_hunter_female": {
       "spriteId": "demon_hunter_female",
@@ -780,7 +738,7 @@
       "candidateDir": "images/pixellab/demon_hunter_female",
       "originalSpritecookPrefix": "images/spritecook/demon_hunter_female_",
       "creditsUsed": 12,
-      "notes": "Demon_Hunter (Female) — gender variant"
+      "notes": "Demon_Hunter (Female) \u2014 gender variant"
     },
     "scavenger_female": {
       "spriteId": "scavenger_female",
@@ -799,7 +757,7 @@
       "candidateDir": "images/pixellab/scavenger_female",
       "originalSpritecookPrefix": "images/spritecook/scavenger_female_",
       "creditsUsed": 12,
-      "notes": "Scavenger (Female) — gender variant"
+      "notes": "Scavenger (Female) \u2014 gender variant"
     },
     "swashbuckler_female": {
       "spriteId": "swashbuckler_female",
@@ -818,7 +776,7 @@
       "candidateDir": "images/pixellab/swashbuckler_female",
       "originalSpritecookPrefix": "images/spritecook/swashbuckler_female_",
       "creditsUsed": 12,
-      "notes": "Swashbuckler (Female) — gender variant"
+      "notes": "Swashbuckler (Female) \u2014 gender variant"
     },
     "dragon_knight_male": {
       "spriteId": "dragon_knight_male",
@@ -837,7 +795,7 @@
       "candidateDir": "images/pixellab/dragon_knight_male",
       "originalSpritecookPrefix": "images/spritecook/dragon_knight_male_",
       "creditsUsed": 12,
-      "notes": "Dragon_Knight (Male) — gender variant"
+      "notes": "Dragon_Knight (Male) \u2014 gender variant"
     },
     "pyromancer_male": {
       "spriteId": "pyromancer_male",
@@ -856,7 +814,7 @@
       "candidateDir": "images/pixellab/pyromancer_male",
       "originalSpritecookPrefix": "images/spritecook/pyromancer_male_",
       "creditsUsed": 12,
-      "notes": "Pyromancer (Male) — gender variant"
+      "notes": "Pyromancer (Male) \u2014 gender variant"
     },
     "stormcaller_female": {
       "spriteId": "stormcaller_female",
@@ -875,26 +833,20 @@
       "candidateDir": "images/pixellab/stormcaller_female",
       "originalSpritecookPrefix": "images/spritecook/stormcaller_female_",
       "creditsUsed": 108,
-      "notes": "Stormcaller (Female) — gender variant"
+      "notes": "Stormcaller (Female) \u2014 gender variant"
     },
     "druid_male": {
-      "spriteId": "druid_male",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
-      "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
-      },
-      "artDirectionPath": "data/art_direction/druid_male.json",
-      "candidateDir": "images/pixellab/druid_male",
-      "originalSpritecookPrefix": "images/spritecook/druid_male_",
-      "creditsUsed": 12,
-      "notes": "Druid (Male) — gender variant"
+      "status": "pending_approval",
+      "generatedAt": "2026-04-21T22:34:14Z",
+      "poses": [
+        "east",
+        "east_attack",
+        "east_block",
+        "east_ko",
+        "east_spell",
+        "portrait",
+        "south"
+      ]
     },
     "tactician_female": {
       "spriteId": "tactician_female",
@@ -913,7 +865,7 @@
       "candidateDir": "images/pixellab/tactician_female",
       "originalSpritecookPrefix": "images/spritecook/tactician_female_",
       "creditsUsed": 12,
-      "notes": "Tactician (Female) — gender variant"
+      "notes": "Tactician (Female) \u2014 gender variant"
     },
     "runesmith_female": {
       "spriteId": "runesmith_female",
@@ -932,7 +884,7 @@
       "candidateDir": "images/pixellab/runesmith_female",
       "originalSpritecookPrefix": "images/spritecook/runesmith_female_",
       "creditsUsed": 12,
-      "notes": "Runesmith (Female) — gender variant"
+      "notes": "Runesmith (Female) \u2014 gender variant"
     },
     "witch_hunter_female": {
       "spriteId": "witch_hunter_female",
@@ -951,7 +903,7 @@
       "candidateDir": "images/pixellab/witch_hunter_female",
       "originalSpritecookPrefix": "images/spritecook/witch_hunter_female_",
       "creditsUsed": 12,
-      "notes": "Witch_Hunter (Female) — gender variant"
+      "notes": "Witch_Hunter (Female) \u2014 gender variant"
     },
     "monk_female": {
       "spriteId": "monk_female",
@@ -970,7 +922,7 @@
       "candidateDir": "images/pixellab/monk_female",
       "originalSpritecookPrefix": "images/spritecook/monk_female_",
       "creditsUsed": 12,
-      "notes": "Monk (Female) — gender variant of monk"
+      "notes": "Monk (Female) \u2014 gender variant of monk"
     },
     "oracle_male": {
       "spriteId": "oracle_male",
@@ -989,7 +941,8 @@
       "candidateDir": "images/pixellab/oracle_male",
       "originalSpritecookPrefix": "images/spritecook/oracle_male_",
       "creditsUsed": 144,
-      "notes": "Oracle (Male) — gender variant of oracle"
+      "notes": "Oracle (Male) \u2014 gender variant of oracle",
+      "lastRegenAt": "2026-04-21T22:34:14Z"
     },
     "shaman_male": {
       "spriteId": "shaman_male",
@@ -1008,7 +961,7 @@
       "candidateDir": "images/pixellab/shaman_male",
       "originalSpritecookPrefix": "images/spritecook/shaman_male_",
       "creditsUsed": 12,
-      "notes": "Shaman (Male) — gender variant of shaman"
+      "notes": "Shaman (Male) \u2014 gender variant of shaman"
     },
     "sorcerer_female": {
       "spriteId": "sorcerer_female",
@@ -1027,8 +980,8 @@
       "candidateDir": "images/pixellab/sorcerer_female",
       "originalSpritecookPrefix": "images/spritecook/sorcerer_female_",
       "creditsUsed": 12,
-      "notes": "Sorcerer (Female) — gender variant of sorcerer"
+      "notes": "Sorcerer (Female) \u2014 gender variant of sorcerer"
     }
   },
-  "lastUpdated": "2026-04-21T21:11:40Z"
+  "lastUpdated": "2026-04-21T22:34:14Z"
 }
