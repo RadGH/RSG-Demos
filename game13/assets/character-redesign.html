@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="rsg-game" content="game13">
 <script src="./_header.js" defer></script>
-<title>Tools &middot; PixelLab Redesign &mdash; RSG</title>
+<title>Tools &middot; Character Redesign &mdash; RSG</title>
 <style>
   :root {
     --bg: #0b0810;
@@ -139,28 +139,41 @@
     border-top: 1px solid var(--border); padding-top: 0.75rem;
   }
   footer.note code { background: var(--panel-alt); padding: 0 0.25rem; border-radius: 2px; }
+  .subsprites { margin-top: 0.5rem; display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; background: var(--border); }
+  .subsprites .sub {
+    position: relative; aspect-ratio: 1/1;
+    background: repeating-conic-gradient(#151018 0% 25%, #1e1624 0% 50%) 50%/10px 10px;
+  }
+  .subsprites .sub img { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; display: block; }
+  .subsprites .sub .tag {
+    position: absolute; top: 1px; left: 2px; font-size: 0.5rem; color: var(--parchment);
+    background: rgba(0,0,0,0.6); padding: 0 3px; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .subsprites .sub.empty { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.5rem; }
+  body:not(.show-subsprites) .subsprites { display: none; }
 </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>Tools &middot; PixelLab Redesign</h1>
-    <p class="sub">Reference sheets, candidate frames, and approval status for the BitForge-only character redesign pipeline.</p>
+    <h1>Tools &middot; Character Redesign</h1>
+    <p class="sub">Rebuilt reference sheets per class using tighter art-direction prompts, grouped by gender. Each row shows the <em>old OpenAI portrait</em> (the original identity anchor) alongside the new male and female SpriteCook references so you can flag miscategorized genders or regressions at a glance.</p>
 
     <div class="notice">
-      <strong>Canonical spec lives in <a href="../docs/image-policy.md">/docs/image-policy.md</a></strong> &mdash; 7 poses, 256&times;256, no animation files.
-      The <a href="./index.html">/assets/ gallery</a> is stale and may show incorrect frames; treat the docs as source of truth.
+      <strong>Pipeline:</strong> prompts live in <code>public/data/art_direction/&lt;id&gt;.json</code>; references are generated via the SpriteCook MCP (<code>generate_game_art</code>, pixel mode, 256&times;256) and saved to <code>public/images/pixellab/&lt;id&gt;/reference.png</code>. The canonical pose spec is in <a href="../docs/image-policy.md">/docs/image-policy.md</a> (7 poses per character). Sub-sprite frames below each card are optional; use the floating toggle to hide them while auditing the main references.
     </div>
 
     <div class="summary" id="summary"></div>
     <div id="characters"></div>
 
+    <div id="subsprite-toggle" style="position:fixed;right:1rem;bottom:1rem;z-index:50;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.6rem 0.8rem;box-shadow:0 4px 14px rgba(0,0,0,0.6);font-size:0.75rem;display:flex;gap:0.5rem;align-items:center;">
+      <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;color:var(--parchment);">
+        <input type="checkbox" id="subsprite-checkbox" style="accent-color: var(--gold);">
+        Show sub-sprites (7-pose frames)
+      </label>
+    </div>
+
     <footer class="note">
-      Generator entry points:
-      <code>node scripts/pixellab/gen-reference-sheet.cjs &lt;id&gt;</code>,
-      <code>node scripts/pixellab/gen-frame.cjs &lt;id&gt; &lt;pose&gt;</code>,
-      <code>node scripts/pixellab/approve.cjs &lt;id&gt;</code>.
-      State file: <code>public/data/pixellab_redesign_state.json</code>.
-      Banned-substring guardrail lives in each character's <code>bannedSubstrings</code> field in <code>public/data/art_direction/</code>.
+      Regen entry point: <code>SpriteCook MCP → generate_game_art</code> with the prompt from <code>referenceSheet.prompt</code>. Prompt rewriter: <code>node scripts/pixellab/rewrite-prompts.cjs</code>. State file: <code>public/data/pixellab_redesign_state.json</code>. Each class's banned substrings live in its art-direction JSON.
     </footer>
   </div>
 
@@ -285,8 +298,25 @@ function renderSlot(baseId, variant, state) {
   refImg.onerror = () => { refImg.replaceWith(Object.assign(document.createElement('div'), { className: 'placeholder', textContent: 'reference not on disk yet' })); };
   col.appendChild(refImg);
 
+  col.appendChild(renderSubSprites(spriteId));
   if (ad) col.appendChild(renderArtDirection(ad));
   return col;
+}
+
+function renderSubSprites(spriteId) {
+  const grid = document.createElement('div');
+  grid.className = 'subsprites';
+  POSES.forEach(pose => {
+    const cell = document.createElement('div'); cell.className = 'sub';
+    const img = new Image();
+    img.onerror = () => { cell.classList.add('empty'); cell.textContent = pose; };
+    img.src = IMG_BASE + '/pixellab/' + spriteId + '/' + pose + '.png?t=' + Date.now();
+    img.alt = pose;
+    const tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = pose;
+    cell.appendChild(img); cell.appendChild(tag);
+    grid.appendChild(cell);
+  });
+  return grid;
 }
 
 function renderOldPortraitSlot(baseId) {
@@ -357,6 +387,19 @@ main().catch(e => {
   document.getElementById('characters').innerHTML =
     '<div class="notice">Failed to load state: ' + (e.message || e) + '</div>';
 });
+
+// Sub-sprite toggle (sticky floating control, persisted in localStorage)
+(function wireSubSpriteToggle(){
+  const cb = document.getElementById('subsprite-checkbox');
+  const KEY = 'rsg-char-redesign-show-subsprites';
+  const initial = localStorage.getItem(KEY) === '1';
+  cb.checked = initial;
+  document.body.classList.toggle('show-subsprites', initial);
+  cb.addEventListener('change', () => {
+    document.body.classList.toggle('show-subsprites', cb.checked);
+    localStorage.setItem(KEY, cb.checked ? '1' : '0');
+  });
+})();
 </script>
 </body>
 </html>

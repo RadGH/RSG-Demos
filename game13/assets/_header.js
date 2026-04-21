@@ -74,7 +74,7 @@
       { href: ASSETS + 'skill-audit.html', label: 'Skill Audit' },
       { href: ASSETS + 'redesign-survey.html', label: 'Redesign Survey' },
       { href: ASSETS + 'image-review.html', label: 'Image Review' },
-      { href: ASSETS + 'pixellab-redesign.html', label: 'Character Redesign' },
+      { href: ASSETS + 'character-redesign.html', label: 'Character Redesign' },
       { href: ASSETS + 'custom-content.html', label: 'Custom Content' },
       { href: ASSETS + 'ai-content-gen.html', label: 'AI Content Generator' },
       { href: ASSETS + 'spell-catalog.html', label: 'Spell Catalog' },

@@ -1,7 +1,7 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-21T15:55:00.000Z",
-  "creditsUsedTotal": 624,
+  "updatedAt": "2026-04-21T16:35:00.000Z",
+  "creditsUsedTotal": 708,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
@@ -57,7 +57,7 @@
       "artDirectionPath": "data/art_direction/fighter.json",
       "candidateDir": "images/pixellab/fighter",
       "originalSpritecookPrefix": "images/spritecook/fighter_",
-      "creditsUsed": 36,
+      "creditsUsed": 48,
       "notes": "Monk-adjacent melee specialist with quarterstaff."
     },
     "paladin": {
@@ -114,7 +114,7 @@
       "artDirectionPath": "data/art_direction/rogue.json",
       "candidateDir": "images/pixellab/rogue",
       "originalSpritecookPrefix": "images/spritecook/rogue_",
-      "creditsUsed": 24,
+      "creditsUsed": 36,
       "notes": "Dual-dagger stealth attacker. Hood up in all frames except KO."
     },
     "cleric": {
@@ -228,7 +228,7 @@
       "artDirectionPath": "data/art_direction/demon_hunter.json",
       "candidateDir": "images/pixellab/demon_hunter",
       "originalSpritecookPrefix": "images/spritecook/demon_hunter_",
-      "creditsUsed": 24,
+      "creditsUsed": 36,
       "notes": "Blindfolded elf warrior with twin warglaives. Bare midriff, demon-hunter tattoos."
     },
     "scavenger": {
@@ -285,7 +285,7 @@
       "artDirectionPath": "data/art_direction/dragon_knight.json",
       "candidateDir": "images/pixellab/dragon_knight",
       "originalSpritecookPrefix": "images/spritecook/dragon_knight_",
-      "creditsUsed": 24,
+      "creditsUsed": 36,
       "notes": "Heavy draconic plate + flaming greatsword."
     },
     "pyromancer": {
@@ -361,7 +361,7 @@
       "artDirectionPath": "data/art_direction/tactician.json",
       "candidateDir": "images/pixellab/tactician",
       "originalSpritecookPrefix": "images/spritecook/tactician_",
-      "creditsUsed": 24,
+      "creditsUsed": 36,
       "notes": "Napoleonic officer archetype. Coat + epaulets + riding crop."
     },
     "chronomancer": {
@@ -437,7 +437,7 @@
       "artDirectionPath": "data/art_direction/witch_hunter.json",
       "candidateDir": "images/pixellab/witch_hunter",
       "originalSpritecookPrefix": "images/spritecook/witch_hunter_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Puritanical gun-and-saber inquisitor. Wide-brim hat always on except KO."
     },
     "knight": {
@@ -513,7 +513,7 @@
       "artDirectionPath": "data/art_direction/shadow_dancer.json",
       "candidateDir": "images/pixellab/shadow_dancer",
       "originalSpritecookPrefix": "images/spritecook/shadow_dancer_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Violet-shadow elven duelist-dancer. Scimitar + silk wraps + shadow tattoos."
     },
     "ranger_male": {
