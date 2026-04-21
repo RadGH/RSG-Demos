@@ -1,7 +1,7 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-21T17:45:00.000Z",
-  "creditsUsedTotal": 1008,
+  "updatedAt": "2026-04-21T18:00:00.000Z",
+  "creditsUsedTotal": 1056,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
@@ -952,6 +952,82 @@
       "originalSpritecookPrefix": "images/spritecook/witch_hunter_female_",
       "creditsUsed": 12,
       "notes": "Witch_Hunter (Female) \u2014 gender variant"
+    },
+    "monk_female": {
+      "spriteId": "monk_female",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/monk_female.json",
+      "candidateDir": "images/pixellab/monk_female",
+      "originalSpritecookPrefix": "images/spritecook/monk_female_",
+      "creditsUsed": 12,
+      "notes": "Monk (Female) \u2014 gender variant of monk"
+    },
+    "oracle_male": {
+      "spriteId": "oracle_male",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/oracle_male.json",
+      "candidateDir": "images/pixellab/oracle_male",
+      "originalSpritecookPrefix": "images/spritecook/oracle_male_",
+      "creditsUsed": 12,
+      "notes": "Oracle (Male) \u2014 gender variant of oracle"
+    },
+    "shaman_male": {
+      "spriteId": "shaman_male",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/shaman_male.json",
+      "candidateDir": "images/pixellab/shaman_male",
+      "originalSpritecookPrefix": "images/spritecook/shaman_male_",
+      "creditsUsed": 12,
+      "notes": "Shaman (Male) \u2014 gender variant of shaman"
+    },
+    "sorcerer_female": {
+      "spriteId": "sorcerer_female",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/sorcerer_female.json",
+      "candidateDir": "images/pixellab/sorcerer_female",
+      "originalSpritecookPrefix": "images/spritecook/sorcerer_female_",
+      "creditsUsed": 12,
+      "notes": "Sorcerer (Female) \u2014 gender variant of sorcerer"
     }
   }
 }
