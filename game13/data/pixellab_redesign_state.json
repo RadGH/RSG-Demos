@@ -1,7 +1,7 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-21T14:38:49.480Z",
-  "creditsUsedTotal": 336,
+  "updatedAt": "2026-04-21T14:57:53.924Z",
+  "creditsUsedTotal": 360,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
@@ -190,7 +190,7 @@
       "artDirectionPath": "data/art_direction/mage.json",
       "candidateDir": "images/pixellab/mage",
       "originalSpritecookPrefix": "images/spritecook/mage_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Archetypal wizard with pointed hat and star-patterned robes."
     },
     "necromancer": {
@@ -209,7 +209,7 @@
       "artDirectionPath": "data/art_direction/necromancer.json",
       "candidateDir": "images/pixellab/necromancer",
       "originalSpritecookPrefix": "images/spritecook/necromancer_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Death magic specialist. Bone/green/black palette."
     },
     "warlock": {
