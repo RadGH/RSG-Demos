@@ -1,7 +1,7 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-21T08:15:39.764Z",
-  "creditsUsedTotal": 312,
+  "updatedAt": "2026-04-21T14:38:49.480Z",
+  "creditsUsedTotal": 336,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
@@ -76,7 +76,7 @@
       "artDirectionPath": "data/art_direction/fighter.json",
       "candidateDir": "images/pixellab/fighter",
       "originalSpritecookPrefix": "images/spritecook/fighter_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Monk-adjacent melee specialist with quarterstaff."
     },
     "paladin": {
@@ -95,7 +95,7 @@
       "artDirectionPath": "data/art_direction/paladin.json",
       "candidateDir": "images/pixellab/paladin",
       "originalSpritecookPrefix": "images/spritecook/paladin_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Holy knight. Warhammer + sunburst motif only."
     },
     "ranger": {
