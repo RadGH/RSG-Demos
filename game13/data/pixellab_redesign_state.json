@@ -860,7 +860,7 @@
     },
     "stormcaller_female": {
       "spriteId": "stormcaller_female",
-      "status": "pending_approval",
+      "status": "partial_pending_regen",
       "referenceStatus": "reference_generated",
       "framesStatus": {
         "portrait": "pending_approval",
@@ -868,7 +868,7 @@
         "east": "pending_approval",
         "east_attack": "pending_approval",
         "east_spell": "pending_approval",
-        "east_block": "pending_approval",
+        "east_block": "needs_regen_flagged",
         "east_ko": "pending_approval"
       },
       "artDirectionPath": "data/art_direction/stormcaller_female.json",
@@ -974,11 +974,11 @@
     },
     "oracle_male": {
       "spriteId": "oracle_male",
-      "status": "pending_approval",
+      "status": "partial_pending_regen",
       "referenceStatus": "reference_generated",
       "framesStatus": {
         "portrait": "generated",
-        "south": "generated",
+        "south": "needs_regen_flagged",
         "east": "generated",
         "east_attack": "generated",
         "east_spell": "generated",

@@ -24,6 +24,20 @@ File naming: `{character_id}_{pose}.png` under `public/images/spritecook/`.
 
 There is no `north` or `west` direction. Legacy `_north`/`_west` assets are not rendered; treat them as archived.
 
+##### 🛑 RIGID SpriteCook download contract (added 2026-04-21 after M198 incident)
+
+When generating character frames via SpriteCook MCP, the download step is the most common place for silent corruption. The rules below are non-negotiable; treat a violation as a user-review flag, never as a workaround opportunity.
+
+1. **Generation args** — `generate_game_art` must be called with: `pixel=true`, `bg_mode="transparent"`, `width=256`, `height=256`, `model="gemini-3.1-flash-image-preview"`. Pass `reference_asset_id` for style-lock.
+2. **Endpoint** — when fetching the PNG, ALWAYS use the `pixel_url` field from `get_asset_metadata` (`/signed-content/pixel`). **NEVER** use `raw_url` (`/signed-content/raw`). `/pixel` returns a 200×200 RGBA PNG with alpha preserved. `/raw` returns the 1024×1024 Gemini output with a solid white background and no alpha channel. Downloading from `/raw` is indistinguishable at the URL level — this is the bug that shipped in M198.
+3. **Post-download validation** — every PNG written to disk must pass all three checks:
+   - Size is exactly 200×200
+   - Mode is RGBA (or P with a tRNS chunk — PIL's `img.convert("RGBA")` makes the check mode-agnostic)
+   - At least one of the four corners has alpha == 0 (proves transparency was preserved)
+4. **On validation failure** — do NOT write the file, do NOT attempt background removal, do NOT retry against a different endpoint, do NOT crop/pad to force compliance. Stop the pipeline, list the failed asset IDs, and ask the user how to proceed (regenerate with different `smart_crop_mode`, adjust the prompt, or accept the non-standard size).
+5. **Background removal is banned.** If a frame has a white background, the frame is wrong; regenerate it, do not post-process it. (Prior bg-removal work on warlock_east_spell is the one exception that already shipped.)
+6. **Reference implementation** — `/tmp/wire_m198_fix.py` (M198 recovery). Use this as the template for any future bulk wire script.
+
 #### Background art (combat zones)
 
 - **Size:** 1536×1024.
