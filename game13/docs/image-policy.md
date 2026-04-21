@@ -43,6 +43,34 @@ There is no `north` or `west` direction. Legacy `_north`/`_west` assets are not 
 - **Effect artwork:** any projectile, explosion, splash, or VFX frame the weapon uses in combat. One file per effect frame.
 - Indexed in image-review under category `tap-weapons`.
 
+### Framing & Scale Policy (character art)
+
+Every character frame — **reference, portrait, south, east, east_attack, east_spell, east_block, east_ko** — must obey these rules. They are enforced in the SpriteCook prompt via `GLOBAL_ANCHORS` + per-pose `framing()` in `scripts/pixellab/rewrite-prompts.cjs`. If a generated frame violates framing, **re-run** — do not accept cropped feet or tops of heads; they cascade into every downstream pose because the reference is the style anchor.
+
+#### Full-body poses (reference, south, east, east_attack, east_spell, east_block, east_ko)
+
+- **FULL-BODY, head-to-toe.** The entire figure fits inside the 256×256 canvas.
+- **Feet** ~6–8% above the bottom edge, fully visible, NEVER cropped.
+- **Head** ~6–8% headroom above the hair, NEVER cropped.
+- **Figure height** ~85% of canvas height, centered horizontally.
+- **Weapon overhang** is allowed laterally and above, but body (feet→head) stays inside the canvas.
+
+#### Portrait pose (portrait only)
+
+- **Head-and-shoulders bust shot** from mid-chest upward, three-quarter view.
+- Head fills the upper half of the canvas; shoulders fill the lower half.
+- ~5% headroom above the hair. Face must be clearly readable.
+
+#### Cross-roster scale consistency
+
+A standard adult human is **180 cm tall in-world** and must render at the **same relative pixel height** as every other adult humanoid in the set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, Swashbuckler, etc all read at the same size in their respective full-body frames. The only permitted variance is small natural adult build differences (slender vs broad) — never scale differences.
+
+This is how we avoid the M58–M64 bug where one class looked like a bobblehead and another looked like an old man: both were hitting the model with different implicit framing cues. Keep the anchors in sync with every new class.
+
+#### Head-to-body ratio
+
+Realistic adult: head ≈ 1/7 to 1/8 of total body height. Chibi, bobblehead, and child-bodied proportions are banned via the GLOBAL_ANCHORS negative list.
+
 ### Image generation workflow
 
 1. **Reference image required.** Every generation must pass a reference asset_id (for characters, the portrait; for a new character, pick the closest stylistic match). This keeps art cohesive.

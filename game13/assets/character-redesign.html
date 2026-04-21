@@ -151,6 +151,36 @@
   }
   .subsprites .sub.empty { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.5rem; }
   body:not(.show-subsprites) .subsprites { display: none; }
+  .refcol img.sheet, .subsprites .sub img { cursor: zoom-in; }
+  .lightbox {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.93);
+    display: none; z-index: 100; flex-direction: column; align-items: center; justify-content: center;
+    padding: 1rem;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox .lb-stage {
+    width: min(90vw, 720px); height: min(72vh, 720px);
+    display: flex; align-items: center; justify-content: center;
+    background: repeating-conic-gradient(#151018 0% 25%, #1e1624 0% 50%) 50%/24px 24px;
+    border: 1px solid var(--gold); border-radius: 4px;
+  }
+  .lightbox .lb-stage img {
+    max-width: 100%; max-height: 100%; image-rendering: pixelated; display: block;
+  }
+  .lightbox .lb-title {
+    color: var(--gold); margin: 0.8rem 0 0.2rem; font-family: 'Cinzel',Georgia,serif;
+    letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.95rem;
+  }
+  .lightbox .lb-sub { color: var(--muted); font-size: 0.75rem; margin: 0 0 0.8rem; }
+  .lightbox .lb-nav { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+  .lightbox button {
+    background: var(--panel); color: var(--parchment); border: 1px solid var(--border);
+    padding: 0.5rem 1rem; cursor: pointer; font-size: 0.8rem; border-radius: 3px;
+    letter-spacing: 0.06em;
+  }
+  .lightbox button:hover { border-color: var(--gold); color: var(--gold); }
+  .lightbox .lb-close { position: absolute; top: 1rem; right: 1rem; }
+  .lightbox .lb-counter { color: var(--muted); font-size: 0.7rem; margin-top: 0.5rem; letter-spacing: 0.08em; }
 </style>
 </head>
 <body>
@@ -172,6 +202,18 @@
       </label>
     </div>
 
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <button class="lb-close" id="lb-close" aria-label="Close">&times; Close</button>
+      <div class="lb-stage"><img id="lb-img" alt=""></div>
+      <h3 class="lb-title" id="lb-title"></h3>
+      <p class="lb-sub" id="lb-sub"></p>
+      <div class="lb-nav">
+        <button id="lb-prev" aria-label="Previous image">&larr; Prev</button>
+        <button id="lb-next" aria-label="Next image">Next &rarr;</button>
+      </div>
+      <p class="lb-counter" id="lb-counter"></p>
+    </div>
+
     <footer class="note">
       Regen entry point: <code>SpriteCook MCP → generate_game_art</code> with the prompt from <code>referenceSheet.prompt</code>. Prompt rewriter: <code>node scripts/pixellab/rewrite-prompts.cjs</code>. State file: <code>public/data/pixellab_redesign_state.json</code>. Each class's banned substrings live in its art-direction JSON.
     </footer>
@@ -179,6 +221,28 @@
 
 <script>
 const POSES = ['portrait','south','east','east_attack','east_spell','east_block','east_ko'];
+const LB_ITEMS = [];
+function registerLightbox(imgEl, title, subtitle) {
+  const idx = LB_ITEMS.length;
+  LB_ITEMS.push({ el: imgEl, title: title, subtitle: subtitle });
+  imgEl.dataset.lbIdx = String(idx);
+  imgEl.addEventListener('click', () => openLightbox(idx));
+}
+let lbIdx = 0;
+function openLightbox(i) {
+  if (!LB_ITEMS.length) return;
+  lbIdx = ((i % LB_ITEMS.length) + LB_ITEMS.length) % LB_ITEMS.length;
+  const item = LB_ITEMS[lbIdx];
+  const big = document.getElementById('lb-img');
+  big.src = item.el.src;
+  big.alt = item.title;
+  document.getElementById('lb-title').textContent = item.title;
+  document.getElementById('lb-sub').textContent = item.subtitle;
+  document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + LB_ITEMS.length;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+function stepLightbox(dir) { openLightbox(lbIdx + dir); }
 // Vite serves /public at the site root, so from /assets/<file>.html we reach
 // assets via "../images/..." and data via "../data/...".
 const IMG_BASE  = '../images';
@@ -296,14 +360,15 @@ function renderSlot(baseId, variant, state) {
   refImg.style.aspectRatio = '1/1';
   refImg.src = IMG_BASE + '/pixellab/' + spriteId + '/reference.png?t=' + Date.now();
   refImg.onerror = () => { refImg.replaceWith(Object.assign(document.createElement('div'), { className: 'placeholder', textContent: 'reference not on disk yet' })); };
+  registerLightbox(refImg, spriteId + ' · ' + gender.toUpperCase(), 'Reference sheet · ' + (entry.referenceStatus || 'pending'));
   col.appendChild(refImg);
 
-  col.appendChild(renderSubSprites(spriteId));
+  col.appendChild(renderSubSprites(spriteId, gender));
   if (ad) col.appendChild(renderArtDirection(ad));
   return col;
 }
 
-function renderSubSprites(spriteId) {
+function renderSubSprites(spriteId, gender) {
   const grid = document.createElement('div');
   grid.className = 'subsprites';
   POSES.forEach(pose => {
@@ -312,6 +377,7 @@ function renderSubSprites(spriteId) {
     img.onerror = () => { cell.classList.add('empty'); cell.textContent = pose; };
     img.src = IMG_BASE + '/pixellab/' + spriteId + '/' + pose + '.png?t=' + Date.now();
     img.alt = pose;
+    registerLightbox(img, spriteId + ' · ' + (gender || '').toUpperCase(), 'Pose · ' + pose);
     const tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = pose;
     cell.appendChild(img); cell.appendChild(tag);
     grid.appendChild(cell);
@@ -336,6 +402,7 @@ function renderOldPortraitSlot(baseId) {
   img.style.aspectRatio = '1/1';
   img.src = IMG_BASE + '/portraits/' + baseId + '.png?t=' + Date.now();
   img.onerror = () => { img.replaceWith(Object.assign(document.createElement('div'), { className: 'placeholder', textContent: 'no old portrait' })); };
+  registerLightbox(img, baseId + ' · OLD PORTRAIT', 'Original OpenAI portrait (identity anchor)');
   col.appendChild(img);
   return col;
 }
@@ -387,6 +454,21 @@ main().catch(e => {
   document.getElementById('characters').innerHTML =
     '<div class="notice">Failed to load state: ' + (e.message || e) + '</div>';
 });
+
+// Lightbox wiring
+(function wireLightbox(){
+  const box = document.getElementById('lightbox');
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-prev').addEventListener('click', (e) => { e.stopPropagation(); stepLightbox(-1); });
+  document.getElementById('lb-next').addEventListener('click', (e) => { e.stopPropagation(); stepLightbox(1); });
+  box.addEventListener('click', (e) => { if (e.target === box) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!box.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowLeft') stepLightbox(-1);
+    else if (e.key === 'ArrowRight') stepLightbox(1);
+  });
+})();
 
 // Sub-sprite toggle (sticky floating control, persisted in localStorage)
 (function wireSubSpriteToggle(){

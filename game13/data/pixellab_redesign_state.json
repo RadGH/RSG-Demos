@@ -1,7 +1,7 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-21T16:35:00.000Z",
-  "creditsUsedTotal": 708,
+  "updatedAt": "2026-04-21T17:05:00.000Z",
+  "creditsUsedTotal": 756,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
@@ -57,7 +57,7 @@
       "artDirectionPath": "data/art_direction/fighter.json",
       "candidateDir": "images/pixellab/fighter",
       "originalSpritecookPrefix": "images/spritecook/fighter_",
-      "creditsUsed": 48,
+      "creditsUsed": 60,
       "notes": "Monk-adjacent melee specialist with quarterstaff."
     },
     "paladin": {
@@ -228,7 +228,7 @@
       "artDirectionPath": "data/art_direction/demon_hunter.json",
       "candidateDir": "images/pixellab/demon_hunter",
       "originalSpritecookPrefix": "images/spritecook/demon_hunter_",
-      "creditsUsed": 36,
+      "creditsUsed": 48,
       "notes": "Blindfolded elf warrior with twin warglaives. Bare midriff, demon-hunter tattoos."
     },
     "scavenger": {
@@ -266,7 +266,7 @@
       "artDirectionPath": "data/art_direction/swashbuckler.json",
       "candidateDir": "images/pixellab/swashbuckler",
       "originalSpritecookPrefix": "images/spritecook/swashbuckler_",
-      "creditsUsed": 24,
+      "creditsUsed": 36,
       "notes": "Dashing pirate-duelist. Rapier + tricorn hat + crimson doublet."
     },
     "dragon_knight": {
@@ -323,7 +323,7 @@
       "artDirectionPath": "data/art_direction/stormcaller.json",
       "candidateDir": "images/pixellab/stormcaller",
       "originalSpritecookPrefix": "images/spritecook/stormcaller_",
-      "creditsUsed": 24,
+      "creditsUsed": 36,
       "notes": "Lightning-palm caster. Zero held weapons."
     },
     "druid": {
