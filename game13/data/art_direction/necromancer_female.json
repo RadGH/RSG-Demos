@@ -7,7 +7,7 @@
   "identity": "Human WOMAN (female), about 26 years old, medium-length dark brown hair visible around the face beneath the hood, normal living smooth adult skin (NOT undead, NOT gaunt), dark brown eyes, stern adult female face (NO BEARD).",
   "outfit": "Plain black hooded robe with hood WORN UP covering the top and back of the head (face still clearly visible beneath the front of the hood), a simple gold circular clasp at the throat, no ornamentation, black inner cloth.",
   "weapons": "A tall wooden staff topped with a real weathered human skull facing outward, held in the right hand.",
-  "attackStyle": "East-facing, hood up. Staff thrust forward in both hands, skull on top glowing sickly green, left palm forward releasing a wisp of green necrotic energy.",
+  "attackStyle": "East-facing, hood up. Staff thrust forward in both hands, skull on top glowing sickly green, left palm forward releasing a wisp of green necrotic energy. CRITICAL: character must be MID-STRIKE, clearly in motion \u2014 weapon in the middle of a swing, thrust, shot, or spell-cast, NOT an idle/battle-ready stance. Pose must be visually distinct from the east idle.",
   "spellStyle": "East-facing, hood up. Staff planted vertically at her side, left hand raised with a glowing green soul orb above the palm.",
   "blockStyle": "East-facing, hood up. Staff held horizontally across the chest in both hands, faint green aura around her.",
   "koStyle": "East-facing, hood up, kneeling, staff fallen with the skull rolling beside her, head bowed.",

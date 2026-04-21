@@ -7,7 +7,7 @@
   "identity": "Human MAN (male, kind gentle adult), about 28 years old, soft round adult face, warm brown eyes, short chestnut-brown hair visible at the front of the hood (NOT BALD, NO BEARD, clean-shaven).",
   "outfit": "White hooded robe with gold-trim borders (hood worn UP covering the back of the head but framing the face \u2014 hair shows at the front), white shoulder cape, a wooden cross-shaped holy symbol on a gold chain over the chest.",
   "weapons": "A gray iron spiked mace held upright in the left hand, dark wooden haft with a simple golden pommel.",
-  "attackStyle": "East-facing. Mid-swing horizontal mace strike at chest height with the left hand, right hand raised with a soft white glow, robe swirling.",
+  "attackStyle": "East-facing. Mid-swing horizontal mace strike at chest height with the left hand, right hand raised with a soft white glow, robe swirling. CRITICAL: character must be MID-STRIKE, clearly in motion \u2014 weapon in the middle of a swing, thrust, shot, or spell-cast, NOT an idle/battle-ready stance. Pose must be visually distinct from the east idle.",
   "spellStyle": "East-facing. Both hands raised in front of the chest, a soft golden healing light between the palms, mace lowered at his side.",
   "blockStyle": "East-facing. Mace held horizontally in both hands across the torso, hood up, chin down.",
   "koStyle": "East-facing, kneeling, head bowed in prayer, mace laid on the ground in front of his, robe pooled around his.",

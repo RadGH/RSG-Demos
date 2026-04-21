@@ -7,7 +7,7 @@
   "identity": "Young male seer, slender lean adult build. Medium-length wavy golden-copper hair (warm orange-brown) falling past the shoulders. Eyes are the critical identifier: GLOWING CYAN-BLUE ALMOND-SHAPED EYES with no visible pupil or iris, just pure cyan-blue luminance with a soft glowing halo. Clean-shaven, fair pale skin, serene adult male face (distinctly masculine jaw).",
   "outfit": "Flowing pale cream and ivory-white robe with soft gold embroidery along the hem and sleeves, a thin leather belt at the waist, a translucent pale-blue shawl over one shoulder. Simple leather sandals.",
   "weapons": "A slender pale wooden staff with a small glowing cyan-blue crystal set at the top, held in the right hand.",
-  "attackStyle": "East-facing profile, hood still up. Right arm thrust forward, palm open, a thin beam of cool cyan-white light extending from her fingertips. Left hand drawn back near hip, fingers curled. No held object. Hair lifts slightly from the energy release; robe hem swirls.",
+  "attackStyle": "East-facing profile, hood still up. Right arm thrust forward, palm open, a thin beam of cool cyan-white light extending from her fingertips. Left hand drawn back near hip, fingers curled. No held object. Hair lifts slightly from the energy release; robe hem swirls. CRITICAL: character must be MID-STRIKE, clearly in motion \u2014 weapon in the middle of a swing, thrust, shot, or spell-cast, NOT an idle/battle-ready stance. Pose must be visually distinct from the east idle.",
   "spellStyle": "East-facing profile, hood still up. Both hands raised at shoulder height, palms up and cupped together. A glowing ring-rune of cyan-white light hovers above her open palms. Head tilted slightly back, cyan eye-glow brighter than normal. Robe hem floats gently.",
   "blockStyle": "East-facing profile, hood still up. Crossed forearms in front of chest, palms outward, a shimmering translucent ward of pale cyan light forming between her arms. Shoulders squared, chin down, eyes narrowed but still glowing cyan.",
   "koStyle": "East-facing, slumped on her knees on the ground. Both arms limp, hands resting on the ground in front of her. Head bowed, hood still up but tilted forward, golden hair fallen forward covering most of her face. Eye-glow dimmed to a faint cool-cyan smudge behind the hair. Robe pooled around her knees.",
@@ -63,11 +63,11 @@
       "spritecookAssetId": "9dd4603e-44df-4c8e-92ce-61361938d5b2"
     },
     "south": {
-      "path": "images/spritecook/oracle_male_south.png",
+      "path": "images/pixellab/oracle_male/south.png",
       "prompt": "IDENTITY (must match reference sheet exactly): Young male seer, slender lean adult build. Medium-length wavy golden-copper hair (warm orange-brown) falling past the shoulders. Eyes are the critical identifier: GLOWING CYAN-BLUE ALMOND-SHAPED EYES with no visible pupil or iris, just pure cyan-blue luminance with a soft glowing halo. Clean-shaven, fair pale skin, serene adult male face (distinctly masculine jaw).\n\nOUTFIT: Flowing pale cream and ivory-white robe with soft gold embroidery along the hem and sleeves, a thin leather belt at the waist, a translucent pale-blue shawl over one shoulder. Simple leather sandals.\n\nWEAPONS: A slender pale wooden staff with a small glowing cyan-blue crystal set at the top, held in the right hand.\n\nPOSE (south): Facing the camera (south), full body, hood still up, calm idle stance. Hands clasped loosely at his abdomen. Cyan glowing eyes front and center, golden hair framing the face, gold circlet visible below the hood's edge.\n\nFRAMING: full body facing camera (south), feet aligned to bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): the Oracle must occupy approximately 180px of the 256px canvas height \u2014 roughly 70% of the canvas. Do NOT stretch or upscale the figure to fill the frame. Extra space above head and/or below feet is correct and preserves scale relative to other species. Feet (or lowest point of body for KO / quadruped) aligned near the bottom.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference portrait at images/portraits/oracle.png.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in to fill the canvas \u2014 respect SCALE.",
-      "generatedAt": "2026-04-21T19:00:00.000Z",
+      "generatedAt": "2026-04-21T19:33:45Z",
       "approvedAt": null,
-      "spritecookAssetId": "128dce90-b98c-4d80-a352-8dffa9fa101f"
+      "spritecookAssetId": "2b9e7244-b979-4039-b0da-8b79c8cf0824"
     },
     "east": {
       "path": "images/spritecook/oracle_male_east.png",
@@ -84,11 +84,11 @@
       "spritecookAssetId": "709bf553-8dbf-48cf-8e45-6a2a2d9e3745"
     },
     "east_spell": {
-      "path": "images/spritecook/oracle_male_east_spell.png",
+      "path": "images/pixellab/oracle_male/east_spell.png",
       "prompt": "IDENTITY (must match reference sheet exactly): Young male seer, slender lean adult build. Medium-length wavy golden-copper hair (warm orange-brown) falling past the shoulders. Eyes are the critical identifier: GLOWING CYAN-BLUE ALMOND-SHAPED EYES with no visible pupil or iris, just pure cyan-blue luminance with a soft glowing halo. Clean-shaven, fair pale skin, serene adult male face (distinctly masculine jaw).\n\nOUTFIT: Flowing pale cream and ivory-white robe with soft gold embroidery along the hem and sleeves, a thin leather belt at the waist, a translucent pale-blue shawl over one shoulder. Simple leather sandals.\n\nWEAPONS: A slender pale wooden staff with a small glowing cyan-blue crystal set at the top, held in the right hand.\n\nPOSE (east_spell): East-facing profile, hood still up. Both hands raised at shoulder height, palms up and cupped together. A glowing ring-rune of cyan-white light hovers above his open palms. Head tilted slightly back, cyan eye-glow brighter than normal. Robe hem floats gently.\n\nFRAMING: full body facing east, mid-cast spell frame, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): the Oracle must occupy approximately 180px of the 256px canvas height \u2014 roughly 70% of the canvas. Do NOT stretch or upscale the figure to fill the frame. Extra space above head and/or below feet is correct and preserves scale relative to other species. Feet (or lowest point of body for KO / quadruped) aligned near the bottom.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference portrait at images/portraits/oracle.png.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in to fill the canvas \u2014 respect SCALE.",
-      "generatedAt": "2026-04-21T19:00:00.000Z",
+      "generatedAt": "2026-04-21T19:33:45Z",
       "approvedAt": null,
-      "spritecookAssetId": "56bf68a5-e5f0-49d1-80ae-b7ff916a57be"
+      "spritecookAssetId": "41e4ec93-7aa0-499d-9738-fe365ad02315"
     },
     "east_block": {
       "path": "images/spritecook/oracle_male_east_block.png",

@@ -7,7 +7,7 @@
   "identity": "Human WOMAN (female, distinctly human, NOT an animal, NOT a gnoll, NORMAL HUMAN FACE), about 28 years old, wiry athletic build, messy dark brown hair tied back, sun-tanned weathered skin, sharp hungry brown eyes \u2014 a wasteland scavenger.",
   "outfit": "Layered ragged brown leather wraps and mismatched patched cloth bindings across the torso, knotted rope belts, a single scavenged leather pauldron on the right shoulder, fingerless leather gloves.",
   "weapons": "A crude jagged scavenged iron cleaver with a rope-wrapped wooden handle, held in the right hand. A small pouch of scavenged junk hanging on her hip.",
-  "attackStyle": "East-facing. Mid-slash cleaver sweep forward at chest height, right hand gripping the handle, body hunched low, ragged wraps trailing.",
+  "attackStyle": "East-facing. Mid-slash cleaver sweep forward at chest height, right hand gripping the handle, body hunched low, ragged wraps trailing. CRITICAL: character must be MID-STRIKE, clearly in motion \u2014 weapon in the middle of a swing, thrust, shot, or spell-cast, NOT an idle/battle-ready stance. Pose must be visually distinct from the east idle.",
   "spellStyle": "East-facing. Cleaver lowered, head tilted back in a wild shout, faint brown-orange dust aura swirling around her.",
   "blockStyle": "East-facing. Cleaver held horizontally across the chest in both hands, hunched low.",
   "koStyle": "East-facing, kneeling on the ground, cleaver dropped beside her, head bowed, wraps slumped.",

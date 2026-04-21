@@ -7,7 +7,7 @@
   "identity": "Human female sorcerer, sharp intelligent adult female face, short neatly-styled raven-black hair in a sleek chin-length bob, glowing violet eyes, fair pale skin, slim athletic build.",
   "outfit": "Deep indigo-purple robe with silver-trimmed hood worn down and silver arcane sigils embroidered along the front seam and hem, a silver clasp at the throat, a thin black belt with a violet gemstone buckle. Dark leather boots.",
   "weapons": "A slender dark polished wooden staff topped with a faceted violet crystal orb glowing softly, held in the right hand.",
-  "attackStyle": "East-facing. Right hand thrust forward, crystal orb in front projecting a concentrated beam of violet arcane energy outward.",
+  "attackStyle": "East-facing. Right hand thrust forward, crystal orb in front projecting a concentrated beam of violet arcane energy outward. CRITICAL: character must be MID-STRIKE, clearly in motion \u2014 weapon in the middle of a swing, thrust, shot, or spell-cast, NOT an idle/battle-ready stance. Pose must be visually distinct from the east idle.",
   "spellStyle": "East-facing. Both hands raised, the violet crystal orb rising between them surrounded by a swirling arcane circle of gold runes.",
   "blockStyle": "East-facing. Crystal orb floats in front, projecting a translucent violet hex-dome shield forward.",
   "koStyle": "East-facing, slumped on one knee, crystal orb fallen beside him, pendant lying on the ground, robes splayed.",

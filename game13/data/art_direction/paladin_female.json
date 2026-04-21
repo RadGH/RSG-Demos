@@ -7,7 +7,7 @@
   "identity": "Human WOMAN (female), about 28 years old, long golden-blond wavy hair in a combat braid over the shoulder, bright blue eyes, determined adult female face (NO beard), tall athletic build.",
   "outfit": "Polished silver-steel plate armor with rounded segmented pauldrons and a layered cuirass, subtle bluish highlights on the plates, brown leather straps and belt. No tabard, no cape, no helm.",
   "weapons": "A longsword carried across the back in a scabbard; brown leather-wrapped hilt with a plain crossguard visible over the right shoulder. Drawn into the right hand during combat.",
-  "attackStyle": "East-facing. Longsword drawn, mid-swing horizontal cut from right to left at chest height, both hands on the grip, right foot planted forward.",
+  "attackStyle": "East-facing. Longsword drawn, mid-swing horizontal cut from right to left at chest height, both hands on the grip, right foot planted forward. CRITICAL: character must be MID-STRIKE, clearly in motion \u2014 weapon in the middle of a swing, thrust, shot, or spell-cast, NOT an idle/battle-ready stance. Pose must be visually distinct from the east idle.",
   "spellStyle": "East-facing. Longsword planted point-down in front of her, both hands resting on the pommel, faint golden glow of faith around the blade.",
   "blockStyle": "East-facing. Longsword held vertically in front of the body as a guard, blade pointing up, both hands on the grip, chin tucked behind the crossguard.",
   "koStyle": "East-facing, on one knee, head bowed, longsword fallen on the ground beside her, scabbard still across her back.",

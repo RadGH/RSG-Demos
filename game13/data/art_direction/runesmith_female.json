@@ -7,7 +7,7 @@
   "identity": "Human WOMAN (female, NORMAL HUMAN HEIGHT \u2014 NOT a dwarf, NOT a halfling), about 30 years old, broad-shouldered smith build, short-cropped black hair (NO beard), soot-smudged cheekbones, intense amber eyes.",
   "outfit": "Dark brown leather blacksmith apron over a gray wool tunic, rolled-up sleeves revealing muscular forearms, heavy brown leather gauntlets. Glowing orange-gold runic sigils etched and faintly shining into the apron, gauntlets, and belt buckle.",
   "weapons": "A heavy iron blacksmith hammer with glowing orange runes carved into the head and haft, held in the right hand. A small rune-inscribed bronze anvil icon on the belt. No sword.",
-  "attackStyle": "East-facing. Blacksmith hammer swung in a high overhead arc in the right hand, runes on the hammer glowing bright orange, sparks flying.",
+  "attackStyle": "East-facing. Blacksmith hammer swung in a high overhead arc in the right hand, runes on the hammer glowing bright orange, sparks flying. CRITICAL: character must be MID-STRIKE, clearly in motion \u2014 weapon in the middle of a swing, thrust, shot, or spell-cast, NOT an idle/battle-ready stance. Pose must be visually distinct from the east idle.",
   "spellStyle": "East-facing. Hammer held low, left hand raised with a glowing orange rune hovering above the palm, runes on the gauntlets shining.",
   "blockStyle": "East-facing. Hammer haft held horizontally across the chest in both hands, runes on apron glowing faintly.",
   "koStyle": "East-facing, kneeling, hammer dropped beside her, head bowed, apron and runes dimmed.",

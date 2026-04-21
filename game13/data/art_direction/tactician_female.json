@@ -7,7 +7,7 @@
   "identity": "Human WOMAN (female, commanding adult officer), about 32 years old, TALL and SLENDER adult build with long adult legs, realistic head-to-body ratio. Medium dark brown hair pulled back in a tight low bun or tail, brown eyes, stern lined adult female face, CLEARLY-LIT normal-toned skin (NOT silhouetted).",
   "outfit": "Mid-brown leather coat over a black tunic (coat rendered in bright evenly-lit medium brown, NOT black, NOT silhouetted), bronze military emblem (a stylized eagle) on the left breast, brown leather gloves.",
   "weapons": "A long steel officer's sword held upright in the right hand. A folded tan parchment battle map held in the left hand.",
-  "attackStyle": "East-facing. Sword thrust forward in the right hand as a command signal, left hand pointing with the rolled map toward an unseen enemy.",
+  "attackStyle": "East-facing. Sword thrust forward in the right hand as a command signal, left hand pointing with the rolled map toward an unseen enemy. CRITICAL: character must be MID-STRIKE, clearly in motion \u2014 weapon in the middle of a swing, thrust, shot, or spell-cast, NOT an idle/battle-ready stance. Pose must be visually distinct from the east idle.",
   "spellStyle": "East-facing. Map held open in both hands in front of her, sword sheathed at hip, faint golden glyphs rising from the parchment.",
   "blockStyle": "East-facing. Sword held vertically in front of the body, map tucked under the left arm, stance grounded.",
   "koStyle": "East-facing, on one knee, sword planted in the ground, map fallen at her feet, head bowed.",
