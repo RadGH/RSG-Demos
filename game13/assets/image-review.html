@@ -77,6 +77,76 @@
     border: 1px solid var(--border); border-radius: 3px;
     padding: 0.2rem 0.4rem; font: inherit; font-size: 0.72rem;
   }
+  .display-modes { display: inline-flex; gap: 2px; }
+  .display-modes button {
+    background: var(--panel-alt); color: var(--muted);
+    border: 1px solid var(--border); border-radius: 3px;
+    padding: 0.2rem 0.5rem; font: inherit; font-size: 0.7rem;
+    cursor: pointer; font-weight: 600;
+  }
+  .display-modes button:hover { color: var(--parchment); border-color: var(--gold-dim); }
+  .display-modes button.active { background: var(--gold); color: #0b0810; border-color: var(--gold); }
+  .qs-btn {
+    background: var(--panel-alt); color: var(--gold);
+    border: 1px solid var(--gold-dim); border-radius: 3px;
+    padding: 0.25rem 0.7rem; font: inherit; font-size: 0.72rem;
+    cursor: pointer; font-weight: 700; margin-left: auto;
+  }
+  .qs-btn:hover { background: rgba(232,160,32,0.12); }
+
+  /* Display-mode overrides applied to .poses + .bg-grid containers */
+  body[data-display="hero"] .poses,
+  body[data-display="hero"] .bg-grid { grid-template-columns: 1fr; }
+  body[data-display="hero"] .img-card img,
+  body[data-display="hero"] .bg-grid .img-card img { height: 320px; }
+  body[data-display="g6"] .poses,
+  body[data-display="g6"] .bg-grid { grid-template-columns: repeat(6, minmax(0,1fr)); }
+  body[data-display="g5"] .poses,
+  body[data-display="g5"] .bg-grid { grid-template-columns: repeat(5, minmax(0,1fr)); }
+  body[data-display="g4"] .poses,
+  body[data-display="g4"] .bg-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
+  body[data-display="g3"] .poses,
+  body[data-display="g3"] .bg-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  body[data-display="g2"] .poses,
+  body[data-display="g2"] .bg-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  body[data-display="g6"] .img-card img, body[data-display="g6"] .bg-grid .img-card img { height: 70px; }
+  body[data-display="g5"] .img-card img, body[data-display="g5"] .bg-grid .img-card img { height: 80px; }
+  body[data-display="g3"] .img-card img, body[data-display="g3"] .bg-grid .img-card img { height: 140px; }
+  body[data-display="g2"] .img-card img, body[data-display="g2"] .bg-grid .img-card img { height: 200px; }
+  body[data-display="list"] .poses,
+  body[data-display="list"] .bg-grid {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  body[data-display="list"] .img-card {
+    display: grid; grid-template-columns: 60px 1fr auto;
+    text-align: left; align-items: center; gap: 0.6rem; padding: 0.3rem 0.5rem;
+  }
+  body[data-display="list"] .img-card img,
+  body[data-display="list"] .img-card .placeholder { height: 50px; width: 50px; }
+  body[data-display="list"] .img-card .lbl { font-size: 0.78rem; color: var(--parchment); margin: 0; white-space: normal; }
+  body[data-display="list"] .img-card .quick-actions { margin: 0; flex-direction: row; }
+  body[data-display="list"] .img-card .action-badge { position: static; }
+
+  /* Selection list dialog */
+  dialog.qs-dialog {
+    background: var(--panel); color: var(--parchment);
+    border: 1px solid var(--gold-dim); border-radius: 8px;
+    max-width: 720px; width: 90vw; padding: 1rem;
+  }
+  dialog.qs-dialog::backdrop { background: rgba(0,0,0,0.6); }
+  dialog.qs-dialog h2 { color: var(--gold); margin: 0 0 0.5rem; font-size: 1rem; }
+  dialog.qs-dialog textarea {
+    width: 100%; min-height: 240px; background: #050308; color: var(--parchment);
+    border: 1px solid var(--border); border-radius: 4px; padding: 0.5rem;
+    font: 12px ui-monospace, monospace;
+  }
+  dialog.qs-dialog .qs-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
+  dialog.qs-dialog button {
+    background: var(--panel-alt); color: var(--parchment);
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 0.4rem 0.8rem; cursor: pointer; font: inherit; font-size: 0.78rem;
+  }
+  dialog.qs-dialog button.primary { background: var(--gold); color: #0b0810; border-color: var(--gold); }
 
   /* Card-row (hero/boss/companion groupings) */
   .group {
@@ -386,8 +456,30 @@
         <option value="flagged">Any action flagged</option>
       </select>
     </label>
-    <span style="color:var(--muted);font-size:0.7rem">·</span>
-    <label style="font-size:0.7rem;color:var(--muted)">Quick-action buttons let you Archive / Move to Library / Delete each tile directly. Actions persist in localStorage.</label>
+    <label>Category:
+      <select id="filter-category">
+        <option value="all">All categories</option>
+        <option value="hero">Heroes / Portraits</option>
+        <option value="companion">Companions</option>
+        <option value="boss">Bosses</option>
+        <option value="enemy">Enemies</option>
+        <option value="background">Combat / Map Backgrounds</option>
+        <option value="tap-weapons">Tap Weapons</option>
+        <option value="orphan">Orphans / Unattached</option>
+      </select>
+    </label>
+    <label>Display:
+      <span class="display-modes" id="display-modes">
+        <button type="button" data-mode="hero">Hero</button>
+        <button type="button" data-mode="g6">6</button>
+        <button type="button" data-mode="g5">5</button>
+        <button type="button" data-mode="g4" class="active">4</button>
+        <button type="button" data-mode="g3">3</button>
+        <button type="button" data-mode="g2">2</button>
+        <button type="button" data-mode="list">List</button>
+      </span>
+    </label>
+    <button type="button" id="btn-show-selection" class="qs-btn">Quick select (<span id="qs-count">0</span>)</button>
   </div>
 
   <div id="sections"></div>
@@ -399,6 +491,17 @@
   <span class="count-wrap">Actions: <b id="action-count">0</b> &middot; Ready: <b id="ready-count">0</b> &middot; Pending: <b id="pending-count">0</b> &middot; Orphaned: <b id="orphaned-count">0</b></span>
   <button id="btn-generate" class="primary">Generate Prompt</button>
 </div>
+
+<dialog class="qs-dialog" id="qs-dialog">
+  <h2>Quick Select — <span id="qs-dialog-count">0</span> images</h2>
+  <p style="color:var(--muted);font-size:0.75rem;margin:0 0 0.4rem">File paths of every currently-selected image. Edit, copy, or hand off to Claude.</p>
+  <textarea id="qs-list" readonly></textarea>
+  <div class="qs-actions">
+    <button class="primary" id="qs-copy">Copy</button>
+    <button id="qs-clear">Clear selection</button>
+    <button id="qs-close">Close</button>
+  </div>
+</dialog>
 
 <dialog class="prompt-out" id="prompt-dialog">
   <textarea id="prompt-text" readonly></textarea>
@@ -553,6 +656,9 @@ function filterEntries(list) {
   let result = list;
   if (onlyFlagged) result = result.filter(isFlagged);
   if (filterActionState !== 'all') result = result.filter(passesActionFilter);
+  if (typeof categoryFilter !== 'undefined' && categoryFilter !== 'all') {
+    result = result.filter(passesCategoryFilter);
+  }
   return result;
 }
 
@@ -926,6 +1032,7 @@ function toggleSelection(id, cardEl) {
     cardEl.classList.add('selected');
   }
   renderSelectionEditor();
+  if (typeof updateQsCount === 'function') updateQsCount();
 }
 
 function renderSelectionEditor() {
@@ -1259,8 +1366,73 @@ document.addEventListener('DOMContentLoaded', () => {
     renderSections();
   });
 
+  // M188 — category filter
+  document.getElementById('filter-category').addEventListener('change', (ev) => {
+    categoryFilter = ev.target.value;
+    localStorage.setItem('rsg.imageReview.categoryFilter', categoryFilter);
+    renderSections();
+  });
+  const savedCat = localStorage.getItem('rsg.imageReview.categoryFilter');
+  if (savedCat) {
+    categoryFilter = savedCat;
+    document.getElementById('filter-category').value = savedCat;
+  }
+
+  // M188 — display modes
+  const savedMode = localStorage.getItem('rsg.imageReview.displayMode') || 'g4';
+  document.body.dataset.display = savedMode;
+  document.querySelectorAll('#display-modes button').forEach(b => {
+    b.classList.toggle('active', b.dataset.mode === savedMode);
+    b.addEventListener('click', () => {
+      document.body.dataset.display = b.dataset.mode;
+      localStorage.setItem('rsg.imageReview.displayMode', b.dataset.mode);
+      document.querySelectorAll('#display-modes button').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+    });
+  });
+
+  // M188 — quick-select dialog
+  function openQuickSelect() {
+    const dlg = document.getElementById('qs-dialog');
+    const ids = [...selection];
+    const lines = ids.map(id => {
+      const e = entries.find(en => en.id === id);
+      if (!e) return id;
+      const path = (e.file || '').replace(/^\.\.\//, 'public/');
+      return `${id}\t${path}`;
+    });
+    document.getElementById('qs-list').value = lines.length
+      ? lines.join('\n')
+      : '(no images selected — click any tile to add it)';
+    document.getElementById('qs-dialog-count').textContent = ids.length;
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+  }
+  document.getElementById('btn-show-selection').addEventListener('click', openQuickSelect);
+  document.getElementById('qs-close').addEventListener('click', () => document.getElementById('qs-dialog').close());
+  document.getElementById('qs-copy').addEventListener('click', async () => {
+    const ta = document.getElementById('qs-list');
+    try { await navigator.clipboard.writeText(ta.value); } catch { ta.select(); document.execCommand('copy'); }
+  });
+  document.getElementById('qs-clear').addEventListener('click', () => {
+    selection.clear();
+    document.querySelectorAll('.img-card.selected').forEach(c => c.classList.remove('selected'));
+    updateQsCount();
+    document.getElementById('qs-dialog').close();
+  });
+
   boot();
 });
+
+// M188 — category filter state + count helpers
+let categoryFilter = 'all';
+function passesCategoryFilter(e) {
+  if (categoryFilter === 'all') return true;
+  return e.category === categoryFilter;
+}
+function updateQsCount() {
+  const el = document.getElementById('qs-count');
+  if (el) el.textContent = selection.size;
+}
 </script>
 </body>
 </html>
