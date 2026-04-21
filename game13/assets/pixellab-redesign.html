@@ -74,9 +74,12 @@
   .pill.dry_run       { color: var(--warn);   border-color: var(--warn); }
   .pill.approved      { color: var(--green);  border-color: var(--green); }
   .pill.reference_generated { color: var(--purple); border-color: var(--purple); }
-  .body { display: grid; grid-template-columns: 320px 1fr; gap: 1rem; }
+  .body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   @media (max-width: 820px) { .body { grid-template-columns: 1fr; } }
-  .refcol { background: var(--panel-alt); border: 1px solid var(--border); padding: 0.75rem; border-radius: 4px; }
+  .refcol { background: var(--panel-alt); border: 1px solid var(--border); padding: 0.75rem; border-radius: 4px; display: flex; flex-direction: column; }
+  .refcol.empty { opacity: 0.5; align-items: center; justify-content: center; color: var(--muted); font-size: 0.75rem; min-height: 200px; border-style: dashed; }
+  .refcol .slot-label { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; font-weight: 700; display: flex; justify-content: space-between; gap: 0.4rem; align-items: center; flex-wrap: wrap; }
+  .refcol .slot-label .sid { color: var(--muted); font-weight: 400; font-size: 0.6rem; text-transform: none; letter-spacing: 0; }
   .refcol img.sheet {
     width: 100%; height: auto; image-rendering: pixelated;
     background: repeating-conic-gradient(#151018 0% 25%, #1e1624 0% 50%) 50%/20px 20px;
@@ -241,102 +244,89 @@ function renderArtDirection(ad) {
   return d;
 }
 
-async function renderCharacter(id, entry) {
-  const card = document.createElement('div');
-  card.className = 'char';
+function detectGender(ad, spriteId) {
+  if (spriteId.endsWith('_male')) return 'male';
+  if (spriteId.endsWith('_female')) return 'female';
+  const text = ((ad?.identity || '') + ' ' + (ad?.portraitStyle || '')).toLowerCase();
+  if (/\bwoman\b|\bfemale\b|\bshe\b|\bher\b/.test(text)) return 'female';
+  if (/\bman\b|\bmale\b|\bhe\b|\bhis\b/.test(text)) return 'male';
+  return 'unknown';
+}
 
-  const hdr = document.createElement('header');
-  const h2 = document.createElement('h2'); h2.textContent = id;
-  hdr.appendChild(h2);
-  hdr.appendChild(pill('status: ' + entry.status, entry.status));
-  hdr.appendChild(pill('ref: ' + entry.referenceStatus, entry.referenceStatus));
-  card.appendChild(hdr);
+function baseIdOf(spriteId) {
+  return spriteId.replace(/_(male|female)$/, '');
+}
 
-  if (entry.notes) {
-    const n = document.createElement('p');
-    n.className = 'sub'; n.style.margin = '-0.25rem 0 0.75rem'; n.textContent = entry.notes;
-    card.appendChild(n);
+function renderSlot(baseId, variant, state) {
+  const col = document.createElement('div');
+  col.className = 'refcol';
+  if (!variant) {
+    col.classList.add('empty');
+    col.textContent = 'no variant yet';
+    return col;
   }
+  const { spriteId, entry, ad, gender } = variant;
 
-  let ad = null;
-  // entry.artDirectionPath is "data/art_direction/oracle.json" (repo-relative
-  // inside public/). From /assets/ pages that maps to ../data/art_direction/...
-  try { ad = await loadJson('../' + entry.artDirectionPath); } catch (e) { /* may not exist yet */ }
+  const label = document.createElement('div');
+  label.className = 'slot-label';
+  const left = document.createElement('span');
+  left.textContent = gender.toUpperCase();
+  label.appendChild(left);
+  label.appendChild(pill(entry.referenceStatus || 'pending', entry.referenceStatus || 'pending'));
+  const sid = document.createElement('span');
+  sid.className = 'sid'; sid.textContent = spriteId;
+  label.appendChild(sid);
+  col.appendChild(label);
 
-  const body = document.createElement('div'); body.className = 'body';
-
-  // Reference column
-  const refcol = document.createElement('div'); refcol.className = 'refcol';
-
-  // Identity anchor: the OLD portrait from public/images/portraits/<id>.png.
-  // This is the single source of truth for identity (hair, eye color, outfit
-  // palette) — NOT the SpriteCook version. Everything downstream matches this.
-  const anchorLabel = document.createElement('div');
-  anchorLabel.className = 'anchor-label'; anchorLabel.textContent = 'Identity anchor (old portrait)';
-  refcol.appendChild(anchorLabel);
-  const anchor = document.createElement('img');
-  anchor.className = 'anchor';
-  anchor.src = IMG_BASE + '/portraits/' + id + '.png?t=' + Date.now();
-  anchor.alt = id + ' identity anchor';
-  refcol.appendChild(anchor);
-
-  const refh = document.createElement('div');
-  refh.style.fontSize = '0.7rem'; refh.style.color = 'var(--muted)';
-  refh.style.textTransform = 'uppercase'; refh.style.letterSpacing = '0.06em';
-  refh.style.marginBottom = '0.4rem'; refh.style.marginTop = '0.8rem';
-  refh.textContent = 'SpriteCook reference (identity anchor)';
-  refcol.appendChild(refh);
   const refImg = document.createElement('img');
   refImg.className = 'sheet';
   refImg.style.aspectRatio = '1/1';
-  refImg.src = '../images/pixellab/' + id + '/reference.png?t=' + Date.now();
+  refImg.src = IMG_BASE + '/pixellab/' + spriteId + '/reference.png?t=' + Date.now();
   refImg.onerror = () => { refImg.replaceWith(Object.assign(document.createElement('div'), { className: 'placeholder', textContent: 'reference not on disk yet' })); };
-  refcol.appendChild(refImg);
-  if (ad) refcol.appendChild(renderArtDirection(ad));
+  col.appendChild(refImg);
 
-  body.appendChild(refcol);
+  if (ad) col.appendChild(renderArtDirection(ad));
+  return col;
+}
 
-  // Frames grid
-  const grid = document.createElement('div'); grid.className = 'frames';
-  for (const pose of POSES) {
-    const cell = document.createElement('div'); cell.className = 'cell';
-    const label = document.createElement('div'); label.className = 'label';
-    const lname = document.createElement('span'); lname.textContent = pose;
-    const status = entry.framesStatus?.[pose] || 'pending';
-    const lpill = pill(status, status);
-    lpill.style.fontSize = '0.55rem';
-    label.appendChild(lname); label.appendChild(lpill);
-    cell.appendChild(label);
+function renderOldPortraitSlot(baseId) {
+  const col = document.createElement('div');
+  col.className = 'refcol';
+  const label = document.createElement('div');
+  label.className = 'slot-label';
+  const left = document.createElement('span'); left.textContent = 'OLD PORTRAIT';
+  label.appendChild(left);
+  const sid = document.createElement('span');
+  sid.className = 'sid'; sid.textContent = baseId;
+  label.appendChild(sid);
+  col.appendChild(label);
 
-    // 3-way compare: OLD sprites/ (pre-spritecook, often has the bugs that
-    // triggered this redesign — cat with sword, oracle without glow) |
-    // SpriteCook (current in-game, loses personality) | new PixelLab candidate.
-    const two = document.createElement('div'); two.className = 'twoup';
-    // Old sprites use different naming: sprites/<id>_<pose>.png (no east_block,
-    // no east_spell for most; portrait lives in portraits/<id>.png).
-    const oldSrc = pose === 'portrait'
-      ? IMG_BASE + '/portraits/' + id + '.png'
-      : IMG_BASE + '/sprites/' + id + '_' + pose + '.png';
-    const spritecookSrc = IMG_BASE + '/spritecook/' + id + '_' + pose + '.png';
-    const candSrc       = IMG_BASE + '/pixellab/' + id + '/' + pose + '.png';
-    two.appendChild(imgOrPlaceholder(oldSrc,        'old'));
-    two.appendChild(imgOrPlaceholder(spritecookSrc, 'sc'));
-    two.appendChild(imgOrPlaceholder(candSrc,       'new'));
-    cell.appendChild(two);
+  const img = document.createElement('img');
+  img.className = 'sheet';
+  img.style.aspectRatio = '1/1';
+  img.src = IMG_BASE + '/portraits/' + baseId + '.png?t=' + Date.now();
+  img.onerror = () => { img.replaceWith(Object.assign(document.createElement('div'), { className: 'placeholder', textContent: 'no old portrait' })); };
+  col.appendChild(img);
+  return col;
+}
 
-    const prompt = ad?.frames?.[pose]?.prompt;
-    if (prompt) {
-      const p = document.createElement('div');
-      p.style.fontSize = '0.65rem'; p.style.color = 'var(--muted)';
-      p.title = prompt;
-      p.textContent = prompt.slice(0, 90) + (prompt.length > 90 ? '…' : '');
-      cell.appendChild(p);
-    }
+function renderGroup(baseId, variants) {
+  const card = document.createElement('div');
+  card.className = 'char';
+  const hdr = document.createElement('header');
+  const h2 = document.createElement('h2'); h2.textContent = baseId;
+  hdr.appendChild(h2);
+  variants.forEach(v => {
+    hdr.appendChild(pill(v.gender + ': ' + v.entry.status, v.entry.status));
+  });
+  card.appendChild(hdr);
 
-    grid.appendChild(cell);
-  }
-  body.appendChild(grid);
-
+  const body = document.createElement('div'); body.className = 'body';
+  body.appendChild(renderOldPortraitSlot(baseId));
+  const male   = variants.find(v => v.gender === 'male') || variants.find(v => v.gender === 'unknown');
+  const female = variants.find(v => v.gender === 'female');
+  body.appendChild(renderSlot(baseId, male,   null));
+  body.appendChild(renderSlot(baseId, female, null));
   card.appendChild(body);
   return card;
 }
@@ -345,8 +335,22 @@ async function main() {
   const state = await loadJson(DATA_BASE + '/pixellab_redesign_state.json');
   renderSummary(state);
   const root = document.getElementById('characters');
-  for (const [id, entry] of Object.entries(state.characters)) {
-    root.appendChild(await renderCharacter(id, entry));
+
+  const variants = [];
+  for (const [spriteId, entry] of Object.entries(state.characters)) {
+    let ad = null;
+    try { ad = await loadJson('../' + entry.artDirectionPath); } catch (e) {}
+    variants.push({ spriteId, entry, ad, gender: detectGender(ad, spriteId), baseId: baseIdOf(spriteId) });
+  }
+
+  const groups = new Map();
+  for (const v of variants) {
+    if (!groups.has(v.baseId)) groups.set(v.baseId, []);
+    groups.get(v.baseId).push(v);
+  }
+  const sortedBaseIds = [...groups.keys()].sort();
+  for (const baseId of sortedBaseIds) {
+    root.appendChild(renderGroup(baseId, groups.get(baseId)));
   }
 }
 main().catch(e => {
