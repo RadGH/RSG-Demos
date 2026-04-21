@@ -1,7 +1,7 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-21T14:57:53.924Z",
-  "creditsUsedTotal": 360,
+  "updatedAt": "2026-04-21T15:55:00.000Z",
+  "creditsUsedTotal": 624,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
@@ -22,25 +22,6 @@
       "creditsUsed": 0,
       "notes": "User success criterion: glowing white eyes MUST persist across all 7 frames."
     },
-    "shadow_cat": {
-      "spriteId": "shadow_cat",
-      "status": "pending",
-      "referenceStatus": "dry_run",
-      "framesStatus": {
-        "portrait": "dry_run",
-        "south": "dry_run",
-        "east": "dry_run",
-        "east_attack": "dry_run",
-        "east_spell": "dry_run",
-        "east_block": "dry_run",
-        "east_ko": "dry_run"
-      },
-      "artDirectionPath": "data/art_direction/shadow_cat.json",
-      "candidateDir": "images/pixellab/shadow_cat",
-      "originalSpritecookPrefix": "images/spritecook/shadow_cat_",
-      "creditsUsed": 0,
-      "notes": "User success criterion: east_attack uses CLAWS. Zero weapons, zero held props."
-    },
     "warrior": {
       "spriteId": "warrior",
       "status": "reference_generated",
@@ -57,8 +38,8 @@
       "artDirectionPath": "data/art_direction/warrior.json",
       "candidateDir": "images/pixellab/warrior",
       "originalSpritecookPrefix": "images/spritecook/warrior_",
-      "creditsUsed": 12,
-      "notes": "Classic frontline tank archetype. Longsword only — no shield, no variant weapons."
+      "creditsUsed": 24,
+      "notes": "Classic frontline tank archetype. Longsword only \u2014 no shield, no variant weapons."
     },
     "fighter": {
       "spriteId": "fighter",
@@ -76,7 +57,7 @@
       "artDirectionPath": "data/art_direction/fighter.json",
       "candidateDir": "images/pixellab/fighter",
       "originalSpritecookPrefix": "images/spritecook/fighter_",
-      "creditsUsed": 24,
+      "creditsUsed": 36,
       "notes": "Monk-adjacent melee specialist with quarterstaff."
     },
     "paladin": {
@@ -133,7 +114,7 @@
       "artDirectionPath": "data/art_direction/rogue.json",
       "candidateDir": "images/pixellab/rogue",
       "originalSpritecookPrefix": "images/spritecook/rogue_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Dual-dagger stealth attacker. Hood up in all frames except KO."
     },
     "cleric": {
@@ -152,7 +133,7 @@
       "artDirectionPath": "data/art_direction/cleric.json",
       "candidateDir": "images/pixellab/cleric",
       "originalSpritecookPrefix": "images/spritecook/cleric_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Healer archetype. Silver mace + sunburst medallion."
     },
     "bard": {
@@ -171,7 +152,7 @@
       "artDirectionPath": "data/art_direction/bard.json",
       "candidateDir": "images/pixellab/bard",
       "originalSpritecookPrefix": "images/spritecook/bard_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Performer archetype. Lute primary, rapier secondary."
     },
     "mage": {
@@ -190,7 +171,7 @@
       "artDirectionPath": "data/art_direction/mage.json",
       "candidateDir": "images/pixellab/mage",
       "originalSpritecookPrefix": "images/spritecook/mage_",
-      "creditsUsed": 24,
+      "creditsUsed": 36,
       "notes": "Archetypal wizard with pointed hat and star-patterned robes."
     },
     "necromancer": {
@@ -209,7 +190,7 @@
       "artDirectionPath": "data/art_direction/necromancer.json",
       "candidateDir": "images/pixellab/necromancer",
       "originalSpritecookPrefix": "images/spritecook/necromancer_",
-      "creditsUsed": 24,
+      "creditsUsed": 36,
       "notes": "Death magic specialist. Bone/green/black palette."
     },
     "warlock": {
@@ -228,7 +209,7 @@
       "artDirectionPath": "data/art_direction/warlock.json",
       "candidateDir": "images/pixellab/warlock",
       "originalSpritecookPrefix": "images/spritecook/warlock_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Pact-caster archetype. Violet/crimson fel-fire motif + floating grimoire."
     },
     "demon_hunter": {
@@ -247,7 +228,7 @@
       "artDirectionPath": "data/art_direction/demon_hunter.json",
       "candidateDir": "images/pixellab/demon_hunter",
       "originalSpritecookPrefix": "images/spritecook/demon_hunter_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Blindfolded elf warrior with twin warglaives. Bare midriff, demon-hunter tattoos."
     },
     "scavenger": {
@@ -266,7 +247,7 @@
       "artDirectionPath": "data/art_direction/scavenger.json",
       "candidateDir": "images/pixellab/scavenger",
       "originalSpritecookPrefix": "images/spritecook/scavenger_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Ragtag wasteland survivor. Crossbow + patchwork leathers."
     },
     "swashbuckler": {
@@ -285,7 +266,7 @@
       "artDirectionPath": "data/art_direction/swashbuckler.json",
       "candidateDir": "images/pixellab/swashbuckler",
       "originalSpritecookPrefix": "images/spritecook/swashbuckler_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Dashing pirate-duelist. Rapier + tricorn hat + crimson doublet."
     },
     "dragon_knight": {
@@ -304,7 +285,7 @@
       "artDirectionPath": "data/art_direction/dragon_knight.json",
       "candidateDir": "images/pixellab/dragon_knight",
       "originalSpritecookPrefix": "images/spritecook/dragon_knight_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Heavy draconic plate + flaming greatsword."
     },
     "pyromancer": {
@@ -323,8 +304,8 @@
       "artDirectionPath": "data/art_direction/pyromancer.json",
       "candidateDir": "images/pixellab/pyromancer",
       "originalSpritecookPrefix": "images/spritecook/pyromancer_",
-      "creditsUsed": 12,
-      "notes": "Fire-palm caster. Zero held weapons — hands are the conduit."
+      "creditsUsed": 24,
+      "notes": "Fire-palm caster. Zero held weapons \u2014 hands are the conduit."
     },
     "stormcaller": {
       "spriteId": "stormcaller",
@@ -342,7 +323,7 @@
       "artDirectionPath": "data/art_direction/stormcaller.json",
       "candidateDir": "images/pixellab/stormcaller",
       "originalSpritecookPrefix": "images/spritecook/stormcaller_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Lightning-palm caster. Zero held weapons."
     },
     "druid": {
@@ -361,7 +342,7 @@
       "artDirectionPath": "data/art_direction/druid.json",
       "candidateDir": "images/pixellab/druid",
       "originalSpritecookPrefix": "images/spritecook/druid_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Nature druid with antlers + living bark + leaf staff."
     },
     "tactician": {
@@ -380,7 +361,7 @@
       "artDirectionPath": "data/art_direction/tactician.json",
       "candidateDir": "images/pixellab/tactician",
       "originalSpritecookPrefix": "images/spritecook/tactician_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Napoleonic officer archetype. Coat + epaulets + riding crop."
     },
     "chronomancer": {
@@ -399,7 +380,7 @@
       "artDirectionPath": "data/art_direction/chronomancer.json",
       "candidateDir": "images/pixellab/chronomancer",
       "originalSpritecookPrefix": "images/spritecook/chronomancer_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Time-magic caster. Clock/hourglass/gear motifs + floating hair."
     },
     "monk": {
@@ -513,7 +494,7 @@
       "artDirectionPath": "data/art_direction/runesmith.json",
       "candidateDir": "images/pixellab/runesmith",
       "originalSpritecookPrefix": "images/spritecook/runesmith_",
-      "creditsUsed": 12,
+      "creditsUsed": 24,
       "notes": "Dwarf smith-caster. Rune-hammer + braided red beard + eye-patch."
     },
     "shadow_dancer": {
@@ -534,6 +515,82 @@
       "originalSpritecookPrefix": "images/spritecook/shadow_dancer_",
       "creditsUsed": 12,
       "notes": "Violet-shadow elven duelist-dancer. Scimitar + silk wraps + shadow tattoos."
+    },
+    "ranger_male": {
+      "spriteId": "ranger_male",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/ranger_male.json",
+      "candidateDir": "images/pixellab/ranger_male",
+      "originalSpritecookPrefix": "images/spritecook/ranger_male_",
+      "creditsUsed": 12,
+      "notes": "Ranger (Male) \u2014 companion variant"
+    },
+    "knight_male": {
+      "spriteId": "knight_male",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/knight_male.json",
+      "candidateDir": "images/pixellab/knight_male",
+      "originalSpritecookPrefix": "images/spritecook/knight_male_",
+      "creditsUsed": 12,
+      "notes": "Knight (Male) \u2014 companion variant"
+    },
+    "shadow_dancer_male": {
+      "spriteId": "shadow_dancer_male",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/shadow_dancer_male.json",
+      "candidateDir": "images/pixellab/shadow_dancer_male",
+      "originalSpritecookPrefix": "images/spritecook/shadow_dancer_male_",
+      "creditsUsed": 12,
+      "notes": "Shadow Dancer (Male) \u2014 companion variant"
+    },
+    "chronomancer_female": {
+      "spriteId": "chronomancer_female",
+      "status": "reference_generated",
+      "referenceStatus": "reference_generated",
+      "framesStatus": {
+        "portrait": "pending",
+        "south": "pending",
+        "east": "pending",
+        "east_attack": "pending",
+        "east_spell": "pending",
+        "east_block": "pending",
+        "east_ko": "pending"
+      },
+      "artDirectionPath": "data/art_direction/chronomancer_female.json",
+      "candidateDir": "images/pixellab/chronomancer_female",
+      "originalSpritecookPrefix": "images/spritecook/chronomancer_female_",
+      "creditsUsed": 12,
+      "notes": "Chronomancer (Female) \u2014 companion variant"
     }
   }
 }
