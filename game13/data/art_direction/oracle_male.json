@@ -73,7 +73,8 @@
     "east": {
       "spritecookAssetId": "fd37b15e-4f85-4f8b-b9fb-4183a9d1dfa9",
       "path": "images/pixellab/oracle_male/east.png",
-      "generatedAt": "2026-04-21T22:34:14Z"
+      "generatedAt": "2026-04-21T22:34:14Z",
+      "prompt": "IDENTITY (must match reference sheet exactly): Young male seer, slender lean adult build. Medium-length wavy golden-copper hair (warm orange-brown) falling past the shoulders. Eyes are the critical identifier: GLOWING CYAN-BLUE ALMOND-SHAPED EYES with no visible pupil or iris, just pure cyan-blue luminance with a soft glowing halo. Clean-shaven, fair pale skin, serene adult male face (distinctly masculine jaw).\n\nOUTFIT: Flowing pale cream and ivory-white robe with soft gold embroidery along the hem and sleeves, a thin leather belt at the waist, a translucent pale-blue shawl over one shoulder. Simple leather sandals.\n\nWEAPONS: A slender pale wooden staff with a small glowing cyan-blue crystal set at the top, held in the right hand.\n\nPOSE (east): neutral combat idle, consistent with reference sheet.\n\nFRAMING: full body facing east (camera-right), combat idle, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): the Oracle must occupy approximately 180px of the 256px canvas height \u2014 roughly 70% of the canvas. Do NOT stretch or upscale the figure to fill the frame. Extra space above head and/or below feet is correct and preserves scale relative to other species. Feet (or lowest point of body for KO / quadruped) aligned near the bottom.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference portrait at images/portraits/oracle.png.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in to fill the canvas \u2014 respect SCALE."
     },
     "east_attack": {
       "path": "images/spritecook/oracle_male_east_attack.png",

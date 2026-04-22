@@ -1,7 +1,7 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-21T19:00:00.000Z",
-  "creditsUsedTotal": 2904,
+  "updatedAt": "2026-04-22T00:02:28.000Z",
+  "creditsUsedTotal": 3684,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
@@ -62,40 +62,40 @@
     },
     "paladin": {
       "spriteId": "paladin",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/paladin.json",
       "candidateDir": "images/pixellab/paladin",
       "originalSpritecookPrefix": "images/spritecook/paladin_",
-      "creditsUsed": 24,
+      "creditsUsed": 108,
       "notes": "Holy knight. Warhammer + sunburst motif only."
     },
     "ranger": {
       "spriteId": "ranger",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/ranger.json",
       "candidateDir": "images/pixellab/ranger",
       "originalSpritecookPrefix": "images/spritecook/ranger_",
-      "creditsUsed": 12,
+      "creditsUsed": 96,
       "notes": "Forest archer. Longbow only."
     },
     "rogue": {
@@ -119,16 +119,16 @@
     },
     "cleric": {
       "spriteId": "cleric",
-      "status": "pending_approval",
+      "status": "approved",
       "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/cleric.json",
       "candidateDir": "images/pixellab/cleric",
@@ -165,7 +165,7 @@
         "south": "pending_approval",
         "east": "pending_approval",
         "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
+        "east_spell": "approved",
         "east_block": "pending_approval",
         "east_ko": "pending_approval"
       },
@@ -293,21 +293,21 @@
     },
     "pyromancer": {
       "spriteId": "pyromancer",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/pyromancer.json",
       "candidateDir": "images/pixellab/pyromancer",
       "originalSpritecookPrefix": "images/spritecook/pyromancer_",
-      "creditsUsed": 24,
+      "creditsUsed": 108,
       "notes": "Fire-palm caster. Zero held weapons \u2014 hands are the conduit."
     },
     "stormcaller": {
@@ -335,7 +335,7 @@
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "pending_approval",
-        "south": "pending_approval",
+        "south": "approved",
         "east": "pending_approval",
         "east_attack": "pending_approval",
         "east_spell": "pending_approval",
@@ -389,21 +389,21 @@
     },
     "monk": {
       "spriteId": "monk",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/monk.json",
       "candidateDir": "images/pixellab/monk",
       "originalSpritecookPrefix": "images/spritecook/monk_",
-      "creditsUsed": 12,
+      "creditsUsed": 96,
       "notes": "Bare-handed martial artist. Zero weapons. Bald shaven head."
     },
     "shaman": {
@@ -522,21 +522,21 @@
     },
     "ranger_male": {
       "spriteId": "ranger_male",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/ranger_male.json",
       "candidateDir": "images/pixellab/ranger_male",
       "originalSpritecookPrefix": "images/spritecook/ranger_male_",
-      "creditsUsed": 12,
+      "creditsUsed": 96,
       "notes": "Ranger (Male) \u2014 companion variant"
     },
     "knight_male": {
@@ -636,21 +636,21 @@
     },
     "paladin_female": {
       "spriteId": "paladin_female",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/paladin_female.json",
       "candidateDir": "images/pixellab/paladin_female",
       "originalSpritecookPrefix": "images/spritecook/paladin_female_",
-      "creditsUsed": 12,
+      "creditsUsed": 96,
       "notes": "Paladin (Female) \u2014 gender variant"
     },
     "rogue_male": {
@@ -674,16 +674,16 @@
     },
     "cleric_male": {
       "spriteId": "cleric_male",
-      "status": "pending_approval",
+      "status": "approved",
       "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/cleric_male.json",
       "candidateDir": "images/pixellab/cleric_male",
@@ -713,16 +713,16 @@
     },
     "mage_female": {
       "spriteId": "mage_female",
-      "status": "pending_approval",
+      "status": "approved",
       "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/mage_female.json",
       "candidateDir": "images/pixellab/mage_female",
@@ -737,7 +737,7 @@
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "pending_approval",
-        "south": "pending_approval",
+        "south": "approved",
         "east": "pending_approval",
         "east_attack": "pending_approval",
         "east_spell": "pending_approval",
@@ -848,21 +848,21 @@
     },
     "pyromancer_male": {
       "spriteId": "pyromancer_male",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/pyromancer_male.json",
       "candidateDir": "images/pixellab/pyromancer_male",
       "originalSpritecookPrefix": "images/spritecook/pyromancer_male_",
-      "creditsUsed": 12,
+      "creditsUsed": 96,
       "notes": "Pyromancer (Male) \u2014 gender variant"
     },
     "stormcaller_female": {
@@ -886,16 +886,16 @@
     },
     "druid_male": {
       "spriteId": "druid_male",
-      "status": "pending_approval",
+      "status": "approved",
       "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/druid_male.json",
       "candidateDir": "images/pixellab/druid_male",
@@ -963,21 +963,21 @@
     },
     "monk_female": {
       "spriteId": "monk_female",
-      "status": "reference_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/monk_female.json",
       "candidateDir": "images/pixellab/monk_female",
       "originalSpritecookPrefix": "images/spritecook/monk_female_",
-      "creditsUsed": 12,
+      "creditsUsed": 96,
       "notes": "Monk (Female) \u2014 gender variant of monk"
     },
     "oracle_male": {
