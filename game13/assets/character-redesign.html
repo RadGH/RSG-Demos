@@ -149,7 +149,9 @@
     border-top: 1px solid var(--border); padding-top: 0.75rem;
   }
   footer.note code { background: var(--panel-alt); padding: 0 0.25rem; border-radius: 2px; }
-  .subsprites { margin-top: 0.5rem; display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; background: var(--border); }
+  .subsprites { margin-top: 0.5rem; gap: 2px; background: var(--border); }
+  .subsprites { display: none; }
+  body.show-subsprites .subsprites { display: grid; }
   .subsprites .sub {
     position: relative; aspect-ratio: 1/1;
     background: repeating-conic-gradient(#151018 0% 25%, #1e1624 0% 50%) 50%/10px 10px;
@@ -160,7 +162,6 @@
     background: rgba(0,0,0,0.6); padding: 0 3px; letter-spacing: 0.04em; text-transform: uppercase;
   }
   .subsprites .sub.empty { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.5rem; }
-  body:not(.show-subsprites) .subsprites { display: none; }
   .refcol img.sheet, .subsprites .sub img { cursor: zoom-in; }
   .lightbox {
     position: fixed; inset: 0; background: rgba(0,0,0,0.93);
@@ -191,6 +192,87 @@
   .lightbox button:hover { border-color: var(--gold); color: var(--gold); }
   .lightbox .lb-close { position: absolute; top: 1rem; right: 1rem; }
   .lightbox .lb-counter { color: var(--muted); font-size: 0.7rem; margin-top: 0.5rem; letter-spacing: 0.08em; }
+
+  /* ── Desktop-only enhancements ── */
+  @media (min-width: 768px) {
+    /* Per-frame status dot */
+    .subsprites .sub .frame-dot {
+      position: absolute; bottom: 3px; right: 3px;
+      width: 9px; height: 9px; border-radius: 50%;
+      box-shadow: 0 0 0 1.5px rgba(0,0,0,0.7), 0 0 0 2.5px rgba(255,255,255,0.15);
+      z-index: 2; pointer-events: none;
+    }
+    .frame-dot.dot-approved  { background: var(--green); }
+    .frame-dot.dot-pending   { background: var(--gold); }
+    .frame-dot.dot-rejected  { background: var(--warn); }
+    .frame-dot.dot-other     { background: #555; }
+
+    /* Lightbox pose status dot */
+    .lightbox .lb-pose-dot {
+      display: inline-block; width: 10px; height: 10px; border-radius: 50%;
+      vertical-align: middle; margin-right: 6px;
+      box-shadow: 0 0 0 1.5px rgba(0,0,0,0.6), 0 0 0 2.5px rgba(255,255,255,0.12);
+    }
+    .lightbox .lb-pose-dot.dot-approved { background: var(--green); }
+    .lightbox .lb-pose-dot.dot-pending  { background: var(--gold); }
+    .lightbox .lb-pose-dot.dot-rejected { background: var(--warn); }
+    .lightbox .lb-pose-dot.dot-other    { background: #555; }
+
+    /* Sub-sprite grid column toggle */
+    .subsprites-header {
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-top: 0.4rem; margin-bottom: 0;
+      flex-wrap: wrap;
+    }
+    .subsprites-header .grid-col-label {
+      font-size: 0.6rem; color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.08em; flex-shrink: 0;
+    }
+    .grid-col-btns { display: flex; gap: 3px; }
+    .grid-col-btns button {
+      background: var(--panel); color: var(--muted);
+      border: 1px solid var(--border); border-radius: 3px;
+      width: 22px; height: 22px; font-size: 0.65rem; cursor: pointer;
+      padding: 0; line-height: 1; letter-spacing: 0;
+    }
+    .grid-col-btns button.active {
+      background: var(--panel-alt); color: var(--gold); border-color: var(--gold);
+    }
+    .grid-col-btns button:hover:not(.active) {
+      border-color: var(--muted); color: var(--parchment);
+    }
+
+    /* Sub-sprite legend */
+    .subsprites-legend {
+      display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;
+      margin-top: 0.35rem; font-size: 0.6rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .subsprites-legend .leg-item { display: flex; align-items: center; gap: 4px; }
+    .subsprites-legend .leg-dot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+      box-shadow: 0 0 0 1.5px rgba(0,0,0,0.7), 0 0 0 2.5px rgba(255,255,255,0.12);
+    }
+
+    /* Hide-approved toggle row */
+    .top-controls {
+      display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+      background: var(--panel); border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem; border-radius: 4px; margin-bottom: 1rem;
+      font-size: 0.78rem;
+    }
+    .top-controls label {
+      display: flex; align-items: center; gap: 0.4rem;
+      cursor: pointer; color: var(--parchment);
+    }
+    .top-controls input[type=checkbox] { accent-color: var(--gold); }
+  }
+  /* On mobile the top-controls block is hidden */
+  @media (max-width: 767px) {
+    .top-controls { display: none !important; }
+    .subsprites-header { display: none !important; }
+    .subsprites-legend { display: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -200,6 +282,14 @@
 
     <div class="notice">
       <strong>Pipeline:</strong> prompts live in <code>public/data/art_direction/&lt;id&gt;.json</code>; references are generated via the SpriteCook MCP (<code>generate_game_art</code>, pixel mode, 256&times;256) and saved to <code>public/images/pixellab/&lt;id&gt;/reference.png</code>. The canonical pose spec is in <a href="../docs/image-policy.md">/docs/image-policy.md</a> (7 poses per character). Sub-sprite frames below each card are optional; use the floating toggle to hide them while auditing the main references.
+    </div>
+
+    <!-- Desktop-only top controls (hide-approved toggle) -->
+    <div class="top-controls" id="top-controls">
+      <label>
+        <input type="checkbox" id="hide-approved-checkbox">
+        Hide fully-approved characters
+      </label>
     </div>
 
     <div class="summary" id="summary"></div>
@@ -225,16 +315,19 @@
     </div>
 
     <footer class="note">
-      Regen entry point: <code>SpriteCook MCP → generate_game_art</code> with the prompt from <code>referenceSheet.prompt</code>. Prompt rewriter: <code>node scripts/pixellab/rewrite-prompts.cjs</code>. State file: <code>public/data/pixellab_redesign_state.json</code>. Each class's banned substrings live in its art-direction JSON.
+      Regen entry point: <code>SpriteCook MCP &rarr; generate_game_art</code> with the prompt from <code>referenceSheet.prompt</code>. Prompt rewriter: <code>node scripts/pixellab/rewrite-prompts.cjs</code>. State file: <code>public/data/pixellab_redesign_state.json</code>. Each class's banned substrings live in its art-direction JSON.
     </footer>
   </div>
 
 <script>
 const POSES = ['portrait','south','east','east_attack','east_spell','east_block','east_ko'];
 const LB_ITEMS = [];
-function registerLightbox(imgEl, title, subtitle) {
+
+// ── Lightbox pose-dot metadata ──
+// Each entry may carry a poseDotClass so the lightbox can show a status dot.
+function registerLightbox(imgEl, title, subtitle, poseDotClass) {
   const idx = LB_ITEMS.length;
-  LB_ITEMS.push({ el: imgEl, title: title, subtitle: subtitle });
+  LB_ITEMS.push({ el: imgEl, title, subtitle, poseDotClass: poseDotClass || null });
   imgEl.dataset.lbIdx = String(idx);
   imgEl.addEventListener('click', () => openLightbox(idx));
 }
@@ -247,12 +340,23 @@ function openLightbox(i) {
   big.src = item.el.src;
   big.alt = item.title;
   document.getElementById('lb-title').textContent = item.title;
-  document.getElementById('lb-sub').textContent = item.subtitle;
+
+  // Sub line: optionally prepend a status dot on desktop
+  const lbSub = document.getElementById('lb-sub');
+  lbSub.innerHTML = '';
+  if (item.poseDotClass && window.matchMedia('(min-width: 768px)').matches) {
+    const dot = document.createElement('span');
+    dot.className = 'lb-pose-dot ' + item.poseDotClass;
+    lbSub.appendChild(dot);
+  }
+  lbSub.appendChild(document.createTextNode(item.subtitle));
+
   document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + LB_ITEMS.length;
   document.getElementById('lightbox').classList.add('open');
 }
 function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
 function stepLightbox(dir) { openLightbox(lbIdx + dir); }
+
 // Vite serves /public at the site root, so from /assets/<file>.html we reach
 // assets via "../images/..." and data via "../data/...".
 const IMG_BASE  = '../images';
@@ -276,13 +380,28 @@ function imgOrPlaceholder(src, label) {
   slot.className = 'slot';
   const img = new Image();
   img.onerror = () => { slot.classList.add('empty'); slot.textContent = label + ' missing'; };
-  img.src = src + '?t=' + Date.now();  // bust cache during review
+  img.src = src + '?t=' + Date.now();
   img.alt = label;
   const tag = document.createElement('span');
   tag.className = 'tag'; tag.textContent = label;
   slot.appendChild(img);
   slot.appendChild(tag);
   return slot;
+}
+
+// ── Status-dot helpers ──
+function dotClassForStatus(status) {
+  if (!status) return 'dot-other';
+  if (status === 'approved') return 'dot-approved';
+  if (status === 'pending_approval') return 'dot-pending';
+  if (status === 'rejected') return 'dot-rejected';
+  return 'dot-other';
+}
+
+function makeDot(status) {
+  const dot = document.createElement('span');
+  dot.className = 'frame-dot ' + dotClassForStatus(status);
+  return dot;
 }
 
 function renderSummary(state) {
@@ -345,6 +464,105 @@ function baseIdOf(spriteId) {
   return spriteId.replace(/_(male|female)$/, '');
 }
 
+// ── Sub-sprite grid column count (desktop, persisted) ──
+const COL_KEY = 'rsg.charRedesign.subGridCols';
+const COL_DEFAULT = 4;
+const COL_OPTIONS = [1, 2, 3, 4, 5, 6, 7];
+
+function getSubGridCols() {
+  const v = parseInt(localStorage.getItem(COL_KEY), 10);
+  return COL_OPTIONS.includes(v) ? v : COL_DEFAULT;
+}
+
+function applySubGridCols(cols) {
+  document.querySelectorAll('.subsprites').forEach(el => {
+    el.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+  });
+  document.querySelectorAll('.grid-col-btns button').forEach(btn => {
+    btn.classList.toggle('active', parseInt(btn.dataset.cols, 10) === cols);
+  });
+}
+
+function makeSubspritesHeader(gridEl) {
+  const hdr = document.createElement('div');
+  hdr.className = 'subsprites-header';
+
+  const lbl = document.createElement('span');
+  lbl.className = 'grid-col-label';
+  lbl.textContent = 'Cols:';
+  hdr.appendChild(lbl);
+
+  const btns = document.createElement('div');
+  btns.className = 'grid-col-btns';
+  const currentCols = getSubGridCols();
+  COL_OPTIONS.forEach(n => {
+    const b = document.createElement('button');
+    b.dataset.cols = String(n);
+    b.textContent = String(n);
+    if (n === currentCols) b.classList.add('active');
+    b.addEventListener('click', () => {
+      localStorage.setItem(COL_KEY, String(n));
+      applySubGridCols(n);
+    });
+    btns.appendChild(b);
+  });
+  hdr.appendChild(btns);
+
+  // Legend
+  const legend = document.createElement('div');
+  legend.className = 'subsprites-legend';
+  const LEGEND_ITEMS = [
+    { cls: 'dot-approved', label: 'Approved' },
+    { cls: 'dot-pending',  label: 'Pending' },
+    { cls: 'dot-other',    label: 'Needs Reference' },
+    { cls: 'dot-rejected', label: 'Rejected' },
+  ];
+  LEGEND_ITEMS.forEach(({ cls, label }) => {
+    const item = document.createElement('span');
+    item.className = 'leg-item';
+    const dot = document.createElement('span');
+    dot.className = 'leg-dot ' + cls;
+    item.appendChild(dot);
+    item.appendChild(document.createTextNode(label));
+    legend.appendChild(item);
+  });
+  hdr.appendChild(legend);
+
+  return hdr;
+}
+
+function renderSubSprites(spriteId, gender, framesStatus) {
+  const cols = getSubGridCols();
+  const grid = document.createElement('div');
+  grid.className = 'subsprites';
+  grid.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+
+  POSES.forEach(pose => {
+    const poseStatus = (framesStatus && framesStatus[pose]) ? framesStatus[pose] : null;
+    const dotCls = dotClassForStatus(poseStatus);
+
+    const cell = document.createElement('div'); cell.className = 'sub';
+    const img = new Image();
+    img.onerror = () => { cell.classList.add('empty'); cell.textContent = pose; };
+    img.src = IMG_BASE + '/pixellab/' + spriteId + '/' + pose + '.png?t=' + Date.now();
+    img.alt = pose;
+
+    const subtitle = 'Pose \xb7 ' + pose + (poseStatus ? ' \xb7 ' + poseStatus : '');
+    registerLightbox(img, spriteId + ' \xb7 ' + (gender || '').toUpperCase(), subtitle, dotCls);
+
+    const tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = pose;
+
+    // Desktop-only dot (CSS hides it on mobile)
+    const dot = makeDot(poseStatus);
+
+    cell.appendChild(img);
+    cell.appendChild(tag);
+    cell.appendChild(dot);
+    grid.appendChild(cell);
+  });
+  return grid;
+}
+
 function renderSlot(baseId, variant, state) {
   const col = document.createElement('div');
   col.className = 'refcol';
@@ -371,29 +589,15 @@ function renderSlot(baseId, variant, state) {
   refImg.style.aspectRatio = '1/1';
   refImg.src = IMG_BASE + '/pixellab/' + spriteId + '/reference.png?t=' + Date.now();
   refImg.onerror = () => { refImg.replaceWith(Object.assign(document.createElement('div'), { className: 'placeholder', textContent: 'reference not on disk yet' })); };
-  registerLightbox(refImg, spriteId + ' · ' + gender.toUpperCase(), 'Reference sheet · ' + (entry.referenceStatus || 'pending'));
+  registerLightbox(refImg, spriteId + ' \xb7 ' + gender.toUpperCase(), 'Reference sheet \xb7 ' + (entry.referenceStatus || 'pending'));
   col.appendChild(refImg);
 
-  col.appendChild(renderSubSprites(spriteId, gender));
+  const framesStatus = entry.framesStatus || null;
+  const hdr = makeSubspritesHeader();
+  col.appendChild(hdr);
+  col.appendChild(renderSubSprites(spriteId, gender, framesStatus));
   if (ad) col.appendChild(renderArtDirection(ad));
   return col;
-}
-
-function renderSubSprites(spriteId, gender) {
-  const grid = document.createElement('div');
-  grid.className = 'subsprites';
-  POSES.forEach(pose => {
-    const cell = document.createElement('div'); cell.className = 'sub';
-    const img = new Image();
-    img.onerror = () => { cell.classList.add('empty'); cell.textContent = pose; };
-    img.src = IMG_BASE + '/pixellab/' + spriteId + '/' + pose + '.png?t=' + Date.now();
-    img.alt = pose;
-    registerLightbox(img, spriteId + ' · ' + (gender || '').toUpperCase(), 'Pose · ' + pose);
-    const tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = pose;
-    cell.appendChild(img); cell.appendChild(tag);
-    grid.appendChild(cell);
-  });
-  return grid;
 }
 
 function renderOldPortraitSlot(baseId) {
@@ -413,9 +617,27 @@ function renderOldPortraitSlot(baseId) {
   img.style.aspectRatio = '1/1';
   img.src = IMG_BASE + '/portraits/' + baseId + '.png?t=' + Date.now();
   img.onerror = () => { img.replaceWith(Object.assign(document.createElement('div'), { className: 'placeholder', textContent: 'no old portrait' })); };
-  registerLightbox(img, baseId + ' · OLD PORTRAIT', 'Original OpenAI portrait (identity anchor)');
+  registerLightbox(img, baseId + ' \xb7 OLD PORTRAIT', 'Original OpenAI portrait (identity anchor)');
   col.appendChild(img);
   return col;
+}
+
+// ── Hide-approved helpers ──
+const HIDE_KEY = 'rsg.charRedesign.hideApproved';
+
+function isFullyApproved(variants) {
+  return variants.every(v => {
+    if (v.entry.status !== 'approved') return false;
+    const fs = v.entry.framesStatus;
+    if (!fs) return true; // no frame data — treat as fine
+    return Object.values(fs).every(s => s === 'approved');
+  });
+}
+
+function applyHideApproved(hide) {
+  document.querySelectorAll('.char[data-fully-approved]').forEach(el => {
+    el.style.display = hide ? 'none' : '';
+  });
 }
 
 function renderGroup(baseId, variants) {
@@ -428,6 +650,10 @@ function renderGroup(baseId, variants) {
     hdr.appendChild(pill(v.gender + ': ' + v.entry.status, v.entry.status));
   });
   card.appendChild(hdr);
+
+  if (isFullyApproved(variants)) {
+    card.dataset.fullyApproved = '1';
+  }
 
   const body = document.createElement('div'); body.className = 'body';
   body.appendChild(renderOldPortraitSlot(baseId));
@@ -494,7 +720,12 @@ async function main() {
       root.appendChild(renderGroup(baseId, vs));
     }
   }
+
+  // Apply persisted hide-approved state after DOM is built
+  const hideApprovedInit = localStorage.getItem(HIDE_KEY) === '1';
+  applyHideApproved(hideApprovedInit);
 }
+
 main().catch(e => {
   document.getElementById('characters').innerHTML =
     '<div class="notice">Failed to load state: ' + (e.message || e) + '</div>';
@@ -525,6 +756,19 @@ main().catch(e => {
   cb.addEventListener('change', () => {
     document.body.classList.toggle('show-subsprites', cb.checked);
     localStorage.setItem(KEY, cb.checked ? '1' : '0');
+  });
+})();
+
+// Hide-approved toggle (desktop only — control is CSS-hidden on mobile)
+(function wireHideApproved(){
+  const cb = document.getElementById('hide-approved-checkbox');
+  if (!cb) return;
+  const initial = localStorage.getItem(HIDE_KEY) === '1';
+  cb.checked = initial;
+  cb.addEventListener('change', () => {
+    const v = cb.checked;
+    localStorage.setItem(HIDE_KEY, v ? '1' : '0');
+    applyHideApproved(v);
   });
 })();
 </script>
