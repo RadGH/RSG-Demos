@@ -218,13 +218,8 @@
     .lightbox .lb-pose-dot.dot-rejected { background: var(--warn); }
     .lightbox .lb-pose-dot.dot-other    { background: #555; }
 
-    /* Sub-sprite grid column toggle */
-    .subsprites-header {
-      display: flex; align-items: center; gap: 0.5rem;
-      margin-top: 0.4rem; margin-bottom: 0;
-      flex-wrap: wrap;
-    }
-    .subsprites-header .grid-col-label {
+    /* Grid-col buttons (inside sticky menu) */
+    .grid-col-label {
       font-size: 0.6rem; color: var(--muted); text-transform: uppercase;
       letter-spacing: 0.08em; flex-shrink: 0;
     }
@@ -242,10 +237,10 @@
       border-color: var(--muted); color: var(--parchment);
     }
 
-    /* Sub-sprite legend */
+    /* Legend (inside sticky menu) */
     .subsprites-legend {
       display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;
-      margin-top: 0.35rem; font-size: 0.6rem; color: var(--muted);
+      font-size: 0.6rem; color: var(--muted);
       text-transform: uppercase; letter-spacing: 0.06em;
     }
     .subsprites-legend .leg-item { display: flex; align-items: center; gap: 4px; }
@@ -253,25 +248,28 @@
       width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
       box-shadow: 0 0 0 1.5px rgba(0,0,0,0.7), 0 0 0 2.5px rgba(255,255,255,0.12);
     }
-
-    /* Hide-approved toggle row */
-    .top-controls {
-      display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
-      background: var(--panel); border: 1px solid var(--border);
-      padding: 0.5rem 0.75rem; border-radius: 4px; margin-bottom: 1rem;
-      font-size: 0.78rem;
-    }
-    .top-controls label {
-      display: flex; align-items: center; gap: 0.4rem;
-      cursor: pointer; color: var(--parchment);
-    }
-    .top-controls input[type=checkbox] { accent-color: var(--gold); }
   }
-  /* On mobile the top-controls block is hidden */
+
+  /* Sticky sub-sprite control menu */
+  #subsprite-toggle {
+    position: fixed; right: 1rem; bottom: 1rem; z-index: 50;
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 6px; padding: 0.6rem 0.8rem;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+    font-size: 0.75rem; color: var(--parchment);
+    display: flex; flex-direction: column; gap: 0.5rem;
+    max-width: min(90vw, 360px);
+  }
+  #subsprite-toggle .ss-row {
+    display: flex; align-items: center; gap: 0.4rem;
+    cursor: pointer; flex-wrap: wrap;
+  }
+  #subsprite-toggle input[type=checkbox] { accent-color: var(--gold); }
+  #subsprite-toggle #ss-legend { margin-top: 0.1rem; }
+
+  /* Desktop-only rows inside the sticky menu */
   @media (max-width: 767px) {
-    .top-controls { display: none !important; }
-    .subsprites-header { display: none !important; }
-    .subsprites-legend { display: none !important; }
+    #subsprite-toggle .ss-desktop { display: none !important; }
   }
 </style>
 </head>
@@ -284,22 +282,23 @@
       <strong>Pipeline:</strong> prompts live in <code>public/data/art_direction/&lt;id&gt;.json</code>; references are generated via the SpriteCook MCP (<code>generate_game_art</code>, pixel mode, 256&times;256) and saved to <code>public/images/pixellab/&lt;id&gt;/reference.png</code>. The canonical pose spec is in <a href="../docs/image-policy.md">/docs/image-policy.md</a> (7 poses per character). Sub-sprite frames below each card are optional; use the floating toggle to hide them while auditing the main references.
     </div>
 
-    <!-- Desktop-only top controls (hide-approved toggle) -->
-    <div class="top-controls" id="top-controls">
-      <label>
-        <input type="checkbox" id="hide-approved-checkbox">
-        Hide fully-approved characters
-      </label>
-    </div>
-
     <div class="summary" id="summary"></div>
     <div id="characters"></div>
 
-    <div id="subsprite-toggle" style="position:fixed;right:1rem;bottom:1rem;z-index:50;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:0.6rem 0.8rem;box-shadow:0 4px 14px rgba(0,0,0,0.6);font-size:0.75rem;display:flex;gap:0.5rem;align-items:center;">
-      <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;color:var(--parchment);">
-        <input type="checkbox" id="subsprite-checkbox" style="accent-color: var(--gold);">
+    <div id="subsprite-toggle">
+      <label class="ss-row">
+        <input type="checkbox" id="subsprite-checkbox">
         Show sub-sprites (7-pose frames)
       </label>
+      <label class="ss-row ss-desktop">
+        <input type="checkbox" id="hide-approved-checkbox">
+        Hide fully-approved characters
+      </label>
+      <div class="ss-row ss-desktop" id="ss-cols-row">
+        <span class="grid-col-label">Cols:</span>
+        <div class="grid-col-btns" id="ss-cols-btns"></div>
+      </div>
+      <div class="subsprites-legend ss-desktop" id="ss-legend"></div>
     </div>
 
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
@@ -483,53 +482,42 @@ function applySubGridCols(cols) {
   });
 }
 
-function makeSubspritesHeader(gridEl) {
-  const hdr = document.createElement('div');
-  hdr.className = 'subsprites-header';
-
-  const lbl = document.createElement('span');
-  lbl.className = 'grid-col-label';
-  lbl.textContent = 'Cols:';
-  hdr.appendChild(lbl);
-
-  const btns = document.createElement('div');
-  btns.className = 'grid-col-btns';
-  const currentCols = getSubGridCols();
-  COL_OPTIONS.forEach(n => {
-    const b = document.createElement('button');
-    b.dataset.cols = String(n);
-    b.textContent = String(n);
-    if (n === currentCols) b.classList.add('active');
-    b.addEventListener('click', () => {
-      localStorage.setItem(COL_KEY, String(n));
-      applySubGridCols(n);
+function buildStickyMenuControls() {
+  const btns = document.getElementById('ss-cols-btns');
+  if (btns && !btns.children.length) {
+    const currentCols = getSubGridCols();
+    COL_OPTIONS.forEach(n => {
+      const b = document.createElement('button');
+      b.dataset.cols = String(n);
+      b.textContent = String(n);
+      if (n === currentCols) b.classList.add('active');
+      b.addEventListener('click', () => {
+        localStorage.setItem(COL_KEY, String(n));
+        applySubGridCols(n);
+      });
+      btns.appendChild(b);
     });
-    btns.appendChild(b);
-  });
-  hdr.appendChild(btns);
-
-  // Legend
-  const legend = document.createElement('div');
-  legend.className = 'subsprites-legend';
-  const LEGEND_ITEMS = [
-    { cls: 'dot-approved', label: 'Approved' },
-    { cls: 'dot-pending',  label: 'Pending' },
-    { cls: 'dot-other',    label: 'Needs Reference' },
-    { cls: 'dot-rejected', label: 'Rejected' },
-  ];
-  LEGEND_ITEMS.forEach(({ cls, label }) => {
-    const item = document.createElement('span');
-    item.className = 'leg-item';
-    const dot = document.createElement('span');
-    dot.className = 'leg-dot ' + cls;
-    item.appendChild(dot);
-    item.appendChild(document.createTextNode(label));
-    legend.appendChild(item);
-  });
-  hdr.appendChild(legend);
-
-  return hdr;
+  }
+  const legend = document.getElementById('ss-legend');
+  if (legend && !legend.children.length) {
+    const LEGEND_ITEMS = [
+      { cls: 'dot-approved', label: 'Approved' },
+      { cls: 'dot-pending',  label: 'Pending' },
+      { cls: 'dot-other',    label: 'Needs Reference' },
+      { cls: 'dot-rejected', label: 'Rejected' },
+    ];
+    LEGEND_ITEMS.forEach(({ cls, label }) => {
+      const item = document.createElement('span');
+      item.className = 'leg-item';
+      const dot = document.createElement('span');
+      dot.className = 'leg-dot ' + cls;
+      item.appendChild(dot);
+      item.appendChild(document.createTextNode(label));
+      legend.appendChild(item);
+    });
+  }
 }
+buildStickyMenuControls();
 
 function renderSubSprites(spriteId, gender, framesStatus) {
   const cols = getSubGridCols();
@@ -593,8 +581,6 @@ function renderSlot(baseId, variant, state) {
   col.appendChild(refImg);
 
   const framesStatus = entry.framesStatus || null;
-  const hdr = makeSubspritesHeader();
-  col.appendChild(hdr);
   col.appendChild(renderSubSprites(spriteId, gender, framesStatus));
   if (ad) col.appendChild(renderArtDirection(ad));
   return col;
