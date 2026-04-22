@@ -1,7 +1,7 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-22T04:14:41.000Z",
-  "creditsUsedTotal": 4380,
+  "updatedAt": "2026-04-22T04:23:08.000Z",
+  "creditsUsedTotal": 4464,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
@@ -255,21 +255,21 @@
     },
     "swashbuckler": {
       "spriteId": "swashbuckler",
-      "status": "reference_generated",
+      "status": "frames_generated",
       "referenceStatus": "reference_generated",
       "framesStatus": {
-        "portrait": "pending",
-        "south": "pending",
-        "east": "pending",
-        "east_attack": "pending",
-        "east_spell": "pending",
-        "east_block": "pending",
-        "east_ko": "pending"
+        "portrait": "pending_approval",
+        "south": "pending_approval",
+        "east": "pending_approval",
+        "east_attack": "pending_approval",
+        "east_spell": "pending_approval",
+        "east_block": "pending_approval",
+        "east_ko": "pending_approval"
       },
       "artDirectionPath": "data/art_direction/swashbuckler.json",
       "candidateDir": "images/pixellab/swashbuckler",
       "originalSpritecookPrefix": "images/spritecook/swashbuckler_",
-      "creditsUsed": 36,
+      "creditsUsed": 120,
       "notes": "Dashing pirate-duelist. Rapier + tricorn hat + crimson doublet."
     },
     "dragon_knight": {
