@@ -56,7 +56,8 @@
       "liveFormula": "flat",
       "simulatorFormula": "legacy",
       "legacyFloorFraction": 0.15,
-      "note": "Live CombatScreen uses applyMitigation (pure flat). simulator.js uses applyArmorMitigation (legacy 15% floor). Both are preserved for parity with current behavior; M3 replaces this with 'curve-dr'."
+      "curveDr": { "k": 100, "cap": 0.95 },
+      "note": "Baseline preserves M64 dual paths: live=flat, simulator=legacy. curveDr present so shape matches active.json."
     }
   },
   "enemies": {
@@ -88,6 +89,10 @@
       "shopPrice": 1.0,
       "dropRate": 1.0
     }
+  },
+  "tap": {
+    "globalMult": 1.0,
+    "note": "Baseline: no scaling. M4 may increase to compensate for curve-DR if weak classes need help."
   },
   "loot": {
     "qualityMult": {

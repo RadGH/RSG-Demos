@@ -53,10 +53,14 @@
       "manaStealDivisor": 100
     },
     "mitigation": {
-      "liveFormula": "flat",
-      "simulatorFormula": "legacy",
+      "liveFormula": "curve-dr",
+      "simulatorFormula": "curve-dr",
       "legacyFloorFraction": 0.15,
-      "note": "Live CombatScreen uses applyMitigation (pure flat). simulator.js uses applyArmorMitigation (legacy 15% floor). Both are preserved for parity with current behavior; M3 replaces this with 'curve-dr'."
+      "curveDr": {
+        "k": 100,
+        "cap": 0.95
+      },
+      "note": "M207: both live + simulator run the WoW-style curve DR. DR = min(cap, armor/(armor+k))."
     }
   },
   "enemies": {
@@ -109,15 +113,21 @@
     "tapPower": null,
     "note": "existing affix ranges are in src/game/items.js per-act tables (AFFIXES_ACT1..AFFIXES_ACT5). Baseline leaves these in code; tuning knobs in economy/enemies sections cover the target range for M4. Tap Power affix is introduced in M3."
   },
+  "tap": {
+    "globalMult": 1.0,
+    "note": "M207 knob: scales tap weapon damage and tap utility magnitude at _applyTapEffect. 1.0 = baseline. M4 will tune alongside enemies.globalMultipliers."
+  },
   "m3Preview": {
     "curveDr": {
-      "enabled": false,
+      "enabled": true,
       "k": 100,
       "cap": 0.95,
-      "formula": "DR = min(cap, armor / (armor + k))"
+      "formula": "DR = min(cap, armor / (armor + k))",
+      "note": "Shipped in M207 via combat.mitigation.curveDr + liveFormula='curve-dr'."
     },
     "tapPower": {
       "enabled": false,
+      "note": "Tiered affix rolls deferred past M207. Tuning done via combat.tap.globalMult for M208; full affix integration is wishlist.",
       "tiers": [
         { "rarity": "magic",     "min": 0.05, "max": 0.15 },
         { "rarity": "rare",      "min": 0.12, "max": 0.25 },
