@@ -129,17 +129,19 @@
     }
     .cloud-layer .cloud-strip {
       position: absolute; top: 0; left: 0; height: 100%; width: 200%;
-      background-image: url('images/menu_bg/clouds_02.png');
       background-repeat: repeat-x;
       background-size: auto 100%;
       will-change: transform;
     }
-    .cloud-layer-1 { opacity: 0.45; }
-    .cloud-layer-1 .cloud-strip { top: 4%;  height: 40%; animation: cloudDrift 90s linear infinite; }
+    /* M213: new single-layer red-hue clouds_05.png (gpt-image-1.5) as the primary drift.
+       Legacy clouds_02.png still powers the two subtle background layers; swap those
+       to clouds_05.png later if the new asset looks good solo. */
+    .cloud-layer-1 { opacity: 0.55; }
+    .cloud-layer-1 .cloud-strip { top: 4%;  height: 40%; animation: cloudDrift 90s linear infinite; background-image: url('images/menu_bg/clouds_05.png'); }
     .cloud-layer-2 { opacity: 0.3; }
-    .cloud-layer-2 .cloud-strip { top: 18%; height: 46%; animation: cloudDrift 160s linear infinite; }
+    .cloud-layer-2 .cloud-strip { top: 18%; height: 46%; animation: cloudDrift 160s linear infinite; background-image: url('images/menu_bg/clouds_02.png'); }
     .cloud-layer-3 { opacity: 0.2; }
-    .cloud-layer-3 .cloud-strip { top: 0;   height: 34%; animation: cloudDriftRev 230s linear infinite; }
+    .cloud-layer-3 .cloud-strip { top: 0;   height: 34%; animation: cloudDriftRev 230s linear infinite; background-image: url('images/menu_bg/clouds_02.png'); }
     @keyframes cloudDrift    { from { transform: translate3d(0, 0, 0); }    to { transform: translate3d(-50%, 0, 0); } }
     @keyframes cloudDriftRev { from { transform: translate3d(-50%, 0, 0); } to { transform: translate3d(0, 0, 0); } }
 
