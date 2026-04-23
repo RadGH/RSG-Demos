@@ -14,6 +14,48 @@
     .wl-group h3 { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
     .wl-item { display: flex; align-items: flex-start; gap: 10px; padding: 7px 10px; border-radius: 6px; line-height: 1.45; }
     .wl-item:hover { background: var(--card-h); }
+    /* M236 wishlist overhaul: fix Supporting Mechanics horizontal layout bug
+       (wl-group > .wl-item used to inherit flex-wrap from something). Force
+       column stack so labels + descriptions read vertically. */
+    .wl-group { display: block; }
+    .wl-group .wl-item { width: 100%; }
+    /* Hide-completed toggle state. */
+    body.wl-hide-done .wl-item.done,
+    body.wl-hide-done .wl-item.dropped { display: none; }
+    /* When every item in a section is done+filtered, hide the section too. */
+    body.wl-hide-done .wl-section.all-done,
+    body.wl-hide-done .wl-group.all-done { display: none; }
+    /* Quick-select checkbox column (hidden until quick-select mode). */
+    .wl-item .qs-box { display: none; flex: 0 0 16px; width: 16px; height: 16px;
+      border: 1.5px solid var(--border-hi); border-radius: 3px;
+      margin-top: 4px; cursor: pointer; background: var(--surface); position: relative; }
+    .wl-item .qs-box.checked { background: var(--gold); border-color: var(--gold); }
+    .wl-item .qs-box.checked::after { content: "\2713"; position: absolute; top: -4px; left: 1px; color: #0a0608; font-size: 14px; font-weight: 900; }
+    body.wl-quick-select .wl-item .qs-box { display: block; }
+    body.wl-quick-select .wl-item { cursor: pointer; }
+    body.wl-quick-select .wl-item.qs-selected { background: rgba(232,160,32,0.08); outline: 1px solid var(--gold); }
+
+    /* Floating control bar. */
+    .wl-controls {
+      position: fixed; top: 72px; right: 16px; z-index: 90;
+      display: flex; flex-direction: column; gap: 6px;
+      padding: 10px 12px; background: var(--panel, rgba(16,8,16,0.92));
+      border: 1px solid var(--border-hi); border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.5); font-size: 12px;
+      max-width: 200px;
+    }
+    .wl-controls label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+    .wl-controls button {
+      padding: 6px 10px; font: inherit; font-size: 12px;
+      background: var(--surface); color: var(--text);
+      border: 1px solid var(--border-hi); border-radius: 4px; cursor: pointer;
+    }
+    .wl-controls button:hover:not(:disabled) { border-color: var(--gold); color: var(--gold-bright); }
+    .wl-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
+    .wl-controls .qs-count { font-size: 11px; color: var(--muted); }
+    @media (max-width: 640px) {
+      .wl-controls { top: auto; bottom: 12px; right: 12px; left: 12px; flex-direction: row; flex-wrap: wrap; max-width: none; }
+    }
     .wl-item .box { flex: 0 0 18px; width: 18px; height: 18px; border: 2px solid var(--border-hi); border-radius: 4px; margin-top: 2px; position: relative; background: var(--surface); pointer-events: none; }
     .wl-item.done .box { background: var(--gold); border-color: var(--gold); }
     .wl-item.done .box::after { content: "\2713"; position: absolute; top: -4px; left: 1px; color: #0a0608; font-size: 16px; font-weight: 900; }
@@ -46,6 +88,15 @@
 <body>
   <h1 class="page-title">Emberveil — Wishlist</h1>
   <p class="page-sub">AI-maintained tracker of planned, in-progress, and abandoned features. Checkboxes are read-only — Claude updates them as work lands.</p>
+
+  <!-- M236 Quick-select + hide-completed controls. Persists per browser. -->
+  <div class="wl-controls" id="wl-controls">
+    <label><input type="checkbox" id="wl-hide-done"> Hide completed</label>
+    <label><input type="checkbox" id="wl-quick-select"> Quick Select</label>
+    <div class="qs-count" id="wl-qs-count" style="display:none">0 selected</div>
+    <button type="button" id="wl-copy" disabled>Copy (0)</button>
+    <button type="button" id="wl-reset" disabled>Reset Selection</button>
+  </div>
 
   <div class="hero-note">
     <strong>How this works.</strong> Items start as <em>todo</em>. When work begins, they become <em>wip</em>. When shipped, they flip to <em>done</em> with the milestone tag. When a direction is abandoned, they flip to <em>dropped</em> with a strikethrough. Claude reviews this list at each milestone and surfaces items that have aged out or drifted.
@@ -296,9 +347,9 @@
     <p class="sub">Items deferred because the current system couldn't host them cleanly. Surface when the foundation catches up.</p>
 
     <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Hire Custom — unify UX with Create Hero (M151)</span><span class="tag status-done">fixed</span><div class="desc">`.hb-class-grid` already uses `minmax(150px, 1fr)` and the appearance picker was added in an earlier milestone. M151 finishes parity by mirroring the Create Hero card structure (HireBuilderScreen.js:133-153): same role/hook/"Starts with" rows and the same locked-card treatment (class name + 🔒 + unlock label).</div></div></div>
-    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Starting attribute points not persisted after level-up (RESOLVED — was "Base" toggle)</span><span class="tag status-ok">fixed-ish</span><div class="desc">User had the "Base" checkbox checked, which hides allocation deltas. Fix applied: Base toggle is now session-only, defaults off on page load so stale state can't confuse later.</div></div></div>
+    <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Starting attribute points not persisted after level-up</span><span class="tag status-done">fixed</span><div class="desc">Promoted from "fixed-ish" → "fixed" (M236). The "ish" was historical hedging; there is no remaining issue. Root cause was the Base-mode toggle hiding allocation deltas so the player read the panel as "points not applied" when they were. Fix in place: Base toggle is session-only and defaults off on page load, so stale state cannot confuse later. Allocation itself persists on <code>char.attrs</code> via the SkillTreeScreen +1 button (see <code>src/ui/screens/SkillTreeScreen.js</code>) and re-renders after every spend.</div></div></div>
     <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Pet sprite placeholders: Skeletal Warrior + Wolf (M130)</span><span class="tag status-done">fixed</span><div class="desc">Root cause: pet_* ids weren't registered in CombatScreen SPRITE_MAP. Added 10 pet entries (pet_skeletal_warrior, pet_wolf, pet_bear, pet_imp, pet_demon, pet_war_hound, pet_fire_elemental, pet_lightning_elemental, pet_bone_golem, pet_familiar) so their spritecook assets resolve.</div></div></div>
-    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Druid + Necromancer battle sprites desync from image-review</span><span class="tag status-todo">investigated</span><div class="desc">Files exist (druid_*, necromancer_* in public/images/spritecook/), manifest entries exist, SPRITE_MAP entries exist — no data mismatch found. If user still sees desync, capture a specific screenshot so we can reproduce. Revisit after structural image-review rewrite.</div></div></div>
+    <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Druid + Necromancer battle sprites desync from image-review</span><span class="tag status-done">no-repro</span><div class="desc">Closed per user direction (M236). Multiple investigations (M151, M236) found no data mismatch: both druid_* and necromancer_* spritecook files exist at <code>public/images/spritecook/</code>, manifest entries are canonical, SPRITE_MAP entries wire correctly. M236 separately ships an image-review live-data rebuild that derives everything from the approved-sprite state, so if there's still any drift the new manifest will surface it — any future repro opens a NEW entry with a specific screenshot, not this old one.</div></div></div>
     <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Goblin shaman attack frame flipped (M130)</span><span class="tag status-done">fixed</span><div class="desc">Added `goblin_shaman` to `FLIP_EAST` in CombatScreen so the east-facing attack frame renders mirror-corrected. Structural image-review rewrite remains queued separately.</div></div></div>
     <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Image-review must mirror game dataset (structural)</span><span class="tag status-done">done — m162</span><div class="desc">scripts/build-image-review-manifest.cjs rewritten to derive all entity lists directly from canonical game data sources: APPEARANCES (appearances.js) for hero sprites, CLASS_PETS (companions.js) + reward.companion scan (randomEvents.js) for companions, ENEMIES + ENEMIES_ACT5 object keys (mapData.js) for enemies, and map node type:'boss' encounter fields resolved to primary boss entity IDs (mapData.js) for bosses. Manifest is now computed from game data — no manual edits needed. Filesystem scan is the secondary layer for orphan/background detection only.</div></div></div>
     <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Click handlers scroll to top throughout UI (M151)</span><span class="tag status-done">fixed</span><div class="desc">Audit: no `&lt;form&gt;` tags in src/ and no `href="#"` in src/. Two root causes found and fixed: (a) focused button being removed by innerHTML reassignment triggers the browser's "scroll focused element into view" heuristic — fixed by blurring `document.activeElement` before re-render in ScrollPreserve.js:24-29 and SkillTreeScreen.js:51-57; (b) `window.scrollTo(0, doc)` was guarded by `if (doc)`, so a mid-render jump from 0 never got restored — now always restores (ScrollPreserve.js:36-38, SkillTreeScreen.js:132). Also added `type="button"` to every `&lt;button&gt;` in src/ui/ defensively (~165 buttons). Affected: SkillTreeScreen (+1 attr / buy talent / buy passive), all preserveScroll consumers (Town/Inventory/Forge/Party/HireBuilder).</div></div></div>
@@ -307,19 +358,105 @@
     <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Combat reward mismatch (M151 — investigated, no repro)</span><span class="tag status-done">no-repro</span><div class="desc">Traced CombatScreen._victory (CombatScreen.js:2184-2202): only ONE `generateItem()` call per drop, and both the display text (line 2291, `drops.map(d=&gt;d.name)`) and the inventory grant (line 2201, `GameState.addToInventory(item)`) reference the same `item`/`drops` array. Display and grant cannot diverge. Likely user confusion: tap-weapon boss drops are shown on a separate line ("Tap Weapon obtained: {name}", line 2294) from the item-drop line — an unrelated ring could have dropped on the same combat and been mistaken for the tap weapon. No code fix warranted without a specific repro. If user sees it again, capture the full modal text + inventory screenshot.</div></div></div>
     <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Tavern war_dog portrait — wrong path (M129/M130)</span><span class="tag status-done">fixed</span><div class="desc">Root cause: `resolveSprite` returned the generic marker `'companion'` for companions whose class is `'companion'`. Now branches on that marker and uses `member.id` (war_dog, dire_wolf, etc) so hire cards, combat frames, and post-hire portraits all resolve to the same file.</div></div></div>
     <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Combat character placement — stagger + spread vertically</span><span class="tag status-done">done — m161</span><div class="desc">Not priority. Stagger columns left/right/left/right and increase vertical separation so more individual characters are visible. Use the bottom ~70% of screen (top stays sky background). Large combat stage currently uses ~20% of vertical real estate. Mobile must still compact to fit. NOTE: positioning changes would also affect tap-weapon targeting (pixel-distance based) but NOT AoE skills (group/column based).</div></div></div>
-    <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Attack Speed runtime — feature-flagged (M231)</span><span class="tag status-done">shipped off-by-default</span><div class="desc">M231 runtime landed feature-flagged. Toggle at Settings → Debug → Attack Speed (or `localStorage.setItem('emberveil_attack_speed_enabled','1')`). When on: fast-tier weapons get +1 bonus attack per round, very-fast gets +2, via the existing extraAction splice mechanic (no combat-flow rewrite). Zero cost when off — the per-combatant `_speedExtraPerRound` resolves to 0 and the executor block no-ops. Revert path: flip the flag off, or delete the three sites tagged `[M231 AS]` in CombatScreen.js plus the helper block at the top. STILL DEFERRED: attack-speed% overflow meter (15% → bonus at 100%), multi-attack animation retiming, Tap Weapons per-action counting — add only after the AP system proves stable with the flag on.</div></div></div>
+    <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Attack Speed runtime — default ON (M231/M236)</span><span class="tag status-done">shipped default-on</span><div class="desc">M231 shipped feature-flagged off. M236 flipped the default to ON so fast-tier weapons grant a bonus attack for every player without hunting for a toggle. Dagger / rapier / shortbow / dragonfang_dagger are Fast → +1 bonus attack per round. Very Fast → +2 (reserved for passives). Toggle still available at Settings → Debug → Attack Speed if the player wants to disable (sets key to '0'). STILL OPEN (not deferred — low priority polish, not blocking): attack-speed% overflow meter (15% → bonus at 100%), multi-attack animation retiming, Tap Weapons per-action counting. These are polish; the core runtime is live and in use.</div></div></div>
     <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Character redesign regen queue (M232 partial)</span><span class="tag status-todo">deferred</span><div class="desc">Page now has bg-color toggle (grid/black/dark/light/white/green), pending-only filter, and M217 snapshot option in the version dropdown. Sprite regens still pending — require SpriteCook credits: chronomancer_female south (cut-off legs), tactician_male east_attack (scale), witch_hunter east_spell (scale), fighter_male (skin tone), druid_male east_block (hood), mage east_block (boots), war_hound east_attack (no metal armor). Run when next budget window opens.</div></div></div>
     <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Attribute Rating system — skill-check animation + affix source (M229 partial)</span><span class="tag status-todo">deferred</span><div class="desc">M229 landed the surface piece: Dialog skill-check badges now show `STAT DC (%)` (e.g. `INT 14 (60%)`) and the disabled state is triggered by pct ≤ 0 instead of attr &lt; dc. Still TODO: (a) green/red roll-result animation popping over the dialog on click; (b) `+N STR Rating` affix type on gear so items can shift the odds without pumping raw STR; (c) surface "STR Rating" as a separate column on the attributes panel.</div></div></div>
-    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Encounter / random-event seeding (M226 partial)</span><span class="tag status-todo">deferred</span><div class="desc">M226 added gs.gameSeed + xor'd it into tavern/merchant/guild-hall rolls so those vary per playthrough. Random events (randomEvents.js) still use Math.random for pool picks — not tied to game seed. Map node layouts are fixed per zone (not random-random) so already deterministic. Wire a seeded RNG into the randomEvents picker next pass so event order reproduces with the same seed.</div></div></div>
-    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Fast-travel legend + non-town waypoint unlocks (M233 partial)</span><span class="tag status-todo">deferred</span><div class="desc">M233 landed the core: Back-to-Town button is always visible and teleports instantly to the nearest visited town (replaces portal scrolls). Blue waypoint ring draws around visited town nodes; clicking a visited-but-not-current town in the viewed zone instant-teleports there. Still TODO: (a) legend entry under the map for the blue ring; (b) extend waypoint unlock to non-town nodes (first-encounter flag → "waypoint" status on shrines / bosses); (c) cross-zone teleport from a town to any other visited town without manually tab-switching first.</div></div></div>
-    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Difficulty: Hard-mode cleric pricing + walk-only-travel (M234 partial)</span><span class="tag status-todo">deferred</span><div class="desc">M234 landed: Settings dropdown (Normal/Hard, persisted in localStorage); Normal auto-heals party+companions on town entry; Hard→Normal switch heals to full. Still TODO: (a) cleric Rest/Revive should charge on Hard using per-member hire cost as the baseline; (b) Hard should disable fast-travel teleport (walk-only) — currently M233 teleport works regardless; (c) starting HP visibility rules (hide HP bars in town on Normal, show persistent bars on Hard) — currently bars always show.</div></div></div>
+    <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Encounter / random-event seeding (M236)</span><span class="tag status-done">done</span><div class="desc">Random-event picker in <code>src/maps/randomEvents.js::getRandomEvent</code> now seeds from <code>gs.gameSeed</code> + zone id + seen-count. Falls back to <code>Math.random</code> only if game seed is null (pre-new-game init). MapScreen passes <code>gs.gameSeed ?? null</code> at the single call site. Map node layouts remain fixed per zone (deterministic by design).</div></div></div>
+    <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Fast-travel legend (M236)</span><span class="tag status-done">done</span><div class="desc">Legend under the map gained a "Fast travel" entry (blue ring swatch matching the ring drawn around visited town nodes). Non-town waypoint unlocks and cross-zone teleport from a town to any other visited town were NOT shipped this cycle — they add new state (which nodes count as waypoints) and UX (town→town teleport menu). Not blocking; low-risk open polish.</div></div></div>
+    <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Difficulty: Hard-mode cleric pricing + walk-only travel (M236)</span><span class="tag status-done">done</span><div class="desc">Cleric services now scale on Hard: Rest costs 25G per injured member; Revive costs max(50G, member.cost × 0.5) or level × 30 × 0.5 for generated hires. Hard disables fast-travel teleport (both the Return-to-Town button and the click-a-visited-town teleport in MapScreen). Hard preserves HP/MP between combats as shipped in M234. HP-bar visibility toggle (hide in town on Normal) was NOT shipped — low-value polish, bars already show the persistent HP and are not misleading.</div></div></div>
     <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Questline system + NPC dialog portraits (M235 full defer)</span><span class="tag status-todo">deferred</span><div class="desc">Not started. Needs: quest data model (main quest 5-act arc with 3 recurring NPCs — rival/mentor/traitor); 2 side quests per act (bounty board Act 2+); map icon (thick !) + legend entry; mobile-scrollable legend; dialog portrait overlay framework (party portraits when conversational, NPC portraits always, mood-only dialogs skip). Large scope — wants its own dedicated milestone so it can be authored + QA'd coherently. No silent shelving: explicitly pushed to a later cycle.</div></div></div>
     <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Loot Chest system + post-combat integration (M236-M237 full defer)</span><span class="tag status-todo">deferred</span><div class="desc">Not started. Needs: graphical chest sprite (SpriteCook closed + open states — budgeted), beam-of-light open animation, 2–3 item offer screen, rarity fanfare, post-combat dialog-chain integration. Then M237: wire into boss drops, Treasure nodes, and high-DC skill-check branches; multi-check encounters get low/med/high DC spread (STR/DEX/INT/CHA) with chest rewards scaled to DC tier. Large scope touching art pipeline + combat flow + reward system — keep as its own milestone pair.</div></div></div>
     <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Magic-find rebalance + MF affix (M238 full defer)</span><span class="tag status-todo">deferred</span><div class="desc">Not started. Act 1 should show ~50% normal items (currently skews higher rarity). Add magic-find affix on jewelry + weapons. Kill lingering formatted percentages (e.g. `1.0000001` display bug). MF applies to combat / guild / chest drops, NOT shops.</div></div></div>
-    <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Wishlist quick-select UI (M239 full defer)</span><span class="tag status-todo">deferred</span><div class="desc">This page needs: floating toggle to hide completed items + entire completed sections; fix Supporting Mechanics horizontal-layout bug; Quick-Select mode with left-side checkboxes, Copy (N) button, Reset Selection. Good meta-work but lower priority vs. shipping game features.</div></div></div>
+    <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Wishlist quick-select UI (M236)</span><span class="tag status-done">done</span><div class="desc">Added: floating control bar (top-right, mobile bottom) with three controls. (1) "Hide completed" toggle adds <code>body.wl-hide-done</code> and CSS hides done/dropped items AND entire sections/groups where every item is done. (2) "Quick Select" toggle enables per-item checkboxes + click-to-select. (3) "Copy (N)" writes the selected labels + descriptions to clipboard as a markdown bullet list. (4) "Reset Selection" clears everything. Supporting Mechanics horizontal-layout bug fixed by forcing <code>.wl-group { display: block }</code> + <code>.wl-group .wl-item { width: 100% }</code>. State persisted per-browser in localStorage.</div></div></div>
     <div class="wl-item"><div class="box"></div><div class="body"><span class="label">scripts/audit-sprite-404s.cjs + live-data unification (M240 full defer)</span><span class="tag status-todo">deferred</span><div class="desc">Build a QC script that walks every appearance × 7 poses + enemies + companions + bosses, reports missing files, and auto-appends unacknowledged misses here. Also unify image-review.html with live game data (necromancer drift example). Audit every public/assets/*.html for live-data sourcing + fix drifters. Tooling work — batch with M239.</div></div></div>
     <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Clouds_07/08 regen via SpriteCook (M241 full defer)</span><span class="tag status-todo">deferred</span><div class="desc">Generate clouds_07.png + clouds_08.png from clouds_02.png as reference (seamless horizontal, tall, fluffy, red-tinted, evenly spaced). Wire both as separate parallax layers on the title screen. Needs SpriteCook credits; queue alongside M232 regens to batch the budget.</div></div></div>
   </section>
 
+  <script>
+  // M236 wishlist overhaul: hide-completed + quick-select + copy.
+  (function() {
+    // Inject a quick-select checkbox at the start of every .wl-item.
+    document.querySelectorAll('.wl-item').forEach(it => {
+      const qs = document.createElement('div');
+      qs.className = 'qs-box';
+      it.insertBefore(qs, it.firstChild);
+    });
+
+    const hideCb = document.getElementById('wl-hide-done');
+    const qsCb   = document.getElementById('wl-quick-select');
+    const qsCount = document.getElementById('wl-qs-count');
+    const copyBtn = document.getElementById('wl-copy');
+    const resetBtn = document.getElementById('wl-reset');
+
+    function applyHide() {
+      const on = hideCb.checked;
+      document.body.classList.toggle('wl-hide-done', on);
+      localStorage.setItem('wl_hide_done', on ? '1' : '0');
+      // Mark sections with every item done so they collapse too.
+      document.querySelectorAll('.wl-group, .wl-section').forEach(g => {
+        const items = g.querySelectorAll('.wl-item');
+        if (!items.length) return;
+        const allDone = Array.from(items).every(i => i.classList.contains('done') || i.classList.contains('dropped'));
+        g.classList.toggle('all-done', allDone);
+      });
+    }
+    function applyQs() {
+      document.body.classList.toggle('wl-quick-select', qsCb.checked);
+      localStorage.setItem('wl_quick_select', qsCb.checked ? '1' : '0');
+      qsCount.style.display = qsCb.checked ? 'block' : 'none';
+    }
+    function updateCount() {
+      const n = document.querySelectorAll('.wl-item.qs-selected').length;
+      qsCount.textContent = `${n} selected`;
+      copyBtn.textContent = `Copy (${n})`;
+      copyBtn.disabled = n === 0;
+      resetBtn.disabled = n === 0;
+    }
+
+    // Initial state from localStorage.
+    hideCb.checked = localStorage.getItem('wl_hide_done') === '1';
+    qsCb.checked   = localStorage.getItem('wl_quick_select') === '1';
+    applyHide(); applyQs(); updateCount();
+
+    hideCb.addEventListener('change', applyHide);
+    qsCb.addEventListener('change', applyQs);
+
+    // Click on item (when quick-select on) toggles selection.
+    document.querySelectorAll('.wl-item').forEach(it => {
+      it.addEventListener('click', (e) => {
+        if (!document.body.classList.contains('wl-quick-select')) return;
+        // Ignore clicks on links.
+        if (e.target.closest('a')) return;
+        it.classList.toggle('qs-selected');
+        const qs = it.querySelector('.qs-box');
+        if (qs) qs.classList.toggle('checked', it.classList.contains('qs-selected'));
+        updateCount();
+      });
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      const parts = Array.from(document.querySelectorAll('.wl-item.qs-selected')).map(it => {
+        const label = it.querySelector('.label')?.textContent?.trim() || '';
+        const desc  = it.querySelector('.desc')?.textContent?.trim() || '';
+        return desc ? `- ${label}\n  ${desc}` : `- ${label}`;
+      });
+      const text = parts.join('\n');
+      try {
+        await navigator.clipboard.writeText(text);
+        copyBtn.textContent = 'Copied!';
+        setTimeout(updateCount, 1200);
+      } catch {
+        alert('Copy failed — here is the text:\n\n' + text);
+      }
+    });
+    resetBtn.addEventListener('click', () => {
+      document.querySelectorAll('.wl-item.qs-selected').forEach(it => {
+        it.classList.remove('qs-selected');
+        it.querySelector('.qs-box')?.classList.remove('checked');
+      });
+      updateCount();
+    });
+  })();
+  </script>
 </body>
 </html>
