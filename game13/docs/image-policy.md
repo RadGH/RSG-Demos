@@ -66,8 +66,10 @@ Every character frame — **reference, portrait, south, east, east_attack, east_
 - **FULL-BODY, head-to-toe.** The entire figure fits inside the 256×256 canvas.
 - **Feet** ~6–8% above the bottom edge, fully visible, NEVER cropped.
 - **Head** ~6–8% headroom above the hair, NEVER cropped.
-- **Figure height** ~85% of canvas height, centered horizontally.
+- **Figure height** ~85–90% of canvas height, centered horizontally.
 - **Weapon overhang** is allowed laterally and above, but body (feet→head) stays inside the canvas.
+
+**Canonical sizing reference (adopted M217):** `public/images/spritecook/sorcerer_east_spell.png` is the exemplar for how large and detailed a full-body character frame should read. New generation prompts should explicitly cite "match the generous full-body framing of sorcerer_male east_spell" so the model targets this scale. Frames that come back noticeably smaller or with lots of empty canvas should be flagged and regenerated.
 
 #### Portrait pose (portrait only)
 
