@@ -1,6 +1,6 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-23T03:39:14.142707+00:00",
+  "updatedAt": "2026-04-23T04:36:01.232534+00:00",
   "creditsUsedTotal": 5892,
   "characters": {
     "oracle": {
@@ -256,16 +256,16 @@
     },
     "swashbuckler": {
       "spriteId": "swashbuckler",
-      "status": "frames_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
+        "portrait": "approved",
         "south": "approved",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
         "east_block": "approved",
-        "east_ko": "pending_approval"
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/swashbuckler.json",
       "candidateDir": "images/pixellab/swashbuckler",
@@ -377,16 +377,16 @@
     },
     "chronomancer": {
       "spriteId": "chronomancer",
-      "status": "frames_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
+        "portrait": "approved",
+        "south": "approved",
         "east": "approved",
         "east_attack": "approved",
         "east_spell": "approved",
         "east_block": "approved",
-        "east_ko": "pending_approval"
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/chronomancer.json",
       "candidateDir": "images/pixellab/chronomancer",
@@ -504,16 +504,16 @@
     },
     "runesmith": {
       "spriteId": "runesmith",
-      "status": "frames_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
-        "east": "pending_approval",
+        "portrait": "approved",
+        "south": "approved",
+        "east": "approved",
         "east_attack": "approved",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/runesmith.json",
       "candidateDir": "images/pixellab/runesmith",
@@ -525,22 +525,22 @@
     "shadow_dancer": {
       "spriteId": "shadow_dancer",
       "status": "frames_generated",
-      "referenceStatus": "reference_generated",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "approved",
-        "east": "approved",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "portrait": "approved",
+        "south": "pending_approval",
+        "east": "pending_approval",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/shadow_dancer.json",
       "candidateDir": "images/pixellab/shadow_dancer",
       "originalSpritecookPrefix": "images/spritecook/shadow_dancer_",
       "creditsUsed": 108,
       "notes": "Violet-shadow elven duelist-dancer. Scimitar + silk wraps + shadow tattoos.",
-      "m217Note": "M217 regen of south, east. Other poses remain pending_approval."
+      "m217Note": "south + east regenerated in M217 for scale fix; awaiting user review before approval."
     },
     "ranger_male": {
       "spriteId": "ranger_male",
@@ -602,16 +602,16 @@
     },
     "chronomancer_female": {
       "spriteId": "chronomancer_female",
-      "status": "frames_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
+        "portrait": "approved",
         "south": "approved",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/chronomancer_female.json",
       "candidateDir": "images/pixellab/chronomancer_female",
@@ -835,16 +835,16 @@
     },
     "swashbuckler_female": {
       "spriteId": "swashbuckler_female",
-      "status": "frames_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "pending_approval",
+        "portrait": "approved",
+        "south": "approved",
         "east": "approved",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
+        "east_attack": "approved",
+        "east_spell": "approved",
         "east_block": "approved",
-        "east_ko": "pending_approval"
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/swashbuckler_female.json",
       "candidateDir": "images/pixellab/swashbuckler_female",
@@ -856,22 +856,23 @@
     "dragon_knight_male": {
       "spriteId": "dragon_knight_male",
       "status": "frames_generated",
-      "referenceStatus": "reference_generated",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
-        "south": "approved",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "portrait": "approved",
+        "south": "pending_approval",
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/dragon_knight_male.json",
       "candidateDir": "images/pixellab/dragon_knight_male",
       "originalSpritecookPrefix": "images/spritecook/dragon_knight_male_",
       "creditsUsed": 96,
       "notes": "Dragon_Knight (Male) \u2014 gender variant",
-      "m217Note": "M217 regen of south. Other poses remain pending_approval."
+      "m217Note": "south regenerated 2x in M217 \u2014 v1 still had ambiguous hammer placement, v2 forces horizontal two-handed grip; awaiting user review.",
+      "m217SouthV2AssetId": "88618035-ccf0-400e-9961-d94d3ec87516"
     },
     "pyromancer_male": {
       "spriteId": "pyromancer_male",
@@ -953,16 +954,16 @@
     },
     "runesmith_female": {
       "spriteId": "runesmith_female",
-      "status": "frames_generated",
-      "referenceStatus": "reference_generated",
+      "status": "approved",
+      "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "pending_approval",
+        "portrait": "approved",
         "south": "approved",
-        "east": "pending_approval",
-        "east_attack": "pending_approval",
-        "east_spell": "pending_approval",
-        "east_block": "pending_approval",
-        "east_ko": "pending_approval"
+        "east": "approved",
+        "east_attack": "approved",
+        "east_spell": "approved",
+        "east_block": "approved",
+        "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/runesmith_female.json",
       "candidateDir": "images/pixellab/runesmith_female",
