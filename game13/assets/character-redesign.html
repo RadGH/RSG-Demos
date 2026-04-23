@@ -271,6 +271,29 @@
   @media (max-width: 767px) {
     #subsprite-toggle .ss-desktop { display: none !important; }
   }
+
+  /* M232: pose-background override for the redesign audit page. Swaps the
+     repeating checker grid out for a flat color so art reads differently
+     against each baseline. Applies to anchor + cell slots + sub-sprite
+     cells in one go. */
+  body[data-bg="black"]  .refcol .anchor,
+  body[data-bg="black"]  .cell .twoup .slot,
+  body[data-bg="black"]  .subsprites .sub { background: #000; }
+  body[data-bg="dark"]   .refcol .anchor,
+  body[data-bg="dark"]   .cell .twoup .slot,
+  body[data-bg="dark"]   .subsprites .sub { background: #2a242e; }
+  body[data-bg="light"]  .refcol .anchor,
+  body[data-bg="light"]  .cell .twoup .slot,
+  body[data-bg="light"]  .subsprites .sub { background: #d8d0c8; }
+  body[data-bg="white"]  .refcol .anchor,
+  body[data-bg="white"]  .cell .twoup .slot,
+  body[data-bg="white"]  .subsprites .sub { background: #ffffff; }
+  body[data-bg="green"]  .refcol .anchor,
+  body[data-bg="green"]  .cell .twoup .slot,
+  body[data-bg="green"]  .subsprites .sub { background: #00b200; }
+
+  /* Pending-only filter: hide rows where every pose is approved. */
+  body.pending-only .char[data-fully-approved] { display: none; }
 </style>
 </head>
 <body>
@@ -286,6 +309,7 @@
       <label for="version-select" style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;">Game Version:</label>
       <select id="version-select" style="background:var(--panel-alt);color:var(--parchment);border:1px solid var(--border);padding:0.3rem 0.5rem;font-size:0.85rem;border-radius:3px;cursor:pointer;">
         <option value="current">Current (live)</option>
+        <option value="m217">M217 snapshot</option>
       </select>
       <span id="version-note" style="font-size:0.7rem;color:var(--muted);"></span>
     </div>
@@ -302,6 +326,21 @@
         <input type="checkbox" id="hide-approved-checkbox">
         Hide fully-approved characters
       </label>
+      <label class="ss-row ss-desktop" id="pending-only-row">
+        <input type="checkbox" id="pending-only-checkbox">
+        Only show pending-review poses
+      </label>
+      <div class="ss-row" id="bg-color-row">
+        <span class="grid-col-label">BG:</span>
+        <select id="bg-color-select" style="background:var(--panel-alt);color:var(--parchment);border:1px solid var(--border);padding:0.2rem 0.35rem;font-size:0.7rem;border-radius:3px;cursor:pointer;">
+          <option value="grid">Grid</option>
+          <option value="black">Black</option>
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+          <option value="white">White</option>
+          <option value="green">Green</option>
+        </select>
+      </div>
       <div class="ss-row ss-desktop" id="ss-cols-row">
         <span class="grid-col-label">Cols:</span>
         <div class="grid-col-btns" id="ss-cols-btns"></div>
@@ -823,6 +862,38 @@ bootstrap().catch(e => {
     const v = cb.checked;
     localStorage.setItem(HIDE_KEY, v ? '1' : '0');
     applyHideApproved(v);
+  });
+})();
+
+// M232: background-color swatch persists and applies via body[data-bg].
+(function wireBgColor(){
+  const sel = document.getElementById('bg-color-select');
+  if (!sel) return;
+  const KEY = 'rsg-char-redesign-bg';
+  const initial = localStorage.getItem(KEY) || 'grid';
+  sel.value = initial;
+  if (initial !== 'grid') document.body.setAttribute('data-bg', initial);
+  sel.addEventListener('change', () => {
+    const v = sel.value;
+    if (v === 'grid') document.body.removeAttribute('data-bg');
+    else document.body.setAttribute('data-bg', v);
+    localStorage.setItem(KEY, v);
+  });
+})();
+
+// M232: pending-only filter toggle — hides characters whose every pose is
+// approved. Uses the data-all-approved flag already computed when each card
+// is built (see applyHideApproved path).
+(function wirePendingOnly(){
+  const cb = document.getElementById('pending-only-checkbox');
+  if (!cb) return;
+  const KEY = 'rsg-char-redesign-pending-only';
+  const initial = localStorage.getItem(KEY) === '1';
+  cb.checked = initial;
+  document.body.classList.toggle('pending-only', initial);
+  cb.addEventListener('change', () => {
+    document.body.classList.toggle('pending-only', cb.checked);
+    localStorage.setItem(KEY, cb.checked ? '1' : '0');
   });
 })();
 </script>
