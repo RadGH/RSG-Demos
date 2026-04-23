@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-04-21T23:13:21.066Z",
+    "generated": "2026-04-23T17:16:35.018Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (29 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (10 entries)",
@@ -9,23 +9,23 @@
       "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (12 bosses)"
     },
     "counts": {
-      "total": 684,
+      "total": 814,
       "by_status": {
-        "ready": 418,
-        "pending": 121,
-        "orphaned": 91,
-        "approved": 15,
-        "candidate": 39
+        "ready": 426,
+        "pending": 116,
+        "orphaned": 217,
+        "approved": 17,
+        "candidate": 38
       },
       "by_category": {
         "hero": 203,
         "companion": 120,
         "boss": 84,
         "enemy": 95,
-        "background": 28,
+        "background": 31,
         "tap-weapons": 9,
-        "orphan": 91,
-        "reference-sheet": 54
+        "orphan": 217,
+        "reference-sheet": 55
       }
     },
     "source": "scripts/build-image-review-manifest.cjs",
@@ -389,7 +389,7 @@
       "group": "mage",
       "pose": "east_spell",
       "file": "../images/spritecook/mage_east_spell.png",
-      "prompt": null,
+      "prompt": "IDENTITY (must match reference sheet exactly): Human MAN (male), about 30 years old, short red-brown hair with LOOSE LOCKS falling around the face from beneath the hood, trimmed red beard, smooth unwrinkled adult skin, brown eyes, focused face. NOT old, NOT a graybeard wizard.\n\nOUTFIT: Deep blue hooded robe with bright gold trim down the front seam and around the hood, gold-bordered collar. Hood WORN UP over the head (covering the top and back of the head, but the face and beard are clearly visible beneath the front of the hood with red-brown hair loose around the face).\n\nWEAPONS: A dark wooden staff with a polished wooden orb at the top, held in the right hand at his side.\n\nPOSE (east_spell): East-facing, hood up. Staff planted vertically in the right hand, left hand held forward with a small glowing blue arcane rune above the palm.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE. Avoid anything in bannedSubstrings.",
       "status": "ready"
     },
     {
@@ -416,7 +416,7 @@
       "group": "cleric",
       "pose": "portrait",
       "file": "../images/spritecook/cleric_portrait.png",
-      "prompt": null,
+      "prompt": "IDENTITY (must match reference sheet exactly): Human WOMAN (female), about 26 years old, soft round adult face, warm brown eyes, LONG CHESTNUT-BROWN HAIR (NOT BALD, hair clearly visible — golden-brown bangs and side locks falling from beneath the hood around the face).\n\nOUTFIT: White hooded robe with gold-trim borders (hood worn UP covering the back of the head but framing the face — hair shows at the front), white shoulder cape, a wooden cross-shaped holy symbol on a gold chain over the chest.\n\nWEAPONS: A gray iron spiked mace held upright in the left hand, dark wooden haft with a simple golden pommel.\n\nPOSE (portrait): Bust shot from mid-chest up, three-quarter view. White hood with gold trim, chestnut-brown hair clearly visible framing the face (NOT BALD), warm soft face, wooden cross holy symbol on the chest, spiked mace visible in the left hand at her shoulder.\n\nFRAMING (non-negotiable, portrait-only): head-and-shoulders BUST SHOT from mid-chest upward, three-quarter view. Head fills the upper half of the 256x256 canvas with ~5% headroom above the hair. Shoulders fill the lower half. Face clearly readable. NOT a full body, NOT extreme close-up on the eyes.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE. Avoid anything in bannedSubstrings.",
       "status": "ready"
     },
     {
@@ -425,7 +425,7 @@
       "group": "cleric",
       "pose": "south",
       "file": "../images/spritecook/cleric_south.png",
-      "prompt": null,
+      "prompt": "IDENTITY (must match reference sheet exactly): Human WOMAN (female), about 26 years old, soft round adult face, warm brown eyes, LONG CHESTNUT-BROWN HAIR (NOT BALD, hair clearly visible — golden-brown bangs and side locks falling from beneath the hood around the face).\n\nOUTFIT: White hooded robe with gold-trim borders (hood worn UP covering the back of the head but framing the face — hair shows at the front), white shoulder cape, a wooden cross-shaped holy symbol on a gold chain over the chest.\n\nWEAPONS: A gray iron spiked mace held upright in the left hand, dark wooden haft with a simple golden pommel.\n\nPOSE (south): Facing camera (south), calm idle. Mace held point-up in the left hand at her side, right hand resting on the holy symbol at her chest, chestnut hair visible around the face.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE. Avoid anything in bannedSubstrings.",
       "status": "ready"
     },
     {
@@ -434,7 +434,7 @@
       "group": "cleric",
       "pose": "east",
       "file": "../images/spritecook/cleric_east.png",
-      "prompt": null,
+      "prompt": "IDENTITY (must match reference sheet exactly): Human WOMAN (female), about 26 years old, soft round adult face, warm brown eyes, LONG CHESTNUT-BROWN HAIR (NOT BALD, hair clearly visible — golden-brown bangs and side locks falling from beneath the hood around the face).\n\nOUTFIT: White hooded robe with gold-trim borders (hood worn UP covering the back of the head but framing the face — hair shows at the front), white shoulder cape, a wooden cross-shaped holy symbol on a gold chain over the chest.\n\nWEAPONS: A gray iron spiked mace held upright in the left hand, dark wooden haft with a simple golden pommel.\n\nPOSE (east): Neutral combat idle, consistent with reference sheet, full-body facing east.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE. Avoid anything in bannedSubstrings.",
       "status": "ready"
     },
     {
@@ -443,7 +443,7 @@
       "group": "cleric",
       "pose": "east_attack",
       "file": "../images/spritecook/cleric_east_attack.png",
-      "prompt": null,
+      "prompt": "IDENTITY (must match reference sheet exactly): Human WOMAN (female), about 26 years old, soft round adult face, warm brown eyes, LONG CHESTNUT-BROWN HAIR (NOT BALD, hair clearly visible — golden-brown bangs and side locks falling from beneath the hood around the face).\n\nOUTFIT: White hooded robe with gold-trim borders (hood worn UP covering the back of the head but framing the face — hair shows at the front), white shoulder cape, a wooden cross-shaped holy symbol on a gold chain over the chest.\n\nWEAPONS: A gray iron spiked mace held upright in the left hand, dark wooden haft with a simple golden pommel.\n\nPOSE (east_attack): East-facing. Mid-swing horizontal mace strike at chest height with the left hand, right hand raised with a soft white glow, robe swirling.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE. Avoid anything in bannedSubstrings.",
       "status": "ready"
     },
     {
@@ -452,7 +452,7 @@
       "group": "cleric",
       "pose": "east_spell",
       "file": "../images/spritecook/cleric_east_spell.png",
-      "prompt": null,
+      "prompt": "IDENTITY (must match reference sheet exactly): Human WOMAN (female), about 26 years old, soft round adult face, warm brown eyes, LONG CHESTNUT-BROWN HAIR (NOT BALD, hair clearly visible — golden-brown bangs and side locks falling from beneath the hood around the face).\n\nOUTFIT: White hooded robe with gold-trim borders (hood worn UP covering the back of the head but framing the face — hair shows at the front), white shoulder cape, a wooden cross-shaped holy symbol on a gold chain over the chest.\n\nWEAPONS: A gray iron spiked mace held upright in the left hand, dark wooden haft with a simple golden pommel.\n\nPOSE (east_spell): East-facing. Both hands raised in front of the chest, a soft golden healing light between the palms, mace lowered at her side.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE. Avoid anything in bannedSubstrings.",
       "status": "ready"
     },
     {
@@ -461,7 +461,7 @@
       "group": "cleric",
       "pose": "east_block",
       "file": "../images/spritecook/cleric_east_block.png",
-      "prompt": null,
+      "prompt": "IDENTITY (must match reference sheet exactly): Human WOMAN (female), about 26 years old, soft round adult face, warm brown eyes, LONG CHESTNUT-BROWN HAIR (NOT BALD, hair clearly visible — golden-brown bangs and side locks falling from beneath the hood around the face).\n\nOUTFIT: White hooded robe with gold-trim borders (hood worn UP covering the back of the head but framing the face — hair shows at the front), white shoulder cape, a wooden cross-shaped holy symbol on a gold chain over the chest.\n\nWEAPONS: A gray iron spiked mace held upright in the left hand, dark wooden haft with a simple golden pommel.\n\nPOSE (east_block): East-facing. Mace held horizontally in both hands across the torso, hood up, chin down.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE. Avoid anything in bannedSubstrings.",
       "status": "ready"
     },
     {
@@ -470,7 +470,7 @@
       "group": "cleric",
       "pose": "east_ko",
       "file": "../images/spritecook/cleric_east_ko.png",
-      "prompt": null,
+      "prompt": "IDENTITY (must match reference sheet exactly): Human WOMAN (female), about 26 years old, soft round adult face, warm brown eyes, LONG CHESTNUT-BROWN HAIR (NOT BALD, hair clearly visible — golden-brown bangs and side locks falling from beneath the hood around the face).\n\nOUTFIT: White hooded robe with gold-trim borders (hood worn UP covering the back of the head but framing the face — hair shows at the front), white shoulder cape, a wooden cross-shaped holy symbol on a gold chain over the chest.\n\nWEAPONS: A gray iron spiked mace held upright in the left hand, dark wooden haft with a simple golden pommel.\n\nPOSE (east_ko): East-facing, kneeling, head bowed in prayer, mace laid on the ground in front of her, robe pooled around her.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE. Avoid anything in bannedSubstrings.",
       "status": "ready"
     },
     {
@@ -614,7 +614,7 @@
       "group": "druid",
       "pose": "south",
       "file": "../images/spritecook/druid_south.png",
-      "prompt": null,
+      "prompt": "IDENTITY (must match reference sheet exactly): Human WOMAN (female), about 26 years old, long wavy honey-blonde hair falling past the shoulders (NORMAL HUMAN HAIR — NOT LEAVES, NOT vines, NOT antlers, NOT feathers), brown eyes, serene calm adult face.\n\nOUTFIT: Green hooded cloak lined with rust-orange on the inside (hood worn up framing the face), a round gold clasp at the throat, plain brown tunic and dress underneath. STRICTLY NO antlers, NO leaves growing from the head, NO leaf-crown, NO bird-feathers, NO animal features.\n\nWEAPONS: A tall dark wooden staff with a curled shepherd-crook top wrapped in a thin curling green vine with small leaves, held in the right hand.\n\nPOSE (south): Facing camera (south), calm idle. Staff held upright in the right hand, curled top with vines visible, left hand resting on the clasp of the cloak.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE. Avoid anything in bannedSubstrings.",
       "status": "ready"
     },
     {
@@ -1596,7 +1596,7 @@
       "pose": "east_block",
       "file": "../images/spritecook/sorcerer_east_block.png",
       "prompt": "IDENTITY (must match reference sheet exactly): Human male sorcerer, sharp intelligent face, short neatly-styled raven-black hair, glowing violet eyes, fair skin, slim build.\n\nOUTFIT: Elegant black-and-violet layered robes with intricate gold arcane embroidery on the sleeves and hem, a gold-and-amethyst pendant on the chest, a high collar, violet shoulder cape. Black boots.\n\nWEAPONS: A floating violet crystal orb hovering above his open right palm, emitting gentle light. No staff.\n\nPOSE (east_block): East-facing. Crystal orb floats in front, projecting a translucent violet hex-dome shield forward.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "hero_sorcerer_east_ko",
@@ -1659,7 +1659,7 @@
       "pose": "east_block",
       "file": "../images/spritecook/shaman_east_block.png",
       "prompt": "IDENTITY (must match reference sheet exactly): Tribal human female shaman, dark-brown skin, long black braids beaded with bone and feather charms, sharp amber eyes, a red painted war-stripe across the eyes, strong wiry build.\n\nOUTFIT: Hide and leather tribal dress with fur mantle across the shoulders, feathered shoulder-cape, turquoise and bone necklaces, leather arm-wraps with tribal glyphs. Leather sandals. Painted face-markings.\n\nWEAPONS: A tall wooden ceremonial staff topped with a cluster of feathers, bones, and a glowing blue spirit-gem, held in the right hand.\n\nPOSE (east_block): East-facing. Staff held diagonally, a translucent blue spirit-barrier forming from the staff-top outward.\n\nFRAMING: full body, feet on bottom edge of 256x256 canvas.\n\nSCALE (non-negotiable): character must occupy approximately 180px of the 256px canvas height — roughly 70%. Do NOT stretch or upscale. Extra space above head and/or below feet is correct.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "hero_shaman_east_ko",
@@ -1722,7 +1722,7 @@
       "pose": "east_block",
       "file": "../images/spritecook/witch_hunter_east_block.png",
       "prompt": "IDENTITY (must match reference sheet exactly): Human MAN (male, stern adult), about 34 years old, tall lean upright build, clean-shaven sharp severe face, short dark hair mostly hidden under a wide-brim hat, cold pale-blue eyes, pale skin.\n\nOUTFIT: Long black leather trench coat with silver buckles and silver cross-sigils down the front, wide-brimmed puritanical black hat, dark trousers, tall black boots. White high-collar shirt beneath the coat. Brown leather bandolier across the chest with a row of crossbow bolts (NOT bullets, NOT a gun-bandolier).\n\nWEAPONS: A long curved silver saber held in the right hand with a simple black leather-wrapped grip. A compact wooden-stocked steel CROSSBOW (medieval hand-crossbow, clearly a bow-arm with a taut string and a nocked bolt — NOT a gun, NOT a flintlock, NOT a pistol, NO powder, NO muzzle, NO flintlock mechanism) carried in the left hand or slung on the back. Additional crossbow bolts in a small quiver on the left hip.\n\nPOSE (east_block): East-facing. Saber held vertically in the right hand in front of the body as a guard, crossbow held horizontally in the left hand as a second guard, wide-brim hat tilted forward.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE. Avoid anything in bannedSubstrings.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "hero_witch_hunter_east_ko",
@@ -1785,7 +1785,7 @@
       "pose": "east_block",
       "file": "../images/spritecook/runesmith_east_block.png",
       "prompt": "IDENTITY (must match reference sheet exactly): Human MAN (male, NORMAL HUMAN HEIGHT — NOT a dwarf, NOT short-statured, NOT a halfling), about 32 years old, broad-shouldered blacksmith build, short-cropped black hair, thick black beard, soot-smudged cheekbones, intense amber eyes.\n\nOUTFIT: Dark brown leather blacksmith apron over a gray wool tunic, rolled-up sleeves revealing muscular forearms, heavy brown leather gauntlets. Glowing orange-gold runic sigils etched and faintly shining into the apron, gauntlets, and belt buckle.\n\nWEAPONS: A heavy iron blacksmith hammer with glowing orange runes carved into the head and haft, held in the right hand. A small rune-inscribed bronze anvil icon on the belt. No sword.\n\nPOSE (east_block): East-facing. Hammer haft held horizontally across the chest in both hands, runes on apron glowing faintly.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE. Avoid anything in bannedSubstrings.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "hero_runesmith_east_ko",
@@ -1848,7 +1848,7 @@
       "pose": "east_block",
       "file": "../images/spritecook/shadow_dancer_east_block.png",
       "prompt": "IDENTITY (must match reference sheet exactly): Human WOMAN (fully human — NOT an elf, NOT a half-elf, NOT a dwarf, NOT a halfling; round human ears, normal human face, tall slender adult build), about 26 years old, shoulder-length jet-black hair, dark eyes, sharp angular adult face.\n\nOUTFIT: Sleek form-fitting black silk combat outfit with dark purple sash accents across the chest and waist, black fingerless gloves, soft black cloth shoes, a short hooded half-cape in black draped from one shoulder.\n\nWEAPONS: Twin curved black daggers held in reverse-grip in both hands. Faint dark purple shadow-wisps trail from the blades.\n\nPOSE (east_block): East-facing. Both daggers held crossed in front of the face in an X guard, body coiled low.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE. Avoid anything in bannedSubstrings.",
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "hero_shadow_dancer_east_ko",
@@ -4785,6 +4785,33 @@
       "status": "ready"
     },
     {
+      "id": "bg_menu_clouds_04",
+      "category": "background",
+      "group": "menu",
+      "pose": null,
+      "file": "../images/menu_bg/clouds_04.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_menu_clouds_05",
+      "category": "background",
+      "group": "menu",
+      "pose": null,
+      "file": "../images/menu_bg/clouds_05.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_menu_clouds_06",
+      "category": "background",
+      "group": "menu",
+      "pose": null,
+      "file": "../images/menu_bg/clouds_06.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
       "id": "bg_menu_menu_square",
       "category": "background",
       "group": "menu",
@@ -5019,6 +5046,69 @@
       "status": "orphaned"
     },
     {
+      "id": "orphan_images_spritecook_chronomancer_female_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/chronomancer_female_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_chronomancer_female_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/chronomancer_female_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_chronomancer_female_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/chronomancer_female_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_chronomancer_female_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/chronomancer_female_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_chronomancer_female_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/chronomancer_female_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_chronomancer_female_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/chronomancer_female_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_chronomancer_female_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/chronomancer_female_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
       "id": "orphan_images_spritecook_cleric_male_east",
       "category": "orphan",
       "group": "images/spritecook",
@@ -5136,6 +5226,69 @@
       "status": "orphaned"
     },
     {
+      "id": "orphan_images_spritecook_demon_hunter_female_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/demon_hunter_female_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_demon_hunter_female_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/demon_hunter_female_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_demon_hunter_female_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/demon_hunter_female_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_demon_hunter_female_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/demon_hunter_female_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_demon_hunter_female_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/demon_hunter_female_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_demon_hunter_female_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/demon_hunter_female_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_demon_hunter_female_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/demon_hunter_female_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
       "id": "orphan_images_spritecook_dragon_boss_east_block",
       "category": "orphan",
       "group": "images/spritecook",
@@ -5150,6 +5303,69 @@
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/dragon_boss_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dragon_knight_male_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dragon_knight_male_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dragon_knight_male_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dragon_knight_male_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dragon_knight_male_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dragon_knight_male_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dragon_knight_male_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dragon_knight_male_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dragon_knight_male_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dragon_knight_male_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dragon_knight_male_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dragon_knight_male_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_dragon_knight_male_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/dragon_knight_male_south.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -5505,6 +5721,150 @@
       "status": "orphaned"
     },
     {
+      "id": "orphan_images_spritecook_monk_female_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/monk_female_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_monk_female_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/monk_female_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_monk_female_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/monk_female_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_monk_female_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/monk_female_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_monk_female_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/monk_female_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_monk_female_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/monk_female_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_monk_female_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/monk_female_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_necromancer_female_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/necromancer_female_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_oracle_male_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/oracle_male_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_paladin_female_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/paladin_female_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_paladin_female_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/paladin_female_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_paladin_female_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/paladin_female_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_paladin_female_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/paladin_female_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_paladin_female_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/paladin_female_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_paladin_female_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/paladin_female_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_paladin_female_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/paladin_female_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
       "id": "orphan_images_spritecook_plateau_boss_east_block",
       "category": "orphan",
       "group": "images/spritecook",
@@ -5523,6 +5883,132 @@
       "status": "orphaned"
     },
     {
+      "id": "orphan_images_spritecook_pyromancer_male_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/pyromancer_male_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_pyromancer_male_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/pyromancer_male_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_pyromancer_male_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/pyromancer_male_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_pyromancer_male_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/pyromancer_male_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_pyromancer_male_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/pyromancer_male_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_pyromancer_male_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/pyromancer_male_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_pyromancer_male_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/pyromancer_male_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ranger_male_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ranger_male_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ranger_male_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ranger_male_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ranger_male_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ranger_male_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ranger_male_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ranger_male_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ranger_male_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ranger_male_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ranger_male_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ranger_male_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ranger_male_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ranger_male_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
       "id": "orphan_images_spritecook_rift_boss_east_block",
       "category": "orphan",
       "group": "images/spritecook",
@@ -5537,6 +6023,384 @@
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/rift_boss_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_rogue_male_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/rogue_male_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_rogue_male_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/rogue_male_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_rogue_male_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/rogue_male_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_rogue_male_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/rogue_male_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_rogue_male_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/rogue_male_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_rogue_male_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/rogue_male_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_rogue_male_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/rogue_male_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_runesmith_female_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/runesmith_female_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_runesmith_female_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/runesmith_female_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_runesmith_female_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/runesmith_female_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_runesmith_female_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/runesmith_female_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_runesmith_female_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/runesmith_female_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_runesmith_female_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/runesmith_female_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_runesmith_female_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/runesmith_female_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_scavenger_female_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/scavenger_female_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_scavenger_female_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/scavenger_female_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_scavenger_female_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/scavenger_female_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_scavenger_female_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/scavenger_female_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_scavenger_female_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/scavenger_female_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_scavenger_female_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/scavenger_female_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_scavenger_female_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/scavenger_female_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shadow_dancer_male_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shadow_dancer_male_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shadow_dancer_male_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shadow_dancer_male_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shadow_dancer_male_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shadow_dancer_male_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shadow_dancer_male_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shadow_dancer_male_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shadow_dancer_male_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shadow_dancer_male_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shadow_dancer_male_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shadow_dancer_male_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shadow_dancer_male_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shadow_dancer_male_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shaman_male_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shaman_male_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shaman_male_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shaman_male_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shaman_male_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shaman_male_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shaman_male_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shaman_male_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shaman_male_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shaman_male_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shaman_male_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shaman_male_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_shaman_male_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/shaman_male_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_sorcerer_female_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/sorcerer_female_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_sorcerer_female_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/sorcerer_female_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_sorcerer_female_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/sorcerer_female_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_sorcerer_female_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/sorcerer_female_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_sorcerer_female_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/sorcerer_female_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_sorcerer_female_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/sorcerer_female_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_sorcerer_female_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/sorcerer_female_south.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -5604,6 +6468,132 @@
       "status": "orphaned"
     },
     {
+      "id": "orphan_images_spritecook_swashbuckler_female_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/swashbuckler_female_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_swashbuckler_female_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/swashbuckler_female_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_swashbuckler_female_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/swashbuckler_female_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_swashbuckler_female_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/swashbuckler_female_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_swashbuckler_female_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/swashbuckler_female_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_swashbuckler_female_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/swashbuckler_female_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_swashbuckler_female_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/swashbuckler_female_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_tactician_female_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/tactician_female_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_tactician_female_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/tactician_female_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_tactician_female_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/tactician_female_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_tactician_female_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/tactician_female_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_tactician_female_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/tactician_female_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_tactician_female_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/tactician_female_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_tactician_female_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/tactician_female_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
       "id": "orphan_images_spritecook_thornwood_boss_east_block",
       "category": "orphan",
       "group": "images/spritecook",
@@ -5636,6 +6626,51 @@
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/void_boss_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_war_dog_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/war_dog_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_war_dog_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/war_dog_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_war_dog_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/war_dog_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_war_dog_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/war_dog_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_war_dog_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/war_dog_south.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -5699,6 +6734,132 @@
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/warlock_male_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_warrior_female_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/warrior_female_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_warrior_female_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/warrior_female_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_warrior_female_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/warrior_female_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_warrior_female_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/warrior_female_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_warrior_female_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/warrior_female_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_warrior_female_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/warrior_female_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_warrior_female_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/warrior_female_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_witch_hunter_female_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/witch_hunter_female_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_witch_hunter_female_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/witch_hunter_female_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_witch_hunter_female_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/witch_hunter_female_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_witch_hunter_female_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/witch_hunter_female_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_witch_hunter_female_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/witch_hunter_female_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_witch_hunter_female_portrait",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/witch_hunter_female_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_witch_hunter_female_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/witch_hunter_female_south.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -5970,7 +7131,7 @@
       "pose": "reference_sheet",
       "file": "../images/pixellab/ranger_male/reference.png",
       "prompt": "IDENTITY (this image becomes the canonical identity anchor — preserve in every downstream frame): Human MAN (male, distinctly masculine, broad shoulders, flat chest, square jaw, NO feminine curves), about 28 years old, shoulder-length wavy auburn hair, gray-blue eyes, calm focused face, clean-shaven.\n\nOUTFIT: Simple forest-green short-sleeved tunic laced at the chest, brown leather bracers, brown leather quiver strap crossing the chest, dark green trousers, brown boots.\n\nWEAPONS: A wooden recurve longbow carried in the left hand or over the left shoulder. A brown quiver of arrows on the back over the right shoulder, fletchings visible.\n\nCLASS: humanoid. FULL-BODY reference — the entire figure from the crown of the head down to the soles of the feet must be fully visible inside the 256x256 canvas.\n\nPOSE: full-body side profile facing right (east), calm combat-ready idle. Head up, eyes visible. Both feet visible and planted on the implied ground plane. NOT a portrait bust, NOT a waist-up crop, NOT a close-up.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: detailed pixel art with clean readable silhouette, warm pixel-art palette, transparent background, no ground shadow, no cropping of any body part at the canvas edge.",
-      "status": "candidate"
+      "status": "approved"
     },
     {
       "id": "ref_sheet_rogue",
@@ -6133,6 +7294,15 @@
       "file": "../images/pixellab/tactician_female/reference.png",
       "prompt": "IDENTITY (this image becomes the canonical identity anchor — preserve in every downstream frame): Human WOMAN (female, commanding adult officer), about 32 years old, TALL and SLENDER adult build with long adult legs, realistic head-to-body ratio. Medium dark brown hair pulled back in a tight low bun or tail, brown eyes, stern lined adult female face, CLEARLY-LIT normal-toned skin (NOT silhouetted).\n\nOUTFIT: Mid-brown leather coat over a black tunic (coat rendered in bright evenly-lit medium brown, NOT black, NOT silhouetted), bronze military emblem (a stylized eagle) on the left breast, brown leather gloves.\n\nWEAPONS: A long steel officer's sword held upright in the right hand. A folded tan parchment battle map held in the left hand.\n\nCLASS: humanoid. FULL-BODY reference — the entire figure from the crown of the head down to the soles of the feet must be fully visible inside the 256x256 canvas.\n\nPOSE: full-body side profile facing right (east), calm combat-ready idle. Head up, eyes visible. Both feet visible and planted on the implied ground plane. NOT a portrait bust, NOT a waist-up crop, NOT a close-up.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: detailed pixel art with clean readable silhouette, warm pixel-art palette, transparent background, no ground shadow, no cropping of any body part at the canvas edge.",
       "status": "candidate"
+    },
+    {
+      "id": "ref_sheet_war_dog",
+      "category": "reference-sheet",
+      "group": "war_dog",
+      "pose": "reference_sheet",
+      "file": "../images/spritecook/war_dog_reference.png",
+      "prompt": null,
+      "status": "approved"
     },
     {
       "id": "ref_sheet_warlock",

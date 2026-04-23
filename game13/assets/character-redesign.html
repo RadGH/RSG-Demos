@@ -881,14 +881,15 @@ bootstrap().catch(e => {
   });
 })();
 
-// M232: pending-only filter toggle — hides characters whose every pose is
-// approved. Uses the data-all-approved flag already computed when each card
-// is built (see applyHideApproved path).
+// M232/M236: pending-only filter. DEFAULT ON so the "Current" view shows only
+// sprites that still need review — the page opens with 0 items unless there's
+// something unreviewed, matching the review workflow the user wants.
 (function wirePendingOnly(){
   const cb = document.getElementById('pending-only-checkbox');
   if (!cb) return;
   const KEY = 'rsg-char-redesign-pending-only';
-  const initial = localStorage.getItem(KEY) === '1';
+  const raw = localStorage.getItem(KEY);
+  const initial = raw === null ? true : raw === '1';
   cb.checked = initial;
   document.body.classList.toggle('pending-only', initial);
   cb.addEventListener('change', () => {
