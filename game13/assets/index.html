@@ -1046,30 +1046,39 @@ function indexAssetsByCharacter(assets) {
   return idx;
 }
 
+// M236: canonical pose set per /docs/image-policy.md. Only these poses
+// render — no more stale _east_flipped / _death frames leaking into the UI.
+const CANONICAL_POSES = ['south','east','east_attack','east_spell','east_block','east_ko'];
+
 function renderM79CharacterBlock(character, bundle) {
   const block = document.createElement('div');
   block.className = 'char-m79-block';
-  const portrait = bundle && bundle.portrait;
-  const frames = (bundle && bundle.frames) ? bundle.frames.slice(0, 6) : [];
-  const total = bundle ? bundle.all.length : 0;
 
-  const portraitHtml = portrait && portrait.file
-    ? `<img src="${thumbPath(portrait.file)}" data-orig="${portrait.file}" alt="${character.name}" loading="lazy" onerror="if(this.dataset.fallback){this.style.display='none';this.nextElementSibling.style.display='flex'}else{this.dataset.fallback=1;this.src=this.dataset.orig}">`
-      + `<div class="portrait-missing" style="display:none">?</div>`
-    : `<div class="portrait-missing">?</div>`;
+  // Portrait + reference sheet candidates. Prefer spritecook paths since
+  // that's where approved current sprites live. Fall back to pixellab
+  // reference if the portrait 404s.
+  const id = character.id;
+  const portraitSrc = `../images/spritecook/${id}_portrait.png`;
+  const refSrc = `../images/pixellab/${id}/reference.png`;
 
-  const framesHtml = frames.map(frame => {
-    const frameType = getFrameType(frame);
-    const thumbHtml = frame.file
-      ? `<img src="${thumbPath(frame.file)}" data-orig="${frame.file}" alt="${frameType}" loading="lazy" onerror="if(!this.dataset.fallback){this.dataset.fallback=1;this.src=this.dataset.orig}">`
-      : `<div class="frame-missing">.</div>`;
-    return `<div class="char-m79-frame" onclick="openModal(${JSON.stringify(frame).replace(/"/g, '&quot;')})">
-      ${thumbHtml}
-      <div class="frame-label">${frameType}</div>
+  // Each pose thumbnail tries the canonical spritecook path; onerror it
+  // falls back to the pixellab candidate, and if that also fails the cell
+  // shows "missing". Click opens the lightbox with the full-res image.
+  const poseCellHtml = (pose) => {
+    const sc = `../images/spritecook/${id}_${pose}.png`;
+    const pl = `../images/pixellab/${id}/${pose}.png`;
+    const asset = { id: `${id}_${pose}`, name: `${character.name} ${pose}`, file: sc };
+    return `<div class="char-m79-frame" onclick='openModal(${JSON.stringify(asset).replace(/"/g,"&quot;")})'>
+      <img src="${sc}" data-fb="${pl}" alt="${pose}" loading="lazy"
+           onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src=this.dataset.fb}else{this.style.display='none';this.nextElementSibling.style.display='flex'}">
+      <div class="frame-missing" style="display:none">·</div>
+      <div class="frame-label">${pose.replace(/^east_/,'').replace('east','E').replace('south','S')}</div>
     </div>`;
-  }).join('');
+  };
 
-  const portraitClick = portrait ? `onclick="openModal(${JSON.stringify(portrait).replace(/"/g, '&quot;')})"` : '';
+  const portraitAsset = { id: `${id}_portrait`, name: character.name, file: portraitSrc };
+  const refAsset = { id: `${id}_reference`, name: `${character.name} reference`, file: refSrc };
+  const clickPortrait = `onclick='openModal(${JSON.stringify(portraitAsset).replace(/"/g,"&quot;")})'`;
 
   block.innerHTML = `
     <div class="char-m79-header">
@@ -1077,16 +1086,18 @@ function renderM79CharacterBlock(character, bundle) {
       <div class="char-m79-type">${character.type || ''}</div>
     </div>
     <div class="char-m79-content">
-      <div class="char-m79-portrait" ${portraitClick}>
-        ${portraitHtml}
+      <div class="char-m79-portrait" ${clickPortrait} title="Portrait">
+        <img src="${portraitSrc}" data-fb="${refSrc}" alt="${character.name}" loading="lazy"
+             onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src=this.dataset.fb}else{this.style.display='none';this.nextElementSibling.style.display='flex'}">
+        <div class="portrait-missing" style="display:none">?</div>
       </div>
       <div class="char-m79-frames">
-        ${framesHtml || '<div style="font-size:11px;color:var(--muted)">no frames</div>'}
+        ${CANONICAL_POSES.map(poseCellHtml).join('')}
       </div>
     </div>
     <div class="char-m79-info">
-      <span>${total} assets</span>
-      <span>${character.className || ''}</span>
+      <span>${id}</span>
+      <span>${character.className || character.type || ''}</span>
     </div>
   `;
   return block;

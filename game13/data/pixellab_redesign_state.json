@@ -1,7 +1,7 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-23T19:13:59Z",
-  "creditsUsedTotal": 6000,
+  "updatedAt": "2026-04-23T20:26:23Z",
+  "creditsUsedTotal": 6096,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
@@ -81,7 +81,8 @@
       "pendingReview": {
         "east_block": {
           "path": "images/pixellab/pending-review/paladin/east_block.png",
-          "generatedAt": "2026-04-23T19:13:59Z"
+          "generatedAt": "2026-04-23T20:26:23Z",
+          "regenCount": 2
         }
       }
     },
@@ -145,7 +146,8 @@
       "pendingReview": {
         "reference": {
           "path": "images/pixellab/pending-review/cleric/reference.png",
-          "generatedAt": "2026-04-23T19:13:59Z"
+          "generatedAt": "2026-04-23T20:26:23Z",
+          "regenCount": 2
         }
       }
     },
@@ -366,7 +368,8 @@
       "pendingReview": {
         "east": {
           "path": "images/pixellab/pending-review/druid/east.png",
-          "generatedAt": "2026-04-23T19:13:59Z"
+          "generatedAt": "2026-04-23T20:26:23Z",
+          "regenCount": 2
         }
       }
     },
@@ -483,7 +486,8 @@
       "pendingReview": {
         "east_spell": {
           "path": "images/pixellab/pending-review/witch_hunter/east_spell.png",
-          "generatedAt": "2026-04-23T19:13:59Z"
+          "generatedAt": "2026-04-23T20:26:23Z",
+          "regenCount": 2
         }
       }
     },
@@ -508,7 +512,8 @@
       "pendingReview": {
         "portrait": {
           "path": "images/pixellab/pending-review/knight/portrait.png",
-          "generatedAt": "2026-04-23T19:13:59Z"
+          "generatedAt": "2026-04-23T20:26:23Z",
+          "regenCount": 2
         }
       }
     },
@@ -658,7 +663,8 @@
       "pendingReview": {
         "south": {
           "path": "images/pixellab/pending-review/chronomancer_female/south.png",
-          "generatedAt": "2026-04-23T19:13:59Z"
+          "generatedAt": "2026-04-23T20:26:23Z",
+          "regenCount": 2
         }
       }
     },
@@ -1140,11 +1146,13 @@
       "pendingReview": {
         "east": {
           "path": "images/pixellab/pending-review/war_dog/east.png",
-          "generatedAt": "2026-04-23T19:13:59Z"
+          "generatedAt": "2026-04-23T20:26:23Z",
+          "regenCount": 2
         },
         "east_ko": {
           "path": "images/pixellab/pending-review/war_dog/east_ko.png",
-          "generatedAt": "2026-04-23T19:13:59Z"
+          "generatedAt": "2026-04-23T20:26:23Z",
+          "regenCount": 2
         }
       }
     }

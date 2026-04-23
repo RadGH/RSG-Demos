@@ -136,12 +136,15 @@
     /* M213: new single-layer red-hue clouds_05.png (gpt-image-1.5) as the primary drift.
        Legacy clouds_02.png still powers the two subtle background layers; swap those
        to clouds_05.png later if the new asset looks good solo. */
-    .cloud-layer-1 { opacity: 0.55; }
-    .cloud-layer-1 .cloud-strip { top: 4%;  height: 40%; animation: cloudDrift 90s linear infinite; background-image: url('images/menu_bg/clouds_06.png'); }
-    .cloud-layer-2 { opacity: 0.45; }
-    .cloud-layer-2 .cloud-strip { top: 18%; height: 46%; animation: cloudDrift 160s linear infinite; background-image: url('images/clouds_08.png'); }
-    .cloud-layer-3 { opacity: 0.3; }
-    .cloud-layer-3 .cloud-strip { top: 0;   height: 34%; animation: cloudDriftRev 230s linear infinite; background-image: url('images/clouds_07.png'); }
+    /* M236: two parallax layers both using clouds_08b.png (user-tinted to the
+       right red hue). Both drift in the same direction at different speeds —
+       mid-layer drifts faster + closer, back-layer drifts slower + smaller
+       + higher in the hero band. 0.65α on both per user spec. */
+    .cloud-layer-1 { display: none; } /* clouds_06 deleted */
+    .cloud-layer-2 { opacity: 0.65; } /* mid layer */
+    .cloud-layer-2 .cloud-strip { top: 22%; height: 50%; animation: cloudDrift 140s linear infinite; background-image: url('images/menu_bg/clouds_08b.png'); }
+    .cloud-layer-3 { opacity: 0.65; } /* back layer — higher, smaller, slower, SAME direction */
+    .cloud-layer-3 .cloud-strip { top: 2%; height: 30%; animation: cloudDrift 260s linear infinite; background-image: url('images/menu_bg/clouds_08b.png'); }
     @keyframes cloudDrift    { from { transform: translate3d(0, 0, 0); }    to { transform: translate3d(-50%, 0, 0); } }
     @keyframes cloudDriftRev { from { transform: translate3d(-50%, 0, 0); } to { transform: translate3d(0, 0, 0); } }
 
@@ -569,9 +572,9 @@
       color: var(--muted); margin-bottom: 1rem; margin-top: 2rem;
     }
   </style>
-  <script type="module" crossorigin src="/RSG-Demos/game13/assets/marketing-FqFuVEe6.js"></script>
+  <script type="module" crossorigin src="/RSG-Demos/game13/assets/marketing-D9Q-Zwia.js"></script>
   <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/version-Diu8ahT5.js">
+  <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/version-Bm0IWDI1.js">
 </head>
 <body>
 
@@ -583,13 +586,9 @@
   <!-- ── Hero ────────────────────────────────────────────────────── -->
   <section class="hero" aria-label="Hero banner">
     <div class="hero-bg" aria-hidden="true"></div>
-    <!-- M236 cloud review layers.
-         layer-1 = clouds_06.png (existing front drift, fastest, brightest)
-         layer-2 = clouds_08.png (M236 mid-back drift)
-         layer-3 = clouds_07.png (M236 top-back reverse drift) -->
-    <div class="cloud-layer cloud-layer-3" data-cloud="clouds_07" aria-hidden="true"><div class="cloud-strip"></div></div>
-    <div class="cloud-layer cloud-layer-2" data-cloud="clouds_08" aria-hidden="true"><div class="cloud-strip"></div></div>
-    <div class="cloud-layer cloud-layer-1" data-cloud="clouds_06" aria-hidden="true"><div class="cloud-strip"></div></div>
+    <!-- M236: clouds_08b layered at two scales, same drift direction. -->
+    <div class="cloud-layer cloud-layer-3" data-cloud="clouds_08b-back" aria-hidden="true"><div class="cloud-strip"></div></div>
+    <div class="cloud-layer cloud-layer-2" data-cloud="clouds_08b-mid" aria-hidden="true"><div class="cloud-strip"></div></div>
     <div class="hero-content">
       <h1 class="hero-logo">Emberveil</h1>
       <p class="hero-sub">A Dark-Fantasy Party RPG</p>
