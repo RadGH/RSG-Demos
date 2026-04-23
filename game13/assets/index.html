@@ -1372,8 +1372,9 @@ async function render(assets) {
 
   const idx = indexAssetsByCharacter(assets);
 
-  // 1. Heroes
-  const heroesSection = renderCharacterGroup('Heroes', HERO_LIST, idx, 'heroes');
+  // 1. Classes (appearance set — one entry per playable-class appearance;
+  //    companions listed separately below). Renamed from "Heroes" in M236.
+  const heroesSection = renderCharacterGroup('Classes', HERO_LIST, idx, 'heroes');
   main.appendChild(heroesSection);
 
   // 2. Companions
