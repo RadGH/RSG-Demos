@@ -1,6 +1,6 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-23T04:36:01.232534+00:00",
+  "updatedAt": "2026-04-23T04:58:09.492396+00:00",
   "creditsUsedTotal": 5892,
   "characters": {
     "oracle": {
@@ -524,12 +524,12 @@
     },
     "shadow_dancer": {
       "spriteId": "shadow_dancer",
-      "status": "frames_generated",
+      "status": "approved",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
-        "south": "pending_approval",
-        "east": "pending_approval",
+        "south": "approved",
+        "east": "approved",
         "east_attack": "approved",
         "east_spell": "approved",
         "east_block": "approved",
@@ -540,7 +540,7 @@
       "originalSpritecookPrefix": "images/spritecook/shadow_dancer_",
       "creditsUsed": 108,
       "notes": "Violet-shadow elven duelist-dancer. Scimitar + silk wraps + shadow tattoos.",
-      "m217Note": "south + east regenerated in M217 for scale fix; awaiting user review before approval."
+      "m217Note": "south + east regen approved."
     },
     "ranger_male": {
       "spriteId": "ranger_male",
@@ -855,11 +855,11 @@
     },
     "dragon_knight_male": {
       "spriteId": "dragon_knight_male",
-      "status": "frames_generated",
+      "status": "approved",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
-        "south": "pending_approval",
+        "south": "approved",
         "east": "approved",
         "east_attack": "approved",
         "east_spell": "approved",
@@ -871,7 +871,7 @@
       "originalSpritecookPrefix": "images/spritecook/dragon_knight_male_",
       "creditsUsed": 96,
       "notes": "Dragon_Knight (Male) \u2014 gender variant",
-      "m217Note": "south regenerated 2x in M217 \u2014 v1 still had ambiguous hammer placement, v2 forces horizontal two-handed grip; awaiting user review.",
+      "m217Note": "south v2 approved.",
       "m217SouthV2AssetId": "88618035-ccf0-400e-9961-d94d3ec87516"
     },
     "pyromancer_male": {

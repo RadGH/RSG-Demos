@@ -282,6 +282,14 @@
       <strong>Pipeline:</strong> prompts live in <code>public/data/art_direction/&lt;id&gt;.json</code>; references are generated via the SpriteCook MCP (<code>generate_game_art</code>, pixel mode, 256&times;256) and saved to <code>public/images/pixellab/&lt;id&gt;/reference.png</code>. The canonical pose spec is in <a href="../docs/image-policy.md">/docs/image-policy.md</a> (7 poses per character). Sub-sprite frames below each card are optional; use the floating toggle to hide them while auditing the main references.
     </div>
 
+    <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin:0 0 1rem;padding:0.5rem 0.75rem;background:var(--panel);border:1px solid var(--border);border-radius:4px;">
+      <label for="version-select" style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;">Game Version:</label>
+      <select id="version-select" style="background:var(--panel-alt);color:var(--parchment);border:1px solid var(--border);padding:0.3rem 0.5rem;font-size:0.85rem;border-radius:3px;cursor:pointer;">
+        <option value="current">Current (live)</option>
+      </select>
+      <span id="version-note" style="font-size:0.7rem;color:var(--muted);"></span>
+    </div>
+
     <div class="summary" id="summary"></div>
     <div id="characters"></div>
 
@@ -358,8 +366,25 @@ function stepLightbox(dir) { openLightbox(lbIdx + dir); }
 
 // Vite serves /public at the site root, so from /assets/<file>.html we reach
 // assets via "../images/..." and data via "../data/...".
-const IMG_BASE  = '../images';
-const DATA_BASE = '../data';
+const IMG_BASE_LIVE  = '../images';
+const DATA_BASE_LIVE = '../data';
+let IMG_BASE  = IMG_BASE_LIVE;
+let DATA_BASE = DATA_BASE_LIVE;
+let CURRENT_VERSION = 'current';   // 'current' or a snapshot id like 'm217'
+let STATE_URL       = DATA_BASE_LIVE + '/pixellab_redesign_state.json';
+
+function setVersion(versionId) {
+  CURRENT_VERSION = versionId;
+  if (versionId === 'current') {
+    IMG_BASE  = IMG_BASE_LIVE;
+    DATA_BASE = DATA_BASE_LIVE;
+    STATE_URL = DATA_BASE_LIVE + '/pixellab_redesign_state.json';
+  } else {
+    IMG_BASE  = IMG_BASE_LIVE  + '/character_redesign_snapshots/' + versionId;
+    DATA_BASE = DATA_BASE_LIVE + '/character_redesign_snapshots/' + versionId;
+    STATE_URL = DATA_BASE + '/state.json';
+  }
+}
 
 async function loadJson(url) {
   const r = await fetch(url, { cache: 'no-store' });
@@ -451,6 +476,9 @@ function renderArtDirection(ad) {
 }
 
 function detectGender(ad, spriteId) {
+  // Companions / non-humanoid entries have no gender; treat as 'companion'.
+  if (ad && (ad.class === 'quadruped-companion' || /companion/i.test(ad.class || ''))) return 'companion';
+  if (ad && Array.isArray(ad.poseSet) && ad.poseSet.length && ad.poseSet.length < 7) return 'companion';
   if (spriteId.endsWith('_male')) return 'male';
   if (spriteId.endsWith('_female')) return 'female';
   const text = ((ad?.identity || '') + ' ' + (ad?.portraitStyle || '')).toLowerCase();
@@ -519,13 +547,14 @@ function buildStickyMenuControls() {
 }
 buildStickyMenuControls();
 
-function renderSubSprites(spriteId, gender, framesStatus) {
+function renderSubSprites(spriteId, gender, framesStatus, posesOverride) {
   const cols = getSubGridCols();
   const grid = document.createElement('div');
   grid.className = 'subsprites';
   grid.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
 
-  POSES.forEach(pose => {
+  const poses = Array.isArray(posesOverride) && posesOverride.length ? posesOverride : POSES;
+  poses.forEach(pose => {
     const poseStatus = (framesStatus && framesStatus[pose]) ? framesStatus[pose] : null;
     const dotCls = dotClassForStatus(poseStatus);
 
@@ -581,7 +610,8 @@ function renderSlot(baseId, variant, state) {
   col.appendChild(refImg);
 
   const framesStatus = entry.framesStatus || null;
-  col.appendChild(renderSubSprites(spriteId, gender, framesStatus));
+  const poseSet = (ad && Array.isArray(ad.poseSet) && ad.poseSet.length) ? ad.poseSet : null;
+  col.appendChild(renderSubSprites(spriteId, gender, framesStatus, poseSet));
   if (ad) col.appendChild(renderArtDirection(ad));
   return col;
 }
@@ -643,18 +673,27 @@ function renderGroup(baseId, variants) {
 
   const body = document.createElement('div'); body.className = 'body';
   body.appendChild(renderOldPortraitSlot(baseId));
-  const male   = variants.find(v => v.gender === 'male') || variants.find(v => v.gender === 'unknown');
-  const female = variants.find(v => v.gender === 'female');
-  body.appendChild(renderSlot(baseId, male,   null));
-  body.appendChild(renderSlot(baseId, female, null));
+  const companion = variants.find(v => v.gender === 'companion');
+  if (companion) {
+    // Companion row: 3-column layout — [old portrait] [companion] [empty placeholder]
+    body.appendChild(renderSlot(baseId, companion, null));
+    body.appendChild(renderSlot(baseId, null,      null)); // empty 3rd col for visual parity
+  } else {
+    const male   = variants.find(v => v.gender === 'male') || variants.find(v => v.gender === 'unknown');
+    const female = variants.find(v => v.gender === 'female');
+    body.appendChild(renderSlot(baseId, male,   null));
+    body.appendChild(renderSlot(baseId, female, null));
+  }
   card.appendChild(body);
   return card;
 }
 
 async function main() {
-  const state = await loadJson(DATA_BASE + '/pixellab_redesign_state.json');
-  renderSummary(state);
   const root = document.getElementById('characters');
+  root.innerHTML = '';                                 // clear for re-runs (version switch)
+  document.getElementById('summary').innerHTML = '';
+  const state = await loadJson(STATE_URL);
+  renderSummary(state);
 
   const variants = [];
   for (const [spriteId, entry] of Object.entries(state.characters)) {
@@ -712,7 +751,36 @@ async function main() {
   applyHideApproved(hideApprovedInit);
 }
 
-main().catch(e => {
+async function bootstrap() {
+  // Populate version dropdown from manifest
+  const sel = document.getElementById('version-select');
+  const note = document.getElementById('version-note');
+  try {
+    const manifest = await loadJson(DATA_BASE_LIVE + '/character_redesign_snapshots/manifest.json');
+    (manifest.snapshots || []).forEach(snap => {
+      const opt = document.createElement('option');
+      opt.value = snap.id;
+      opt.textContent = snap.label;
+      opt.dataset.note = snap.note || '';
+      sel.appendChild(opt);
+    });
+  } catch (e) {
+    // No manifest yet — only "Current" option remains
+  }
+  sel.addEventListener('change', () => {
+    setVersion(sel.value);
+    const opt = sel.options[sel.selectedIndex];
+    note.textContent = opt?.dataset?.note || '';
+    main().catch(err => {
+      document.getElementById('characters').innerHTML =
+        '<div class="notice">Failed to load version: ' + (err.message || err) + '</div>';
+    });
+  });
+  setVersion('current');
+  await main();
+}
+
+bootstrap().catch(e => {
   document.getElementById('characters').innerHTML =
     '<div class="notice">Failed to load state: ' + (e.message || e) + '</div>';
 });
