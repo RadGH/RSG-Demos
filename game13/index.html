@@ -176,6 +176,21 @@
       margin-top: 2.5rem;
       opacity: 0; animation: heroFadeUp 1.2s 1.1s ease-out forwards;
     }
+    /* M222: auto-updated milestone badge — pulled from src/version.js at build time. */
+    .hero-milestone {
+      display: inline-flex; align-items: center; gap: 0.5em;
+      margin-top: 1.5rem;
+      font-family: var(--font-display);
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); opacity: 0;
+      animation: heroFadeUp 1.2s 1.4s ease-out forwards;
+    }
+    .hero-milestone::before {
+      content: ''; display: inline-block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--ember);
+      box-shadow: 0 0 8px var(--ember);
+    }
     .btn-primary {
       background: linear-gradient(135deg, var(--crimson) 0%, #8a1a0a 100%);
       color: var(--gold-bright);
@@ -554,6 +569,9 @@
       color: var(--muted); margin-bottom: 1rem; margin-top: 2rem;
     }
   </style>
+  <script type="module" crossorigin src="/RSG-Demos/game13/assets/marketing-DQ5HrBg4.js"></script>
+  <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/version-CsIIMjOz.js">
 </head>
 <body>
 
@@ -573,6 +591,7 @@
         <a href="./play.html" class="btn-primary">Play Now</a>
         <a href="./contact.html" class="btn-secondary">Contact</a>
       </div>
+      <div class="hero-milestone" id="hero-milestone" aria-label="Current milestone">Milestone —</div>
     </div>
     <div class="scroll-indicator" aria-hidden="true">
       <span>Explore</span>
@@ -1149,5 +1168,9 @@
     });
   });
   </script>
+
+  <!-- M222: show current milestone on landing page. MILESTONE constant is regenerated
+       by /home/radgh/claude/release.sh before every build, so this stays in sync
+       automatically with the number shown in-game on the title screen footer. -->
 </body>
 </html>
