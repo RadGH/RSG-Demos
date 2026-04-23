@@ -572,10 +572,10 @@
       "id": "war_dog",
       "name": "War Dog Portrait",
       "category": "companions",
-      "source": "openai",
+      "source": "spritecook",
       "file": "../images/portraits/war_dog.png",
-      "notes": "Auto-cataloged from ../images/portraits"
-    },
+      "prompt": "Muscular loyal war-hound, mastiff/pit-bull build, tan-brown fur, amber eyes. Studded leather collar with brass buckle, frayed red bandana, leather chest strap with brass ring. NO plate armor.",
+      "notes": "Redesigned 2026-04-22 via SpriteCook MCP (gemini-3.1-flash-image-preview). Replaced OpenAI 'dog in plate armor' original. See public/data/art_direction/war_dog.json."
     {
       "id": "warlock",
       "name": "Warlock Portrait",
