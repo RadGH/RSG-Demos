@@ -586,29 +586,35 @@ function buildStickyMenuControls() {
 }
 buildStickyMenuControls();
 
-function renderSubSprites(spriteId, gender, framesStatus, posesOverride) {
+function renderSubSprites(spriteId, gender, framesStatus, posesOverride, entry) {
   const cols = getSubGridCols();
   const grid = document.createElement('div');
   grid.className = 'subsprites';
   grid.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
 
   const poses = Array.isArray(posesOverride) && posesOverride.length ? posesOverride : POSES;
+  const pendingReview = (entry && entry.pendingReview) || {};
   poses.forEach(pose => {
     const poseStatus = (framesStatus && framesStatus[pose]) ? framesStatus[pose] : null;
     const dotCls = dotClassForStatus(poseStatus);
-
+    // M236: when a pose has a pending-review regen, render the NEW image
+    // directly so the user sees what's waiting for approval. Fallback to
+    // the approved on-disk file if pendingReview is missing.
+    const pending = pendingReview[pose];
     const cell = document.createElement('div'); cell.className = 'sub';
     const img = new Image();
     img.onerror = () => { cell.classList.add('empty'); cell.textContent = pose; };
-    img.src = IMG_BASE + '/pixellab/' + spriteId + '/' + pose + '.png?t=' + Date.now();
+    const imgSrc = pending && pending.path
+      ? ('../' + pending.path + '?t=' + Date.now())
+      : (IMG_BASE + '/pixellab/' + spriteId + '/' + pose + '.png?t=' + Date.now());
+    img.src = imgSrc;
     img.alt = pose;
 
-    const subtitle = 'Pose \xb7 ' + pose + (poseStatus ? ' \xb7 ' + poseStatus : '');
+    const subtitle = 'Pose \xb7 ' + pose + (poseStatus ? ' \xb7 ' + poseStatus : '') + (pending ? ' \xb7 NEW (pending review)' : '');
     registerLightbox(img, spriteId + ' \xb7 ' + (gender || '').toUpperCase(), subtitle, dotCls);
 
-    const tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = pose;
+    const tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = pose + (pending ? ' ★' : '');
 
-    // Desktop-only dot (CSS hides it on mobile)
     const dot = makeDot(poseStatus);
 
     cell.appendChild(img);
@@ -643,14 +649,19 @@ function renderSlot(baseId, variant, state) {
   const refImg = document.createElement('img');
   refImg.className = 'sheet';
   refImg.style.aspectRatio = '1/1';
-  refImg.src = IMG_BASE + '/pixellab/' + spriteId + '/reference.png?t=' + Date.now();
+  // M236: use the pending-review reference when it exists so the user
+  // sees the new gen awaiting approval.
+  const pendingRef = entry && entry.pendingReview && entry.pendingReview.reference;
+  refImg.src = pendingRef && pendingRef.path
+    ? ('../' + pendingRef.path + '?t=' + Date.now())
+    : (IMG_BASE + '/pixellab/' + spriteId + '/reference.png?t=' + Date.now());
   refImg.onerror = () => { refImg.replaceWith(Object.assign(document.createElement('div'), { className: 'placeholder', textContent: 'reference not on disk yet' })); };
   registerLightbox(refImg, spriteId + ' \xb7 ' + gender.toUpperCase(), 'Reference sheet \xb7 ' + (entry.referenceStatus || 'pending'));
   col.appendChild(refImg);
 
   const framesStatus = entry.framesStatus || null;
   const poseSet = (ad && Array.isArray(ad.poseSet) && ad.poseSet.length) ? ad.poseSet : null;
-  col.appendChild(renderSubSprites(spriteId, gender, framesStatus, poseSet));
+  col.appendChild(renderSubSprites(spriteId, gender, framesStatus, poseSet, entry));
   if (ad) col.appendChild(renderArtDirection(ad));
   return col;
 }
