@@ -415,7 +415,12 @@
     }
     .hero-card-sm:hover { border-color: var(--border-hover); transform: translateY(-2px); }
     .hero-portrait-sm {
-      width: 100%; height: 100px; object-fit: cover;
+      width: 100%;
+      /* M250: was 100px fixed height with object-fit:cover → landscape
+         portraits were getting cropped. Match the playable-classes card
+         layout (1:1 aspect, contain) so every class reads the same. */
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
       image-rendering: pixelated; background: #0d0810;
     }
     .hero-info-sm { padding: 0.35rem 0.5rem; }
@@ -575,9 +580,9 @@
       color: var(--muted); margin-bottom: 1rem; margin-top: 2rem;
     }
   </style>
-  <script type="module" crossorigin src="/RSG-Demos/game13/assets/marketing-BoHwVhv2.js"></script>
+  <script type="module" crossorigin src="/RSG-Demos/game13/assets/marketing-B9YfUS68.js"></script>
   <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/version-DOAOqGV3.js">
+  <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/version-stYOh1sT.js">
 </head>
 <body>
 
