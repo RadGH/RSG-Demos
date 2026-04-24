@@ -1,10 +1,234 @@
 [
   {
-    "id": "barrier",
-    "family": "barrier"
+    "id": "blind",
+    "family": "control"
   },
   {
-    "id": "silenced",
-    "family": "silenced"
+    "id": "slow",
+    "family": "control"
+  },
+  {
+    "id": "stun",
+    "family": "control"
+  },
+  {
+    "id": "barrier",
+    "family": "defensive"
+  },
+  {
+    "id": "bleed",
+    "family": "DoT"
+  },
+  {
+    "id": "burn",
+    "family": "DoT"
+  },
+  {
+    "id": "poison",
+    "family": "DoT"
+  },
+  {
+    "id": "accessory",
+    "family": "misc"
+  },
+  {
+    "id": "achievement",
+    "family": "misc"
+  },
+  {
+    "id": "act",
+    "family": "misc"
+  },
+  {
+    "id": "affix",
+    "family": "misc"
+  },
+  {
+    "id": "ambush",
+    "family": "misc"
+  },
+  {
+    "id": "armor",
+    "family": "misc"
+  },
+  {
+    "id": "attack",
+    "family": "misc"
+  },
+  {
+    "id": "boss",
+    "family": "misc"
+  },
+  {
+    "id": "bow",
+    "family": "misc"
+  },
+  {
+    "id": "buff",
+    "family": "misc"
+  },
+  {
+    "id": "challenge",
+    "family": "misc"
+  },
+  {
+    "id": "combat",
+    "family": "misc"
+  },
+  {
+    "id": "consumable",
+    "family": "misc"
+  },
+  {
+    "id": "dagger",
+    "family": "misc"
+  },
+  {
+    "id": "damage",
+    "family": "misc"
+  },
+  {
+    "id": "debuff",
+    "family": "misc"
+  },
+  {
+    "id": "dialog",
+    "family": "misc"
+  },
+  {
+    "id": "flask",
+    "family": "misc"
+  },
+  {
+    "id": "hammer",
+    "family": "misc"
+  },
+  {
+    "id": "hit",
+    "family": "misc"
+  },
+  {
+    "id": "holy_burn",
+    "family": "misc"
+  },
+  {
+    "id": "level",
+    "family": "misc"
+  },
+  {
+    "id": "lightning",
+    "family": "misc"
+  },
+  {
+    "id": "melee",
+    "family": "misc"
+  },
+  {
+    "id": "miss",
+    "family": "misc"
+  },
+  {
+    "id": "passive",
+    "family": "misc"
+  },
+  {
+    "id": "potion",
+    "family": "misc"
+  },
+  {
+    "id": "ranged",
+    "family": "misc"
+  },
+  {
+    "id": "regen",
+    "family": "misc"
+  },
+  {
+    "id": "revive",
+    "family": "misc"
+  },
+  {
+    "id": "ring",
+    "family": "misc"
+  },
+  {
+    "id": "sawtooth",
+    "family": "misc"
+  },
+  {
+    "id": "shrine",
+    "family": "misc"
+  },
+  {
+    "id": "signup",
+    "family": "misc"
+  },
+  {
+    "id": "sine",
+    "family": "misc"
+  },
+  {
+    "id": "skill",
+    "family": "misc"
+  },
+  {
+    "id": "slash",
+    "family": "misc"
+  },
+  {
+    "id": "spark",
+    "family": "misc"
+  },
+  {
+    "id": "sprite",
+    "family": "misc"
+  },
+  {
+    "id": "square",
+    "family": "misc"
+  },
+  {
+    "id": "staff",
+    "family": "misc"
+  },
+  {
+    "id": "sunder",
+    "family": "misc"
+  },
+  {
+    "id": "sword",
+    "family": "misc"
+  },
+  {
+    "id": "town",
+    "family": "misc"
+  },
+  {
+    "id": "treasure",
+    "family": "misc"
+  },
+  {
+    "id": "triangle",
+    "family": "misc"
+  },
+  {
+    "id": "utility",
+    "family": "misc"
+  },
+  {
+    "id": "wand",
+    "family": "misc"
+  },
+  {
+    "id": "weapon",
+    "family": "misc"
+  },
+  {
+    "id": "zone",
+    "family": "misc"
+  },
+  {
+    "id": "marked",
+    "family": "offensive"
   }
 ]
