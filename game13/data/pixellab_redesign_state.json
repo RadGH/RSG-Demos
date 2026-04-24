@@ -1,6 +1,6 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-23T21:22:27Z",
+  "updatedAt": "2026-04-24T06:14:57Z",
   "creditsUsedTotal": 6096,
   "characters": {
     "oracle": {
@@ -1103,6 +1103,90 @@
       "notes": "Companion dog \u2014 reduced 5-pose set (no east_spell, no east_block). Redesigned M216: replaced silly OpenAI 'bulldog in plate armor' original with muscular mastiff/pit-bull in studded leather collar, red bandana, leather chest strap. Old files backed up at images/_bg-removal-backup/war_dog_openai_armor/.",
       "m216Note": "Flagged: east and east_ko have slight muzzle color drift \u2014 do NOT regen yet per user.",
       "pendingReview": {}
+    },
+    "silas_veilward": {
+      "spriteId": "silas_veilward",
+      "status": "pending_approval",
+      "referenceStatus": "pending_approval",
+      "framesStatus": {
+        "portrait": "not_generated",
+        "south": "not_generated",
+        "east": "not_generated",
+        "east_attack": "not_generated",
+        "east_spell": "not_generated",
+        "east_block": "not_generated",
+        "east_ko": "not_generated"
+      },
+      "artDirectionPath": "data/art_direction/silas_veilward.json",
+      "candidateDir": "images/pixellab/silas_veilward",
+      "originalSpritecookPrefix": null,
+      "npc": true,
+      "playable": false,
+      "referenceAssetId": "b6571919-832a-4d37-a96e-0ef41c1c7838",
+      "notes": "NPC Silas Veilward \u2014 reference generated M256, awaiting user approval before per-pose frames."
+    },
+    "kaela_thorne": {
+      "spriteId": "kaela_thorne",
+      "status": "pending_approval",
+      "referenceStatus": "pending_approval",
+      "framesStatus": {
+        "portrait": "not_generated",
+        "south": "not_generated",
+        "east": "not_generated",
+        "east_attack": "not_generated",
+        "east_spell": "not_generated",
+        "east_block": "not_generated",
+        "east_ko": "not_generated"
+      },
+      "artDirectionPath": "data/art_direction/kaela_thorne.json",
+      "candidateDir": "images/pixellab/kaela_thorne",
+      "originalSpritecookPrefix": null,
+      "npc": true,
+      "playable": false,
+      "referenceAssetId": "3915ff44-808e-4cc3-afeb-e7e870f9a3c9",
+      "notes": "NPC Kaela Thorne \u2014 reference generated M256, awaiting user approval before per-pose frames."
+    },
+    "marek_greel": {
+      "spriteId": "marek_greel",
+      "status": "pending_approval",
+      "referenceStatus": "pending_approval",
+      "framesStatus": {
+        "portrait": "not_generated",
+        "south": "not_generated",
+        "east": "not_generated",
+        "east_attack": "not_generated",
+        "east_spell": "not_generated",
+        "east_block": "not_generated",
+        "east_ko": "not_generated"
+      },
+      "artDirectionPath": "data/art_direction/marek_greel.json",
+      "candidateDir": "images/pixellab/marek_greel",
+      "originalSpritecookPrefix": null,
+      "npc": true,
+      "playable": false,
+      "referenceAssetId": "5bcadf98-8c7d-4fa7-9b72-d19f375dbde9",
+      "notes": "NPC Marek Greel \u2014 reference generated M256, awaiting user approval before per-pose frames."
+    },
+    "mira_seer": {
+      "spriteId": "mira_seer",
+      "status": "pending_approval",
+      "referenceStatus": "pending_approval",
+      "framesStatus": {
+        "portrait": "not_generated",
+        "south": "not_generated",
+        "east": "not_generated",
+        "east_attack": "not_generated",
+        "east_spell": "not_generated",
+        "east_block": "not_generated",
+        "east_ko": "not_generated"
+      },
+      "artDirectionPath": "data/art_direction/mira_seer.json",
+      "candidateDir": "images/pixellab/mira_seer",
+      "originalSpritecookPrefix": null,
+      "npc": true,
+      "playable": false,
+      "referenceAssetId": "606834db-4ac3-46f5-b7fc-0a00bd9a2c26",
+      "notes": "NPC Mira the Seer \u2014 reference generated M256, awaiting user approval before per-pose frames."
     }
   },
   "lastUpdated": "2026-04-23T19:13:59Z"
