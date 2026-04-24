@@ -154,11 +154,18 @@
     });
     return { href: children[0].href, label: 'News', children: children };
   })() : null;
+  // M242: "Home" takes over the front-page role; "Game Info" still links
+  // for any games that haven't consolidated yet. For Emberveil (game13)
+  // the Game Info page will be deleted and the link drops out of the menu.
+  var HOME_HREF = GAME_ROOT;
   var MENU = [
     { href: PLAY_HREF, label: 'Play Game', primary: true },
-    { href: GAME_INFO, label: 'Game Info' },
-    assetsItem
+    { href: HOME_HREF, label: 'Home' }
   ];
+  // Keep Game Info link for non-emberveil games. Once every game is
+  // consolidated this branch can go.
+  if (GAME_KEY !== 'game13') MENU.push({ href: GAME_INFO, label: 'Game Info' });
+  MENU.push(assetsItem);
   if (toolsItem) MENU.push(toolsItem);
   if (newsItem) MENU.push(newsItem);
   MENU.push({ href: 'https://docs.google.com/forms/d/e/1FAIpQLScWHFEQ8Kbxvsxg5nKerJOPqkYntAkRLCihqQchypNdqayvmA/viewform?usp=publish-editor', label: 'Send Feedback', external: true });
