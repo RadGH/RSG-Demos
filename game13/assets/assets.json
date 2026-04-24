@@ -10540,6 +10540,45 @@
         "Map/Combat debug defaults live in settings files - tune defaults there, not hard-coded."
       ],
       "notes": "Long arc rolled up for the front-page News feed. Detailed per-milestone entries remain in game_meta.json changelog + fast_travel_overhaul.md."
+    },
+    {
+      "milestone": "Milestone 246-271 - Fast Travel, Difficulty, Balance Rebalance, Tinker Class",
+      "date": "2026-04-24",
+      "summary": "Six weeks of rapid iteration: rebuilt fast travel, added Hard difficulty, fixed a systemic skill-scaling bug affecting 43 of 63 damage skills, shipped a full DPS/Heal/Mitigation meter with drill-down, added the Tinker class with clockwork aesthetic + Clockwork Turret companion, and ran a simulator-driven balance pass landing bosses at the 10-round target.",
+      "changes": [
+        "M246-M254 Fast Travel Overhaul: town waypoints, Hard difficulty walk-only gating, difficulty toggle + per-mode save slots.",
+        "M255-M263 M256 batch: 19-item user request covering map expansion, quest indicators, Ember Watch visibility, Salvage All, completed-node indicators, cross-zone line fix, loot-chest-after-level-up fix, Scorched Hermit node-skip fix, Hard-mode Back-to-Town removal, XP x 0.2 global, Static Field damage alignment, 4 NPC art sets (Silas, Kaela, Marek, Mira), and more.",
+        "M264 Sim + combat AI respect member.skills. Fixes the biggest sim-vs-playtest divergence (knight casting Holy Strike in sim but Shield Bash in playtest).",
+        "M265 First balance pass. +150% enemy HP, +10% damage. Simulator gains shield block-parity. Balance-report + balance-sweep scripts committed for future tuning.",
+        "M266 Skill damageMult additive-stacking fix. Upgrades now REPLACE instead of ADD. 43 of 63 damage skills went from >=2x overrun to within 1.0-1.2x of tooltip value. Enemy HP re-tuned to 2.0x to compensate. Tooltip renders effective multiplier via mergeSkillForCast. HP persistence on Hard fixed (companions now sync by ID). Loot-chest timing fix (no more chests popping after town visits).",
+        "M267 Granular DPS/Heal/Mitigation meter. Three-mode toggle (DMG/HEAL/MIT), lifesteal + barrier counted as heals, armor/block/barrier/spell-resist/damage-reduction tracked as mitigation, dodge as a count. Post-combat Combat Report: character -> skill -> individual-hit drill-down. Rebalance report HTML page at /assets/rebalance-report.html with pure-SVG charts.",
+        "M268 Combat Report button on defeat + final-boss victory (previously only mid-game victories). Enemy tracking in meter + report via Show Enemies checkbox. Skill name attribution (Magic Missile now attributed to Magic Missile, not Attack). Tavern hires get skill+passive catch-up points per hire level, auto-spent via autoBuild.",
+        "M269 Tinker class: INT-primary clockwork mechanist. Four skills (Clockwork Bolt, Alchemical Grenade, Quick-Fix, Overcharge) with 2 talents + 2 upgrades each. Passive tree (manapool/manaflow/deadly/igniting/vampirism). Ysolde Cogwright hireable in taverns. Full 7-pose male+female art + 5-pose Clockwork Turret companion art via OpenAI gpt-image-1.5.",
+        "M270 Clockwork Turret re-flowed as a talent-unlock on Clockwork Bolt (Deploy Turret), matching Raise Skeleton / Forest Wolf / Bound Imp pattern. Removed from tavern companions.",
+        "M271 Comprehensive code-review pass produced a full audit at memory/code-review-m271.md (stale code, bugs, perf, refactor opportunities, security, testing gaps, ranked backlog). Wishlist updated with all shipped items + review findings for triage."
+      ],
+      "bugs": [
+        "Pyromancer + Stormcaller passives double-counted (passives.js:130) slotCount multiplier stacks on top of nodeId-keyed storage. Currently inflates igniting/stormcharged by 2x per rank purchased.",
+        "Combat Report under-reports enemy heal + mitigation (CombatScreen.js:904,918,928) only _meterAddDamage lazy-creates enemy entries; the other three meter helpers drop events for enemies.",
+        "Meter per-hit innerHTML rewrite may cause stutter in crowded fights. Should coalesce to once per frame."
+      ],
+      "suggestions": [
+        "Potions / consumables for glass builds builds that dump CON and lack lifesteal hit a wall in Act 3+. Either force-healer-at-Act-3 design, or add consumables.",
+        "Code review also flagged the CombatScreen is 4877 lines; splitting out damagePipeline.js / meter.js / aiTargeting.js / backgroundRenderer.js would unlock easier testing.",
+        "Boss-specific HP multiplier as a separate knob alongside globalMultipliers.hp, so bosses can be ~15 rounds while trash stays at 6-8 rounds.",
+        "Chase the remaining sim-vs-playtest damage gap (sim win rate caps at ~20% while playtest is much higher) likely missing affix Potency stacking and per-hit crit handling."
+      ],
+      "recommendations": [
+        "Triage code review findings in memory/code-review-m271.md the passives double-count is a 10-line fix and high-value. Enemy-entry lazy-create is a 4-line fix. The CombatScreen refactor is L-effort but high-value.",
+        "Run balance-sweep.mjs again after fixing the passives bug to see if the 2.0x enemy HP still holds, or if pyro/stormcaller inflation means the real HP knob wants to be 1.5x.",
+        "Keep the rebalance-report.html page live and add screenshots of the actual deployed UI for documentation value."
+      ],
+      "ideas": [
+        "A second tinker-themed talent could unlock an Automaton Servant a heavier, slower brass construct with shield-block affinity.",
+        "Simulator could grow a replay mode: load a real save, run it against a recorded encounter seed, diff against playtest log.",
+        "Per-class unit tests for mergeSkillForCast right now only Cleave is pinned."
+      ],
+      "notes": "Code review agent completed its pass during the same session. Top three findings flagged as wishlist items for triage. This report consolidates the changelog delta since M246 because prior reports fragmented the fast-travel work across several milestones and the recent rapid iteration deserved a consolidated summary."
     }
   ],
   "assets": []

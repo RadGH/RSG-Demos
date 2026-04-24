@@ -90,7 +90,7 @@
 <body>
 <div class="wrap">
   <h1 class="page-title">Emberveil — Rebalance Report</h1>
-  <p class="page-sub">Milestones M264–M267 · Generated 2026-04-24 · Combat simulator findings, skill-scaling audit, and the new granular DPS meter.</p>
+  <p class="page-sub">Milestones M264–M271 · Generated 2026-04-24 (last updated with M268 meter follow-ups + M271 code review) · Combat simulator findings, skill-scaling audit, and the new granular DPS/Heal/Mitigation meter.</p>
 
   <!-- Hero KPI strip -->
   <div class="hero-banner">
@@ -621,6 +621,29 @@
     </ol>
   </section>
 
+  <!-- ─── M268 updates ───────────────────────────────────────────────────── -->
+  <section class="card">
+    <h2>3b. Meter & Report — M268 updates</h2>
+    <p class="sub">After the M267 meter shipped, three follow-ups landed based on playtest feedback.</p>
+
+    <h3>Combat Report on defeat + final-boss victory</h3>
+    <p>Originally the Combat Report button only appeared on mid-game victory modals. Now on all three end states: <strong>mid-game victory</strong>, <strong>final-boss victory</strong> (alongside New Game+), and <strong>defeat</strong>. The defeat path also gained a View Combat Log button so post-mortem diagnosis doesn't require surviving.</p>
+
+    <h3>Enemy tracking — opt-in via "Show enemies" checkbox</h3>
+    <p>The meter and report now lazy-create rows for enemies the first time they deal damage, heal, or get mitigated. By default only ally rows show (to preserve the existing signal density). Toggle appears in two places:</p>
+    <ul style="color:var(--text);font-size:13px;line-height:1.7;padding-left:20px;">
+      <li><strong>In-combat meter:</strong> a small <code>E</code> checkbox in the panel header. Toggle mid-fight; state doesn't persist across fights.</li>
+      <li><strong>Combat Report overlay:</strong> a <em>Show enemies</em> checkbox top-right. Toggling re-renders all three tabs.</li>
+    </ul>
+    <p>Enemy rows render with a purple tint on the proportional bar and a small <code>ENEMY</code> pill before the name, so at a glance you can tell allies from enemies. Useful for "how much incoming damage was the boss soaking vs. trash" post-mortems.</p>
+
+    <h3>Skill-name attribution fix</h3>
+    <p>All skill hits now carry <code>breakdown.skillName = skill.name</code>, so Magic Missile, Fireball, Shield Bash, Clockwork Bolt, etc. each get their own source row in the report. Previously skill damage was bucketed under "Attack" because the breakdown was only populated by the basic-attack path. The only remaining "Attack" source is actual basic-attack (right-click / no-MP fallback) damage.</p>
+
+    <h3>Current known gap (flagged in M271 code review)</h3>
+    <p>Enemy <em>heal</em> and <em>mitigation</em> events are still under-reported. Only <code>_meterAddDamage</code> lazy-creates enemy entries via <code>_meterEnsureEntry</code> — the three sibling helpers (<code>_meterAddHeal</code>, <code>_meterAddMit</code>, <code>_meterAddDodge</code>) silently drop events for actors without an existing row. Fix is a 4-line change applied to all three helpers. Flagged in the wishlist.</p>
+  </section>
+
   <!-- ─── What's still open ──────────────────────────────────────────────── -->
   <section class="card">
     <h2>4. Known open items</h2>
@@ -650,6 +673,21 @@
           <td>Residual Slow Time outlier (chronomancer)</td>
           <td><code>skills.js</code></td>
           <td>Only 2.25× overrun, caused by a talent that's intended to stack additively. Probably fine; logged.</td>
+        </tr>
+        <tr style="background:rgba(200,80,80,0.06);">
+          <td><strong>🚨 Pyromancer / Stormcaller passives double-counted</strong></td>
+          <td><code>passives.js:130</code></td>
+          <td>Found in the M271 code-review pass. <code>mult = r * slotCount[node.id]</code> — when a passive tree has duplicate-slot entries (pyromancer: 2× igniting; stormcaller: 2× stormcharged), purchased ranks get multiplied by the slot count. Because ranks are keyed by nodeId (not slot index), 1 rank = 2 effective ranks. Balance implication: pyromancer and stormcaller are stronger than the audit sim assumed. Re-running balance-sweep after the fix is on the checklist.</td>
+        </tr>
+        <tr>
+          <td>Enemy heal + mitigation under-reported in Combat Report</td>
+          <td><code>CombatScreen.js:904,918,928</code></td>
+          <td>Found in M271 code-review. <code>_meterAddHeal</code> / <code>_meterAddMit</code> / <code>_meterAddDodge</code> don't lazy-create enemy entries (only <code>_meterAddDamage</code> does). If you enable "Show enemies" and see enemy damage but little/no enemy heal or mit, that's the bug. 4-line fix flagged on wishlist.</td>
+        </tr>
+        <tr>
+          <td>CombatScreen.js refactor-worthy</td>
+          <td><code>CombatScreen.js</code> (4,877 lines)</td>
+          <td>Code review identified four cleanly-extractable modules: <code>damagePipeline.js</code> (armor/block/barrier/reflect), <code>meter.js</code> (the DPS/heal/mit tracker), <code>aiTargeting.js</code> (hero + enemy AI), <code>backgroundRenderer.js</code> (parallax). Long-tail but high value — would unlock easier testing and reduce the skill-add blast radius.</td>
         </tr>
       </tbody>
     </table>
