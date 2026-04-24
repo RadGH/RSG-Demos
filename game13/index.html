@@ -434,8 +434,11 @@
       grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
       gap: 0.75rem;
     }
+    /* M250: unified with heroes/enemies — auto-fill at 110px min so mobile
+       wraps to 2-3 cols instead of cramming 5 tiny columns. Still caps width
+       at 640px on desktop so the grid stays compact. */
     #companions-grid, #bosses-grid {
-      grid-template-columns: repeat(5, minmax(110px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
       max-width: 640px;
       margin: 0 auto;
     }
@@ -572,9 +575,9 @@
       color: var(--muted); margin-bottom: 1rem; margin-top: 2rem;
     }
   </style>
-  <script type="module" crossorigin src="/RSG-Demos/game13/assets/marketing-B3USH1rD.js"></script>
+  <script type="module" crossorigin src="/RSG-Demos/game13/assets/marketing-BoHwVhv2.js"></script>
   <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/version-pmt7BwfP.js">
+  <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/version-DOAOqGV3.js">
 </head>
 <body>
 
