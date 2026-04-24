@@ -692,11 +692,15 @@ function renderOldPortraitSlot(baseId) {
 const HIDE_KEY = 'rsg.charRedesign.hideApproved';
 
 function isFullyApproved(variants) {
+  // M263: trust framesStatus when present — top-level `status` often lags
+  // behind (e.g. chronomancer_female had all 7 frames approved but status
+  // still 'pending_approval' from an M217 regen that never flipped the root).
   return variants.every(v => {
-    if (v.entry.status !== 'approved') return false;
     const fs = v.entry.framesStatus;
-    if (!fs) return true; // no frame data — treat as fine
-    return Object.values(fs).every(s => s === 'approved');
+    if (fs && Object.keys(fs).length) {
+      return Object.values(fs).every(s => s === 'approved');
+    }
+    return v.entry.status === 'approved';
   });
 }
 
