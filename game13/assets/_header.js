@@ -117,6 +117,7 @@
       { href: NEWS_ROOT + 'm5.html',          label: 'Milestone 5 Report',  date: '2025-10-01' }
     ],
     game13: [
+      { href: NEWS_ROOT + 'm220-m254-consolidation.html', label: 'Fast-Travel Overhaul + Questline + Difficulty', date: '2026-04-23' },
       { href: NEWS_ROOT + 'milestone-report.html',   label: 'Major Milestone Report',date: '2026-04-15' },
       { href: NEWS_ROOT + 're-redesign.html',        label: 'Re-redesign — SpriteCook', date: '2026-04-14' },
       { href: NEWS_ROOT + 'm79-redesign.html',       label: 'M79 Redesign Report',   date: '2026-04-14' },
