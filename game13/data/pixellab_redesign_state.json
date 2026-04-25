@@ -1,7 +1,7 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-24T18:33:31Z",
-  "creditsUsedTotal": 6444,
+  "updatedAt": "2026-04-25T14:50:00Z",
+  "creditsUsedTotal": 6540,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
@@ -1240,7 +1240,35 @@
       "notes": "M269 \u2014 Tinker class, clockwork-mechanist art via OpenAI gpt-image-1.5 (gpt-image-2 gated by org verification), auto-approved on creation.",
       "isCompanion": true,
       "creditsUsed": 5
+    },
+    "veilspawn_herald": {
+      "spriteId": "veilspawn_herald",
+      "status": "pending_approval",
+      "referenceStatus": "pending_approval",
+      "framesStatus": {
+        "portrait": "pending_approval",
+        "south": "pending_approval",
+        "east": "pending_approval",
+        "east_attack": "pending_approval",
+        "east_spell": "pending_approval",
+        "east_block": "pending_approval",
+        "east_ko": "pending_approval"
+      },
+      "artDirectionPath": "data/art_direction/veilspawn_herald.json",
+      "candidateDir": "images/pixellab/veilspawn_herald",
+      "notes": "M276 N1 — prologue mini-boss. SpriteCook generated via gemini-3.1-flash-image-preview with reference_asset_id 573a1dee-3df9-4f5b-b218-4a73053095a9 for style-lock. Awaiting user approval via redesign page; sync-pixellab-to-spritecook.cjs will mirror frames once approved.",
+      "creditsUsed": 96,
+      "spritecookAssetIds": {
+        "reference": "573a1dee-3df9-4f5b-b218-4a73053095a9",
+        "portrait": "c07221de-b7bb-4a30-a27e-1de108fa5a19",
+        "south": "5c6da600-2654-4a3b-8766-3b8398278d86",
+        "east": "42f56c03-07db-43c4-b818-0588bb008f6a",
+        "east_attack": "6ed6441e-0cab-4630-9fa5-6e6437682bd5",
+        "east_spell": "d1a1bd65-ada8-46ac-b598-30c8dd851516",
+        "east_block": "3b77b785-a637-47c4-b764-1e86d47dcbb4",
+        "east_ko": "5f5d9f09-e32a-489a-8819-d33b00ff7f37"
+      }
     }
   },
-  "lastUpdated": "2026-04-24T18:29:44.553Z"
+  "lastUpdated": "2026-04-25T14:50:00.000Z"
 }
