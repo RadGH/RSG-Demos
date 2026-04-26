@@ -60,6 +60,9 @@
     .sa-panel-foot .v { color: var(--gold); font-variant-numeric: tabular-nums; min-width: 38px; display: inline-block; }
     .sa-panel-foot .reset { background: rgba(200,80,80,0.12); border: 1px solid rgba(200,80,80,0.35); color: #ff8a70; padding: 1px 8px; border-radius: 3px; font-size: 10px; cursor: pointer; }
     .sa-panel-foot .reset:hover { background: rgba(200,80,80,0.22); }
+    .sa-panel-foot .sa-live-pill { font-size: 9.5px; letter-spacing: 0.18em; padding: 1px 7px; background: rgba(96,168,232,0.16); border: 1px solid rgba(96,168,232,0.5); color: #80b0ff; border-radius: 3px; font-weight: 700; }
+    .sa-panel-ref .sa-sprite-canvas { cursor: default !important; }
+    .sa-panel-ref .sa-panel-stage { cursor: default !important; }
 
     .sa-list { background: rgba(8,4,12,0.7); border-left: 1px solid var(--pane-border); display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
     .sa-list-head { padding: 8px 12px; border-bottom: 1px solid var(--pane-border); display: flex; flex-wrap: wrap; align-items: center; gap: 8px; flex: 0 0 auto; }
@@ -153,10 +156,10 @@
         <canvas class="sa-sprite-canvas" id="ref-canvas"></canvas>
       </div>
       <div class="sa-panel-foot">
+        <span class="sa-live-pill" title="Reference shows the live values from sprite_adjustments.json (read-only)">LIVE</span>
         <span>Scale <span class="v" id="ref-scale-v">1.00</span></span>
         <span>X <span class="v" id="ref-x-v">0</span></span>
         <span>Y <span class="v" id="ref-y-v">0</span></span>
-        <button class="reset" type="button" data-reset="ref">reset</button>
       </div>
     </div>
 
@@ -193,16 +196,11 @@
 
   <div class="sa-mode-bar">
     <span class="sa-mode-group">
-      <span class="lab">Side</span>
-      <button data-side="ref" type="button">Reference</button>
-      <button data-side="tgt" type="button" class="on">Target</button>
-    </span>
-    <span class="sa-mode-group">
       <span class="lab">Action</span>
       <button data-action="position" type="button" class="on">Position</button>
       <button data-action="resize" type="button">Resize</button>
     </span>
-    <span class="hint">Drag the sprite to move; scroll wheel to scale. Arrow keys also work. Use Mode buttons to control which side + action.</span>
+    <span class="hint">Drag target to move; scroll wheel to scale. Arrow keys also work. Reference is read-only (live game JSON).</span>
   </div>
 </div>
 
@@ -239,7 +237,9 @@ const state = {
   referenceCharId: null,
   referenceLocked: false, // when locked, ref pose stays put even if target pose changes
   referenceLockedPose: null,
-  refAdj: { scale: 1, offsetX: 0, offsetY: 0 },
+  // M283 — Reference adj is now derived from liveAdjustments (the JSON file
+  // currently in the game). Read-only. The target keeps user edits in row.adj.
+  // Kept as a computed getter helper (`getRefAdj`).
   // UI prefs (persisted)
   layout: 'side',         // 'side' | 'stacked'
   orderSwapped: false,    // false = ref first, true = target first
@@ -377,6 +377,25 @@ function populateRefSelect() {
   }
 }
 
+// ── Reference adjustment lookup (live, read-only) ────────────────────────
+// Returns the scale/offset values currently in sprite_adjustments.json for
+// the active reference character + pose. Used to render the Reference panel
+// exactly as the game would render that character.
+function getRefAdj(refPose = state.refPose) {
+  const charId = state.referenceCharId;
+  const live = state.liveAdjustments[charId];
+  if (!live) return { scale: 1, offsetX: 0, offsetY: 0 };
+  const per = live.perPose && live.perPose[refPose];
+  return {
+    scale: (per && typeof per.scale === 'number') ? per.scale
+         : (typeof live.scale === 'number') ? live.scale : 1,
+    offsetX: (per && typeof per.offsetX === 'number') ? per.offsetX
+           : (typeof live.offsetX === 'number') ? live.offsetX : 0,
+    offsetY: (per && typeof per.offsetY === 'number') ? per.offsetY
+           : (typeof live.offsetY === 'number') ? live.offsetY : 0,
+  };
+}
+
 // ── Image loading ────────────────────────────────────────────────────────
 function loadImage(spriteId, pose) {
   const key = `${spriteId}_${pose}`;
@@ -464,7 +483,7 @@ async function drawSprites() {
   const refStage = document.getElementById('ref-stage');
   resizeCanvas(refCanvas, refStage);
   if (state.referenceCharId && state.refPose) {
-    drawSprite(refCanvas, state.referenceCharId, state.refPose, state.showRaw ? { scale: 1, offsetX: 0, offsetY: 0 } : state.refAdj);
+    drawSprite(refCanvas, state.referenceCharId, state.refPose, state.showRaw ? { scale: 1, offsetX: 0, offsetY: 0 } : getRefAdj());
   } else {
     const ctx = refCanvas.getContext('2d');
     ctx.clearRect(0, 0, refCanvas.width, refCanvas.height);
@@ -516,14 +535,16 @@ function updateValueLabels() {
     document.getElementById('tgt-x-v').textContent = String(Math.round(row.adj.offsetX));
     document.getElementById('tgt-y-v').textContent = String(Math.round(row.adj.offsetY));
   }
-  document.getElementById('ref-scale-v').textContent = state.refAdj.scale.toFixed(2);
-  document.getElementById('ref-x-v').textContent = String(Math.round(state.refAdj.offsetX));
-  document.getElementById('ref-y-v').textContent = String(Math.round(state.refAdj.offsetY));
+  const _ra = getRefAdj();
+  document.getElementById('ref-scale-v').textContent = _ra.scale.toFixed(2);
+  document.getElementById('ref-x-v').textContent = String(Math.round(_ra.offsetX));
+  document.getElementById('ref-y-v').textContent = String(Math.round(_ra.offsetY));
 }
 
 // ── Interaction (drag + scroll wheel + keys) ─────────────────────────────
 function getActiveAdj() {
-  return state.controlSide === 'ref' ? state.refAdj : state.rows[state.selectedRowIdx].adj;
+  // Reference is read-only (live JSON values). Force target.
+  return state.rows[state.selectedRowIdx].adj;
 }
 function commitAdjustmentChange() {
   const row = state.rows[state.selectedRowIdx];
@@ -586,12 +607,9 @@ window.addEventListener('keydown', (e) => {
 });
 
 function resetActive() {
-  if (state.controlSide === 'tgt') {
-    const row = state.rows[state.selectedRowIdx];
-    if (row) row.adj = { ...row.adjOriginal };
-  } else {
-    state.refAdj = { scale: 1, offsetX: 0, offsetY: 0 };
-  }
+  // Only target is editable now (reference is read-only live JSON).
+  const row = state.rows[state.selectedRowIdx];
+  if (row) row.adj = { ...row.adjOriginal };
 }
 
 // ── Get Prompt modal ─────────────────────────────────────────────────────
@@ -690,7 +708,7 @@ function _drawTargetWithPose(pose) {
   const refStage = document.getElementById('ref-stage');
   resizeCanvas(refCanvas, refStage);
   if (state.referenceCharId && refPose) {
-    drawSprite(refCanvas, state.referenceCharId, refPose, state.showRaw ? { scale: 1, offsetX: 0, offsetY: 0 } : state.refAdj);
+    drawSprite(refCanvas, state.referenceCharId, refPose, state.showRaw ? { scale: 1, offsetX: 0, offsetY: 0 } : getRefAdj(refPose));
   }
 }
 function startAnimation() {
@@ -749,7 +767,6 @@ document.getElementById('lock-ref').addEventListener('click', () => {
 });
 document.getElementById('ref-char-select').addEventListener('change', (e) => {
   state.referenceCharId = e.target.value;
-  state.refAdj = { scale: 1, offsetX: 0, offsetY: 0 };
   selectRow(state.selectedRowIdx); savePrefs();
 });
 document.getElementById('show-raw').addEventListener('change', (e) => {
@@ -766,9 +783,11 @@ document.querySelectorAll('.sa-mode-group [data-action]').forEach(b => {
 });
 document.querySelectorAll('[data-reset]').forEach(b => {
   b.addEventListener('click', () => {
-    if (b.dataset.reset === 'ref') state.refAdj = { scale: 1, offsetX: 0, offsetY: 0 };
-    else { const r = state.rows[state.selectedRowIdx]; if (r) r.adj = { ...r.adjOriginal }; }
-    commitAdjustmentChange();
+    // Reference is read-only (live JSON). Reset only affects target.
+    if (b.dataset.reset === 'tgt') {
+      const r = state.rows[state.selectedRowIdx]; if (r) r.adj = { ...r.adjOriginal };
+      commitAdjustmentChange();
+    }
   });
 });
 
@@ -779,7 +798,7 @@ window.addEventListener('resize', () => drawSprites());
 loadPrefs();
 applyLayout();
 bindStage(document.getElementById('tgt-canvas'));
-bindStage(document.getElementById('ref-canvas'));
+// Reference panel is read-only; do not bind drag/wheel handlers.
 loadData();
 </script>
 </body>
