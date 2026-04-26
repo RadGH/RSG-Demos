@@ -25,19 +25,42 @@
        under target at reduced opacity so the user can compare alignment. The
        reference's stage canvas is the only thing that bleeds through — its
        header + foot stay visible above the target's, offset to the side. */
+    /* M290 — Stacked layout: the panel listed FIRST in the order toggle is the
+       overlay (drawn on top of the second panel's stage at --stack-opacity).
+       The "bottom" panel is the one being adjusted; the "top" panel is just a
+       visual guide and ignores pointer input. The opacity only applies to the
+       sprite stage area — head + foot stay fully readable so scale / x / y
+       coords aren't dimmed. */
+    :root { --stack-opacity: 0.5; }
     .sa-main.stacked { grid-template-columns: 1fr 320px; grid-template-rows: 1fr; }
-    .sa-main.stacked .sa-panel { grid-column: 1; grid-row: 1; }
+    .sa-main.stacked .sa-panel { grid-column: 1; grid-row: 1; background: transparent; border: none; }
     .sa-main.stacked .sa-list { grid-row: 1; grid-column: 2; }
-    .sa-main.stacked .sa-panel-ref { background: transparent; border: none; pointer-events: none; }
-    .sa-main.stacked .sa-panel-ref .sa-panel-stage { background: transparent; opacity: 0.45; mix-blend-mode: normal; }
-    .sa-main.stacked .sa-panel-ref .sa-panel-head { background: rgba(0,0,0,0.55); border-bottom-color: rgba(128,176,255,0.25); pointer-events: auto; }
-    .sa-main.stacked .sa-panel-ref .sa-panel-foot { background: rgba(0,0,0,0.55); border-top-color: rgba(128,176,255,0.25); pointer-events: auto; }
-    .sa-main.stacked.swapped .sa-panel-target { background: transparent; border: none; pointer-events: none; }
-    .sa-main.stacked.swapped .sa-panel-target .sa-panel-stage { background: transparent; opacity: 0.45; }
-    .sa-main.stacked.swapped .sa-panel-ref { background: var(--pane-bg); border-right: 1px solid var(--pane-border); pointer-events: auto; }
-    .sa-main.stacked.swapped .sa-panel-ref .sa-panel-stage { opacity: 1; }
+    .sa-main.stacked .sa-panel-stage { background: transparent; }
+    /* Default order (Ref → Target): REF is the overlay on top of TARGET. */
+    .sa-main.stacked .sa-panel-target { z-index: 1; pointer-events: auto; }
+    .sa-main.stacked .sa-panel-target .sa-panel-stage { opacity: 1; pointer-events: auto; }
+    .sa-main.stacked .sa-panel-ref { z-index: 2; pointer-events: none; }
+    .sa-main.stacked .sa-panel-ref .sa-panel-stage { opacity: var(--stack-opacity); pointer-events: none; }
+    /* Keep BOTH heads + feet visible side-by-side (head left for ref, right
+       for target; foot does the same). Head/foot are in the same grid cell so
+       float them to opposite sides. */
+    .sa-main.stacked .sa-panel-head, .sa-main.stacked .sa-panel-foot { background: rgba(8,4,12,0.85); pointer-events: auto; opacity: 1; }
+    .sa-main.stacked .sa-panel-ref .sa-panel-head { border-bottom-color: rgba(128,176,255,0.4); margin-right: 50%; }
+    .sa-main.stacked .sa-panel-target .sa-panel-head { border-bottom-color: rgba(232,160,32,0.4); margin-left: 50%; }
+    .sa-main.stacked .sa-panel-ref .sa-panel-foot { border-top-color: rgba(128,176,255,0.4); margin-right: 50%; }
+    .sa-main.stacked .sa-panel-target .sa-panel-foot { border-top-color: rgba(232,160,32,0.4); margin-left: 50%; }
+    /* Swapped order (Target → Ref): TARGET is the overlay on top of REF. */
+    .sa-main.stacked.swapped .sa-panel-target { z-index: 2; pointer-events: none; }
+    .sa-main.stacked.swapped .sa-panel-target .sa-panel-stage { opacity: var(--stack-opacity); pointer-events: none; }
+    .sa-main.stacked.swapped .sa-panel-ref { z-index: 1; pointer-events: auto; }
+    .sa-main.stacked.swapped .sa-panel-ref .sa-panel-stage { opacity: 1; pointer-events: auto; }
+    /* Side-by-side mode swap: order in the flex/grid */
     .sa-main.swapped:not(.stacked) .sa-panel-ref { order: 2; }
     .sa-main.swapped:not(.stacked) .sa-panel-target { order: 1; }
+    /* Stack Opacity slider styling */
+    .sa-stack-op { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
+    .sa-stack-op input[type=range] { width: 80px; accent-color: var(--gold); }
+    .sa-stack-op .v { color: var(--gold); font-variant-numeric: tabular-nums; min-width: 30px; }
 
     .sa-panel { background: var(--pane-bg); border-right: 1px solid var(--pane-border); display: flex; flex-direction: column; overflow: hidden; position: relative; }
     .sa-panel-target { border-right: 1px solid var(--pane-border); }
@@ -134,6 +157,10 @@
     </label>
     <label>Order
       <button id="order-toggle" type="button">Ref → Target</button>
+    </label>
+    <label class="sa-stack-op" id="stack-op-wrap" style="display:none">Stack Opacity
+      <input type="range" id="stack-op" min="0" max="100" value="50" step="5">
+      <span class="v" id="stack-op-v">50%</span>
     </label>
     <label>Reference
       <select id="ref-char-select"></select>
@@ -670,6 +697,9 @@ function applyLayout() {
   main.classList.toggle('swapped', state.orderSwapped);
   document.getElementById('layout-toggle').textContent = state.layout === 'stacked' ? 'Stacked' : 'Side';
   document.getElementById('order-toggle').textContent = state.orderSwapped ? 'Target → Ref' : 'Ref → Target';
+  // M290 — Stack Opacity slider only meaningful in stacked layout.
+  const stackWrap = document.getElementById('stack-op-wrap');
+  if (stackWrap) stackWrap.style.display = state.layout === 'stacked' ? 'inline-flex' : 'none';
   // Update mode-bar buttons
   document.querySelectorAll('.sa-mode-group [data-side]').forEach(b => b.classList.toggle('on', b.dataset.side === state.controlSide));
   document.querySelectorAll('.sa-mode-group [data-action]').forEach(b => b.classList.toggle('on', b.dataset.action === state.controlAction));
@@ -749,6 +779,19 @@ function stopAnimation() {
 document.getElementById('btn-anim').addEventListener('click', () => {
   if (state.anim.running) stopAnimation(); else startAnimation();
 });
+
+// M290 — Stack Opacity slider (preview-only, NOT persisted to game data).
+(() => {
+  const sl = document.getElementById('stack-op');
+  const out = document.getElementById('stack-op-v');
+  if (!sl || !out) return;
+  const apply = (v) => {
+    document.documentElement.style.setProperty('--stack-opacity', String(v / 100));
+    out.textContent = v + '%';
+  };
+  sl.addEventListener('input', e => apply(parseInt(e.target.value, 10)));
+  apply(parseInt(sl.value, 10));
+})();
 
 document.getElementById('layout-toggle').addEventListener('click', () => {
   if (state.anim.running) stopAnimation();
