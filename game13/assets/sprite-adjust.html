@@ -20,14 +20,22 @@
     .sa-topbar button.active { background: rgba(232,160,32,0.2); border-color: rgba(232,160,32,0.5); color: var(--gold); }
     .sa-spacer { flex: 1; }
 
-    .sa-main { display: grid; grid-template-columns: 1fr 1fr 320px; flex: 1; min-height: 0; }
-    .sa-main.stacked { grid-template-columns: 1fr 320px; grid-template-rows: 1fr 1fr; }
-    .sa-main.stacked .sa-panel { grid-column: 1; }
-    .sa-main.stacked .sa-panel-ref { grid-row: 1; }
-    .sa-main.stacked .sa-panel-target { grid-row: 2; }
-    .sa-main.stacked .sa-list { grid-row: 1 / 3; grid-column: 2; }
-    .sa-main.stacked.swapped .sa-panel-ref { grid-row: 2; }
-    .sa-main.stacked.swapped .sa-panel-target { grid-row: 1; }
+    .sa-main { display: grid; grid-template-columns: 1fr 1fr 320px; flex: 1; min-height: 0; position: relative; }
+    /* Stacked = overlapping. Both panels occupy the same grid cell; ref draws
+       under target at reduced opacity so the user can compare alignment. The
+       reference's stage canvas is the only thing that bleeds through — its
+       header + foot stay visible above the target's, offset to the side. */
+    .sa-main.stacked { grid-template-columns: 1fr 320px; grid-template-rows: 1fr; }
+    .sa-main.stacked .sa-panel { grid-column: 1; grid-row: 1; }
+    .sa-main.stacked .sa-list { grid-row: 1; grid-column: 2; }
+    .sa-main.stacked .sa-panel-ref { background: transparent; border: none; pointer-events: none; }
+    .sa-main.stacked .sa-panel-ref .sa-panel-stage { background: transparent; opacity: 0.45; mix-blend-mode: normal; }
+    .sa-main.stacked .sa-panel-ref .sa-panel-head { background: rgba(0,0,0,0.55); border-bottom-color: rgba(128,176,255,0.25); pointer-events: auto; }
+    .sa-main.stacked .sa-panel-ref .sa-panel-foot { background: rgba(0,0,0,0.55); border-top-color: rgba(128,176,255,0.25); pointer-events: auto; }
+    .sa-main.stacked.swapped .sa-panel-target { background: transparent; border: none; pointer-events: none; }
+    .sa-main.stacked.swapped .sa-panel-target .sa-panel-stage { background: transparent; opacity: 0.45; }
+    .sa-main.stacked.swapped .sa-panel-ref { background: var(--pane-bg); border-right: 1px solid var(--pane-border); pointer-events: auto; }
+    .sa-main.stacked.swapped .sa-panel-ref .sa-panel-stage { opacity: 1; }
     .sa-main.swapped:not(.stacked) .sa-panel-ref { order: 2; }
     .sa-main.swapped:not(.stacked) .sa-panel-target { order: 1; }
 
@@ -100,12 +108,15 @@
       .sa-topbar label { font-size: 10px; }
       .sa-mobile-rowbar { display: flex; }
       .sa-main { grid-template-columns: 1fr !important; grid-template-rows: 1fr 1fr !important; }
-      .sa-main.stacked { grid-template-columns: 1fr !important; }
       .sa-list { display: none; }
       .sa-main .sa-panel-ref { grid-column: 1 !important; grid-row: 1 !important; }
       .sa-main .sa-panel-target { grid-column: 1 !important; grid-row: 2 !important; }
       .sa-main.swapped .sa-panel-ref { grid-row: 2 !important; }
       .sa-main.swapped .sa-panel-target { grid-row: 1 !important; }
+      /* Mobile stacked = overlap in single row, same as desktop. */
+      .sa-main.stacked { grid-template-columns: 1fr !important; grid-template-rows: 1fr !important; }
+      .sa-main.stacked .sa-panel-ref,
+      .sa-main.stacked .sa-panel-target { grid-row: 1 !important; grid-column: 1 !important; }
       .sa-mode-bar .hint { display: none; }
     }
   </style>
