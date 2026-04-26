@@ -1,4 +1,23 @@
 {
   "$schema": "../schemas/v1/sprite-adjustment.json",
-  "$comment": "Per-(character,pose) sprite scale + offset overrides. Edit via /assets/sprite-adjust.html. Empty by default; populate as you review each sprite. CombatScreen + InventoryScreen apply scale at draw time."
+  "$comment": "Per-(character,pose) sprite scale + offset overrides. Edit via /assets/sprite-adjust.html. CombatScreen + InventoryScreen apply scale at draw time.",
+  "sorcerer_female": {
+    "perPose": {
+      "south":       { "scale": 0.815, "offsetX":   5, "offsetY":  15 },
+      "east":        { "scale": 0.812, "offsetX":  -5, "offsetY":  13 },
+      "east_attack": { "scale": 0.95,  "offsetX":  51, "offsetY":   9 },
+      "east_spell":  { "scale": 0.855, "offsetX":  13, "offsetY":  19 },
+      "east_block":  { "scale": 0.9,   "offsetX":  39, "offsetY":  30 },
+      "east_ko":     { "scale": 0.663, "offsetX": -21, "offsetY":  98 }
+    }
+  },
+  "stormcaller": {
+    "perPose": {
+      "south":      { "scale": 0.945, "offsetX":  -7, "offsetY":  -1 },
+      "east":       { "scale": 1,     "offsetX": -18, "offsetY":   0 },
+      "east_spell": { "scale": 0.95,  "offsetX": -27, "offsetY":  -2 },
+      "east_block": { "scale": 0.95,  "offsetX": -27, "offsetY":  -9 },
+      "east_ko":    { "scale": 0.772, "offsetX":  17, "offsetY":  59 }
+    }
+  }
 }

@@ -167,6 +167,9 @@
   body[data-display="g3"] .bg-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
   body[data-display="g2"] .poses,
   body[data-display="g2"] .bg-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  body[data-display="g1"] .poses,
+  body[data-display="g1"] .bg-grid { grid-template-columns: 1fr; }
+  body[data-display="g1"] .img-card img, body[data-display="g1"] .bg-grid .img-card img { height: auto; max-height: none; width: 100%; }
   body[data-display="g6"] .img-card img, body[data-display="g6"] .bg-grid .img-card img { height: 70px; }
   body[data-display="g5"] .img-card img, body[data-display="g5"] .bg-grid .img-card img { height: 80px; }
   body[data-display="g3"] .img-card img, body[data-display="g3"] .bg-grid .img-card img { height: 140px; }
@@ -567,6 +570,7 @@
         <button type="button" data-mode="g4" class="active">4</button>
         <button type="button" data-mode="g3">3</button>
         <button type="button" data-mode="g2">2</button>
+        <button type="button" data-mode="g1">1</button>
         <button type="button" data-mode="list">List</button>
       </span>
     </label>

@@ -62,9 +62,9 @@
     .sa-panel-foot .reset:hover { background: rgba(200,80,80,0.22); }
 
     .sa-list { background: rgba(8,4,12,0.7); border-left: 1px solid var(--pane-border); display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
-    .sa-list-head { padding: 8px 12px; border-bottom: 1px solid var(--pane-border); display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
-    .sa-list-head .sa-list-title { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); flex: 1; }
-    .sa-list-head select { font-size: 10px; }
+    .sa-list-head { padding: 8px 12px; border-bottom: 1px solid var(--pane-border); display: flex; flex-wrap: wrap; align-items: center; gap: 8px; flex: 0 0 auto; }
+    .sa-list-head .sa-list-title { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); flex: 1 1 100%; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .sa-list-head select { font-size: 10px; flex: 0 0 auto; }
     .sa-list-body { flex: 1; overflow-y: auto; }
     .sa-list-row { padding: 6px 10px; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 11px; line-height: 1.3; }
     .sa-list-row:hover { background: rgba(160,80,255,0.06); }
@@ -138,6 +138,7 @@
     </label>
     <label><input type="checkbox" id="show-raw"> Show raw (no adjust)</label>
     <span class="sa-spacer"></span>
+    <button id="btn-anim" type="button">▶ Preview Animation</button>
     <button id="btn-prompt" type="button">Get Prompt</button>
   </div>
 
@@ -660,7 +661,79 @@ function applyLayout() {
   setTimeout(drawSprites, 0); // wait for layout reflow
 }
 
+// ── Preview Animation ────────────────────────────────────────────────────
+// Cycles south → east → east_attack → east → east_spell → east → east_block
+// → east → east_ko → repeat on the selected target row. Stacked layout is
+// suppressed while animating so the panel is unambiguous.
+const ANIM_CYCLE = ['south','east','east_attack','east','east_spell','east','east_block','east','east_ko'];
+state.anim = { running: false, idx: 0, timer: null, savedRowPose: null, savedLayout: null };
+function _drawTargetWithPose(pose) {
+  const row = state.rows[state.selectedRowIdx];
+  if (!row) return;
+  // Find a matching row for this character at the requested pose; if none
+  // exists (some chars lack certain poses), skip without throwing.
+  const animRow = state.rows.find(r => r.charId === row.charId && r.pose === pose) || row;
+  document.getElementById('tgt-pose').textContent = pose;
+  // Reference mirrors the same pose unless locked.
+  const refChar = state.characters.find(c => c.id === state.referenceCharId);
+  let refPose = pose;
+  if (state.anim.lockedRefPose) refPose = state.anim.lockedRefPose;
+  else if (refChar && !refChar.posesAvailable.includes(pose)) refPose = refChar.posesAvailable[0];
+  state.refPose = refPose;
+  document.getElementById('ref-pose').textContent = refPose || '—';
+  // Draw target with the animated pose using the saved adj for that row.
+  const tgtCanvas = document.getElementById('tgt-canvas');
+  const tgtStage = document.getElementById('tgt-stage');
+  resizeCanvas(tgtCanvas, tgtStage);
+  drawSprite(tgtCanvas, animRow.charId, animRow.pose, state.showRaw ? { scale: 1, offsetX: 0, offsetY: 0 } : animRow.adj);
+  const refCanvas = document.getElementById('ref-canvas');
+  const refStage = document.getElementById('ref-stage');
+  resizeCanvas(refCanvas, refStage);
+  if (state.referenceCharId && refPose) {
+    drawSprite(refCanvas, state.referenceCharId, refPose, state.showRaw ? { scale: 1, offsetX: 0, offsetY: 0 } : state.refAdj);
+  }
+}
+function startAnimation() {
+  if (state.anim.running) return;
+  state.anim.running = true;
+  state.anim.idx = 0;
+  state.anim.savedLayout = state.layout;
+  state.anim.lockedRefPose = state.referenceLocked ? state.referenceLockedPose : null;
+  if (state.layout === 'stacked') {
+    state.layout = 'side';
+    applyLayout();
+  }
+  document.getElementById('btn-anim').textContent = '■ Stop Animation';
+  document.getElementById('btn-anim').classList.add('active');
+  const tick = () => {
+    if (!state.anim.running) return;
+    _drawTargetWithPose(ANIM_CYCLE[state.anim.idx]);
+    state.anim.idx = (state.anim.idx + 1) % ANIM_CYCLE.length;
+  };
+  tick();
+  state.anim.timer = setInterval(tick, 500);
+}
+function stopAnimation() {
+  if (!state.anim.running) return;
+  clearInterval(state.anim.timer);
+  state.anim.timer = null;
+  state.anim.running = false;
+  document.getElementById('btn-anim').textContent = '▶ Preview Animation';
+  document.getElementById('btn-anim').classList.remove('active');
+  // Restore layout if we suppressed stacked.
+  if (state.anim.savedLayout && state.anim.savedLayout !== state.layout) {
+    state.layout = state.anim.savedLayout;
+    applyLayout();
+  }
+  // Re-render the originally selected row.
+  selectRow(state.selectedRowIdx);
+}
+document.getElementById('btn-anim').addEventListener('click', () => {
+  if (state.anim.running) stopAnimation(); else startAnimation();
+});
+
 document.getElementById('layout-toggle').addEventListener('click', () => {
+  if (state.anim.running) stopAnimation();
   state.layout = state.layout === 'side' ? 'stacked' : 'side';
   applyLayout(); savePrefs();
 });
