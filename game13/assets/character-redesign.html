@@ -766,6 +766,16 @@ async function main() {
   function bucketOf(variants) {
     const statuses = variants.map(v => v.entry.status || 'pending');
     if (statuses.includes('pending_approval')) return 'pending_approval';
+    // M279: also bucket as pending_approval when ANY frame is pending_approval
+    // OR a pendingReview block has pose paths — even if the top-level status
+    // is still 'partial' or 'approved'. Otherwise mid-approval characters
+    // hide in the "Partially Approved" section and miss user review.
+    for (const v of variants) {
+      const fs = v.entry?.framesStatus || {};
+      if (Object.values(fs).some(s => s === 'pending_approval')) return 'pending_approval';
+      const pr = v.entry?.pendingReview || {};
+      if (Object.entries(pr).some(([k, val]) => k !== 'reference' && val && val.path)) return 'pending_approval';
+    }
     const approvedCount = statuses.filter(s => s === 'approved').length;
     if (approvedCount && approvedCount === statuses.length) return 'approved';
     if (approvedCount > 0) return 'partial';

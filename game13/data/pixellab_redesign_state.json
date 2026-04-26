@@ -1,6 +1,6 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-26T07:45:57.814879Z",
+  "updatedAt": "2026-04-26T16:56:14.392337Z",
   "creditsUsedTotal": 6852,
   "characters": {
     "oracle": {
@@ -120,13 +120,13 @@
     },
     "cleric": {
       "spriteId": "cleric",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
         "south": "approved",
         "east": "approved",
-        "east_attack": "approved",
+        "east_attack": "pending_approval",
         "east_spell": "approved",
         "east_block": "approved",
         "east_ko": "approved"
@@ -135,9 +135,15 @@
       "candidateDir": "images/pixellab/cleric",
       "originalSpritecookPrefix": "images/spritecook/cleric_",
       "creditsUsed": 132,
-      "notes": "Healer archetype. White/gold robe, mace, holy symbol.",
+      "notes": "Healer archetype. White/gold robe, mace, holy symbol. | M279 flip review pending.",
       "generatedAt": "2026-04-21T22:34:14Z",
-      "pendingReview": {}
+      "pendingReview": {
+        "east_attack": {
+          "path": "images/pixellab/cleric/east_attack.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "bard": {
       "spriteId": "bard",
@@ -200,7 +206,7 @@
     },
     "warlock": {
       "spriteId": "warlock",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
@@ -209,13 +215,20 @@
         "east_attack": "approved",
         "east_spell": "approved",
         "east_block": "approved",
-        "east_ko": "approved"
+        "east_ko": "pending_approval"
       },
       "artDirectionPath": "data/art_direction/warlock.json",
       "candidateDir": "images/pixellab/warlock",
       "originalSpritecookPrefix": "images/spritecook/warlock_",
       "creditsUsed": 132,
-      "notes": "Pact-caster archetype. Violet/crimson fel-fire motif + floating grimoire."
+      "notes": "Pact-caster archetype. Violet/crimson fel-fire motif + floating grimoire. | M279 flip review pending.",
+      "pendingReview": {
+        "east_ko": {
+          "path": "images/pixellab/warlock/east_ko.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "demon_hunter": {
       "spriteId": "demon_hunter",
@@ -298,13 +311,13 @@
     },
     "pyromancer": {
       "spriteId": "pyromancer",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
         "south": "approved",
         "east": "approved",
-        "east_attack": "approved",
+        "east_attack": "pending_approval",
         "east_spell": "approved",
         "east_block": "approved",
         "east_ko": "approved"
@@ -313,11 +326,18 @@
       "candidateDir": "images/pixellab/pyromancer",
       "originalSpritecookPrefix": "images/spritecook/pyromancer_",
       "creditsUsed": 108,
-      "notes": "Fire-palm caster. Zero held weapons \u2014 hands are the conduit."
+      "notes": "Fire-palm caster. Zero held weapons \u2014 hands are the conduit. | M279 flip review pending.",
+      "pendingReview": {
+        "east_attack": {
+          "path": "images/pixellab/pyromancer/east_attack.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "stormcaller": {
       "spriteId": "stormcaller",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
@@ -326,13 +346,20 @@
         "east_attack": "approved",
         "east_spell": "approved",
         "east_block": "approved",
-        "east_ko": "approved"
+        "east_ko": "pending_approval"
       },
       "artDirectionPath": "data/art_direction/stormcaller.json",
       "candidateDir": "images/pixellab/stormcaller",
       "originalSpritecookPrefix": "images/spritecook/stormcaller_",
       "creditsUsed": 132,
-      "notes": "Lightning-palm caster. Zero held weapons."
+      "notes": "Lightning-palm caster. Zero held weapons. | M279 flip review pending.",
+      "pendingReview": {
+        "east_ko": {
+          "path": "images/pixellab/stormcaller/east_ko.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "druid": {
       "spriteId": "druid",
@@ -357,13 +384,13 @@
     },
     "tactician": {
       "spriteId": "tactician",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
         "south": "approved",
         "east": "approved",
-        "east_attack": "approved",
+        "east_attack": "pending_approval",
         "east_spell": "approved",
         "east_block": "approved",
         "east_ko": "approved"
@@ -372,12 +399,18 @@
       "candidateDir": "images/pixellab/tactician",
       "originalSpritecookPrefix": "images/spritecook/tactician_",
       "creditsUsed": 120,
-      "notes": "Napoleonic officer archetype. Coat + epaulets + riding crop.",
+      "notes": "Napoleonic officer archetype. Coat + epaulets + riding crop. | M279 flip review pending.",
       "m217Note": "User-approved in M217. east_attack scale flagged too-large for future shrink.",
       "m217FlaggedFrames": [
         "east_attack"
       ],
-      "pendingReview": {}
+      "pendingReview": {
+        "east_attack": {
+          "path": "images/pixellab/tactician/east_attack.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "chronomancer": {
       "spriteId": "chronomancer",
@@ -440,14 +473,14 @@
     },
     "witch_hunter": {
       "spriteId": "witch_hunter",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
         "south": "approved",
         "east": "approved",
         "east_attack": "approved",
-        "east_spell": "approved",
+        "east_spell": "pending_approval",
         "east_block": "approved",
         "east_ko": "approved"
       },
@@ -455,12 +488,18 @@
       "candidateDir": "images/pixellab/witch_hunter",
       "originalSpritecookPrefix": "images/spritecook/witch_hunter_",
       "creditsUsed": 108,
-      "notes": "Puritanical gun-and-saber inquisitor. Wide-brim hat always on except KO.",
+      "notes": "Puritanical gun-and-saber inquisitor. Wide-brim hat always on except KO. | M279 flip review pending.",
       "m217Note": "User-approved in M217. east_spell stretched too big \u2014 flagged for future shrink.",
       "m217FlaggedFrames": [
         "east_spell"
       ],
-      "pendingReview": {}
+      "pendingReview": {
+        "east_spell": {
+          "path": "images/pixellab/witch_hunter/east_spell.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "knight": {
       "spriteId": "knight",
@@ -550,13 +589,13 @@
     },
     "ranger_male": {
       "spriteId": "ranger_male",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
         "south": "approved",
         "east": "approved",
-        "east_attack": "approved",
+        "east_attack": "pending_approval",
         "east_spell": "approved",
         "east_block": "approved",
         "east_ko": "approved"
@@ -565,7 +604,14 @@
       "candidateDir": "images/pixellab/ranger_male",
       "originalSpritecookPrefix": "images/spritecook/ranger_male_",
       "creditsUsed": 96,
-      "notes": "Ranger (Male) \u2014 companion variant"
+      "notes": "Ranger (Male) \u2014 companion variant | M279 flip review pending.",
+      "pendingReview": {
+        "east_attack": {
+          "path": "images/pixellab/ranger_male/east_attack.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "knight_male": {
       "spriteId": "knight_male",
@@ -608,7 +654,7 @@
     },
     "chronomancer_female": {
       "spriteId": "chronomancer_female",
-      "status": "partial",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
@@ -710,13 +756,13 @@
     },
     "cleric_male": {
       "spriteId": "cleric_male",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
         "south": "approved",
-        "east": "approved",
-        "east_attack": "approved",
+        "east": "pending_approval",
+        "east_attack": "pending_approval",
         "east_spell": "approved",
         "east_block": "approved",
         "east_ko": "approved"
@@ -725,8 +771,20 @@
       "candidateDir": "images/pixellab/cleric_male",
       "originalSpritecookPrefix": "images/spritecook/cleric_male_",
       "creditsUsed": 132,
-      "notes": "Cleric (Male) \u2014 gender variant",
-      "generatedAt": "2026-04-21T22:34:14Z"
+      "notes": "Cleric (Male) \u2014 gender variant | M279 flip review pending.",
+      "generatedAt": "2026-04-21T22:34:14Z",
+      "pendingReview": {
+        "east_attack": {
+          "path": "images/pixellab/cleric_male/east_attack.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        },
+        "east": {
+          "path": "images/pixellab/cleric_male/east.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "bard_female": {
       "spriteId": "bard_female",
@@ -808,7 +866,7 @@
     },
     "demon_hunter_female": {
       "spriteId": "demon_hunter_female",
-      "status": "partial",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
@@ -853,23 +911,35 @@
     },
     "swashbuckler_female": {
       "spriteId": "swashbuckler_female",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
         "south": "approved",
         "east": "approved",
-        "east_attack": "approved",
+        "east_attack": "pending_approval",
         "east_spell": "approved",
         "east_block": "approved",
-        "east_ko": "approved"
+        "east_ko": "pending_approval"
       },
       "artDirectionPath": "data/art_direction/swashbuckler_female.json",
       "candidateDir": "images/pixellab/swashbuckler_female",
       "originalSpritecookPrefix": "images/spritecook/swashbuckler_female_",
       "creditsUsed": 96,
-      "notes": "Swashbuckler (Female) \u2014 gender variant",
-      "m217Note": "M217 regen of east, east_block. Other poses remain pending_approval."
+      "notes": "Swashbuckler (Female) \u2014 gender variant | M279 flip review pending.",
+      "m217Note": "M217 regen of east, east_block. Other poses remain pending_approval.",
+      "pendingReview": {
+        "east_attack": {
+          "path": "images/pixellab/swashbuckler_female/east_attack.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        },
+        "east_ko": {
+          "path": "images/pixellab/swashbuckler_female/east_ko.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "dragon_knight_male": {
       "spriteId": "dragon_knight_male",
@@ -894,13 +964,13 @@
     },
     "pyromancer_male": {
       "spriteId": "pyromancer_male",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
         "south": "approved",
         "east": "approved",
-        "east_attack": "approved",
+        "east_attack": "pending_approval",
         "east_spell": "approved",
         "east_block": "approved",
         "east_ko": "approved"
@@ -909,7 +979,14 @@
       "candidateDir": "images/pixellab/pyromancer_male",
       "originalSpritecookPrefix": "images/spritecook/pyromancer_male_",
       "creditsUsed": 96,
-      "notes": "Pyromancer (Male) \u2014 gender variant"
+      "notes": "Pyromancer (Male) \u2014 gender variant | M279 flip review pending.",
+      "pendingReview": {
+        "east_attack": {
+          "path": "images/pixellab/pyromancer_male/east_attack.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "stormcaller_female": {
       "spriteId": "stormcaller_female",
@@ -952,13 +1029,13 @@
     },
     "tactician_female": {
       "spriteId": "tactician_female",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
         "south": "approved",
         "east": "approved",
-        "east_attack": "approved",
+        "east_attack": "pending_approval",
         "east_spell": "approved",
         "east_block": "approved",
         "east_ko": "approved"
@@ -967,12 +1044,19 @@
       "candidateDir": "images/pixellab/tactician_female",
       "originalSpritecookPrefix": "images/spritecook/tactician_female_",
       "creditsUsed": 96,
-      "notes": "Tactician (Female) \u2014 gender variant",
-      "m217Note": "User-approved in M217 review batch."
+      "notes": "Tactician (Female) \u2014 gender variant | M279 flip review pending.",
+      "m217Note": "User-approved in M217 review batch.",
+      "pendingReview": {
+        "east_attack": {
+          "path": "images/pixellab/tactician_female/east_attack.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "runesmith_female": {
       "spriteId": "runesmith_female",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
@@ -981,24 +1065,31 @@
         "east_attack": "approved",
         "east_spell": "approved",
         "east_block": "approved",
-        "east_ko": "approved"
+        "east_ko": "pending_approval"
       },
       "artDirectionPath": "data/art_direction/runesmith_female.json",
       "candidateDir": "images/pixellab/runesmith_female",
       "originalSpritecookPrefix": "images/spritecook/runesmith_female_",
       "creditsUsed": 96,
-      "notes": "Runesmith (Female) \u2014 gender variant",
-      "m217Note": "M217 regen of south. Other poses remain pending_approval."
+      "notes": "Runesmith (Female) \u2014 gender variant | M279 flip review pending.",
+      "m217Note": "M217 regen of south. Other poses remain pending_approval.",
+      "pendingReview": {
+        "east_ko": {
+          "path": "images/pixellab/runesmith_female/east_ko.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "witch_hunter_female": {
       "spriteId": "witch_hunter_female",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
         "south": "approved",
         "east": "approved",
-        "east_attack": "approved",
+        "east_attack": "pending_approval",
         "east_spell": "approved",
         "east_block": "approved",
         "east_ko": "approved"
@@ -1007,8 +1098,15 @@
       "candidateDir": "images/pixellab/witch_hunter_female",
       "originalSpritecookPrefix": "images/spritecook/witch_hunter_female_",
       "creditsUsed": 96,
-      "notes": "Witch_Hunter (Female) \u2014 gender variant",
-      "m217Note": "User-approved in M217 review batch."
+      "notes": "Witch_Hunter (Female) \u2014 gender variant | M279 flip review pending.",
+      "m217Note": "User-approved in M217 review batch.",
+      "pendingReview": {
+        "east_attack": {
+          "path": "images/pixellab/witch_hunter_female/east_attack.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "monk_female": {
       "spriteId": "monk_female",
@@ -1051,7 +1149,7 @@
     },
     "shaman_male": {
       "spriteId": "shaman_male",
-      "status": "approved",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
@@ -1059,15 +1157,22 @@
         "east": "approved",
         "east_attack": "approved",
         "east_spell": "approved",
-        "east_block": "approved",
+        "east_block": "pending_approval",
         "east_ko": "approved"
       },
       "artDirectionPath": "data/art_direction/shaman_male.json",
       "candidateDir": "images/pixellab/shaman_male",
       "originalSpritecookPrefix": "images/spritecook/shaman_male_",
       "creditsUsed": 96,
-      "notes": "Shaman (Male) \u2014 gender variant of shaman",
-      "m217Note": "User-approved in M217 review batch."
+      "notes": "Shaman (Male) \u2014 gender variant of shaman | M279 flip review pending.",
+      "m217Note": "User-approved in M217 review batch.",
+      "pendingReview": {
+        "east_block": {
+          "path": "images/pixellab/shaman_male/east_block.png",
+          "generatedAt": "2026-04-26T16:56:14.392337Z",
+          "note": "M279 horizontal flip \u2014 review the flipped facing direction"
+        }
+      }
     },
     "sorcerer_female": {
       "spriteId": "sorcerer_female",
@@ -1117,7 +1222,7 @@
     },
     "silas_veilward": {
       "spriteId": "silas_veilward",
-      "status": "partial",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "pending_approval",
@@ -1164,7 +1269,7 @@
     },
     "kaela_thorne": {
       "spriteId": "kaela_thorne",
-      "status": "partial",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "pending_approval",
@@ -1211,7 +1316,7 @@
     },
     "marek_greel": {
       "spriteId": "marek_greel",
-      "status": "partial",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "pending_approval",
@@ -1258,7 +1363,7 @@
     },
     "mira_seer": {
       "spriteId": "mira_seer",
-      "status": "partial",
+      "status": "pending_approval",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "pending_approval",
