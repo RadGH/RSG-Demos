@@ -1,0 +1,4 @@
+{
+  "$schema": "../schemas/v1/sprite-adjustment.json",
+  "$comment": "Per-(character,pose) sprite scale + offset overrides. Edit via /assets/sprite-adjust.html. Empty by default; populate as you review each sprite. CombatScreen + InventoryScreen apply scale at draw time."
+}
