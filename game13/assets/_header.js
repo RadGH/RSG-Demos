@@ -83,6 +83,7 @@
       { href: ASSETS + 'item-catalog.html', label: 'Item Catalog' },
       { href: ASSETS + 'docs.html', label: 'Documentation' },
       { href: ASSETS + 'wishlist.html', label: 'Wishlist' },
+      { href: ASSETS + 'brainstorm.html', label: 'Brainstorm' },
       { separator: true, label: 'Archived' },
       { href: ASSETS + 'sprite-flip-review.html', label: 'Sprite Flip Review' },
       { href: ASSETS + 'rebalance.html', label: 'Rebalance' }
