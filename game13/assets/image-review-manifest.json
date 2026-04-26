@@ -1,30 +1,30 @@
 {
   "_meta": {
-    "generated": "2026-04-26T05:48:01.770Z",
+    "generated": "2026-04-26T08:36:43.265Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (62 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
       "encounterCompanions": "src/maps/randomEvents.js reward.companion (14 unique)",
       "enemyIds": "src/maps/mapData.js ENEMIES + ENEMIES_ACT5 (19 non-boss enemies)",
-      "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (13 bosses)"
+      "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (15 bosses)"
     },
     "counts": {
-      "total": 904,
+      "total": 917,
       "by_status": {
-        "ready": 655,
-        "pending": 130,
-        "orphaned": 61,
+        "ready": 668,
+        "pending": 131,
+        "orphaned": 60,
         "approved": 20,
         "candidate": 38
       },
       "by_category": {
         "hero": 434,
         "companion": 125,
-        "boss": 91,
+        "boss": 105,
         "enemy": 95,
         "background": 31,
         "tap-weapons": 9,
-        "orphan": 61,
+        "orphan": 60,
         "reference-sheet": 58
       }
     },
@@ -5064,69 +5064,6 @@
       "status": "pending"
     },
     {
-      "id": "boss_veilspawn_herald_portrait",
-      "category": "boss",
-      "group": "veilspawn_herald",
-      "pose": "portrait",
-      "file": "../images/spritecook/veilspawn_herald_portrait.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_veilspawn_herald_south",
-      "category": "boss",
-      "group": "veilspawn_herald",
-      "pose": "south",
-      "file": "../images/spritecook/veilspawn_herald_south.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_veilspawn_herald_east",
-      "category": "boss",
-      "group": "veilspawn_herald",
-      "pose": "east",
-      "file": "../images/spritecook/veilspawn_herald_east.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_veilspawn_herald_east_attack",
-      "category": "boss",
-      "group": "veilspawn_herald",
-      "pose": "east_attack",
-      "file": "../images/spritecook/veilspawn_herald_east_attack.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_veilspawn_herald_east_spell",
-      "category": "boss",
-      "group": "veilspawn_herald",
-      "pose": "east_spell",
-      "file": "../images/spritecook/veilspawn_herald_east_spell.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_veilspawn_herald_east_block",
-      "category": "boss",
-      "group": "veilspawn_herald",
-      "pose": "east_block",
-      "file": "../images/spritecook/veilspawn_herald_east_block.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_veilspawn_herald_east_ko",
-      "category": "boss",
-      "group": "veilspawn_herald",
-      "pose": "east_ko",
-      "file": "../images/spritecook/veilspawn_herald_east_ko.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
       "id": "boss_goblin_warlord_portrait",
       "category": "boss",
       "group": "goblin_warlord",
@@ -5188,69 +5125,6 @@
       "file": "../images/spritecook/goblin_warlord_east_ko.png",
       "prompt": null,
       "status": "pending"
-    },
-    {
-      "id": "boss_veil_warden_portrait",
-      "category": "boss",
-      "group": "veil_warden",
-      "pose": "portrait",
-      "file": "../images/spritecook/veil_warden_portrait.png",
-      "prompt": "A veil warden in ornate plate with glowing runes, crystal halberd, grim stoic visor, dark fantasy RPG enemy portrait",
-      "status": "ready"
-    },
-    {
-      "id": "boss_veil_warden_south",
-      "category": "boss",
-      "group": "veil_warden",
-      "pose": "south",
-      "file": "../images/spritecook/veil_warden_south.png",
-      "prompt": null,
-      "status": "ready"
-    },
-    {
-      "id": "boss_veil_warden_east",
-      "category": "boss",
-      "group": "veil_warden",
-      "pose": "east",
-      "file": "../images/spritecook/veil_warden_east.png",
-      "prompt": null,
-      "status": "ready"
-    },
-    {
-      "id": "boss_veil_warden_east_attack",
-      "category": "boss",
-      "group": "veil_warden",
-      "pose": "east_attack",
-      "file": "../images/spritecook/veil_warden_east_attack.png",
-      "prompt": null,
-      "status": "ready"
-    },
-    {
-      "id": "boss_veil_warden_east_spell",
-      "category": "boss",
-      "group": "veil_warden",
-      "pose": "east_spell",
-      "file": "../images/spritecook/veil_warden_east_spell.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_veil_warden_east_block",
-      "category": "boss",
-      "group": "veil_warden",
-      "pose": "east_block",
-      "file": "../images/spritecook/veil_warden_east_block.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_veil_warden_east_ko",
-      "category": "boss",
-      "group": "veil_warden",
-      "pose": "east_ko",
-      "file": "../images/spritecook/veil_warden_east_ko.png",
-      "prompt": null,
-      "status": "ready"
     },
     {
       "id": "boss_lava_titan_portrait",
@@ -5316,69 +5190,6 @@
       "status": "ready"
     },
     {
-      "id": "boss_veil_sorcerer_portrait",
-      "category": "boss",
-      "group": "veil_sorcerer",
-      "pose": "portrait",
-      "file": "../images/spritecook/veil_sorcerer_portrait.png",
-      "prompt": "A veil sorcerer in flowing violet robes summoning arcane purple flames, skeletal hands, masked face, dark fantasy RPG enemy portrait",
-      "status": "ready"
-    },
-    {
-      "id": "boss_veil_sorcerer_south",
-      "category": "boss",
-      "group": "veil_sorcerer",
-      "pose": "south",
-      "file": "../images/spritecook/veil_sorcerer_south.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_veil_sorcerer_east",
-      "category": "boss",
-      "group": "veil_sorcerer",
-      "pose": "east",
-      "file": "../images/spritecook/veil_sorcerer_east.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_veil_sorcerer_east_attack",
-      "category": "boss",
-      "group": "veil_sorcerer",
-      "pose": "east_attack",
-      "file": "../images/spritecook/veil_sorcerer_east_attack.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_veil_sorcerer_east_spell",
-      "category": "boss",
-      "group": "veil_sorcerer",
-      "pose": "east_spell",
-      "file": "../images/spritecook/veil_sorcerer_east_spell.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_veil_sorcerer_east_block",
-      "category": "boss",
-      "group": "veil_sorcerer",
-      "pose": "east_block",
-      "file": "../images/spritecook/veil_sorcerer_east_block.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_veil_sorcerer_east_ko",
-      "category": "boss",
-      "group": "veil_sorcerer",
-      "pose": "east_ko",
-      "file": "../images/spritecook/veil_sorcerer_east_ko.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
       "id": "boss_archfiend_malgrath_portrait",
       "category": "boss",
       "group": "archfiend_malgrath",
@@ -5440,6 +5251,384 @@
       "file": "../images/spritecook/archfiend_malgrath_east_ko.png",
       "prompt": null,
       "status": "ready"
+    },
+    {
+      "id": "boss_cosmic_titan_portrait",
+      "category": "boss",
+      "group": "cosmic_titan",
+      "pose": "portrait",
+      "file": "../images/spritecook/cosmic_titan_portrait.png",
+      "prompt": "A cosmic titan of stone and galaxies, giant humanoid wreathed in nebulae, star-lit runes, dark fantasy RPG enemy portrait",
+      "status": "ready"
+    },
+    {
+      "id": "boss_cosmic_titan_south",
+      "category": "boss",
+      "group": "cosmic_titan",
+      "pose": "south",
+      "file": "../images/spritecook/cosmic_titan_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_cosmic_titan_east",
+      "category": "boss",
+      "group": "cosmic_titan",
+      "pose": "east",
+      "file": "../images/spritecook/cosmic_titan_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_cosmic_titan_east_attack",
+      "category": "boss",
+      "group": "cosmic_titan",
+      "pose": "east_attack",
+      "file": "../images/spritecook/cosmic_titan_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_cosmic_titan_east_spell",
+      "category": "boss",
+      "group": "cosmic_titan",
+      "pose": "east_spell",
+      "file": "../images/spritecook/cosmic_titan_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_cosmic_titan_east_block",
+      "category": "boss",
+      "group": "cosmic_titan",
+      "pose": "east_block",
+      "file": "../images/spritecook/cosmic_titan_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_cosmic_titan_east_ko",
+      "category": "boss",
+      "group": "cosmic_titan",
+      "pose": "east_ko",
+      "file": "../images/spritecook/cosmic_titan_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_primordial_elemental_portrait",
+      "category": "boss",
+      "group": "primordial_elemental",
+      "pose": "portrait",
+      "file": "../images/spritecook/primordial_elemental_portrait.png",
+      "prompt": "A primordial elemental of swirling raw cosmic energy, nebula core, crackling arms of plasma, dark fantasy RPG enemy portrait",
+      "status": "ready"
+    },
+    {
+      "id": "boss_primordial_elemental_south",
+      "category": "boss",
+      "group": "primordial_elemental",
+      "pose": "south",
+      "file": "../images/spritecook/primordial_elemental_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_primordial_elemental_east",
+      "category": "boss",
+      "group": "primordial_elemental",
+      "pose": "east",
+      "file": "../images/spritecook/primordial_elemental_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_primordial_elemental_east_attack",
+      "category": "boss",
+      "group": "primordial_elemental",
+      "pose": "east_attack",
+      "file": "../images/spritecook/primordial_elemental_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_primordial_elemental_east_spell",
+      "category": "boss",
+      "group": "primordial_elemental",
+      "pose": "east_spell",
+      "file": "../images/spritecook/primordial_elemental_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_primordial_elemental_east_block",
+      "category": "boss",
+      "group": "primordial_elemental",
+      "pose": "east_block",
+      "file": "../images/spritecook/primordial_elemental_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_primordial_elemental_east_ko",
+      "category": "boss",
+      "group": "primordial_elemental",
+      "pose": "east_ko",
+      "file": "../images/spritecook/primordial_elemental_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_frost_wyrm_portrait",
+      "category": "boss",
+      "group": "frost_wyrm",
+      "pose": "portrait",
+      "file": "../images/spritecook/frost_wyrm_portrait.png",
+      "prompt": "A frost wyrm dragon with icy blue scales, frost breath spilling from its jaws, icicles on spines, dark fantasy RPG enemy portrait",
+      "status": "ready"
+    },
+    {
+      "id": "boss_frost_wyrm_south",
+      "category": "boss",
+      "group": "frost_wyrm",
+      "pose": "south",
+      "file": "../images/spritecook/frost_wyrm_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_frost_wyrm_east",
+      "category": "boss",
+      "group": "frost_wyrm",
+      "pose": "east",
+      "file": "../images/spritecook/frost_wyrm_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_frost_wyrm_east_attack",
+      "category": "boss",
+      "group": "frost_wyrm",
+      "pose": "east_attack",
+      "file": "../images/spritecook/frost_wyrm_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_frost_wyrm_east_spell",
+      "category": "boss",
+      "group": "frost_wyrm",
+      "pose": "east_spell",
+      "file": "../images/spritecook/frost_wyrm_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_frost_wyrm_east_block",
+      "category": "boss",
+      "group": "frost_wyrm",
+      "pose": "east_block",
+      "file": "../images/spritecook/frost_wyrm_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_frost_wyrm_east_ko",
+      "category": "boss",
+      "group": "frost_wyrm",
+      "pose": "east_ko",
+      "file": "../images/spritecook/frost_wyrm_east_ko.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_veilspawn_herald_portrait",
+      "category": "boss",
+      "group": "veilspawn_herald",
+      "pose": "portrait",
+      "file": "../images/spritecook/veilspawn_herald_portrait.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_veilspawn_herald_south",
+      "category": "boss",
+      "group": "veilspawn_herald",
+      "pose": "south",
+      "file": "../images/spritecook/veilspawn_herald_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_veilspawn_herald_east",
+      "category": "boss",
+      "group": "veilspawn_herald",
+      "pose": "east",
+      "file": "../images/spritecook/veilspawn_herald_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_veilspawn_herald_east_attack",
+      "category": "boss",
+      "group": "veilspawn_herald",
+      "pose": "east_attack",
+      "file": "../images/spritecook/veilspawn_herald_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_veilspawn_herald_east_spell",
+      "category": "boss",
+      "group": "veilspawn_herald",
+      "pose": "east_spell",
+      "file": "../images/spritecook/veilspawn_herald_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_veilspawn_herald_east_block",
+      "category": "boss",
+      "group": "veilspawn_herald",
+      "pose": "east_block",
+      "file": "../images/spritecook/veilspawn_herald_east_block.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_veilspawn_herald_east_ko",
+      "category": "boss",
+      "group": "veilspawn_herald",
+      "pose": "east_ko",
+      "file": "../images/spritecook/veilspawn_herald_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_veil_warden_portrait",
+      "category": "boss",
+      "group": "veil_warden",
+      "pose": "portrait",
+      "file": "../images/spritecook/veil_warden_portrait.png",
+      "prompt": "A veil warden in ornate plate with glowing runes, crystal halberd, grim stoic visor, dark fantasy RPG enemy portrait",
+      "status": "ready"
+    },
+    {
+      "id": "boss_veil_warden_south",
+      "category": "boss",
+      "group": "veil_warden",
+      "pose": "south",
+      "file": "../images/spritecook/veil_warden_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_veil_warden_east",
+      "category": "boss",
+      "group": "veil_warden",
+      "pose": "east",
+      "file": "../images/spritecook/veil_warden_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_veil_warden_east_attack",
+      "category": "boss",
+      "group": "veil_warden",
+      "pose": "east_attack",
+      "file": "../images/spritecook/veil_warden_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_veil_warden_east_spell",
+      "category": "boss",
+      "group": "veil_warden",
+      "pose": "east_spell",
+      "file": "../images/spritecook/veil_warden_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_veil_warden_east_block",
+      "category": "boss",
+      "group": "veil_warden",
+      "pose": "east_block",
+      "file": "../images/spritecook/veil_warden_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_veil_warden_east_ko",
+      "category": "boss",
+      "group": "veil_warden",
+      "pose": "east_ko",
+      "file": "../images/spritecook/veil_warden_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "boss_veil_sorcerer_portrait",
+      "category": "boss",
+      "group": "veil_sorcerer",
+      "pose": "portrait",
+      "file": "../images/spritecook/veil_sorcerer_portrait.png",
+      "prompt": "A veil sorcerer in flowing violet robes summoning arcane purple flames, skeletal hands, masked face, dark fantasy RPG enemy portrait",
+      "status": "ready"
+    },
+    {
+      "id": "boss_veil_sorcerer_south",
+      "category": "boss",
+      "group": "veil_sorcerer",
+      "pose": "south",
+      "file": "../images/spritecook/veil_sorcerer_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_veil_sorcerer_east",
+      "category": "boss",
+      "group": "veil_sorcerer",
+      "pose": "east",
+      "file": "../images/spritecook/veil_sorcerer_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_veil_sorcerer_east_attack",
+      "category": "boss",
+      "group": "veil_sorcerer",
+      "pose": "east_attack",
+      "file": "../images/spritecook/veil_sorcerer_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_veil_sorcerer_east_spell",
+      "category": "boss",
+      "group": "veil_sorcerer",
+      "pose": "east_spell",
+      "file": "../images/spritecook/veil_sorcerer_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_veil_sorcerer_east_block",
+      "category": "boss",
+      "group": "veil_sorcerer",
+      "pose": "east_block",
+      "file": "../images/spritecook/veil_sorcerer_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_veil_sorcerer_east_ko",
+      "category": "boss",
+      "group": "veil_sorcerer",
+      "pose": "east_ko",
+      "file": "../images/spritecook/veil_sorcerer_east_ko.png",
+      "prompt": null,
+      "status": "pending"
     },
     {
       "id": "boss_emberveil_sovereign_portrait",
@@ -5629,69 +5818,6 @@
       "file": "../images/spritecook/the_unraveler_east_ko.png",
       "prompt": null,
       "status": "pending"
-    },
-    {
-      "id": "boss_primordial_elemental_portrait",
-      "category": "boss",
-      "group": "primordial_elemental",
-      "pose": "portrait",
-      "file": "../images/spritecook/primordial_elemental_portrait.png",
-      "prompt": "A primordial elemental of swirling raw cosmic energy, nebula core, crackling arms of plasma, dark fantasy RPG enemy portrait",
-      "status": "ready"
-    },
-    {
-      "id": "boss_primordial_elemental_south",
-      "category": "boss",
-      "group": "primordial_elemental",
-      "pose": "south",
-      "file": "../images/spritecook/primordial_elemental_south.png",
-      "prompt": null,
-      "status": "ready"
-    },
-    {
-      "id": "boss_primordial_elemental_east",
-      "category": "boss",
-      "group": "primordial_elemental",
-      "pose": "east",
-      "file": "../images/spritecook/primordial_elemental_east.png",
-      "prompt": null,
-      "status": "ready"
-    },
-    {
-      "id": "boss_primordial_elemental_east_attack",
-      "category": "boss",
-      "group": "primordial_elemental",
-      "pose": "east_attack",
-      "file": "../images/spritecook/primordial_elemental_east_attack.png",
-      "prompt": null,
-      "status": "ready"
-    },
-    {
-      "id": "boss_primordial_elemental_east_spell",
-      "category": "boss",
-      "group": "primordial_elemental",
-      "pose": "east_spell",
-      "file": "../images/spritecook/primordial_elemental_east_spell.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_primordial_elemental_east_block",
-      "category": "boss",
-      "group": "primordial_elemental",
-      "pose": "east_block",
-      "file": "../images/spritecook/primordial_elemental_east_block.png",
-      "prompt": null,
-      "status": "pending"
-    },
-    {
-      "id": "boss_primordial_elemental_east_ko",
-      "category": "boss",
-      "group": "primordial_elemental",
-      "pose": "east_ko",
-      "file": "../images/spritecook/primordial_elemental_east_ko.png",
-      "prompt": null,
-      "status": "ready"
     },
     {
       "id": "boss_the_architect_portrait",
@@ -7364,15 +7490,6 @@
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/core_boss_east_spell.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_cosmic_titan_east_ko",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/cosmic_titan_east_ko.png",
       "prompt": null,
       "status": "orphaned"
     },

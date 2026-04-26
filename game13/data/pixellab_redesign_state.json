@@ -1,7 +1,7 @@
 {
   "schema": "pixellab_redesign_state/v1",
-  "updatedAt": "2026-04-25T14:50:00Z",
-  "creditsUsedTotal": 6540,
+  "updatedAt": "2026-04-26T07:45:57.814879Z",
+  "creditsUsedTotal": 6852,
   "characters": {
     "oracle": {
       "spriteId": "oracle",
@@ -608,11 +608,11 @@
     },
     "chronomancer_female": {
       "spriteId": "chronomancer_female",
-      "status": "approved",
+      "status": "partial",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
-        "south": "approved",
+        "south": "pending_approval",
         "east": "approved",
         "east_attack": "approved",
         "east_spell": "approved",
@@ -623,9 +623,14 @@
       "candidateDir": "images/pixellab/chronomancer_female",
       "originalSpritecookPrefix": "images/spritecook/chronomancer_female_",
       "creditsUsed": 96,
-      "notes": "Chronomancer (Female) \u2014 companion variant",
+      "notes": "Chronomancer (Female) \u2014 companion variant | M279: regenerated 1 pose(s) [south] using east as SpriteCook reference; awaiting user approval.",
       "m217Note": "M217 regen of south. Other poses remain pending_approval.",
-      "pendingReview": {}
+      "pendingReview": {
+        "south": {
+          "path": "images/pixellab/chronomancer_female/south.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        }
+      }
     },
     "warrior_female": {
       "spriteId": "warrior_female",
@@ -803,13 +808,13 @@
     },
     "demon_hunter_female": {
       "spriteId": "demon_hunter_female",
-      "status": "approved",
+      "status": "partial",
       "referenceStatus": "approved",
       "framesStatus": {
         "portrait": "approved",
         "south": "approved",
         "east": "approved",
-        "east_attack": "approved",
+        "east_attack": "pending_approval",
         "east_spell": "approved",
         "east_block": "approved",
         "east_ko": "approved"
@@ -818,7 +823,13 @@
       "candidateDir": "images/pixellab/demon_hunter_female",
       "originalSpritecookPrefix": "images/spritecook/demon_hunter_female_",
       "creditsUsed": 96,
-      "notes": "Demon_Hunter (Female) \u2014 gender variant | east_attack: weapon not in hand \u2014 regenerate later."
+      "notes": "Demon_Hunter (Female) \u2014 gender variant | east_attack: weapon not in hand \u2014 regenerate later. | M279: regenerated 1 pose(s) [east_attack] using east as SpriteCook reference; awaiting user approval.",
+      "pendingReview": {
+        "east_attack": {
+          "path": "images/pixellab/demon_hunter_female/east_attack.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        }
+      }
     },
     "scavenger_female": {
       "spriteId": "scavenger_female",
@@ -1106,16 +1117,16 @@
     },
     "silas_veilward": {
       "spriteId": "silas_veilward",
-      "status": "approved",
+      "status": "partial",
       "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "approved",
-        "south": "approved",
-        "east": "approved",
-        "east_attack": "approved",
-        "east_spell": "approved",
+        "portrait": "pending_approval",
+        "south": "pending_approval",
+        "east": "pending_approval",
+        "east_attack": "pending_approval",
+        "east_spell": "pending_approval",
         "east_block": "approved",
-        "east_ko": "approved"
+        "east_ko": "pending_approval"
       },
       "artDirectionPath": "data/art_direction/silas_veilward.json",
       "candidateDir": "images/pixellab/silas_veilward",
@@ -1123,20 +1134,46 @@
       "npc": true,
       "playable": false,
       "referenceAssetId": "b6571919-832a-4d37-a96e-0ef41c1c7838",
-      "notes": "NPC Silas Veilward \u2014 reference generated M256, awaiting user approval before per-pose frames. | M257: 7 canonical poses generated via SpriteCook style-locked to referenceAssetId; awaiting user approval."
+      "notes": "NPC Silas Veilward \u2014 reference generated M256, awaiting user approval before per-pose frames. | M257: 7 canonical poses generated via SpriteCook style-locked to referenceAssetId; awaiting user approval. | M279: regenerated 6 pose(s) [south, east, east_attack, east_spell, east_ko, portrait] using east_block as SpriteCook reference; awaiting user approval.",
+      "pendingReview": {
+        "south": {
+          "path": "images/pixellab/silas_veilward/south.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east": {
+          "path": "images/pixellab/silas_veilward/east.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_attack": {
+          "path": "images/pixellab/silas_veilward/east_attack.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_spell": {
+          "path": "images/pixellab/silas_veilward/east_spell.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_ko": {
+          "path": "images/pixellab/silas_veilward/east_ko.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "portrait": {
+          "path": "images/pixellab/silas_veilward/portrait.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        }
+      }
     },
     "kaela_thorne": {
       "spriteId": "kaela_thorne",
-      "status": "approved",
+      "status": "partial",
       "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "approved",
+        "portrait": "pending_approval",
         "south": "approved",
-        "east": "approved",
-        "east_attack": "approved",
-        "east_spell": "approved",
-        "east_block": "approved",
-        "east_ko": "approved"
+        "east": "pending_approval",
+        "east_attack": "pending_approval",
+        "east_spell": "pending_approval",
+        "east_block": "pending_approval",
+        "east_ko": "pending_approval"
       },
       "artDirectionPath": "data/art_direction/kaela_thorne.json",
       "candidateDir": "images/pixellab/kaela_thorne",
@@ -1144,20 +1181,46 @@
       "npc": true,
       "playable": false,
       "referenceAssetId": "3915ff44-808e-4cc3-afeb-e7e870f9a3c9",
-      "notes": "NPC Kaela Thorne \u2014 reference generated M256, awaiting user approval before per-pose frames. | M257: 7 canonical poses generated via SpriteCook style-locked to referenceAssetId; awaiting user approval."
+      "notes": "NPC Kaela Thorne \u2014 reference generated M256, awaiting user approval before per-pose frames. | M257: 7 canonical poses generated via SpriteCook style-locked to referenceAssetId; awaiting user approval. | M279: regenerated 6 pose(s) [east, east_attack, east_block, east_ko, east_spell, portrait] using south as SpriteCook reference; awaiting user approval.",
+      "pendingReview": {
+        "east": {
+          "path": "images/pixellab/kaela_thorne/east.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_attack": {
+          "path": "images/pixellab/kaela_thorne/east_attack.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_block": {
+          "path": "images/pixellab/kaela_thorne/east_block.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_ko": {
+          "path": "images/pixellab/kaela_thorne/east_ko.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_spell": {
+          "path": "images/pixellab/kaela_thorne/east_spell.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "portrait": {
+          "path": "images/pixellab/kaela_thorne/portrait.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        }
+      }
     },
     "marek_greel": {
       "spriteId": "marek_greel",
-      "status": "approved",
+      "status": "partial",
       "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "approved",
-        "south": "approved",
-        "east": "approved",
-        "east_attack": "approved",
-        "east_spell": "approved",
+        "portrait": "pending_approval",
+        "south": "pending_approval",
+        "east": "pending_approval",
+        "east_attack": "pending_approval",
+        "east_spell": "pending_approval",
         "east_block": "approved",
-        "east_ko": "approved"
+        "east_ko": "pending_approval"
       },
       "artDirectionPath": "data/art_direction/marek_greel.json",
       "candidateDir": "images/pixellab/marek_greel",
@@ -1165,20 +1228,46 @@
       "npc": true,
       "playable": false,
       "referenceAssetId": "5bcadf98-8c7d-4fa7-9b72-d19f375dbde9",
-      "notes": "NPC Marek Greel \u2014 reference generated M256, awaiting user approval before per-pose frames. | M257: 7 canonical poses generated via SpriteCook style-locked to referenceAssetId; awaiting user approval."
+      "notes": "NPC Marek Greel \u2014 reference generated M256, awaiting user approval before per-pose frames. | M257: 7 canonical poses generated via SpriteCook style-locked to referenceAssetId; awaiting user approval. | M279: regenerated 6 pose(s) [south, east, east_attack, east_spell, east_ko, portrait] using east_block as SpriteCook reference; awaiting user approval.",
+      "pendingReview": {
+        "south": {
+          "path": "images/pixellab/marek_greel/south.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east": {
+          "path": "images/pixellab/marek_greel/east.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_attack": {
+          "path": "images/pixellab/marek_greel/east_attack.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_spell": {
+          "path": "images/pixellab/marek_greel/east_spell.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_ko": {
+          "path": "images/pixellab/marek_greel/east_ko.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "portrait": {
+          "path": "images/pixellab/marek_greel/portrait.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        }
+      }
     },
     "mira_seer": {
       "spriteId": "mira_seer",
-      "status": "approved",
+      "status": "partial",
       "referenceStatus": "approved",
       "framesStatus": {
-        "portrait": "approved",
-        "south": "approved",
+        "portrait": "pending_approval",
+        "south": "pending_approval",
         "east": "approved",
-        "east_attack": "approved",
-        "east_spell": "approved",
-        "east_block": "approved",
-        "east_ko": "approved"
+        "east_attack": "pending_approval",
+        "east_spell": "pending_approval",
+        "east_block": "pending_approval",
+        "east_ko": "pending_approval"
       },
       "artDirectionPath": "data/art_direction/mira_seer.json",
       "candidateDir": "images/pixellab/mira_seer",
@@ -1186,7 +1275,33 @@
       "npc": true,
       "playable": false,
       "referenceAssetId": "606834db-4ac3-46f5-b7fc-0a00bd9a2c26",
-      "notes": "NPC Mira the Seer \u2014 reference generated M256, awaiting user approval before per-pose frames. | M257: 7 canonical poses generated via SpriteCook style-locked to referenceAssetId; awaiting user approval."
+      "notes": "NPC Mira the Seer \u2014 reference generated M256, awaiting user approval before per-pose frames. | M257: 7 canonical poses generated via SpriteCook style-locked to referenceAssetId; awaiting user approval. | M279: regenerated 6 pose(s) [south, east_attack, east_block, east_spell, east_ko, portrait] using east as SpriteCook reference; awaiting user approval.",
+      "pendingReview": {
+        "south": {
+          "path": "images/pixellab/mira_seer/south.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_attack": {
+          "path": "images/pixellab/mira_seer/east_attack.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_block": {
+          "path": "images/pixellab/mira_seer/east_block.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_spell": {
+          "path": "images/pixellab/mira_seer/east_spell.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "east_ko": {
+          "path": "images/pixellab/mira_seer/east_ko.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        },
+        "portrait": {
+          "path": "images/pixellab/mira_seer/portrait.png",
+          "generatedAt": "2026-04-26T07:45:57.814879Z"
+        }
+      }
     },
     "tinker": {
       "spriteId": "tinker",
@@ -1256,7 +1371,7 @@
       },
       "artDirectionPath": "data/art_direction/veilspawn_herald.json",
       "candidateDir": "images/pixellab/veilspawn_herald",
-      "notes": "M276 N1 — prologue mini-boss. SpriteCook generated via gemini-3.1-flash-image-preview with reference_asset_id 573a1dee-3df9-4f5b-b218-4a73053095a9 for style-lock. Awaiting user approval via redesign page; sync-pixellab-to-spritecook.cjs will mirror frames once approved.",
+      "notes": "M276 N1 \u2014 prologue mini-boss. SpriteCook generated via gemini-3.1-flash-image-preview with reference_asset_id 573a1dee-3df9-4f5b-b218-4a73053095a9 for style-lock. Awaiting user approval via redesign page; sync-pixellab-to-spritecook.cjs will mirror frames once approved.",
       "creditsUsed": 96,
       "spritecookAssetIds": {
         "reference": "573a1dee-3df9-4f5b-b218-4a73053095a9",
