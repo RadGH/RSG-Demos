@@ -165,15 +165,26 @@
   .refcol img.sheet, .subsprites .sub img { cursor: zoom-in; }
   .lightbox {
     position: fixed; inset: 0; background: rgba(0,0,0,0.93);
-    display: none; z-index: 100; flex-direction: column; align-items: center; justify-content: center;
-    padding: 1rem;
+    display: none; z-index: 100; flex-direction: column; align-items: center;
+    /* M279: scroll body content (image + nav + close) on small viewports so
+       the close button is always reachable and the modal never escapes the
+       window. Padding-top = 60px so content clears the sticky close button. */
+    overflow-y: auto; -webkit-overflow-scrolling: touch;
+    padding: 64px 1rem 1.5rem;
   }
   .lightbox.open { display: flex; }
   .lightbox .lb-stage {
-    width: min(90vw, 720px); height: min(72vh, 720px);
+    width: min(92vw, 720px);
+    /* Mobile-first: clamp by both width AND viewport height so the image plus
+       title + nav + counter still fits without forcing the close button off. */
+    height: min(54vh, 560px);
     display: flex; align-items: center; justify-content: center;
     background: repeating-conic-gradient(#151018 0% 25%, #1e1624 0% 50%) 50%/24px 24px;
     border: 1px solid var(--gold); border-radius: 4px;
+    flex-shrink: 0;
+  }
+  @media (min-width: 768px) {
+    .lightbox .lb-stage { height: min(72vh, 720px); }
   }
   .lightbox .lb-stage img {
     max-width: 100%; max-height: 100%; image-rendering: pixelated; display: block;
@@ -181,17 +192,51 @@
   .lightbox .lb-title {
     color: var(--gold); margin: 0.8rem 0 0.2rem; font-family: 'Cinzel',Georgia,serif;
     letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.95rem;
+    text-align: center;
   }
-  .lightbox .lb-sub { color: var(--muted); font-size: 0.75rem; margin: 0 0 0.8rem; }
+  .lightbox .lb-sub { color: var(--muted); font-size: 0.75rem; margin: 0 0 0.8rem; text-align: center; }
   .lightbox .lb-nav { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
   .lightbox button {
     background: var(--panel); color: var(--parchment); border: 1px solid var(--border);
     padding: 0.5rem 1rem; cursor: pointer; font-size: 0.8rem; border-radius: 3px;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.06em; min-height: 44px; min-width: 44px;
   }
   .lightbox button:hover { border-color: var(--gold); color: var(--gold); }
-  .lightbox .lb-close { position: absolute; top: 1rem; right: 1rem; }
+  /* M279: anchor the close button to the viewport (not the scrollable lightbox)
+     so it stays put even on tall image content; bigger touch target for mobile. */
+  .lightbox .lb-close {
+    position: fixed; top: 0.75rem; right: 0.75rem; z-index: 110;
+    background: rgba(20,12,16,0.92); border: 1.5px solid var(--gold); color: var(--gold);
+    padding: 0.55rem 0.95rem; font-size: 0.85rem; font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5); min-height: 44px; min-width: 44px;
+  }
   .lightbox .lb-counter { color: var(--muted); font-size: 0.7rem; margin-top: 0.5rem; letter-spacing: 0.08em; }
+
+  /* M279: pending-approval call-out indicator. Always shown in the summary
+     when count > 0; on mobile it floats as a sticky bottom-right badge so
+     the user can spot pending review at a glance without scrolling. */
+  .summary .stat.stat-attention {
+    border-color: var(--gold); background: rgba(232,160,32,0.12);
+    box-shadow: 0 0 8px rgba(232,160,32,0.3);
+    cursor: pointer;
+  }
+  .summary .stat.stat-attention .v { color: var(--gold); animation: pa-pulse 2s ease-in-out infinite; }
+  @keyframes pa-pulse { 0%,100% { opacity: 0.85; } 50% { opacity: 1; } }
+  #pending-floater {
+    display: none; position: fixed; bottom: 0.85rem; right: 0.85rem; z-index: 90;
+    background: rgba(192,64,48,0.95); color: #fff; border: 1.5px solid var(--gold);
+    padding: 0.55rem 0.85rem; border-radius: 999px; cursor: pointer;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    min-height: 44px; min-width: 44px;
+  }
+  #pending-floater .pf-count {
+    background: #fff; color: #c04030; padding: 0 0.4rem; border-radius: 10px;
+    margin-left: 0.4rem; font-weight: 800;
+  }
+  @media (max-width: 767px) {
+    #pending-floater.show { display: inline-flex; align-items: center; }
+  }
 
   /* ── Desktop-only enhancements ── */
   @media (min-width: 768px) {
@@ -472,22 +517,55 @@ function renderSummary(state) {
   box.innerHTML = '';
   const ids = Object.keys(state.characters);
   const byStatus = s => ids.filter(id => state.characters[id].status === s).length;
+  const pendingApproval = byStatus('pending_approval');
   const stats = [
     ['Characters', ids.length],
     ['Pending', byStatus('pending')],
     ['Reference Ready', byStatus('reference_generated')],
-    ['Pending Approval', byStatus('pending_approval')],
+    ['Pending Approval', pendingApproval, 'attention'],
     ['Reference Approved', byStatus('reference_approved')],
     ['Fully Approved', byStatus('approved')],
     ['Credits Used', state.creditsUsedTotal || 0],
     ['Updated', state.updatedAt ? new Date(state.updatedAt).toLocaleString() : '—'],
   ];
-  stats.forEach(([k, v]) => {
+  stats.forEach(([k, v, kind]) => {
     const s = document.createElement('div');
-    s.className = 'stat';
+    s.className = 'stat' + (kind === 'attention' && v > 0 ? ' stat-attention' : '');
     s.innerHTML = '<div class="k">' + k + '</div><div class="v">' + v + '</div>';
+    if (kind === 'attention' && v > 0) {
+      s.title = 'Tap to jump to Pending Approval section';
+      s.addEventListener('click', _scrollToPendingSection);
+    }
     box.appendChild(s);
   });
+  // M279 — Mobile floating indicator. Visible only on phones (CSS @media)
+  // when there's something waiting for review. Tap = scroll to section.
+  let floater = document.getElementById('pending-floater');
+  if (!floater) {
+    floater = document.createElement('button');
+    floater.type = 'button';
+    floater.id = 'pending-floater';
+    floater.addEventListener('click', _scrollToPendingSection);
+    document.body.appendChild(floater);
+  }
+  if (pendingApproval > 0) {
+    floater.innerHTML = '⚑ Pending Review<span class="pf-count">' + pendingApproval + '</span>';
+    floater.classList.add('show');
+  } else {
+    floater.classList.remove('show');
+  }
+}
+
+function _scrollToPendingSection() {
+  // The "Pending Approval" section header is always the first .section-header
+  // when present (per the SECTIONS order in main()). Scroll to it.
+  const headers = document.querySelectorAll('#characters .section-header');
+  for (const h of headers) {
+    if (/Pending Approval/i.test(h.textContent)) {
+      h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+  }
 }
 
 function renderArtDirection(ad) {
