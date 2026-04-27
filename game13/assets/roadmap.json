@@ -1,7 +1,34 @@
 {
-  "generated": "2026-04-27T05:53:59.273Z",
-  "currentMilestone": 305,
+  "generated": "2026-04-27T06:32:10.298Z",
+  "currentMilestone": 307,
   "milestones": [
+    {
+      "milestone": 305,
+      "title": "Set items + uniques + 40 affixes",
+      "items": [
+        {
+          "label": "Set items (24 sets total)",
+          "status": "done",
+          "tag": "done — m305",
+          "desc": "Manual #10 (doubled per user): 12 low-tier (2-piece — Diablo-2 Sigon-style with powerful low-level modifiers), 8 mid-tier (3-piece), 4 endgame (4–5 piece). Sets have legendary effects on top of stat bonuses (e.g. Mage set: Magic Missile fires bonus AoE projectile at second target). Pre-determined effects, semi-random affix values per template (Sigon Shield always +5 STR but other affixes random)."
+        },
+        {
+          "label": "Unique items (~24 across 5 acts)",
+          "status": "done",
+          "tag": "done — m305",
+          "desc": "Rare items with a legendary effect (rarely multiple). Pre-determined effects; affixes may be pre-determined or random per template."
+        },
+        {
+          "label": "40 new affixes (elemental combos, conditional triggers, set bonuses)",
+          "status": "done",
+          "tag": "done — m305",
+          "desc": "Deepen itemization beyond the current ~30 affixes. Overlaps with sets — design together."
+        }
+      ],
+      "doneCount": 3,
+      "total": 3,
+      "shipped": true
+    },
     {
       "milestone": 304,
       "title": "Multi-phase bosses + boss loot + hidden bosses + dialogue",
@@ -517,21 +544,6 @@
       "doneCount": 6,
       "total": 6,
       "shipped": true
-    },
-    {
-      "milestone": 305,
-      "title": "Set items + uniques + 40 affixes",
-      "items": [
-        {
-          "label": "Set items (24 sets total)",
-          "status": "todo",
-          "tag": "todo — m305",
-          "desc": "Manual #10 (doubled per user): 12 low-tier (2-piece — Diablo-2 Sigon-style with powerful low-level modifiers), 8 mid-tier (3-piece), 4 endgame (4–5 piece). Sets have legendary effects on top of stat bonuses (e.g. Mage set: Magic Missile fires bonus AoE projectile at second target). Pre-determined effects, semi-random affix values per template (Sigon Shield always +5 STR but other affixes random)."
-        }
-      ],
-      "doneCount": 0,
-      "total": 1,
-      "shipped": false
     },
     {
       "milestone": 306,

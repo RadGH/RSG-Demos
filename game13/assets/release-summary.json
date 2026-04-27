@@ -1,5 +1,5 @@
 {
-  "milestone": 305,
+  "milestone": 307,
   "date": "2026-04-26",
-  "summary": "M303 — Enemy spells + champion modifiers: spellFx.js (5 element CSS animations w/reduce-motion fallback), 13 enemy spells in enemySpells.js (incl 3 boss wind-ups), spellList wired on 11 enemies/bosses with cooldowns + interrupt detection. 10 blue-name champion modifiers (regen/aura/fast/extra_strong/tough/cursed/shielded/lifesteal/thorns/inferno) with 5% spawn rate, stat-bumped HP/dmg, blue canvas name + tap-tooltip badges."
+  "summary": "M305 — 24 set items (12 low/8 mid/4 endgame), 24 unique items across 5 acts, 40 new affixes, legendary effects system with combat hooks, purple/orange UI for sets/uniques, boss loot tables updated with unique drops."
 }
