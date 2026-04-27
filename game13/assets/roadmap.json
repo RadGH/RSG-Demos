@@ -1,7 +1,34 @@
 {
-  "generated": "2026-04-27T06:55:17.765Z",
-  "currentMilestone": 308,
+  "generated": "2026-04-27T07:17:18.228Z",
+  "currentMilestone": 309,
   "milestones": [
+    {
+      "milestone": 307,
+      "title": "Crafting + boss preludes + cinematic dialog",
+      "items": [
+        {
+          "label": "Craftable unique items (recipe unlocks on boss kill)",
+          "status": "done",
+          "tag": "done — m307",
+          "desc": "Bridge merchant/blacksmith/enchanter workflows. 5 per act."
+        },
+        {
+          "label": "Crafting recipe unlocks via lore-node exploration",
+          "status": "done",
+          "tag": "done — m307",
+          "desc": "Make Blacksmith/Enchanter discovery dynamic instead of static stock. Manual #12: all basic/white recipes should unlock easily — gating is for higher tiers."
+        },
+        {
+          "label": "Boss-defeat cinematic dialog",
+          "status": "done",
+          "tag": "done — m307",
+          "desc": "Capture story beat, not just combat. Leverage story; minimal boss dialog today."
+        }
+      ],
+      "doneCount": 3,
+      "total": 3,
+      "shipped": true
+    },
     {
       "milestone": 306,
       "title": "Infinite scaling dungeon",
@@ -559,21 +586,6 @@
       "doneCount": 6,
       "total": 6,
       "shipped": true
-    },
-    {
-      "milestone": 307,
-      "title": "Crafting + boss preludes + cinematic dialog",
-      "items": [
-        {
-          "label": "Craftable unique items (recipe unlocks on boss kill)",
-          "status": "todo",
-          "tag": "todo — m307",
-          "desc": "Bridge merchant/blacksmith/enchanter workflows. 5 per act."
-        }
-      ],
-      "doneCount": 0,
-      "total": 1,
-      "shipped": false
     },
     {
       "milestone": 308,

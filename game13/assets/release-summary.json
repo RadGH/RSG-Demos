@@ -1,5 +1,5 @@
 {
-  "milestone": 308,
+  "milestone": 309,
   "date": "2026-04-26",
-  "summary": "M305 — Sets + uniques + affixes: 24 sets (12 low-tier 2-piece / 8 mid 3-piece / 4 endgame 4-5-piece), 24 uniques across 5 acts (boss-tied + open-world drops), 40 new affixes (elemental combo, conditional, defensive, resource, set helpers), 12 legendary effect hooks dispatched on combat-start/hit/crit/cast/kill. Set/unique tooltip + colored borders. Note: onTakeDamage hook deferred to next milestone for re-entrancy safety."
+  "summary": "M306 — Infinite Depths: post-game scaling dungeon unlocked after defeating an Act 5 boss. Procedural 3-5 node floors, HP×1.15^N / dmg×1.10^N scaling, 10 floor effects, anchor boss every 5 floors with guaranteed legendary drop. Local leaderboard, run state persisted, separate InfiniteDungeonScreen + /assets/infinite-dungeon.html catalog page."
 }
