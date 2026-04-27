@@ -1,7 +1,7 @@
 {
-  "milestone": 325,
+  "milestone": 326,
   "date": "2026-04-27",
-  "summary": "M325 — Cloud-synced per-run statistics (run_stats Supabase table; account-only; client-side trim 100 rows per user via after-insert trigger). FTL-style map grid layout (M324) snaps every Act 1-6 zone's nodes onto a 12-col x 12-row grid (6 logical rows x 2 alternating sublanes) preserving graph topology. Clockwork Turret + Tinker sprites regenerated via SpriteCook (12 poses total: 5 turret, 7 tinker; reference-asset chained for character consistency). Checkbox checkmark glyph reworked: now an inline-SVG background-image at 70% size on the box itself, scales perfectly with whatever dimensions the checkbox has.",
+  "summary": "M327 — Bug-fix follow-up: appearance default-unlock now driven by starter classes (warrior/fighter/ranger/rogue/mage) instead of alphabetical sort position (Bard/Chronomancer/Cleric was wrong). Gender filter is now display-only — toggling Male/Female no longer changes which appearances are unlocked. Fame is now GLOBAL (localStorage emberveil_fame_global_v1) so unlocks persist across saves and new games. HireBuilderScreen class cards now use the same wrap-friendly CSS as CharacterBuilderScreen (mobile no longer ellipses 'Paladin' to 'Holy Warrior'). New public/docs/supabase-setup.md covering migration order, application options, verification, rollback — linked from /assets/docs.html under a new Backend section.",
   "categories": [
     "feature"
   ],
