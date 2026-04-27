@@ -1,7 +1,7 @@
 {
-  "milestone": 314,
+  "milestone": 316,
   "date": "2026-04-27",
-  "summary": "M310 — Critical combat/dungeon UI fixes from feedback batch: DungeonScreen now removes its DOM on exit, .combat-screen height:100% to prevent 0px collapse, victory + map modals scroll when overflowing, boss treasure → pick 1 of 3 (rarity colors only, no class suggestion), achievement screen mid-combat now pauses + defers victory, boss-intro splash hides background HUD + click-only dismiss (no countdown), fame popup cancelled on town teardown, combat report uses formatStat() everywhere, Combat Settings pause menu replaces E toggle with DPS+Log+Captions sub-options, captions raised 80px above HP bar.",
+  "summary": "M316 — Settings/Title/Save/Party UI unification: 18 bug fixes covering HireCustom class-card CSS, title screen instant fade-in, save menu scrollable cards with floating Back, Statistics Esc fix, stats localStorage persistence, checkbox checkmark sizing, auto-confirm modal, TownScreen routing to PartyPanelScreen, PPS gold/brown redesign, portrait hidden in equip-panel, auto-equip sweep, inv-char-class margin, DifficultyDialog lifecycle fix, reusable settingsPanel component.",
   "categories": [
     "feature"
   ],
