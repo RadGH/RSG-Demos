@@ -10579,6 +10579,55 @@
         "Per-class unit tests for mergeSkillForCast right now only Cleave is pinned."
       ],
       "notes": "Code review agent completed its pass during the same session. Top three findings flagged as wishlist items for triage. This report consolidates the changelog delta since M246 because prior reports fragmented the fast-travel work across several milestones and the recent rapid iteration deserved a consolidated summary."
+    },
+    {
+      "milestone": "M302 \u2014 Gameplay Batch 1: Combat Additions + New Node Types",
+      "date": "2026-04-26",
+      "summary": "Added 8 gameplay systems: companion level-sync, DEX-check flee, Pilfer Magic (Rogue), Hemorrhage (Rogue bleed burst), Soul Curse + death-spread (Warlock), skill-check map nodes, seeded node-overlay system (merchant/minigame/bandit), and per-spell DoT stacking modes.",
+      "changes": [
+        "Settings: Companion Level Sync toggle (localStorage-persisted); when ON, companions shadow party-average hero level in combat and recalculate initiative accordingly",
+        "LoadGameScreen: party average level shown on save slots when party has 2+ heroes",
+        "Flee rework: highest-DEX member rolls d20 + DEX vs DC (12 + avgEnemyLvl - partyAvgLvl); success flees; failure costs 10% gold (min 50, max 5000) + enemy counter-attack; bosses immune with tooltip",
+        "Rogue skill: Pilfer Magic (unlock 8, 18 MP) \u2014 strips first positive status from enemy, applies to self with bonus duration; 2 talents (dual-strip, damage on steal)",
+        "Rogue skill: Hemorrhage (unlock 13, 22 MP) \u2014 consumes all bleed stacks on target for 30 dmg each, deals base melee hit; 2 talents (higher stack bonus, rebleed after burst)",
+        "Warlock skill: Soul Curse (unlock 8, 20 MP) \u2014 applies global-stacking curse (damage output -10%, 4 rounds); curse spreads to random living enemy on cursed enemy death",
+        "Curse damage reduction wired into _basicAttack for enemy actors with curse status",
+        "_spreadCurseOnDeath called from both _applyDamage death block and _processStatusEffects DoT-kill block",
+        "mapData.js: SKILL_CHECK node type added; 4 skill-check nodes across acts (border_skill STR-DC13, wood_test DEX-DC12, dust_int_check INT-DC15, plateau_con_check CON-DC16)",
+        "MapScreen: SKILL_CHECK icon (#40c8e0 teal), _showSkillCheckModal shows flavor text, party best stat, d20 roll, applies success (gold/xp/lore) or failure (HP/gold/status) outcomes",
+        "Node-overlay system: _ensureZoneOverlays seeds 1-2 overlays per zone using seeded RNG (zone.id hash); stored in gs.nodeOverlays",
+        "_navigateToNode split into overlay check + _navigateToNodeCore; overlay fires first, underlying node always follows",
+        "Merchant overlay: 3-item shop from STOCK pool priced by zone tier",
+        "Memory minigame overlay: 4-card match with 6 flip limit; success +25 gold",
+        "Bandit patrol overlay: pushes CombatScreen with bandit encounter; gs._overlayPendingNodeId tracks pending node; onResume chains to _navigateToNodeCore after bandit fight",
+        "_applyDotStacked helper: per_source (independent stacks per srcId up to maxStacks), per_character (refresh on reapply), global (single stack regardless of source)",
+        "Status row updated to show stack count with x N superscript for multi-stack statuses",
+        "poison_blade and cleave assigned stackingMode per_source, maxStacks 5",
+        "gameState.js: nodeOverlays: {} in DEFAULT_STATE, init, and load migration"
+      ],
+      "bugs": [
+        "Release script incremented milestone counter twice (double invocation) \u2014 shipped as M303 internally but represents M302 content; game_meta.json summary and changelog are correct",
+        "dragon_king_fight boss shows 0% win rate in balance sim (pre-existing, Act 6 endgame tuned for near-impossible); not a regression",
+        "Node-overlay seeded RNG uses string charCode sum \u2014 could collide for zones with similar IDs; low practical risk with current zone set"
+      ],
+      "suggestions": [
+        "Pilfer Magic visual: show stolen buff name in combat log for clarity (currently silent)",
+        "Flee failure counter-attack could be animated more dramatically \u2014 currently uses the existing _basicAttack without special fanfare",
+        "Skill-check nodes could benefit from a visual challenge icon on the map node beyond just color differentiation",
+        "Memory minigame could scale difficulty (more cards, fewer flips) at higher acts"
+      ],
+      "recommendations": [
+        "Now that _applyDotStacked exists, migrate all legacy _applyStatus calls for bleed/poison/burn to use it for full stacking consistency",
+        "Companion level sync initiative recalc assumes attrs are available on the source member \u2014 add defensive fallback for companions without attrs",
+        "Node overlays are seeded once per zone ID \u2014 if a zone is revisited after save/load, overlays persist correctly via gs.nodeOverlays; confirm this survives the full save/load cycle in manual QA"
+      ],
+      "ideas": [
+        "Curse could have visual web/shadow vfx on the cursed enemy nameplate",
+        "A Warlock talent could increase curse spread radius (spreads to 2 enemies instead of 1)",
+        "Skill-check node outcomes could feed into a lore codex (collecting lore flag entries)",
+        "Bandit overlay could drop a random item instead of just triggering combat"
+      ],
+      "notes": "All 8 wishlist items for M302 marked done. 277/277 vitest tests pass. Clean Vite build. No new dependencies."
     }
   ],
   "assets": []

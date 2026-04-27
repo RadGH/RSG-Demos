@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-27T04:20:11.008Z",
+  "generated": "2026-04-27T05:02:03.043Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,105 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 302,
+      "date": "2026-04-26",
+      "summary": "— Gameplay batch 1: companion level-sync toggle (Settings), party avg level on save slots, DEX-check flee with gold penalty + counter-attack on failure (boss immune), Pilfer Magic skill (Rogue, strips enemy buff), Hemorrhage skill (Rogue, consumes bleed stacks for burst damage), Soul Curse + death-spread mechanic (Warlock), skill-check map nodes (4 examples across acts), node-overlay system (seeded merchant/memory-minigame/bandit patrol overlays per zone, overlay fires before underlying node), DoT stacking modes per_source/per_character/global with _applyDotStacked helper, stack count display in status rows.",
+      "items": [
+        {
+          "text": "— Gameplay batch 1: companion level-sync toggle (Settings), party avg level on save slots, DEX-check flee with gold penalty + counter-attack on failure (boss immune), Pilfer Magic skill (Rogue, strips enemy buff), Hemorrhage skill (Rogue, consumes bleed stacks for burst damage), Soul Curse + death-spread mechanic (Warlock), skill-check map nodes (4 examples across acts), node-overlay system (seeded merchant/memory-minigame/bandit patrol overlays per zone, overlay fires before underlying node), DoT stacking modes per_source/per_character/global with _applyDotStacked helper, stack count display in status rows.",
+          "categories": [
+            "Balance"
+          ]
+        },
+        {
+          "text": "M301 — Headless simulator + regression infra: scripts/lib/combat-sim.mjs API, parallel batch-rebalance + CSV, configurable per-act regression thresholds + release.sh hook, encounter difficulty ratings, item validator, affix coverage, save-load tester with milestone snapshots, loot audit (merchant/guild/black market), combat-replay export+HTML player, status-matrix grid, playthrough-sim with softlock detection.",
+          "categories": [
+            "BugFix",
+            "Balance"
+          ]
+        },
+        {
+          "text": "M300 — Devtool batch 2: skill-sim, affix-matrix, spell-catalog compare mode, asset-pipeline-trace (13 scripts), image-review-manifest cleanup (917→782), character-redesign-archive, rebalance-diff snapshot comparison.",
+          "categories": [
+            "Balance",
+            "Art"
+          ]
+        },
+        {
+          "text": "M299 — Devtool catalogs + live-data override system: emit-game-data.cjs prebuild → 10 JSON data files; data-source.js with localStorage override + revert; data-overrides.html manager. Five catalog pages: companion, dungeon, status-effect, achievement-roadmap, tools landing.",
+          "categories": [
+            "Feature"
+          ]
+        },
+        {
+          "text": "M298 — Changelog flow + lore + roadmap + monument: structured changelog with 5 category badges + /assets/changelog.html, Whats New splash on first boot after milestone, featureRegistry + newBadgeIfRecent() helper, /assets/roadmap.html derived from wishlist plan, new in-game LoreCompendiumScreen (25 entries), hardcore monument on TitleScreen with disabled-but-loadable Fallen save slots.",
+          "categories": [
+            "Feature"
+          ]
+        },
+        {
+          "text": "M297 — Keyboard navigation: new keyboardNav.js helper, full arrow-Tab-Enter-Escape across 13 menu screens, :focus-visible gold ring (pointer-suppressed). Combat: digit-key shortcuts for action buttons; full arrow-target selection scoped down per user direction.",
+          "categories": [
+            "Feature"
+          ]
+        },
+        {
+          "text": "M296 — Accessibility: colorblind palettes (default + 3 variants via CSS vars), 4-step font-size scaling, global 44px tap-target rule, 3-way reduce-motion toggle in Settings (Auto/On/Off) with expanded coverage, combat-captions mode (24px aria-live).",
+          "categories": [
+            "Balance",
+            "QoL",
+            "Art"
+          ]
+        },
+        {
+          "text": "M295 — Polish: enchanter upgrade preview tooltip (before/after stats), 3-slot potion belt per character with combat-row quick access, achievement-unlock toasts (gold variant, tappable), Whats New modal in GameMenu pulling from auto-emitted release-summary.json (prebuild step), shared statusEffects.js module with plain-language descriptions, 11 boss intro preludes authored.",
+          "categories": [
+            "QoL"
+          ]
+        },
+        {
+          "text": "M294 — UI batch 2: PartyPanelScreen unifies Party/Inventory/Spells/Passives/Attributes under one tabbed view (old InventoryScreen + SkillTreeScreen marked DEPRECATED M294, kept in repo). Map 'Inventory' button renamed 'Party' and points at the new screen. Zone fast-travel collapses to a dropdown at 4+ zones unlocked. Boss-intro splash card uses clamp() font sizing + overflow-wrap so long names (Unraveler-of-Mortal-Threads etc.) wrap on iPhone instead of cutting off; canvas boss name renderer also clamps to 90% width. Dual-compare mode for rings/offhand activates on desktop viewports (min-width 700 + hover) and falls back to single-compare on narrow.",
+          "categories": [
+            "QoL",
+            "Art"
+          ]
+        },
+        {
+          "text": "M293 — Small UI batch 1: skill-points notification bubble now clears immediately after combat level-up auto-allocation (root cause: MapScreen badges were baked-in HTML, fixed via _refreshHeaderBadges() in onResume()). Quick-equip toast on item pickup with tappable upgrade-available variant. Talent preview tooltips on skill-tree upgrade picker via formatTalentEffect(). Per-character scroll-position memory in InventoryScreen. Status-effect duration glyphs + plain-language tooltips on combat HUD. PartyScreen role badges (Tank/DPS/Support/Healer) as inline SVG with role-color coding (no emoji per CLAUDE.md).",
+          "categories": [
+            "BugFix",
+            "QoL"
+          ]
+        },
+        {
+          "text": "M292 — Brainstorm→wishlist migration. 74 approved items + 19 manual additions grouped by target milestone (M293–M309) under #approved-brainstorm in public/assets/wishlist.html. brainstorm.html now shows approved items in a separate non-interactive Approved section. CLAUDE.md updated so future Claude reads the wishlist plan first at session start.",
+          "categories": [
+            "Feature"
+          ]
+        },
+        {
+          "text": "M219 — Log Images debug tracing: new src/utils/imageLog.js helper (reads emberveil_dbg_log_images flag), wired into CombatScreen (combat-bg + hero/companion/enemy sprites), spriteUtils.portraitImg (town-party, town-hire, inventory-grid contexts), TownScreen, InventoryScreen. Added floating gear icon debug buttons on CombatScreen and MapScreen (bottom-right, 44x44, visible only when Debug mode is on), each opens the placeholder Combat Debug (M220) or Map Debug (M221) modal.",
+          "categories": [
+            "Feature"
+          ]
+        },
+        {
+          "text": "M217 — 14 frames regenerated across 8 classes: chronomancer_male east/east_attack/east_spell/east_block (bobblehead fix), chronomancer_female south (pose + color match), dragon_knight_male south (removed phantom 2nd hammer), runesmith_male east_attack (restored legs), runesmith_female south (smith build match), shadow_dancer_female south/east (full-canvas scale), swashbuckler_male south/east_block + swashbuckler_female east/east_block (legs visible). sorcerer_male east_spell adopted as canonical sizing reference. Wishlist: sorcerer_male other 4 frames, tactician_male east_attack, witch_hunter east_spell all flagged for future scale fixes.",
+          "categories": [
+            "BugFix",
+            "Balance"
+          ]
+        },
+        {
+          "text": "M216 — War Dog sprite redesigned via SpriteCook (5-pose set: portrait, south, east, east_attack, east_ko). Dropped the OpenAI 'bulldog in plate armor' look for a muscular scarred mastiff with studded leather collar, frayed red bandana, and leather chest strap. Matches other companion dog pose coverage (dire_wolf / bone_hound / shadow_cat). east/east_ko muzzle color drift flagged on wishlist for future touch-up.",
+          "categories": [
+            "Balance",
+            "Art"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 208,
       "date": "",

@@ -1,5 +1,5 @@
 {
-  "milestone": 300,
+  "milestone": 303,
   "date": "2026-04-26",
-  "summary": "M300 — Devtool batch 2: skill-sim.html (interaction simulator + 100-combat preview), affix-matrix.html (NxN cell grid with stack/conflict/multiply/independent heuristic), spell-catalog compare mode (up to 4 spells side-by-side), asset-pipeline-trace.html (13 build scripts mapped), image-review-manifest cleanup (917→782 entries, 33.5 KB saved), character-redesign-archive (forward-only), rebalance-diff.html (snapshot-A vs snapshot-B color-coded delta)."
+  "summary": "M302 — Gameplay batch 1: companion level-sync, DEX-check flee, Pilfer Magic + Hemorrhage (Rogue), Soul Curse + curse-spread system (Warlock), skill-check map nodes, node-overlay system (merchant/minigame/bandit), DoT stacking modes per-spell."
 }

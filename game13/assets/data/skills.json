@@ -414,7 +414,7 @@
     "type": "buff",
     "mpCost": 10,
     "unlockLevel": 5,
-    "description": "Next 3 attacks apply Poison DoT.",
+    "description": "Next 3 attacks apply Poison DoT (up to 5 stacks per source).",
     "talents": [
       "pb_deep",
       "pb_extra"
@@ -444,6 +444,32 @@
     "talents": [
       "dm_linger",
       "dm_exec"
+    ]
+  },
+  {
+    "id": "pilfer_magic",
+    "name": "Pilfer Magic",
+    "class": "rogue",
+    "type": "debuff",
+    "mpCost": 18,
+    "unlockLevel": 8,
+    "description": "Strip the first positive status from a target enemy and apply it to yourself for the remaining duration.",
+    "talents": [
+      "pm_two",
+      "pm_dmg"
+    ]
+  },
+  {
+    "id": "hemorrhage",
+    "name": "Hemorrhage",
+    "class": "rogue",
+    "type": "melee",
+    "mpCost": 22,
+    "unlockLevel": 13,
+    "description": "Consumes all Bleed stacks on target for 30 damage each, then deals a base attack. Stacks are reset after.",
+    "talents": [
+      "hm_spread",
+      "hm_rebleed"
     ]
   },
   {
@@ -602,6 +628,19 @@
       "vr_long",
       "vr_stun",
       "wl_demon"
+    ]
+  },
+  {
+    "id": "soul_curse",
+    "name": "Soul Curse",
+    "class": "warlock",
+    "type": "debuff",
+    "mpCost": 20,
+    "unlockLevel": 8,
+    "description": "Apply a Curse to the target: reduces its damage output by 10%. When the cursed enemy dies the curse spreads to a random adjacent living enemy.",
+    "talents": [
+      "sc_strong",
+      "sc_chain"
     ]
   },
   {

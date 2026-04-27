@@ -1,7 +1,64 @@
 {
-  "generated": "2026-04-27T04:20:11.048Z",
-  "currentMilestone": 300,
+  "generated": "2026-04-27T05:02:03.081Z",
+  "currentMilestone": 303,
   "milestones": [
+    {
+      "milestone": 302,
+      "title": "Gameplay batch 1: Combat additions + new node types",
+      "items": [
+        {
+          "label": "Companion level-sync option",
+          "status": "done",
+          "tag": "done — m302",
+          "desc": "Scale companion to party avg. Manual #5: party average level should also be displayed on save game slots so you can quickly compare playthroughs."
+        },
+        {
+          "label": "Flee from combat (DEX check; failure costs gold)",
+          "status": "done",
+          "tag": "done — m302",
+          "desc": "Recovery option early-act instead of auto-wipe."
+        },
+        {
+          "label": "Steal-buff mechanic (Rogue)",
+          "status": "done",
+          "tag": "done — m302",
+          "desc": "Pull enemy buffs to self. New effect type; high-skill play."
+        },
+        {
+          "label": "Bleed-stack burst finisher skill",
+          "status": "done",
+          "tag": "done — m302",
+          "desc": "Make bleed-focused builds rewarding beyond passive DoT."
+        },
+        {
+          "label": "Curse system (negative buff that spreads on death)",
+          "status": "done",
+          "tag": "done — m302",
+          "desc": "Differentiate curses from poison/burn; Warlock identity."
+        },
+        {
+          "label": "Skill-check node (single attribute roll)",
+          "status": "done",
+          "tag": "done — m302",
+          "desc": "Success/fail branches. Rewards stat investment."
+        },
+        {
+          "label": "Travelling merchant + minigame node-overlay system",
+          "status": "done",
+          "tag": "done — m302",
+          "desc": "Travelling merchant stops on the path; one-time stock. Manual #9: generalize to a node-overlay system — random encounters can overlay an existing node OR appear between nodes. If overlaying, the node-click triggers the overlay first, THEN starts the underlying node encounter (do NOT let the user skip the underlying node — known bug on Node 1 of new maps). Includes positive (merchant), neutral (memory minigame), and hostile (bandit patrol) overlays. Ties into quest system."
+        },
+        {
+          "label": "DoT stacking modes per-spell",
+          "status": "done",
+          "tag": "done — m302",
+          "desc": "Manual #6: Bleed, poison, and other DoTs each declare a stacking mode: per-source (each character independently up to N stacks — e.g. 2 rogues × 5 = 10), per-character (one stack per source), or global (one stack from any source). Tooltips read e.g. \"Poison Dagger: applies up to 5 stacks of poison on target.\" Pick whichever mode best suits each spell."
+        }
+      ],
+      "doneCount": 8,
+      "total": 8,
+      "shipped": true
+    },
     {
       "milestone": 301,
       "title": "Headless simulator + regression infra",
@@ -406,21 +463,6 @@
       "doneCount": 6,
       "total": 6,
       "shipped": true
-    },
-    {
-      "milestone": 302,
-      "title": "Gameplay batch 1: Combat additions + new node types",
-      "items": [
-        {
-          "label": "Companion level-sync option",
-          "status": "todo",
-          "tag": "todo — m302",
-          "desc": "Scale companion to party avg. Manual #5: party average level should also be displayed on save game slots so you can quickly compare playthroughs."
-        }
-      ],
-      "doneCount": 0,
-      "total": 1,
-      "shipped": false
     },
     {
       "milestone": 303,
