@@ -1,5 +1,5 @@
 {
-  "milestone": 294,
+  "milestone": 295,
   "date": "2026-04-26",
-  "summary": "M294 — UI batch 2: New unified PartyPanelScreen with Party/Inventory/Spells/Passives/Attributes tabs (old InventoryScreen + SkillTreeScreen marked deprecated, kept in repo). Map 'Inventory' button renamed 'Party'. Zone fast-travel switches to a dropdown when 4+ zones are unlocked. Boss-intro splash with name auto-wrap and clamp() sizing for long boss names on iPhone. Dual-comparison mode for rings/offhand on desktop viewports."
+  "summary": "M295 — Polish batch: Enchanter upgrade preview tooltip with before/after stat deltas finalized. Potion belt — 3-slot quick-access consumables per character, accessible during combat. Achievement-unlock toast (gold variant, 6s, tappable). 'What's New' shortcut in GameMenu reads release-summary.json (auto-emitted prebuild). Shared STATUS_META module with plain-language status descriptions. Boss-specific intro preludes — 2 lines per boss, 11 bosses authored."
 }

@@ -1,10 +1,10 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/StatsScreen-CKSjPdqz.js","assets/play-BbhfFBAv.js","assets/modulepreload-polyfill-B5Qt9EMX.js","assets/savesClient-Dh5r3e2b.js","assets/version-w0TUOj_k.js","assets/play-BnSWl064.css"])))=>i.map(i=>d[i]);
-import{i as n,c as p,r as o,G as d,g as c,p as m,R as l,_ as g,a as f}from"./play-BbhfFBAv.js";import"./modulepreload-polyfill-B5Qt9EMX.js";import"./savesClient-Dh5r3e2b.js";import"./version-w0TUOj_k.js";class k{constructor(e,r){this.manager=e,this.audio=r,this.noGameMenuEsc=!0}onEnter(){n("rip-styles",u),this._el=p("div","rip-screen"),document.body.appendChild(this._el),this._render()}onExit(){o(this._el),this._el=null}destroy(){o(this._el),this._el=null}update(){}draw(){}_render(){const e=d.get(),r=e.rip||{},t=[...e.party||[],...e.companions||[]],s=r.date?new Date(r.date).toLocaleString():"—";this._el.innerHTML=`
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/StatsScreen-kUJ2Y1WW.js","assets/play-C6iOO0sn.js","assets/modulepreload-polyfill-B5Qt9EMX.js","assets/savesClient-Dh5r3e2b.js","assets/version-K3QBxLAa.js","assets/play-DIrOA_vo.css"])))=>i.map(i=>d[i]);
+import{i as l,c as n,r as o,G as p,g as d,p as c,_ as m,a as g}from"./play-C6iOO0sn.js";import"./modulepreload-polyfill-B5Qt9EMX.js";import"./savesClient-Dh5r3e2b.js";import"./version-K3QBxLAa.js";class h{constructor(r,e){this.manager=r,this.audio=e,this.noGameMenuEsc=!0}onEnter(){l("rip-styles",f),this._el=n("div","rip-screen"),document.body.appendChild(this._el),this._render()}onExit(){o(this._el),this._el=null}destroy(){o(this._el),this._el=null}update(){}draw(){}_render(){const r=p.get(),e=r.rip||{},t=[...r.party||[],...r.companions||[]],s=e.date?new Date(e.date).toLocaleString():"—";this._el.innerHTML=`
       <div class="rip-header">
         <div class="rip-skull">⚰</div>
         <div class="rip-title-block">
           <div class="rip-title">RIP</div>
-          <div class="rip-sub">Hardcore — fell ${s} in <em>${r.zoneId||"an unknown place"}</em></div>
+          <div class="rip-sub">Hardcore — fell ${s} in <em>${e.zoneId||"an unknown place"}</em></div>
         </div>
         <button class="rip-close" id="rip-close">✕ Close</button>
       </div>
@@ -13,9 +13,9 @@ import{i as n,c as p,r as o,G as d,g as c,p as m,R as l,_ as g,a as f}from"./pla
         <div class="rip-section">
           <div class="rip-section-title">Final Party</div>
           <div class="rip-party">
-            ${t.map(i=>{const a=c(i.id);return`
+            ${t.map(i=>{const a=d(i.id);return`
                 <div class="rip-card">
-                  <div class="rip-card-portrait">${m(i,56,"rip-portrait")}</div>
+                  <div class="rip-card-portrait">${c(i,56,"rip-portrait")}</div>
                   <div class="rip-card-info">
                     <div class="rip-card-name">${i.name}</div>
                     <div class="rip-card-class">${i.cls||i.class||"companion"} · L${i.level||1}</div>
@@ -33,11 +33,11 @@ import{i as n,c as p,r as o,G as d,g as c,p as m,R as l,_ as g,a as f}from"./pla
 
         <div class="rip-section">
           <div class="rip-section-title">Inventory</div>
-          ${(e.inventory||[]).length?`
+          ${(r.inventory||[]).length?`
             <div class="rip-items">
-              ${e.inventory.map(i=>`
-                <div class="rip-item" style="border-color:${l[i.rarity]||"#8a7a6a"}">
-                  <div class="rii-name" style="color:${l[i.rarity]||"#f0e8d8"}">${i.name}</div>
+              ${r.inventory.map(i=>`
+                <div class="rip-item" style="border-color:var(--rarity-${i.rarity}, #8a7a6a)">
+                  <div class="rii-name" style="color:var(--rarity-${i.rarity}, #f0e8d8)">${i.name}</div>
                   <div class="rii-type">${i.subtype||i.type}</div>
                 </div>
               `).join("")}
@@ -61,7 +61,7 @@ import{i as n,c as p,r as o,G as d,g as c,p as m,R as l,_ as g,a as f}from"./pla
           <button class="rip-btn rip-btn-danger" id="rip-back">← Back</button>
         </div>
       </div>
-    `,this._el.querySelector("#rip-close").addEventListener("click",()=>{this.audio.playSfx("click"),this.manager.pop()}),this._el.querySelector("#rip-back").addEventListener("click",()=>{this.audio.playSfx("click"),this.manager.pop()}),this._el.querySelector("#rip-stats").addEventListener("click",async()=>{this.audio.playSfx("click");const{StatsScreen:i}=await g(async()=>{const{StatsScreen:a}=await import("./StatsScreen-CKSjPdqz.js");return{StatsScreen:a}},__vite__mapDeps([0,1,2,3,4,5]));this.manager.push(new i(this.manager,this.audio,{tab:"party"}))})}_collectLog(e){const r=[];for(const t of e)for(const s of f(t.id))r.push({...s,who:t.name});return r.sort((t,s)=>(s.ts||0)-(t.ts||0)),r}_fmt(e){return e>=1e3?(e/1e3).toFixed(1)+"k":Math.round(e).toString()}}const u=`
+    `,this._el.querySelector("#rip-close").addEventListener("click",()=>{this.audio.playSfx("click"),this.manager.pop()}),this._el.querySelector("#rip-back").addEventListener("click",()=>{this.audio.playSfx("click"),this.manager.pop()}),this._el.querySelector("#rip-stats").addEventListener("click",async()=>{this.audio.playSfx("click");const{StatsScreen:i}=await m(async()=>{const{StatsScreen:a}=await import("./StatsScreen-kUJ2Y1WW.js");return{StatsScreen:a}},__vite__mapDeps([0,1,2,3,4,5]));this.manager.push(new i(this.manager,this.audio,{tab:"party"}))})}_collectLog(r){const e=[];for(const t of r)for(const s of g(t.id))e.push({...s,who:t.name});return e.sort((t,s)=>(s.ts||0)-(t.ts||0)),e}_fmt(r){return r>=1e3?(r/1e3).toFixed(1)+"k":Math.round(r).toString()}}const f=`
 .rip-screen { position: absolute; inset: 0; background: linear-gradient(180deg,#0a0608,#1a0808); color: #f0e8d8; font-family: 'Inter',sans-serif; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
 .rip-header { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; border-bottom: 1px solid rgba(192,64,48,0.35); background: rgba(0,0,0,0.5); flex-shrink: 0; }
 .rip-skull { font-size: 2rem; color: #c04030; }
@@ -91,4 +91,4 @@ import{i as n,c as p,r as o,G as d,g as c,p as m,R as l,_ as g,a as f}from"./pla
 .rip-actions { display: flex; justify-content: center; gap: 0.6rem; margin: 1rem 0 2rem; }
 .rip-btn { background: rgba(232,160,32,0.1); border: 1px solid rgba(232,160,32,0.4); color: #e8a020; padding: 0.6rem 1rem; border-radius: 6px; font-size: 0.78rem; cursor: pointer; min-height: 44px; font-family: 'Cinzel',serif; letter-spacing: 0.06em; }
 .rip-btn-danger { background: rgba(192,64,48,0.1); border-color: rgba(192,64,48,0.4); color: #ff8a70; }
-`;export{k as RipViewScreen};
+`;export{h as RipViewScreen};
