@@ -1,5 +1,7 @@
 {
-  "milestone": 309,
-  "date": "2026-04-26",
-  "summary": "M306 — Infinite Depths: post-game scaling dungeon unlocked after defeating an Act 5 boss. Procedural 3-5 node floors, HP×1.15^N / dmg×1.10^N scaling, 10 floor effects, anchor boss every 5 floors with guaranteed legendary drop. Local leaderboard, run state persisted, separate InfiniteDungeonScreen + /assets/infinite-dungeon.html catalog page."
+  "milestone": 312,
+  "date": "2026-04-27",
+  "summary": "M311 — Number rounding audit (formatStat helper, no more floating-point artifacts in stat displays) + fame-locked appearance unlocks (5 base + up to 5 more at 100/250/500/1000/2000 fame thresholds, fame badge on title screen and game menu)",
+  "categories": [],
+  "breakingChanges": []
 }

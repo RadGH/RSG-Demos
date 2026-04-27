@@ -91,14 +91,18 @@ p.sub { color: var(--muted); font-size: 0.82rem; margin: 0 0 1.25rem; }
   </div>
 
   <div class="section-title">Milestone Snapshots</div>
-  <div class="milestone-note">
-    Milestone snapshots will be generated starting M309 versioned asset archive.
-    The snapshot restore buttons below exist as UI scaffolding — no snapshot files are available yet.
-    Once snapshots are generated at <code>/assets/data/snapshots/M###/&lt;type&gt;.json</code>,
-    this panel will enable restore.
+  <div class="milestone-note" id="snapshotNote">
+    Loading available snapshots...
   </div>
-  <div id="snapshotPanel" style="margin-top:0.6rem;opacity:0.5;pointer-events:none;">
-    <button class="btn" disabled>No snapshots available yet</button>
+  <div id="snapshotPanel" style="margin-top:0.6rem;display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
+    <select id="snapshotSelect" class="btn" style="min-width:160px;">
+      <option value="">Select milestone...</option>
+    </select>
+    <select id="snapshotTypeSelect" class="btn" style="min-width:160px;">
+      <option value="">All types</option>
+    </select>
+    <button class="btn" id="snapshotRestoreBtn" disabled>Restore from Snapshot</button>
+    <button class="btn" id="snapshotRestoreAllBtn" disabled>Restore All Types</button>
   </div>
 </div>
 
@@ -215,6 +219,131 @@ clearAllBtn.addEventListener('click', () => {
 });
 
 render();
+
+// ─── Milestone Snapshot Restore ──────────────────────────────────────────
+
+const snapshotNote      = document.getElementById('snapshotNote');
+const snapshotSelect    = document.getElementById('snapshotSelect');
+const snapshotTypeSelect = document.getElementById('snapshotTypeSelect');
+const snapshotRestoreBtn    = document.getElementById('snapshotRestoreBtn');
+const snapshotRestoreAllBtn = document.getElementById('snapshotRestoreAllBtn');
+
+const SNAPSHOT_BASE = './data/snapshots/';
+
+async function loadSnapshotManifests() {
+  // Attempt to discover snapshots by fetching a known index, or by probing
+  // milestone numbers relative to the latest release-summary.
+  // Strategy: fetch release-summary.json to know the latest milestone, then
+  // probe M### folders downward until we get 404s (up to 20 back).
+  let latestMilestone = 0;
+  try {
+    const rs = await fetch('./release-summary.json');
+    if (rs.ok) {
+      const data = await rs.json();
+      latestMilestone = data.milestone || 0;
+    }
+  } catch (_) {}
+
+  const manifests = [];
+  const probeStart = latestMilestone > 0 ? latestMilestone : 320;
+  const probeEnd   = Math.max(probeStart - 30, 1);
+
+  const probes = [];
+  for (let m = probeStart; m >= probeEnd; m--) {
+    probes.push(m);
+  }
+
+  const results = await Promise.allSettled(
+    probes.map(async m => {
+      const url = SNAPSHOT_BASE + 'M' + m + '/manifest.json';
+      const r = await fetch(url);
+      if (!r.ok) return null;
+      const data = await r.json();
+      return { milestone: m, ...data };
+    })
+  );
+
+  for (const r of results) {
+    if (r.status === 'fulfilled' && r.value !== null) {
+      manifests.push(r.value);
+    }
+  }
+
+  manifests.sort((a, b) => b.milestone - a.milestone);
+  return manifests;
+}
+
+async function initSnapshotPanel() {
+  const manifests = await loadSnapshotManifests();
+
+  if (!manifests.length) {
+    snapshotNote.innerHTML =
+      'No milestone snapshots found yet. Snapshots are created automatically on each <code>release.sh game13</code> run starting with M313.';
+    snapshotPanel.style.display = 'none';
+    return;
+  }
+
+  snapshotNote.innerHTML =
+    manifests.length + ' snapshot(s) available. Select a milestone and optionally a data type, then restore.';
+
+  // Populate milestone select
+  for (const mf of manifests) {
+    const opt = document.createElement('option');
+    opt.value = 'M' + mf.milestone;
+    opt.textContent = 'M' + mf.milestone + ' (' + (mf.created ? mf.created.slice(0, 10) : 'no date') + ')';
+    snapshotSelect.appendChild(opt);
+  }
+
+  // Populate type select from first manifest types
+  const allTypes = manifests[0].types || DATA_TYPES;
+  for (const t of allTypes) {
+    const opt = document.createElement('option');
+    opt.value = t;
+    opt.textContent = LABELS[t] || t;
+    snapshotTypeSelect.appendChild(opt);
+  }
+
+  snapshotSelect.disabled = false;
+  snapshotRestoreBtn.disabled = false;
+  snapshotRestoreAllBtn.disabled = false;
+
+  async function fetchAndApply(milestoneKey, type) {
+    const url = SNAPSHOT_BASE + milestoneKey + '/' + type + '.json';
+    const r = await fetch(url);
+    if (!r.ok) throw new Error('HTTP ' + r.status + ' for ' + url);
+    const data = await r.json();
+    setOverride(type, data);
+    return type;
+  }
+
+  snapshotRestoreBtn.addEventListener('click', async () => {
+    const mKey  = snapshotSelect.value;
+    const type  = snapshotTypeSelect.value;
+    if (!mKey) { alert('Select a milestone first.'); return; }
+    if (!type) { alert('Select a data type first, or use "Restore All Types".'); return; }
+    try {
+      await fetchAndApply(mKey, type);
+      render();
+      showToast('Restored ' + (LABELS[type] || type) + ' from ' + mKey);
+    } catch (err) {
+      alert('Restore failed: ' + err.message);
+    }
+  });
+
+  snapshotRestoreAllBtn.addEventListener('click', async () => {
+    const mKey = snapshotSelect.value;
+    if (!mKey) { alert('Select a milestone first.'); return; }
+    const mf = manifests.find(m => 'M' + m.milestone === mKey);
+    const types = (mf && mf.types) ? mf.types : DATA_TYPES;
+    const results = await Promise.allSettled(types.map(t => fetchAndApply(mKey, t)));
+    const ok = results.filter(r => r.status === 'fulfilled').length;
+    const fail = results.length - ok;
+    render();
+    showToast('Restored ' + ok + ' type(s) from ' + mKey + (fail ? '; ' + fail + ' failed' : ''));
+  });
+}
+
+initSnapshotPanel();
 </script>
 </body>
 </html>

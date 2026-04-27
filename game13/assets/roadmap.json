@@ -1,7 +1,61 @@
 {
-  "generated": "2026-04-27T07:17:18.228Z",
-  "currentMilestone": 309,
+  "generated": "2026-04-27T08:01:34.175Z",
+  "currentMilestone": 312,
   "milestones": [
+    {
+      "milestone": 309,
+      "title": "News flow + asset archive + release pipeline",
+      "items": [
+        {
+          "label": "public/news/ folder + Latest News widget",
+          "status": "done",
+          "tag": "done — m313",
+          "desc": "public/news/*.md with YAML frontmatter; emit-news-index.cjs prebuild script writes index.json; Latest News widget on asset gallery (top 3 cards); news-archive.html with category filter. M302/M305/M306 starter entries added."
+        },
+        {
+          "label": "Versioned asset archive (snapshot per milestone)",
+          "status": "done",
+          "tag": "done — m313",
+          "desc": "snapshot-assets.cjs wired into release.sh after game_meta.json update; idempotent (skips existing). data-overrides.html now probes snapshot manifests and presents working Restore from Snapshot M### dropdown with per-type and restore-all modes."
+        },
+        {
+          "label": "release.sh prompt for changelog category tags",
+          "status": "done",
+          "tag": "done — m313",
+          "desc": "RELEASE_CATEGORY env var (feature/balance/bugfix/qol/art/infrastructure, comma-separated). Interactive prompt if unset and TTY; default to feature in non-interactive mode. Persisted to releases[N].categories in game_meta.json. parse-changelog-categories.cjs merges explicit tags into structured output."
+        },
+        {
+          "label": "Backward-compat notes on release",
+          "status": "done",
+          "tag": "done — m313",
+          "desc": "BREAKING_CHANGES env var (pipe-delimited) persisted to releases[N].breakingChanges. emit-release-summary.cjs includes field. What's New splash renders Migration Notes section when non-empty. Retroactive notes added for M302/M305/M306/M307. Documented in public/docs/no-silent-shelving.md."
+        }
+      ],
+      "doneCount": 4,
+      "total": 4,
+      "shipped": true
+    },
+    {
+      "milestone": 308,
+      "title": "Number rounding + fame-locked unlocks",
+      "items": [
+        {
+          "label": "Number rounding audit",
+          "status": "done",
+          "tag": "done — m308",
+          "desc": "Manual #16: floor int stats (HP/MP/STR/DEX/INT/WIS/CON/CHA, armor, damage); display floats with up to 2 decimals (crit chance shows 1.15%, not 13.000000001%). Apply across DPS meter + character stats. Multipliers, dodge %, resistances stay float; consider per-stat formatting helper."
+        },
+        {
+          "label": "Fame-locked appearance / weapon variety unlocks",
+          "status": "done",
+          "tag": "done — m308",
+          "desc": "Long-term carrot; fame is invisible today. Fame counter in CharacterBuilder + TitleScreen badge. Appearances beyond slot 5 gate behind fame thresholds (100/250/500/1000/2000). Locked tiles greyed out with fame target tooltip."
+        }
+      ],
+      "doneCount": 2,
+      "total": 2,
+      "shipped": true
+    },
     {
       "milestone": 307,
       "title": "Crafting + boss preludes + cinematic dialog",
@@ -586,36 +640,6 @@
       "doneCount": 6,
       "total": 6,
       "shipped": true
-    },
-    {
-      "milestone": 308,
-      "title": "Number rounding + fame-locked unlocks",
-      "items": [
-        {
-          "label": "Number rounding audit",
-          "status": "todo",
-          "tag": "todo — m308",
-          "desc": "Manual #16: floor int stats (HP/MP/STR/DEX/INT/WIS/CON/CHA, armor, damage); display floats with up to 2 decimals (crit chance shows 1.15%, not 13.000000001%). Apply across DPS meter + character stats. Multipliers, dodge %, resistances stay float; consider per-stat formatting helper."
-        }
-      ],
-      "doneCount": 0,
-      "total": 1,
-      "shipped": false
-    },
-    {
-      "milestone": 309,
-      "title": "News flow + asset archive + release pipeline",
-      "items": [
-        {
-          "label": "public/news/ folder + Latest News widget",
-          "status": "todo",
-          "tag": "todo — m309",
-          "desc": "Non-changelog announcements (events, dev diaries) on the asset gallery."
-        }
-      ],
-      "doneCount": 0,
-      "total": 1,
-      "shipped": false
     }
   ]
 }

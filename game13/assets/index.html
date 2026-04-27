@@ -680,6 +680,73 @@
       font-size: 13px;
       font-style: italic;
     }
+
+    /* M313 Latest News widget */
+    #news-section {
+      max-width: 1200px;
+      margin: 24px auto 0;
+      padding: 0 24px;
+    }
+    #news-section h2 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--accent-b);
+      margin: 0 0 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    #news-section h2 a {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      margin-left: auto;
+    }
+    #news-section h2 a:hover { color: var(--accent); }
+    .news-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .news-widget-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .news-widget-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .news-widget-cat {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .news-widget-cat.cat-release    { color: #60d880; }
+    .news-widget-cat.cat-dev-diary  { color: #80aaff; }
+    .news-widget-cat.cat-event      { color: #d880d8; }
+    .news-widget-title {
+      font-family: var(--font-display);
+      font-size: 13px; font-weight: 700;
+      color: var(--gold-bright);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .news-widget-summary {
+      font-size: 12px;
+      color: var(--text);
+      line-height: 1.5;
+      opacity: 0.85;
+    }
+    .news-widget-date {
+      font-size: 11px; color: var(--muted); margin-top: 8px;
+    }
   </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5H26ZXKBCL"></script>
@@ -705,6 +772,11 @@
 </div>
 
 <main id="main"></main>
+
+<section id="news-section">
+  <h2>Latest News <a href="news-archive.html">View all</a></h2>
+  <div class="news-cards" id="newsCards"><p style="color:var(--muted);font-size:13px;">Loading...</p></div>
+</section>
 
 <section id="story-section" style="max-width:1200px;margin:24px auto 0;padding:0 24px;">
   <h2 style="font-family:var(--font-display);font-size:1.1rem;color:var(--accent-b);margin:0 0 12px;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid var(--border);padding-bottom:6px;">The World of Emberveil</h2>
@@ -821,6 +893,36 @@
 </div>
 
 <script>
+// M313 Latest News widget
+(function() {
+  var CAT_LABELS = { 'release': 'Release', 'dev-diary': 'Dev Diary', 'event': 'Event' };
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  fetch('../news/index.json').then(function(r){ return r.ok ? r.json() : null; }).then(function(data) {
+    var el = document.getElementById('newsCards');
+    if (!el) return;
+    if (!data || !Array.isArray(data.entries) || !data.entries.length) {
+      el.innerHTML = '<p style="color:var(--muted);font-size:13px;">No news yet.</p>';
+      return;
+    }
+    var top3 = data.entries.slice(0, 3);
+    el.innerHTML = top3.map(function(e) {
+      var catLabel = CAT_LABELS[e.category] || e.category;
+      var catCls   = 'cat-' + (e.category || 'release');
+      return '<div class="news-widget-card">' +
+        '<div class="news-widget-cat ' + catCls + '">' + catLabel + '</div>' +
+        '<div class="news-widget-title">' + escHtml(e.title) + '</div>' +
+        '<div class="news-widget-summary">' + escHtml(e.summary) + '</div>' +
+        '<div class="news-widget-date">' + escHtml(e.date) + '</div>' +
+      '</div>';
+    }).join('');
+  }).catch(function() {
+    var el = document.getElementById('newsCards');
+    if (el) el.innerHTML = '<p style="color:var(--muted);font-size:13px;">News unavailable.</p>';
+  });
+})();
+
 const BADGE_CLASSES = {
   openai:   'badge-openai',
   pixellab: 'badge-pixellab',

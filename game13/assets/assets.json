@@ -10673,6 +10673,43 @@
         "\"Set Completed\" fanfare animation when the last piece is equipped"
       ],
       "notes": "Sets follow the SETS schema in sets.js; uniques follow UNIQUES in uniques.js. Both are additive -- old saves work, new items do not appear retroactively. Legendary effect IDs are string-keyed in LEGENDARY_HOOKS map; new effects can be added without touching combat code. The 40 M305 affixes are exported as AFFIXES_M305 from affixes.js and must be merged into item generation pools manually (extendAffixPool helper provided)."
+    },
+    {
+      "milestone": "M311 — Number Rounding Audit + Fame-Locked Unlocks",
+      "date": "2026-04-27",
+      "summary": "Centralized number formatting helper deployed across all stat displays; fame-locked appearance unlocks added as a long-term carrot.",
+      "changes": [
+        "Created src/utils/numberFormat.js with formatStat(value, kind) supporting int/pct/mult/damage/time/gold/auto kinds.",
+        "formatPct(fraction) and formatGold(value) convenience helpers added.",
+        "Replaced ad-hoc toFixed(2)/toFixed(1) in InventoryScreen.js: Damage Reduction, Block Chance, fractional affix percents, Other Effects display.",
+        "Replaced toFixed in items.js getItemTooltip(): Block%, Block Power, all affix values under 1 now use formatPct().",
+        "Replaced toFixed in items.js getItemCompareTooltip(): renderAffix() uses formatPct for fractional values.",
+        "Updated CombatScreen.js: skill multiplier display now uses formatStat(mult, \"mult\") (×1.5x not ×1.500000x).",
+        "Updated CharacterBuilderScreen.js: spl calculation no longer uses toFixed(2) (no round-trip float artifacts).",
+        "Created src/game/fame.js: FAME_THRESHOLDS, getExtraUnlocks(), getTotalAppearanceSlots(), getUnlockedAppearances(), getUnlockedWeaponVarieties(), getNextFameThreshold(), fameSummaryText().",
+        "CharacterBuilderScreen fame banner above appearance grid showing Fame: N + next unlock target.",
+        "Appearances beyond slot 5 rendered as fame-locked (greyed, lock icon, unlock threshold tooltip, shake on click).",
+        "TitleScreen: _getFameBadge() reads max fame from saves, renders chip below subtitle (Fame: 1,250 | Next: 2,000).",
+        "GameMenuScreen: _buildFameChip() shows live fame + fame title + next threshold during active run."
+      ],
+      "bugs": [
+        "None introduced. Existing floating-point artifacts in stat display (e.g. 13.000000001%) resolved by the new helper."
+      ],
+      "suggestions": [
+        "The fame-locked appearance slots are unlocked globally (not per-class). Could tighten to per-class tracking in a future pass.",
+        "Weapon variety slots are gated per the same fame thresholds, but most classes only have 3-5 unique weapon keys so the gate rarely triggers.",
+        "Consider exposing a \"Fame History\" log so players can see which acts awarded the most fame."
+      ],
+      "recommendations": [
+        "Use formatStat() for all new numeric displays — never raw .toFixed() in UI code.",
+        "Wire fame.js getUnlockedWeaponVarieties() into HireBuilderScreen if we want hire-level weapon variety to also gate on fame."
+      ],
+      "ideas": [
+        "Fame leaderboard per save slot.",
+        "Fame decay or prestige at NG+ reset.",
+        "Fame-locked class skins (palette swaps) at higher thresholds (3000, 5000)."
+      ],
+      "notes": "M308 tasks shipped as M311 (build was at M310 when the session started). Both tasks complete with no deferrals."
     }
   ],
   "assets": []
