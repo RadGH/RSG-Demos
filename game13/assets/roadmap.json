@@ -1,7 +1,40 @@
 {
-  "generated": "2026-04-27T08:26:32.315Z",
-  "currentMilestone": 313,
+  "generated": "2026-04-27T08:38:35.293Z",
+  "currentMilestone": 314,
   "milestones": [
+    {
+      "milestone": 315,
+      "title": "Map / fog-of-war fixes",
+      "items": [
+        {
+          "label": "Back-arrow popup covers map nodes — replace with floating DOM box below player node",
+          "status": "done",
+          "tag": "done — m315",
+          "desc": "Replaced canvas edge-label with a DOM .czb-back-popup div positioned below (or above/side) the anchor node. Viewport-aware: tries below first, falls back to above, then clamps. OK button triggers _crossZoneJump. MapScreen.js _updateCrossZoneBackPopup()."
+        },
+        {
+          "label": "Back arrow from Map 2 first node puts player at random node, not boss node where Map 1 ended",
+          "status": "done",
+          "tag": "done — m315",
+          "desc": "_getCrossZoneLink now calls GameState.getZoneNode(prev.id) to look up the last-visited node in the previous zone, falling back to zone.nodes[last] only if no saved position exists. MapScreen.js line ~114."
+        },
+        {
+          "label": "Hidden (fogged) map nodes still hoverable to reveal type/position",
+          "status": "done",
+          "tag": "done — m315",
+          "desc": "_onHover now computes the fog revealed-set and skips any node not in it, preventing tooltip + visual hover on fogged tiles. MapScreen.js _onHover()."
+        },
+        {
+          "label": "Fog-of-war should be active by default",
+          "status": "done",
+          "tag": "done — m315",
+          "desc": "CharacterBuilderScreen._fogOfWar changed from false to true (new game default). gameState.js load migration changed from !!saved.fogOfWar to saved.fogOfWar !== false so old saves without the field get fog-on rather than fog-off."
+        }
+      ],
+      "doneCount": 4,
+      "total": 4,
+      "shipped": true
+    },
     {
       "milestone": 314,
       "title": "Critical UI Bugs (post-M309 feedback)",

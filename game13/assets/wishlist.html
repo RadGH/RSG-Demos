@@ -285,6 +285,14 @@
     </div>
 
     <div class="wl-group">
+      <h3>M315 — Map / fog-of-war fixes</h3>
+      <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Back-arrow popup covers map nodes — replace with floating DOM box below player node</span><span class="tag status-done">done — m315</span><div class="desc">Replaced canvas edge-label with a DOM .czb-back-popup div positioned below (or above/side) the anchor node. Viewport-aware: tries below first, falls back to above, then clamps. OK button triggers _crossZoneJump. MapScreen.js _updateCrossZoneBackPopup().</div></div></div>
+      <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Back arrow from Map 2 first node puts player at random node, not boss node where Map 1 ended</span><span class="tag status-done">done — m315</span><div class="desc">_getCrossZoneLink now calls GameState.getZoneNode(prev.id) to look up the last-visited node in the previous zone, falling back to zone.nodes[last] only if no saved position exists. MapScreen.js line ~114.</div></div></div>
+      <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Hidden (fogged) map nodes still hoverable to reveal type/position</span><span class="tag status-done">done — m315</span><div class="desc">_onHover now computes the fog revealed-set and skips any node not in it, preventing tooltip + visual hover on fogged tiles. MapScreen.js _onHover().</div></div></div>
+      <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">Fog-of-war should be active by default</span><span class="tag status-done">done — m315</span><div class="desc">CharacterBuilderScreen._fogOfWar changed from false to true (new game default). gameState.js load migration changed from !!saved.fogOfWar to saved.fogOfWar !== false so old saves without the field get fog-on rather than fog-off.</div></div></div>
+    </div>
+
+    <div class="wl-group">
       <h3>Future Claude — read this before starting work</h3>
       <p class="sub" style="margin-top:0">Workflow expectations baked into this batch:</p>
       <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Check this section at every session start</span><span class="tag status-todo">workflow</span><div class="desc">CLAUDE.md routes you here. Find the next pending milestone, flip its items to wip, ship them, flip to done with the actual milestone-tag (use the milestone number that ships, not the planned one — e.g. if M293 slips to M294, update tags accordingly).</div></div></div>

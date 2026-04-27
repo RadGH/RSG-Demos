@@ -1,7 +1,7 @@
 {
-  "milestone": 313,
+  "milestone": 314,
   "date": "2026-04-27",
-  "summary": "M309 — News pipeline + asset archive snapshots + release.sh category tags + backward-compat notes: public/news/ markdown folder + Latest News widget + news-archive.html, scripts/snapshot-assets.cjs hooked into release.sh writes per-milestone snapshots to public/assets/data/snapshots/M### (data-overrides.html now restores from them), release.sh accepts RELEASE_CATEGORY + BREAKING_CHANGES env vars, What's New splash shows Migration Notes when present.",
+  "summary": "M310 — Critical combat/dungeon UI fixes from feedback batch: DungeonScreen now removes its DOM on exit, .combat-screen height:100% to prevent 0px collapse, victory + map modals scroll when overflowing, boss treasure → pick 1 of 3 (rarity colors only, no class suggestion), achievement screen mid-combat now pauses + defers victory, boss-intro splash hides background HUD + click-only dismiss (no countdown), fame popup cancelled on town teardown, combat report uses formatStat() everywhere, Combat Settings pause menu replaces E toggle with DPS+Log+Captions sub-options, captions raised 80px above HP bar.",
   "categories": [
     "feature"
   ],
