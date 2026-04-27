@@ -1,7 +1,28 @@
 {
-  "generated": "2026-04-27T05:02:03.081Z",
-  "currentMilestone": 303,
+  "generated": "2026-04-27T05:26:40.929Z",
+  "currentMilestone": 304,
   "milestones": [
+    {
+      "milestone": 303,
+      "title": "Enemy spells + champion modifiers",
+      "items": [
+        {
+          "label": "Enemy spells",
+          "status": "done",
+          "tag": "done — m303",
+          "desc": "Manual #7: add spells to selected enemies — basic monsters (esp. goblins) keep auto-attack. Reusable element-keyed FX assets (fire/ice/shadow/holy/nature) with monster-class tinting; fall back gracefully when art is missing. Bosses get wind-up spells interruptible by sufficient damage or dispel/spell-steal. Some boss buffs are stealable and can flip the tide of combat."
+        },
+        {
+          "label": "Blue-name champion modifiers",
+          "status": "done",
+          "tag": "done — m303",
+          "desc": "Manual #8: Diablo-2-style champion prefixes — health regen, damage aura, fast, extra strong, etc. No new artwork; pure mechanical layer. Defer the \"giant fiery mini-boss\" idea to challenge tiles in a later milestone."
+        }
+      ],
+      "doneCount": 2,
+      "total": 2,
+      "shipped": true
+    },
     {
       "milestone": 302,
       "title": "Gameplay batch 1: Combat additions + new node types",
@@ -463,21 +484,6 @@
       "doneCount": 6,
       "total": 6,
       "shipped": true
-    },
-    {
-      "milestone": 303,
-      "title": "Enemy spells + champion modifiers",
-      "items": [
-        {
-          "label": "Enemy spells",
-          "status": "todo",
-          "tag": "todo — m303",
-          "desc": "Manual #7: add spells to selected enemies — basic monsters (esp. goblins) keep auto-attack. Reusable element-keyed FX assets (fire/ice/shadow/holy/nature) with monster-class tinting; fall back gracefully when art is missing. Bosses get wind-up spells interruptible by sufficient damage or dispel/spell-steal. Some boss buffs are stealable and can flip the tide of combat."
-        }
-      ],
-      "doneCount": 0,
-      "total": 1,
-      "shipped": false
     },
     {
       "milestone": 304,

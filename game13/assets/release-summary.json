@@ -1,5 +1,5 @@
 {
-  "milestone": 303,
+  "milestone": 304,
   "date": "2026-04-26",
-  "summary": "M302 — Gameplay batch 1: companion level-sync, DEX-check flee, Pilfer Magic + Hemorrhage (Rogue), Soul Curse + curse-spread system (Warlock), skill-check map nodes, node-overlay system (merchant/minigame/bandit), DoT stacking modes per-spell."
+  "summary": "M302 — Gameplay batch 1: companion level-sync setting + party avg on save slots, flee-from-combat with DEX check (boss-immune), Rogue skills Pilfer Magic + Hemorrhage, Warlock Soul Curse with on-death spread, skill-check map node type with 4 examples, node-overlay system (traveling merchant/memory minigame/bandit patrol — overlays must resolve before underlying node, no skip), per-spell DoT stacking modes (per_source/per_character/global) with tooltip stack counts."
 }
