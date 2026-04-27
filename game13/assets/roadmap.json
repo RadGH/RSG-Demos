@@ -1,7 +1,82 @@
 {
-  "generated": "2026-04-27T03:55:08.557Z",
-  "currentMilestone": 299,
+  "generated": "2026-04-27T04:20:11.048Z",
+  "currentMilestone": 300,
   "milestones": [
+    {
+      "milestone": 301,
+      "title": "Headless simulator + regression infra",
+      "items": [
+        {
+          "label": "Headless combat simulator API",
+          "status": "done",
+          "tag": "status-done — m301",
+          "desc": "Spawn combatants, run N rounds, return stats. Currently Monte Carlo lives in scripts; expose as a clean Node API for Claude to call."
+        },
+        {
+          "label": "Batch rebalance reports (parallel + CSV)",
+          "status": "done",
+          "tag": "status-done — m301",
+          "desc": "Test 50 skill tweaks in parallel, compare win-rates. Currently serial."
+        },
+        {
+          "label": "Regression alerts on rebalance",
+          "status": "done",
+          "tag": "status-done — m301",
+          "desc": "Alert if Act win-rate drops > threshold. Manual #15: per-act configurable thresholds (e.g. Act 5 25% floor vs Act 1 10%). Config file: scripts/regression-thresholds.json, hand-editable."
+        },
+        {
+          "label": "Encounter difficulty rating",
+          "status": "done",
+          "tag": "status-done — m301",
+          "desc": "Predicted win-rate, flag too-hard fights. Uses simulator."
+        },
+        {
+          "label": "Item-generation validator",
+          "status": "done",
+          "tag": "status-done — m301",
+          "desc": "Every affix rolls within bounds. Catch balance bugs early."
+        },
+        {
+          "label": "Affix coverage report",
+          "status": "done",
+          "tag": "status-done — m301",
+          "desc": "Which affixes never appear in Act 1-2 loot. Identify dead content."
+        },
+        {
+          "label": "Save-file load-tester (auto-snapshot per milestone)",
+          "status": "done",
+          "tag": "status-done — m301",
+          "desc": "Load 100 random saves, check for crashes. Manual #17: auto-save a game per act after each milestone build under assets/references/emberveil/saves/regression/M###/ for regression testing."
+        },
+        {
+          "label": "Loot distribution audit",
+          "status": "done",
+          "tag": "status-done — m301",
+          "desc": "Drop chance per act; flag rare over-drop. Manual #18: include merchant, guild hall, black market shop pools — they're part of the economy too."
+        },
+        {
+          "label": "Combat-log replayer (export-only)",
+          "status": "done",
+          "tag": "status-done — m301",
+          "desc": "Save fight trace JSON, replay visually on demand. Manual #13: no repo bloat — keep traces in localStorage with manual export button. Loader takes pasted JSON or file upload."
+        },
+        {
+          "label": "Status-effect interaction matrix",
+          "status": "done",
+          "tag": "status-done — m301",
+          "desc": "All 2-effect combos, computed outcomes. Identify unintended synergies."
+        },
+        {
+          "label": "Automated end-to-end playthrough",
+          "status": "done",
+          "tag": "status-done — m301",
+          "desc": "Seeded RNG, full Act 1-5 run, softlock detection. Smoke test after balance changes."
+        }
+      ],
+      "doneCount": 11,
+      "total": 11,
+      "shipped": true
+    },
     {
       "milestone": 300,
       "title": "Devtool batch 2: Sims, audits, archives",
@@ -331,21 +406,6 @@
       "doneCount": 6,
       "total": 6,
       "shipped": true
-    },
-    {
-      "milestone": 301,
-      "title": "Headless simulator + regression infra",
-      "items": [
-        {
-          "label": "Headless combat simulator API",
-          "status": "todo",
-          "tag": "todo — m301",
-          "desc": "Spawn combatants, run N rounds, return stats. Currently Monte Carlo lives in scripts; expose as a clean Node API for Claude to call."
-        }
-      ],
-      "doneCount": 0,
-      "total": 1,
-      "shipped": false
     },
     {
       "milestone": 302,
