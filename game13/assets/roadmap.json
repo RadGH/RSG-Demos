@@ -1,0 +1,399 @@
+{
+  "generated": "2026-04-27T03:14:47.330Z",
+  "currentMilestone": 297,
+  "milestones": [
+    {
+      "milestone": 298,
+      "title": "Changelog flow + lore + roadmap + monument",
+      "items": [
+        {
+          "label": "Changelog categorization",
+          "status": "done",
+          "tag": "done — m298",
+          "desc": "Bug Fix / Feature / Balance / QoL / Art icons. Flat lists are hard to scan."
+        },
+        {
+          "label": "In-game \"What's New?\" splash on first launch after update",
+          "status": "done",
+          "tag": "done — m298",
+          "desc": "Engage players with patch notes; currently external only."
+        },
+        {
+          "label": "Per-feature \"shipped in M###\" badge",
+          "status": "done",
+          "tag": "done — m298",
+          "desc": "Visible at the feature itself. Celebrate; drive engagement."
+        },
+        {
+          "label": "Public roadmap page",
+          "status": "done",
+          "tag": "done — m298",
+          "desc": "Upcoming acts + major features. Manage expectations; hype building. Pulls from this wishlist's milestone groups."
+        },
+        {
+          "label": "In-game lore compendium (Claude-authored)",
+          "status": "done",
+          "tag": "done — m298",
+          "desc": "Help follow the 5-act narrative. Manual #19: Claude writes the lore — this is Claude's game; user is one of the players."
+        },
+        {
+          "label": "Hardcore monument on title screen",
+          "status": "done",
+          "tag": "done — m298",
+          "desc": "Display fallen heroes. Manual #13: only render if a hardcore character has fallen. Manual #20: hardcore saves remain loadable as disabled slots so character stats can be compared across playthroughs (Character A from previous run vs Character B from new run). Option to delete the slot."
+        }
+      ],
+      "doneCount": 6,
+      "total": 6,
+      "shipped": true
+    },
+    {
+      "milestone": 297,
+      "title": "Keyboard navigation",
+      "items": [
+        {
+          "label": "Keyboard navigation across screens (arrow + enter)",
+          "status": "done",
+          "tag": "done — m297",
+          "desc": "Full Tier A coverage: TitleScreen, CharacterBuilderScreen, LoadGameScreen, SettingsScreen, TownScreen, MapScreen, PartyPanelScreen, DialogScreen, LevelUpScreen, AchievementsScreen, StatsScreen, StatsDashboardScreen, GameMenuScreen. Gold :focus-visible ring site-wide. Tier B (combat): digit keys 1–N for manual-combat action picker; auto-combat has no action buttons so target selection remains mouse/touch-only. Combat keyboard nav intentionally limited to digit shortcuts — adding full arrow-key target selection would require significant combat refactor and is out of scope per user guidance (\"do not sacrifice existing UX\")."
+        }
+      ],
+      "doneCount": 1,
+      "total": 1,
+      "shipped": true
+    },
+    {
+      "milestone": 296,
+      "title": "Accessibility batch",
+      "items": [
+        {
+          "label": "Colorblind palettes (deuteranopia / protanopia / tritanopia)",
+          "status": "done",
+          "tag": "done — m296",
+          "desc": "Rarity colors today are red/blue/yellow/orange — collide for ~8% of players."
+        },
+        {
+          "label": "Font-size scaling (Settings → 80%/100%/120%/150%)",
+          "status": "done",
+          "tag": "done — m296",
+          "desc": "Fixed 1rem today; mobile readability win."
+        },
+        {
+          "label": "Tap-target validation (≥ 44×44px per WCAG)",
+          "status": "done",
+          "tag": "done — m296",
+          "desc": "Many tooltip-trigger areas likely undersized on mobile. Audit + fix pass."
+        },
+        {
+          "label": "Reduce-motion toggle (kill parallax, screen wipes)",
+          "status": "done",
+          "tag": "done — m296",
+          "desc": "Already partial; expand coverage. Manual #14: ensure surfaced in Settings menu — user's OS has reduce-motion enabled and may not know how to override per-app, so the toggle must be in-game-discoverable."
+        },
+        {
+          "label": "Subtitle / caption mode for combat log",
+          "status": "done",
+          "tag": "done — m296",
+          "desc": "Screen-reader friendly real-time combat narration."
+        }
+      ],
+      "doneCount": 5,
+      "total": 5,
+      "shipped": true
+    },
+    {
+      "milestone": 295,
+      "title": "Polish: enchanter, potion belt, toasts, plain-language status",
+      "items": [
+        {
+          "label": "Enchanter upgrade preview (before/after stats on hover)",
+          "status": "done",
+          "tag": "done — m295",
+          "desc": "Half-done per CLAUDE.md; finalize the tooltip."
+        },
+        {
+          "label": "Potion belt (combat-quick consumables)",
+          "status": "done",
+          "tag": "done — m295",
+          "desc": "Separate from inventory; QoL for healing flow."
+        },
+        {
+          "label": "Achievement-unlock toast notifications",
+          "status": "done",
+          "tag": "done — m295",
+          "desc": "Celebration moment; currently silent unlock."
+        },
+        {
+          "label": "\"Patch notes\" shortcut in GameMenu",
+          "status": "done",
+          "tag": "done — m295",
+          "desc": "Link to latest release summary (in-game splash) with a \"full history\" link to /assets/changelog.html. Discoverable without leaving the game."
+        },
+        {
+          "label": "Plain-language status descriptions",
+          "status": "done",
+          "tag": "done — m295",
+          "desc": "Cognitive accessibility; avoid jargon. \"Bleeding (3 rounds): loses 8 HP per round\" not \"Bleed: DoT\"."
+        },
+        {
+          "label": "Boss-specific dialogue preludes (2-3 lines)",
+          "status": "done",
+          "tag": "done — m295",
+          "desc": "Sells stakes; cheap content. Could ship in M295 or M307 with cinematic-dialog."
+        }
+      ],
+      "doneCount": 6,
+      "total": 6,
+      "shipped": true
+    },
+    {
+      "milestone": 294,
+      "title": "UI batch 2: Party panel + boss splash + zone dropdown",
+      "items": [
+        {
+          "label": "Unified Spells / Passives / Attributes / Inventory tabbed panel (\"Party\")",
+          "status": "done",
+          "tag": "done — m294",
+          "desc": "Reduce screen count; quick item swaps during skill-point allocation flow. Manual #5: Replace existing Character screen but mark deprecated rather than deleting — user may want to refer back. Keep file in repo with a `// DEPRECATED M294` header and unwire from the menu."
+        },
+        {
+          "label": "Rename map \"Inventory\" button to \"Party\"",
+          "status": "done",
+          "tag": "done — m294",
+          "desc": "Opens unified Party + Inventory panel. Clearer intent; collapses the Inventory + Town notification-bubble overlap."
+        },
+        {
+          "label": "MapScreen zone fast-travel as dropdown",
+          "status": "done",
+          "tag": "done — m294",
+          "desc": "Reduce horizontal width on phones once 6+ zones are unlocked. Replace tabs with dropdown."
+        },
+        {
+          "label": "Boss-intro splash card before boss combat",
+          "status": "done",
+          "tag": "done — m294",
+          "desc": "Sells the moment; differentiates from regular fights. Manual #4: long boss names (e.g. Unraveler-of-Mortal-Threads) get cut off on iPhone — splash must wrap or scale-down on narrow viewports. Audit existing combat headers for the same overflow bug."
+        },
+        {
+          "label": "Dual-comparison mode in Inventory (rings / offhand)",
+          "status": "done",
+          "tag": "done — m294",
+          "desc": "Compare both rings or offhand at once for better multi-slot planning. Manual #2: desktop only — iPhone won't fit, gracefully fall back to single-compare on narrow viewports."
+        }
+      ],
+      "doneCount": 5,
+      "total": 5,
+      "shipped": true
+    },
+    {
+      "milestone": 293,
+      "title": "Small UI batch 1",
+      "items": [
+        {
+          "label": "Notification bubble disambiguation",
+          "status": "done",
+          "tag": "done — m293",
+          "desc": "Inventory tab gets bubble for unequipped/upgrades; map Town button shows level-up points only. Manual #1: after level-up in combat the unspent-skill-points bubble persists until visiting Character screen — clear it as soon as auto-allocation has run, or on first map render after combat ends."
+        },
+        {
+          "label": "Quick-equip toast on item pickup",
+          "status": "done",
+          "tag": "done — m293",
+          "desc": "\"Auto-equipped X to Y\" or \"X is an upgrade for Z — equip?\" when loot drops, so the player doesn't have to open inventory after every fight."
+        },
+        {
+          "label": "Combat preview tooltip on skill upgrade selection",
+          "status": "done",
+          "tag": "done — m293",
+          "desc": "\"This upgrade adds N% damage / changes targeting to AoE\" — contextual hint when picking talents."
+        },
+        {
+          "label": "Scroll-position memory on InventoryScreen tab switch",
+          "status": "done",
+          "tag": "done — m293",
+          "desc": "Preserve scroll depth when jumping between characters."
+        },
+        {
+          "label": "Status effect duration tooltips",
+          "status": "done",
+          "tag": "done — m293",
+          "desc": "Show duration remaining (rounds), not just type. Players can't tell when burns / blocks expire without counting rounds."
+        },
+        {
+          "label": "Party screen role icons",
+          "status": "done",
+          "tag": "done — m293",
+          "desc": "Tank / DPS / Support / Healer indicators. Manual #3: NO emoji — use SVG / Font Awesome / continue the existing class-icon style. User likes the current generated class icons."
+        }
+      ],
+      "doneCount": 6,
+      "total": 6,
+      "shipped": true
+    },
+    {
+      "milestone": 299,
+      "title": "Devtool catalogs + tools landing",
+      "items": [
+        {
+          "label": "Companion catalog page (sortable: name, class, stats, skills)",
+          "status": "todo",
+          "tag": "todo — m299",
+          "desc": "Missing entirely; companions are semi-documented in code only."
+        }
+      ],
+      "doneCount": 0,
+      "total": 1,
+      "shipped": false
+    },
+    {
+      "milestone": 300,
+      "title": "Devtool batch 2: Sims, audits, archives",
+      "items": [
+        {
+          "label": "Skill interaction simulator (skill A + skill B combo)",
+          "status": "todo",
+          "tag": "todo — m300",
+          "desc": "Useful for balance design."
+        }
+      ],
+      "doneCount": 0,
+      "total": 1,
+      "shipped": false
+    },
+    {
+      "milestone": 301,
+      "title": "Headless simulator + regression infra",
+      "items": [
+        {
+          "label": "Headless combat simulator API",
+          "status": "todo",
+          "tag": "todo — m301",
+          "desc": "Spawn combatants, run N rounds, return stats. Currently Monte Carlo lives in scripts; expose as a clean Node API for Claude to call."
+        }
+      ],
+      "doneCount": 0,
+      "total": 1,
+      "shipped": false
+    },
+    {
+      "milestone": 302,
+      "title": "Gameplay batch 1: Combat additions + new node types",
+      "items": [
+        {
+          "label": "Companion level-sync option",
+          "status": "todo",
+          "tag": "todo — m302",
+          "desc": "Scale companion to party avg. Manual #5: party average level should also be displayed on save game slots so you can quickly compare playthroughs."
+        }
+      ],
+      "doneCount": 0,
+      "total": 1,
+      "shipped": false
+    },
+    {
+      "milestone": 303,
+      "title": "Enemy spells + champion modifiers",
+      "items": [
+        {
+          "label": "Enemy spells",
+          "status": "todo",
+          "tag": "todo — m303",
+          "desc": "Manual #7: add spells to selected enemies — basic monsters (esp. goblins) keep auto-attack. Reusable element-keyed FX assets (fire/ice/shadow/holy/nature) with monster-class tinting; fall back gracefully when art is missing. Bosses get wind-up spells interruptible by sufficient damage or dispel/spell-steal. Some boss buffs are stealable and can flip the tide of combat."
+        }
+      ],
+      "doneCount": 0,
+      "total": 1,
+      "shipped": false
+    },
+    {
+      "milestone": 304,
+      "title": "Multi-phase bosses + boss loot + hidden bosses + dialogue",
+      "items": [
+        {
+          "label": "Multi-phase boss fights",
+          "status": "todo",
+          "tag": "todo — m304",
+          "desc": "HP checkpoints unlock new attack patterns. Generalize the Unraveler pattern to 3-5 other final bosses."
+        }
+      ],
+      "doneCount": 0,
+      "total": 1,
+      "shipped": false
+    },
+    {
+      "milestone": 305,
+      "title": "Set items + uniques + 40 affixes",
+      "items": [
+        {
+          "label": "Set items (24 sets total)",
+          "status": "todo",
+          "tag": "todo — m305",
+          "desc": "Manual #10 (doubled per user): 12 low-tier (2-piece — Diablo-2 Sigon-style with powerful low-level modifiers), 8 mid-tier (3-piece), 4 endgame (4–5 piece). Sets have legendary effects on top of stat bonuses (e.g. Mage set: Magic Missile fires bonus AoE projectile at second target). Pre-determined effects, semi-random affix values per template (Sigon Shield always +5 STR but other affixes random)."
+        }
+      ],
+      "doneCount": 0,
+      "total": 1,
+      "shipped": false
+    },
+    {
+      "milestone": 306,
+      "title": "Infinite scaling dungeon",
+      "items": [
+        {
+          "label": "Procedural challenge dungeon (infinite scaling)",
+          "status": "todo",
+          "tag": "todo — m306",
+          "desc": "Manual #11: separate from in-game dungeons. Diablo-3/4 / PoE-delve style infinite scaling tiers. Random Act 1-5 enemies + twists. Replayable post-game content for build-testing."
+        }
+      ],
+      "doneCount": 0,
+      "total": 1,
+      "shipped": false
+    },
+    {
+      "milestone": 307,
+      "title": "Crafting + boss preludes + cinematic dialog",
+      "items": [
+        {
+          "label": "Craftable unique items (recipe unlocks on boss kill)",
+          "status": "todo",
+          "tag": "todo — m307",
+          "desc": "Bridge merchant/blacksmith/enchanter workflows. 5 per act."
+        }
+      ],
+      "doneCount": 0,
+      "total": 1,
+      "shipped": false
+    },
+    {
+      "milestone": 308,
+      "title": "Number rounding + fame-locked unlocks",
+      "items": [
+        {
+          "label": "Number rounding audit",
+          "status": "todo",
+          "tag": "todo — m308",
+          "desc": "Manual #16: floor int stats (HP/MP/STR/DEX/INT/WIS/CON/CHA, armor, damage); display floats with up to 2 decimals (crit chance shows 1.15%, not 13.000000001%). Apply across DPS meter + character stats. Multipliers, dodge %, resistances stay float; consider per-stat formatting helper."
+        }
+      ],
+      "doneCount": 0,
+      "total": 1,
+      "shipped": false
+    },
+    {
+      "milestone": 309,
+      "title": "News flow + asset archive + release pipeline",
+      "items": [
+        {
+          "label": "public/news/ folder + Latest News widget",
+          "status": "todo",
+          "tag": "todo — m309",
+          "desc": "Non-changelog announcements (events, dev diaries) on the asset gallery."
+        }
+      ],
+      "doneCount": 0,
+      "total": 1,
+      "shipped": false
+    }
+  ]
+}

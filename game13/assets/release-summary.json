@@ -1,5 +1,5 @@
 {
-  "milestone": 296,
+  "milestone": 297,
   "date": "2026-04-26",
-  "summary": "M296 — Accessibility batch: colorblind palettes (default + deuteranopia/protanopia/tritanopia) via CSS custom properties + Settings selector. 80%/100%/120%/150% font-size scaling. Global 44×44px tap-target floor for buttons/links/inputs (WCAG AA) with .compact-target opt-out. Reduce-motion 3-way toggle (Auto/On/Off) with src/utils/motion.js helper, expanded coverage to parallax + dialog flashes. Combat captions mode (24px aria-live mirror of the combat log)."
+  "summary": "M297 — Keyboard navigation: new src/utils/keyboardNav.js helper wired into 13 menu screens (Title, CharacterBuilder, LoadGame, Settings, Town, Map, PartyPanel, Dialog, LevelUp, Achievements, Stats, StatsDashboard, GameMenu). Tab/arrows/Enter/Escape across grids/lists. Global :focus-visible gold ring (suppressed for pointer-initiated focus, so touch UX is unchanged). Combat: digit keys 1-N trigger action buttons during manual turns; full arrow-key target selection deferred per scope (noted in wishlist)."
 }
