@@ -1,7 +1,40 @@
 {
-  "generated": "2026-04-27T05:26:40.929Z",
-  "currentMilestone": 304,
+  "generated": "2026-04-27T05:53:59.273Z",
+  "currentMilestone": 305,
   "milestones": [
+    {
+      "milestone": 304,
+      "title": "Multi-phase bosses + boss loot + hidden bosses + dialogue",
+      "items": [
+        {
+          "label": "Multi-phase boss fights",
+          "status": "done",
+          "tag": "status-done — m304",
+          "desc": "HP checkpoints unlock new attack patterns. Generalize the Unraveler pattern to 3-5 other final bosses."
+        },
+        {
+          "label": "Boss-themed loot tables",
+          "status": "done",
+          "tag": "status-done — m304",
+          "desc": "e.g. Unraveler always drops void-themed items. Memorable rewards for memorable fights."
+        },
+        {
+          "label": "Hidden boss encounters",
+          "status": "done",
+          "tag": "status-done — m304",
+          "desc": "Gated by rare-loot-finds or stat thresholds. Easter eggs for completionists / speedrunners."
+        },
+        {
+          "label": "8 new dialogue branches per act",
+          "status": "done",
+          "tag": "status-done — m304",
+          "desc": "Gated on party comp / past choices. Replay value; story is mostly linear today."
+        }
+      ],
+      "doneCount": 4,
+      "total": 4,
+      "shipped": true
+    },
     {
       "milestone": 303,
       "title": "Enemy spells + champion modifiers",
@@ -484,21 +517,6 @@
       "doneCount": 6,
       "total": 6,
       "shipped": true
-    },
-    {
-      "milestone": 304,
-      "title": "Multi-phase bosses + boss loot + hidden bosses + dialogue",
-      "items": [
-        {
-          "label": "Multi-phase boss fights",
-          "status": "todo",
-          "tag": "todo — m304",
-          "desc": "HP checkpoints unlock new attack patterns. Generalize the Unraveler pattern to 3-5 other final bosses."
-        }
-      ],
-      "doneCount": 0,
-      "total": 1,
-      "shipped": false
     },
     {
       "milestone": 305,

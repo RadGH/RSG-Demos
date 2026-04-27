@@ -1,5 +1,5 @@
 {
-  "milestone": 304,
+  "milestone": 305,
   "date": "2026-04-26",
-  "summary": "M302 — Gameplay batch 1: companion level-sync setting + party avg on save slots, flee-from-combat with DEX check (boss-immune), Rogue skills Pilfer Magic + Hemorrhage, Warlock Soul Curse with on-death spread, skill-check map node type with 4 examples, node-overlay system (traveling merchant/memory minigame/bandit patrol — overlays must resolve before underlying node, no skip), per-spell DoT stacking modes (per_source/per_character/global) with tooltip stack counts."
+  "summary": "M303 — Enemy spells + champion modifiers: spellFx.js (5 element CSS animations w/reduce-motion fallback), 13 enemy spells in enemySpells.js (incl 3 boss wind-ups), spellList wired on 11 enemies/bosses with cooldowns + interrupt detection. 10 blue-name champion modifiers (regen/aura/fast/extra_strong/tough/cursed/shielded/lifesteal/thorns/inferno) with 5% spawn rate, stat-bumped HP/dmg, blue canvas name + tap-tooltip badges."
 }
