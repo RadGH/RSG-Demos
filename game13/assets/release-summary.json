@@ -1,7 +1,7 @@
 {
-  "milestone": 316,
+  "milestone": 317,
   "date": "2026-04-27",
-  "summary": "M316 — Settings/Title/Save/Party UI unification: 18 bug fixes covering HireCustom class-card CSS, title screen instant fade-in, save menu scrollable cards with floating Back, Statistics Esc fix, stats localStorage persistence, checkbox checkmark sizing, auto-confirm modal, TownScreen routing to PartyPanelScreen, PPS gold/brown redesign, portrait hidden in equip-panel, auto-equip sweep, inv-char-class margin, DifficultyDialog lifecycle fix, reusable settingsPanel component.",
+  "summary": "M312 — UI unification batch: HireBuilderScreen wider class cards + chronomancer fits, DifficultyDialog escape + close fix, Settings difficulty row removed, TitleScreen instant fade-in (no slide-down) + cloud layer overlap, save menu flex 0 1 auto + floating Back, Statistics Esc closes properly + persisted run stats, custom confirm modal replaces window.confirm, Tavern routes to PartyPanelScreen, PartyPanel gold/brown redesign with town-style tabs, hidden equip-panel portrait, green-styled auto-equip with sweep on toggle, .inv-char-class margin, reusable settingsPanel component.",
   "categories": [
     "feature"
   ],
