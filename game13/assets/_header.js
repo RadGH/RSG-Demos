@@ -69,21 +69,31 @@
   // (/gameNN/...). Keep hardcoded for now; generalize later.
   var TOOLS_BY_GAME = {
     game13: [
+      { href: ASSETS + 'tools.html', label: 'All Tools (Index)' },
+      { separator: true, label: 'Catalogs' },
+      { href: ASSETS + 'companion-catalog.html', label: 'Companion Catalog' },
+      { href: ASSETS + 'dungeon-catalog.html', label: 'Dungeon Catalog' },
+      { href: ASSETS + 'status-effect-catalog.html', label: 'Status Effect Catalog' },
+      { href: ASSETS + 'achievement-roadmap.html', label: 'Achievement Roadmap' },
+      { href: ASSETS + 'spell-catalog.html', label: 'Spell Catalog' },
+      { href: ASSETS + 'enemy-catalog.html', label: 'Enemy Catalog' },
+      { href: ASSETS + 'item-catalog.html', label: 'Item Catalog' },
+      { href: ASSETS + 'data-catalogs.html', label: 'Data Catalogs (Legacy)' },
+      { separator: true, label: 'Dev Tools' },
       { href: ASSETS + 'affix-survey.html', label: 'Affix Survey' },
       { href: ASSETS + 'enemy-audit.html', label: 'Enemy Audit' },
       { href: ASSETS + 'skill-audit.html', label: 'Skill Audit' },
-      { href: ASSETS + 'redesign-survey.html', label: 'Redesign Survey' },
       { href: ASSETS + 'image-review.html', label: 'Image Review' },
       { href: ASSETS + 'character-redesign.html', label: 'Character Redesign' },
       { href: ASSETS + 'sprite-adjust.html', label: 'Sprite Adjust' },
       { href: ASSETS + 'custom-content.html', label: 'Custom Content' },
       { href: ASSETS + 'ai-content-gen.html', label: 'AI Content Generator' },
-      { href: ASSETS + 'spell-catalog.html', label: 'Spell Catalog' },
-      { href: ASSETS + 'enemy-catalog.html', label: 'Enemy Catalog' },
-      { href: ASSETS + 'item-catalog.html', label: 'Item Catalog' },
+      { href: ASSETS + 'data-overrides.html', label: 'Data Overrides' },
+      { separator: true, label: 'Docs + Admin' },
       { href: ASSETS + 'docs.html', label: 'Documentation' },
       { href: ASSETS + 'wishlist.html', label: 'Wishlist' },
       { href: ASSETS + 'brainstorm.html', label: 'Brainstorm' },
+      { href: ASSETS + 'redesign-survey.html', label: 'Redesign Survey' },
       { separator: true, label: 'Archived' },
       { href: ASSETS + 'sprite-flip-review.html', label: 'Sprite Flip Review' },
       { href: ASSETS + 'rebalance.html', label: 'Rebalance' }
@@ -146,7 +156,7 @@
     ]
   };
   var toolsItem = TOOLS.length ? {
-    href: TOOLS[0].href,
+    href: ASSETS + 'tools.html',
     label: 'Tools',
     children: TOOLS.slice()
   } : null;

@@ -1,5 +1,5 @@
 {
-  "milestone": 297,
+  "milestone": 298,
   "date": "2026-04-26",
-  "summary": "M297 — Keyboard navigation: new src/utils/keyboardNav.js helper wired into 13 menu screens (Title, CharacterBuilder, LoadGame, Settings, Town, Map, PartyPanel, Dialog, LevelUp, Achievements, Stats, StatsDashboard, GameMenu). Tab/arrows/Enter/Escape across grids/lists. Global :focus-visible gold ring (suppressed for pointer-initiated focus, so touch UX is unchanged). Combat: digit keys 1-N trigger action buttons during manual turns; full arrow-key target selection deferred per scope (noted in wishlist)."
+  "summary": "M298 — Changelog/news/lore/monument: structured changelog (5-category badges) + new /assets/changelog.html. What's New splash on first boot after each milestone (localStorage gate). Feature-shipped-in-M### badge helper applied to ~8 demonstrative spots. /assets/roadmap.html generated from the wishlist plan with progress bars. New in-game LoreCompendiumScreen with 25 Claude-authored entries across World/Factions/Bestiary/Locations/History/Arcana — unlocked by lore-node visits, boss kills, achievements. Hardcore monument on TitleScreen (only renders when fallen heroes exist); hardcore-death saves stay loadable as 'Fallen' slots with stats view + delete."
 }

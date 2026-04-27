@@ -128,13 +128,6 @@
       "max": 0.2
     },
     {
-      "id": "of_discovery",
-      "name": "of Discovery",
-      "stat": "magicFind",
-      "min": 0.1,
-      "max": 0.35
-    },
-    {
       "id": "of_mana_regen",
       "name": "of Regeneration",
       "stat": "mana_regen",
@@ -155,21 +148,35 @@
       "name": "Bulwark",
       "stat": "block_chance",
       "min": 0.05,
-      "max": 0.15
+      "max": 0.15,
+      "shieldOnly": true,
+      "magicPlus": true
     },
     {
       "id": "block_power",
       "name": "Bracing",
       "stat": "block_power",
       "min": 10,
-      "max": 50
+      "max": 50,
+      "shieldOnly": true,
+      "magicPlus": true
     },
     {
       "id": "shield_magic_resist",
       "name": "Spellguard",
       "stat": "magicResist",
       "min": 5,
-      "max": 15
+      "max": 15,
+      "slots": [
+        "offhand",
+        "chest",
+        "legs"
+      ],
+      "armorTiers": [
+        "medium",
+        "heavy"
+      ],
+      "magicPlus": true
     }
   ]
 }

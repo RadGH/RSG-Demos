@@ -1,7 +1,58 @@
 {
-  "generated": "2026-04-27T03:14:47.330Z",
-  "currentMilestone": 297,
+  "generated": "2026-04-27T03:33:24.590Z",
+  "currentMilestone": 298,
   "milestones": [
+    {
+      "milestone": 299,
+      "title": "Devtool catalogs + tools landing",
+      "items": [
+        {
+          "label": "Companion catalog page (sortable: name, class, stats, skills)",
+          "status": "done",
+          "tag": "done — m299",
+          "desc": "companion-catalog.html — pets, hireables, wild companions, dragon companions. Sortable table, search, filter by kind/class."
+        },
+        {
+          "label": "Dungeon catalog page",
+          "status": "done",
+          "tag": "done — m299",
+          "desc": "dungeon-catalog.html — card grid with location, stages, mini-boss, rewards. Click to expand details."
+        },
+        {
+          "label": "Status effect catalog page",
+          "status": "done",
+          "tag": "done — m299",
+          "desc": "status-effect-catalog.html — glyph, color, name, plain description for all STATUS_META entries. Grouped by category (DoT / Control / Buff / Defensive / Debuff / Link)."
+        },
+        {
+          "label": "Achievement roadmap page",
+          "status": "done",
+          "tag": "done — m299",
+          "desc": "achievement-roadmap.html — all achievements grouped by tier (bronze/silver/gold), with unlock conditions. Filter by tier and search."
+        },
+        {
+          "label": "Tools-menu landing page (curated)",
+          "status": "done",
+          "tag": "done — m299",
+          "desc": "tools.html — curated table of all 30+ tools with tag filters (catalog / devtool / admin / sim / docs), search, and coming-soon rows for M300/M301."
+        },
+        {
+          "label": "Live-data + client-side override system across all tools",
+          "status": "done",
+          "tag": "done — m299",
+          "desc": "data-source.js ESM module + emit-game-data.cjs prebuild script. data-overrides.html management UI. All M299 catalog pages use live data. Milestone snapshot scaffold added (M309 planned)."
+        },
+        {
+          "label": "wishlist.html: group by milestone target",
+          "status": "done",
+          "tag": "done — m292",
+          "desc": "Done as part of this M292 migration — this section is the result."
+        }
+      ],
+      "doneCount": 7,
+      "total": 7,
+      "shipped": true
+    },
     {
       "milestone": 298,
       "title": "Changelog flow + lore + roadmap + monument",
@@ -229,21 +280,6 @@
       "doneCount": 6,
       "total": 6,
       "shipped": true
-    },
-    {
-      "milestone": 299,
-      "title": "Devtool catalogs + tools landing",
-      "items": [
-        {
-          "label": "Companion catalog page (sortable: name, class, stats, skills)",
-          "status": "todo",
-          "tag": "todo — m299",
-          "desc": "Missing entirely; companions are semi-documented in code only."
-        }
-      ],
-      "doneCount": 0,
-      "total": 1,
-      "shipped": false
     },
     {
       "milestone": 300,

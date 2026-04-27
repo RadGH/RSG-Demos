@@ -1,234 +1,149 @@
 [
   {
-    "id": "blind",
-    "family": "control"
-  },
-  {
-    "id": "slow",
-    "family": "control"
-  },
-  {
-    "id": "stun",
-    "family": "control"
-  },
-  {
-    "id": "barrier",
-    "family": "defensive"
-  },
-  {
     "id": "bleed",
-    "family": "DoT"
-  },
-  {
-    "id": "burn",
-    "family": "DoT"
+    "glyph": "B",
+    "color": "#e05050",
+    "name": "Bleeding",
+    "plain": "Loses a small amount of HP every round from a bleeding wound."
   },
   {
     "id": "poison",
-    "family": "DoT"
+    "glyph": "P",
+    "color": "#60c060",
+    "name": "Poisoned",
+    "plain": "Loses HP every round; multiple doses stack on top of each other."
   },
   {
-    "id": "accessory",
-    "family": "misc"
+    "id": "burn",
+    "glyph": "F",
+    "color": "#e08020",
+    "name": "Burning",
+    "plain": "Takes fire damage every round and has reduced protection against flames."
   },
   {
-    "id": "achievement",
-    "family": "misc"
+    "id": "stun",
+    "glyph": "S",
+    "color": "#e0c020",
+    "name": "Stunned",
+    "plain": "Skips the next turn and cannot act while the stun lasts."
   },
   {
-    "id": "act",
-    "family": "misc"
+    "id": "haste",
+    "glyph": "H",
+    "color": "#40c8ff",
+    "name": "Hasted",
+    "plain": "Gets extra actions per round, acting more frequently than normal."
   },
   {
-    "id": "affix",
-    "family": "misc"
+    "id": "rally",
+    "glyph": "R",
+    "color": "#e8a020",
+    "name": "Rallied",
+    "plain": "Deals more damage on every hit while this effect is active."
   },
   {
-    "id": "ambush",
-    "family": "misc"
+    "id": "barrier",
+    "glyph": "■",
+    "color": "#60a0e0",
+    "name": "Barrier",
+    "plain": "A protective shield absorbs incoming damage before HP is reduced."
   },
   {
-    "id": "armor",
-    "family": "misc"
+    "id": "block",
+    "glyph": "◆",
+    "color": "#8080e0",
+    "name": "Blocking",
+    "plain": "Has a higher chance to block incoming attacks with a shield or weapon."
   },
   {
-    "id": "attack",
-    "family": "misc"
+    "id": "deflect",
+    "glyph": "D",
+    "color": "#8080e0",
+    "name": "Deflecting",
+    "plain": "The next hit that lands is partially or fully turned aside."
   },
   {
-    "id": "boss",
-    "family": "misc"
+    "id": "enchant",
+    "glyph": "E",
+    "color": "#c080ff",
+    "name": "Enchanted",
+    "plain": "Weapon carries a magical charge, dealing 25% more magic damage."
   },
   {
-    "id": "bow",
-    "family": "misc"
+    "id": "slow",
+    "glyph": "W",
+    "color": "#8090b0",
+    "name": "Slowed",
+    "plain": "Acts less often each round, taking longer between turns."
   },
   {
-    "id": "buff",
-    "family": "misc"
-  },
-  {
-    "id": "challenge",
-    "family": "misc"
-  },
-  {
-    "id": "combat",
-    "family": "misc"
-  },
-  {
-    "id": "consumable",
-    "family": "misc"
-  },
-  {
-    "id": "dagger",
-    "family": "misc"
-  },
-  {
-    "id": "damage",
-    "family": "misc"
-  },
-  {
-    "id": "debuff",
-    "family": "misc"
-  },
-  {
-    "id": "dialog",
-    "family": "misc"
-  },
-  {
-    "id": "flask",
-    "family": "misc"
-  },
-  {
-    "id": "hammer",
-    "family": "misc"
-  },
-  {
-    "id": "hit",
-    "family": "misc"
-  },
-  {
-    "id": "holy_burn",
-    "family": "misc"
-  },
-  {
-    "id": "level",
-    "family": "misc"
-  },
-  {
-    "id": "lightning",
-    "family": "misc"
-  },
-  {
-    "id": "melee",
-    "family": "misc"
-  },
-  {
-    "id": "miss",
-    "family": "misc"
-  },
-  {
-    "id": "passive",
-    "family": "misc"
-  },
-  {
-    "id": "potion",
-    "family": "misc"
-  },
-  {
-    "id": "ranged",
-    "family": "misc"
+    "id": "taunt_totem",
+    "glyph": "T",
+    "color": "#c04030",
+    "name": "Taunt Totem",
+    "plain": "A totem draws enemy attacks toward itself, protecting the rest of the party."
   },
   {
     "id": "regen",
-    "family": "misc"
-  },
-  {
-    "id": "revive",
-    "family": "misc"
-  },
-  {
-    "id": "ring",
-    "family": "misc"
-  },
-  {
-    "id": "sawtooth",
-    "family": "misc"
-  },
-  {
-    "id": "shrine",
-    "family": "misc"
-  },
-  {
-    "id": "signup",
-    "family": "misc"
-  },
-  {
-    "id": "sine",
-    "family": "misc"
-  },
-  {
-    "id": "skill",
-    "family": "misc"
-  },
-  {
-    "id": "slash",
-    "family": "misc"
-  },
-  {
-    "id": "spark",
-    "family": "misc"
-  },
-  {
-    "id": "sprite",
-    "family": "misc"
-  },
-  {
-    "id": "square",
-    "family": "misc"
-  },
-  {
-    "id": "staff",
-    "family": "misc"
-  },
-  {
-    "id": "sunder",
-    "family": "misc"
-  },
-  {
-    "id": "sword",
-    "family": "misc"
-  },
-  {
-    "id": "town",
-    "family": "misc"
-  },
-  {
-    "id": "treasure",
-    "family": "misc"
-  },
-  {
-    "id": "triangle",
-    "family": "misc"
-  },
-  {
-    "id": "utility",
-    "family": "misc"
-  },
-  {
-    "id": "wand",
-    "family": "misc"
-  },
-  {
-    "id": "weapon",
-    "family": "misc"
-  },
-  {
-    "id": "zone",
-    "family": "misc"
+    "glyph": "+",
+    "color": "#60c080",
+    "name": "Regenerating",
+    "plain": "Recovers a small amount of HP at the start of each round."
   },
   {
     "id": "marked",
-    "family": "offensive"
+    "glyph": "M",
+    "color": "#c060c0",
+    "name": "Marked",
+    "plain": "Receives extra damage from all sources while the mark is active."
+  },
+  {
+    "id": "blind",
+    "glyph": "◌",
+    "color": "#a08060",
+    "name": "Blinded",
+    "plain": "Vision is impaired; attacks miss far more often than usual."
+  },
+  {
+    "id": "soulbind",
+    "glyph": "✶",
+    "color": "#9060ff",
+    "name": "Soul-Bound",
+    "plain": "A soul link connects this target to the caster; effects on one may transfer to the other."
+  },
+  {
+    "id": "curse",
+    "glyph": "†",
+    "color": "#8040c0",
+    "name": "Cursed",
+    "plain": "A dark curse weakens this target, applying a mix of harmful effects."
+  },
+  {
+    "id": "silence",
+    "glyph": "✕",
+    "color": "#c08040",
+    "name": "Silenced",
+    "plain": "Cannot cast spells or use any abilities that require speaking or channeling."
+  },
+  {
+    "id": "disarm",
+    "glyph": "∅",
+    "color": "#a06040",
+    "name": "Disarmed",
+    "plain": "Weapon has been knocked away; physical weapon attacks are unavailable."
+  },
+  {
+    "id": "root",
+    "glyph": "⊥",
+    "color": "#60a040",
+    "name": "Rooted",
+    "plain": "Held in place and cannot move or change position in the fight."
+  },
+  {
+    "id": "holy_burn",
+    "glyph": "✝",
+    "color": "#f0d040",
+    "name": "Holy Fire",
+    "plain": "Sacred flames scorch this unholy target, dealing light damage every round."
   }
 ]
