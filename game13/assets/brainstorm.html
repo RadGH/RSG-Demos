@@ -85,6 +85,16 @@
   .badge.eff-large  { color: #e85020; border-color: #e85020; background: rgba(232,80,32,0.1); }
   .badge.tag { color: var(--accent); border-color: rgba(96,160,224,0.4); background: rgba(96,160,224,0.08); }
   .item.hidden { display: none; }
+  /* Approved items — non-interactive, displayed with green checkmark */
+  .item.approved { background: rgba(64,160,96,0.08); border-color: rgba(64,160,96,0.35); cursor: default; }
+  .item.approved:hover { border-color: rgba(64,160,96,0.5); }
+  .item.approved .approved-mark { color: #7ec67e; font-size: 1.1rem; font-weight: 900; line-height: 1; margin-top: 0.1rem; flex-shrink: 0; width: 16px; text-align: center; }
+  .item.approved .item-title { color: #aef0c0; }
+  .item.approved .badge.approved-badge { color: #7ec67e; border-color: #7ec67e; background: rgba(126,198,126,0.12); }
+
+  .approved-section { background: rgba(64,160,96,0.05); border: 1px solid rgba(64,160,96,0.25); border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; }
+  .approved-section .section-h h2 { color: #7ec67e; }
+  .approved-section .section-h { border-bottom-color: rgba(64,160,96,0.25); }
 
   /* Toast */
   .toast { position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%);
@@ -97,7 +107,7 @@
 <body>
 <div class="wrap">
   <h1>Brainstorm</h1>
-  <p class="sub">100+ feature candidates surfaced from a screen / website / tooling audit. Tap items to select; the bar at the bottom lets you Copy Prompt to hand the selection back to Claude.</p>
+  <p class="sub">100+ feature candidates surfaced from a screen / website / tooling audit. Tap items to select; the bar at the bottom lets you Copy Prompt to hand the selection back to Claude. <strong style="color:#7ec67e">Approved items</strong> have been moved to the dedicated section below and are tracked in <a href="./wishlist.html" style="color:var(--gold)">wishlist.html</a>.</p>
 
   <div class="controls">
     <input type="text" id="filter-q" placeholder="Search title / rationale…" autocomplete="off">
@@ -277,6 +287,29 @@ const SECTIONS = [
 // Build IDs deterministically from section + index so localStorage survives reorders.
 SECTIONS.forEach(s => s.items.forEach((it, i) => { it.id = `${s.key}-${i}`; }));
 
+// Items approved on 2026-04-26 — moved to wishlist.html for tracking.
+// These render in a separate "Approved" section at the top, non-interactive.
+const APPROVED = new Set([
+  // 1. Screen-by-screen UX audit
+  'screens-0','screens-1','screens-2','screens-3','screens-4','screens-6','screens-9','screens-10','screens-12','screens-13','screens-14',
+  // 2. Gameplay
+  'gameplay-3','gameplay-4','gameplay-5','gameplay-7','gameplay-8','gameplay-9','gameplay-14','gameplay-15',
+  // 3. Content
+  'content-2','content-3','content-4','content-5','content-8','content-11',
+  // 4. Expansions
+  'expansions-0','expansions-9','expansions-10','expansions-12','expansions-13','expansions-14',
+  // 5. Accessibility
+  'a11y-0','a11y-2','a11y-3','a11y-4','a11y-6','a11y-8','a11y-10',
+  // 6. Devtool sims
+  'devtool-0','devtool-1','devtool-2','devtool-3','devtool-4','devtool-6','devtool-7','devtool-8','devtool-9','devtool-11','devtool-12',
+  // 7. Website tools
+  'website-0','website-1','website-2','website-3','website-4','website-5','website-6','website-7','website-8','website-11','website-12','website-13','website-14',
+  // 8. Milestone / changelog flow
+  'milestone-0','milestone-1','milestone-2','milestone-3','milestone-4','milestone-5','milestone-6','milestone-7','milestone-8','milestone-9','milestone-10','milestone-11',
+]);
+// Approved items are removed from selection state (idempotent).
+[...APPROVED].forEach(id => { /* not added to state */ });
+
 // All unique tags (for the tag-filter pills)
 const ALL_TAGS = [...new Set(SECTIONS.flatMap(s => s.items.map(i => i.tag)))].sort();
 
@@ -285,6 +318,8 @@ const state = (() => {
   try { return new Set(JSON.parse(localStorage.getItem(STORAGE) || '[]')); }
   catch { return new Set(); }
 })();
+// Strip approved IDs from any persisted selection (they've moved to wishlist).
+// Done after APPROVED is defined — see init().
 const filterState = { q: '', effort: '', tags: new Set() };
 const persist = () => { try { localStorage.setItem(STORAGE, JSON.stringify([...state])); } catch {} };
 
@@ -303,8 +338,35 @@ function renderTags() {
 
 function renderSections() {
   const root = document.getElementById('sections');
-  root.innerHTML = SECTIONS.map(s => {
-    const itemsHtml = s.items.map(it => {
+  // First: Approved section at top (non-interactive)
+  const approvedItems = SECTIONS.flatMap(s => s.items.filter(it => APPROVED.has(it.id)).map(it => ({ ...it, _section: s.title })));
+  const approvedHtml = approvedItems.length === 0 ? '' : `
+    <section class="section approved-section" data-section="__approved">
+      <div class="section-h">
+        <h2>✓ Approved (${approvedItems.length}) — tracking in wishlist.html</h2>
+        <span class="meta">moved 2026-04-26</span>
+      </div>
+      <p class="section-intro">These items have been approved and moved to <a href="./wishlist.html" style="color:#7ec67e">wishlist.html</a> for milestone tracking. They're displayed here for reference and cannot be selected.</p>
+      <div class="section-body">${approvedItems.map(it => `
+        <div class="item approved" data-id="${it.id}" data-tag="${esc(it.tag)}" data-effort="${esc(it.effort)}">
+          <div class="approved-mark">✓</div>
+          <div class="item-body">
+            <div class="item-title">${esc(it.title)}</div>
+            <div class="item-rationale">${esc(it.rationale)} <span style="color:#7ec67e;font-size:0.7rem">— from ${esc(it._section)}</span></div>
+            <div class="item-meta">
+              <span class="badge eff-${esc(it.effort)}">${esc(it.effort)}</span>
+              <span class="badge tag">${esc(it.tag)}</span>
+              <span class="badge approved-badge">approved</span>
+            </div>
+          </div>
+        </div>`).join('')}</div>
+    </section>`;
+
+  // Then: original sections, with approved items filtered out
+  const sectionsHtml = SECTIONS.map(s => {
+    const items = s.items.filter(it => !APPROVED.has(it.id));
+    if (items.length === 0) return '';
+    const itemsHtml = items.map(it => {
       const checked = state.has(it.id);
       return `<label class="item${checked?' checked':''}" data-id="${it.id}" data-tag="${esc(it.tag)}" data-effort="${esc(it.effort)}">
         <input type="checkbox" ${checked?'checked':''}>
@@ -321,14 +383,15 @@ function renderSections() {
     return `<section class="section" data-section="${s.key}">
       <div class="section-h">
         <h2><button type="button" class="ch-btn" data-section-toggle="${s.key}" title="Select all visible items in this section">★</button> ${esc(s.title)}</h2>
-        <span class="meta">${s.items.length} items</span>
+        <span class="meta">${items.length} items</span>
       </div>
       <p class="section-intro">${esc(s.intro)}</p>
       <div class="section-body">${itemsHtml}</div>
     </section>`;
   }).join('');
-  // Wire items
-  root.querySelectorAll('.item').forEach(el => {
+  root.innerHTML = approvedHtml + sectionsHtml;
+  // Wire items (skip approved — non-interactive)
+  root.querySelectorAll('.item:not(.approved)').forEach(el => {
     el.addEventListener('click', e => {
       // Avoid double-toggling when clicking the input directly
       if (e.target.tagName === 'INPUT') return;
@@ -376,7 +439,7 @@ function applyFilters() {
   const q = filterState.q.toLowerCase();
   const ef = filterState.effort;
   const tags = filterState.tags;
-  document.querySelectorAll('.item').forEach(el => {
+  document.querySelectorAll('.item:not(.approved)').forEach(el => {
     const it = SECTIONS.flatMap(s => s.items).find(x => x.id === el.dataset.id);
     if (!it) return;
     const hay = (it.title + ' ' + it.rationale).toLowerCase();
@@ -428,6 +491,10 @@ function copyPrompt() {
 }
 
 function init() {
+  // Clean approved IDs from selection state (idempotent).
+  let cleaned = false;
+  for (const id of [...state]) { if (APPROVED.has(id)) { state.delete(id); cleaned = true; } }
+  if (cleaned) persist();
   renderTags();
   renderSections();
   updateCount();

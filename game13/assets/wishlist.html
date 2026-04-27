@@ -108,6 +108,176 @@
     </div>
   </div>
 
+  <!-- ========== APPROVED BRAINSTORM — GROUPED BY MILESTONE TARGET (M292) ========== -->
+  <!--
+    74 items selected from /assets/brainstorm.html on 2026-04-26 plus 19 manual
+    additions from the user. Items are grouped by their target milestone (M293–M309).
+    Future Claude: this is the active workplan. Read this section first at session
+    start. Update status to wip when starting a milestone, done when shipped, with
+    the actual milestone number tag. Never silently shelve — see CLAUDE.md.
+  -->
+  <section class="wl-section" id="approved-brainstorm">
+    <h2>Approved Brainstorm — Milestone Plan (M293–M309)</h2>
+    <p class="sub">93 items (74 from brainstorm.html + 19 manual additions). Grouped by target milestone. Small UI/polish first, then accessibility, then devtools/sims, then gameplay/content. Approved 2026-04-26.</p>
+
+    <div class="wl-group">
+      <h3>M293 — Small UI batch 1</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Notification bubble disambiguation</span><span class="tag status-todo">todo — m293</span><div class="desc">Inventory tab gets bubble for unequipped/upgrades; map Town button shows level-up points only. <strong>Manual #1:</strong> after level-up in combat the unspent-skill-points bubble persists until visiting Character screen — clear it as soon as auto-allocation has run, or on first map render after combat ends.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Quick-equip toast on item pickup</span><span class="tag status-todo">todo — m293</span><div class="desc">"Auto-equipped X to Y" or "X is an upgrade for Z — equip?" when loot drops, so the player doesn't have to open inventory after every fight.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Combat preview tooltip on skill upgrade selection</span><span class="tag status-todo">todo — m293</span><div class="desc">"This upgrade adds N% damage / changes targeting to AoE" — contextual hint when picking talents.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Scroll-position memory on InventoryScreen tab switch</span><span class="tag status-todo">todo — m293</span><div class="desc">Preserve scroll depth when jumping between characters.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Status effect duration tooltips</span><span class="tag status-todo">todo — m293</span><div class="desc">Show duration remaining (rounds), not just type. Players can't tell when burns / blocks expire without counting rounds.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Party screen role icons</span><span class="tag status-todo">todo — m293</span><div class="desc">Tank / DPS / Support / Healer indicators. <strong>Manual #3:</strong> NO emoji — use SVG / Font Awesome / continue the existing class-icon style. User likes the current generated class icons.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M294 — UI batch 2: Party panel + boss splash + zone dropdown</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Unified Spells / Passives / Attributes / Inventory tabbed panel ("Party")</span><span class="tag status-todo">todo — m294</span><div class="desc">Reduce screen count; quick item swaps during skill-point allocation flow. <strong>Manual #5:</strong> Replace existing Character screen but mark deprecated rather than deleting — user may want to refer back. Keep file in repo with a `// DEPRECATED M294` header and unwire from the menu.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Rename map "Inventory" button to "Party"</span><span class="tag status-todo">todo — m294</span><div class="desc">Opens unified Party + Inventory panel. Clearer intent; collapses the Inventory + Town notification-bubble overlap.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">MapScreen zone fast-travel as dropdown</span><span class="tag status-todo">todo — m294</span><div class="desc">Reduce horizontal width on phones once 6+ zones are unlocked. Replace tabs with dropdown.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Boss-intro splash card before boss combat</span><span class="tag status-todo">todo — m294</span><div class="desc">Sells the moment; differentiates from regular fights. <strong>Manual #4:</strong> long boss names (e.g. Unraveler-of-Mortal-Threads) get cut off on iPhone — splash must wrap or scale-down on narrow viewports. Audit existing combat headers for the same overflow bug.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Dual-comparison mode in Inventory (rings / offhand)</span><span class="tag status-todo">todo — m294</span><div class="desc">Compare both rings or offhand at once for better multi-slot planning. <strong>Manual #2:</strong> desktop only — iPhone won't fit, gracefully fall back to single-compare on narrow viewports.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M295 — Polish: enchanter, potion belt, toasts, plain-language status</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Enchanter upgrade preview (before/after stats on hover)</span><span class="tag status-todo">todo — m295</span><div class="desc">Half-done per CLAUDE.md; finalize the tooltip.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Potion belt (combat-quick consumables)</span><span class="tag status-todo">todo — m295</span><div class="desc">Separate from inventory; QoL for healing flow.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Achievement-unlock toast notifications</span><span class="tag status-todo">todo — m295</span><div class="desc">Celebration moment; currently silent unlock.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">"Patch notes" shortcut in GameMenu</span><span class="tag status-todo">todo — m295</span><div class="desc">Link to latest release summary (in-game splash) with a "full history" link to /assets/changelog.html. Discoverable without leaving the game.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Plain-language status descriptions</span><span class="tag status-todo">todo — m295</span><div class="desc">Cognitive accessibility; avoid jargon. "Bleeding (3 rounds): loses 8 HP per round" not "Bleed: DoT".</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Boss-specific dialogue preludes (2-3 lines)</span><span class="tag status-todo">todo — m295</span><div class="desc">Sells stakes; cheap content. Could ship in M295 or M307 with cinematic-dialog.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M296 — Accessibility batch</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Colorblind palettes (deuteranopia / protanopia / tritanopia)</span><span class="tag status-todo">todo — m296</span><div class="desc">Rarity colors today are red/blue/yellow/orange — collide for ~8% of players.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Font-size scaling (Settings → 80%/100%/120%/150%)</span><span class="tag status-todo">todo — m296</span><div class="desc">Fixed 1rem today; mobile readability win.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Tap-target validation (≥ 44×44px per WCAG)</span><span class="tag status-todo">todo — m296</span><div class="desc">Many tooltip-trigger areas likely undersized on mobile. Audit + fix pass.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Reduce-motion toggle (kill parallax, screen wipes)</span><span class="tag status-todo">todo — m296</span><div class="desc">Already partial; expand coverage. <strong>Manual #14:</strong> ensure surfaced in Settings menu — user's OS has reduce-motion enabled and may not know how to override per-app, so the toggle must be in-game-discoverable.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Subtitle / caption mode for combat log</span><span class="tag status-todo">todo — m296</span><div class="desc">Screen-reader friendly real-time combat narration.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M297 — Keyboard navigation</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Keyboard navigation across screens (arrow + enter)</span><span class="tag status-todo">todo — m297</span><div class="desc">Full coverage — all menu screens. Combat keyboard nav included if it doesn't sacrifice existing UX. User goal: entire game keyboard-navigable without mouse, but not critical so don't compromise touch UX.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M298 — Changelog flow + lore + roadmap + monument</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Changelog categorization</span><span class="tag status-todo">todo — m298</span><div class="desc">Bug Fix / Feature / Balance / QoL / Art icons. Flat lists are hard to scan.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">In-game "What's New?" splash on first launch after update</span><span class="tag status-todo">todo — m298</span><div class="desc">Engage players with patch notes; currently external only.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Per-feature "shipped in M###" badge</span><span class="tag status-todo">todo — m298</span><div class="desc">Visible at the feature itself. Celebrate; drive engagement.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Public roadmap page</span><span class="tag status-todo">todo — m298</span><div class="desc">Upcoming acts + major features. Manage expectations; hype building. Pulls from this wishlist's milestone groups.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">In-game lore compendium (Claude-authored)</span><span class="tag status-todo">todo — m298</span><div class="desc">Help follow the 5-act narrative. <strong>Manual #19:</strong> Claude writes the lore — this is Claude's game; user is one of the players.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Hardcore monument on title screen</span><span class="tag status-todo">todo — m298</span><div class="desc">Display fallen heroes. <strong>Manual #13:</strong> only render if a hardcore character has fallen. <strong>Manual #20:</strong> hardcore saves remain loadable as disabled slots so character stats can be compared across playthroughs (Character A from previous run vs Character B from new run). Option to delete the slot.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M299 — Devtool catalogs + tools landing</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Companion catalog page (sortable: name, class, stats, skills)</span><span class="tag status-todo">todo — m299</span><div class="desc">Missing entirely; companions are semi-documented in code only.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Dungeon catalog page</span><span class="tag status-todo">todo — m299</span><div class="desc">Location, stages, mini-boss, rewards — data lives in mapData.js; expose for designers.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Status effect catalog page</span><span class="tag status-todo">todo — m299</span><div class="desc">Full glossary, sources, interactions. No public reference today.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Achievement roadmap page</span><span class="tag status-todo">todo — m299</span><div class="desc">Prerequisites, unlock conditions, rarity. Help players chase trophies.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Tools-menu landing page (curated)</span><span class="tag status-todo">todo — m299</span><div class="desc">Replace bare /assets/ index with curated table — discoverability for the 15+ tools.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Live-data + client-side override system across all tools</span><span class="tag status-todo">todo — m299</span><div class="desc"><strong>Manual #19:</strong> all dev tools must use live game data by default with optional uploaded-JSON override. Persistent client-side store across pages, "Revert to default" + "Revert to milestone N" buttons. New page to manage uploaded data. Prevents tools from going stale.</div></div></div>
+      <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">wishlist.html: group by milestone target</span><span class="tag status-done">done — m292</span><div class="desc">Done as part of this M292 migration — this section is the result.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M300 — Devtool batch 2: Sims, audits, archives</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Skill interaction simulator (skill A + skill B combo)</span><span class="tag status-todo">todo — m300</span><div class="desc">Useful for balance design.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Affix interaction matrix page</span><span class="tag status-todo">todo — m300</span><div class="desc">Which stack / conflict / multiply. Critical for balance; no visual map today.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Spell catalog: side-by-side skill comparison</span><span class="tag status-todo">todo — m300</span><div class="desc">Helps streamline talent design.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Asset-pipeline trace tool</span><span class="tag status-todo">todo — m300</span><div class="desc">Which scripts touch which files — reduce confusion on stale workflows.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">image-review-manifest deprecation pass</span><span class="tag status-todo">todo — m300</span><div class="desc">1.6 MB; stale entries. Clean it up.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">character-redesign archive</span><span class="tag status-todo">todo — m300</span><div class="desc">Preserve old versions, currently overwritten. Design history.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Rebalance report diff view</span><span class="tag status-todo">todo — m300</span><div class="desc">Old → new highlighted. Currently fresh report each time.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M301 — Headless simulator + regression infra</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Headless combat simulator API</span><span class="tag status-todo">todo — m301</span><div class="desc">Spawn combatants, run N rounds, return stats. Currently Monte Carlo lives in scripts; expose as a clean Node API for Claude to call.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Batch rebalance reports (parallel + CSV)</span><span class="tag status-todo">todo — m301</span><div class="desc">Test 50 skill tweaks in parallel, compare win-rates. Currently serial.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Regression alerts on rebalance</span><span class="tag status-todo">todo — m301</span><div class="desc">Alert if Act win-rate drops &gt; threshold. <strong>Manual #15:</strong> per-act configurable thresholds (e.g. Act 5 25% floor vs Act 1 10%). Config file: scripts/regression-thresholds.json, hand-editable.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Encounter difficulty rating</span><span class="tag status-todo">todo — m301</span><div class="desc">Predicted win-rate, flag too-hard fights. Uses simulator.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Item-generation validator</span><span class="tag status-todo">todo — m301</span><div class="desc">Every affix rolls within bounds. Catch balance bugs early.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Affix coverage report</span><span class="tag status-todo">todo — m301</span><div class="desc">Which affixes never appear in Act 1-2 loot. Identify dead content.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Save-file load-tester (auto-snapshot per milestone)</span><span class="tag status-todo">todo — m301</span><div class="desc">Load 100 random saves, check for crashes. <strong>Manual #17:</strong> auto-save a game per act after each milestone build under assets/references/emberveil/saves/regression/M###/ for regression testing.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Loot distribution audit</span><span class="tag status-todo">todo — m301</span><div class="desc">Drop chance per act; flag rare over-drop. <strong>Manual #18:</strong> include merchant, guild hall, black market shop pools — they're part of the economy too.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Combat-log replayer (export-only)</span><span class="tag status-todo">todo — m301</span><div class="desc">Save fight trace JSON, replay visually on demand. <strong>Manual #13:</strong> no repo bloat — keep traces in localStorage with manual export button. Loader takes pasted JSON or file upload.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Status-effect interaction matrix</span><span class="tag status-todo">todo — m301</span><div class="desc">All 2-effect combos, computed outcomes. Identify unintended synergies.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Automated end-to-end playthrough</span><span class="tag status-todo">todo — m301</span><div class="desc">Seeded RNG, full Act 1-5 run, softlock detection. Smoke test after balance changes.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M302 — Gameplay batch 1: Combat additions + new node types</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Companion level-sync option</span><span class="tag status-todo">todo — m302</span><div class="desc">Scale companion to party avg. <strong>Manual #5:</strong> party average level should also be displayed on save game slots so you can quickly compare playthroughs.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Flee from combat (DEX check; failure costs gold)</span><span class="tag status-todo">todo — m302</span><div class="desc">Recovery option early-act instead of auto-wipe.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Steal-buff mechanic (Rogue)</span><span class="tag status-todo">todo — m302</span><div class="desc">Pull enemy buffs to self. New effect type; high-skill play.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Bleed-stack burst finisher skill</span><span class="tag status-todo">todo — m302</span><div class="desc">Make bleed-focused builds rewarding beyond passive DoT.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Curse system (negative buff that spreads on death)</span><span class="tag status-todo">todo — m302</span><div class="desc">Differentiate curses from poison/burn; Warlock identity.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Skill-check node (single attribute roll)</span><span class="tag status-todo">todo — m302</span><div class="desc">Success/fail branches. Rewards stat investment.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Travelling merchant + minigame node-overlay system</span><span class="tag status-todo">todo — m302</span><div class="desc">Travelling merchant stops on the path; one-time stock. <strong>Manual #9:</strong> generalize to a node-overlay system — random encounters can overlay an existing node OR appear between nodes. If overlaying, the node-click triggers the overlay first, THEN starts the underlying node encounter (do NOT let the user skip the underlying node — known bug on Node 1 of new maps). Includes positive (merchant), neutral (memory minigame), and hostile (bandit patrol) overlays. Ties into quest system.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">DoT stacking modes per-spell</span><span class="tag status-todo">todo — m302</span><div class="desc"><strong>Manual #6:</strong> Bleed, poison, and other DoTs each declare a stacking mode: per-source (each character independently up to N stacks — e.g. 2 rogues × 5 = 10), per-character (one stack per source), or global (one stack from any source). Tooltips read e.g. "Poison Dagger: applies up to 5 stacks of poison on target." Pick whichever mode best suits each spell.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M303 — Enemy spells + champion modifiers</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Enemy spells</span><span class="tag status-todo">todo — m303</span><div class="desc"><strong>Manual #7:</strong> add spells to selected enemies — basic monsters (esp. goblins) keep auto-attack. Reusable element-keyed FX assets (fire/ice/shadow/holy/nature) with monster-class tinting; fall back gracefully when art is missing. Bosses get wind-up spells interruptible by sufficient damage or dispel/spell-steal. Some boss buffs are stealable and can flip the tide of combat.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Blue-name champion modifiers</span><span class="tag status-todo">todo — m303</span><div class="desc"><strong>Manual #8:</strong> Diablo-2-style champion prefixes — health regen, damage aura, fast, extra strong, etc. No new artwork; pure mechanical layer. Defer the "giant fiery mini-boss" idea to challenge tiles in a later milestone.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M304 — Multi-phase bosses + boss loot + hidden bosses + dialogue</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Multi-phase boss fights</span><span class="tag status-todo">todo — m304</span><div class="desc">HP checkpoints unlock new attack patterns. Generalize the Unraveler pattern to 3-5 other final bosses.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Boss-themed loot tables</span><span class="tag status-todo">todo — m304</span><div class="desc">e.g. Unraveler always drops void-themed items. Memorable rewards for memorable fights.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Hidden boss encounters</span><span class="tag status-todo">todo — m304</span><div class="desc">Gated by rare-loot-finds or stat thresholds. Easter eggs for completionists / speedrunners.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">8 new dialogue branches per act</span><span class="tag status-todo">todo — m304</span><div class="desc">Gated on party comp / past choices. Replay value; story is mostly linear today.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M305 — Set items + uniques + 40 affixes</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Set items (24 sets total)</span><span class="tag status-todo">todo — m305</span><div class="desc"><strong>Manual #10 (doubled per user):</strong> 12 low-tier (2-piece — Diablo-2 Sigon-style with powerful low-level modifiers), 8 mid-tier (3-piece), 4 endgame (4–5 piece). Sets have legendary effects on top of stat bonuses (e.g. Mage set: Magic Missile fires bonus AoE projectile at second target). Pre-determined effects, semi-random affix values per template (Sigon Shield always +5 STR but other affixes random).</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Unique items (~24 across 5 acts)</span><span class="tag status-todo">todo — m305</span><div class="desc">Rare items with a legendary effect (rarely multiple). Pre-determined effects; affixes may be pre-determined or random per template.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">40 new affixes (elemental combos, conditional triggers, set bonuses)</span><span class="tag status-todo">todo — m305</span><div class="desc">Deepen itemization beyond the current ~30 affixes. Overlaps with sets — design together.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M306 — Infinite scaling dungeon</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Procedural challenge dungeon (infinite scaling)</span><span class="tag status-todo">todo — m306</span><div class="desc"><strong>Manual #11:</strong> separate from in-game dungeons. Diablo-3/4 / PoE-delve style infinite scaling tiers. Random Act 1-5 enemies + twists. Replayable post-game content for build-testing.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M307 — Crafting + boss preludes + cinematic dialog</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Craftable unique items (recipe unlocks on boss kill)</span><span class="tag status-todo">todo — m307</span><div class="desc">Bridge merchant/blacksmith/enchanter workflows. 5 per act.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Crafting recipe unlocks via lore-node exploration</span><span class="tag status-todo">todo — m307</span><div class="desc">Make Blacksmith/Enchanter discovery dynamic instead of static stock. <strong>Manual #12:</strong> all basic/white recipes should unlock easily — gating is for higher tiers.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Boss-defeat cinematic dialog</span><span class="tag status-todo">todo — m307</span><div class="desc">Capture story beat, not just combat. Leverage story; minimal boss dialog today.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M308 — Number rounding + fame-locked unlocks</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Number rounding audit</span><span class="tag status-todo">todo — m308</span><div class="desc"><strong>Manual #16:</strong> floor int stats (HP/MP/STR/DEX/INT/WIS/CON/CHA, armor, damage); display floats with up to 2 decimals (crit chance shows 1.15%, not 13.000000001%). Apply across DPS meter + character stats. Multipliers, dodge %, resistances stay float; consider per-stat formatting helper.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Fame-locked appearance / weapon variety unlocks</span><span class="tag status-todo">todo — m308</span><div class="desc">Long-term carrot; fame is invisible today.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>M309 — News flow + asset archive + release pipeline</h3>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">public/news/ folder + Latest News widget</span><span class="tag status-todo">todo — m309</span><div class="desc">Non-changelog announcements (events, dev diaries) on the asset gallery.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Versioned asset archive (snapshot per milestone)</span><span class="tag status-todo">todo — m309</span><div class="desc">Preserve design history; valuable for postmortems.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">release.sh prompt for changelog category tags</span><span class="tag status-todo">todo — m309</span><div class="desc">Force categorization at release time so the player-facing changelog organizes itself. Ties into M298 changelog categorization.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Backward-compat notes on release</span><span class="tag status-todo">todo — m309</span><div class="desc">Flag breaking saves, migration info. Reduce confusion when mechanics change.</div></div></div>
+    </div>
+
+    <div class="wl-group">
+      <h3>Future Claude — read this before starting work</h3>
+      <p class="sub" style="margin-top:0">Workflow expectations baked into this batch:</p>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Check this section at every session start</span><span class="tag status-todo">workflow</span><div class="desc">CLAUDE.md routes you here. Find the next pending milestone, flip its items to wip, ship them, flip to done with the actual milestone-tag (use the milestone number that ships, not the planned one — e.g. if M293 slips to M294, update tags accordingly).</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Maintain milestone groupings across the wishlist</span><span class="tag status-todo">workflow</span><div class="desc">All future approved batches go in milestone-grouped sections like this one. Do not revert to flat lists.</div></div></div>
+      <div class="wl-item"><div class="box"></div><div class="body"><span class="label">No silent shelving</span><span class="tag status-todo">workflow</span><div class="desc">If an item can't ship in its target milestone, surface it explicitly in the response and flip status to dropped (with reason) or shift it to a later milestone with a note. Never let it disappear.</div></div></div>
+    </div>
+  </section>
+
   <!-- ========== MOD SYSTEM ========== -->
   <section class="wl-section">
     <h2>Mod System (M66 — in development)</h2>
