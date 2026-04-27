@@ -1,7 +1,82 @@
 {
-  "generated": "2026-04-27T08:01:34.175Z",
-  "currentMilestone": 312,
+  "generated": "2026-04-27T08:26:32.315Z",
+  "currentMilestone": 313,
   "milestones": [
+    {
+      "milestone": 314,
+      "title": "Critical UI Bugs (post-M309 feedback)",
+      "items": [
+        {
+          "label": ".dg-screen doesn't go away after dungeon completed",
+          "status": "done",
+          "tag": "done — m314",
+          "desc": "DungeonScreen had onLeave() but ScreenManager only calls onExit()/destroy(). Added onExit and destroy aliases that call removeEl(this._el)."
+        },
+        {
+          "label": ".combat-screen becomes 0px tall mid-combat",
+          "status": "done",
+          "tag": "done — m314",
+          "desc": "Added height:100%; min-height:100% to .combat-screen CSS rule in COMBAT_STYLES."
+        },
+        {
+          "label": "Victory screen overflows when many rewards",
+          "status": "done",
+          "tag": "done — m314",
+          "desc": "Added max-height:90vh; overflow-y:auto to .cem-box so the victory modal scrolls instead of clipping."
+        },
+        {
+          "label": "Boss treasure drops 3 items — should be PICK 1 of 3",
+          "status": "done",
+          "tag": "done — m314",
+          "desc": "Converted MapScreen._showBossChestModal from \"Take All\" to a pick-one UI: 3 buttons side-by-side, one click selects + closes. Only rarity colors on borders (no class-suggestion green). mm-box gets max-height/overflow-y."
+        },
+        {
+          "label": "Boss treasure pick-dialog borders should be rarity, not class suggestion",
+          "status": "done",
+          "tag": "done — m314",
+          "desc": "Pick-one modal uses RAR_COLOR/RAR_BG maps keyed by rarity. No character-suggestion overlay rendered."
+        },
+        {
+          "label": "Achievement screen during combat doesn't pause; victory pops up over it",
+          "status": "done",
+          "tag": "done — m314",
+          "desc": "Added onPause/onResume to CombatScreen. onPause saves and zeroes _speedMult. onResume restores it and drains _deferredVictory. _showVictoryModal defers if CombatScreen is not the stack top."
+        },
+        {
+          "label": "Boss intro splash shows old intro text in background; no auto-dismiss",
+          "status": "done",
+          "tag": "done — m314",
+          "desc": "Removed 2s auto-dismiss timer from _showBossIntroSplash. HUD, potion belt, and log panel are hidden (visibility:hidden) while splash is up and restored on dismiss."
+        },
+        {
+          "label": "500-fame guildmaster popup appears after quitting to menu",
+          "status": "done",
+          "tag": "done — m314",
+          "desc": "TownScreen stores _fameEncounterModal reference. onExit/destroy removes it. Prevents modal from persisting over TitleScreen after GameMenuScreen._goToTitle() clears the stack."
+        },
+        {
+          "label": "Combat report \"TOTAL HEAL 0.38999...\" — too many digits",
+          "status": "done",
+          "tag": "done — m314",
+          "desc": "Applied formatStat(...,'int') to totalDmg, totalHeal, totalMit, avgDps, per-row totals, source totals, and individual hit amounts in _buildCombatReportHtml."
+        },
+        {
+          "label": "Replace big E toggle button with Combat Settings pause menu",
+          "status": "done",
+          "tag": "done — m314",
+          "desc": "Added \"Combat Settings\" button to pause menu. Sub-panel: show/hide DPS Meter (with Show Enemies sub-option), show/hide Combat Log (with Show Secondary Effects sub-option), Combat Captions toggle. Redirect note added in main Settings."
+        },
+        {
+          "label": "Combat captions overlap bottom HP bar",
+          "status": "done",
+          "tag": "done — m314",
+          "desc": "Changed .cbt-captions bottom from 0 to 80px so captions sit above the .cbt-hud bar."
+        }
+      ],
+      "doneCount": 11,
+      "total": 11,
+      "shipped": true
+    },
     {
       "milestone": 309,
       "title": "News flow + asset archive + release pipeline",

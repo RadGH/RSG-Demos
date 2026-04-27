@@ -1,7 +1,9 @@
 {
-  "milestone": 312,
+  "milestone": 313,
   "date": "2026-04-27",
-  "summary": "M311 — Number rounding audit (formatStat helper, no more floating-point artifacts in stat displays) + fame-locked appearance unlocks (5 base + up to 5 more at 100/250/500/1000/2000 fame thresholds, fame badge on title screen and game menu)",
-  "categories": [],
+  "summary": "M309 — News pipeline + asset archive snapshots + release.sh category tags + backward-compat notes: public/news/ markdown folder + Latest News widget + news-archive.html, scripts/snapshot-assets.cjs hooked into release.sh writes per-milestone snapshots to public/assets/data/snapshots/M### (data-overrides.html now restores from them), release.sh accepts RELEASE_CATEGORY + BREAKING_CHANGES env vars, What's New splash shows Migration Notes when present.",
+  "categories": [
+    "feature"
+  ],
   "breakingChanges": []
 }
