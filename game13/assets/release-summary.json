@@ -1,7 +1,7 @@
 {
-  "milestone": 318,
+  "milestone": 320,
   "date": "2026-04-27",
-  "summary": "M313 — Consistency + codex + What's New fix: removed Recommend/Auto bar from skill tabs, 'Show Base Attributes' label rename, hidden useless skill-header bar, removed 'Skills - ' prefix, shop+craft auto-equip toasts (matching combat-loot variant), salvage button margin, 3-step enchanter wizard (item→property→tier), What's New fetch + Full History link now use Vite BASE_URL, codex updated with current formulas (armor DR curve, crit, dodge, fame thresholds, boss phases, champion modifiers, legendary activation rules).",
+  "summary": "M315 — Deep balance analysis + rebalance pass: Act 5 combat was trivial (party one-shotting all enemies, 0 retaliation). Fixed simulator act-as-ng+ bug and class-casing bug. Rebalanced all enemies Act 1-5 (HP +30-100%, DMG +30-60%), capped Backstab damageMult and Reality Shard stun chance, raised global damage multiplier to 1.3x.",
   "categories": [
     "feature"
   ],
