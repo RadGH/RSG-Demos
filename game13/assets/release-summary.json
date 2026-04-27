@@ -1,5 +1,5 @@
 {
-  "milestone": 295,
+  "milestone": 296,
   "date": "2026-04-26",
-  "summary": "M295 — Polish batch: Enchanter upgrade preview tooltip with before/after stat deltas finalized. Potion belt — 3-slot quick-access consumables per character, accessible during combat. Achievement-unlock toast (gold variant, 6s, tappable). 'What's New' shortcut in GameMenu reads release-summary.json (auto-emitted prebuild). Shared STATUS_META module with plain-language status descriptions. Boss-specific intro preludes — 2 lines per boss, 11 bosses authored."
+  "summary": "M296 — Accessibility batch: colorblind palettes (default + deuteranopia/protanopia/tritanopia) via CSS custom properties + Settings selector. 80%/100%/120%/150% font-size scaling. Global 44×44px tap-target floor for buttons/links/inputs (WCAG AA) with .compact-target opt-out. Reduce-motion 3-way toggle (Auto/On/Off) with src/utils/motion.js helper, expanded coverage to parallax + dialog flashes. Combat captions mode (24px aria-live mirror of the combat log)."
 }
