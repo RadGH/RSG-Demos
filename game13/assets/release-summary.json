@@ -1,5 +1,5 @@
 {
-  "milestone": 307,
+  "milestone": 308,
   "date": "2026-04-26",
-  "summary": "M305 — 24 set items (12 low/8 mid/4 endgame), 24 unique items across 5 acts, 40 new affixes, legendary effects system with combat hooks, purple/orange UI for sets/uniques, boss loot tables updated with unique drops."
+  "summary": "M305 — Sets + uniques + affixes: 24 sets (12 low-tier 2-piece / 8 mid 3-piece / 4 endgame 4-5-piece), 24 uniques across 5 acts (boss-tied + open-world drops), 40 new affixes (elemental combo, conditional, defensive, resource, set helpers), 12 legendary effect hooks dispatched on combat-start/hit/crit/cast/kill. Set/unique tooltip + colored borders. Note: onTakeDamage hook deferred to next milestone for re-entrancy safety."
 }

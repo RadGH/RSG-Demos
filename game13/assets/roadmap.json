@@ -1,7 +1,22 @@
 {
-  "generated": "2026-04-27T06:32:10.298Z",
-  "currentMilestone": 307,
+  "generated": "2026-04-27T06:55:17.765Z",
+  "currentMilestone": 308,
   "milestones": [
+    {
+      "milestone": 306,
+      "title": "Infinite scaling dungeon",
+      "items": [
+        {
+          "label": "Procedural challenge dungeon (infinite scaling)",
+          "status": "done",
+          "tag": "done — m306",
+          "desc": "Manual #11: separate from in-game dungeons. Diablo-3/4 / PoE-delve style infinite scaling tiers. Random Act 1-5 enemies + twists. Replayable post-game content for build-testing."
+        }
+      ],
+      "doneCount": 1,
+      "total": 1,
+      "shipped": true
+    },
     {
       "milestone": 305,
       "title": "Set items + uniques + 40 affixes",
@@ -544,21 +559,6 @@
       "doneCount": 6,
       "total": 6,
       "shipped": true
-    },
-    {
-      "milestone": 306,
-      "title": "Infinite scaling dungeon",
-      "items": [
-        {
-          "label": "Procedural challenge dungeon (infinite scaling)",
-          "status": "todo",
-          "tag": "todo — m306",
-          "desc": "Manual #11: separate from in-game dungeons. Diablo-3/4 / PoE-delve style infinite scaling tiers. Random Act 1-5 enemies + twists. Replayable post-game content for build-testing."
-        }
-      ],
-      "doneCount": 0,
-      "total": 1,
-      "shipped": false
     },
     {
       "milestone": 307,
