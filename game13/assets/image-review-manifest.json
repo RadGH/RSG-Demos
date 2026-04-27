@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-04-27T10:31:16.571Z",
+    "generated": "2026-04-27T22:15:05.945Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (62 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
@@ -9,9 +9,9 @@
       "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (15 bosses)"
     },
     "counts": {
-      "total": 917,
+      "total": 918,
       "by_status": {
-        "ready": 668,
+        "ready": 669,
         "pending": 131,
         "orphaned": 60,
         "approved": 20,
@@ -22,7 +22,7 @@
         "companion": 125,
         "boss": 105,
         "enemy": 95,
-        "background": 31,
+        "background": 32,
         "tap-weapons": 9,
         "orphan": 60,
         "reference-sheet": 58
@@ -7040,6 +7040,15 @@
       "group": "map",
       "pose": null,
       "file": "../images/map_bg/primordial_nexus.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_prologue",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/prologue.jpg",
       "prompt": null,
       "status": "ready"
     },

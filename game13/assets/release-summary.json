@@ -1,7 +1,7 @@
 {
-  "milestone": 320,
+  "milestone": 325,
   "date": "2026-04-27",
-  "summary": "M315 — Deep balance analysis + rebalance pass: Act 5 combat was trivial (party one-shotting all enemies, 0 retaliation). Fixed simulator act-as-ng+ bug and class-casing bug. Rebalanced all enemies Act 1-5 (HP +30-100%, DMG +30-60%), capped Backstab damageMult and Reality Shard stun chance, raised global damage multiplier to 1.3x.",
+  "summary": "M325 — Cloud-synced per-run statistics (run_stats Supabase table; account-only; client-side trim 100 rows per user via after-insert trigger). FTL-style map grid layout (M324) snaps every Act 1-6 zone's nodes onto a 12-col x 12-row grid (6 logical rows x 2 alternating sublanes) preserving graph topology. Clockwork Turret + Tinker sprites regenerated via SpriteCook (12 poses total: 5 turret, 7 tinker; reference-asset chained for character consistency). Checkbox checkmark glyph reworked: now an inline-SVG background-image at 70% size on the box itself, scales perfectly with whatever dimensions the checkbox has.",
   "categories": [
     "feature"
   ],
