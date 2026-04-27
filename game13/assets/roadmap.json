@@ -1,7 +1,58 @@
 {
-  "generated": "2026-04-27T03:33:24.590Z",
-  "currentMilestone": 298,
+  "generated": "2026-04-27T03:55:08.557Z",
+  "currentMilestone": 299,
   "milestones": [
+    {
+      "milestone": 300,
+      "title": "Devtool batch 2: Sims, audits, archives",
+      "items": [
+        {
+          "label": "Skill interaction simulator (skill A + skill B combo)",
+          "status": "done",
+          "tag": "done — m300",
+          "desc": "skill-sim.html — two skill pickers from getSkills(), side-by-side effect panels, combo heuristic (stacking/consume/DPS/neutral), and \"Run 100 Combats\" in-browser sim."
+        },
+        {
+          "label": "Affix interaction matrix page",
+          "status": "done",
+          "tag": "done — m300",
+          "desc": "affix-matrix.html — visual grid from getAffixes(), heuristic interaction types (stack/conflict/multiply/independent), color-coded, click-to-detail modal, pool filter."
+        },
+        {
+          "label": "Spell catalog: side-by-side skill comparison",
+          "status": "done",
+          "tag": "done — m300",
+          "desc": "spell-catalog.html — added Compare mode button; pick up to 4 skills, click \"Show Comparison\" for a horizontal stats table (cooldown, MP, damage type, talents, upgrades)."
+        },
+        {
+          "label": "Asset-pipeline trace tool",
+          "status": "done",
+          "tag": "done — m300",
+          "desc": "asset-pipeline-trace.html — static knowledge map of 13 scripts (release.sh, optimize_audio, emit-game-data, build-manifest, clean-manifest, etc.) with inputs/outputs/trigger. Search + trigger filter."
+        },
+        {
+          "label": "image-review-manifest deprecation pass",
+          "status": "done",
+          "tag": "done — m300",
+          "desc": "scripts/clean-image-review-manifest.cjs — removes missing-file entries and duplicates. Ran: 917 → 782 entries, 1655.7 KB → 1622.3 KB (135 stale removed). Deprecation notice added to image-review.html."
+        },
+        {
+          "label": "character-redesign archive",
+          "status": "done",
+          "tag": "done — m300",
+          "desc": "approve.cjs now archives displaced frames to public/assets/character-redesign-archive/<id>/<timestamp>/ before overwriting. redesign-archive.html lists all archived versions with thumbnails + dates. Forward-only (no backfill — noted in wishlist)."
+        },
+        {
+          "label": "Rebalance report diff view",
+          "status": "done",
+          "tag": "done — m300",
+          "desc": "rebalance-diff.html — select two snapshots from rebalance_snapshots/index.json, renders color-coded diff table (green=buff, red=nerf) by hero/companion/tap/utility. Summary KPIs (buffed/nerfed count). Linked from rebalance-report.html."
+        }
+      ],
+      "doneCount": 7,
+      "total": 7,
+      "shipped": true
+    },
     {
       "milestone": 299,
       "title": "Devtool catalogs + tools landing",
@@ -280,21 +331,6 @@
       "doneCount": 6,
       "total": 6,
       "shipped": true
-    },
-    {
-      "milestone": 300,
-      "title": "Devtool batch 2: Sims, audits, archives",
-      "items": [
-        {
-          "label": "Skill interaction simulator (skill A + skill B combo)",
-          "status": "todo",
-          "tag": "todo — m300",
-          "desc": "Useful for balance design."
-        }
-      ],
-      "doneCount": 0,
-      "total": 1,
-      "shipped": false
     },
     {
       "milestone": 301,
