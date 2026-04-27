@@ -1,7 +1,7 @@
 {
-  "milestone": 317,
+  "milestone": 318,
   "date": "2026-04-27",
-  "summary": "M312 — UI unification batch: HireBuilderScreen wider class cards + chronomancer fits, DifficultyDialog escape + close fix, Settings difficulty row removed, TitleScreen instant fade-in (no slide-down) + cloud layer overlap, save menu flex 0 1 auto + floating Back, Statistics Esc closes properly + persisted run stats, custom confirm modal replaces window.confirm, Tavern routes to PartyPanelScreen, PartyPanel gold/brown redesign with town-style tabs, hidden equip-panel portrait, green-styled auto-equip with sweep on toggle, .inv-char-class margin, reusable settingsPanel component.",
+  "summary": "M313 — Consistency + codex + What's New fix: removed Recommend/Auto bar from skill tabs, 'Show Base Attributes' label rename, hidden useless skill-header bar, removed 'Skills - ' prefix, shop+craft auto-equip toasts (matching combat-loot variant), salvage button margin, 3-step enchanter wizard (item→property→tier), What's New fetch + Full History link now use Vite BASE_URL, codex updated with current formulas (armor DR curve, crit, dodge, fame thresholds, boss phases, champion modifiers, legendary activation rules).",
   "categories": [
     "feature"
   ],

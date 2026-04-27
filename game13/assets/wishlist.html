@@ -293,6 +293,12 @@
     </div>
 
     <div class="wl-group">
+      <h3>M322 (label) — XP Catch-Up + Achievement Persistence</h3>
+      <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">#42 XP catch-up mechanic for under-leveled characters</span><span class="tag status-done">done — m322</span><div class="desc">awardXp() now computes partyAvgLevel and applies catchUpMultiplier(memberLevel, partyAvgLevel) = min(3, 1 + 0.5 * gap). 1 below = 1.5x, 2 below = 2x, 4+ below = 3x cap. Victory modal shows "(N.Nx catch-up)" label next to level-up messages when multiplier applied. FormulaCodexScreen Advanced Systems tab documents the formula. src/game/xp.js catchUpMultiplier().</div></div></div>
+      <div class="wl-item done"><div class="box checked"></div><div class="body"><span class="label">#45 Achievement persistence across runs (no re-toast on new game)</span><span class="tag status-done">done — m322</span><div class="desc">GameState.init() and GameState.load() now call _buildAchievementsSync() which seeds achievements from emberveil_life_achievements_v1 localStorage. checkAchievements() skips already-unlocked ids so no re-toast fires on new game. AchievementsScreen reads the global store directly for account-wide display. SettingsScreen adds "Reset Achievements" button with ConfirmModal. Old saves migrate automatically on first load. src/game/gameState.js _buildAchievementsSync(); src/game/achievements.js buildInitialAchievements(), resetGlobalAchievements().</div></div></div>
+    </div>
+
+    <div class="wl-group">
       <h3>Future Claude — read this before starting work</h3>
       <p class="sub" style="margin-top:0">Workflow expectations baked into this batch:</p>
       <div class="wl-item"><div class="box"></div><div class="body"><span class="label">Check this section at every session start</span><span class="tag status-todo">workflow</span><div class="desc">CLAUDE.md routes you here. Find the next pending milestone, flip its items to wip, ship them, flip to done with the actual milestone-tag (use the milestone number that ships, not the planned one — e.g. if M293 slips to M294, update tags accordingly).</div></div></div>
