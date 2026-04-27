@@ -1,0 +1,5 @@
+{
+  "milestone": 294,
+  "date": "2026-04-26",
+  "summary": "M294 — UI batch 2: New unified PartyPanelScreen with Party/Inventory/Spells/Passives/Attributes tabs (old InventoryScreen + SkillTreeScreen marked deprecated, kept in repo). Map 'Inventory' button renamed 'Party'. Zone fast-travel switches to a dropdown when 4+ zones are unlocked. Boss-intro splash with name auto-wrap and clamp() sizing for long boss names on iPhone. Dual-comparison mode for rings/offhand on desktop viewports."
+}
