@@ -43,6 +43,35 @@
     padding: 0.2rem 0.4rem; border-radius: 4px;
   }
   .filters label.tog input[type=checkbox] { margin: 0; }
+  .filters {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+
+	.filters #search {
+		grid-column: 1 / 5;
+	}
+
+	.filters .tog {
+		grid-column: 1 / 4;
+	}
+	
+
+:root {
+    --header-height: 52px;
+    --header-sticky: 1;
+}
+
+.filters {
+    top: calc( var(--header-height) * var(--header-sticky ) );
+}
+
+.lightbox .lb-close {
+    top: calc( 1rem + ( var(--header-height) * var(--header-sticky) ) );
+    right: 2rem;
+    margin-top: 0;
+}
+
   .count { color: var(--muted); font-size: 0.78rem; }
   .count.has-sel { color: var(--gold-bright,#f8d880); font-weight: 600; }
   .copy-btn {
