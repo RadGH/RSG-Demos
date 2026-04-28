@@ -1,7 +1,7 @@
 {
-  "milestone": 349,
+  "milestone": 350,
   "date": "2026-04-28",
-  "summary": "M349 — Pending Replacements review panel: regenerated pyromancer east_spell sprite (feet were cut off) flagged for user approval before overwriting original.",
+  "summary": "M350 — Balance pass: Act 5 enemies HP -28%/dmg -16% (Comp A 32% to 78%, Comp B 1% to 53% win rate); Act 6 dragons HP +30-50% (Comp A 88% to 86%, Comp B 85% to 67%); chart.js balance-report.html with pre/post/compare views; new pyromancer east_spell sprite approved.",
   "categories": [
     "feature"
   ],

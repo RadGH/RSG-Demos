@@ -1,0 +1,20 @@
+{
+  "id": "m350",
+  "milestone": 350,
+  "openedAt": "2026-04-28T00:00:00Z",
+  "entries": [
+    {
+      "id": "hero_pyromancer_east_spell",
+      "category": "character",
+      "group": "pyromancer",
+      "pose": "east_spell",
+      "live": "../images/spritecook/pyromancer_east_spell.png",
+      "old": "../archive/m350/pyromancer_east_spell_old.png",
+      "new": "../archive/m350/pyromancer_east_spell_new.png",
+      "reason": "Feet were cut off in the original. Regenerated with explicit full-body framing rules using east_attack as a reference for character consistency.",
+      "assetId": "a190e0c8-8350-4c2d-95a2-25443058453e",
+      "referenceAssetId": "6b3dfef9-db60-4f8f-990b-2657fe47c213",
+      "approved": false
+    }
+  ]
+}

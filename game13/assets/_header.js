@@ -69,8 +69,15 @@
   // (/gameNN/...). Keep hardcoded for now; generalize later.
   var TOOLS_BY_GAME = {
     game13: [
-      { href: ASSETS + 'tools.html', label: 'All Tools (Index)' },
-      { separator: true, label: 'Catalogs' },
+      { href: ASSETS + 'image-review-v2.html', label: 'Image Review V2' },
+      { href: ASSETS + 'sprite-adjust.html', label: 'Sprite Adjust' },
+      { href: ASSETS + 'custom-content.html', label: 'Custom Content' },
+      { href: ASSETS + 'skill-audit.html', label: 'Skill Audit' },
+      { href: ASSETS + 'tools.html', label: 'All Tools (Index)' }
+    ]
+  };
+  var CATALOG_BY_GAME = {
+    game13: [
       { href: ASSETS + 'class-catalog.html', label: 'Class Catalog' },
       { href: ASSETS + 'companion-catalog.html', label: 'Companion Catalog' },
       { href: ASSETS + 'dungeon-catalog.html', label: 'Dungeon Catalog' },
@@ -78,23 +85,23 @@
       { href: ASSETS + 'achievement-roadmap.html', label: 'Achievement Roadmap' },
       { href: ASSETS + 'spell-catalog.html', label: 'Spell Catalog' },
       { href: ASSETS + 'enemy-catalog.html', label: 'Enemy Catalog' },
-      { href: ASSETS + 'item-catalog.html', label: 'Item Catalog' },
-      // M345 — Data Catalogs (Legacy) archived (superseded by individual catalogs).
-      { separator: true, label: 'Dev Tools' },
-      { href: ASSETS + 'affix-survey.html', label: 'Affix Survey' },
-      { href: ASSETS + 'enemy-audit.html', label: 'Enemy Audit' },
-      { href: ASSETS + 'skill-audit.html', label: 'Skill Audit' },
-      { href: ASSETS + 'image-review.html', label: 'Image Review' },
-      { href: ASSETS + 'character-redesign.html', label: 'Character Redesign' },
-      { href: ASSETS + 'sprite-adjust.html', label: 'Sprite Adjust' },
-      { href: ASSETS + 'custom-content.html', label: 'Custom Content' },
-      // M345 — AI Content Generator + Data Overrides archived to shorten the menu.
-      { separator: true, label: 'Docs + Admin' },
+      { href: ASSETS + 'item-catalog.html', label: 'Item Catalog' }
+    ]
+  };
+  var DOCS_BY_GAME = {
+    game13: [
       { href: ASSETS + 'docs.html', label: 'Documentation' },
       { href: ASSETS + 'wishlist.html', label: 'Wishlist' },
-      { href: ASSETS + 'brainstorm.html', label: 'Brainstorm' },
-      { href: ASSETS + 'redesign-survey.html', label: 'Redesign Survey' },
-      { separator: true, label: 'Archived' },
+      { href: ASSETS + 'brainstorm.html', label: 'Brainstorm' }
+    ]
+  };
+  var ARCHIVED_BY_GAME = {
+    game13: [
+      { href: ASSETS + 'deprecated-image-review.html', label: 'Image Review (deprecated)' },
+      { href: ASSETS + 'character-redesign.html', label: 'Character Redesign (deprecated)' },
+      { href: ASSETS + 'deprecated-affix-survey.html', label: 'Affix Survey (deprecated)' },
+      { href: ASSETS + 'deprecated-enemy-audit.html', label: 'Enemy Audit (deprecated)' },
+      { href: ASSETS + 'deprecated-redesign-survey.html', label: 'Redesign Survey (deprecated)' },
       { href: ASSETS + 'sprite-flip-review.html', label: 'Sprite Flip Review' },
       { href: ASSETS + 'rebalance.html', label: 'Rebalance' }
     ]
@@ -142,6 +149,9 @@
     ]
   };
   var TOOLS = TOOLS_BY_GAME[GAME_KEY] || [];
+  var CATALOG = CATALOG_BY_GAME[GAME_KEY] || [];
+  var DOCS = DOCS_BY_GAME[GAME_KEY] || [];
+  var ARCHIVED = ARCHIVED_BY_GAME[GAME_KEY] || [];
   var NEWS = NEWS_BY_GAME[GAME_KEY] || [];
 
   // Order: Play Game / Game Info / Assets / Tools / News / Send Feedback / Contact
@@ -159,6 +169,21 @@
     href: ASSETS + 'tools.html',
     label: 'Tools',
     children: TOOLS.slice()
+  } : null;
+  var catalogItem = CATALOG.length ? {
+    href: CATALOG[0].href,
+    label: 'Catalog',
+    children: CATALOG.slice()
+  } : null;
+  var docsItem = DOCS.length ? {
+    href: DOCS[0].href,
+    label: 'Docs',
+    children: DOCS.slice()
+  } : null;
+  var archivedItem = ARCHIVED.length ? {
+    href: ARCHIVED[0].href,
+    label: 'Archived',
+    children: ARCHIVED.slice()
   } : null;
   var newsItem = NEWS.length ? (function () {
     var children = NEWS.map(function (n) {
@@ -180,7 +205,10 @@
   if (GAME_KEY !== 'game13') MENU.push({ href: GAME_INFO, label: 'Game Info' });
   MENU.push(assetsItem);
   if (toolsItem) MENU.push(toolsItem);
+  if (catalogItem) MENU.push(catalogItem);
+  if (docsItem) MENU.push(docsItem);
   if (newsItem) MENU.push(newsItem);
+  if (archivedItem) MENU.push(archivedItem);
   MENU.push({ href: 'https://docs.google.com/forms/d/e/1FAIpQLScWHFEQ8Kbxvsxg5nKerJOPqkYntAkRLCihqQchypNdqayvmA/viewform?usp=publish-editor', label: 'Send Feedback', external: true });
   MENU.push({ href: GAME_ROOT + 'contact.html', label: 'Contact' });
 
