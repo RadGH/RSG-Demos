@@ -522,6 +522,15 @@
 
   <div class="summary" id="summary">Loading manifest…</div>
 
+  <!-- Pending Replacements: candidate sprites awaiting user approval (M349) -->
+  <div id="pending-replacements" style="display:none; margin:1rem 0; padding:1rem; border:2px solid #ffd060; border-radius:8px; background:rgba(255,208,96,0.08);">
+    <h2 style="margin:0 0 0.5rem; color:#ffd060;">⚑ Pending Replacements</h2>
+    <p style="margin:0 0 0.75rem; opacity:0.8; font-size:0.9rem;">
+      Regenerated sprites awaiting your approval. Original is preserved until you approve. To approve, replace the original on disk with the candidate file (or run <code>node scripts/approve-pending-replacements.cjs</code>).
+    </p>
+    <div id="pending-replacements-list"></div>
+  </div>
+
   <!-- Filter bar for action-state visibility -->
   <div class="filter-bar" id="filter-bar">
     <label>Show:
@@ -733,6 +742,41 @@ async function boot() {
   renderSummary();
   renderSections();
   updateCounts();
+  renderPendingReplacements();
+}
+
+async function renderPendingReplacements() {
+  try {
+    const r = await fetch('./pending-replacements.json', { cache: 'no-cache' });
+    if (!r.ok) return;
+    const data = await r.json();
+    const list = data.entries || [];
+    if (!list.length) return;
+    const root = document.getElementById('pending-replacements');
+    const body = document.getElementById('pending-replacements-list');
+    body.innerHTML = list.map(e => `
+      <div style="display:flex; gap:1rem; align-items:flex-start; padding:0.75rem; border:1px solid #444; border-radius:6px; margin-bottom:0.5rem; background:rgba(0,0,0,0.25);">
+        <div style="text-align:center;">
+          <div style="font-size:0.75rem; opacity:0.7;">CURRENT</div>
+          <img src="${e.original}" style="width:160px; height:160px; image-rendering:pixelated; background:#222; border:1px solid #555;">
+          <div style="font-size:0.7rem; opacity:0.6; margin-top:0.25rem;">${e.original.split('/').pop()}</div>
+        </div>
+        <div style="font-size:1.5rem; align-self:center; color:#ffd060;">→</div>
+        <div style="text-align:center;">
+          <div style="font-size:0.75rem; color:#ffd060;">CANDIDATE</div>
+          <img src="${e.candidate}" style="width:160px; height:160px; image-rendering:pixelated; background:#222; border:1px solid #ffd060;">
+          <div style="font-size:0.7rem; opacity:0.6; margin-top:0.25rem;">${e.candidate.split('/').pop()}</div>
+        </div>
+        <div style="flex:1; font-size:0.85rem;">
+          <div><b>${e.id}</b> <span style="opacity:0.6;">(${e.date})</span></div>
+          <div style="margin-top:0.4rem;"><b>Reason:</b> ${e.reason}</div>
+          <div style="margin-top:0.4rem;"><b>Asset id:</b> <code>${e.assetId || '—'}</code></div>
+          ${e.referenceAssetId ? `<div style="margin-top:0.2rem;"><b>Reference:</b> <code>${e.referenceAssetId}</code></div>` : ''}
+        </div>
+      </div>
+    `).join('');
+    root.style.display = 'block';
+  } catch (_) { /* file may not exist yet — ignore */ }
 }
 
 function renderSummary() {
