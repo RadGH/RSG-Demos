@@ -166,5 +166,12 @@
     "color": "#40c840",
     "name": "Thorns",
     "plain": "Returns damage to any attacker that lands a hit."
+  },
+  {
+    "id": "dazed",
+    "glyph": "~",
+    "color": "#a8b0e0",
+    "name": "Dazed",
+    "plain": "Disoriented — attacks have a much harder time finding their mark (-25% hit chance) for the duration."
   }
 ]
