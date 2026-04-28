@@ -1,7 +1,7 @@
 {
-  "milestone": 334,
+  "milestone": 335,
   "date": "2026-04-27",
-  "summary": "M334 — Two backend wins. (1) Supabase request-burst fix: opening Load Game while signed in fired ~184 requests (1 listCloud + 92 readClouds + a redundant auth.getUser per row). cloudSaves.mergeWithCloud and downloadAllMissing now call new savesClient.listFull which selects slot_name+state+updated_at+created_at in a single query; savesClient caches the auth.getUser result for 30s and invalidates on auth state change. Net: 2 requests instead of 184. (2) telemetry_events runtime: new src/auth/telemetryEventsClient.js inserts each consented analytics event as a row in the 0003_telemetry_events Supabase table; signed-out users insert with user_id null (RLS allows it). consent.pushEvent now fires GA AND lazy-imports the telemetry client so every milestone event lands in both places.",
+  "summary": "M335 — UX batch. Boss loot chest affix lines now read '8% Crit Chance' instead of 'Deadly: 8%' (stat-name lookup with fallback to descriptor). Town header button no longer shows the skill-pending bubble — only Party does (Town shows quest-ready / new-unlock count). Town node fast-travel now animates the star to the destination before opening the town dialog. Skills/Passives/Attributes Auto button now immediately spends pending points on click (previously the flag flipped on but spending was deferred to the next screen open). Settings → Combat: new toggles 'Show Combat Log' (default on) and 'Show Damage Meter' (default off); when either is on, an additional 'Show Enemy Damage & Info' toggle appears. CombatScreen reads those at build time and hides log/meter or shows enemy info accordingly. In-game menu reorganized into Hero row + 3-column grid (Game / Library / Settings) + Footer row, with a new Load Game button alongside Save Game; columns collapse to a single stack below 640px wide. Class-catalog.html keeps user CSS edits.",
   "categories": [
     "feature"
   ],
