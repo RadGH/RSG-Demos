@@ -88,11 +88,21 @@
   .char-group .pose-row .card .label { font-size:0.6rem; }
 
   /* Lightbox */
-  .lightbox { display:none; position:fixed; inset:0; z-index:200; background:rgba(0,0,0,0.92); padding:1rem; }
+  .lightbox { display:none; position:fixed; inset:0; z-index:200; background:rgba(0,0,0,0.94); padding:0.75rem; }
   .lightbox.open { display:flex; flex-direction:column; }
-  .lb-toolbar { display:flex; justify-content:space-between; align-items:center; gap:0.5rem; flex-wrap:wrap; padding:0.25rem 0 0.5rem; }
-  .lb-toolbar button { background:#222; color:#ddd; border:1px solid var(--border-strong); border-radius:4px; padding:0.4rem 0.75rem; cursor:pointer; font-size:0.8rem; }
+  .lb-close-x {
+    position:fixed; top:0.5rem; right:0.5rem; z-index:210;
+    width:44px; height:44px; border-radius:6px;
+    background:#c04030; color:#fff; border:1px solid #ffd060;
+    font-size:1.4rem; line-height:1; cursor:pointer; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.5);
+  }
+  .lb-close-x:hover { background:#d05040; }
+  .lb-toolbar { display:flex; justify-content:space-between; align-items:center; gap:0.5rem; flex-wrap:wrap; padding:0.25rem 3rem 0.5rem 0.25rem; }
+  .lb-toolbar button { background:#222; color:#ddd; border:1px solid var(--border-strong); border-radius:4px; padding:0.5rem 0.85rem; cursor:pointer; font-size:0.85rem; min-height:40px; }
   .lb-toolbar button:hover { background:#333; }
+  .lb-toolbar button:disabled { opacity:0.4; cursor:not-allowed; }
   .lb-body { flex:1; display:grid; grid-template-columns:1.6fr 1fr; gap:1rem; min-height:0; }
   .lb-body.stacked { grid-template-columns:1fr; grid-template-rows:1fr auto; }
   .lb-stage { background:#0008; border:1px solid var(--border); border-radius:6px; display:flex; align-items:center; justify-content:center; min-height:0; overflow:hidden; }
@@ -168,15 +178,16 @@
 </div>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close-x" id="lb-close-x" aria-label="Close lightbox">×</button>
   <div class="lb-toolbar">
     <div>
-      <button id="lb-prev">← Prev</button>
-      <button id="lb-next">Next →</button>
+      <button id="lb-prev" type="button">← Prev</button>
+      <button id="lb-next" type="button">Next →</button>
       <span class="lb-counter" id="lb-counter"></span>
     </div>
     <div>
-      <button id="lb-toggle-layout">Toggle layout</button>
-      <button id="lb-close">× Close</button>
+      <button id="lb-toggle-layout" type="button">Toggle layout</button>
+      <button id="lb-close" type="button">× Close</button>
     </div>
   </div>
   <div class="lb-body" id="lb-body">
@@ -495,8 +506,11 @@ function rebuildLbItems(entries) {
     oldSrc: e.old || null,
     newSrc: e.new || null,
     prompt: e.prompt || null,
+    oldPrompt: e.oldPrompt || null,
+    newPrompt: e.newPrompt || null,
     reason: e.reason || null,
-    referenceFile: e.referenceFile || null,
+    assetId: e.assetId || null,
+    referenceAssetId: e.referenceAssetId || null,
     isBg: (e.category === 'background' || e.type),
   }));
 }
@@ -519,35 +533,61 @@ function showLb() {
   img.src = it.src;
   img.alt = it.title;
   document.getElementById('lb-counter').textContent = `${lbIdx+1} / ${lbItems.length}`;
+  document.getElementById('lb-prev').disabled = lbItems.length < 2;
+  document.getElementById('lb-next').disabled = lbItems.length < 2;
   let html = `<h3>${it.title}</h3><div class="meta">${it.subtitle}</div>`;
-  if (it.reason) html += `<div style="margin-bottom:0.6rem;"><strong>Reason:</strong> ${it.reason}</div>`;
+  if (it.reason) html += `<div style="margin-bottom:0.6rem;"><strong>Reason:</strong> ${escapeHtml(it.reason)}</div>`;
   if (it.oldSrc && it.newSrc) {
     html += `<div class="lb-comparison">
       <div><div class="lbl">Original</div><img src="${it.oldSrc}" alt="old"></div>
       <div><div class="lbl new">Candidate</div><img src="${it.newSrc}" alt="new"></div>
     </div>`;
+    if (it.oldPrompt) {
+      html += `<div style="margin-top:0.6rem;"><div class="meta">Original prompt</div><div class="prompt">${escapeHtml(it.oldPrompt)}</div></div>`;
+    }
+    if (it.newPrompt) {
+      html += `<div style="margin-top:0.4rem;"><div class="meta">Candidate prompt</div><div class="prompt">${escapeHtml(it.newPrompt)}</div></div>`;
+    }
   }
-  if (it.prompt) {
+  if (!it.oldSrc && it.prompt) {
     html += `<div style="margin-top:0.6rem;"><div class="meta">Prompt</div><div class="prompt">${escapeHtml(it.prompt)}</div></div>`;
+  }
+  if (it.assetId) {
+    html += `<div style="margin-top:0.5rem; font-size:0.7rem;"><span class="meta">SpriteCook asset:</span> <code>${it.assetId}</code></div>`;
+  }
+  if (it.referenceAssetId) {
+    html += `<div style="margin-top:0.2rem; font-size:0.7rem;"><span class="meta">Reference:</span> <code>${it.referenceAssetId}</code></div>`;
   }
   side.innerHTML = html;
 }
 
 function escapeHtml(s) { return String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
 
+function closeLb() { document.getElementById('lightbox').classList.remove('open'); }
 function wireLightbox() {
-  document.getElementById('lb-close').onclick = () => document.getElementById('lightbox').classList.remove('open');
-  document.getElementById('lb-prev').onclick = () => { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; showLb(); };
-  document.getElementById('lb-next').onclick = () => { lbIdx = (lbIdx + 1) % lbItems.length; showLb(); };
-  document.getElementById('lb-toggle-layout').onclick = () => {
-    lbStacked = !lbStacked;
-    document.getElementById('lb-body').classList.toggle('stacked', lbStacked);
-  };
+  const lb = document.getElementById('lightbox');
+  // Event delegation — survives any later DOM change
+  lb.addEventListener('click', (e) => {
+    const t = e.target.closest('button');
+    if (!t) {
+      // Click on backdrop (not on an interactive element) closes
+      if (e.target === lb) closeLb();
+      return;
+    }
+    if (t.id === 'lb-close' || t.id === 'lb-close-x') { closeLb(); return; }
+    if (t.id === 'lb-prev' && lbItems.length > 1) { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; showLb(); return; }
+    if (t.id === 'lb-next' && lbItems.length > 1) { lbIdx = (lbIdx + 1) % lbItems.length; showLb(); return; }
+    if (t.id === 'lb-toggle-layout') {
+      lbStacked = !lbStacked;
+      document.getElementById('lb-body').classList.toggle('stacked', lbStacked);
+      return;
+    }
+  });
   document.addEventListener('keydown', (e) => {
-    if (!document.getElementById('lightbox').classList.contains('open')) return;
-    if (e.key === 'Escape') document.getElementById('lb-close').click();
-    if (e.key === 'ArrowLeft') document.getElementById('lb-prev').click();
-    if (e.key === 'ArrowRight') document.getElementById('lb-next').click();
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft' && lbItems.length > 1) { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; showLb(); }
+    if (e.key === 'ArrowRight' && lbItems.length > 1) { lbIdx = (lbIdx + 1) % lbItems.length; showLb(); }
   });
 }
 

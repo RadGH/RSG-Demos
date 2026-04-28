@@ -1,7 +1,7 @@
 {
-  "milestone": 350,
+  "milestone": 351,
   "date": "2026-04-28",
-  "summary": "M350 — Balance pass: Act 5 enemies HP -28%/dmg -16% (Comp A 32% to 78%, Comp B 1% to 53% win rate); Act 6 dragons HP +30-50% (Comp A 88% to 86%, Comp B 85% to 67%); chart.js balance-report.html with pre/post/compare views; new pyromancer east_spell sprite approved.",
+  "summary": "M351 — Image Review V2: merged image-review + character-redesign into new viewer with mode/category toggles, multi-select copy-as-list approval flow, image-left/sidebar-right lightbox, and batch JSON system. Nav reorg: new Catalog/Docs/Archived top-level menus. Old pages renamed deprecated-*.html with banners.",
   "categories": [
     "feature"
   ],
