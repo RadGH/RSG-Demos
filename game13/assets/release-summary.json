@@ -1,7 +1,7 @@
 {
-  "milestone": 330,
+  "milestone": 333,
   "date": "2026-04-27",
-  "summary": "M330 — Main-menu UX audit ship: collapsed three signed-out auth buttons (Login/Create/Google) into a single Sign In button + unified modal w/ tabs and Google primary action. NG+ subtitle removed from title screen, surfaced as a yellow pill on Load Game cards. Fame chip simplified — number only when fame > 0; the 'Next: 2,000' copy was removed since the unlock model is per-appearance since M322. New GDPR consent banner (Accept analytics / Reject / Privacy link). GA4 only loads after Accept; consent persists in localStorage rsg_consent_v1 (and a 1y same-site cookie) and shares between game13 + RSG-Demos hub. Major-milestone GA events: run_started, run_completed_win, run_completed_death, level_up, boss_killed, class_unlocked, fame_threshold_reached. New privacy.html on both game and demos hub; new ux-audit.html dev tool linked from the demos hub footer. Optional Supabase migration 0003_telemetry_events.sql (run if you want first-party event analysis); supabase-setup.md updated to cover it.",
+  "summary": "M333 — Google Analytics wired. Hostname-based GA id resolver in src/main.js: emberveil.radgh.com -> G-5H26ZXKBCL, anything else (radgh.github.io/RSG-Demos, localhost) -> G-XP7B7KVNY8. Override path remains: window.__RSG_GA_ID or VITE_GA_ID. Demos hub generate_pages_index.js now ships its own inline consent banner + GA snippet using the same rsg_consent_v1 localStorage key; GA only loads after Accept; same-origin so the decision shares with the game13 tab. Both properties get their own GA stream.",
   "categories": [
     "feature"
   ],

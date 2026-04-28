@@ -71,6 +71,7 @@
     game13: [
       { href: ASSETS + 'tools.html', label: 'All Tools (Index)' },
       { separator: true, label: 'Catalogs' },
+      { href: ASSETS + 'class-catalog.html', label: 'Class Catalog' },
       { href: ASSETS + 'companion-catalog.html', label: 'Companion Catalog' },
       { href: ASSETS + 'dungeon-catalog.html', label: 'Dungeon Catalog' },
       { href: ASSETS + 'status-effect-catalog.html', label: 'Status Effect Catalog' },
