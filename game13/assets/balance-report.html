@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="rsg-game" content="Emberveil">
+<title>Balance Report — Emberveil M350</title>
+<script src="./_header.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  body { background:#0d0d12; color:#d8d4cc; font-family: system-ui, sans-serif; margin:0; padding:1rem; max-width:1100px; margin:0 auto; }
+  h1, h2 { color:#ffd060; }
+  .row { display:flex; gap:1rem; flex-wrap:wrap; }
+  .card { flex:1; min-width:320px; background:#1a1a22; border:1px solid #333; border-radius:8px; padding:1rem; margin:0.5rem 0; }
+  .toggle { display:inline-flex; gap:0; border:1px solid #555; border-radius:6px; overflow:hidden; }
+  .toggle button { background:#222; color:#ccc; border:none; padding:0.4rem 0.9rem; cursor:pointer; font-size:0.9rem; }
+  .toggle button.active { background:#ffd060; color:#222; font-weight:600; }
+  table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+  th, td { padding:0.4rem 0.5rem; text-align:right; border-bottom:1px solid #2a2a32; }
+  th:first-child, td:first-child { text-align:left; }
+  th { color:#ffd060; font-weight:600; }
+  .delta-up { color:#5cd05c; }
+  .delta-down { color:#e07070; }
+  .summary-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:0.75rem; margin:1rem 0; }
+  .stat { background:#1a1a22; border:1px solid #333; border-radius:8px; padding:0.75rem 1rem; }
+  .stat .label { font-size:0.75rem; opacity:0.7; text-transform:uppercase; letter-spacing:0.05em; }
+  .stat .value { font-size:1.6rem; font-weight:600; color:#ffd060; }
+  .note { opacity:0.75; font-size:0.85rem; line-height:1.5; }
+  canvas { max-height:340px; }
+</style>
+</head>
+<body>
+<h1>Balance Report — M350</h1>
+<p class="note">Monte Carlo simulation, N=1000 trials per encounter, two party compositions.
+<strong>A</strong> = warrior/rogue/mage/cleric (regression baseline).
+<strong>B</strong> = warrior/fighter/ranger/mage + companion (rebalance target).
+Target: ~75% win rate (≤25% party-wipe rate) across all acts.</p>
+
+<div class="toggle" style="margin:0.5rem 0;">
+  <button data-view="post" class="active">After (M350)</button>
+  <button data-view="pre">Before</button>
+  <button data-view="compare">Side-by-side</button>
+</div>
+
+<div id="summary-area"></div>
+
+<div class="row">
+  <div class="card" style="flex:2;">
+    <h2>Win rate by act</h2>
+    <canvas id="winChart"></canvas>
+  </div>
+  <div class="card">
+    <h2>Avg rounds per encounter</h2>
+    <canvas id="roundsChart"></canvas>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Per-encounter detail</h2>
+  <div id="detail-table"></div>
+</div>
+
+<div class="card">
+  <h2>XP audit</h2>
+  <div id="xp-audit"></div>
+  <p class="note">Combat XP outliers (&gt;2× combat median) are progressive-difficulty boss rewards and intentional. Dialog XP outliers fall within 2.5× of the dialog median — no action needed.</p>
+</div>
+
+<div class="card">
+  <h2>Edits applied (M350)</h2>
+  <ul>
+    <li><strong>Act 5 enemies</strong> (<code>ENEMIES_ACT5</code>): HP −27% to −29%, dmg −15% to −17%. Comp A win rate 32.1% → 77.5%; comp B 0.6% → 53.4%.</li>
+    <li><strong>Act 6 dragons</strong>: HP +30% to +50% across whelp/ancient/king + regular dragon dmg slight bump. Comp A 88.4% → 85.8%; comp B 84.9% → 66.6%.</li>
+    <li>Act 3/4 untouched — already inside acceptable band.</li>
+    <li>Hero stats, items, skills, XP curve unchanged.</li>
+  </ul>
+</div>
+
+<script>
+const TARGET = 0.75;
+let pre = null, post = null;
+let winChart = null, roundsChart = null;
+let view = 'post';
+
+async function load() {
+  const [a, b] = await Promise.all([
+    fetch('./data/balance-snapshot/pre.json').then(r => r.json()),
+    fetch('./data/balance-snapshot/post.json').then(r => r.json()),
+  ]);
+  pre = a; post = b;
+  render();
+}
+
+function actLabels(snap) {
+  return Object.keys(snap.parties.A.acts).map(a => `Act ${a}`);
+}
+
+function winSeries(snap, comp) {
+  return Object.values(snap.parties[comp].acts).map(a => a.summary.avgWinRate * 100);
+}
+
+function roundsSeries(snap, comp) {
+  return Object.values(snap.parties[comp].acts).map(a => {
+    const all = [...Object.values(a.regular), ...Object.values(a.boss)];
+    const sum = all.reduce((s, x) => s + (x.avgRounds || 0), 0);
+    return all.length ? sum / all.length : 0;
+  });
+}
+
+function render() {
+  renderToggle();
+  renderSummary();
+  renderCharts();
+  renderDetail();
+  renderXp();
+}
+
+function renderToggle() {
+  document.querySelectorAll('.toggle button').forEach(b => {
+    b.classList.toggle('active', b.dataset.view === view);
+    b.onclick = () => { view = b.dataset.view; render(); };
+  });
+}
+
+function renderSummary() {
+  const area = document.getElementById('summary-area');
+  const meanWin = (snap, comp) => {
+    const arr = winSeries(snap, comp);
+    return arr.reduce((a,b) => a+b, 0) / arr.length;
+  };
+  const minWin = (snap, comp) => Math.min(...winSeries(snap, comp));
+  const maxWin = (snap, comp) => Math.max(...winSeries(snap, comp));
+
+  const fmt = n => `${n.toFixed(1)}%`;
+  const delta = (a, b) => {
+    const d = b - a;
+    const cls = Math.abs(d) < 0.5 ? '' : (d > 0 ? 'delta-up' : 'delta-down');
+    return `<span class="${cls}">${d >= 0 ? '+' : ''}${d.toFixed(1)}pt</span>`;
+  };
+
+  const stat = (label, value, sub='') => `
+    <div class="stat"><div class="label">${label}</div>
+      <div class="value">${value}</div>
+      ${sub ? `<div class="note">${sub}</div>` : ''}
+    </div>`;
+
+  let html = '<div class="summary-cards">';
+  if (view === 'post' || view === 'compare') {
+    html += stat('Comp A mean win', fmt(meanWin(post, 'A')),
+      view === 'compare' ? `was ${fmt(meanWin(pre,'A'))} (${delta(meanWin(pre,'A'), meanWin(post,'A'))})` : '');
+    html += stat('Comp B mean win', fmt(meanWin(post, 'B')),
+      view === 'compare' ? `was ${fmt(meanWin(pre,'B'))} (${delta(meanWin(pre,'B'), meanWin(post,'B'))})` : '');
+    html += stat('Worst act (A)', fmt(minWin(post, 'A')));
+    html += stat('Worst act (B)', fmt(minWin(post, 'B')));
+  } else {
+    html += stat('Comp A mean win', fmt(meanWin(pre, 'A')));
+    html += stat('Comp B mean win', fmt(meanWin(pre, 'B')));
+    html += stat('Worst act (A)', fmt(minWin(pre, 'A')));
+    html += stat('Worst act (B)', fmt(minWin(pre, 'B')));
+  }
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+function renderCharts() {
+  const labels = actLabels(post);
+  const target = labels.map(_ => TARGET * 100);
+
+  const datasets = [];
+  if (view === 'compare') {
+    datasets.push({ label: 'A — before', data: winSeries(pre, 'A'), borderColor: '#7090c0', backgroundColor: '#7090c040', borderDash: [6,3], tension:0.2 });
+    datasets.push({ label: 'A — after',  data: winSeries(post, 'A'), borderColor: '#5cd05c', backgroundColor: '#5cd05c40', tension:0.2 });
+    datasets.push({ label: 'B — before', data: winSeries(pre, 'B'), borderColor: '#c08070', backgroundColor: '#c0807040', borderDash: [6,3], tension:0.2 });
+    datasets.push({ label: 'B — after',  data: winSeries(post, 'B'), borderColor: '#ffd060', backgroundColor: '#ffd06040', tension:0.2 });
+  } else {
+    const snap = view === 'pre' ? pre : post;
+    datasets.push({ label: 'Comp A', data: winSeries(snap, 'A'), borderColor: '#5cd05c', backgroundColor: '#5cd05c40', tension:0.2 });
+    datasets.push({ label: 'Comp B', data: winSeries(snap, 'B'), borderColor: '#ffd060', backgroundColor: '#ffd06040', tension:0.2 });
+  }
+  datasets.push({ label: 'Target 75%', data: target, borderColor: '#888', borderDash:[3,3], pointRadius:0, fill:false });
+
+  const cfg = {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      scales: { y: { min: 0, max: 100, ticks: { color: '#bbb', callback: v => v + '%' } },
+                x: { ticks: { color: '#bbb' } } },
+      plugins: { legend: { labels: { color: '#ddd' } } },
+    },
+  };
+  if (winChart) winChart.destroy();
+  winChart = new Chart(document.getElementById('winChart'), cfg);
+
+  const snapForRounds = view === 'pre' ? pre : post;
+  const rcfg = {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Comp A', data: roundsSeries(snapForRounds, 'A'), backgroundColor: '#5cd05c80' },
+        { label: 'Comp B', data: roundsSeries(snapForRounds, 'B'), backgroundColor: '#ffd06080' },
+      ],
+    },
+    options: {
+      responsive: true,
+      scales: { y: { ticks: { color: '#bbb' } }, x: { ticks: { color: '#bbb' } } },
+      plugins: { legend: { labels: { color: '#ddd' } } },
+    },
+  };
+  if (roundsChart) roundsChart.destroy();
+  roundsChart = new Chart(document.getElementById('roundsChart'), rcfg);
+}
+
+function renderDetail() {
+  const target = document.getElementById('detail-table');
+  const acts = Object.keys(post.parties.A.acts);
+  const snap = view === 'pre' ? pre : post;
+  let html = `<table><thead><tr>
+    <th>Act</th><th>Encounter</th><th>Comp A win</th><th>A rounds</th><th>Comp B win</th><th>B rounds</th>
+    ${view === 'compare' ? '<th>A Δ</th><th>B Δ</th>' : ''}
+    </tr></thead><tbody>`;
+  for (const act of acts) {
+    const aReg = snap.parties.A.acts[act];
+    const bReg = snap.parties.B.acts[act];
+    const allKeys = [...Object.keys(aReg.regular), ...Object.keys(aReg.boss)];
+    for (const k of allKeys) {
+      const a = aReg.regular[k] || aReg.boss[k];
+      const b = bReg.regular[k] || bReg.boss[k];
+      let row = `<tr><td>${act}</td><td>${k}</td>
+        <td>${(a.winRate*100).toFixed(1)}%</td><td>${a.avgRounds.toFixed(1)}</td>
+        <td>${(b.winRate*100).toFixed(1)}%</td><td>${b.avgRounds.toFixed(1)}</td>`;
+      if (view === 'compare') {
+        const aPre = (pre.parties.A.acts[act].regular[k] || pre.parties.A.acts[act].boss[k] || {winRate:0});
+        const bPre = (pre.parties.B.acts[act].regular[k] || pre.parties.B.acts[act].boss[k] || {winRate:0});
+        const dA = (a.winRate - aPre.winRate) * 100;
+        const dB = (b.winRate - bPre.winRate) * 100;
+        const cls = d => Math.abs(d) < 0.5 ? '' : (d > 0 ? 'delta-up' : 'delta-down');
+        row += `<td class="${cls(dA)}">${dA >= 0 ? '+' : ''}${dA.toFixed(1)}</td>`;
+        row += `<td class="${cls(dB)}">${dB >= 0 ? '+' : ''}${dB.toFixed(1)}</td>`;
+      }
+      row += '</tr>';
+      html += row;
+    }
+  }
+  html += '</tbody></table>';
+  target.innerHTML = html;
+}
+
+function renderXp() {
+  const xp = post.xpAudit || {};
+  const el = document.getElementById('xp-audit');
+  el.innerHTML = `
+    <table>
+      <thead><tr><th>Type</th><th>Median</th><th>Outliers (&gt;2× median)</th></tr></thead>
+      <tbody>
+        <tr><td>Combat reward.xp</td><td>${xp.combatMedian || 0}</td><td>${(xp.combatOutliers || []).join(', ') || '—'}</td></tr>
+        <tr><td>Dialog outcomes.xp</td><td>${xp.dialogMedian || 0}</td><td>${(xp.dialogOutliers || []).join(', ') || '—'}</td></tr>
+      </tbody>
+    </table>`;
+}
+
+load();
+</script>
+</body>
+</html>

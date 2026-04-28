@@ -1,9 +1,8 @@
 {
-  "milestone": 348,
+  "milestone": 349,
   "date": "2026-04-28",
-  "summary": "M348 - iPhone inventory tap targets, boss scale fix, real reset defaults, combat positioning, FTL gap fix.",
+  "summary": "M349 — Pending Replacements review panel: regenerated pyromancer east_spell sprite (feet were cut off) flagged for user approval before overwriting original.",
   "categories": [
-    "bugfix",
     "feature"
   ],
   "breakingChanges": []
