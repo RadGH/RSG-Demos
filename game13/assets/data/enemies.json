@@ -7,7 +7,7 @@
     "armor": 2,
     "hit": 80,
     "dodge": 15,
-    "xpValue": 18,
+    "xpValue": 8,
     "dmg": [
       22,
       32
@@ -26,7 +26,7 @@
     "armor": 5,
     "hit": 80,
     "dodge": 8,
-    "xpValue": 32,
+    "xpValue": 15,
     "dmg": [
       28,
       40
@@ -45,7 +45,7 @@
     "armor": 1,
     "hit": 80,
     "dodge": 10,
-    "xpValue": 38,
+    "xpValue": 18,
     "dmg": [
       26,
       38
