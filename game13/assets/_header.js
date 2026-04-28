@@ -79,7 +79,7 @@
       { href: ASSETS + 'spell-catalog.html', label: 'Spell Catalog' },
       { href: ASSETS + 'enemy-catalog.html', label: 'Enemy Catalog' },
       { href: ASSETS + 'item-catalog.html', label: 'Item Catalog' },
-      { href: ASSETS + 'data-catalogs.html', label: 'Data Catalogs (Legacy)' },
+      // M345 — Data Catalogs (Legacy) archived (superseded by individual catalogs).
       { separator: true, label: 'Dev Tools' },
       { href: ASSETS + 'affix-survey.html', label: 'Affix Survey' },
       { href: ASSETS + 'enemy-audit.html', label: 'Enemy Audit' },
@@ -88,8 +88,7 @@
       { href: ASSETS + 'character-redesign.html', label: 'Character Redesign' },
       { href: ASSETS + 'sprite-adjust.html', label: 'Sprite Adjust' },
       { href: ASSETS + 'custom-content.html', label: 'Custom Content' },
-      { href: ASSETS + 'ai-content-gen.html', label: 'AI Content Generator' },
-      { href: ASSETS + 'data-overrides.html', label: 'Data Overrides' },
+      // M345 — AI Content Generator + Data Overrides archived to shorten the menu.
       { separator: true, label: 'Docs + Admin' },
       { href: ASSETS + 'docs.html', label: 'Documentation' },
       { href: ASSETS + 'wishlist.html', label: 'Wishlist' },

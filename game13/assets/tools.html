@@ -143,14 +143,16 @@ const TOOLS = [
     updated: '2026-04-26',
     milestone: 'M299',
   },
-  {
-    name: 'Data Overrides',
-    href: 'data-overrides.html',
-    desc: 'Upload custom JSON to override any catalog data type. Overrides persist via localStorage across all tool pages.',
-    tag: 'admin',
-    updated: '2026-04-26',
-    milestone: 'M299',
-  },
+  // M345 — Archived: Data Overrides moved out of the visible Tools list.
+  // The HTML page is preserved at public/assets/data-overrides.html for
+  // direct linking and existing bookmarks; the entry below is left in
+  // place commented out so future re-enabling is a one-line revert.
+  // {
+  //   name: 'Data Overrides',
+  //   href: 'data-overrides.html',
+  //   desc: 'Upload custom JSON to override any catalog data type. Overrides persist via localStorage across all tool pages.',
+  //   tag: 'admin', updated: '2026-04-26', milestone: 'M299',
+  // },
   // ─── Existing Tools ────────────────────────────────────────────────────
   {
     name: 'Asset Gallery',
@@ -168,14 +170,15 @@ const TOOLS = [
     updated: '2026-04-13',
     milestone: 'M093',
   },
-  {
-    name: 'AI Content Generator',
-    href: 'ai-content-gen.html',
-    desc: 'Generate game content (dialogs, lore, item names) using the AI pipeline.',
-    tag: 'devtool',
-    updated: '2026-04-14',
-    milestone: 'M120',
-  },
+  // M345 — Archived: AI Content Generator. Page preserved on disk for
+  // direct linking; archived from the visible Tools list to keep the
+  // catalog short on mobile.
+  // {
+  //   name: 'AI Content Generator',
+  //   href: 'ai-content-gen.html',
+  //   desc: 'Generate game content (dialogs, lore, item names) using the AI pipeline.',
+  //   tag: 'devtool', updated: '2026-04-14', milestone: 'M120',
+  // },
   {
     name: 'BG Remove',
     href: 'bg-remove.html',
@@ -208,14 +211,16 @@ const TOOLS = [
     updated: '2026-04-15',
     milestone: 'M210',
   },
-  {
-    name: 'Data Catalogs',
-    href: 'data-catalogs.html',
-    desc: 'Legacy combined catalog view — affixes, encounters, quests, passives. Superseded by individual catalog pages.',
-    tag: 'catalog',
-    updated: '2026-04-23',
-    milestone: 'M242',
-  },
+  // M345 — Archived: Data Catalogs (Legacy). Superseded by the individual
+  // catalog pages (companion-catalog, dungeon-catalog, status-effect-
+  // catalog, achievement-roadmap, class-catalog). Page kept on disk for
+  // historical reference; removed from the Tools list to shorten it.
+  // {
+  //   name: 'Data Catalogs',
+  //   href: 'data-catalogs.html',
+  //   desc: 'Legacy combined catalog view.',
+  //   tag: 'catalog', updated: '2026-04-23', milestone: 'M242',
+  // },
   {
     name: 'Documentation',
     href: 'docs.html',
