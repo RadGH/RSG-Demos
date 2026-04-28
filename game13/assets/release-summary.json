@@ -1,7 +1,7 @@
 {
-  "milestone": 338,
-  "date": "2026-04-27",
-  "summary": "M338 — map + dungeon. Dungeon nodes: anchor-aware return path (was using gs.nodeId which had already moved to the dungeon entry, so 'give up' looped back into the dungeon). Visible error fallback if dungeonId is missing or DungeonScreen import fails. Map layout rewrite — _layoutZoneToFTLGrid now caps each node's outgoing exits at 3 (preferring the spatially closest), pins the boss to (COLS-1, mid-row), classifies thru-nodes by 'reaches boss' set, places thrus along a centred trunk with ≤2-row vertical drift between adjacent columns, and places one-offs in the SAME column as their parent at parent.row ± 1 so detours read as off-lane. Fewer cross-screen connections, no node should branch to more than 3 destinations. Empty Thornwood node investigation queued for M339 — needs in-game save-state inspection.",
+  "milestone": 339,
+  "date": "2026-04-28",
+  "summary": "M339 — Difficulty picker + Hire estimate. Both DifficultyDialog (mid-run swap) and CharacterBuilderScreen (new game) now show three compact icon+name buttons in a 3-col grid with a single description paragraph below that updates as the user picks. Hard difficulty surfaces its '+20% Magic Find' and '+10% XP' bonuses as inline chips. Hire Custom estimated stats block now uses the same .preview-stat markup + 3-col grid layout as Create Character (HP/Mana/Hit/Dodge/Init in cells; Melee/Magic/Spell Power as full-width rows). preview-stat CSS mirrored into HireBuilderScreen so the screen stands alone.",
   "categories": [
     "feature"
   ],

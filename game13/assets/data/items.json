@@ -633,6 +633,34 @@
       "armor": 18
     },
     {
+      "id": "warded_focus",
+      "name": "Warded Focus",
+      "slot": "offhand",
+      "armorTier": null,
+      "armor": 1
+    },
+    {
+      "id": "rune_aegis",
+      "name": "Rune Aegis",
+      "slot": "offhand",
+      "armorTier": null,
+      "armor": 2
+    },
+    {
+      "id": "spellguard_orb",
+      "name": "Spellguard Orb",
+      "slot": "offhand",
+      "armorTier": null,
+      "armor": 3
+    },
+    {
+      "id": "arcane_bulwark",
+      "name": "Arcane Bulwark",
+      "slot": "offhand",
+      "armorTier": null,
+      "armor": 4
+    },
+    {
       "id": "scaled_chest",
       "name": "Scaled Hauberk",
       "slot": "chest",
