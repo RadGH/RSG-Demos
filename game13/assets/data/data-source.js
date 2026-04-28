@@ -82,6 +82,9 @@ export function getItems()         { return _get('items'); }
 /** @returns {Promise<Array>} Boss enemies (xpValue >= 200) */
 export function getBosses()        { return _get('bosses'); }
 
+/** @returns {Promise<Object>} Passive trees keyed by class id (M331). */
+export function getPassives()      { return _get('passives'); }
+
 // ---------------------------------------------------------------------------
 // Override management utilities (used by data-overrides.html)
 // ---------------------------------------------------------------------------
@@ -89,7 +92,7 @@ export function getBosses()        { return _get('bosses'); }
 export const DATA_TYPES = [
   'companions', 'classes', 'enemies', 'dungeons',
   'status-effects', 'achievements', 'skills',
-  'affixes', 'items', 'bosses',
+  'affixes', 'items', 'bosses', 'passives',
 ];
 
 /**

@@ -1,7 +1,7 @@
 {
-  "milestone": 329,
+  "milestone": 330,
   "date": "2026-04-27",
-  "summary": "M329 — Title corner-links laid out as a centered horizontal row along the bottom of the screen on mobile (instead of a tall right-edge column with awkward spacing); safe-area inset for iPhone notch. Combat victory modal soft-lock fixed: CombatScreen.onPause now hides its root element so the victory modal can\\'t bleed through and swallow clicks when an achievement toast pushes the AchievementsScreen on top.",
+  "summary": "M330 — Main-menu UX audit ship: collapsed three signed-out auth buttons (Login/Create/Google) into a single Sign In button + unified modal w/ tabs and Google primary action. NG+ subtitle removed from title screen, surfaced as a yellow pill on Load Game cards. Fame chip simplified — number only when fame > 0; the 'Next: 2,000' copy was removed since the unlock model is per-appearance since M322. New GDPR consent banner (Accept analytics / Reject / Privacy link). GA4 only loads after Accept; consent persists in localStorage rsg_consent_v1 (and a 1y same-site cookie) and shares between game13 + RSG-Demos hub. Major-milestone GA events: run_started, run_completed_win, run_completed_death, level_up, boss_killed, class_unlocked, fame_threshold_reached. New privacy.html on both game and demos hub; new ux-audit.html dev tool linked from the demos hub footer. Optional Supabase migration 0003_telemetry_events.sql (run if you want first-party event analysis); supabase-setup.md updated to cover it.",
   "categories": [
     "feature"
   ],

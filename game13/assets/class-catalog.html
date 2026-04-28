@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="rsg-game" content="Emberveil">
+<script src="./_header.js" defer></script>
+<link rel="stylesheet" href="./_shared-styles.css">
+<link rel="stylesheet" href="./_tool-styles.css">
+<title>Class Catalog — Emberveil</title>
+<style>
+  body { padding: 1rem 1rem 4rem; }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+  h1 {
+    font-family: 'Cinzel',Georgia,serif;
+    font-size: 1.4rem; margin: 0 0 0.2rem;
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 900;
+    background: linear-gradient(180deg,#f8d880 0%,#e8a040 40%,#c04030 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  p.sub { color: var(--muted); font-size: 0.82rem; margin: 0 0 1rem; }
+
+  .filters {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+    background: var(--card); border: 1px solid var(--border-subtle,#2a1f30);
+    border-radius: 8px; padding: 0.6rem 0.75rem; margin: 0.5rem 0 0.85rem;
+    position: sticky; top: 0; z-index: 10;
+  }
+  .filters input[type=text] {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 5px;
+    color: var(--text); padding: 0.35rem 0.6rem; font: inherit; font-size: 0.82rem;
+    min-width: 180px; flex: 1 1 200px;
+  }
+  .filters input[type=text]:focus { outline: none; border-color: var(--gold); }
+  .filters select {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 5px;
+    color: var(--text); padding: 0.35rem 0.5rem; font: inherit; font-size: 0.82rem;
+  }
+  .count { color: var(--muted); font-size: 0.78rem; margin-left: auto; }
+
+  /* Grid of class cards */
+  .class-grid {
+    display: grid; gap: 0.85rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+  .cc-card {
+    background: var(--card);
+    border: 1px solid var(--border-subtle,#2a1f30);
+    border-radius: 10px;
+    padding: 0.85rem 0.95rem 0.6rem;
+    display: flex; flex-direction: column; gap: 0.55rem;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .cc-card.locked { opacity: 0.55; }
+  .cc-card:hover { border-color: var(--gold-dim,rgba(232,160,32,0.5)); }
+
+  .cc-head { display: flex; gap: 0.7rem; align-items: flex-start; }
+  .cc-portrait {
+    width: 72px; height: 72px; flex-shrink: 0;
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cc-portrait img { width: 100%; height: 100%; object-fit: cover; image-rendering: auto; }
+  .cc-portrait img.missing { opacity: 0.15; }
+
+  .cc-meta { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.2rem; }
+  .cc-name {
+    font-family: 'Cinzel',Georgia,serif; font-weight: 800;
+    font-size: 1.05rem; color: var(--gold-bright,#f8d880);
+    letter-spacing: 0.04em;
+  }
+  .cc-role {
+    font-size: 0.7rem; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .cc-hook { font-size: 0.78rem; color: var(--text); line-height: 1.45; }
+
+  .cc-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.15rem; }
+  .cc-tag {
+    display: inline-block; padding: 0.05rem 0.55rem; border-radius: 99px;
+    font-size: 0.66rem; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.06); color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .cc-tag.attr-STR { background: rgba(232,80,80,0.15); border-color: rgba(232,80,80,0.4); color: #f48080; }
+  .cc-tag.attr-DEX { background: rgba(80,208,128,0.15); border-color: rgba(80,208,128,0.4); color: #80e0a0; }
+  .cc-tag.attr-INT { background: rgba(120,140,255,0.15); border-color: rgba(120,140,255,0.4); color: #a0b0ff; }
+  .cc-tag.attr-CON { background: rgba(232,200,80,0.15); border-color: rgba(232,200,80,0.4); color: #f0d880; }
+  .cc-tag.tier-heavy { background: rgba(180,180,180,0.12); border-color: rgba(180,180,180,0.4); color: #d0d0d0; }
+  .cc-tag.tier-medium { background: rgba(200,160,90,0.12); border-color: rgba(200,160,90,0.4); color: #e0c890; }
+  .cc-tag.tier-light { background: rgba(120,200,200,0.12); border-color: rgba(120,200,200,0.4); color: #a0e0e0; }
+  .cc-tag.tier-cloth { background: rgba(180,140,200,0.12); border-color: rgba(180,140,200,0.4); color: #e0c0f0; }
+  .cc-tag.lock { background: rgba(192,64,48,0.18); border-color: rgba(192,64,48,0.45); color: #f08080; }
+
+  .cc-sprites {
+    display: flex; gap: 0.4rem; flex-wrap: wrap;
+    background: rgba(0,0,0,0.18); border-radius: 6px; padding: 0.35rem;
+  }
+  .cc-sprite {
+    flex: 1 1 0; min-width: 64px; aspect-ratio: 1; max-width: 96px;
+    background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.08);
+    border-radius: 4px; overflow: hidden;
+    display: flex; flex-direction: column; align-items: stretch;
+    position: relative;
+  }
+  .cc-sprite img { width: 100%; height: 100%; object-fit: contain; }
+  .cc-sprite img.missing { opacity: 0.2; }
+  .cc-sprite .lbl {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.85));
+    color: var(--muted); font-size: 0.6rem;
+    text-align: center; padding: 0.05rem 0.15rem; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+
+  .cc-section-title {
+    font-family: 'Cinzel',Georgia,serif; font-size: 0.7rem;
+    color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase;
+    margin: 0.3rem 0 0.1rem; border-top: 1px solid var(--border); padding-top: 0.4rem;
+  }
+  .cc-skills, .cc-passives {
+    display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.78rem;
+  }
+  .cc-row { display: flex; gap: 0.4rem; align-items: baseline; }
+  .cc-row .nm { color: var(--gold-bright,#f8d880); font-weight: 600; }
+  .cc-row .ds { color: var(--muted); flex: 1; min-width: 0; line-height: 1.4; }
+  .cc-row .lvl {
+    font-size: 0.65rem; color: var(--muted); font-family: 'JetBrains Mono', ui-monospace, monospace;
+    background: rgba(255,255,255,0.05); border-radius: 3px; padding: 0 0.35rem;
+  }
+  .cc-row .mp {
+    font-size: 0.65rem; color: #80b0ff;
+    background: rgba(80,140,232,0.1); border-radius: 3px; padding: 0 0.35rem;
+  }
+
+  .empty { text-align: center; color: var(--muted); padding: 2rem; }
+  .err { color: #f08080; padding: 1rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Class Catalog</h1>
+  <p class="sub">All 28 playable classes — portraits, sprites, skills, and passive trees in one place. Reads live from <code>public/assets/data/{classes,skills,passives}.json</code> via <code>data-source.js</code> (same source the in-game screens use; not a copy).</p>
+
+  <div class="filters">
+    <input type="text" id="search" placeholder="Search by class name, role, hook, skill…">
+    <select id="filterAttr">
+      <option value="">All attrs</option>
+      <option value="STR">STR (Strength)</option>
+      <option value="DEX">DEX (Dexterity)</option>
+      <option value="INT">INT (Intelligence)</option>
+      <option value="CON">CON (Constitution)</option>
+    </select>
+    <select id="filterTier">
+      <option value="">All armor</option>
+      <option value="heavy">Heavy</option>
+      <option value="medium">Medium</option>
+      <option value="light">Light</option>
+      <option value="cloth">Cloth / Robes</option>
+    </select>
+    <select id="filterStarter">
+      <option value="">All</option>
+      <option value="starter">Starter classes only</option>
+      <option value="locked">Unlockable only</option>
+    </select>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="class-grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none">No classes match the current filters.</div>
+</div>
+
+<script type="module">
+import { getClasses, getSkills, getPassives } from './data/data-source.js';
+
+// Starter classes always-unlocked at game start. Mirrors STARTING_CLASS_IDS in
+// src/game/classUnlocks.js. Hardcoded here because it's a stable invariant
+// not currently emitted to the snapshot JSON.
+const STARTERS = new Set(['warrior','fighter','ranger','rogue','mage']);
+
+const POSE_LABELS = [
+  ['portrait', 'portrait'],
+  ['south',    'south'],
+  ['east',     'east'],
+  ['east_attack', 'attack'],
+  ['east_spell',  'spell'],
+  ['east_block',  'block'],
+  ['east_ko',     'ko'],
+];
+
+const grid       = document.getElementById('grid');
+const searchEl   = document.getElementById('search');
+const filterAttr = document.getElementById('filterAttr');
+const filterTier = document.getElementById('filterTier');
+const filterStr  = document.getElementById('filterStarter');
+const countEl    = document.getElementById('count');
+const emptyEl    = document.getElementById('empty');
+
+let _classes = [];
+let _skills  = [];
+let _passives = {};
+
+function esc(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function spriteSrc(classId, pose) {
+  return `../images/spritecook/${classId}_${pose}.png`;
+}
+
+function renderCard(cls) {
+  const isStarter = STARTERS.has(cls.id);
+  const skills = _skills.filter(s => s.class === cls.id);
+  const passives = _passives[cls.id] || [];
+
+  const card = document.createElement('div');
+  card.className = 'cc-card' + (isStarter ? '' : ' locked');
+
+  const sprites = POSE_LABELS.map(([pose, lbl]) => `
+    <div class="cc-sprite">
+      <img src="${spriteSrc(cls.id, pose)}" alt="${esc(cls.name)} ${lbl}"
+           loading="lazy" onerror="this.classList.add('missing'); this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1 1%22></svg>'">
+      <div class="lbl">${lbl}</div>
+    </div>
+  `).join('');
+
+  const skillRows = skills.length
+    ? skills.map(s => `
+        <div class="cc-row">
+          <span class="lvl">L${s.unlockLevel ?? 1}</span>
+          <span class="nm">${esc(s.name)}</span>
+          ${s.mpCost ? `<span class="mp">${s.mpCost} MP</span>` : ''}
+          <span class="ds">${esc(s.description || '')}</span>
+        </div>
+      `).join('')
+    : '<div class="cc-row"><span class="ds" style="color:var(--muted);font-style:italic">No skills defined.</span></div>';
+
+  const passiveRows = passives.length
+    ? passives.map(p => `
+        <div class="cc-row">
+          <span class="nm">${esc(p.name)}</span>
+          <span class="ds">${esc(p.desc || '')}</span>
+        </div>
+      `).join('')
+    : '<div class="cc-row"><span class="ds" style="color:var(--muted);font-style:italic">No class-specific passives.</span></div>';
+
+  const tier = (cls.armorTier || '').toLowerCase();
+  const attr = cls.primaryAttr || '';
+  const lockTag = isStarter ? '' : '<span class="cc-tag lock">Unlockable</span>';
+
+  card.innerHTML = `
+    <div class="cc-head">
+      <div class="cc-portrait">
+        <img src="${spriteSrc(cls.id,'portrait')}" alt="${esc(cls.name)} portrait"
+             loading="lazy" onerror="this.classList.add('missing'); this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1 1%22></svg>'">
+      </div>
+      <div class="cc-meta">
+        <div class="cc-name">${esc(cls.name)}</div>
+        <div class="cc-role">${esc(cls.role || '')}</div>
+        <div class="cc-tags">
+          ${attr ? `<span class="cc-tag attr-${attr}">${attr}</span>` : ''}
+          ${tier ? `<span class="cc-tag tier-${tier}">${tier}</span>` : ''}
+          ${lockTag}
+        </div>
+      </div>
+    </div>
+    <div class="cc-hook">${esc(cls.hook || '')}</div>
+    <div class="cc-sprites">${sprites}</div>
+    <div class="cc-section-title">Skills (${skills.length})</div>
+    <div class="cc-skills">${skillRows}</div>
+    <div class="cc-section-title">Passives (${passives.length})</div>
+    <div class="cc-passives">${passiveRows}</div>
+    <div class="cc-row" style="margin-top:0.35rem;color:var(--muted);font-size:0.7rem">
+      <span class="ds"><strong>Equipment:</strong> ${esc(cls.armorType || '—')}</span>
+    </div>
+  `;
+  return card;
+}
+
+function render() {
+  const q    = searchEl.value.toLowerCase().trim();
+  const attr = filterAttr.value;
+  const tier = filterTier.value;
+  const sf   = filterStr.value;
+
+  const rows = _classes.filter(c => {
+    if (attr && c.primaryAttr !== attr) return false;
+    if (tier && (c.armorTier || '').toLowerCase() !== tier) return false;
+    if (sf === 'starter' && !STARTERS.has(c.id)) return false;
+    if (sf === 'locked'  &&  STARTERS.has(c.id)) return false;
+    if (q) {
+      const skillNames = _skills.filter(s => s.class === c.id).map(s => `${s.name} ${s.description||''}`).join(' ');
+      const blob = [c.name, c.role, c.hook, c.armorType, c.primaryAttr, skillNames].join(' ').toLowerCase();
+      if (!blob.includes(q)) return false;
+    }
+    return true;
+  });
+
+  grid.innerHTML = '';
+  for (const c of rows) grid.appendChild(renderCard(c));
+
+  countEl.textContent = `${rows.length} of ${_classes.length} classes`;
+  emptyEl.style.display = rows.length === 0 ? 'block' : 'none';
+}
+
+searchEl.addEventListener('input', render);
+filterAttr.addEventListener('change', render);
+filterTier.addEventListener('change', render);
+filterStr.addEventListener('change', render);
+
+Promise.all([getClasses(), getSkills(), getPassives()])
+  .then(([classes, skills, passives]) => {
+    _classes = classes.sort((a, b) => {
+      // Starters first, then alphabetical.
+      const sa = STARTERS.has(a.id) ? 0 : 1;
+      const sb = STARTERS.has(b.id) ? 0 : 1;
+      if (sa !== sb) return sa - sb;
+      return a.name.localeCompare(b.name);
+    });
+    _skills   = skills;
+    _passives = passives || {};
+    render();
+  })
+  .catch(err => {
+    grid.innerHTML = `<div class="err">Failed to load class data: ${esc(err.message)}</div>`;
+  });
+</script>
+</body>
+</html>
