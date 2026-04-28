@@ -1,8 +1,9 @@
 {
-  "milestone": 345,
+  "milestone": 346,
   "date": "2026-04-28",
-  "summary": "M339 — Difficulty picker + Hire estimate. Both DifficultyDialog (mid-run swap) and CharacterBuilderScreen (new game) now show three compact icon+name buttons in a 3-col grid with a single description paragraph below that updates as the user picks. Hard difficulty surfaces its '+20% Magic Find' and '+10% XP' bonuses as inline chips. Hire Custom estimated stats block now uses the same .preview-stat markup + 3-col grid layout as Create Character (HP/Mana/Hit/Dodge/Init in cells; Melee/Magic/Spell Power as full-width rows). preview-stat CSS mirrored into HireBuilderScreen so the screen stands alone.",
+  "summary": "M346 — Hotfix: Ancient Shrine first-visit incorrectly rendered Already Used (gs.visitNode fired before _showShrineModal so re-checking visitedNodes always returned true; now passes the pre-visit flag through). iPhone portrait map node spacing — canvas internal width forced to 760px minimum and .map-canvas-wrap scrolls horizontally so columns are ~50px apart (well above the 40px tap-target target).",
   "categories": [
+    "bugfix",
     "feature"
   ],
   "breakingChanges": []
