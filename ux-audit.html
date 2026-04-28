@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UX Audit — RSG Demos</title>
+<style>
+  :root { color-scheme: dark; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif; line-height: 1.5;
+    background: linear-gradient(180deg, #0a0608, #120a10); color: #f0e8d8;
+    min-height: 100vh; padding: 1.25rem 1rem 4rem;
+  }
+  main { max-width: 980px; margin: 0 auto; }
+  header { display:flex; gap:1rem; flex-wrap:wrap; align-items:baseline; margin-bottom: 0.5rem; }
+  h1 { font-family: 'Cinzel', Georgia, serif; color: #e8a020; font-size: 1.6rem; letter-spacing: 0.06em; }
+  .sub { color: #8a7a6a; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem; }
+  h2 { font-family: 'Cinzel', Georgia, serif; color: #e8c860; font-size: 1.05rem; margin-top: 1.7rem; margin-bottom: 0.4rem; padding-bottom: 0.3rem; border-bottom: 1px solid rgba(232,160,32,0.25); }
+  h3 { color: #e8a020; font-size: 0.92rem; margin-top: 1.1rem; margin-bottom: 0.4rem; }
+  p, li { font-size: 0.88rem; color: rgba(240,232,216,0.88); margin-bottom: 0.45rem; }
+  ul { padding-left: 1.4rem; }
+  code { background: rgba(232,160,32,0.12); border: 1px solid rgba(232,160,32,0.3); padding: 0.05rem 0.3rem; border-radius: 3px; font-size: 0.78rem; }
+  a { color: #e8c860; }
+  .grid { display: grid; gap: 0.75rem; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .card { background: rgba(20,12,28,0.5); border: 1px solid rgba(232,160,32,0.18); border-radius: 8px; padding: 0.8rem 1rem; }
+  .card h4 { color: #e8a020; font-family: 'Cinzel', serif; font-size: 0.92rem; margin-bottom: 0.4rem; }
+  .pill { display: inline-block; padding: 0.05rem 0.5rem; border-radius: 99px; font-size: 0.7rem; letter-spacing: 0.05em; margin-right: 0.3rem; vertical-align: middle; }
+  .pill-shipped { background: rgba(72,176,96,0.18); border: 1px solid rgba(72,176,96,0.5); color: #6dd180; }
+  .pill-todo    { background: rgba(232,160,32,0.18); border: 1px solid rgba(232,160,32,0.5); color: #f8d880; }
+  .pill-debug   { background: rgba(80,160,232,0.18); border: 1px solid rgba(80,160,232,0.5); color: #80c0ff; }
+  pre, .events {
+    background: #06030a; border: 1px solid rgba(232,160,32,0.25); border-radius: 6px;
+    padding: 0.7rem 0.85rem; font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.78rem; color: #c8b890; white-space: pre-wrap; max-height: 360px; overflow: auto;
+  }
+  .row { display:flex; gap:0.5rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.5rem; }
+  button {
+    min-height: 36px; padding: 0.4rem 0.85rem;
+    background: rgba(232,160,32,0.18); border: 1px solid rgba(232,160,32,0.5);
+    color: #f8d880; border-radius: 4px; font-family: inherit; font-size: 0.82rem; cursor: pointer;
+  }
+  button:hover { background: rgba(232,160,32,0.3); }
+  .nav-back { color: #c8b89c; font-size: 0.8rem; margin-bottom: 1rem; display: inline-block; }
+  .ms { color: #8a7a6a; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th, td { text-align: left; padding: 0.4rem 0.5rem; border-bottom: 1px solid rgba(232,160,32,0.12); vertical-align: top; }
+  th { color: #e8a020; font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+<main>
+  <a href="./" class="nav-back">← Back to demos hub</a>
+  <header>
+    <h1>UX Audit</h1>
+    <span class="pill pill-debug">dev tool</span>
+  </header>
+  <div class="sub">Main-menu audit + live consent/analytics inspector</div>
+
+  <p>Static page intended for the developer to walk through every UX issue
+  surfaced on the main menu / login flow / onboarding, see what's been
+  shipped vs. open, and sanity-check that consent is wired correctly. Linked
+  only from the demos hub footer (not from inside the game).</p>
+
+  <h2>Main menu — issue tracker</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Issue</th><th>Status</th><th>Where</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Three signed-out auth buttons (Login / Create / Google) ate too
+            much vertical space on the title.</td>
+        <td><span class="pill pill-shipped">M330</span></td>
+        <td>One <em>Sign In</em> button → unified modal with all three
+            options inside.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Footer / bottom-right corner links spaced too far apart on
+            mobile (Codex / Stats / Feedback / Privacy / Website).</td>
+        <td><span class="pill pill-shipped">M329</span></td>
+        <td>Centered horizontal row along the bottom of the screen below
+            600px wide; safe-area padding for iPhone.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>"NG+1" subtitle on the title screen was meaningless before a
+            save was loaded.</td>
+        <td><span class="pill pill-shipped">M330</span></td>
+        <td>Removed from title; surfaced as a yellow pill on
+            Load-Game cards instead.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>"Next fame rank at 2,000" copy was leftover from the
+            slot-tier model — the unlock model is per-appearance now.</td>
+        <td><span class="pill pill-shipped">M330</span></td>
+        <td>Fame chip shows just the number; hidden when fame = 0.
+            Source moved from per-save to global localStorage in M327.</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>GDPR consent + GA gated load.</td>
+        <td><span class="pill pill-shipped">M330</span></td>
+        <td>Banner on first paint; <code>localStorage.rsg_consent_v1</code>
+            decides; GA only injected after Accept; same-origin so the
+            choice carries between game13 and the hub.</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Major-milestone GA events.</td>
+        <td><span class="pill pill-shipped">M330</span></td>
+        <td>run_started / run_completed_win / run_completed_death /
+            level_up / boss_killed / class_unlocked /
+            fame_threshold_reached. See live log below.</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Privacy policy page; cross-link from game + hub.</td>
+        <td><span class="pill pill-shipped">M330</span></td>
+        <td><a href="privacy.html">privacy.html</a> (this property);
+            also at game13/privacy.html.</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Cross-property consent on emberveil.radgh.com.</td>
+        <td><span class="pill pill-todo">open</span></td>
+        <td>Different origin — needs a second consent banner. Out of
+            scope for M330; flagged for future when prod is wired.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Live consent + event inspector</h2>
+  <div class="row">
+    <button type="button" id="btn-grant">Grant analytics</button>
+    <button type="button" id="btn-deny">Deny analytics</button>
+    <button type="button" id="btn-clear">Reset (clear &amp; reload)</button>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h4>Consent state</h4>
+      <pre id="consent-state">…</pre>
+    </div>
+    <div class="card">
+      <h4>Cookie</h4>
+      <pre id="cookie-state">…</pre>
+    </div>
+  </div>
+
+  <h3>Recent gtag events on this page</h3>
+  <p class="ms">Hooked via <code>window.dataLayer.push</code>. Refreshes when
+    the page receives a new event. Game-side events show up here when this
+    tab is opened from inside an Emberveil session (same origin).</p>
+  <pre id="events" class="events">— no events yet —</pre>
+
+  <h2>Tracked GA events (reference)</h2>
+  <ul>
+    <li><code>run_started</code>{<code>hero_class</code>,
+        <code>difficulty</code>, <code>hardcore</code>}</li>
+    <li><code>run_completed_win</code>{<code>max_level</code>,
+        <code>zones_cleared</code>}</li>
+    <li><code>run_completed_death</code>{<code>max_level</code>,
+        <code>zones_cleared</code>} — fired by hardcore RIP path</li>
+    <li><code>level_up</code>{<code>hero_class</code>,
+        <code>new_level</code>}</li>
+    <li><code>boss_killed</code>{<code>boss_id</code>,
+        <code>boss_name</code>, <code>act</code>}</li>
+    <li><code>class_unlocked</code>{<code>class_id</code>}</li>
+    <li><code>fame_threshold_reached</code>{<code>threshold</code>,
+        <code>total_fame</code>}</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <ul>
+    <li>GA measurement id is read in this priority order:
+      <code>window.__RSG_GA_ID</code> (set in <code>index.html</code> at
+      deploy time) → <code>VITE_GA_ID</code> Vite env. Until either is set,
+      the consent banner still renders but no GA script ever loads.</li>
+    <li>Consent decision is also cookie-mirrored
+      (<code>rsg_consent_v1</code>, samesite=lax, 1y) so deeply nested
+      pages can boot with the right decision before localStorage is
+      readable.</li>
+  </ul>
+
+  <p class="ms" style="margin-top:1.5rem">— rad's game demos · UX audit · M330 —</p>
+</main>
+
+<script>
+  // Inspector state
+  function refresh() {
+    const cs = (() => { try { return localStorage.getItem('rsg_consent_v1'); } catch (_) { return '(localStorage blocked)'; } })();
+    document.getElementById('consent-state').textContent = JSON.stringify({
+      consent: cs ?? '(unset)',
+      gaLoaded: typeof window.gtag === 'function',
+      dataLayerLength: (window.dataLayer || []).length,
+    }, null, 2);
+    document.getElementById('cookie-state').textContent = document.cookie || '(no cookies)';
+  }
+  refresh();
+
+  // Subscribe to dataLayer pushes (works whether or not GA itself is loaded)
+  window.dataLayer = window.dataLayer || [];
+  const origPush = window.dataLayer.push.bind(window.dataLayer);
+  const seen = [];
+  function render() {
+    const out = document.getElementById('events');
+    if (!seen.length) { out.textContent = '— no events yet —'; return; }
+    out.textContent = seen.slice(-50).map(e => {
+      try { return JSON.stringify(e); } catch (_) { return String(e); }
+    }).join('\n');
+  }
+  window.dataLayer.push = function (...args) {
+    for (const a of args) seen.push(a);
+    render();
+    refresh();
+    return origPush(...args);
+  };
+
+  document.getElementById('btn-grant').addEventListener('click', () => {
+    try { localStorage.setItem('rsg_consent_v1', 'granted'); } catch (_) {}
+    document.cookie = 'rsg_consent_v1=granted; path=/; max-age=31536000; samesite=lax';
+    refresh();
+    alert('Consent set to granted. Reload any open game tabs to apply.');
+  });
+  document.getElementById('btn-deny').addEventListener('click', () => {
+    try { localStorage.setItem('rsg_consent_v1', 'denied'); } catch (_) {}
+    document.cookie = 'rsg_consent_v1=denied; path=/; max-age=31536000; samesite=lax';
+    refresh();
+    alert('Consent set to denied.');
+  });
+  document.getElementById('btn-clear').addEventListener('click', () => {
+    try { localStorage.removeItem('rsg_consent_v1'); } catch (_) {}
+    document.cookie = 'rsg_consent_v1=; path=/; max-age=0; samesite=lax';
+    location.reload();
+  });
+</script>
+</body>
+</html>

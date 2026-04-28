@@ -11,8 +11,9 @@ is safe.
 
 | # | File | What it adds |
 |---|------|--------------|
-| 0001 | `supabase/migrations/0001_saves_table.sql` | `saves` table + RLS for cloud save slots. |
-| 0002 | `supabase/migrations/0002_run_stats.sql`   | `run_stats` table + RLS + 100-row-per-user trim trigger. |
+| 0001 | `supabase/migrations/0001_saves_table.sql`        | `saves` table + RLS for cloud save slots. |
+| 0002 | `supabase/migrations/0002_run_stats.sql`          | `run_stats` table + RLS + 100-row-per-user trim trigger. |
+| 0003 | `supabase/migrations/0003_telemetry_events.sql`   | **Optional.** `telemetry_events` table + RLS + per-user/anon trim triggers for first-party milestone events (mirrors what goes to GA4). |
 
 The migration files live under `game13/supabase/migrations/` in the repo.
 
@@ -54,6 +55,22 @@ supabase db push                 # applies any new migrations under supabase/mig
 - Cloud save slot per user, JSONB blob.
 - RLS so each `auth.users.id` can only read/write their own rows.
 - `updated_at` trigger keeps last-modified fresh.
+
+### 0003 — `telemetry_events` (M330, **optional**)
+
+- Mirrors the GA4 milestone events into Supabase: `run_started`,
+  `run_completed_win`, `run_completed_death`, `level_up`, `boss_killed`,
+  `class_unlocked`, `fame_threshold_reached`.
+- Each row carries `user_id` (null for anonymous), `session_id`, `event_name`,
+  `props` JSONB, `app_version`, `created_at`.
+- **Per-user trim** to the most recent 1000 rows; **anonymous** rows trimmed
+  to a global 50000-row cap.
+- RLS: signed-in users read their own rows; anonymous + signed-in inserts
+  allowed but `user_id` must match `auth.uid()` (or be null) and
+  `session_id` must be 8–64 chars.
+- Skip this migration entirely if you only want analytics in GA4. The game
+  client treats the table as optional — when missing, the Supabase write is
+  a silent no-op and GA still works.
 
 ### 0002 — `run_stats` (M325, **new**)
 

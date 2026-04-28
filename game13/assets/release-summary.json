@@ -1,7 +1,7 @@
 {
-  "milestone": 326,
+  "milestone": 329,
   "date": "2026-04-27",
-  "summary": "M327 — Bug-fix follow-up: appearance default-unlock now driven by starter classes (warrior/fighter/ranger/rogue/mage) instead of alphabetical sort position (Bard/Chronomancer/Cleric was wrong). Gender filter is now display-only — toggling Male/Female no longer changes which appearances are unlocked. Fame is now GLOBAL (localStorage emberveil_fame_global_v1) so unlocks persist across saves and new games. HireBuilderScreen class cards now use the same wrap-friendly CSS as CharacterBuilderScreen (mobile no longer ellipses 'Paladin' to 'Holy Warrior'). New public/docs/supabase-setup.md covering migration order, application options, verification, rollback — linked from /assets/docs.html under a new Backend section.",
+  "summary": "M329 — Title corner-links laid out as a centered horizontal row along the bottom of the screen on mobile (instead of a tall right-edge column with awkward spacing); safe-area inset for iPhone notch. Combat victory modal soft-lock fixed: CombatScreen.onPause now hides its root element so the victory modal can\\'t bleed through and swallow clicks when an achievement toast pushes the AchievementsScreen on top.",
   "categories": [
     "feature"
   ],
