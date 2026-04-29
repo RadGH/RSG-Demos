@@ -1,4 +1,4 @@
-import{i as d,c as l,r as f}from"./play-DwSkPgqy.js";import"./modulepreload-polyfill-B5Qt9EMX.js";import"./savesClient-wbDfy9Yw.js";import"./version-LbRHgDwk.js";const s=`
+import{i as d,c as l,r as f}from"./play-DAgOgbVt.js";import"./modulepreload-polyfill-B5Qt9EMX.js";import"./savesClient-wbDfy9Yw.js";import"./version-FCs-G16o.js";const s=`
 .confirm-modal-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.72);
   z-index: 5000; display: flex; align-items: center; justify-content: center;
