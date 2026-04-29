@@ -144,18 +144,43 @@
 
     let active = 0;
 
-    const list = el('div', { class: 'class-list reveal' });
+    // M371 — Keyboard-accessible class picker. Use real <button>s with
+    // aria-selected + arrow-key nav so screen readers + keyboarders can
+    // browse classes. Mouse-hover still previews via mouseenter.
+    const list = el('div', { class: 'class-list reveal', role: 'tablist', 'aria-label': 'Hero classes' });
+    const buttons = [];
     classes.forEach((c, i) => {
-      const item = el('div', { class: 'class-item' + (i === active ? ' active' : ''), 'data-i': i },
-        el('div', { class: 'num' }, String(i + 1).padStart(2, '0')),
-        el('div', {},
-          el('div', { class: 'name' }, c.name),
-          el('div', { class: 'role' }, c.role || '')
+      const item = el('button', {
+        type: 'button',
+        class: 'class-item' + (i === active ? ' active' : ''),
+        'data-i': i,
+        role: 'tab',
+        'aria-selected': i === active ? 'true' : 'false',
+        'aria-controls': 'class-detail',
+        tabindex: i === active ? '0' : '-1',
+      },
+        el('span', { class: 'num' }, String(i + 1).padStart(2, '0')),
+        el('span', {},
+          el('span', { class: 'name' }, c.name),
+          el('span', { class: 'role' }, c.role || '')
         ),
-        el('div', { class: 'num', style: { color: 'var(--accent)' } }, '→')
+        el('span', { class: 'num', style: { color: 'var(--accent)' } }, '→')
       );
-      item.addEventListener('click', () => setActive(i));
+      item.addEventListener('click', () => { setActive(i); item.focus(); });
       item.addEventListener('mouseenter', () => setActive(i));
+      item.addEventListener('keydown', (e) => {
+        let next = -1;
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = (i + 1) % classes.length;
+        else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = (i - 1 + classes.length) % classes.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = classes.length - 1;
+        if (next >= 0) {
+          e.preventDefault();
+          setActive(next);
+          buttons[next]?.focus();
+        }
+      });
+      buttons.push(item);
       list.appendChild(item);
     });
 
@@ -202,7 +227,11 @@
     function setActive(i) {
       if (i === active) return;
       active = i;
-      list.querySelectorAll('.class-item').forEach((n, idx) => n.classList.toggle('active', idx === i));
+      list.querySelectorAll('.class-item').forEach((n, idx) => {
+        n.classList.toggle('active', idx === i);
+        n.setAttribute('aria-selected', idx === i ? 'true' : 'false');
+        n.setAttribute('tabindex', idx === i ? '0' : '-1');
+      });
       renderDetail();
     }
 
@@ -406,16 +435,20 @@
 
     applyState();
 
-    // Auto-advance ticker
+    // M371 — Auto-advance only while page is visible. Tabbed-out users
+    // shouldn't burn battery on a marketing combat preview, and reduced-motion
+    // users get a static snapshot instead of a loop.
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isVisible = () => document.visibilityState !== 'hidden' && !paused && !reducedMotion;
     const tick = () => {
-      if (paused) return;
+      if (!isVisible()) return;
       const nxt = step + 1;
       if (nxt >= script.length) { round += 1; reset(); return; }
       runStep(nxt);
     };
-    setInterval(() => { if (!paused) tick(); }, 1700);
+    setInterval(tick, 1700);
     setInterval(() => {
-      if (paused) return;
+      if (!isVisible()) return;
       tapCd = Math.min(1, tapCd + 0.02);
       applyState();
     }, 100);
@@ -574,7 +607,7 @@
       return [cx + Math.cos(angle(i)) * r, cy + Math.sin(angle(i)) * r];
     };
     const poly = data.map((d, i) => pt(i, d.v).join(',')).join(' ');
-    const svg = svgEl('svg', { viewBox: '0 0 400 400', width: '100%', style: 'max-width: 480px' });
+    const svg = svgEl('svg', { viewBox: '0 0 400 400', width: '100%', style: 'max-width: 480px', role: 'img', 'aria-label': 'Class distribution by role: ' + data.map(d => `${d.label} ${d.v}`).join(', ') });
     const defs = svgEl('defs');
     const grad = svgEl('radialGradient', { id: 'radarFill', cx: 200, cy: 200, r: 140, gradientUnits: 'userSpaceOnUse' });
     grad.appendChild(svgEl('stop', { offset: '0', 'stop-color': 'var(--accent)', 'stop-opacity': '.55' }));
@@ -619,7 +652,7 @@
     const y = v => H - P - (v / max) * (H - P * 2);
     const linePath = key => data.map((d, i) => (i === 0 ? 'M' : 'L') + x(i) + ',' + y(d[key])).join(' ');
     const areaPath = key => 'M' + x(0) + ',' + y(0) + ' ' + data.map((d, i) => 'L' + x(i) + ',' + y(d[key])).join(' ') + ' L' + x(data.length - 1) + ',' + y(0) + ' Z';
-    const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', style: 'max-width: 640px' });
+    const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', style: 'max-width: 640px', role: 'img', 'aria-label': 'Difficulty curve across acts I-VI: hard mode tops at ' + data[data.length - 1].hard + ', normal at ' + data[data.length - 1].normal });
     const defs = svgEl('defs');
     const g1 = svgEl('linearGradient', { id: 'hardArea', x1: '0', x2: '0', y1: '0', y2: '1' });
     g1.appendChild(svgEl('stop', { offset: '0', 'stop-color': 'var(--accent)', 'stop-opacity': '.4' }));
@@ -662,7 +695,7 @@
     const W = 560, H = 360, P = 40;
     const bw = (W - P * 2) / data.length * .65;
     const bx = i => P + i * ((W - P * 2) / data.length) + ((W - P * 2) / data.length - bw) / 2;
-    const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', style: 'max-width: 640px' });
+    const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', style: 'max-width: 640px', role: 'img', 'aria-label': 'Drop rarity by act — normal drops fall from ' + data[0].normal + '% in Act I to ' + data[data.length-1].normal + '% in Act VI as rare and unique loot increases' });
     [0, .25, .5, .75, 1].forEach(r => {
       const yy = P + r * (H - P * 2);
       svg.appendChild(svgEl('line', { x1: P, x2: W - P, y1: yy, y2: yy, stroke: 'var(--line)', 'stroke-width': '.5', 'stroke-dasharray': '2 4' }));
@@ -695,7 +728,7 @@
     const x = i => P + (i / (data.length - 1)) * (W - P * 2);
     const y = v => H - P - (v / max) * (H - P * 2);
     const path = data.map((d, i) => (i === 0 ? 'M' : 'L') + x(i) + ',' + y(d.count)).join(' ');
-    const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', style: 'max-width: 640px' });
+    const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%', style: 'max-width: 640px', role: 'img', 'aria-label': 'Initiative roll distribution — bell curve centered on 10 with d10 + DEX modifier' });
     [0, .25, .5, .75, 1].forEach(r => {
       const yy = P + r * (H - P * 2);
       svg.appendChild(svgEl('line', { x1: P, x2: W - P, y1: yy, y2: yy, stroke: 'var(--line)', 'stroke-width': '.5', 'stroke-dasharray': '2 4' }));

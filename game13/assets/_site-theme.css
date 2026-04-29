@@ -38,8 +38,11 @@
   --ink-3: #8b7a64;
   --ink-4: #5a4d3e;
 
-  --accent: #e8612a;        /* ember orange */
+  --accent: #e8612a;        /* ember orange — decorative/glow only */
   --accent-bright: #ffb066;
+  /* M371 — accessible text variant. Base #e8612a fails WCAG AA on dark bg.
+     Use --accent-text for interactive text / links / eyebrows (≥4.5:1). */
+  --accent-text: #ffa844;
   --accent-deep: #8a2d10;
   --accent-glow: rgba(232,97,42,.55);
 
@@ -84,9 +87,27 @@ body.ev-themed {
 img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
 
 /* hide native cursor when rune cursor is active */
-body[data-cursor="rune"] { cursor: none; }
-body[data-cursor="rune"] a,
-body[data-cursor="rune"] button { cursor: none; }
+/* M371 — Rune cursor only when fine pointer + no reduced-motion. On touch
+   devices it would be invisible/useless; keyboard users need the system
+   cursor + focus rings. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body[data-cursor="rune"] { cursor: none; }
+  body[data-cursor="rune"] a,
+  body[data-cursor="rune"] button { cursor: none; }
+}
+
+/* M371 — Visible focus rings for keyboard nav. :focus-visible only fires
+   when the user is actually keyboarding, so mouse clicks don't get the ring. */
+:where(.ev-themed) a:focus-visible,
+:where(.ev-themed) button:focus-visible,
+:where(.ev-themed) [tabindex]:focus-visible,
+:where(.ev-themed) input:focus-visible,
+:where(.ev-themed) textarea:focus-visible,
+:where(.ev-themed) select:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
 
 /* ============ Layout ============ */
 :where(.ev-themed) .container {
@@ -1143,4 +1164,30 @@ body[data-cursor="rune"] button { cursor: none; }
   .acts-rail { grid-template-columns: repeat(2, 1fr); }
   .act-tile:nth-child(2n) { border-right: 0; }
   .news-grid { grid-template-columns: 1fr; }
+}
+
+/* M371 — iPhone 14 Pro (393px) and smaller */
+@media (max-width: 480px) {
+  .hero-stats .row { grid-template-columns: repeat(2, 1fr); }
+  .hero-stats .cell:nth-child(n+5) { display: none; } /* keep top 4 */
+  .hero-stormcaller img { height: 38vh; }
+  .hero-title { font-size: clamp(2.6rem, 14vw, 4.5rem); }
+  .acts-rail { grid-template-columns: 1fr; }
+  .companion-card { width: 240px; }
+  .cta { min-height: 44px; padding: 11px 18px; }
+  .car-arrow { min-width: 44px; min-height: 44px; }
+}
+
+/* M371 — Reduced motion: kill ember particles + parallax animations + drift */
+@media (prefers-reduced-motion: reduce) {
+  .ember-particle { display: none !important; }
+  .hero-clouds, .hero-mountains, .hero-stormcaller {
+    transform: none !important;
+    transition: none !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

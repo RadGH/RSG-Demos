@@ -1,7 +1,7 @@
 {
-  "milestone": 369,
+  "milestone": 370,
   "date": "2026-04-29",
-  "summary": "M369 — Combat Report damage attribution: legendary effects (Dragon Breath, Arcane Bounce, Mana Shockwave, Echo Cast) now record their damage with the effect's name + element instead of bucketing under 'Attack'. _dispatchLegendaryHook ctx.applyDmg now accepts (sourceName, element) optional args; legendary effects pass them so the meter shows 'Dragon Breath / fire' as a separate row.",
+  "summary": "M370 — Hard-mode rebalance (GitHub Pages only, NOT pushed to emberveil.radgh.com per user directive). Every regular enemy HP ×4, dmg ×2; every boss HP ×7, dmg ×2 across all 6 acts (73 stat blocks). Solo Knight on Act 3: 0% survival (target was ≤5%). Comp B Act 3-6: 0% win rate. Comp A Act 1: 85% to 10%, Act 3+: 0%. Balance test flipped from 'highly winnable' floors to 'hard-mode ceilings' (Act 1 ≤60%, Act 3 boss ≤30%, smoke check accepts 0%). New post-snapshot at public/assets/data/balance-snapshot/post-m369-hard.json. balance-report.html now has 'M369 — Hard Mode' toggle with Comp C (solo Knight) charting.",
   "categories": [
     "feature"
   ],
