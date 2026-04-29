@@ -1,7 +1,7 @@
 {
-  "milestone": 356,
+  "milestone": 357,
   "date": "2026-04-28",
-  "summary": "M356 — Frontpage companions/bosses/enemies now render with the same hero-card-sm grid structure as unlockable heroes (120px minmax, identical card markup). Starter classes still use the larger heroBigCard layout per spec.",
+  "summary": "M357 — Settings cleanup: Companion Level Sync always-on (toggle removed), Attack Speed always-on (toggle removed) AND wired to dagger/rapier/shortbow/dragonfang_dagger via attackSpeed:'fast' tier (was previously a no-op because no weapon had the tier set). Auto-Advance Dialog and Debug Mode now have descriptive subtext matching the other toggles.",
   "categories": [
     "feature"
   ],
