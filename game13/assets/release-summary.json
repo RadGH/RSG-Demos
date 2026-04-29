@@ -1,7 +1,7 @@
 {
-  "milestone": 376,
+  "milestone": 377,
   "date": "2026-04-29",
-  "summary": "M376 — UI fixes: docs.html capped at 1100px container + 760px article width (was full-screen, hard to read on wide displays). Companion catalog rebuilt as a card grid (mirroring class-catalog) with portrait + name + type badge + stats strip + description; 480px breakpoint shrinks to 56px portrait. Sort moved into a dropdown (replaces sortable headers). Mobile layout no longer breaks.",
+  "summary": "M377 — Combat Debugging system: new src/utils/combatDebug.js (5000-entry ring buffer + parity checker + window.__combatDebug mirror, O(1) bail when disabled). Settings toggle 'Combat Debugging' (off by default, persists in localStorage.emberveil_combat_debug_log). 20 push() instrument points across CombatScreen.js: initiative_roll, turn_order, ai_decision, skill_cast_attempt, hit_check, crit_check, damage_calc, damage_apply, status_apply/tick, legendary_proc, meter_add, log_line mirror. End-of-combat parity check compares meter vs report vs parsed log totals (5% tolerance) — emits parity_warning when they diverge (e.g. legendary fire damage attribution mismatches). Post-combat modal shows red notice + 'Copy Debug Log' button when parity fired. GA + Supabase telemetry: single combat_summary event per fight (consent-gated) with encounter_name, outcome, rounds, party/enemy totals, parity_warnings, legendary_procs, top-8 source_breakdown, act. 277 tests pass.",
   "categories": [
     "feature"
   ],
