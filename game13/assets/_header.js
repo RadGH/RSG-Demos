@@ -161,9 +161,9 @@
     href: ASSETS,
     label: 'Assets',
     children: [
-      { href: ASSETS + '#main', label: 'Images' },
-      { href: ASSETS + '#audio-section', label: 'Audio' },
-      { href: ASSETS + '#reports-section', label: 'Milestones' }
+      { href: ASSETS + 'images.html', label: 'Images' },
+      { href: ASSETS + 'audio.html', label: 'Audio' },
+      { href: ASSETS + 'milestones.html', label: 'Milestones' }
     ]
   };
   var toolsItem = TOOLS.length ? {

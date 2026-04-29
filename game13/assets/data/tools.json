@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-04-29T03:21:16.686Z"
+    "generated": "2026-04-29T03:56:50.760Z"
   },
   "tools": [
     {
@@ -43,6 +43,15 @@
       "name": "Asset Pipeline Trace",
       "href": "asset-pipeline-trace.html",
       "desc": "Trace each generated image through SpriteCook → review → approval → live. Used to debug pipeline drift.",
+      "tag": "devtool",
+      "milestone": "",
+      "updated": "2026-04-29",
+      "deprecated": false
+    },
+    {
+      "name": "Audio Library",
+      "href": "audio.html",
+      "desc": "(no description — add one in tools-meta.json)",
       "tag": "devtool",
       "milestone": "",
       "updated": "2026-04-29",
@@ -184,6 +193,15 @@
       "deprecated": false
     },
     {
+      "name": "Images",
+      "href": "images.html",
+      "desc": "(no description — add one in tools-meta.json)",
+      "tag": "devtool",
+      "milestone": "",
+      "updated": "2026-04-29",
+      "deprecated": false
+    },
+    {
       "name": "Infinite Dungeon Catalog",
       "href": "infinite-dungeon.html",
       "desc": "Reference for the procedurally-generated post-game dungeon — floor scaling, modifiers, reward curves.",
@@ -199,6 +217,15 @@
       "tag": "catalog",
       "milestone": "M205",
       "updated": "2026-04-22",
+      "deprecated": false
+    },
+    {
+      "name": "Milestones",
+      "href": "milestones.html",
+      "desc": "(no description — add one in tools-meta.json)",
+      "tag": "devtool",
+      "milestone": "",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {

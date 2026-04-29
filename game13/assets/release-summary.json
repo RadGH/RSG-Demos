@@ -1,7 +1,7 @@
 {
-  "milestone": 353,
+  "milestone": 354,
   "date": "2026-04-28",
-  "summary": "M353 — Image Review V2: pyromancer east_spell approved (m350 → history). Category filter now applies in Pending/History modes (was leaking character entries into Backgrounds tab).",
+  "summary": "M354 — Sweeping site overhaul: nav reorg (Catalog/Docs new menus, Archived moved to footer, Send Feedback removed); shared footer.js with 5-section layout (Game/Tools/Docs/Archived/About) auto-injected on every page; canonical CSS design tokens injected by header (var(--rsg-bg/accent/container-max/etc)); 10 OpenAI desert-fantasy news hero images (gpt-image-1 1536x1024) wired through Image Review V2 batch m351; new post-overhaul-update news report with chart.js (Act win rates pre/post, damage share, status distribution) + sample damage meter; SEO-renamed all 10 news titles (e.g. 'Milestone Report' -> '20 Classes, 84 Skills & Combat Rework'); privacy.html rebuilt with consent banner notes for GA4 (per-host G-IDs), telemetry, cloud saves; consent gating verified - GA only loads when rsg_consent_v1 granted; frontpage hero now calc(100svh-52px), scroll-indicator centered with auto-margin (immune to padding), news bumped to 6 items; dragon-expansion overlay removed + dragon knight icon refreshed + Emberveil-in-meta cleaned + inline GA stripped; milestone-report 6-box now 3x2 grid; sub-menu hover bridge added (no more flicker); contact clouds match index parallax direction + speed; More Links section rewritten with 8 useful destinations; lightbox prompt section now shows old/new prompts side-by-side; Image Review V2 palette aligned to canonical tokens; .char-m79-portrait min 120px; assets pose hover-swaps into portrait slot (desktop only).",
   "categories": [
     "feature"
   ],
