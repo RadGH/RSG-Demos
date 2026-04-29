@@ -1,4 +1,4 @@
-import{i as w,T as g,U as $,r as p,V as b,W as k,X as C,c as f,Y as h,Z as I,G as m,$ as S,a0 as E,a1 as T,a2 as L,a3 as F,a4 as _,a5 as y,a6 as z,a7 as v,a8 as R,a9 as x}from"./play-DQE7VOMH.js";import"./modulepreload-polyfill-B5Qt9EMX.js";import"./savesClient-wbDfy9Yw.js";import"./version-Bsm3_L-e.js";const A=`
+import{i as w,T as g,U as $,r as p,V as b,W as k,X as C,c as f,Y as h,Z as I,G as m,$ as S,a0 as E,a1 as T,a2 as L,a3 as F,a4 as _,a5 as y,a6 as z,a7 as v,a8 as R,a9 as x}from"./play-pIias5kz.js";import"./modulepreload-polyfill-B5Qt9EMX.js";import"./savesClient-wbDfy9Yw.js";import"./version-CfP4gcZs.js";const A=`
 .id-screen {
   position: absolute; inset: 0; background: #080612;
   display: flex; flex-direction: column; color: #f0e8d8;

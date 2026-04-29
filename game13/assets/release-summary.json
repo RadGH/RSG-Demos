@@ -1,7 +1,7 @@
 {
-  "milestone": 357,
+  "milestone": 358,
   "date": "2026-04-28",
-  "summary": "M357 — Settings cleanup: Companion Level Sync always-on (toggle removed), Attack Speed always-on (toggle removed) AND wired to dagger/rapier/shortbow/dragonfang_dagger via attackSpeed:'fast' tier (was previously a no-op because no weapon had the tier set). Auto-Advance Dialog and Debug Mode now have descriptive subtext matching the other toggles.",
+  "summary": "M358 — Level-up 'Spend Now' now routes to Party > Spells/Passives/Attributes tab (whichever has pending points first), not the legacy SkillTreeScreen. Auto-Equip button on Inventory tab renamed to 'Auto' with circle (○) indicator when off; matches Skills/Passives/Attributes Auto buttons. Same circle-off indicator added to SkillTree Auto buttons.",
   "categories": [
     "feature"
   ],
