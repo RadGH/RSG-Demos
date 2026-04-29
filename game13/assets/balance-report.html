@@ -9,23 +9,23 @@
 <script src="./_footer.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
-  body { background:#0d0d12; color:#d8d4cc; font-family: system-ui, sans-serif; margin:0; padding:1rem; max-width:1100px; margin:0 auto; }
-  h1, h2 { color:#ffd060; }
+  body { background: var(--rsg-bg, #0a0608); color: var(--rsg-text, #f0e8d8); font-family: var(--rsg-font-ui, 'Inter',system-ui,sans-serif); margin:0; padding:1rem; max-width: var(--rsg-container-max, 1200px); margin:0 auto; }
+  h1, h2 { color: var(--rsg-accent, #e8a020); font-family: var(--rsg-font-display, 'Cinzel',Georgia,serif); letter-spacing: 0.05em; }
   .row { display:flex; gap:1rem; flex-wrap:wrap; }
-  .card { flex:1; min-width:320px; background:#1a1a22; border:1px solid #333; border-radius:8px; padding:1rem; margin:0.5rem 0; }
-  .toggle { display:inline-flex; gap:0; border:1px solid #555; border-radius:6px; overflow:hidden; }
-  .toggle button { background:#222; color:#ccc; border:none; padding:0.4rem 0.9rem; cursor:pointer; font-size:0.9rem; }
-  .toggle button.active { background:#ffd060; color:#222; font-weight:600; }
+  .card { flex:1; min-width:320px; background: var(--rsg-card, #1a1218); border:1px solid var(--rsg-border, rgba(232,160,32,0.2)); border-radius: var(--rsg-radius, 10px); padding:1rem; margin:0.5rem 0; }
+  .toggle { display:inline-flex; gap:0; border:1px solid var(--rsg-border-hi, rgba(232,160,32,0.45)); border-radius:6px; overflow:hidden; }
+  .toggle button { background: var(--rsg-card, #1a1218); color: var(--rsg-text, #f0e8d8); border:none; padding:0.4rem 0.9rem; cursor:pointer; font-size:0.9rem; }
+  .toggle button.active { background: var(--rsg-accent, #e8a020); color: var(--rsg-bg, #0a0608); font-weight:600; }
   table { width:100%; border-collapse:collapse; font-size:0.9rem; }
-  th, td { padding:0.4rem 0.5rem; text-align:right; border-bottom:1px solid #2a2a32; }
+  th, td { padding:0.4rem 0.5rem; text-align:right; border-bottom:1px solid var(--rsg-border, rgba(232,160,32,0.12)); }
   th:first-child, td:first-child { text-align:left; }
-  th { color:#ffd060; font-weight:600; }
+  th { color: var(--rsg-accent, #e8a020); font-weight:600; }
   .delta-up { color:#5cd05c; }
   .delta-down { color:#e07070; }
   .summary-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:0.75rem; margin:1rem 0; }
-  .stat { background:#1a1a22; border:1px solid #333; border-radius:8px; padding:0.75rem 1rem; }
-  .stat .label { font-size:0.75rem; opacity:0.7; text-transform:uppercase; letter-spacing:0.05em; }
-  .stat .value { font-size:1.6rem; font-weight:600; color:#ffd060; }
+  .stat { background: var(--rsg-card, #1a1218); border:1px solid var(--rsg-border, rgba(232,160,32,0.2)); border-radius: var(--rsg-radius, 10px); padding:0.75rem 1rem; }
+  .stat .label { font-size:0.75rem; opacity:0.7; text-transform:uppercase; letter-spacing:0.05em; color: var(--rsg-muted, #8a7a6a); }
+  .stat .value { font-size:1.6rem; font-weight:600; color: var(--rsg-accent, #e8a020); }
   .note { opacity:0.75; font-size:0.85rem; line-height:1.5; }
   canvas { max-height:340px; }
 </style>

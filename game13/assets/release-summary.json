@@ -1,7 +1,7 @@
 {
-  "milestone": 360,
+  "milestone": 361,
   "date": "2026-04-28",
-  "summary": "M360 — Boss scaling double-multiply fix (was bossScale^2 * 2.5; bosses correctly sized now). Map node tooltips now clamp inside container — no more horizontal scrollbar on right-edge nodes. Forest Warden duplicate node renamed to Warden's Request; both Forest Warden dialogs now use male druid portrait. Dialog nodes are now once-only by default — completed dialog becomes silent walk-past unless event has repeatable:true (fixes Forest Warden 1 re-firing). Memory Trial doubled to 8 cards / 4 pairs / 12 flips, replaced letters with class-style glyph sigils (sword/shield/flame/rune) inline SVG; reward bumped to 50 gold.",
+  "summary": "M361 — Map polish: completed dialog nodes now show a green checkmark badge so the player knows once-only events are done. Tooltip clamping (M360) verified working.",
   "categories": [
     "feature"
   ],
