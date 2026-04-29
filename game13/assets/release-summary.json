@@ -1,7 +1,7 @@
 {
-  "milestone": 351,
+  "milestone": 352,
   "date": "2026-04-28",
-  "summary": "M351 — Image Review V2: merged image-review + character-redesign into new viewer with mode/category toggles, multi-select copy-as-list approval flow, image-left/sidebar-right lightbox, and batch JSON system. Nav reorg: new Catalog/Docs/Archived top-level menus. Old pages renamed deprecated-*.html with banners.",
+  "summary": "M352 — Image Review V2 fixes: lightbox close button (added top-right red X + event delegation), prev/next visible-but-disabled when single image, prompts shown under old/new comparison, asset/reference IDs visible. tools.html now reads live data/tools.json (rebuilt every release) — 19 untracked tools surfaced + curated descriptions added. release.sh auto-runs build-tools-list.cjs + build-image-review-v2.cjs.",
   "categories": [
     "feature"
   ],

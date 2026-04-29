@@ -382,18 +382,27 @@ function render() {
 
   let entries = currentEntries();
 
-  // Apply filters by category
-  if (category === 'characters' || mode !== 'current') {
+  // First: filter to the active category bucket. Batch entries carry e.category
+  // values like 'character', 'background', 'tap_weapon', 'other'.
+  const catMatchers = {
+    characters:  e => e.category === 'character' || ['hero','companion','boss','enemy'].includes(e.category),
+    backgrounds: e => e.category === 'background',
+    tap_weapons: e => e.category === 'tap_weapon' || e.category === 'tap-weapons',
+    other:       e => e.category === 'other',
+  };
+  entries = entries.filter(catMatchers[category] || (() => true));
+
+  // Then: sub-filters
+  if (category === 'characters') {
     entries = entries.filter(e => {
-      if (e.category === 'character' || ['hero','companion','boss','enemy'].includes(e.category)) {
-        if (e.category && !filters.charCats.has(e.category) && e.category !== 'character') return false;
-        if (e.pose && !filters.poses.has(e.pose)) return false;
-      }
+      const sub = e.category && e.category !== 'character' ? e.category : null;
+      if (sub && !filters.charCats.has(sub)) return false;
+      if (e.pose && !filters.poses.has(e.pose)) return false;
       return true;
     });
   }
-  if (category === 'backgrounds' && mode === 'current') {
-    entries = entries.filter(e => filters.bgTypes.has(e.type));
+  if (category === 'backgrounds') {
+    entries = entries.filter(e => !e.type || filters.bgTypes.has(e.type));
   }
 
   if (!entries.length) {
