@@ -1,7 +1,7 @@
 {
-  "milestone": 372,
+  "milestone": 373,
   "date": "2026-04-29",
-  "summary": "M372 — Contrast fix follow-through: 7 interactive text contexts (eyebrows, sk-cost, act-tile, news cards, CTAs, tap-button, car-arrow) now use --accent-text (#ffa844, ≥4.5:1 on dark bg) instead of decorative --accent (#e8612a, 2.8:1). Decorative borders/glows still use --accent.",
+  "summary": "M373 — UX polish round 2: combat pause button now has aria-pressed/aria-label that toggle on state change. New /accessibility.html — dedicated WCAG 2.1 AA statement covering keyboard shortcuts, reduced motion, screen readers, contrast policy, touch targets, known limitations, and reporting. Footer About section now links to it.",
   "categories": [
     "feature"
   ],
