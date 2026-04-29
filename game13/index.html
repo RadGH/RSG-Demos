@@ -494,8 +494,12 @@
     /* M250: unified with heroes/enemies — auto-fill at 110px min so mobile
        wraps to 2-3 cols instead of cramming 5 tiny columns. Still caps width
        at 640px on desktop so the grid stays compact. */
-    #companions-grid, #bosses-grid {
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    #companions-grid, #bosses-grid, #enemies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 0.75rem;
+      max-width: 1100px;
+      margin: 0 auto;
       max-width: 640px;
       margin: 0 auto;
     }
@@ -632,9 +636,9 @@
       color: var(--muted); margin-bottom: 1rem; margin-top: 2rem;
     }
   </style>
-  <script type="module" crossorigin src="/RSG-Demos/game13/assets/marketing-lqyxma1d.js"></script>
+  <script type="module" crossorigin src="/RSG-Demos/game13/assets/marketing-B8yDwpAz.js"></script>
   <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/version-DTPYB8NV.js">
+  <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/version-CyEYXkHt.js">
 </head>
 <body>
 
@@ -1228,13 +1232,21 @@
     return `images/portraits/${id}.png`;
   }
   function buildSpriteGrid(containerId, items, section) {
+    // M355: Match heroes-grid-sm structure so companions/bosses/enemies render
+    // identically to the unlockable-classes layout.
     const el = document.getElementById(containerId);
-    el.innerHTML = items.map(item => `
-      <div class="sprite-card" tabindex="0" role="button" aria-label="${item.name}" data-lb-id="${item.id}" data-lb-section="${section}">
-        <img class="sprite-img" src="${spriteImgSrc(item.id, section)}" alt="${item.name}" loading="lazy"
-          onerror="this.style.display='none'">
-        <div class="sprite-label">${item.name}</div>
-      </div>`).join('');
+    el.innerHTML = items.map(item => {
+      const sub = section === 'companions' ? 'Companion' : section === 'bosses' ? 'Boss' : 'Enemy';
+      return `
+        <div class="hero-card-sm" tabindex="0" role="button" aria-label="${item.name}" data-lb-id="${item.id}" data-lb-section="${section}">
+          <img class="hero-portrait-sm" src="${spriteImgSrc(item.id, section)}" alt="${item.name}" loading="lazy"
+            onerror="this.src='images/portraits/${item.id}.png';this.onerror=()=>this.style.display='none'">
+          <div class="hero-info-sm">
+            <div class="hero-name-sm">${item.name}</div>
+            <div class="hero-role-sm">${sub}</div>
+          </div>
+        </div>`;
+    }).join('');
   }
 
   // ── Lightbox ───────────────────────────────────────────────────────────
