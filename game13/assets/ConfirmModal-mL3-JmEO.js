@@ -1,4 +1,4 @@
-import{i as d,c as l,r as f}from"./play-CFcfh_xo.js";import"./modulepreload-polyfill-B5Qt9EMX.js";import"./savesClient-wbDfy9Yw.js";import"./version-CSb-QJMH.js";const s=`
+import{i as m,c as l,r as f}from"./play-BurBrRow.js";import"./savesClient-DUFjgBxb.js";const s=`
 .confirm-modal-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.72);
   z-index: 5000; display: flex; align-items: center; justify-content: center;
@@ -34,13 +34,13 @@ import{i as d,c as l,r as f}from"./play-CFcfh_xo.js";import"./modulepreload-poly
   border: 1px solid rgba(232,160,32,0.5);
 }
 .confirm-modal-btn.confirm:hover { background: rgba(232,160,32,0.32); }
-`;function y({title:n="Confirm",message:a="",confirmText:e="Confirm",cancelText:c="Cancel",onConfirm:t,onCancel:r}={}){d("confirm-modal-styles",s);const o=l("div","confirm-modal-overlay");o.innerHTML=`
+`;function p({title:n="Confirm",message:e="",confirmText:t="Confirm",cancelText:c="Cancel",onConfirm:a,onCancel:r}={}){m("confirm-modal-styles",s);const o=l("div","confirm-modal-overlay");o.innerHTML=`
     <div class="confirm-modal-box" role="dialog" aria-modal="true" aria-label="${n}">
       <div class="confirm-modal-title">${n}</div>
-      <div class="confirm-modal-msg">${a}</div>
+      <div class="confirm-modal-msg">${e}</div>
       <div class="confirm-modal-actions">
         <button type="button" class="confirm-modal-btn cancel" data-cm-action="cancel">${c}</button>
-        <button type="button" class="confirm-modal-btn confirm" data-cm-action="confirm">${e}</button>
+        <button type="button" class="confirm-modal-btn confirm" data-cm-action="confirm">${t}</button>
       </div>
     </div>
-  `;const i=()=>f(o);return o.querySelector('[data-cm-action="cancel"]').addEventListener("click",()=>{i(),typeof r=="function"&&r()}),o.querySelector('[data-cm-action="confirm"]').addEventListener("click",()=>{i(),typeof t=="function"&&t()}),o.addEventListener("click",m=>{m.target===o&&(i(),typeof r=="function"&&r())}),document.body.appendChild(o),o}export{y as showConfirmModal};
+  `;const i=()=>f(o);return o.querySelector('[data-cm-action="cancel"]').addEventListener("click",()=>{i(),typeof r=="function"&&r()}),o.querySelector('[data-cm-action="confirm"]').addEventListener("click",()=>{i(),typeof a=="function"&&a()}),o.addEventListener("click",d=>{d.target===o&&(i(),typeof r=="function"&&r())}),document.body.appendChild(o),o}export{p as showConfirmModal};

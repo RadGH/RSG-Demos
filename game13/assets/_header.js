@@ -295,6 +295,20 @@
     style.id = 'rsg-shared-nav-style';
     style.textContent = css;
     document.head.appendChild(style);
+
+    // M365 — inject the shared site theme stylesheet. The file is copied from
+    // shared/site-theme.css to <game>/public/assets/_site-theme.css by
+    // release.sh. Pages that opt in by adding `class="ev-themed"` to <body>
+    // pick up the full theme; non-themed pages only see the :root tokens and
+    // a few component classes (.cta, .hero, etc.) which are inert without
+    // matching markup.
+    if (!document.getElementById('rsg-site-theme-link')) {
+      var link = document.createElement('link');
+      link.id = 'rsg-site-theme-link';
+      link.rel = 'stylesheet';
+      link.href = ASSETS + '_site-theme.css';
+      document.head.appendChild(link);
+    }
   }
 
   function mount() {
@@ -308,6 +322,10 @@
       document.body.insertBefore(nav, document.body.firstChild);
     }
     document.body.classList.add('rsg-nav-padded');
+    // M365 — themed pages opt into the rune cursor via body data-cursor.
+    if (document.body.classList.contains('ev-themed') && !document.body.dataset.cursor) {
+      document.body.dataset.cursor = 'rune';
+    }
     var navEl = document.querySelector('nav.rsg-shared-nav');
     var burger = navEl && navEl.querySelector('.nav-burger');
     if (burger) {

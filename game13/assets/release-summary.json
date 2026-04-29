@@ -1,7 +1,7 @@
 {
-  "milestone": 363,
-  "date": "2026-04-28",
-  "summary": "M363 — Inventory tab now opens with 'Inventory — ClassName' header to match Skills/Passives/Attributes tab title pattern. Character name + portrait moved into a sub-header below, no longer doubling as the tab title.",
+  "milestone": 364,
+  "date": "2026-04-29",
+  "summary": "M364 — Forest Warden 'invisible node south' explained: the lower node was act1_warden_reward, which I renamed to 'Warden's Request' in M360 but the rename was masked because _displayedNodeName always overrode node.name with the dialog's npcName. Both dialog nodes shared npcName='Forest Warden', so they collapsed to the same label and looked like duplicates. Fix: _displayedNodeName now prefers node.name when explicitly set, falls back to npcName only for generic-named nodes. Forest Edge + Warden's Request will now render distinctly.",
   "categories": [
     "feature"
   ],
