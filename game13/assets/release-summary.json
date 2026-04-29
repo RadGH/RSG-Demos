@@ -1,7 +1,7 @@
 {
-  "milestone": 361,
+  "milestone": 362,
   "date": "2026-04-28",
-  "summary": "M361 — Map polish: completed dialog nodes now show a green checkmark badge so the player knows once-only events are done. Tooltip clamping (M360) verified working.",
+  "summary": "M362 — Token migration + tab title normalization. dragon-expansion.html and balance-report.html now use canonical --rsg-* tokens (no more hardcoded #0a0204/#ffd060/etc). SkillTree tabs unified: 'Skills — Class', 'Passives — Class', 'Attributes — Class' (was 'Class' / 'Passive Tree — Class' / 'Attributes — Class'). Tokens come from nav-header.js :root injection so every page picks them up.",
   "categories": [
     "feature"
   ],
