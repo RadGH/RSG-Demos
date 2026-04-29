@@ -1,7 +1,7 @@
 {
-  "milestone": 355,
+  "milestone": 356,
   "date": "2026-04-28",
-  "summary": "M355 — Assets page split: /assets/ is now a landing card page; /assets/images.html, /assets/audio.html, /assets/milestones.html each show only their own section (rest hidden via #section { display:none }). Assets nav submenu updated to link to the new pages.",
+  "summary": "M356 — Frontpage companions/bosses/enemies now render with the same hero-card-sm grid structure as unlockable heroes (120px minmax, identical card markup). Starter classes still use the larger heroBigCard layout per spec.",
   "categories": [
     "feature"
   ],
