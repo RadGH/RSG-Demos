@@ -1,7 +1,7 @@
 {
-  "milestone": 362,
+  "milestone": 363,
   "date": "2026-04-28",
-  "summary": "M362 — Token migration + tab title normalization. dragon-expansion.html and balance-report.html now use canonical --rsg-* tokens (no more hardcoded #0a0204/#ffd060/etc). SkillTree tabs unified: 'Skills — Class', 'Passives — Class', 'Attributes — Class' (was 'Class' / 'Passive Tree — Class' / 'Attributes — Class'). Tokens come from nav-header.js :root injection so every page picks them up.",
+  "summary": "M363 — Inventory tab now opens with 'Inventory — ClassName' header to match Skills/Passives/Attributes tab title pattern. Character name + portrait moved into a sub-header below, no longer doubling as the tab title.",
   "categories": [
     "feature"
   ],
