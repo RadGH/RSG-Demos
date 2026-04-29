@@ -7,9 +7,10 @@
 
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Dragon Expansion — Emberveil M65</title>
-<meta name="rsg-game" content="Emberveil · M65 — Dragon Expansion">
+<title>Act VI Dragons: Bahamoth & Dragon Knight — Emberveil</title>
+<meta name="rsg-game" content="Emberveil">
 <script src="../assets/_header.js" defer></script>
+<script src="../assets/_footer.js" defer></script>
 <style>
   :root { color-scheme: dark; }
   html, body { margin:0; padding:0; background:#0a0204; color:#e8d8c0; font-family: Georgia, 'Times New Roman', serif; line-height:1.55; }
@@ -34,22 +35,15 @@
   .imgs > div { background:#170408; border:1px solid #401010; border-radius:6px; overflow:hidden; }
   .imgs img, .imgs object { width:100%; display:block; }
 </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5H26ZXKBCL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "G-5H26ZXKBCL");
-</script>
+
 </head>
 <body>
 <div class="wrap">
   <div class="hero">
     <img src="../images/dragon_expansion/dragon_knight_icon.png" alt="Dragon Knight" style="width:120px;height:120px;image-rendering:pixelated;">
     <div>
-      <h1>Dragon Expansion</h1>
-      <div class="sub">Emberveil — Milestone 65 — 2026-04-13</div>
+      <h1>Act VI Dragons: Bahamoth & Dragon Knight</h1>
+      <div class="sub">Milestone 65 · 2026-04-13</div>
       <div>
         <span class="badge">Act VI</span>
         <span class="badge">Dragon Knight</span>
@@ -147,10 +141,7 @@
   if(!m)return;
   var hero=document.querySelector(".hero");
   if(!hero)return;
-  var ov=document.createElement("div");
-  ov.style.cssText="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,5,8,0.55) 0%,rgba(8,5,8,0.3) 40%,rgba(8,5,8,0.85) 100%);pointer-events:none;z-index:0;";
   hero.style.position="relative";
-  hero.insertBefore(ov,hero.firstChild);
   var bgImg=new Image();bgImg.src=m.content;
   bgImg.onload=function(){hero.style.backgroundImage="url("+JSON.stringify(m.content)+")";
   hero.style.backgroundSize="cover";

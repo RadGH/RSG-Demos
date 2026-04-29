@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-04-29T01:32:16.316Z"
+    "generated": "2026-04-29T03:21:16.686Z"
   },
   "tools": [
     {
@@ -18,7 +18,7 @@
       "desc": "Visualizes how prefix/suffix affixes stack across slots. Heatmap of compatible combinations.",
       "tag": "devtool",
       "milestone": "",
-      "updated": "2026-04-27",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -27,7 +27,7 @@
       "desc": "Generate dialogs, lore, and item names through the AI pipeline. Prompts driven by templates.",
       "tag": "devtool",
       "milestone": "",
-      "updated": "2026-04-20",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -36,7 +36,7 @@
       "desc": "This page. Live index of every tool, catalog, and admin page.",
       "tag": "admin",
       "milestone": "",
-      "updated": "2026-04-28",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -45,7 +45,7 @@
       "desc": "Trace each generated image through SpriteCook → review → approval → live. Used to debug pipeline drift.",
       "tag": "devtool",
       "milestone": "",
-      "updated": "2026-04-27",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -54,7 +54,7 @@
       "desc": "Monte-Carlo win-rate report comparing pre/post per Act with chart.js. Runs from balance-snapshot.cjs output.",
       "tag": "devtool",
       "milestone": "",
-      "updated": "2026-04-28",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -90,7 +90,7 @@
       "desc": "Snapshot history of the per-class re-designs (M217-era anchors). Read-only reference.",
       "tag": "archived",
       "milestone": "",
-      "updated": "2026-04-27",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -108,7 +108,7 @@
       "desc": "Replay logged combats turn-by-turn. Useful for debugging skill ordering and damage roll edge cases.",
       "tag": "devtool",
       "milestone": "",
-      "updated": "2026-04-27",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -135,7 +135,7 @@
       "desc": "Old combined catalog landing page. Superseded by per-category catalog pages.",
       "tag": "archived",
       "milestone": "",
-      "updated": "2026-04-24",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -144,7 +144,7 @@
       "desc": "Upload custom JSON to override any catalog data type. Overrides persist via localStorage.",
       "tag": "admin",
       "milestone": "",
-      "updated": "2026-04-27",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -189,7 +189,7 @@
       "desc": "Reference for the procedurally-generated post-game dungeon — floor scaling, modifiers, reward curves.",
       "tag": "catalog",
       "milestone": "",
-      "updated": "2026-04-27",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -216,7 +216,7 @@
       "desc": "Index of all milestone reports / dev news posts.",
       "tag": "docs",
       "milestone": "",
-      "updated": "2026-04-27",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -234,7 +234,7 @@
       "desc": "Diff viewer for the M205 rebalance arc — before/after enemy stats, hero curves, item drops.",
       "tag": "devtool",
       "milestone": "",
-      "updated": "2026-04-27",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -270,7 +270,7 @@
       "desc": "Run hypothetical skill rotations against a dummy target to see damage/heal output and status interactions.",
       "tag": "devtool",
       "milestone": "",
-      "updated": "2026-04-27",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -324,7 +324,7 @@
       "desc": "Cross-reference of status interactions (e.g. burn + bleed stacking, dazed vs stun mechanics).",
       "tag": "devtool",
       "milestone": "",
-      "updated": "2026-04-27",
+      "updated": "2026-04-29",
       "deprecated": false
     },
     {
@@ -342,7 +342,7 @@
       "desc": "Archived. Superseded by Affix Interaction Matrix.",
       "tag": "archived",
       "milestone": "",
-      "updated": "2026-04-28",
+      "updated": "2026-04-29",
       "deprecated": true
     },
     {
@@ -351,7 +351,7 @@
       "desc": "Archived. Outdated — use Enemy Catalog instead.",
       "tag": "archived",
       "milestone": "",
-      "updated": "2026-04-28",
+      "updated": "2026-04-29",
       "deprecated": true
     },
     {
@@ -360,7 +360,7 @@
       "desc": "Archived. Replaced by Image Review V2.",
       "tag": "archived",
       "milestone": "",
-      "updated": "2026-04-28",
+      "updated": "2026-04-29",
       "deprecated": true
     },
     {
@@ -369,7 +369,7 @@
       "desc": "Archived. Superseded by Image Review V2 character pose grid.",
       "tag": "archived",
       "milestone": "",
-      "updated": "2026-04-28",
+      "updated": "2026-04-29",
       "deprecated": true
     }
   ]

@@ -136,16 +136,17 @@
       { href: NEWS_ROOT + 'm5.html',          label: 'Milestone 5 Report',  date: '2025-10-01' }
     ],
     game13: [
-      { href: NEWS_ROOT + 'm220-m254-consolidation.html', label: 'Fast-Travel Overhaul + Questline + Difficulty', date: '2026-04-23' },
-      { href: NEWS_ROOT + 'milestone-report.html',   label: 'Major Milestone Report',date: '2026-04-15' },
-      { href: NEWS_ROOT + 're-redesign.html',        label: 'Re-redesign — SpriteCook', date: '2026-04-14' },
-      { href: NEWS_ROOT + 'm79-redesign.html',       label: 'M79 Redesign Report',   date: '2026-04-14' },
-      { href: NEWS_ROOT + 'balance-report.html',     label: 'Balance Report',        date: '2026-04-14' },
-      { href: NEWS_ROOT + 'tap-weapons.html',        label: 'Tap Weapons Design',    date: '2026-04-13' },
-      { href: NEWS_ROOT + 'simulation-overhaul.html',label: 'Simulation Overhaul',   date: '2026-04-13' },
-      { href: NEWS_ROOT + 'dragon-expansion.html',   label: 'Dragon Expansion',      date: '2026-04-13' },
-      { href: NEWS_ROOT + 'milestone-53.html',       label: 'Milestone 53 Report',   date: '2026-04-11' },
-      { href: NEWS_ROOT + 'pre-game.html',           label: 'Pre-Game Brainstorm',   date: '2026-04-10' }
+      { href: NEWS_ROOT + 'post-overhaul-update.html', label: 'Cloud Saves, UI Unification & Balance Pass', date: '2026-04-28' },
+      { href: NEWS_ROOT + 'm220-m254-consolidation.html', label: 'Fast-Travel Overhaul, Questline & Difficulty', date: '2026-04-23' },
+      { href: NEWS_ROOT + 'milestone-report.html',   label: '20 Classes, 84 Skills & Combat Rework', date: '2026-04-15' },
+      { href: NEWS_ROOT + 're-redesign.html',        label: 'Character Art Pipeline & Consistency', date: '2026-04-14' },
+      { href: NEWS_ROOT + 'm79-redesign.html',       label: 'OpenAI Pixel Art & SFX Loudness Pass', date: '2026-04-14' },
+      { href: NEWS_ROOT + 'balance-report.html',     label: 'Combat DPS & Healing Analysis', date: '2026-04-14' },
+      { href: NEWS_ROOT + 'tap-weapons.html',        label: 'Interactive Tap Combat System', date: '2026-04-13' },
+      { href: NEWS_ROOT + 'simulation-overhaul.html',label: 'Monte Carlo Combat Testing', date: '2026-04-13' },
+      { href: NEWS_ROOT + 'dragon-expansion.html',   label: 'Act VI Dragons: Bahamoth & Dragon Knight', date: '2026-04-13' },
+      { href: NEWS_ROOT + 'milestone-53.html',       label: 'Deferred Resolution & Feature Completion', date: '2026-04-11' },
+      { href: NEWS_ROOT + 'pre-game.html',           label: 'Emberveil Design Foundations', date: '2026-04-10' }
     ]
   };
   var TOOLS = TOOLS_BY_GAME[GAME_KEY] || [];
@@ -208,8 +209,7 @@
   if (catalogItem) MENU.push(catalogItem);
   if (docsItem) MENU.push(docsItem);
   if (newsItem) MENU.push(newsItem);
-  if (archivedItem) MENU.push(archivedItem);
-  MENU.push({ href: 'https://docs.google.com/forms/d/e/1FAIpQLScWHFEQ8Kbxvsxg5nKerJOPqkYntAkRLCihqQchypNdqayvmA/viewform?usp=publish-editor', label: 'Send Feedback', external: true });
+  // Archived moved to footer (M354). Send Feedback moved to Contact page only (M354).
   MENU.push({ href: GAME_ROOT + 'contact.html', label: 'Contact' });
 
   function buildNav() {
@@ -244,6 +244,16 @@
     if (document.getElementById('rsg-shared-nav-style')) return;
     var css =
       '@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap");' +
+      // M354 — canonical site-wide design tokens. Pages may override but should
+      // prefer var(--name) over hardcoded values. Keep aligned with audit.
+      ':root{' +
+        '--rsg-bg:#0a0608;--rsg-surface:#12090d;--rsg-card:#1a1218;--rsg-card-h:#241a20;' +
+        '--rsg-accent:#e8a020;--rsg-accent-b:#f0c060;--rsg-gold-bright:#f8d880;--rsg-ember:#c04030;' +
+        '--rsg-text:#f0e8d8;--rsg-muted:#8a7a6a;--rsg-border:rgba(232,160,32,0.2);--rsg-border-hi:rgba(232,160,32,0.45);' +
+        '--rsg-radius:10px;' +
+        '--rsg-container-max:1200px;--rsg-narrow-max:860px;--rsg-reading-max:720px;' +
+        '--rsg-font-display:"Cinzel",Georgia,serif;--rsg-font-ui:"Inter","Segoe UI",sans-serif;' +
+      '}' +
       'nav.rsg-shared-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,6,8,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,160,32,0.2);height:52px;display:flex;align-items:center;padding:0 2rem;font-family:"Inter","Segoe UI",sans-serif}' +
       'nav.rsg-shared-nav .nav-inner{display:flex;align-items:center;gap:1.25rem;width:100%;max-width:840px;margin:0 auto;min-width:0}' +
       'nav.rsg-shared-nav .nav-logo{font-family:"Cinzel",Georgia,serif;font-size:1rem;font-weight:900;letter-spacing:0.15em;background:linear-gradient(180deg,#f8d880 0%,#e8a020 40%,#c04030 100%);-webkit-background-clip:text;background-clip:text;color:transparent;flex-shrink:0;text-decoration:none;text-transform:uppercase}' +
@@ -258,8 +268,8 @@
       'nav.rsg-shared-nav .nav-links a:hover{color:#e8a020}' +
       'nav.rsg-shared-nav .nav-links a.nav-btn{color:#ffd078;background:linear-gradient(135deg,#c04030 0%,#8a1a0a 100%);padding:0.35rem 0.9rem;border-radius:4px;border:1px solid rgba(192,64,48,0.55);font-weight:700;letter-spacing:0.08em}' +
       'nav.rsg-shared-nav .nav-links a.nav-btn:hover{background:linear-gradient(135deg,#d05040,#c04030);color:#fff}' +
-      'nav.rsg-shared-nav .has-sub{padding-bottom:0.6rem;margin-bottom:-0.6rem}' +
-      'nav.rsg-shared-nav .sub-menu{display:none;position:absolute;top:100%;left:0;background:rgba(10,6,8,0.98);border:1px solid rgba(232,160,32,0.25);border-radius:6px;padding:0.4rem 0;list-style:none;margin:0;min-width:140px;box-shadow:0 8px 24px rgba(0,0,0,0.5)}' +
+      'nav.rsg-shared-nav .sub-menu{display:none;position:absolute;top:100%;left:0;background:rgba(10,6,8,0.98);border:1px solid rgba(232,160,32,0.25);border-radius:6px;padding:0.4rem 0;list-style:none;margin:0;min-width:140px;box-shadow:0 8px 24px rgba(0,0,0,0.5);margin-top:17px;border-top:none;border-top-left-radius:0;border-top-right-radius:0}' +
+      'nav.rsg-shared-nav .sub-menu::before{content:"";position:absolute;bottom:calc(100% + -1px);left:0;right:0;height:19px}' +
       'nav.rsg-shared-nav .has-sub:hover .sub-menu,nav.rsg-shared-nav .has-sub:focus-within .sub-menu,nav.rsg-shared-nav .has-sub.open .sub-menu{display:block}' +
       'nav.rsg-shared-nav .sub-menu a{padding:0.4rem 0.9rem;font-size:0.7rem}' +
       'nav.rsg-shared-nav .sub-menu .sub-sep{padding:0.45rem 0.9rem 0.2rem;margin-top:0.25rem;border-top:1px solid rgba(232,160,32,0.2)}' +
@@ -275,8 +285,8 @@
         'nav.rsg-shared-nav .nav-links > li{width:100%}' +
         'nav.rsg-shared-nav .nav-links > li > a{padding:0.7rem 1.25rem;font-size:0.78rem}' +
         'nav.rsg-shared-nav .nav-links a.nav-btn{margin:0.4rem 1rem;text-align:center;padding:0.55rem 0.9rem}' +
-        'nav.rsg-shared-nav .has-sub{padding-bottom:0;margin-bottom:0}' +
         'nav.rsg-shared-nav .sub-menu{position:static;display:none;background:rgba(0,0,0,0.35);border:none;box-shadow:none;padding:0.2rem 0;margin:0;border-radius:0;border-left:2px solid rgba(232,160,32,0.25);margin-left:1rem}' +
+        'nav.rsg-shared-nav .sub-menu::before{display:none}' +
         'nav.rsg-shared-nav .has-sub.open .sub-menu{display:block}' +
         'nav.rsg-shared-nav .sub-menu a{padding:0.45rem 1rem;font-size:0.7rem;opacity:0.9}' +
         'body.rsg-nav-padded{padding-top:52px}' +

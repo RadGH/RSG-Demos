@@ -6,6 +6,7 @@
   <title>Contact — Emberveil</title>
   <meta name="rsg-game" content="Emberveil">
   <script src="./assets/_header.js" defer></script>
+  <script src="./assets/_footer.js" defer></script>
   <meta name="description" content="Contact Radley Sustaire, the developer of Emberveil. Send feedback, ask questions, or just say hello." />
   <link rel="canonical" href="https://emberveil.radgh.com/contact.html" />
   <meta property="og:title" content="Contact — Emberveil" />
@@ -89,14 +90,15 @@
       position: absolute; inset: 0;
       background: linear-gradient(180deg, rgba(8,5,8,0.6) 0%, rgba(8,5,8,0.35) 40%, rgba(8,5,8,0.95) 100%);
     }
-    .cloud-layer {
-      position: absolute; inset: 0; pointer-events: none;
-      background-repeat: repeat-x; background-size: auto 35%; background-position: 0 25%; opacity: 0.2;
-    }
-    .cloud-layer-1 { background-image: url('images/menu_bg/clouds_01.jpg'); animation: cloudDrift1 60s linear infinite; }
-    .cloud-layer-2 { background-image: url('images/menu_bg/clouds_02.jpg'); animation: cloudDrift2 90s linear infinite; opacity: 0.14; background-position: 0 35%; }
-    @keyframes cloudDrift1 { from { background-position: 0 25%; } to { background-position: 2000px 25%; } }
-    @keyframes cloudDrift2 { from { background-position: 0 35%; } to { background-position: 2000px 35%; } }
+    /* M354 — clouds match index.html: clouds_08b.png in two parallax layers, same direction. */
+    .cloud-layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .cloud-layer .cloud-strip { position: absolute; left: 0; height: 100%; width: 200%; background-repeat: repeat-x; background-size: auto 100%; will-change: transform; }
+    .cloud-layer-1 { display: none; }
+    .cloud-layer-2 { opacity: 0.65; }
+    .cloud-layer-2 .cloud-strip { top: 22%; height: 50%; animation: cloudDrift 140s linear infinite; background-image: url('images/menu_bg/clouds_08b.png'); }
+    .cloud-layer-3 { opacity: 0.65; }
+    .cloud-layer-3 .cloud-strip { top: 2%; height: 30%; animation: cloudDrift 260s linear infinite; background-image: url('images/menu_bg/clouds_08b.png'); }
+    @keyframes cloudDrift { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
     .hero-content { position: relative; z-index: 1; }
     .hero-title {
       font-family: var(--font-display); font-weight: 900;
@@ -166,8 +168,8 @@
   <!-- ── Hero ── -->
   <section class="hero" aria-label="Page header">
     <div class="hero-bg" aria-hidden="true"></div>
-    <div class="cloud-layer cloud-layer-1" aria-hidden="true"></div>
-    <div class="cloud-layer cloud-layer-2" aria-hidden="true"></div>
+    <div class="cloud-layer cloud-layer-3" aria-hidden="true"><div class="cloud-strip"></div></div>
+    <div class="cloud-layer cloud-layer-2" aria-hidden="true"><div class="cloud-strip"></div></div>
     <div class="hero-content">
       <h1 class="hero-title">Contact</h1>
       <p class="hero-sub">Get in Touch</p>
@@ -210,24 +212,20 @@
     <div class="card">
       <div class="card-title">More Links</div>
       <ul class="contact-info">
-        <li><a href="./play.html">Play Emberveil</a> — Launch the game in your browser</li>
-        <li><a href="./news/index.html">Development News</a> — Milestone reports and updates</li>
-        <li><a href="./assets/">Art Gallery</a> — View all generated assets and prompts</li>
+        <li><a href="./play.html">Play Emberveil</a> — Launch the game in your browser, no install required.</li>
+        <li><a href="./news/post-overhaul-update.html">Latest news</a> — Cloud saves, UI unification, balance pass.</li>
+        <li><a href="./news/index.html">All news</a> — Every milestone report.</li>
+        <li><a href="./assets/">Asset gallery</a> — All generated images, audio, and milestone reports.</li>
+        <li><a href="./assets/image-review-v2.html">Image Review V2</a> — Browse the live sprite catalog and pending changes.</li>
+        <li><a href="./assets/balance-report.html">Balance report</a> — Monte Carlo win rates by act with chart.js.</li>
+        <li><a href="./assets/wishlist.html">Wishlist & roadmap</a> — What's planned next.</li>
+        <li><a href="./privacy.html">Privacy & telemetry</a> — How saves, GA, and telemetry work.</li>
       </ul>
     </div>
 
   </main>
 
-  <!-- ── Footer ── -->
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="./">Home</a>
-      <a href="./play.html">Play Game</a>
-      <a href="./news/index.html">News</a>
-      <a href="./assets/">Art Gallery</a>
-    </div>
-    <div class="footer-copy">&copy; 2026 Radley Sustaire &middot; Emberveil</div>
-  </footer>
+  <!-- Site footer is injected by /assets/_footer.js -->
 
 </body>
 </html>

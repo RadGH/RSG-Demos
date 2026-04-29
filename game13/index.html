@@ -6,6 +6,7 @@
   <title>Emberveil — A Dark-Fantasy Party RPG</title>
   <meta name="rsg-game" content="Emberveil">
   <script src="./assets/_header.js" defer></script>
+  <script src="./assets/_footer.js" defer></script>
   <meta name="description" content="Emberveil is an atmospheric dark-fantasy party RPG. Assemble your party, master 84 skills across 20 classes, and conquer a world of shadow and ember." />
   <link rel="canonical" href="https://emberveil.radgh.com/" />
   <meta property="og:title" content="Emberveil — A Dark-Fantasy Party RPG" />
@@ -106,9 +107,9 @@
 
     /* ── Hero Section ────────────────────────────────────────────────── */
     .hero {
-      position: relative; min-height: 100svh;
+      position: relative; min-height: calc(100svh - 52px);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      overflow: hidden; text-align: center; padding: 5rem 1.5rem 4rem;
+      overflow: hidden; text-align: center; padding: 4rem 1.5rem 5rem;
     }
     .hero-bg {
       position: absolute; inset: 0;
@@ -224,9 +225,10 @@
       to   { opacity: 1; transform: none; }
     }
 
-    /* Scroll indicator */
+    /* Scroll indicator — centered horizontally regardless of parent padding */
     .scroll-indicator {
-      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      position: absolute; bottom: 2rem; left: 0; right: 0; margin: 0 auto;
+      width: max-content;
       display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
       opacity: 0; animation: heroFadeUp 1s 2s ease-out forwards;
       color: var(--muted); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
@@ -630,9 +632,9 @@
       color: var(--muted); margin-bottom: 1rem; margin-top: 2rem;
     }
   </style>
-  <script type="module" crossorigin src="/RSG-Demos/game13/assets/marketing-pORQQlT_.js"></script>
+  <script type="module" crossorigin src="/RSG-Demos/game13/assets/marketing-CiP7d1VC.js"></script>
   <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/version-BtrRi84V.js">
+  <link rel="modulepreload" crossorigin href="/RSG-Demos/game13/assets/version-BKBHz2yn.js">
 </head>
 <body>
 
@@ -939,19 +941,7 @@
 
   <div class="divider"></div>
 
-  <!-- ── Footer ──────────────────────────────────────────────────── -->
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="./play.html">Play Game</a>
-      <a href="./game-info/">Game Info</a>
-      <a href="./assets/">Assets</a>
-      <a href="./assets/#tools">Tools</a>
-      <a href="./news/index.html">News</a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScWHFEQ8Kbxvsxg5nKerJOPqkYntAkRLCihqQchypNdqayvmA/viewform?usp=publish-editor" target="_blank" rel="noopener">Send Feedback</a>
-      <a href="./contact.html">Contact</a>
-    </div>
-    <div class="footer-copy">&copy; 2026 Radley Sustaire &middot; Emberveil</div>
-  </footer>
+  <!-- Site footer injected by /assets/_footer.js (M354) -->
 
   <!-- ── Lightbox ────────────────────────────────────────────────── -->
   <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
@@ -1293,9 +1283,9 @@
       const r = await fetch('./news/news.json');
       if (!r.ok) return;
       const articles = await r.json();
-      const top5 = articles.slice(0, 5);
+      const top6 = articles.slice(0, 6);
       const grid = document.getElementById('news-grid');
-      grid.innerHTML = top5.map(a => `
+      grid.innerHTML = top6.map(a => `
         <a href="./news/${a.slug}.html" class="news-card" style="text-decoration:none;">
           <img class="news-card-img" src="${(a.featured_image || '').replace(/^\.\.\//, './')}" alt=""
             onerror="this.style.display='none'">

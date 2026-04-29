@@ -1,7 +1,7 @@
 {
-  "milestone": 352,
+  "milestone": 353,
   "date": "2026-04-28",
-  "summary": "M352 — Image Review V2 fixes: lightbox close button (added top-right red X + event delegation), prev/next visible-but-disabled when single image, prompts shown under old/new comparison, asset/reference IDs visible. tools.html now reads live data/tools.json (rebuilt every release) — 19 untracked tools surfaced + curated descriptions added. release.sh auto-runs build-tools-list.cjs + build-image-review-v2.cjs.",
+  "summary": "M353 — Image Review V2: pyromancer east_spell approved (m350 → history). Category filter now applies in Pending/History modes (was leaking character entries into Backgrounds tab).",
   "categories": [
     "feature"
   ],
