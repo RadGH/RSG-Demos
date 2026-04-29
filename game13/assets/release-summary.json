@@ -1,7 +1,7 @@
 {
-  "milestone": 368,
+  "milestone": 369,
   "date": "2026-04-29",
-  "summary": "M368 — Bug fixes: combat-end modal no longer renders twice (added _endModalShown guard + cleanup of any pre-existing .cbt-end-modal in DOM before mount). Travel-back popup OK button now actually navigates — was being eaten because innerHTML was reset every render frame, killing the click handler mid-event. Now content is only rewritten when destination zone changes; click handler is persistent and reads the latest backLink.",
+  "summary": "M369 — Combat Report damage attribution: legendary effects (Dragon Breath, Arcane Bounce, Mana Shockwave, Echo Cast) now record their damage with the effect's name + element instead of bucketing under 'Attack'. _dispatchLegendaryHook ctx.applyDmg now accepts (sourceName, element) optional args; legendary effects pass them so the meter shows 'Dragon Breath / fire' as a separate row.",
   "categories": [
     "feature"
   ],

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="rsg-game" content="Emberveil">
-<title>Balance Report — Emberveil M350</title>
+<title>Balance Report — Emberveil M350 / M369</title>
 <script src="./_header.js" defer></script>
 <script src="./_footer.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -31,16 +31,18 @@
 </style>
 </head>
 <body class="ev-themed">
-<h1>Balance Report — M350</h1>
-<p class="note">Monte Carlo simulation, N=1000 trials per encounter, two party compositions.
+<h1>Balance Report — M350 / M369</h1>
+<p class="note">Monte Carlo simulation, N=1000 trials per encounter.
 <strong>A</strong> = warrior/rogue/mage/cleric (regression baseline).
 <strong>B</strong> = warrior/fighter/ranger/mage + companion (rebalance target).
-Target: ~75% win rate (≤25% party-wipe rate) across all acts.</p>
+<strong>C</strong> = solo Knight (M369 hard-mode regression — single auto-piloted Knight per act).
+M350 target: ~75% win rate. M369 target: ≤5% solo survival on Act 3+ (the user wanted to feel the floor).</p>
 
 <div class="toggle" style="margin:0.5rem 0;">
   <button data-view="post" class="active">After (M350)</button>
   <button data-view="pre">Before</button>
   <button data-view="compare">Side-by-side</button>
+  <button data-view="m369">M369 — Hard Mode</button>
 </div>
 
 <div id="summary-area"></div>
@@ -68,6 +70,17 @@ Target: ~75% win rate (≤25% party-wipe rate) across all acts.</p>
 </div>
 
 <div class="card">
+  <h2>Edits applied (M369 — Hard Mode)</h2>
+  <ul>
+    <li><strong>All regular enemies</strong>: HP × 4.0, damage × 2.0 (54 enemy stat blocks across <code>ENEMIES</code>, <code>ENEMIES_ACT4</code>, <code>ENEMIES_ACT5</code>, <code>ENEMIES_ACT6</code>, and inline encounter entries).</li>
+    <li><strong>All boss enemies</strong> (19 bosses incl. hidden): HP × 7.0, damage × 2.0. Bosses identified by id (goblin_warlord, grax_veil_touched, veilspawn_herald, lava_titan, archfiend_malgrath, emberveil_sovereign, the_unraveler, the_architect, ancient_dragon, dragon_king, vault_guardian, void_scholar, echo_sovereign, the_first_ember) plus the "Veil High Priest" inline override.</li>
+    <li>Hero stats, items, skills, XP curve <em>unchanged</em> (per spec).</li>
+    <li>No difficulty toggle — buff applies unconditionally. The user wants to feel the floor.</li>
+    <li>Result: solo Knight (Comp C) survival 0% across Acts 1–6; Comp A/B 0% from Act 2 onward, ~10% Act 1.</li>
+  </ul>
+</div>
+
+<div class="card">
   <h2>Edits applied (M350)</h2>
   <ul>
     <li><strong>Act 5 enemies</strong> (<code>ENEMIES_ACT5</code>): HP −27% to −29%, dmg −15% to −17%. Comp A win rate 32.1% → 77.5%; comp B 0.6% → 53.4%.</li>
@@ -79,18 +92,23 @@ Target: ~75% win rate (≤25% party-wipe rate) across all acts.</p>
 
 <script>
 const TARGET = 0.75;
-let pre = null, post = null;
+let pre = null, post = null, m369 = null;
 let winChart = null, roundsChart = null;
 let view = 'post';
 
 async function load() {
-  const [a, b] = await Promise.all([
+  const [a, b, c] = await Promise.all([
     fetch('./data/balance-snapshot/pre.json').then(r => r.json()),
     fetch('./data/balance-snapshot/post.json').then(r => r.json()),
+    fetch('./data/balance-snapshot/post-m369-hard.json').then(r => r.json()).catch(() => null),
   ]);
-  pre = a; post = b;
+  pre = a; post = b; m369 = c;
   render();
 }
+
+// In M369 view, "before" is the M350 post snapshot and "after" is the m369 buff.
+function curPre()  { return view === 'm369' ? post  : pre; }
+function curPost() { return view === 'm369' ? m369 : post; }
 
 function actLabels(snap) {
   return Object.keys(snap.parties.A.acts).map(a => `Act ${a}`);
@@ -126,11 +144,14 @@ function renderToggle() {
 function renderSummary() {
   const area = document.getElementById('summary-area');
   const meanWin = (snap, comp) => {
+    if (!snap || !snap.parties[comp]) return 0;
     const arr = winSeries(snap, comp);
     return arr.reduce((a,b) => a+b, 0) / arr.length;
   };
-  const minWin = (snap, comp) => Math.min(...winSeries(snap, comp));
-  const maxWin = (snap, comp) => Math.max(...winSeries(snap, comp));
+  const minWin = (snap, comp) => {
+    if (!snap || !snap.parties[comp]) return 0;
+    return Math.min(...winSeries(snap, comp));
+  };
 
   const fmt = n => `${n.toFixed(1)}%`;
   const delta = (a, b) => {
@@ -146,7 +167,15 @@ function renderSummary() {
     </div>`;
 
   let html = '<div class="summary-cards">';
-  if (view === 'post' || view === 'compare') {
+  if (view === 'm369') {
+    if (!m369) { area.innerHTML = '<p class="note">post-m369-hard.json not yet generated.</p>'; return; }
+    html += stat('Comp A mean win', fmt(meanWin(m369, 'A')),
+      `was ${fmt(meanWin(post,'A'))} (${delta(meanWin(post,'A'), meanWin(m369,'A'))})`);
+    html += stat('Comp B mean win', fmt(meanWin(m369, 'B')),
+      `was ${fmt(meanWin(post,'B'))} (${delta(meanWin(post,'B'), meanWin(m369,'B'))})`);
+    html += stat('Solo Knight (C) mean', fmt(meanWin(m369, 'C')), 'M369 regression');
+    html += stat('Solo Knight Act 3', fmt((m369.parties.C.acts[3]?.summary?.avgWinRate || 0) * 100), 'target ≤5%');
+  } else if (view === 'post' || view === 'compare') {
     html += stat('Comp A mean win', fmt(meanWin(post, 'A')),
       view === 'compare' ? `was ${fmt(meanWin(pre,'A'))} (${delta(meanWin(pre,'A'), meanWin(post,'A'))})` : '');
     html += stat('Comp B mean win', fmt(meanWin(post, 'B')),
@@ -164,7 +193,8 @@ function renderSummary() {
 }
 
 function renderCharts() {
-  const labels = actLabels(post);
+  const refSnap = (view === 'm369' && m369) ? m369 : post;
+  const labels = actLabels(refSnap);
   const target = labels.map(_ => TARGET * 100);
 
   const datasets = [];
@@ -173,6 +203,12 @@ function renderCharts() {
     datasets.push({ label: 'A — after',  data: winSeries(post, 'A'), borderColor: '#5cd05c', backgroundColor: '#5cd05c40', tension:0.2 });
     datasets.push({ label: 'B — before', data: winSeries(pre, 'B'), borderColor: '#c08070', backgroundColor: '#c0807040', borderDash: [6,3], tension:0.2 });
     datasets.push({ label: 'B — after',  data: winSeries(post, 'B'), borderColor: '#ffd060', backgroundColor: '#ffd06040', tension:0.2 });
+  } else if (view === 'm369' && m369) {
+    datasets.push({ label: 'A — pre-M369 (M350 post)', data: winSeries(post, 'A'), borderColor: '#7090c0', backgroundColor: '#7090c040', borderDash:[6,3], tension:0.2 });
+    datasets.push({ label: 'A — post-M369 (hard)',     data: winSeries(m369, 'A'), borderColor: '#e07070', backgroundColor: '#e0707040', tension:0.2 });
+    datasets.push({ label: 'B — pre-M369',             data: winSeries(post, 'B'), borderColor: '#c08070', backgroundColor: '#c0807040', borderDash:[6,3], tension:0.2 });
+    datasets.push({ label: 'B — post-M369',            data: winSeries(m369, 'B'), borderColor: '#ffd060', backgroundColor: '#ffd06040', tension:0.2 });
+    datasets.push({ label: 'C — solo Knight (post)',   data: winSeries(m369, 'C'), borderColor: '#a050f0', backgroundColor: '#a050f040', tension:0.2 });
   } else {
     const snap = view === 'pre' ? pre : post;
     datasets.push({ label: 'Comp A', data: winSeries(snap, 'A'), borderColor: '#5cd05c', backgroundColor: '#5cd05c40', tension:0.2 });
@@ -193,16 +229,17 @@ function renderCharts() {
   if (winChart) winChart.destroy();
   winChart = new Chart(document.getElementById('winChart'), cfg);
 
-  const snapForRounds = view === 'pre' ? pre : post;
+  const snapForRounds = view === 'pre' ? pre : (view === 'm369' && m369 ? m369 : post);
+  const roundsDatasets = [
+    { label: 'Comp A', data: roundsSeries(snapForRounds, 'A'), backgroundColor: '#5cd05c80' },
+    { label: 'Comp B', data: roundsSeries(snapForRounds, 'B'), backgroundColor: '#ffd06080' },
+  ];
+  if (view === 'm369' && m369 && m369.parties.C) {
+    roundsDatasets.push({ label: 'Comp C — solo Knight', data: roundsSeries(m369, 'C'), backgroundColor: '#a050f080' });
+  }
   const rcfg = {
     type: 'bar',
-    data: {
-      labels,
-      datasets: [
-        { label: 'Comp A', data: roundsSeries(snapForRounds, 'A'), backgroundColor: '#5cd05c80' },
-        { label: 'Comp B', data: roundsSeries(snapForRounds, 'B'), backgroundColor: '#ffd06080' },
-      ],
-    },
+    data: { labels, datasets: roundsDatasets },
     options: {
       responsive: true,
       scales: { y: { ticks: { color: '#bbb' } }, x: { ticks: { color: '#bbb' } } },
@@ -215,22 +252,32 @@ function renderCharts() {
 
 function renderDetail() {
   const target = document.getElementById('detail-table');
-  const acts = Object.keys(post.parties.A.acts);
-  const snap = view === 'pre' ? pre : post;
+  const snap = view === 'pre' ? pre : (view === 'm369' && m369 ? m369 : post);
+  if (!snap) { target.innerHTML = ''; return; }
+  const acts = Object.keys(snap.parties.A.acts);
+  const showC = view === 'm369' && m369 && m369.parties.C;
   let html = `<table><thead><tr>
     <th>Act</th><th>Encounter</th><th>Comp A win</th><th>A rounds</th><th>Comp B win</th><th>B rounds</th>
+    ${showC ? '<th>Solo Knight win</th><th>C rounds</th>' : ''}
     ${view === 'compare' ? '<th>A Δ</th><th>B Δ</th>' : ''}
     </tr></thead><tbody>`;
   for (const act of acts) {
     const aReg = snap.parties.A.acts[act];
     const bReg = snap.parties.B.acts[act];
+    const cReg = showC ? m369.parties.C.acts[act] : null;
     const allKeys = [...Object.keys(aReg.regular), ...Object.keys(aReg.boss)];
     for (const k of allKeys) {
       const a = aReg.regular[k] || aReg.boss[k];
       const b = bReg.regular[k] || bReg.boss[k];
+      const c = cReg ? (cReg.regular[k] || cReg.boss[k]) : null;
       let row = `<tr><td>${act}</td><td>${k}</td>
         <td>${(a.winRate*100).toFixed(1)}%</td><td>${a.avgRounds.toFixed(1)}</td>
         <td>${(b.winRate*100).toFixed(1)}%</td><td>${b.avgRounds.toFixed(1)}</td>`;
+      if (showC && c) {
+        row += `<td>${(c.winRate*100).toFixed(1)}%</td><td>${c.avgRounds.toFixed(1)}</td>`;
+      } else if (showC) {
+        row += `<td>—</td><td>—</td>`;
+      }
       if (view === 'compare') {
         const aPre = (pre.parties.A.acts[act].regular[k] || pre.parties.A.acts[act].boss[k] || {winRate:0});
         const bPre = (pre.parties.B.acts[act].regular[k] || pre.parties.B.acts[act].boss[k] || {winRate:0});
