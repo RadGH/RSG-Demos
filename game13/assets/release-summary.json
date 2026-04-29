@@ -1,7 +1,7 @@
 {
-  "milestone": 367,
+  "milestone": 368,
   "date": "2026-04-29",
-  "summary": "M367 — Theme cosmetic pass: ev-themed body class added to all 60 news + tool/catalog/doc pages. They now pick up Cinzel/Spectral fonts + ember palette via the auto-injected site-theme.css. No layout changes — just the theme tokens cascade in.",
+  "summary": "M368 — Bug fixes: combat-end modal no longer renders twice (added _endModalShown guard + cleanup of any pre-existing .cbt-end-modal in DOM before mount). Travel-back popup OK button now actually navigates — was being eaten because innerHTML was reset every render frame, killing the click handler mid-event. Now content is only rewritten when destination zone changes; click handler is persistent and reads the latest backLink.",
   "categories": [
     "feature"
   ],
