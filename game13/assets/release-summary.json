@@ -1,7 +1,7 @@
 {
-  "milestone": 365,
+  "milestone": 366,
   "date": "2026-04-29",
-  "summary": "M365 — Design migration kickoff: pre-tag pre-design-migration-m364 captured. New shared/site-theme.css (1146 lines, ember-locked, rune cursor, namespaced under .ev-themed). nav-header.js auto-injects theme + sets cursor=rune on themed pages. release.sh syncs site-theme.css. New scripts/build-live-data.cjs writes public/assets/data/live.json with real game counts (28 classes, 5 starters, 35 companions, 6 acts, etc) — runs every release. New public/assets/_design/site.js (vanilla JS port of Hero/Classes/Combat/Companions/Charts/Acts/News + ember layer + rune cursor + reveal). New index.html assembled from those mounts. Tools/Catalogs/Docs unchanged this milestone (will get cosmetic theme pass next).",
+  "summary": "M366 — Contact page rebuilt to match new design: form removed, three centered Direct/Feedback/More-links cards with vertical stack layout, email confirmed radleygh@gmail.com (not radgh.com). Privacy page picks up ev-themed body class so the new fonts/palette apply.",
   "categories": [
     "feature"
   ],
