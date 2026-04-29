@@ -1,7 +1,7 @@
 {
-  "milestone": 374,
+  "milestone": 375,
   "date": "2026-04-29",
-  "summary": "M374 — Multi-fix batch: (1) Skills now show 'Lv N' instead of 'Tier N' on front-page hero/classes (uses real unlockLevel from skills.js). (2) Companion section filtered to TRUE companions (war_dog/dire_wolf/etc), no more hireables (Lysa/Borin/Aela/Rekk excluded), capped at 8 entries, portraits fall back to _south.png since most don't have _portrait files. (3) Image Review V2 lightbox now sits below the 52px sticky nav (inset:52px 0 0 0; close-X at top:60px). (4) Inventory tooltip on mobile gets max-height + scroll + sticky action buttons so Equip/Compare always reachable. (5) Changelog parser now folds in releases[N].summary from game_meta.json (245 entries vs 40). release.sh re-runs parser every release. (6) UX review (M367) copied to public/docs/ux-review-m367.md and linked from /assets/docs.html for phone-friendly viewing.",
+  "summary": "M375 — Multi-fix: rune cursor REMOVED entirely (was a11y issue, hid focus); nav header always 'Emberveil' (no longer derives from page title that mutates); header restyled to match new Ember design (72px, mono caps, ink-2/ink-1, .scrolled state); rsg-game meta tags normalized to 'Emberveil' across 8 pages; images.html class roster expanded to all 28 (Tinker/Monk/Shaman/Witch Hunter/Knight/Sorcerer/Runesmith/Shadow Dancer added) + auto-hydrates from data/classes.json; front-page hero portrait removed, EMBER no longer wraps (white-space:nowrap when no portrait), stat strip max-width 1100px centered; classes section role text hidden in list, names left-aligned, .class-portrait flex-start with max-height 720px; combat enemies relabeled (Stormcaller + Goblin) using existing portraits; arena-log no longer flickers (only re-renders when log strings change); 'View full balance report' → 'View Report'.",
   "categories": [
     "feature"
   ],
