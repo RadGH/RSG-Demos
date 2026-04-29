@@ -1,7 +1,7 @@
 {
-  "milestone": 378,
+  "milestone": 379,
   "date": "2026-04-29",
-  "summary": "M378 — Combat simulator parity refactor: simulator.js now instrumented with the same 16 combatDebug.push sites as CombatScreen (initiative_roll/turn_order/turn_start/ai_decision/skill_cast_attempt/hit_check/crit_check/damage_calc/damage_apply/status_apply/status_tick/legendary_proc/meter_add). New shared src/game/statusTick.js exports computeStatusTick + isDotStatus — used by both simulator and CombatScreen for burn/bleed/poison/regen formulas (no more drift). Simulator now dispatches legendary effect hooks (onCombatStart/onHit/onCrit/onKill/onCast) — Dragon Breath, Mana Shockwave, Echo Cast, etc all fire in headless balance runs. Per-source damage meter (damageBySource) added to simulator output so the M369 attribution rule is enforced both live and headless: Dragon Breath bucketed under its own name, not folded into the parent skill. Combat-debug-replay.cjs harness updated to equip legendary-bearing parties; verified 47 legendary_proc events + 8 status_tick events on a single goblin_camp run with War.damageBySource={Whirlwind:115,Cleave:223,Dragon Breath:120}. Zero perf regression (167ms for 1000 sims with cdb disabled). All 277 tests pass.",
+  "summary": "M379 — News index page rebuilt to use live data: now fetches news.json (12 entries with current SEO titles) instead of hardcoded markup that was missing post-overhaul-update + showed stale 'Re-redesign — SpriteCook' / 'M79 Redesign Report' titles. Palette aligned to the new ember accent (--accent-text #ffa844 for ≥4.5:1 contrast). Cards are now real anchors with hover state (border + h2 underline).",
   "categories": [
     "feature"
   ],
