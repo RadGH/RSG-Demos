@@ -1,7 +1,7 @@
 {
-  "milestone": 371,
+  "milestone": 372,
   "date": "2026-04-29",
-  "summary": "M371 — UX accessibility critical fixes: --accent-text token (#ffa844) for ≥4.5:1 contrast on dark bg (--accent itself stays decorative); rune cursor now only fires on (hover:hover) + (pointer:fine) + no reduced-motion (won't hide cursor for keyboard/touch users); explicit :focus-visible rings on all interactive elements (.ev-themed scope); class picker is now a real role=tablist with arrow-key navigation, Home/End, aria-selected, aria-controls; combat preview ticker checks document.visibilityState (no battery burn while tabbed away); prefers-reduced-motion kills ember particles + parallax + reveal animations + clamps all transitions to 0.01ms; iPhone 14 Pro (480px) breakpoint stacks hero stats 2x2, 1-col acts rail, 240px companion cards, 44px min touch targets. ARIA labels on all 4 chart SVGs (radar, difficulty curve, drop stack, initiative bell).",
+  "summary": "M372 — Contrast fix follow-through: 7 interactive text contexts (eyebrows, sk-cost, act-tile, news cards, CTAs, tap-button, car-arrow) now use --accent-text (#ffa844, ≥4.5:1 on dark bg) instead of decorative --accent (#e8612a, 2.8:1). Decorative borders/glows still use --accent.",
   "categories": [
     "feature"
   ],

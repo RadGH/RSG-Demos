@@ -74,6 +74,7 @@
           links: [
             { href: GAME_ROOT + 'contact.html', label: 'Contact' },
             { href: GAME_ROOT + 'privacy.html', label: 'Privacy & Telemetry' },
+            { href: GAME_ROOT + 'accessibility.html', label: 'Accessibility' },
           ]
         }
       ]

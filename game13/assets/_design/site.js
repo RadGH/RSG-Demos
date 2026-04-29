@@ -398,10 +398,17 @@
       el('div', { class: 'init-pip ' + (id.startsWith('h') || id === 'TAP' ? 'h' : 'e'), dataset: { id } }, id === 'TAP' ? 'TAP' : id.toUpperCase())
     ));
 
-    const pauseBtn = el('button', { class: 'cta' }, '⏸ Pause');
+    const pauseBtn = el('button', {
+      class: 'cta',
+      type: 'button',
+      'aria-pressed': 'false',
+      'aria-label': 'Pause combat preview',
+    }, '⏸ Pause');
     pauseBtn.addEventListener('click', () => {
       paused = !paused;
       pauseBtn.textContent = paused ? '▶ Resume' : '⏸ Pause';
+      pauseBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      pauseBtn.setAttribute('aria-label', paused ? 'Resume combat preview' : 'Pause combat preview');
     });
 
     const side = el('div', { class: 'combat-side' },
