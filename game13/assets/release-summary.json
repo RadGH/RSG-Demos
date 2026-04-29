@@ -1,7 +1,7 @@
 {
-  "milestone": 366,
+  "milestone": 367,
   "date": "2026-04-29",
-  "summary": "M366 — Contact page rebuilt to match new design: form removed, three centered Direct/Feedback/More-links cards with vertical stack layout, email confirmed radleygh@gmail.com (not radgh.com). Privacy page picks up ev-themed body class so the new fonts/palette apply.",
+  "summary": "M367 — Theme cosmetic pass: ev-themed body class added to all 60 news + tool/catalog/doc pages. They now pick up Cinzel/Spectral fonts + ember palette via the auto-injected site-theme.css. No layout changes — just the theme tokens cascade in.",
   "categories": [
     "feature"
   ],
