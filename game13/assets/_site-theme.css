@@ -137,7 +137,7 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   font-size: 11px;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -182,12 +182,12 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   background: radial-gradient(60% 80% at 50% 100%, var(--accent-glow), transparent 70%);
   opacity: 0; transition: opacity .35s;
 }
-.cta:hover { border-color: var(--accent); color: var(--accent-bright); }
+.cta:hover { border-color: var(--accent-text); color: var(--accent-bright); }
 .cta:hover::before { opacity: 1; }
 .cta:active { transform: translateY(1px); }
 .cta.primary {
   background: linear-gradient(180deg, var(--accent), var(--accent-deep));
-  border-color: var(--accent);
+  border-color: var(--accent-text);
   color: #1a0c05;
   font-weight: 600;
 }
@@ -905,7 +905,7 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   color: var(--ink-2);
   transition: all .25s;
 }
-.car-arrow:hover { border-color: var(--accent); color: var(--accent-bright); box-shadow: var(--glow); }
+.car-arrow:hover { border-color: var(--accent-text); color: var(--accent-bright); box-shadow: var(--glow); }
 .car-progress {
   flex: 1;
   margin: 0 24px;
@@ -1020,7 +1020,7 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   position: relative; z-index: 1;
   transition: color .35s;
 }
-.act-tile:hover .roman { color: var(--accent); }
+.act-tile:hover .roman { color: var(--accent-text); }
 .act-tile .name {
   font-family: var(--font-display);
   font-size: 18px;
@@ -1040,7 +1040,7 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   font-family: var(--font-body);
   font-style: italic;
   font-size: 13px;
-  color: var(--accent);
+  color: var(--accent-text);
   position: relative; z-index: 1;
 }
 
@@ -1069,7 +1069,7 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .news-card .title {
   font-family: var(--font-display);
