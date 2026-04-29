@@ -93,11 +93,9 @@
       )
     );
 
-    const heroImgSrc = LIVE?.starterClasses?.[0]?.portrait?.replace(/^\.\.\//, './') || './images/spritecook/warrior_portrait.png';
-    const heroImg = el('div', { class: 'hero-stormcaller', id: 'hero-portrait' },
-      el('img', { src: heroImgSrc, alt: 'Featured hero', class: 'pixel' })
-    );
-
+    // M375: hero portrait removed per user request — left the headline + ember
+    // particles do all the visual work. The class portrait still appears in
+    // the Classes section below the fold.
     const stats = el('div', { class: 'hero-stats' },
       el('div', { class: 'row' }, [
         { v: counts.classes || 28, l: 'Classes' },
@@ -115,7 +113,7 @@
 
     const section = el('section', { class: 'hero', 'aria-labelledby': 'hero-title' },
       bg, mountains, clouds1, clouds2, vignette,
-      el('div', { class: 'container hero-content' }, headline, heroImg),
+      el('div', { class: 'container hero-content hero-no-portrait' }, headline),
       stats
     );
 
@@ -219,9 +217,6 @@
       );
       detail.appendChild(portrait);
       detail.appendChild(info);
-      // Sync hero portrait
-      const heroImg = document.querySelector('#hero-portrait img');
-      if (heroImg && c.portrait) heroImg.src = c.portrait.replace(/^\.\.\//, './');
     }
 
     function setActive(i) {
@@ -266,9 +261,12 @@
       { id: 'h1', name: 'Cleric', img: './images/spritecook/cleric_portrait.png' },
       { id: 'h2', name: 'Knight', img: './images/spritecook/knight_portrait.png' },
     ];
+    // M375 — per user direction: rename + reskin enemies. Goblin Scout was
+    // showing a missing/wrong image; the user wants the slot to be a
+    // Stormcaller, and the second slot a Goblin.
     const enemies = [
-      { id: 'e0', name: 'Goblin Scout', img: './images/portraits/goblin_scout.png' },
-      { id: 'e1', name: 'Veil Cultist', img: './images/portraits/cultist.png' },
+      { id: 'e0', name: 'Stormcaller', img: './images/spritecook/stormcaller_portrait.png' },
+      { id: 'e1', name: 'Goblin', img: './images/spritecook/goblin_warrior_portrait.png' },
     ];
 
     const script = [
@@ -299,6 +297,7 @@
     enemies.forEach(e => arenaEnemies.appendChild(makeCombatant(e, 'enemy')));
     heroes.forEach(h => arenaHeroes.appendChild(makeCombatant(h, 'hero')));
 
+    let _lastLogsKey = '';
     function applyState() {
       [...heroes, ...enemies].forEach(c => {
         const node = popsArena.querySelector(`[data-id="${c.id}"]`);
@@ -309,8 +308,17 @@
         const fill = node.querySelector('.hp .fill');
         if (fill) fill.style.transform = `scaleX(${Math.max(0, hp[c.id]) / 100})`;
       });
-      while (arenaLog.firstChild) arenaLog.removeChild(arenaLog.firstChild);
-      logs.slice(0, 8).forEach(l => arenaLog.appendChild(el('div', { class: 'line', html: l })));
+      // M375: only re-render the log list when its contents actually change.
+      // Previously we tore down + rebuilt every applyState() call (i.e. every
+      // 100ms tap-cd tick), which caused the .arena-log to flicker visibly in
+      // dev tools and triggered constant aria-live announcements. Now we only
+      // touch the DOM when the log strings have changed.
+      const key = logs.slice(0, 8).join('§');
+      if (key !== _lastLogsKey) {
+        _lastLogsKey = key;
+        while (arenaLog.firstChild) arenaLog.removeChild(arenaLog.firstChild);
+        logs.slice(0, 8).forEach(l => arenaLog.appendChild(el('div', { class: 'line', html: l })));
+      }
       roundStat.textContent = String(round);
       turnStat.textContent = String(turn);
       tapCdFill.style.transform = `scaleX(${tapCd})`;
@@ -566,7 +574,7 @@
       };
       sideWrap.appendChild(el('p', {}, text[active]));
       sideWrap.appendChild(el('div', { style: { marginTop: '14px' } },
-        el('a', { class: 'cta', href: './assets/balance-report.html' }, 'View full balance report →')
+        el('a', { class: 'cta', href: './assets/balance-report.html' }, 'View Report →')
       ));
     }
 
@@ -824,24 +832,10 @@
   }
 
   // ─────────────────────────────────────────────────── RUNE CURSOR ──────────
-  function mountRuneCursor() {
-    if (matchMedia('(hover: none)').matches) return;
-    document.body.dataset.cursor = 'rune';
-    const svg = document.createElementNS(SVGNS, 'svg');
-    svg.setAttribute('class', 'rune-cursor');
-    svg.setAttribute('viewBox', '0 0 64 64');
-    svg.style.left = '-100px'; svg.style.top = '-100px';
-    svg.innerHTML = `
-      <circle cx="32" cy="32" r="28" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="2 4" />
-      <circle cx="32" cy="32" r="20" fill="none" stroke="var(--accent-bright)" stroke-width=".5" stroke-dasharray="1 3" />
-      <circle cx="32" cy="32" r="3" fill="var(--accent-bright)" />
-      ${[0, 60, 120, 180, 240, 300].map(deg => `<g transform="rotate(${deg} 32 32) translate(0 -28)"><text x="32" y="36" text-anchor="middle" font-size="6" fill="var(--accent)" font-family="serif">⌬</text></g>`).join('')}`;
-    document.body.appendChild(svg);
-    window.addEventListener('mousemove', e => {
-      svg.style.left = e.clientX + 'px';
-      svg.style.top = e.clientY + 'px';
-    });
-  }
+  // M375: disabled. The rune cursor was an accessibility issue (hid focus
+  // indicators, hard to track on touch screens, decorative-only). Native
+  // cursor + the :focus-visible rings carry all the affordance we need.
+  function mountRuneCursor() { /* no-op */ }
 
   // ─────────────────────────────────────────────── REVEAL ON SCROLL ─────────
   function mountReveal() {

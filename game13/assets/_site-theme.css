@@ -86,15 +86,8 @@ body.ev-themed {
 /* keep pixel art crisp */
 img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
 
-/* hide native cursor when rune cursor is active */
-/* M371 — Rune cursor only when fine pointer + no reduced-motion. On touch
-   devices it would be invisible/useless; keyboard users need the system
-   cursor + focus rings. */
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  body[data-cursor="rune"] { cursor: none; }
-  body[data-cursor="rune"] a,
-  body[data-cursor="rune"] button { cursor: none; }
-}
+/* M375: rune cursor removed (accessibility — hid focus indicators). Native
+   cursor + the :focus-visible rings below carry all interaction affordance. */
 
 /* M371 — Visible focus rings for keyboard nav. :focus-visible only fires
    when the user is actually keyboarding, so mouse clicks don't get the ring. */
@@ -246,6 +239,13 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   gap: 64px;
   padding: 80px 0 120px;
 }
+/* M375: when no portrait column, headline owns the full width — wider so
+   "EMBER" / "VEIL" rendered at the giant font don't wrap to "Embe r". */
+.hero-content.hero-no-portrait {
+  grid-template-columns: 1fr;
+}
+.hero-content.hero-no-portrait .hero-headline { max-width: 100%; align-items: center; text-align: center; }
+.hero-content.hero-no-portrait .hero-title { white-space: nowrap; }
 
 .hero-headline {
   display: flex; flex-direction: column; gap: 28px;
@@ -315,19 +315,23 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   opacity: .35;
 }
 
-/* hero stat strip */
+/* hero stat strip — M375: no longer absolutely positioned full-width on
+   desktop; constrained to a max-width container, centered, sits at the
+   bottom of the hero. */
 .hero-stats {
   position: absolute;
   left: 0; right: 0; bottom: 32px;
   z-index: 4;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(11,8,7,.6), rgba(11,8,7,.85));
-  backdrop-filter: blur(4px);
 }
 .hero-stats .row {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  max-width: 1100px;
+  margin: 0 auto;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(11,8,7,.6), rgba(11,8,7,.85));
+  backdrop-filter: blur(4px);
 }
 .hero-stats .cell {
   padding: 18px 20px;
@@ -421,13 +425,12 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   font-size: 16px;
   letter-spacing: 0.06em;
 }
-.class-item .role {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
+/* M375: role subtext hidden in the list — class names only, left-aligned
+   immediately next to the number column. The role still surfaces inside
+   the detail panel as the eyebrow above the name. */
+.class-item .role { display: none; }
+.class-item { grid-template-columns: 32px 1fr auto; }
+.class-item .name { text-align: left; }
 
 .class-detail {
   position: relative;
@@ -448,16 +451,19 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
 }
 .class-portrait {
   position: relative;
-  display: flex; align-items: flex-end; justify-content: center;
+  /* M375: image flex-start instead of flex-end + larger portrait. */
+  display: flex; align-items: flex-start; justify-content: center;
   background:
     radial-gradient(60% 80% at 50% 100%, rgba(232,97,42,.18), transparent 70%),
     linear-gradient(180deg, var(--bg-3), var(--bg-1));
   border-right: 1px solid var(--line);
-  padding: 40px 20px 0;
+  padding: 24px 16px 0;
+  min-height: 560px;
 }
 .class-portrait img {
-  max-height: 480px;
-  max-width: 90%;
+  max-height: 720px;
+  width: 100%;
+  height: auto;
   image-rendering: pixelated;
   filter: drop-shadow(0 24px 40px rgba(0,0,0,.6));
 }

@@ -89,12 +89,12 @@
   .char-group .pose-row .card .label { font-size:0.6rem; }
 
   /* Lightbox */
-  /* M374: lightbox sits BELOW the 52px sticky nav so its toolbar buttons +
-     close-X aren't clipped. inset:52px top + 0 elsewhere. */
-  .lightbox { display:none; position:fixed; inset:52px 0 0 0; z-index:200; background:rgba(0,0,0,0.94); padding:0.75rem; }
+  /* M375: lightbox sits BELOW the 72px sticky nav so its toolbar buttons +
+     close-X aren't clipped. */
+  .lightbox { display:none; position:fixed; inset:72px 0 0 0; z-index:200; background:rgba(0,0,0,0.94); padding:0.75rem; }
   .lightbox.open { display:flex; flex-direction:column; }
   .lb-close-x {
-    position:fixed; top:60px; right:0.5rem; z-index:210;
+    position:fixed; top:80px; right:0.5rem; z-index:210;
     width:44px; height:44px; border-radius:6px;
     background:#c04030; color:#fff; border:1px solid #ffd060;
     font-size:1.4rem; line-height:1; cursor:pointer; font-weight:700;

@@ -962,7 +962,11 @@ let allAssets = [];
 let activeFilter = 'all';
 
 // Canonical list of 20 playable hero classes (from src/game/classes.js)
-const HERO_LIST = [
+// M375: complete class roster (28). Was missing Monk/Shaman/Witch Hunter/Knight/
+// Sorcerer/Runesmith/Shadow Dancer/Tinker. Single source of truth: data/classes.json
+// (auto-generated). The list is hydrated from that file at boot time, falling
+// back to this static list if the fetch fails.
+let HERO_LIST = [
   { id: 'warrior', name: 'Warrior' },
   { id: 'fighter', name: 'Fighter' },
   { id: 'paladin', name: 'Paladin' },
@@ -983,7 +987,24 @@ const HERO_LIST = [
   { id: 'oracle', name: 'Oracle' },
   { id: 'tactician', name: 'Tactician' },
   { id: 'chronomancer', name: 'Chronomancer' },
+  { id: 'monk', name: 'Monk' },
+  { id: 'shaman', name: 'Shaman' },
+  { id: 'witch_hunter', name: 'Witch Hunter' },
+  { id: 'knight', name: 'Knight' },
+  { id: 'sorcerer', name: 'Sorcerer' },
+  { id: 'runesmith', name: 'Runesmith' },
+  { id: 'shadow_dancer', name: 'Shadow Dancer' },
+  { id: 'tinker', name: 'Tinker' },
 ];
+// Try to overwrite from live data (so any future class additions surface
+// here automatically, before the manual HERO_LIST gets updated).
+fetch('./data/classes.json').then(r => r.ok ? r.json() : null).then(data => {
+  if (!data) return;
+  const arr = Array.isArray(data) ? data : (data.classes || []);
+  if (arr.length) {
+    HERO_LIST = arr.map(c => ({ id: c.id, name: c.name || c.id }));
+  }
+}).catch(() => {});
 
 // Canonical companion list (from TownScreen.js + randomEvents.js M56/M64)
 const COMPANION_LIST = [

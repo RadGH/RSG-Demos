@@ -18,10 +18,13 @@
  */
 (function () {
   var SCRIPT = document.currentScript;
+  // M375: never fall back to document.title — page titles vary per page
+  // (e.g. images.html "Images — Emberveil") and we don't want the nav logo
+  // mutating from page to page. The rsg-game meta tag is the only authoritative
+  // source; fall back to the script's data-game attribute or the constant.
   var GAME_LABEL =
     (SCRIPT && SCRIPT.dataset.game) ||
     (document.querySelector('meta[name="rsg-game"]') || {}).content ||
-    document.title.split(/[—|-]/)[0].trim() ||
     'RSG GAME HUB';
 
   // ---------------------------------------------------------------------------
@@ -254,9 +257,12 @@
         '--rsg-container-max:1200px;--rsg-narrow-max:860px;--rsg-reading-max:720px;' +
         '--rsg-font-display:"Cinzel",Georgia,serif;--rsg-font-ui:"Inter","Segoe UI",sans-serif;' +
       '}' +
-      'nav.rsg-shared-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,6,8,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,160,32,0.2);height:52px;display:flex;align-items:center;padding:0 2rem;font-family:"Inter","Segoe UI",sans-serif}' +
-      'nav.rsg-shared-nav .nav-inner{display:flex;align-items:center;gap:1.25rem;width:100%;max-width:840px;margin:0 auto;min-width:0}' +
-      'nav.rsg-shared-nav .nav-logo{font-family:"Cinzel",Georgia,serif;font-size:1rem;font-weight:900;letter-spacing:0.15em;background:linear-gradient(180deg,#f8d880 0%,#e8a020 40%,#c04030 100%);-webkit-background-clip:text;background-clip:text;color:transparent;flex-shrink:0;text-decoration:none;text-transform:uppercase}' +
+      // M375: header restyled to match the new Ember design reference.
+      // Same markup/links — only colors, typography, spacing.
+      'nav.rsg-shared-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(180deg,rgba(11,8,7,.92),rgba(11,8,7,.55));backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid transparent;height:72px;display:flex;align-items:center;padding:0 2rem;font-family:"Inter","Segoe UI",sans-serif;transition:background .3s ease,border-color .3s ease}' +
+      'nav.rsg-shared-nav.scrolled{background:rgba(11,8,7,.96);border-bottom-color:#3a2e25}' +
+      'nav.rsg-shared-nav .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1.25rem;width:min(1400px,96vw);margin:0 auto;min-width:0}' +
+      'nav.rsg-shared-nav .nav-logo{font-family:"Cinzel",Georgia,serif;font-size:17px;font-weight:600;letter-spacing:0.32em;color:#f3e6d2;flex-shrink:0;text-decoration:none;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}' +
       'nav.rsg-shared-nav .nav-links{display:flex;align-items:center;gap:1.25rem;list-style:none;margin:0;padding:0;flex-wrap:nowrap;min-width:0}' +
       'nav.rsg-shared-nav .nav-burger{display:none;background:transparent;border:1px solid rgba(232,160,32,0.35);border-radius:4px;width:36px;height:32px;padding:0;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex-shrink:0}' +
       'nav.rsg-shared-nav .nav-burger span{display:block;width:18px;height:2px;background:#e8a020;border-radius:1px;transition:transform .2s, opacity .2s}' +
@@ -264,23 +270,24 @@
       'nav.rsg-shared-nav .nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}' +
       'nav.rsg-shared-nav .nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}' +
       'nav.rsg-shared-nav .nav-links > li{position:relative}' +
-      'nav.rsg-shared-nav .nav-links a{color:#8a7a6a;text-decoration:none;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;white-space:nowrap;display:block}' +
-      'nav.rsg-shared-nav .nav-links a:hover{color:#e8a020}' +
-      'nav.rsg-shared-nav .nav-links a.nav-btn{color:#ffd078;background:linear-gradient(135deg,#c04030 0%,#8a1a0a 100%);padding:0.35rem 0.9rem;border-radius:4px;border:1px solid rgba(192,64,48,0.55);font-weight:700;letter-spacing:0.08em}' +
-      'nav.rsg-shared-nav .nav-links a.nav-btn:hover{background:linear-gradient(135deg,#d05040,#c04030);color:#fff}' +
+      // M375: link colors + typography from new design (mono caps, ink-2/ink-1).
+      'nav.rsg-shared-nav .nav-links a{position:relative;color:#c9b89a;text-decoration:none;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;transition:color .25s;white-space:nowrap;display:block;padding:8px 0}' +
+      'nav.rsg-shared-nav .nav-links a:hover{color:#ffb066}' +
+      'nav.rsg-shared-nav .nav-links a.nav-btn{color:#f3e6d2;background:linear-gradient(180deg,rgba(232,97,42,.18),rgba(232,97,42,.06));padding:11px 22px;border:1px solid #54402f;border-radius:2px;font-weight:500;letter-spacing:0.22em}' +
+      'nav.rsg-shared-nav .nav-links a.nav-btn:hover{background:linear-gradient(180deg,rgba(232,97,42,.32),rgba(232,97,42,.14));color:#fff;border-color:#e8612a}' +
       'nav.rsg-shared-nav .sub-menu{display:none;position:absolute;top:100%;left:0;background:rgba(10,6,8,0.98);border:1px solid rgba(232,160,32,0.25);border-radius:6px;padding:0.4rem 0;list-style:none;margin:0;min-width:140px;box-shadow:0 8px 24px rgba(0,0,0,0.5);margin-top:17px;border-top:none;border-top-left-radius:0;border-top-right-radius:0}' +
       'nav.rsg-shared-nav .sub-menu::before{content:"";position:absolute;bottom:calc(100% + -1px);left:0;right:0;height:19px}' +
       'nav.rsg-shared-nav .has-sub:hover .sub-menu,nav.rsg-shared-nav .has-sub:focus-within .sub-menu,nav.rsg-shared-nav .has-sub.open .sub-menu{display:block}' +
       'nav.rsg-shared-nav .sub-menu a{padding:0.4rem 0.9rem;font-size:0.7rem}' +
       'nav.rsg-shared-nav .sub-menu .sub-sep{padding:0.45rem 0.9rem 0.2rem;margin-top:0.25rem;border-top:1px solid rgba(232,160,32,0.2)}' +
       'nav.rsg-shared-nav .sub-menu .sub-sep span{color:#e8a020;font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;opacity:0.8}' +
-      'body.rsg-nav-padded{padding-top:52px}' +
+      'body.rsg-nav-padded{padding-top:72px}' +
       '@media (max-width:720px){' +
-        'nav.rsg-shared-nav{height:52px;padding:0 0.75rem}' +
+        'nav.rsg-shared-nav{height:64px;padding:0 0.75rem}' +
         'nav.rsg-shared-nav .nav-inner{flex-direction:row;align-items:center;justify-content:space-between;gap:0.5rem}' +
         'nav.rsg-shared-nav .nav-logo{text-align:left;font-size:0.95rem;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}' +
         'nav.rsg-shared-nav .nav-burger{display:flex}' +
-        'nav.rsg-shared-nav .nav-links{display:none;position:absolute;top:52px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(10,6,8,0.98);border-top:1px solid rgba(232,160,32,0.25);border-bottom:1px solid rgba(232,160,32,0.25);padding:0.4rem 0;max-height:calc(100vh - 52px);overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:0 8px 24px rgba(0,0,0,0.5)}' +
+        'nav.rsg-shared-nav .nav-links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(10,6,8,0.98);border-top:1px solid rgba(232,160,32,0.25);border-bottom:1px solid rgba(232,160,32,0.25);padding:0.4rem 0;max-height:calc(100vh - 52px);overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:0 8px 24px rgba(0,0,0,0.5)}' +
         'nav.rsg-shared-nav.open .nav-links{display:flex}' +
         'nav.rsg-shared-nav .nav-links > li{width:100%}' +
         'nav.rsg-shared-nav .nav-links > li > a{padding:0.7rem 1.25rem;font-size:0.78rem}' +
@@ -289,7 +296,7 @@
         'nav.rsg-shared-nav .sub-menu::before{display:none}' +
         'nav.rsg-shared-nav .has-sub.open .sub-menu{display:block}' +
         'nav.rsg-shared-nav .sub-menu a{padding:0.45rem 1rem;font-size:0.7rem;opacity:0.9}' +
-        'body.rsg-nav-padded{padding-top:52px}' +
+        'body.rsg-nav-padded{padding-top:72px}' +
       '}';
     var style = document.createElement('style');
     style.id = 'rsg-shared-nav-style';

@@ -1,7 +1,7 @@
 {
-  "milestone": 373,
+  "milestone": 374,
   "date": "2026-04-29",
-  "summary": "M373 — UX polish round 2: combat pause button now has aria-pressed/aria-label that toggle on state change. New /accessibility.html — dedicated WCAG 2.1 AA statement covering keyboard shortcuts, reduced motion, screen readers, contrast policy, touch targets, known limitations, and reporting. Footer About section now links to it.",
+  "summary": "M374 — Multi-fix batch: (1) Skills now show 'Lv N' instead of 'Tier N' on front-page hero/classes (uses real unlockLevel from skills.js). (2) Companion section filtered to TRUE companions (war_dog/dire_wolf/etc), no more hireables (Lysa/Borin/Aela/Rekk excluded), capped at 8 entries, portraits fall back to _south.png since most don't have _portrait files. (3) Image Review V2 lightbox now sits below the 52px sticky nav (inset:52px 0 0 0; close-X at top:60px). (4) Inventory tooltip on mobile gets max-height + scroll + sticky action buttons so Equip/Compare always reachable. (5) Changelog parser now folds in releases[N].summary from game_meta.json (245 entries vs 40). release.sh re-runs parser every release. (6) UX review (M367) copied to public/docs/ux-review-m367.md and linked from /assets/docs.html for phone-friendly viewing.",
   "categories": [
     "feature"
   ],
