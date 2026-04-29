@@ -1,7 +1,7 @@
 {
-  "milestone": 358,
+  "milestone": 359,
   "date": "2026-04-28",
-  "summary": "M358 — Level-up 'Spend Now' now routes to Party > Spells/Passives/Attributes tab (whichever has pending points first), not the legacy SkillTreeScreen. Auto-Equip button on Inventory tab renamed to 'Auto' with circle (○) indicator when off; matches Skills/Passives/Attributes Auto buttons. Same circle-off indicator added to SkillTree Auto buttons.",
+  "summary": "M359 — Save load routing fix: if a save is on an adventure zone (not in town), Load now opens MapScreen at that node instead of bouncing the player to the last town. Town saves still go to TownScreen as before. Fixes the 'I saved on Border Roads but loaded into Emberveil' bug.",
   "categories": [
     "feature"
   ],
