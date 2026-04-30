@@ -1,7 +1,7 @@
 {
-  "milestone": 381,
-  "date": "2026-04-29",
-  "summary": "M381 — Act 3+ rebalance: enemy HP & damage ramp by act (no change to Acts 1-2; Acts 3-5 multipliers 1.85x→2.4x HP and 1.22x→1.38x damage). Hero skill/spell damage scaled to 70% so AoE finishers no longer one-shot enemy waves. Companions now scale stats with effective level (STR/DEX/CON/INT bonuses), so a Level-1 War Dog hired in Act 1 keeps up in Act 5. Boss damper limits per-act HP ramp on bosses. New scripts/sim-act-balance.mjs validation tool. Sim shows Act 3 trash 10-13 rounds, big-fights 22-24 rounds, bosses 38-47 rounds with real risk of companion deaths.",
+  "milestone": 382,
+  "date": "2026-04-30",
+  "summary": "M382 — solo + NG+ + hardcore fixes. Solo runs now scale enemy damage by hero count (solo 0.40x, duo 0.65x, trio 0.85x, full 1.0x) so a hardcore solo paladin can clear the prologue without being one-shot. NG+ Act 1 now uses Act 5's enemy multipliers and bumps the per-loop ngPlus values (hpBase 4.5, dmgBase 2.5) so NG+1 Act 1 actually feels like late-game combat (sim: prologue boss now 5.9 rounds vs 1.7). Hardcore mode disables the Cleric revive button (fallen stay fallen). NG+ map view now uses the dropdown zone selector instead of tabs. Tap weapon damage is now credited in the DPS meter. Hero skill mult bumped 0.70→0.82 so low-level skills feel meaningful.",
   "categories": [
     "feature"
   ],
