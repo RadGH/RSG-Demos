@@ -1,7 +1,7 @@
 {
-  "milestone": 379,
+  "milestone": 380,
   "date": "2026-04-29",
-  "summary": "M379 — News index page rebuilt to use live data: now fetches news.json (12 entries with current SEO titles) instead of hardcoded markup that was missing post-overhaul-update + showed stale 'Re-redesign — SpriteCook' / 'M79 Redesign Report' titles. Palette aligned to the new ember accent (--accent-text #ffa844 for ≥4.5:1 contrast). Cards are now real anchors with hover state (border + h2 underline).",
+  "summary": "M380 — ESC opens menu on map screen. Map now binds its own window-level keydown handler in onEnter (cleaned up in onLeave + destroy) that pushes GameMenuScreen when ESC is pressed and the map is the top of the stack. Belt-and-suspenders to the global ESC handler in main.js — the global one was supposed to handle it but events from the zone-select dropdown / overlay modals didn't reliably bubble to window.",
   "categories": [
     "feature"
   ],
