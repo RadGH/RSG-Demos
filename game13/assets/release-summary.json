@@ -1,7 +1,7 @@
 {
-  "milestone": 380,
+  "milestone": 381,
   "date": "2026-04-29",
-  "summary": "M380 — ESC opens menu on map screen. Map now binds its own window-level keydown handler in onEnter (cleaned up in onLeave + destroy) that pushes GameMenuScreen when ESC is pressed and the map is the top of the stack. Belt-and-suspenders to the global ESC handler in main.js — the global one was supposed to handle it but events from the zone-select dropdown / overlay modals didn't reliably bubble to window.",
+  "summary": "M381 — Act 3+ rebalance: enemy HP & damage ramp by act (no change to Acts 1-2; Acts 3-5 multipliers 1.85x→2.4x HP and 1.22x→1.38x damage). Hero skill/spell damage scaled to 70% so AoE finishers no longer one-shot enemy waves. Companions now scale stats with effective level (STR/DEX/CON/INT bonuses), so a Level-1 War Dog hired in Act 1 keeps up in Act 5. Boss damper limits per-act HP ramp on bosses. New scripts/sim-act-balance.mjs validation tool. Sim shows Act 3 trash 10-13 rounds, big-fights 22-24 rounds, bosses 38-47 rounds with real risk of companion deaths.",
   "categories": [
     "feature"
   ],
