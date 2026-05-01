@@ -190,14 +190,17 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
 .hero {
   position: relative;
   min-height: 100vh;
-  padding-top: 72px;
+  /* M383 — desktop padding-top removed; mobile breakpoint can restore. */
+  padding-top: 0;
   overflow: hidden;
   isolation: isolate;
 }
 .hero-bg {
   position: absolute; inset: 0;
   z-index: -2;
+  /* M383 — gradient softened so the mountain bg reads through. */
   background: linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 45%, var(--sky-3) 80%, var(--bg-deep) 100%);
+  opacity: 0.55;
 }
 .hero-mountains {
   position: absolute; inset: 0;
@@ -237,7 +240,8 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   grid-template-columns: 1.3fr .9fr;
   align-items: center;
   gap: 64px;
-  padding: 80px 0 120px;
+  /* M383 — desktop padding zeroed; mobile breakpoint restores spacing. */
+  padding: 0;
 }
 /* M375: when no portrait column, headline owns the full width — wider so
    "EMBER" / "VEIL" rendered at the giant font don't wrap to "Embe r". */
@@ -257,6 +261,8 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   letter-spacing: 0.04em;
   color: var(--ink-1);
   text-shadow: 0 4px 60px rgba(0,0,0,.8);
+  /* M383 — clear default h1 margin. */
+  margin: 0;
 }
 .hero-title .e-large {
   display: inline-block;
@@ -287,6 +293,8 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   font-size: clamp(17px, 1.3vw, 20px);
   line-height: 1.55;
   max-width: 56ch;
+  /* M383 — clear default p margin. */
+  margin: 0;
 }
 .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
 
@@ -320,7 +328,8 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
    bottom of the hero. */
 .hero-stats {
   position: absolute;
-  left: 0; right: 0; bottom: 32px;
+  /* M383 — flush to bottom of hero. */
+  left: 0; right: 0; bottom: 0;
   z-index: 4;
 }
 .hero-stats .row {
@@ -339,6 +348,9 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   display: flex; flex-direction: column; gap: 6px;
 }
 .hero-stats .cell:last-child { border-right: 0; }
+/* M383 — left/right edge borders so the strip looks closed off at both ends. */
+.hero-stats .cell:first-child { border-left: 1px solid var(--line); }
+.hero-stats .cell:last-child  { border-right: 1px solid var(--line); }
 .hero-stats .cell .v {
   font-family: var(--font-display);
   font-size: 32px;
