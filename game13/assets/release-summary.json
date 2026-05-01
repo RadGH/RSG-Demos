@@ -1,7 +1,7 @@
 {
-  "milestone": 388,
+  "milestone": 389,
   "date": "2026-05-01",
-  "summary": "M391 — Manual extra-attack drain + M392 — SVG corner ornaments. M391: extraAction and _speedExtraRemaining no longer splice the actor back while awaiting player input — instead they drain synchronously inside _dispatchManualAction so the player is prompted exactly once per turn. M392: lozenge corners on hero cards, simple corners on companion cards + the turn-order strip; defs injected once via evSymbols.js. Both behind 'New Combat UI (Beta)'.",
+  "summary": "M389 — manual-mode UI polish: hardcore lock + spell tooltips + mobile portrait strip + per-encounter BG variants. Hardcore difficulty now visibly locks Manual Combat on (lock badge in DifficultyDialog; gameState.load also enforces). Spell rail buttons get a flourish-cornered tooltip card (mobile: bottom sheet) showing name, MP/CD, AOE, est damage, and description. Below 700px the rail collapses to one expanded card plus a 36px portrait strip; AWAITING-INPUT forces selection to the active actor. EvBattlefield BG now picks 1 of 3 variants per act via a deterministic encounter-id hash; bosses anchor to v1.",
   "categories": [
     "feature"
   ],
