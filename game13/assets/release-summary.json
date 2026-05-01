@@ -1,7 +1,7 @@
 {
-  "milestone": 382,
+  "milestone": 383,
   "date": "2026-04-30",
-  "summary": "M382 — solo + NG+ + hardcore fixes. Solo runs now scale enemy damage by hero count (solo 0.40x, duo 0.65x, trio 0.85x, full 1.0x) so a hardcore solo paladin can clear the prologue without being one-shot. NG+ Act 1 now uses Act 5's enemy multipliers and bumps the per-loop ngPlus values (hpBase 4.5, dmgBase 2.5) so NG+1 Act 1 actually feels like late-game combat (sim: prologue boss now 5.9 rounds vs 1.7). Hardcore mode disables the Cleric revive button (fallen stay fallen). NG+ map view now uses the dropdown zone selector instead of tabs. Tap weapon damage is now credited in the DPS meter. Hero skill mult bumped 0.70→0.82 so low-level skills feel meaningful.",
+  "summary": "M386 — End-of-milestone audit fixes from parallel code-reviewer / performance-engineer / game-developer agents. CombatScreen _updateHud now dirty-checks every per-frame DOM write (status row innerHTML was the worst offender). meter.events ring capped at 2000 entries. Boss-intro splash gate replaced per-frame querySelector with a boolean flag. NG+ act-shift cap raised 6→10 with actMultipliers extended to acts 7-10 so NG+2+ no longer flatlines every zone to the Act-6 ceiling. Added partySize validate guard, prologue act-0 backfill default, and SkillTree _tabPinned reset. Workspace AGENTS.md added with subagent_type quickref for the vanilla-JS+Vite+canvas RPG stack, mirrored into CLAUDE.md and new_game_template/CLAUDE.md.",
   "categories": [
     "feature"
   ],

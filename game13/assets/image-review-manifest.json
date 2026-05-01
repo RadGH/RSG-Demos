@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-01T01:21:38.608Z",
+    "generated": "2026-05-01T07:34:50.515Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (62 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
@@ -9,9 +9,9 @@
       "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (15 bosses)"
     },
     "counts": {
-      "total": 918,
+      "total": 943,
       "by_status": {
-        "ready": 669,
+        "ready": 694,
         "pending": 131,
         "orphaned": 60,
         "approved": 20,
@@ -22,7 +22,7 @@
         "companion": 125,
         "boss": 105,
         "enemy": 95,
-        "background": 32,
+        "background": 57,
         "tap-weapons": 9,
         "orphan": 60,
         "reference-sheet": 58
@@ -6972,101 +6972,326 @@
       "status": "ready"
     },
     {
-      "id": "bg_map_abyssal_depths",
+      "id": "bg_map_act-1-border-roads-v1",
       "category": "background",
       "group": "map",
       "pose": null,
-      "file": "../images/map_bg/abyssal_depths.jpg",
+      "file": "../images/map_bg/act-1-border-roads-v1.png",
       "prompt": null,
       "status": "ready"
     },
     {
-      "id": "bg_map_border_roads",
+      "id": "bg_map_act-1-border-roads-v1_thumb",
       "category": "background",
       "group": "map",
       "pose": null,
-      "file": "../images/map_bg/border_roads.jpg",
+      "file": "../images/map_bg/act-1-border-roads-v1_thumb.jpg",
       "prompt": null,
       "status": "ready"
     },
     {
-      "id": "bg_map_cosmic_rift",
+      "id": "bg_map_act-1-border-roads-v2",
       "category": "background",
       "group": "map",
       "pose": null,
-      "file": "../images/map_bg/cosmic_rift.jpg",
+      "file": "../images/map_bg/act-1-border-roads-v2.png",
       "prompt": null,
       "status": "ready"
     },
     {
-      "id": "bg_map_dust_roads",
+      "id": "bg_map_act-1-border-roads-v2_thumb",
       "category": "background",
       "group": "map",
       "pose": null,
-      "file": "../images/map_bg/dust_roads.jpg",
+      "file": "../images/map_bg/act-1-border-roads-v2_thumb.jpg",
       "prompt": null,
       "status": "ready"
     },
     {
-      "id": "bg_map_ember_plateau",
+      "id": "bg_map_act-1-border-roads-v3",
       "category": "background",
       "group": "map",
       "pose": null,
-      "file": "../images/map_bg/ember_plateau.jpg",
+      "file": "../images/map_bg/act-1-border-roads-v3.png",
       "prompt": null,
       "status": "ready"
     },
     {
-      "id": "bg_map_eternal_void",
+      "id": "bg_map_act-1-border-roads-v3_thumb",
       "category": "background",
       "group": "map",
       "pose": null,
-      "file": "../images/map_bg/eternal_void.jpg",
+      "file": "../images/map_bg/act-1-border-roads-v3_thumb.jpg",
       "prompt": null,
       "status": "ready"
     },
     {
-      "id": "bg_map_hell_breach",
+      "id": "bg_map_act-2-ashen-wastes-v1",
       "category": "background",
       "group": "map",
       "pose": null,
-      "file": "../images/map_bg/hell_breach.jpg",
+      "file": "../images/map_bg/act-2-ashen-wastes-v1.png",
       "prompt": null,
       "status": "ready"
     },
     {
-      "id": "bg_map_primordial_nexus",
+      "id": "bg_map_act-2-ashen-wastes-v1_thumb",
       "category": "background",
       "group": "map",
       "pose": null,
-      "file": "../images/map_bg/primordial_nexus.jpg",
+      "file": "../images/map_bg/act-2-ashen-wastes-v1_thumb.jpg",
       "prompt": null,
       "status": "ready"
     },
     {
-      "id": "bg_map_prologue",
+      "id": "bg_map_act-2-ashen-wastes-v2",
       "category": "background",
       "group": "map",
       "pose": null,
-      "file": "../images/map_bg/prologue.jpg",
+      "file": "../images/map_bg/act-2-ashen-wastes-v2.png",
       "prompt": null,
       "status": "ready"
     },
     {
-      "id": "bg_map_shattered_core",
+      "id": "bg_map_act-2-ashen-wastes-v2_thumb",
       "category": "background",
       "group": "map",
       "pose": null,
-      "file": "../images/map_bg/shattered_core.jpg",
+      "file": "../images/map_bg/act-2-ashen-wastes-v2_thumb.jpg",
       "prompt": null,
       "status": "ready"
     },
     {
-      "id": "bg_map_thornwood",
+      "id": "bg_map_act-2-ashen-wastes-v3",
       "category": "background",
       "group": "map",
       "pose": null,
-      "file": "../images/map_bg/thornwood.jpg",
+      "file": "../images/map_bg/act-2-ashen-wastes-v3.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-2-ashen-wastes-v3_thumb",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-2-ashen-wastes-v3_thumb.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-3-shattered-hell-v1",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-3-shattered-hell-v1.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-3-shattered-hell-v1_thumb",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-3-shattered-hell-v1_thumb.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-3-shattered-hell-v2",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-3-shattered-hell-v2.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-3-shattered-hell-v2_thumb",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-3-shattered-hell-v2_thumb.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-3-shattered-hell-v3",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-3-shattered-hell-v3.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-3-shattered-hell-v3_thumb",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-3-shattered-hell-v3_thumb.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-4-cosmic-rift-v1",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-4-cosmic-rift-v1.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-4-cosmic-rift-v1_thumb",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-4-cosmic-rift-v1_thumb.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-4-cosmic-rift-v2",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-4-cosmic-rift-v2.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-4-cosmic-rift-v2_thumb",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-4-cosmic-rift-v2_thumb.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-4-cosmic-rift-v3",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-4-cosmic-rift-v3.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-4-cosmic-rift-v3_thumb",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-4-cosmic-rift-v3_thumb.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-5-primordial-nexus-v1",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-5-primordial-nexus-v1.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-5-primordial-nexus-v1_thumb",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-5-primordial-nexus-v1_thumb.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-5-primordial-nexus-v2",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-5-primordial-nexus-v2.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-5-primordial-nexus-v2_thumb",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-5-primordial-nexus-v2_thumb.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-5-primordial-nexus-v3",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-5-primordial-nexus-v3.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-5-primordial-nexus-v3_thumb",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-5-primordial-nexus-v3_thumb.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-6-dragon-expansion-v1",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-6-dragon-expansion-v1.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-6-dragon-expansion-v1_thumb",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-6-dragon-expansion-v1_thumb.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-6-dragon-expansion-v2",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-6-dragon-expansion-v2.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-6-dragon-expansion-v2_thumb",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-6-dragon-expansion-v2_thumb.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-6-dragon-expansion-v3",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-6-dragon-expansion-v3.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_act-6-dragon-expansion-v3_thumb",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/act-6-dragon-expansion-v3_thumb.jpg",
       "prompt": null,
       "status": "ready"
     },
