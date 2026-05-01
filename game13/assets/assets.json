@@ -9733,6 +9733,24 @@
   ],
   "reports": [
     {
+      "milestone": "M392 — 2.5D Battlefield Tiles Visible Behind Sprites",
+      "date": "2026-05-01",
+      "summary": "Restored the always-on 2.5D tile grid in combat so the isometric play surface reads behind canvas-driven sprites, instead of only painting under occupied tiles.",
+      "changes": [
+        "src/ui/ev-battlefield.css (.ev-tile base rule): fill rgba(46,36,56,0)→rgba(46,36,56,0.18); stroke rgba(26,17,40,0)→rgba(26,17,40,0.40). Occupied / targeting / active states still ramp up from this baseline (existing rules unchanged)."
+      ],
+      "bugs": [
+        "Tile-overlay tint sits in front of canvas sprites because the SVG grid is layered above the main canvas in the combat overlay; the 0.18α alpha keeps sprite legibility but is visible as a faint overlay rather than a true behind-sprite paint. Acceptable for the 2.5D readability goal; revisit if anyone reports the tiles muddying sprite art."
+      ],
+      "suggestions": [
+        "If the grid still feels too subtle on bright backgrounds, consider tinting only the diamond outline (raise stroke alpha, keep fill near 0)."
+      ],
+      "recommendations": [
+        "Don't push tile alpha above ~0.25 without re-checking sprite contrast on the darker map backgrounds (forest, dragon_throne) — sprites already share a similar palette."
+      ],
+      "notes": "Single CSS edit. Companion changes (canvas-driven sprites, occupied-only tiles) shipped in M391; this milestone reverts the 'occupied-only' half of M391 to the always-visible baseline the user asked for."
+    },
+    {
       "milestone": "M381 — Act 3+ Difficulty Ramp & Skill-vs-Attack Rebalance",
       "date": "2026-04-29",
       "summary": "Sim-driven Acts 3-5 rebalance. Acts 1-2 untouched; Acts 3-5 enemy HP and damage scale per-act with a boss-HP damper. Hero skill damage globally scaled to 70%. Companions auto-scale stats with effective level so they keep pace into late game.",
