@@ -1,7 +1,7 @@
 {
-  "milestone": 391,
+  "milestone": 392,
   "date": "2026-05-01",
-  "summary": "M391 — UI overhaul polish: settings 'Back' no longer leaks the prior panel after toggling New UI; canvas BG suppressed in overhaul mode so the painted 2.5D scene shows through; EvBattlefield now mounts behind the canvas (canvas-driven sprites, animations, enemies, war_dog, stance variants all visible again — no more 404s on broken sprite paths); 2.5D ground tiles now only render under occupied positions instead of a full 6×6 checkerboard; every hero's spell-rail icons populate on mount in cold state (instead of only the active hero); party-card portraits switched to _south pose with chained fallbacks (_south → _east → fallback_portrait.svg, which now exists); card-row padding added so corner ornaments stop triggering page scroll.",
+  "summary": "M392 — 2.5D battlefield tiles now always visible at low intensity behind canvas sprites; occupied/targeting states ramp up from baseline.",
   "categories": [
     "feature"
   ],

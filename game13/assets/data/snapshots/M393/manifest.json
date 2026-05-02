@@ -1,0 +1,16 @@
+{
+  "milestone": 393,
+  "created": "2026-05-02T17:27:26.281Z",
+  "types": [
+    "companions",
+    "classes",
+    "enemies",
+    "dungeons",
+    "status-effects",
+    "achievements",
+    "skills",
+    "affixes",
+    "items",
+    "bosses"
+  ]
+}
