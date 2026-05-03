@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-03T02:19:22.588Z"
+    "generated": "2026-05-03T07:23:28.994Z"
   },
   "characters": [
     {
@@ -3289,6 +3289,62 @@
       "group": "enchanter_male",
       "pose": "east_ko",
       "file": "../images/spritecook/enchanter_male_east_ko.png",
+      "prompt": null
+    },
+    {
+      "id": "hero_priest_female_portrait",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "portrait",
+      "file": "../images/spritecook/priest_female_portrait.png",
+      "prompt": null
+    },
+    {
+      "id": "hero_priest_female_south",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "south",
+      "file": "../images/spritecook/priest_female_south.png",
+      "prompt": null
+    },
+    {
+      "id": "hero_priest_female_east",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "east",
+      "file": "../images/spritecook/priest_female_east.png",
+      "prompt": null
+    },
+    {
+      "id": "hero_priest_female_east_attack",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "east_attack",
+      "file": "../images/spritecook/priest_female_east_attack.png",
+      "prompt": null
+    },
+    {
+      "id": "hero_priest_female_east_spell",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "east_spell",
+      "file": "../images/spritecook/priest_female_east_spell.png",
+      "prompt": null
+    },
+    {
+      "id": "hero_priest_female_east_block",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "east_block",
+      "file": "../images/spritecook/priest_female_east_block.png",
+      "prompt": null
+    },
+    {
+      "id": "hero_priest_female_east_ko",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "east_ko",
+      "file": "../images/spritecook/priest_female_east_ko.png",
       "prompt": null
     },
     {

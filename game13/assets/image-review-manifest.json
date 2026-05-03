@@ -1,31 +1,31 @@
 {
   "_meta": {
-    "generated": "2026-05-03T02:19:22.505Z",
+    "generated": "2026-05-03T07:23:28.912Z",
     "derivedFrom": {
-      "appearances": "src/game/appearances.js (63 entries)",
+      "appearances": "src/game/appearances.js (64 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
       "encounterCompanions": "src/maps/randomEvents.js reward.companion (14 unique)",
       "enemyIds": "src/maps/mapData.js ENEMIES + ENEMIES_ACT5 (19 non-boss enemies)",
       "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (15 bosses)"
     },
     "counts": {
-      "total": 951,
+      "total": 959,
       "by_status": {
-        "ready": 701,
+        "ready": 708,
         "pending": 131,
         "orphaned": 60,
         "approved": 20,
-        "candidate": 39
+        "candidate": 40
       },
       "by_category": {
-        "hero": 441,
+        "hero": 448,
         "companion": 125,
         "boss": 105,
         "enemy": 95,
         "background": 57,
         "tap-weapons": 9,
         "orphan": 60,
-        "reference-sheet": 59
+        "reference-sheet": 60
       }
     },
     "source": "scripts/build-image-review-manifest.cjs",
@@ -3746,6 +3746,69 @@
       "group": "enchanter_male",
       "pose": "east_ko",
       "file": "../images/spritecook/enchanter_male_east_ko.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_priest_female_portrait",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "portrait",
+      "file": "../images/spritecook/priest_female_portrait.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_priest_female_south",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "south",
+      "file": "../images/spritecook/priest_female_south.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_priest_female_east",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "east",
+      "file": "../images/spritecook/priest_female_east.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_priest_female_east_attack",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "east_attack",
+      "file": "../images/spritecook/priest_female_east_attack.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_priest_female_east_spell",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "east_spell",
+      "file": "../images/spritecook/priest_female_east_spell.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_priest_female_east_block",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "east_block",
+      "file": "../images/spritecook/priest_female_east_block.png",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "hero_priest_female_east_ko",
+      "category": "hero",
+      "group": "priest_female",
+      "pose": "east_ko",
+      "file": "../images/spritecook/priest_female_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -8319,6 +8382,15 @@
       "pose": "reference_sheet",
       "file": "../images/pixellab/paladin_female/reference.png",
       "prompt": "IDENTITY (this image becomes the canonical identity anchor — preserve in every downstream frame): Human WOMAN (female), about 28 years old, long golden-blond wavy hair in a combat braid over the shoulder, bright blue eyes, determined adult female face (NO beard), tall athletic build.\n\nOUTFIT: Polished silver-steel plate armor with rounded segmented pauldrons and a layered cuirass, subtle bluish highlights on the plates, brown leather straps and belt. No tabard, no cape, no helm.\n\nWEAPONS: A longsword carried across the back in a scabbard; brown leather-wrapped hilt with a plain crossguard visible over the right shoulder. Drawn into the right hand during combat.\n\nCLASS: humanoid. FULL-BODY reference — the entire figure from the crown of the head down to the soles of the feet must be fully visible inside the 256x256 canvas.\n\nPOSE: full-body side profile facing right (east), calm combat-ready idle. Head up, eyes visible. Both feet visible and planted on the implied ground plane. NOT a portrait bust, NOT a waist-up crop, NOT a close-up.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: detailed pixel art with clean readable silhouette, warm pixel-art palette, transparent background, no ground shadow, no cropping of any body part at the canvas edge.",
+      "status": "candidate"
+    },
+    {
+      "id": "ref_sheet_priest_female",
+      "category": "reference-sheet",
+      "group": "priest_female",
+      "pose": "reference_sheet",
+      "file": "../images/spritecook/priest_female_portrait.png",
+      "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
       "status": "candidate"
     },
     {

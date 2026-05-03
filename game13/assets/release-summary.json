@@ -1,7 +1,7 @@
 {
-  "milestone": 393,
+  "milestone": 394,
   "date": "2026-05-02",
-  "summary": "M393 — combat HUD overhaul pass: 2.5D grid lifted above HUD, single-row spell rail, compact companion frames, AI badge dropped, manual-mode hides speed/step buttons, captions repositioned, tap-clicks bail on new HUD, portrait fallback chain prefers south then portrait then east, 1v1 placed face-to-face on same row, debug placement knobs feed grid spacing, Show Companion Frames toggle.",
+  "summary": "M398 — Enchanter class with sleep magic + status particles + bottom-pinned skill menu + hero rename. Combat now ships an Enchanter class (male sprites generated, art pending review) with new Sleep status that locks targets for 2 rounds and breaks on damage; AI auto-skips sleeping targets. Adds floating status particles (3 SpriteCook PNGs for burning/frozen/sleeping plus SVG fallbacks for poison, bleed, stun, slow, regen, curse, silence, blind, marked). Mobile manual-mode menu pins to the bottom strip without an overlay so the battlefield stays visible. Heroes can be renamed from the Party screen with a customName / defaultName split — clearing the field reverts to the original.",
   "categories": [
     "feature"
   ],

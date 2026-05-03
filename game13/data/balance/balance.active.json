@@ -105,8 +105,11 @@
       "healBaseMult": 1.5
     },
     "skill": {
-      "heroDamageMult": 0.82,
-      "note": "M382: 0.82 (was 0.70). Solo low-level players were getting wrecked because Holy Strike etc. did ~10 dmg vs 70-HP goblins. Higher mult restores low-level skill viability while still keeping AoE finishers from one-shotting Act 3+ waves."
+      "heroDamageMult": 0.95,
+      "heavyMult": 1.00,
+      "lightMult": 1.00,
+      "magicMult": 0.78,
+      "note": "M399: per-category split (heavy/light/magic). magicMult 0.78 brings spell damage about 22% under their pre-split numbers so spells stop dealing 4x basic-attack damage; bumping heroDamageMult 0.82 -> 0.95 keeps melee/ranged where they were after the M382 solo-viability fix, since the magic-only nerf carries the spell-rebalance load now."
     },
     "steal": {
       "lifeStealDivisor": 100,
