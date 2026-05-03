@@ -1,7 +1,7 @@
 {
-  "milestone": 395,
+  "milestone": 396,
   "date": "2026-05-03",
-  "summary": "M395 — Priest class + class tags + damage categories. Adds Priest (female art, review-flagged) with heal/revive/shadow-damage skills (Mend, Call Back, Shadow Bolt, Shadow Veil). Introduces a class-tag system (healer / reviver / arcane / dark / holy / tracker / shadow…) so quest gates like the wounded soldier accept any healer instead of only Cleric, and the mage-glyph apprentice accepts any arcane caster. Damage skills now resolve a heavy/light/magic category and apply per-category multipliers; magicMult set to 0.78 to bring spells closer to basic-attack damage (sim shows Act 1 dropping from 15.3 to 13.3 percent win rate, Act 4 18.0 to 9.0, Act 6 9.2 to 2.8 — spells were carrying late-act AoE disproportionately and now read 1.5-2x basic attacks instead of 4x+).",
+  "summary": "M396 — Weapon Scaling mode + skill rebalance + tooltips + Enchanter female / Priest male sprites. New advanced game-creation toggle Weapon Scaling drives skill damage off the equipped weapon's roll instead of STR/DEX/INT directly; INT spells still benefit from spell power but raw INT no longer multiplies spell damage. Adds standardized benchmark gear packs at L1/3/5/7/10/15/20/25 (no legendaries / uniques) plus a per-class skill benchmark sim that surfaced and trimmed several stacking-multiplier outliers (Cleric Smite, Knight Holy Strike, Tinker Bolt, Monk Shadow Step, Dragon Knight Claw / Breath). Spell tooltips on the new combat HUD now show estimated damage on the primary target plus the full formula breakdown (stat term × mult × (1 + spell/attack power) + weapon flavor); Skills menu picked up the same expanded formula. Damaging skills no longer mislabel as utility in the legacy popup. Generated review-flagged Enchanter (female) and Priest (male) sprite sets and deployed them.",
   "categories": [
     "feature"
   ],

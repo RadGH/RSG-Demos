@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-03T19:39:43.583Z",
+    "generated": "2026-05-03T20:39:03.428Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (66 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
@@ -3692,7 +3692,7 @@
       "group": "enchanter_male",
       "pose": "portrait",
       "file": "../images/spritecook/enchanter_male_portrait.png",
-      "prompt": null,
+      "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.\n\nPOSE (portrait): Head-and-shoulders bust shot, three-quarter view. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple.",
       "status": "ready"
     },
     {
@@ -3701,7 +3701,7 @@
       "group": "enchanter_male",
       "pose": "south",
       "file": "../images/spritecook/enchanter_male_south.png",
-      "prompt": null,
+      "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.\n\nPOSE (south): Facing camera (south), calm idle, silver staff held at his side, faint violet glyph hovering near the staff tip.",
       "status": "ready"
     },
     {
@@ -3710,7 +3710,7 @@
       "group": "enchanter_male",
       "pose": "east",
       "file": "../images/spritecook/enchanter_male_east.png",
-      "prompt": null,
+      "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
       "status": "ready"
     },
     {
@@ -3719,7 +3719,7 @@
       "group": "enchanter_male",
       "pose": "east_attack",
       "file": "../images/spritecook/enchanter_male_east_attack.png",
-      "prompt": null,
+      "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
       "status": "ready"
     },
     {
@@ -3728,7 +3728,7 @@
       "group": "enchanter_male",
       "pose": "east_spell",
       "file": "../images/spritecook/enchanter_male_east_spell.png",
-      "prompt": null,
+      "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
       "status": "ready"
     },
     {
@@ -3737,7 +3737,7 @@
       "group": "enchanter_male",
       "pose": "east_block",
       "file": "../images/spritecook/enchanter_male_east_block.png",
-      "prompt": null,
+      "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
       "status": "ready"
     },
     {
@@ -3746,7 +3746,7 @@
       "group": "enchanter_male",
       "pose": "east_ko",
       "file": "../images/spritecook/enchanter_male_east_ko.png",
-      "prompt": null,
+      "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
       "status": "ready"
     },
     {
@@ -3755,7 +3755,7 @@
       "group": "priest_female",
       "pose": "portrait",
       "file": "../images/spritecook/priest_female_portrait.png",
-      "prompt": null,
+      "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.\n\nPOSE (portrait): Bust shot, head-and-shoulders facing forward. Dark indigo hood up with silver crescent embroidery, raven-black hair visible at the front, eyes closed in soft prayer, pale skin, silver crescent pendant glowing softly at the chest.",
       "status": "ready"
     },
     {
@@ -3764,7 +3764,7 @@
       "group": "priest_female",
       "pose": "south",
       "file": "../images/spritecook/priest_female_south.png",
-      "prompt": null,
+      "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.\n\nPOSE (south): Facing camera (south), calm idle. Prayer-mace held point-up in the right hand at her side, raven-black hair framing her face.",
       "status": "ready"
     },
     {
@@ -3773,7 +3773,7 @@
       "group": "priest_female",
       "pose": "east",
       "file": "../images/spritecook/priest_female_east.png",
-      "prompt": null,
+      "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
       "status": "ready"
     },
     {
@@ -3782,7 +3782,7 @@
       "group": "priest_female",
       "pose": "east_attack",
       "file": "../images/spritecook/priest_female_east_attack.png",
-      "prompt": null,
+      "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
       "status": "ready"
     },
     {
@@ -3791,7 +3791,7 @@
       "group": "priest_female",
       "pose": "east_spell",
       "file": "../images/spritecook/priest_female_east_spell.png",
-      "prompt": null,
+      "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
       "status": "ready"
     },
     {
@@ -3800,7 +3800,7 @@
       "group": "priest_female",
       "pose": "east_block",
       "file": "../images/spritecook/priest_female_east_block.png",
-      "prompt": null,
+      "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
       "status": "ready"
     },
     {
@@ -3809,7 +3809,7 @@
       "group": "priest_female",
       "pose": "east_ko",
       "file": "../images/spritecook/priest_female_east_ko.png",
-      "prompt": null,
+      "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
       "status": "ready"
     },
     {
@@ -3818,7 +3818,7 @@
       "group": "enchanter_female",
       "pose": "portrait",
       "file": "../images/spritecook/enchanter_female_portrait.png",
-      "prompt": null,
+      "prompt": "Human WOMAN (female), about 28 years old, calm composed face, long dark wavy hair past her shoulders, glowing pale-lavender eyes.\n\nLong midnight-violet hooded robe with silver rune embroidery along the collar, hem, and cuffs.\n\nSlim silver staff topped with a floating violet enchantment glyph that pulses pale lavender when channeled.",
       "status": "ready"
     },
     {
@@ -3827,7 +3827,7 @@
       "group": "enchanter_female",
       "pose": "south",
       "file": "../images/spritecook/enchanter_female_south.png",
-      "prompt": null,
+      "prompt": "Human WOMAN (female), about 28 years old, calm composed face, long dark wavy hair past her shoulders, glowing pale-lavender eyes.\n\nLong midnight-violet hooded robe with silver rune embroidery along the collar, hem, and cuffs.\n\nSlim silver staff topped with a floating violet enchantment glyph that pulses pale lavender when channeled.",
       "status": "ready"
     },
     {
@@ -3836,7 +3836,7 @@
       "group": "enchanter_female",
       "pose": "east",
       "file": "../images/spritecook/enchanter_female_east.png",
-      "prompt": null,
+      "prompt": "Human WOMAN (female), about 28 years old, calm composed face, long dark wavy hair past her shoulders, glowing pale-lavender eyes.\n\nLong midnight-violet hooded robe with silver rune embroidery along the collar, hem, and cuffs.\n\nSlim silver staff topped with a floating violet enchantment glyph that pulses pale lavender when channeled.",
       "status": "ready"
     },
     {
@@ -3845,7 +3845,7 @@
       "group": "enchanter_female",
       "pose": "east_attack",
       "file": "../images/spritecook/enchanter_female_east_attack.png",
-      "prompt": null,
+      "prompt": "Human WOMAN (female), about 28 years old, calm composed face, long dark wavy hair past her shoulders, glowing pale-lavender eyes.\n\nLong midnight-violet hooded robe with silver rune embroidery along the collar, hem, and cuffs.\n\nSlim silver staff topped with a floating violet enchantment glyph that pulses pale lavender when channeled.",
       "status": "ready"
     },
     {
@@ -3854,7 +3854,7 @@
       "group": "enchanter_female",
       "pose": "east_spell",
       "file": "../images/spritecook/enchanter_female_east_spell.png",
-      "prompt": null,
+      "prompt": "Human WOMAN (female), about 28 years old, calm composed face, long dark wavy hair past her shoulders, glowing pale-lavender eyes.\n\nLong midnight-violet hooded robe with silver rune embroidery along the collar, hem, and cuffs.\n\nSlim silver staff topped with a floating violet enchantment glyph that pulses pale lavender when channeled.",
       "status": "ready"
     },
     {
@@ -3863,7 +3863,7 @@
       "group": "enchanter_female",
       "pose": "east_block",
       "file": "../images/spritecook/enchanter_female_east_block.png",
-      "prompt": null,
+      "prompt": "Human WOMAN (female), about 28 years old, calm composed face, long dark wavy hair past her shoulders, glowing pale-lavender eyes.\n\nLong midnight-violet hooded robe with silver rune embroidery along the collar, hem, and cuffs.\n\nSlim silver staff topped with a floating violet enchantment glyph that pulses pale lavender when channeled.",
       "status": "ready"
     },
     {
@@ -3872,7 +3872,7 @@
       "group": "enchanter_female",
       "pose": "east_ko",
       "file": "../images/spritecook/enchanter_female_east_ko.png",
-      "prompt": null,
+      "prompt": "Human WOMAN (female), about 28 years old, calm composed face, long dark wavy hair past her shoulders, glowing pale-lavender eyes.\n\nLong midnight-violet hooded robe with silver rune embroidery along the collar, hem, and cuffs.\n\nSlim silver staff topped with a floating violet enchantment glyph that pulses pale lavender when channeled.",
       "status": "ready"
     },
     {
@@ -3881,7 +3881,7 @@
       "group": "priest_male",
       "pose": "portrait",
       "file": "../images/spritecook/priest_male_portrait.png",
-      "prompt": null,
+      "prompt": "Human MAN (male), about 32 years old, calm solemn face, pale skin, short black hair with a trimmed beard.\n\nDark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest. Hood worn UP framing the face.\n\nIron prayer-mace, dark wooden haft. Silver crescent pendant on a fine chain at the chest, faintly glowing.",
       "status": "ready"
     },
     {
@@ -3890,7 +3890,7 @@
       "group": "priest_male",
       "pose": "south",
       "file": "../images/spritecook/priest_male_south.png",
-      "prompt": null,
+      "prompt": "Human MAN (male), about 32 years old, calm solemn face, pale skin, short black hair with a trimmed beard.\n\nDark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest. Hood worn UP framing the face.\n\nIron prayer-mace, dark wooden haft. Silver crescent pendant on a fine chain at the chest, faintly glowing.",
       "status": "ready"
     },
     {
@@ -3899,7 +3899,7 @@
       "group": "priest_male",
       "pose": "east",
       "file": "../images/spritecook/priest_male_east.png",
-      "prompt": null,
+      "prompt": "Human MAN (male), about 32 years old, calm solemn face, pale skin, short black hair with a trimmed beard.\n\nDark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest. Hood worn UP framing the face.\n\nIron prayer-mace, dark wooden haft. Silver crescent pendant on a fine chain at the chest, faintly glowing.",
       "status": "ready"
     },
     {
@@ -3908,7 +3908,7 @@
       "group": "priest_male",
       "pose": "east_attack",
       "file": "../images/spritecook/priest_male_east_attack.png",
-      "prompt": null,
+      "prompt": "Human MAN (male), about 32 years old, calm solemn face, pale skin, short black hair with a trimmed beard.\n\nDark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest. Hood worn UP framing the face.\n\nIron prayer-mace, dark wooden haft. Silver crescent pendant on a fine chain at the chest, faintly glowing.",
       "status": "ready"
     },
     {
@@ -3917,7 +3917,7 @@
       "group": "priest_male",
       "pose": "east_spell",
       "file": "../images/spritecook/priest_male_east_spell.png",
-      "prompt": null,
+      "prompt": "Human MAN (male), about 32 years old, calm solemn face, pale skin, short black hair with a trimmed beard.\n\nDark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest. Hood worn UP framing the face.\n\nIron prayer-mace, dark wooden haft. Silver crescent pendant on a fine chain at the chest, faintly glowing.",
       "status": "ready"
     },
     {
@@ -3926,7 +3926,7 @@
       "group": "priest_male",
       "pose": "east_block",
       "file": "../images/spritecook/priest_male_east_block.png",
-      "prompt": null,
+      "prompt": "Human MAN (male), about 32 years old, calm solemn face, pale skin, short black hair with a trimmed beard.\n\nDark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest. Hood worn UP framing the face.\n\nIron prayer-mace, dark wooden haft. Silver crescent pendant on a fine chain at the chest, faintly glowing.",
       "status": "ready"
     },
     {
@@ -3935,7 +3935,7 @@
       "group": "priest_male",
       "pose": "east_ko",
       "file": "../images/spritecook/priest_male_east_ko.png",
-      "prompt": null,
+      "prompt": "Human MAN (male), about 32 years old, calm solemn face, pale skin, short black hair with a trimmed beard.\n\nDark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest. Hood worn UP framing the face.\n\nIron prayer-mace, dark wooden haft. Silver crescent pendant on a fine chain at the chest, faintly glowing.",
       "status": "ready"
     },
     {
@@ -8363,7 +8363,7 @@
       "group": "enchanter_female",
       "pose": "reference_sheet",
       "file": "../images/spritecook/enchanter_female_portrait.png",
-      "prompt": null,
+      "prompt": "Human WOMAN (female), about 28 years old, calm composed face, long dark wavy hair past her shoulders, glowing pale-lavender eyes.\n\nLong midnight-violet hooded robe with silver rune embroidery along the collar, hem, and cuffs.\n\nSlim silver staff topped with a floating violet enchantment glyph that pulses pale lavender when channeled.",
       "status": "candidate"
     },
     {
@@ -8534,7 +8534,7 @@
       "group": "priest_male",
       "pose": "reference_sheet",
       "file": "../images/spritecook/priest_male_portrait.png",
-      "prompt": null,
+      "prompt": "Human MAN (male), about 32 years old, calm solemn face, pale skin, short black hair with a trimmed beard.\n\nDark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest. Hood worn UP framing the face.\n\nIron prayer-mace, dark wooden haft. Silver crescent pendant on a fine chain at the chest, faintly glowing.",
       "status": "candidate"
     },
     {
@@ -8750,7 +8750,7 @@
       "group": "war_dog",
       "pose": "reference_sheet",
       "file": "../images/spritecook/war_dog_reference.png",
-      "prompt": null,
+      "prompt": "Muscular loyal war-hound, mastiff/pit-bull build, broad chest, powerful hindquarters, short tan-brown fur with darker muzzle, battle-scarred (small nick across the bridge of the nose, notched left ear). Amber-gold eyes, confident protective expression. Quadruped — never bipedal, never anthropomorphic.\n\nThick dark-brown studded leather collar with small iron spikes and brass buckle. Faded red cloth bandana tied around the neck with frayed edges. Single narrow leather shoulder strap across the chest with a small brass ring. Decoration only — NOT armor.\n\nNone. Teeth and claws only.",
       "status": "approved"
     },
     {
