@@ -1,7 +1,7 @@
 {
-  "milestone": 397,
+  "milestone": 398,
   "date": "2026-05-03",
-  "summary": "M397 — Image-review surfaces new class art with prompts + appearance picker shows unlocked portraits first. Backfilled the 28 Enchanter/Priest male+female sprite entries on /assets/image-review-v2.html with prompt context (was empty); the manifest builder now falls back to the art_direction reference-sheet prompt + per-pose style notes when a frame doesn't carry its own prompt yet. Character Builder appearance picker now lists all unlocked portraits before any fame-locked ones while keeping the existing class-grouped order within each band.",
+  "summary": "M398 — Surface 28 new class sprite entries in the image-review-v2 Pending filter. Enchanter male+female and Priest male+female (7 poses each = 28 entries) appended to the m351 open review batch with their referenceSheet prompts and pose-style hints; Pending mode at /assets/image-review-v2.html now shows them ready for approval/feedback.",
   "categories": [
     "feature"
   ],

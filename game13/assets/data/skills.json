@@ -136,7 +136,7 @@
     "type": "melee",
     "mpCost": 5,
     "unlockLevel": 1,
-    "description": "Blessed melee blow dealing STR+INT damage. Double vs undead/demons.",
+    "description": "Blessed melee blow. Hybrid scaling — heavy weapon → STR (heavy), magic weapon → INT (magic), light weapon → STR (light). Double vs undead/demons.",
     "talents": [
       "hs_burn",
       "hs_splash"
@@ -650,7 +650,7 @@
     "type": "ranged",
     "mpCost": 8,
     "unlockLevel": 1,
-    "description": "+50% vs demons. DEX+INT damage.",
+    "description": "Hybrid bolt — magic weapon → INT (magic), bow/dagger → DEX (light). +50% vs demons.",
     "talents": [
       "db_demon",
       "db_pierce"
@@ -805,7 +805,7 @@
     "type": "melee",
     "mpCost": 0,
     "unlockLevel": 1,
-    "description": "Savage strike ignoring 20% armor; hits adjacent enemies.",
+    "description": "Savage hybrid strike — heavy weapon → STR (heavy), light weapon → DEX (light). Ignores 20% armor; hits adjacent enemies.",
     "talents": [
       "dc_pen",
       "dc_bleed"
@@ -818,7 +818,7 @@
     "type": "magic",
     "mpCost": 20,
     "unlockLevel": 5,
-    "description": "Cone of fire/ice/lightning hitting one group. Choose element at class creation.",
+    "description": "Hybrid breath — magic weapon → INT (magic), heavy weapon → STR (heavy). Cone of fire/ice/lightning hitting one group; element chosen at class creation.",
     "talents": [
       "bw_wider",
       "bw_status"

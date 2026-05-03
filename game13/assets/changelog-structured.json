@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-03T21:09:31.431Z",
+  "generated": "2026-05-03T22:54:49.516Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,21 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 398,
+      "date": "2026-05-03",
+      "summary": "M398 — Surface 28 new class sprite entries in the image-review-v2 Pending filter. Enchanter male+female and Priest male+female (7 poses each = 28 entries) appended to the m351 open review batch with their referenceSheet prompts and pose-style hints; Pending mode at /assets/image-review-v2.html now shows them ready for approval/feedback.",
+      "items": [
+        {
+          "text": "M398 — Surface 28 new class sprite entries in the image-review-v2 Pending filter. Enchanter male+female and Priest male+female (7 poses each = 28 entries) appended to the m351 open review batch with their referenceSheet prompts and pose-style hints; Pending mode at /assets/image-review-v2.html now shows them ready for approval/feedback.",
+          "categories": [
+            "Feature",
+            "QoL",
+            "Art"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 397,
       "date": "2026-05-03",

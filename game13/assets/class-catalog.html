@@ -183,6 +183,30 @@
   .cc-skills, .cc-passives {
     display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.78rem;
   }
+  /* M399 — Build presets section */
+  .cc-builds { display: flex; flex-direction: column; gap: 0.5rem; }
+  .cc-build {
+    background: rgba(160,80,255,0.06); border: 1px solid rgba(160,80,255,0.25);
+    border-radius: 4px; padding: 0.45rem 0.6rem; font-size: 0.78rem;
+  }
+  .cc-build-head { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.2rem; }
+  .cc-build-head strong { color: #c8a8ff; font-family: 'Cinzel', serif; }
+  .cc-build-tag {
+    font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.08em;
+    background: rgba(160,80,255,0.18); color: #c8a8ff;
+    padding: 0.05rem 0.35rem; border-radius: 3px;
+  }
+  .cc-build-attrs { display: flex; gap: 0.4rem; margin-bottom: 0.25rem; flex-wrap: wrap; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.7rem; }
+  .cc-build-attrs .attr-str { color: #e8a060; }
+  .cc-build-attrs .attr-dex { color: #80d090; }
+  .cc-build-attrs .attr-int { color: #80a8e8; }
+  .cc-build-attrs .attr-con { color: #e0c080; }
+  .cc-build-desc { color: var(--muted); line-height: 1.4; margin-bottom: 0.25rem; }
+  .cc-build-meta {
+    display: flex; flex-direction: column; gap: 0.1rem; font-size: 0.7rem;
+    color: rgba(232,200,128,0.6);
+  }
+  .cc-build-meta strong { color: #c8a8ff; font-weight: 600; }
   .cc-row { display: flex; gap: 0.4rem; align-items: baseline; }
   .cc-row .nm { color: var(--gold-bright,#f8d880); font-weight: 600; }
   .cc-row .ds { color: var(--muted); flex: 1; min-width: 0; line-height: 1.4; }
@@ -365,6 +389,7 @@ const emptyEl    = document.getElementById('empty');
 let _classes = [];
 let _skills  = [];
 let _passives = {};
+let _builds   = []; // M399 — flat list of build presets keyed by classId
 let _promptByClass = {};         // { classId: { portrait: 'prompt…', south: '…', … } }
 let _selected = new Set();       // class ids
 let _lbItems = [];               // [{ src, title, sub, prompt }, …] currently rebuilt per render
@@ -544,6 +569,30 @@ function renderCard(cls) {
     </div>
     <div class="cc-hook">${esc(cls.hook || '')}</div>
     <div class="cc-sprites">${sprites}</div>
+    ${(() => {
+      const blds = _builds.filter(b => b.classId === cls.id);
+      if (!blds.length) return '';
+      return `<div class="cc-section-title">Build Presets (${blds.length})</div>
+        <div class="cc-builds">${blds.map(b => `
+          <div class="cc-build">
+            <div class="cc-build-head">
+              <strong>${esc(b.name)}</strong>
+              ${(b.tags || []).map(t => `<span class="cc-build-tag">${esc(t)}</span>`).join('')}
+            </div>
+            <div class="cc-build-attrs">
+              <span class="attr-str">STR ${b.targetAttrs.STR}%</span>
+              <span class="attr-dex">DEX ${b.targetAttrs.DEX}%</span>
+              <span class="attr-int">INT ${b.targetAttrs.INT}%</span>
+              <span class="attr-con">CON ${b.targetAttrs.CON}%</span>
+            </div>
+            <div class="cc-build-desc">${esc(b.description || '')}</div>
+            <div class="cc-build-meta">
+              <span><strong>Weapons:</strong> ${esc((b.weapons || []).join(' / '))}</span>
+              <span><strong>Shield:</strong> ${esc(b.shieldPref)}</span>
+              <span><strong>Skills:</strong> ${esc((b.preferredSkills || []).slice(0, 4).join(', '))}</span>
+            </div>
+          </div>`).join('')}</div>`;
+    })()}
     <div class="cc-section-title">Skills (${skills.length})</div>
     <div class="cc-skills">${skillRows}</div>
     <div class="cc-section-title">Passives (${passives.length})</div>
@@ -641,8 +690,13 @@ copyBtn.addEventListener('click', async () => {
   }
 });
 
-Promise.all([getClasses(), getSkills(), getPassives()])
-  .then(([classes, skills, passives]) => {
+// M399 — load builds.json alongside the existing data.
+function getBuilds() {
+  return fetch('./data/builds.json').then(r => r.ok ? r.json() : []).catch(() => []);
+}
+
+Promise.all([getClasses(), getSkills(), getPassives(), getBuilds()])
+  .then(([classes, skills, passives, builds]) => {
     _classes = classes.sort((a, b) => {
       const sa = isStarter(a) ? 0 : 1;
       const sb = isStarter(b) ? 0 : 1;
@@ -651,6 +705,7 @@ Promise.all([getClasses(), getSkills(), getPassives()])
     });
     _skills   = skills;
     _passives = passives || {};
+    _builds   = Array.isArray(builds) ? builds : [];
     render();
   })
   .catch(err => {
