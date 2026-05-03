@@ -1,7 +1,7 @@
 {
-  "milestone": 394,
-  "date": "2026-05-02",
-  "summary": "M398 — Enchanter class with sleep magic + status particles + bottom-pinned skill menu + hero rename. Combat now ships an Enchanter class (male sprites generated, art pending review) with new Sleep status that locks targets for 2 rounds and breaks on damage; AI auto-skips sleeping targets. Adds floating status particles (3 SpriteCook PNGs for burning/frozen/sleeping plus SVG fallbacks for poison, bleed, stun, slow, regen, curse, silence, blind, marked). Mobile manual-mode menu pins to the bottom strip without an overlay so the battlefield stays visible. Heroes can be renamed from the Party screen with a customName / defaultName split — clearing the field reverts to the original.",
+  "milestone": 395,
+  "date": "2026-05-03",
+  "summary": "M395 — Priest class + class tags + damage categories. Adds Priest (female art, review-flagged) with heal/revive/shadow-damage skills (Mend, Call Back, Shadow Bolt, Shadow Veil). Introduces a class-tag system (healer / reviver / arcane / dark / holy / tracker / shadow…) so quest gates like the wounded soldier accept any healer instead of only Cleric, and the mage-glyph apprentice accepts any arcane caster. Damage skills now resolve a heavy/light/magic category and apply per-category multipliers; magicMult set to 0.78 to bring spells closer to basic-attack damage (sim shows Act 1 dropping from 15.3 to 13.3 percent win rate, Act 4 18.0 to 9.0, Act 6 9.2 to 2.8 — spells were carrying late-act AoE disproportionately and now read 1.5-2x basic attacks instead of 4x+).",
   "categories": [
     "feature"
   ],
