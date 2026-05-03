@@ -1,7 +1,7 @@
 {
-  "milestone": 392,
-  "date": "2026-05-01",
-  "summary": "M392 — 2.5D battlefield tiles now always visible at low intensity behind canvas sprites; occupied/targeting states ramp up from baseline.",
+  "milestone": 393,
+  "date": "2026-05-02",
+  "summary": "M393 — combat HUD overhaul pass: 2.5D grid lifted above HUD, single-row spell rail, compact companion frames, AI badge dropped, manual-mode hides speed/step buttons, captions repositioned, tap-clicks bail on new HUD, portrait fallback chain prefers south then portrait then east, 1v1 placed face-to-face on same row, debug placement knobs feed grid spacing, Show Companion Frames toggle.",
   "categories": [
     "feature"
   ],

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-02T17:26:14.082Z"
+    "generated": "2026-05-03T02:19:22.588Z"
   },
   "characters": [
     {
@@ -3234,6 +3234,62 @@
       "pose": "east_ko",
       "file": "../images/spritecook/witch_hunter_female_east_ko.png",
       "prompt": "IDENTITY (must match reference sheet exactly): Human WOMAN (female, stern adult), about 32 years old, tall lean upright build, sharp severe adult female face, short dark hair mostly hidden under a wide-brim hat, cold pale-blue eyes, pale skin (NO beard).\n\nOUTFIT: Long black leather trench coat with silver buckles and silver cross-sigils down the front, wide-brimmed puritanical black hat, dark trousers, tall black boots. White high-collar shirt beneath the coat. Brown leather bandolier across the chest with a row of crossbow bolts (NOT bullets, NOT a gun-bandolier).\n\nWEAPONS: A long curved silver saber held in the right hand with a simple black leather-wrapped grip. A compact wooden-stocked steel CROSSBOW (medieval hand-crossbow, clearly a bow-arm with a taut string and a nocked bolt — NOT a gun, NOT a flintlock, NOT a pistol, NO powder, NO muzzle, NO flintlock mechanism) carried in the left hand or slung on the back. Additional crossbow bolts in a small quiver on the left hip.\n\nPOSE (east_ko): East-facing, fallen to one knee, saber planted in the ground, crossbow dropped beside her, wide-brim hat dislodged, coat splayed.\n\nFRAMING (non-negotiable): FULL-BODY shot head-to-toe. Entire figure fits inside the 256x256 canvas: feet fully visible with ~6-8% clearance above the bottom edge (NEVER cropped, NEVER cut off), head with ~6-8% headroom above the hair (NEVER cropped). Figure occupies ~85% of canvas height, centered. NOT a bust, NOT waist-up, NOT a three-quarter body crop. Camera pulled back for a full-body reference. Match cross-roster scale: same pixel height as every other adult humanoid in this sprite set.\n\nAGE & PROPORTIONS (non-negotiable): character is a fully-grown adult about 28-32 years old with standard heroic adult proportions (approximately 6 feet / 180 cm tall in-world). NOT a child, NOT a teenager, NOT elderly, NOT a graybeard wizard.\n\nBODY PROPORTIONS (non-negotiable): realistic adult human head-to-body ratio — the head is approximately 1/7 to 1/8 of the total body height. TALL and SLENDER with long adult legs (roughly half of total height), a full-length adult torso, and normal-sized adult shoulders. NOT chibi, NOT bobblehead, NOT big-head-small-body, NOT child-bodied, NOT stubby. The silhouette must read as a tall adult, never as a kid in adult clothes.\n\nCROSS-ROSTER SCALE (non-negotiable, IDENTICAL for every humanoid): a standard adult human is 180 cm tall in-world and MUST render at the SAME relative pixel height as every other adult humanoid in this sprite set. Fighter, Knight, Paladin, Rogue, Cleric, Mage, etc all read at the same size — never one character much taller or much shorter than another of the same 180 cm baseline. The only permitted variance is small natural adult build differences (slender vs broad), never scale differences. Do not zoom in on smaller characters or zoom out on larger ones.\n\nFRAMING & CANVAS USE (non-negotiable): full-body figure occupies ~85% of the 256x256 canvas height, centered horizontally. Feet rest ~6-8% above the bottom canvas edge (fully visible, NEVER cropped, NEVER touching the edge, NEVER cut off by the frame). Head has ~6-8% headroom above the hair (NEVER cropped). The head is ~12-13% of canvas height (~1/7.5 of body). This applies to south, east, east_attack, east_spell, east_block, east_ko — ALL action poses. Weapons may extend laterally but the character body (feet-to-head) must remain inside the canvas with clearance. Portrait is the ONLY exception and uses a bust-shot crop.\n\nFOOTWEAR (non-negotiable default): the character wears appropriate footwear — leather boots, armored sabatons, soft cloth shoes, sandals, or similar — NEVER barefoot unless the OUTFIT field explicitly specifies bare feet. Feet are always shod in game-appropriate footwear for the class.\n\nLIGHTING (non-negotiable): bright evenly-lit pixel art, NOT silhouetted, NOT overly dark, NOT cast in deep shadow. All colors, facial features, and outfit details must be fully readable.\n\nSTYLE: pixel art, transparent background, no ground shadow, no borders, no text. Match the palette and style of the reference sheet.\n\nNEGATIVE: do not add weapons or props not listed in WEAPONS. Do not change palette, species, or outfit from the reference sheet. Do not zoom in — respect SCALE. Avoid anything in bannedSubstrings."
+    },
+    {
+      "id": "hero_enchanter_male_portrait",
+      "category": "hero",
+      "group": "enchanter_male",
+      "pose": "portrait",
+      "file": "../images/spritecook/enchanter_male_portrait.png",
+      "prompt": null
+    },
+    {
+      "id": "hero_enchanter_male_south",
+      "category": "hero",
+      "group": "enchanter_male",
+      "pose": "south",
+      "file": "../images/spritecook/enchanter_male_south.png",
+      "prompt": null
+    },
+    {
+      "id": "hero_enchanter_male_east",
+      "category": "hero",
+      "group": "enchanter_male",
+      "pose": "east",
+      "file": "../images/spritecook/enchanter_male_east.png",
+      "prompt": null
+    },
+    {
+      "id": "hero_enchanter_male_east_attack",
+      "category": "hero",
+      "group": "enchanter_male",
+      "pose": "east_attack",
+      "file": "../images/spritecook/enchanter_male_east_attack.png",
+      "prompt": null
+    },
+    {
+      "id": "hero_enchanter_male_east_spell",
+      "category": "hero",
+      "group": "enchanter_male",
+      "pose": "east_spell",
+      "file": "../images/spritecook/enchanter_male_east_spell.png",
+      "prompt": null
+    },
+    {
+      "id": "hero_enchanter_male_east_block",
+      "category": "hero",
+      "group": "enchanter_male",
+      "pose": "east_block",
+      "file": "../images/spritecook/enchanter_male_east_block.png",
+      "prompt": null
+    },
+    {
+      "id": "hero_enchanter_male_east_ko",
+      "category": "hero",
+      "group": "enchanter_male",
+      "pose": "east_ko",
+      "file": "../images/spritecook/enchanter_male_east_ko.png",
+      "prompt": null
     },
     {
       "id": "hero_silas_veilward_portrait",
