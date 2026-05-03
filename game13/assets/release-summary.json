@@ -1,7 +1,7 @@
 {
-  "milestone": 396,
+  "milestone": 397,
   "date": "2026-05-03",
-  "summary": "M396 — Weapon Scaling mode + skill rebalance + tooltips + Enchanter female / Priest male sprites. New advanced game-creation toggle Weapon Scaling drives skill damage off the equipped weapon's roll instead of STR/DEX/INT directly; INT spells still benefit from spell power but raw INT no longer multiplies spell damage. Adds standardized benchmark gear packs at L1/3/5/7/10/15/20/25 (no legendaries / uniques) plus a per-class skill benchmark sim that surfaced and trimmed several stacking-multiplier outliers (Cleric Smite, Knight Holy Strike, Tinker Bolt, Monk Shadow Step, Dragon Knight Claw / Breath). Spell tooltips on the new combat HUD now show estimated damage on the primary target plus the full formula breakdown (stat term × mult × (1 + spell/attack power) + weapon flavor); Skills menu picked up the same expanded formula. Damaging skills no longer mislabel as utility in the legacy popup. Generated review-flagged Enchanter (female) and Priest (male) sprite sets and deployed them.",
+  "summary": "M397 — Image-review surfaces new class art with prompts + appearance picker shows unlocked portraits first. Backfilled the 28 Enchanter/Priest male+female sprite entries on /assets/image-review-v2.html with prompt context (was empty); the manifest builder now falls back to the art_direction reference-sheet prompt + per-pose style notes when a frame doesn't carry its own prompt yet. Character Builder appearance picker now lists all unlocked portraits before any fame-locked ones while keeping the existing class-grouped order within each band.",
   "categories": [
     "feature"
   ],
