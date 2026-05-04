@@ -1,7 +1,7 @@
 {
-  "milestone": 406,
+  "milestone": 407,
   "date": "2026-05-04",
-  "summary": "M406 — large batch across 6 parallel agents: Silas weapon reward fixed, combat grid recentered on iPhone 14 Pro, .cbt-hud z-index fix, dungeons overhauled (persistent HP/MP, 4-6 enemies/floor, +30-40% difficulty, victory dialog ordering, fluff floors removed), Weapon Scaling committed (INT/STR/DEX damage paths removed, Melee→Damage rename, ~150 skill descriptions updated), shrines reworked (no-op when used, revisitable when skipped, random buff pool replaces heal shrines), node detanglement post-pass (Wounded Soldier, Goblin Warrens, Ruined Watchtower), Forest Warden coins text, single auto-mode confirmation per save, auto checkbox moved next to tab title, Debug Map Nodes setting, combat stats persistence (3rd attempt — flush on fight end), parity warning fix (AoE log over-count), game speed persists across combats, mobile dropdown for Codex/Stats tabs, Achievements wired (War Dog → Trusty Companion + others), Achievements link on title, Enchanter/Priest sprites approved + class-catalog, warrior_east_block regenerated, Dust Roads + Ashen Gate backgrounds swapped.",
+  "summary": "M407 — combat grid mobile fix (followup to M406). Reverted the .ev-battlefield top:90px CSS hack which had desynced the SVG tile layer from the canvas character layer. Now both layers share the same mobile-aware sky percentage (0.42 in EvBattlefield, 0.40 in CombatScreen canvas) so tiles and characters move together. Added clamps so back-row sprite heads can't exit the viewport top and front-row tiles can't exceed the element height.",
   "categories": [
     "feature"
   ],
