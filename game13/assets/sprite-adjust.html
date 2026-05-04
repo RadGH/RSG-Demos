@@ -10,7 +10,14 @@
     :root { font-variant-emoji: text; --pane-bg: #15101a; --pane-border: rgba(160,80,255,0.18); }
     html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
     body { background: linear-gradient(180deg, #0e0a14, #1a121e); color: #f0e8d8; font-family: 'Inter', system-ui, sans-serif; }
-    .sa-shell { display: flex; flex-direction: column; height: 100vh; }
+    /* M404 — the shared nav-header.js inserts a 72px-tall fixed nav at the
+       top of <body> and adds `body.rsg-nav-padded { padding-top: 72px }`.
+       The shell is height:100vh, so before this fix the bottom 72px of the
+       shell (i.e. `.sa-mode-bar` and most of `.sa-panel-foot`) sat below
+       the viewport and got clipped by `body { overflow:hidden }`. Subtract
+       the nav padding so head/stage/foot all fit in the visible area. */
+    .sa-shell { display: flex; flex-direction: column; height: calc(100vh - 72px); }
+    body:not(.rsg-nav-padded) .sa-shell { height: 100vh; }
     .sa-topbar { display: flex; align-items: center; gap: 14px; padding: 8px 14px; border-bottom: 1px solid var(--pane-border); background: rgba(0,0,0,0.35); flex: 0 0 auto; }
     .sa-title { font-family: var(--font-display); color: var(--gold-bright); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; margin-right: 8px; }
     .sa-topbar label { font-size: 11px; color: var(--muted); display: inline-flex; align-items: center; gap: 4px; }
