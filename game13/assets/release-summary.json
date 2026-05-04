@@ -1,7 +1,7 @@
 {
-  "milestone": 400,
+  "milestone": 401,
   "date": "2026-05-03",
-  "summary": "M400 — Hotfix: defensive try/catch on Character Builder steps + iOS Chrome pull-to-refresh on the title screen + Silas conversation moved to the actual first dialog node + buckler fix in build-aware loot. New Game flow on iPhone falls through to a safe step instead of black-screening if any single render throws (and logs the error). TitleScreen toggles overscroll on so iOS Chrome pull-to-refresh works on the main menu, off when entering the game so combat taps don't accidentally refresh.",
+  "summary": "M401 — Sprite review actions (6 flips, 2 regens), AoE per-target damage logging, lifetime stats sync to supabase, and rate-limited JS error telemetry. Flipped six sprites that were facing west (enchanter male spell + ko, enchanter female ko, priest female ko, priest male ko + spell). Regenerated priest_female_south as a full body (was cropped to portrait) and priest_female_east_attack with a single mace (was dual-wielding); both flagged for re-review. Approved the other 26 new-class poses per user review. Combat log now emits one line per AoE hit so a Whirlwind on 4 enemies reads as 4 separate outcomes plus a header summary instead of a single rolled-up line. Lifetime stats (LIFE_KEY) and run stats (RUN_STATS_KEY) are now allow-listed for cloud sync; saveLife pushes to supabase fire-and-forget after each local write (capped at 200 KB, oldest run history trimmed first). main.js pulls the lifetime stats from cloud on sign-in before merging save slots so the Stats panel character/run survives a hard refresh. New JS error capture in telemetry.js: window.onerror + unhandledrejection report to recordEvent('js_error',…) with per-fingerprint cap of 5 and per-session cap of 30 so a tight error loop can't spam telemetry. No PII.",
   "categories": [
     "feature"
   ],
