@@ -1,7 +1,7 @@
 {
-  "milestone": 408,
+  "milestone": 409,
   "date": "2026-05-04",
-  "summary": "M408 — combat grid mobile bottom-anchor. Previous attempts placed the grid by a top % which left ~300px of unused space below the front row on mobile because the grid's actual vertical span is small relative to the element height. Now the grid anchors by the element BOTTOM on portrait mobile so the front row sits just above the HUD with a 20px breathing margin and the back row sits just below the BG's horizon. Added a sky-floor clamp (top 20% of viewport) so back-row sprite heads can never appear in the sky band. Desktop layout untouched.",
+  "summary": "M409 — Lay on Hands AI fix. Heal/revive skills now bypass the partyMember.skills filter in the hero AI so a paladin with LoH unlocked but not in his manually-picked active list will still cast it on himself when wounded. Without this the picked-skills filter dropped LoH and the paladin let himself die instead of healing. Self-cast was already supported by the heal target picker (lowest-HP ally including self) — the bug was the AI never seeing the skill in the first place.",
   "categories": [
     "feature"
   ],
