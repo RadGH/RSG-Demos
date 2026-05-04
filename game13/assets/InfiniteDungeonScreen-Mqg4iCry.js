@@ -1,4 +1,4 @@
-import{i as w,W as g,X as $,r as p,Y as b,Z as k,$ as C,c as f,a0 as h,a1 as I,G as m,a2 as S,a3 as E,a4 as T,a5 as L,a6 as F,a7 as _,a8 as y,a9 as z,aa as v,ab as R,ac as x}from"./play-CgBBOjv7.js";import"./savesClient-DUFjgBxb.js";const A=`
+import{i as w,X as g,Y as $,r as p,Z as b,$ as k,a0 as C,c as f,a1 as h,a2 as I,G as m,a3 as S,a4 as E,a5 as T,a6 as L,a7 as F,a8 as _,a9 as y,aa as z,ab as v,ac as R,ad as x}from"./play-BJUYzA96.js";import"./savesClient-DUFjgBxb.js";const A=`
 .id-screen {
   position: absolute; inset: 0; background: #080612;
   display: flex; flex-direction: column; color: #f0e8d8;

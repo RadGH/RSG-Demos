@@ -1050,6 +1050,7 @@ function isSpriteAsset(asset) {
 function refineCategory(asset) {
   // Prefer JSON category; re-classify companion_sprites + sprites_pixelengine.
   const base = baseIdFromAsset(asset);
+  if (typeof NPC_IDS !== 'undefined' && NPC_IDS.has(base)) return 'npcs';
   if (HERO_IDS.has(base)) return 'heroes';
   if (COMPANION_IDS.has(base)) return 'companions';
   const cat = (asset.category || 'other').toLowerCase();
@@ -1239,9 +1240,15 @@ function renderM79CharacterBlock(character, bundle) {
     const asset = { id: `${id}_${pose}`, name: `${character.name} ${pose}`, file: sc };
     // M354: hover-swap (desktop, non-touch only) — temporarily replace the
     // larger portrait image with this pose's image for at-a-glance comparison.
+    // M65-fix: hover-swap stashes the portrait's onerror state so a missing
+    // pose URL doesn't poison the portrait's fallback chain (which used to
+    // leave dataset.tried=1 stuck after mouseleave, and a subsequent
+    // identical reload would mis-fire and hide the portrait permanently —
+    // this was the ash_wraith bug). On mouseleave we both restore src and
+    // clear the tried flag + missing-state sibling.
     return `<div class="char-m79-frame" onclick='openModal(${JSON.stringify(asset).replace(/"/g,"&quot;")})'
-         onmouseenter="if(!matchMedia('(hover:none)').matches){const p=this.closest('.char-m79-content').querySelector('.char-m79-portrait img');if(p&&!p.dataset.origSrc){p.dataset.origSrc=p.src;}if(p)p.src='${sc}';}"
-         onmouseleave="if(!matchMedia('(hover:none)').matches){const p=this.closest('.char-m79-content').querySelector('.char-m79-portrait img');if(p&&p.dataset.origSrc){p.src=p.dataset.origSrc;delete p.dataset.origSrc;}}">
+         onmouseenter="if(!matchMedia('(hover:none)').matches){const p=this.closest('.char-m79-content').querySelector('.char-m79-portrait img');if(p){if(!p.dataset.origSrc)p.dataset.origSrc=p.src;p.dataset.hoverSwap=1;p.src='${sc}';}}"
+         onmouseleave="if(!matchMedia('(hover:none)').matches){const p=this.closest('.char-m79-content').querySelector('.char-m79-portrait img');if(p&&p.dataset.origSrc){delete p.dataset.tried;delete p.dataset.hoverSwap;p.style.display='';const sib=p.nextElementSibling;if(sib)sib.style.display='none';p.src=p.dataset.origSrc;delete p.dataset.origSrc;}}">
       <img src="${sc}" data-fb="${pl}" alt="${pose}" loading="lazy"
            onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src=this.dataset.fb}else{this.style.display='none';this.nextElementSibling.style.display='flex'}">
       <div class="frame-missing" style="display:none">·</div>
@@ -1261,7 +1268,7 @@ function renderM79CharacterBlock(character, bundle) {
     <div class="char-m79-content">
       <div class="char-m79-portrait" ${clickPortrait} title="Portrait">
         <img src="${portraitSrc}" data-fb="${refSrc}" alt="${character.name}" loading="lazy"
-             onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src=this.dataset.fb}else{this.style.display='none';this.nextElementSibling.style.display='flex'}">
+             onerror="if(this.dataset.hoverSwap){return;}if(!this.dataset.tried){this.dataset.tried=1;this.src=this.dataset.fb}else{this.style.display='none';this.nextElementSibling.style.display='flex'}">
         <div class="portrait-missing" style="display:none">?</div>
       </div>
       <div class="char-m79-frames">
@@ -1534,6 +1541,33 @@ function deriveCharactersFromCategory(assets, category, excludeIds) {
   return [...seen.values()].sort((a, b) => a.name.localeCompare(b.name));
 }
 
+// M65-fix: collect every base id that has at least one asset categorized as
+// `bosses`. The Enemies derive must exclude these — otherwise legacy archive
+// sprites tagged `enemies` for the same base id leak bosses into the
+// Enemies filter (e.g. abyssal_knight, ancient_dragon, ...).
+function collectBossBaseIds(assets) {
+  const ids = new Set();
+  for (const a of assets) {
+    if ((a.category || '').toLowerCase() !== 'bosses') continue;
+    const base = baseIdFromAsset(a);
+    if (base) ids.add(base);
+  }
+  return ids;
+}
+
+// M65: NPC roster — playable:false appearances that ship full sprite sets
+// but should never show up in the in-game appearance picker. Source of truth:
+// src/game/appearances.js (entries with `npc:true`). Listed here so the
+// gallery can route them to the NPCs filter instead of mis-classifying as
+// Heroes/Other.
+const NPC_LIST = [
+  { id: 'silas_veilward', name: 'Silas Veilward' },
+  { id: 'kaela_thorne',   name: 'Kaela Thorne' },
+  { id: 'marek_greel',    name: 'Marek Greel' },
+  { id: 'mira_seer',      name: 'Mira the Seer' },
+];
+const NPC_IDS = new Set(NPC_LIST.map(n => n.id));
+
 async function render(assets) {
   const main = document.getElementById('main');
   main.innerHTML = '';
@@ -1555,24 +1589,34 @@ async function render(assets) {
   main.appendChild(compSection);
 
   // 3. Bosses (derived from category=bosses)
-  const exclude = new Set([...HERO_IDS, ...COMPANION_IDS]);
+  const bossBaseIds = collectBossBaseIds(assets);
+  const exclude = new Set([...HERO_IDS, ...COMPANION_IDS, ...NPC_IDS]);
   const bosses = deriveCharactersFromCategory(assets, 'bosses', exclude);
   if (bosses.length) {
     main.appendChild(renderCharacterGroup('Bosses', bosses, idx, 'bosses'));
   }
 
-  // 4. Enemies (derived from category=enemies)
-  const enemies = deriveCharactersFromCategory(assets, 'enemies', exclude);
+  // 4. Enemies (derived from category=enemies, with bosses removed — every
+  // boss has at least one legacy archive sprite that's tagged `enemies`).
+  const enemyExclude = new Set([...exclude, ...bossBaseIds]);
+  const enemies = deriveCharactersFromCategory(assets, 'enemies', enemyExclude);
   if (enemies.length) {
     main.appendChild(renderCharacterGroup('Enemies', enemies, idx, 'enemies'));
+  }
+
+  // 4b. NPCs (canonical list — playable:false appearances). Sprites live
+  // under public/images/spritecook/ and are loaded directly by the M79 block,
+  // so we render even when assets.json has no per-pose entry.
+  if (NPC_LIST.length) {
+    main.appendChild(renderCharacterGroup('NPCs', NPC_LIST, idx, 'npcs'));
   }
 
   // 5. Backgrounds
   const bgSection = renderBackgroundsSection(assets);
   if (bgSection) main.appendChild(bgSection);
 
-  // 6. Other (anything not heroes/companions/bosses/enemies/backgrounds)
-  const handledCats = new Set(['heroes','companions','bosses','enemies','backgrounds','background','companion_sprites']);
+  // 6. Other (anything not heroes/companions/bosses/enemies/npcs/backgrounds)
+  const handledCats = new Set(['heroes','companions','bosses','enemies','npcs','backgrounds','background','companion_sprites']);
   const otherAssets = assets.filter(a => {
     const c = (a.category || 'other').toLowerCase();
     if (handledCats.has(c)) return false;
@@ -1740,13 +1784,14 @@ async function init() {
   renderAudio();
 
   // Build filter buttons — fixed set matching the section keys.
-  const FILTER_CATS = ['heroes','companions','bosses','enemies','backgrounds','other'];
+  const FILTER_CATS = ['heroes','companions','bosses','enemies','npcs','backgrounds','other'];
   const toolbar = document.getElementById('toolbar');
+  const FILTER_LABELS = { npcs: 'NPCs' };
   FILTER_CATS.forEach(cat => {
     const btn = document.createElement('button');
     btn.className = 'filter-btn';
     btn.dataset.cat = cat;
-    btn.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+    btn.textContent = FILTER_LABELS[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1));
     btn.addEventListener('click', () => applyFilter(cat));
     toolbar.appendChild(btn);
   });

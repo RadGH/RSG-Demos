@@ -1,5 +1,10 @@
 {
   "zones": {
+    "prologue": {
+      "act": 0,
+      "name": "The Lonely Road",
+      "backgrounds": ["border_roads_hd.png"]
+    },
     "border_roads": {
       "act": 1,
       "name": "The Border Roads",

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-04T02:00:53.580Z"
+    "generated": "2026-05-04T03:29:34.523Z"
   },
   "characters": [
     {
@@ -5401,6 +5401,13 @@
       "name": "menu wide"
     },
     {
+      "id": "map_abyssal_depths",
+      "category": "background",
+      "type": "map",
+      "file": "../images/map_bg/abyssal_depths.jpg",
+      "name": "abyssal depths"
+    },
+    {
       "id": "map_act-1-border-roads-v1",
       "category": "background",
       "type": "map",
@@ -5651,6 +5658,76 @@
       "type": "map",
       "file": "../images/map_bg/act-6-dragon-expansion-v3_thumb.jpg",
       "name": "act-6-dragon-expansion-v3 thumb"
+    },
+    {
+      "id": "map_border_roads",
+      "category": "background",
+      "type": "map",
+      "file": "../images/map_bg/border_roads.jpg",
+      "name": "border roads"
+    },
+    {
+      "id": "map_cosmic_rift",
+      "category": "background",
+      "type": "map",
+      "file": "../images/map_bg/cosmic_rift.jpg",
+      "name": "cosmic rift"
+    },
+    {
+      "id": "map_dust_roads",
+      "category": "background",
+      "type": "map",
+      "file": "../images/map_bg/dust_roads.jpg",
+      "name": "dust roads"
+    },
+    {
+      "id": "map_ember_plateau",
+      "category": "background",
+      "type": "map",
+      "file": "../images/map_bg/ember_plateau.jpg",
+      "name": "ember plateau"
+    },
+    {
+      "id": "map_eternal_void",
+      "category": "background",
+      "type": "map",
+      "file": "../images/map_bg/eternal_void.jpg",
+      "name": "eternal void"
+    },
+    {
+      "id": "map_hell_breach",
+      "category": "background",
+      "type": "map",
+      "file": "../images/map_bg/hell_breach.jpg",
+      "name": "hell breach"
+    },
+    {
+      "id": "map_primordial_nexus",
+      "category": "background",
+      "type": "map",
+      "file": "../images/map_bg/primordial_nexus.jpg",
+      "name": "primordial nexus"
+    },
+    {
+      "id": "map_prologue",
+      "category": "background",
+      "type": "map",
+      "file": "../images/map_bg/prologue.jpg",
+      "name": "prologue"
+    },
+    {
+      "id": "map_shattered_core",
+      "category": "background",
+      "type": "map",
+      "file": "../images/map_bg/shattered_core.jpg",
+      "name": "shattered core"
+    },
+    {
+      "id": "map_thornwood",
+      "category": "background",
+      "type": "map",
+      "file": "../images/map_bg/thornwood.jpg",
+      "name": "thornwood"
     }
   ],
   "tap_weapons": [

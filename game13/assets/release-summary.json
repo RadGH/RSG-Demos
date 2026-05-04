@@ -1,7 +1,7 @@
 {
-  "milestone": 401,
+  "milestone": 402,
   "date": "2026-05-03",
-  "summary": "M401 — Sprite review actions (6 flips, 2 regens), AoE per-target damage logging, lifetime stats sync to supabase, and rate-limited JS error telemetry. Flipped six sprites that were facing west (enchanter male spell + ko, enchanter female ko, priest female ko, priest male ko + spell). Regenerated priest_female_south as a full body (was cropped to portrait) and priest_female_east_attack with a single mace (was dual-wielding); both flagged for re-review. Approved the other 26 new-class poses per user review. Combat log now emits one line per AoE hit so a Whirlwind on 4 enemies reads as 4 separate outcomes plus a header summary instead of a single rolled-up line. Lifetime stats (LIFE_KEY) and run stats (RUN_STATS_KEY) are now allow-listed for cloud sync; saveLife pushes to supabase fire-and-forget after each local write (capped at 200 KB, oldest run history trimmed first). main.js pulls the lifetime stats from cloud on sign-in before merging save slots so the Stats panel character/run survives a hard refresh. New JS error capture in telemetry.js: window.onerror + unhandledrejection report to recordEvent('js_error',…) with per-fingerprint cap of 5 and per-session cap of 30 so a tight error loop can't spam telemetry. No PII.",
+  "summary": "M402 — Hotfix: New Game black screen on iPhone caused by property/method name collision. Renamed CharacterBuilderScreen.this._build (chosen build preset) to this._buildChoice so it no longer shadows the _build() init method that onEnter() calls. The black screen with 'Uncaught TypeError: this._build is not a function' is gone.",
   "categories": [
     "feature"
   ],

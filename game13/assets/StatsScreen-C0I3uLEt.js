@@ -1,23 +1,24 @@
-import{e as A,i as j,c as B,u as w,r as D,m as P,G as R,g as E,a as F,p as H,b as K,d as G,A as S,f as N}from"./play-CgBBOjv7.js";import"./savesClient-DUFjgBxb.js";function W(o,e,s={}){const t=o.getContext("2d"),a=window.devicePixelRatio||1,r=o.getBoundingClientRect();(o.width!==r.width*a||o.height!==r.height*a)&&(o.width=r.width*a,o.height=r.height*a),t.setTransform(a,0,0,a,0,0);const n=r.width,i=r.height;t.clearRect(0,0,n,i);const p=s.xKey||"t",x=s.yKey||"dps",m=s.color||"#e8a020",L="#5a4838",z="#8a7a6a",y=Object.assign({top:14,right:14,bottom:32,left:46},s.padding||{}),f=y.left,v=n-y.right,h=i-y.bottom,_=y.top;if(t.strokeStyle=L,t.lineWidth=1,t.beginPath(),t.moveTo(f,_),t.lineTo(f,h),t.lineTo(v,h),t.stroke(),!e||e.length===0){t.fillStyle=z,t.font="12px Inter, system-ui, sans-serif",t.textAlign="center",t.fillText(s.emptyLabel||"No data yet",(f+v)/2,(h+_)/2);return}let g=1/0,u=-1/0,$=0,b=-1/0;for(const l of e){const d=l[p],c=l[x];d<g&&(g=d),d>u&&(u=d),c>b&&(b=c)}u===g&&(u=g+1),b===0&&(b=1);const k=l=>f+(l-g)*(v-f)/(u-g),T=l=>h-(l-$)*(h-_)/(b-$);t.fillStyle=z,t.font="10px JetBrains Mono, monospace",t.textAlign="right",t.textBaseline="middle";const I=4;for(let l=0;l<=I;l++){const d=$+(b-$)*(l/I),c=T(d);t.strokeStyle=l===0?L:"rgba(90,72,56,0.45)",t.beginPath(),t.moveTo(f,c),t.lineTo(v,c),t.stroke(),t.fillText(q(d),f-6,c)}t.textAlign="center",t.textBaseline="top";for(let l=0;l<=3;l++){const d=g+(u-g)*(l/3),c=k(d);t.fillText(`${Math.round(d)}s`,c,h+6)}t.strokeStyle=m,t.lineWidth=2,t.beginPath();for(let l=0;l<e.length;l++){const d=k(e[l][p]),c=T(e[l][x]);l===0?t.moveTo(d,c):t.lineTo(d,c)}t.stroke(),t.lineTo(k(e[e.length-1][p]),h),t.lineTo(k(e[0][p]),h),t.closePath();const C=t.createLinearGradient(0,_,0,h);C.addColorStop(0,M(m,.3)),C.addColorStop(1,M(m,.02)),t.fillStyle=C,t.fill(),s.title&&(t.fillStyle="#e8a020",t.font="bold 12px Inter, system-ui, sans-serif",t.textAlign="left",t.textBaseline="top",t.fillText(s.title,f,0))}function q(o){return o>=1e3?(o/1e3).toFixed(1)+"k":Math.abs(o)<1?o.toFixed(2):Math.round(o).toString()}function M(o,e){const s=o.match(/^#([0-9a-f]{6})$/i);if(!s)return`rgba(232,160,32,${e})`;const t=parseInt(s[1],16);return`rgba(${t>>16&255},${t>>8&255},${t&255},${e})`}class V{constructor(e,s,t={}){this.manager=e,this.audio=s,this.noGameMenuEsc=!0,this._tab=t.tab||"party",this._selectedCharId=null,this._filterLog="all",this._lifetimeOnly=!!t.lifetimeOnly}onEnter(){A(),j("stats-styles",J),this._el=B("div","stats-screen"),document.body.appendChild(this._el),this._lifetimeOnly&&(this._tab="lifetime"),this._render()}onExit(){this._el&&w(this._el),D(this._el),this._el=null}destroy(){this._el&&w(this._el),D(this._el),this._el=null}update(){}draw(){}_render(){const e=this._lifetimeOnly?[["lifetime","Lifetime"],["achievements","Achievements"]]:[["party","Party"],["lifetime","Lifetime"],["achievements","Achievements"]];this._el.innerHTML=`
+import{e as j,i as B,c as H,u as C,r as A,g as D,m as P,G as R,a as M,b as F,p as K,d as G,A as w,f as N}from"./play-BJUYzA96.js";import"./savesClient-DUFjgBxb.js";function W(o,e,s={}){const t=o.getContext("2d"),i=window.devicePixelRatio||1,r=o.getBoundingClientRect();(o.width!==r.width*i||o.height!==r.height*i)&&(o.width=r.width*i,o.height=r.height*i),t.setTransform(i,0,0,i,0,0);const n=r.width,a=r.height;t.clearRect(0,0,n,a);const p=s.xKey||"t",b=s.yKey||"dps",m=s.color||"#e8a020",L="#5a4838",z="#8a7a6a",y=Object.assign({top:14,right:14,bottom:32,left:46},s.padding||{}),g=y.left,v=n-y.right,h=a-y.bottom,_=y.top;if(t.strokeStyle=L,t.lineWidth=1,t.beginPath(),t.moveTo(g,_),t.lineTo(g,h),t.lineTo(v,h),t.stroke(),!e||e.length===0){t.fillStyle=z,t.font="12px Inter, system-ui, sans-serif",t.textAlign="center",t.fillText(s.emptyLabel||"No data yet",(g+v)/2,(h+_)/2);return}let f=1/0,u=-1/0,$=0,x=-1/0;for(const l of e){const d=l[p],c=l[b];d<f&&(f=d),d>u&&(u=d),c>x&&(x=c)}u===f&&(u=f+1),x===0&&(x=1);const k=l=>g+(l-f)*(v-g)/(u-f),T=l=>h-(l-$)*(h-_)/(x-$);t.fillStyle=z,t.font="10px JetBrains Mono, monospace",t.textAlign="right",t.textBaseline="middle";const I=4;for(let l=0;l<=I;l++){const d=$+(x-$)*(l/I),c=T(d);t.strokeStyle=l===0?L:"rgba(90,72,56,0.45)",t.beginPath(),t.moveTo(g,c),t.lineTo(v,c),t.stroke(),t.fillText(O(d),g-6,c)}t.textAlign="center",t.textBaseline="top";for(let l=0;l<=3;l++){const d=f+(u-f)*(l/3),c=k(d);t.fillText(`${Math.round(d)}s`,c,h+6)}t.strokeStyle=m,t.lineWidth=2,t.beginPath();for(let l=0;l<e.length;l++){const d=k(e[l][p]),c=T(e[l][b]);l===0?t.moveTo(d,c):t.lineTo(d,c)}t.stroke(),t.lineTo(k(e[e.length-1][p]),h),t.lineTo(k(e[0][p]),h),t.closePath();const S=t.createLinearGradient(0,_,0,h);S.addColorStop(0,E(m,.3)),S.addColorStop(1,E(m,.02)),t.fillStyle=S,t.fill(),s.title&&(t.fillStyle="#e8a020",t.font="bold 12px Inter, system-ui, sans-serif",t.textAlign="left",t.textBaseline="top",t.fillText(s.title,g,0))}function O(o){return o>=1e3?(o/1e3).toFixed(1)+"k":Math.abs(o)<1?o.toFixed(2):Math.round(o).toString()}function E(o,e){const s=o.match(/^#([0-9a-f]{6})$/i);if(!s)return`rgba(232,160,32,${e})`;const t=parseInt(s[1],16);return`rgba(${t>>16&255},${t>>8&255},${t&255},${e})`}class V{constructor(e,s,t={}){this.manager=e,this.audio=s,this.noGameMenuEsc=!0,this._tab=t.tab||"party",this._selectedCharId=null,this._filterLog="all",this._lifetimeOnly=!!t.lifetimeOnly}onEnter(){j(),B("stats-styles",q),this._el=H("div","stats-screen"),document.body.appendChild(this._el),this._lifetimeOnly&&(this._tab="lifetime"),this._render()}onExit(){this._el&&C(this._el),A(this._el),this._el=null}destroy(){this._el&&C(this._el),A(this._el),this._el=null}update(){}draw(){}_render(){const e=this._lifetimeOnly?[["lifetime","Lifetime"],["achievements","Achievements"]]:[["party","Party"],["lifetime","Lifetime"],["achievements","Achievements"]],s=D();let t="Last saved: never";if(s!=null&&s.savedAt){const i=new Date(s.savedAt),r=String(i.getHours()).padStart(2,"0"),n=String(i.getMinutes()).padStart(2,"0"),a=String(i.getSeconds()).padStart(2,"0");t=`Last saved: ${i.toISOString().slice(0,10)} ${r}:${n}:${a}`}this._el.innerHTML=`
       <div class="st-header">
         <div class="st-title">Statistics</div>
         <div class="st-tabs">
-          ${e.map(([s,t])=>`<button class="st-tab${this._tab===s?" active":""}" data-tab="${s}">${t}</button>`).join("")}
+          ${e.map(([i,r])=>`<button class="st-tab${this._tab===i?" active":""}" data-tab="${i}">${r}</button>`).join("")}
         </div>
         <button class="st-close" id="st-close">✕ Close</button>
       </div>
+      <div class="st-saved-at" style="font-size:11px;opacity:0.6;padding:2px 12px;text-align:right;">${t}</div>
       <div class="st-body" id="st-body">${this._renderTab()}</div>
-    `,this._el.querySelector("#st-close").addEventListener("click",()=>{this.audio.playSfx("click"),this.manager.pop()}),this._el.querySelectorAll(".st-tab").forEach(s=>s.addEventListener("click",()=>{this.audio.playSfx("click"),this._tab=s.dataset.tab,this._render()})),this._postRender(),w(this._el),P(this._el,{layout:"vertical",focusFirst:!1,onEscape:()=>{this.audio.playSfx("click"),this.manager.pop()}})}_renderTab(){return this._tab==="party"?this._renderParty():this._tab==="lifetime"?this._renderLifetime():this._tab==="achievements"?this._renderAchievements():""}_renderParty(){const e=R.get(),s=[...e.party||[],...e.companions||[]];if(!s.length)return'<div class="st-empty">No party members yet.</div>';(!this._selectedCharId||!s.find(i=>i.id===this._selectedCharId))&&(this._selectedCharId=s[0].id);const t=s.find(i=>i.id===this._selectedCharId),a=E(t.id),r=F(t.id),n=this._filterLog==="all"?r:r.filter(i=>i.type===this._filterLog);return`
+    `,this._el.querySelector("#st-close").addEventListener("click",()=>{this.audio.playSfx("click"),this.manager.pop()}),this._el.querySelectorAll(".st-tab").forEach(i=>i.addEventListener("click",()=>{this.audio.playSfx("click"),this._tab=i.dataset.tab,this._render()})),this._postRender(),C(this._el),P(this._el,{layout:"vertical",focusFirst:!1,onEscape:()=>{this.audio.playSfx("click"),this.manager.pop()}})}_renderTab(){return this._tab==="party"?this._renderParty():this._tab==="lifetime"?this._renderLifetime():this._tab==="achievements"?this._renderAchievements():""}_renderParty(){const e=R.get(),s=[...e.party||[],...e.companions||[]];if(!s.length)return'<div class="st-empty">No party members yet.</div>';(!this._selectedCharId||!s.find(a=>a.id===this._selectedCharId))&&(this._selectedCharId=s[0].id);const t=s.find(a=>a.id===this._selectedCharId),i=M(t.id),r=F(t.id),n=this._filterLog==="all"?r:r.filter(a=>a.type===this._filterLog);return`
       <div class="st-party-grid">
         <div class="st-roster">
-          ${s.map(i=>`
-            <button class="st-roster-row${i.id===this._selectedCharId?" active":""}" data-char="${i.id}">
-              <span class="st-roster-portrait">${H(i,36,"st-portrait")}</span>
+          ${s.map(a=>`
+            <button class="st-roster-row${a.id===this._selectedCharId?" active":""}" data-char="${a.id}">
+              <span class="st-roster-portrait">${K(a,36,"st-portrait")}</span>
               <span class="st-roster-name">
-                <span class="rn">${i.name}</span>
-                <span class="rc">${i.cls||i.class||"companion"} · L${i.level||1}</span>
+                <span class="rn">${a.name}</span>
+                <span class="rc">${a.cls||a.class||"companion"} · L${a.level||1}</span>
               </span>
-              <span class="st-roster-kills">${E(i.id).kills}<span class="lk">k</span></span>
+              <span class="st-roster-kills">${M(a.id).kills}<span class="lk">k</span></span>
             </button>
           `).join("")}
         </div>
@@ -26,20 +27,20 @@ import{e as A,i as j,c as B,u as w,r as D,m as P,G as R,g as E,a as F,p as H,b a
             <div class="st-detail-name">${t.name} <span class="st-detail-class">— ${t.cls||t.class||""} L${t.level||1}</span></div>
           </div>
           <div class="st-stat-grid">
-            ${this._statCell("Damage Dealt",a.damageDealt)}
-            ${this._statCell("Damage Taken",a.damageTaken)}
-            ${this._statCell("Kills",a.kills)}
-            ${this._statCell("Crits",a.crits)}
-            ${this._statCell("Heals Given",a.heals)}
-            ${this._statCell("Heals Received",a.healsReceived)}
-            ${this._statCell("Most Damage Hit",a.mostDamageHit)}
-            ${this._statCell("Longest Streak",a.longestKillStreak)}
-            ${this._statCell("Near-Deaths",a.nearDeaths)}
-            ${this._statCell("Deaths",a.deaths)}
-            ${this._statCell("Dodges",a.dodges)}
-            ${this._statCell("Blocks",a.blocks)}
-            ${this._statCell("Fights Won",a.fightsWon)}
-            ${this._statCell("Fights Lost",a.fightsLost)}
+            ${this._statCell("Damage Dealt",i.damageDealt)}
+            ${this._statCell("Damage Taken",i.damageTaken)}
+            ${this._statCell("Kills",i.kills)}
+            ${this._statCell("Crits",i.crits)}
+            ${this._statCell("Heals Given",i.heals)}
+            ${this._statCell("Heals Received",i.healsReceived)}
+            ${this._statCell("Most Damage Hit",i.mostDamageHit)}
+            ${this._statCell("Longest Streak",i.longestKillStreak)}
+            ${this._statCell("Near-Deaths",i.nearDeaths)}
+            ${this._statCell("Deaths",i.deaths)}
+            ${this._statCell("Dodges",i.dodges)}
+            ${this._statCell("Blocks",i.blocks)}
+            ${this._statCell("Fights Won",i.fightsWon)}
+            ${this._statCell("Fights Lost",i.fightsLost)}
           </div>
           <div class="st-section-title">DPS over time (this run)</div>
           <div class="st-chart-wrap"><canvas id="st-dps-chart" class="st-chart"></canvas></div>
@@ -54,17 +55,17 @@ import{e as A,i as j,c as B,u as w,r as D,m as P,G as R,g as E,a as F,p as H,b a
             </select>
           </div>
           <div class="st-log">
-            ${n.length?n.map(i=>`
-              <div class="st-log-row" data-type="${i.type}">
-                <span class="st-log-tag">${this._logTagLabel(i.type)}</span>
-                <span class="st-log-text">${i.summary}</span>
-                <span class="st-log-meta">${i.zoneId||""}</span>
+            ${n.length?n.map(a=>`
+              <div class="st-log-row" data-type="${a.type}">
+                <span class="st-log-tag">${this._logTagLabel(a.type)}</span>
+                <span class="st-log-text">${a.summary}</span>
+                <span class="st-log-meta">${a.zoneId||""}</span>
               </div>
             `).join(""):'<div class="st-empty">No entries.</div>'}
           </div>
         </div>
       </div>
-    `}_statCell(e,s){return`<div class="st-cell"><div class="st-cell-label">${e}</div><div class="st-cell-value">${this._fmt(s)}</div></div>`}_fmt(e){return typeof e!="number"?String(e):e>=1e6?(e/1e6).toFixed(1)+"M":e>=1e3?(e/1e3).toFixed(1)+"k":Math.round(e).toString()}_logTagLabel(e){return e==="major_kill"?"Boss":e==="elite_kill"?"Elite":e==="near_death"?"Near Death":e==="death"?"Fell":e==="story"?"Story":e}_renderLifetime(){const e=K(),s=e.global||{},t=(e.runHistory||[]).slice(0,20);return`
+    `}_statCell(e,s){return`<div class="st-cell"><div class="st-cell-label">${e}</div><div class="st-cell-value">${this._fmt(s)}</div></div>`}_fmt(e){return typeof e!="number"?String(e):e>=1e6?(e/1e6).toFixed(1)+"M":e>=1e3?(e/1e3).toFixed(1)+"k":Math.round(e).toString()}_logTagLabel(e){return e==="major_kill"?"Boss":e==="elite_kill"?"Elite":e==="near_death"?"Near Death":e==="death"?"Fell":e==="story"?"Story":e}_renderLifetime(){const e=D(),s=e.global||{},t=(e.runHistory||[]).slice(0,20);return`
       <div class="st-lifetime">
         <div class="st-section-title">Lifetime totals (across all runs)</div>
         <div class="st-stat-grid">
@@ -84,23 +85,23 @@ import{e as A,i as j,c as B,u as w,r as D,m as P,G as R,g as E,a as F,p as H,b a
         <div class="st-section-title">Run history</div>
         ${t.length?`
           <div class="st-runlist">
-            ${t.map(a=>{var r,n,i,p;return`
+            ${t.map(i=>{var r,n,a,p;return`
               <div class="st-run-row">
-                <span class="st-run-date">${new Date(a.startedAt).toISOString().slice(0,10)}</span>
-                <span class="st-run-label">${a.label||"Run"}</span>
-                <span class="st-run-kpi">${((r=a.global)==null?void 0:r.totalKills)||0} kills</span>
-                <span class="st-run-kpi">${this._fmt(((n=a.global)==null?void 0:n.totalDamage)||0)} dmg</span>
-                <span class="st-run-kpi">${((i=a.global)==null?void 0:i.fightsWon)||0}-${((p=a.global)==null?void 0:p.fightsLost)||0}</span>
+                <span class="st-run-date">${new Date(i.startedAt).toISOString().slice(0,10)}</span>
+                <span class="st-run-label">${i.label||"Run"}</span>
+                <span class="st-run-kpi">${((r=i.global)==null?void 0:r.totalKills)||0} kills</span>
+                <span class="st-run-kpi">${this._fmt(((n=i.global)==null?void 0:n.totalDamage)||0)} dmg</span>
+                <span class="st-run-kpi">${((a=i.global)==null?void 0:a.fightsWon)||0}-${((p=i.global)==null?void 0:p.fightsLost)||0}</span>
               </div>
             `}).join("")}
           </div>
         `:'<div class="st-empty">No completed runs archived yet.</div>'}
       </div>
-    `}_renderAchievements(){const{current:e,life:s}=G(),t=S.length;return`
+    `}_renderAchievements(){const{current:e,life:s}=G(),t=w.length;return`
       <div class="st-ach">
-        <div class="st-section-title">Achievements <span class="st-progress">${S.filter(r=>{var n,i;return((n=e[r.id])==null?void 0:n.unlocked)||((i=s[r.id])==null?void 0:i.unlocked)}).length} / ${t}</span></div>
+        <div class="st-section-title">Achievements <span class="st-progress">${w.filter(r=>{var n,a;return((n=e[r.id])==null?void 0:n.unlocked)||((a=s[r.id])==null?void 0:a.unlocked)}).length} / ${t}</span></div>
         <div class="st-ach-grid">
-          ${S.map(r=>{var x,m;const n=!!((x=s[r.id])!=null&&x.unlocked),i=!!((m=e[r.id])!=null&&m.unlocked),p=n||i;return`
+          ${w.map(r=>{var b,m;const n=!!((b=s[r.id])!=null&&b.unlocked),a=!!((m=e[r.id])!=null&&m.unlocked),p=n||a;return`
               <div class="st-ach-card${p?" un":""} t-${r.tier}">
                 <div class="st-ach-tier">${r.tier.toUpperCase()}</div>
                 <div class="st-ach-name">${r.name}</div>
@@ -110,7 +111,7 @@ import{e as A,i as j,c as B,u as w,r as D,m as P,G as R,g as E,a as F,p as H,b a
             `}).join("")}
         </div>
       </div>
-    `}_postRender(){if(this._tab==="party"){this._el.querySelectorAll(".st-roster-row").forEach(t=>t.addEventListener("click",()=>{this.audio.playSfx("click"),this._selectedCharId=t.dataset.char,this._render()}));const e=this._el.querySelector("#st-log-filter");e&&e.addEventListener("change",()=>{this._filterLog=e.value,this._render()});const s=this._el.querySelector("#st-dps-chart");s&&this._selectedCharId&&requestAnimationFrame(()=>{const t=N(this._selectedCharId,5);W(s,t,{xKey:"t",yKey:"dps",color:"#e8a020",emptyLabel:"No combat damage logged this run."})})}}}const J=`
+    `}_postRender(){if(this._tab==="party"){this._el.querySelectorAll(".st-roster-row").forEach(t=>t.addEventListener("click",()=>{this.audio.playSfx("click"),this._selectedCharId=t.dataset.char,this._render()}));const e=this._el.querySelector("#st-log-filter");e&&e.addEventListener("change",()=>{this._filterLog=e.value,this._render()});const s=this._el.querySelector("#st-dps-chart");s&&this._selectedCharId&&requestAnimationFrame(()=>{const t=N(this._selectedCharId,5);W(s,t,{xKey:"t",yKey:"dps",color:"#e8a020",emptyLabel:"No combat damage logged this run."})})}}}const q=`
 .stats-screen { position: absolute; inset: 0; display: flex; flex-direction: column; background: linear-gradient(180deg,#0a0608,#120a10); color: #f0e8d8; font-family: 'Inter', sans-serif; z-index: 100; }
 .st-header { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 1rem; border-bottom: 1px solid rgba(232,160,32,0.18); background: rgba(0,0,0,0.35); flex-shrink: 0; }
 .st-title { font-family: 'Cinzel', serif; font-weight: 900; letter-spacing: 0.15em; color: #e8a020; font-size: 1rem; text-transform: uppercase; flex-shrink: 0; }

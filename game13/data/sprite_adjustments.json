@@ -1,6 +1,16 @@
 {
   "$schema": "../schemas/v1/sprite-adjustment.json",
   "$comment": "Per-(character,pose) sprite scale + offset overrides. Edit via /assets/sprite-adjust.html. CombatScreen + InventoryScreen apply scale at draw time.",
+  "bard": {
+    "perPose": {
+      "south":       { "scale": 0.77,  "offsetX": -3, "offsetY": 40 },
+      "east":        { "scale": 0.766, "offsetX": -8, "offsetY": 33 },
+      "east_attack": { "scale": 0.735, "offsetX": 22, "offsetY": 37 },
+      "east_spell":  { "scale": 0.733, "offsetX": -7, "offsetY": 42 },
+      "east_block":  { "scale": 0.735, "offsetX": -1, "offsetY": 31 },
+      "east_ko":     { "scale": 0.63,  "offsetX": -5, "offsetY": 79 }
+    }
+  },
   "shaman_male": {
     "perPose": {
       "south":       { "scale": 1.05,  "offsetX":  24, "offsetY": -14 },

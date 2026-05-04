@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-04T02:00:53.493Z",
+    "generated": "2026-05-04T03:29:34.438Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (66 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
@@ -9,9 +9,9 @@
       "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (15 bosses)"
     },
     "counts": {
-      "total": 975,
+      "total": 986,
       "by_status": {
-        "ready": 722,
+        "ready": 733,
         "pending": 131,
         "orphaned": 60,
         "approved": 20,
@@ -22,7 +22,7 @@
         "companion": 125,
         "boss": 105,
         "enemy": 95,
-        "background": 57,
+        "background": 68,
         "tap-weapons": 9,
         "orphan": 60,
         "reference-sheet": 62
@@ -7224,6 +7224,15 @@
       "status": "ready"
     },
     {
+      "id": "bg_map_abyssal_depths",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/abyssal_depths.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
       "id": "bg_map_act-1-border-roads-v1",
       "category": "background",
       "group": "map",
@@ -7544,6 +7553,96 @@
       "group": "map",
       "pose": null,
       "file": "../images/map_bg/act-6-dragon-expansion-v3_thumb.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_border_roads",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/border_roads.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_cosmic_rift",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/cosmic_rift.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_dust_roads",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/dust_roads.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_ember_plateau",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/ember_plateau.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_eternal_void",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/eternal_void.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_hell_breach",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/hell_breach.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_primordial_nexus",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/primordial_nexus.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_prologue",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/prologue.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_shattered_core",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/shattered_core.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_thornwood",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/thornwood.jpg",
       "prompt": null,
       "status": "ready"
     },
