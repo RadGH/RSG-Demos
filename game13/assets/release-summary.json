@@ -1,7 +1,7 @@
 {
-  "milestone": 402,
+  "milestone": 403,
   "date": "2026-05-03",
-  "summary": "M402 — Hotfix: New Game black screen on iPhone caused by property/method name collision. Renamed CharacterBuilderScreen.this._build (chosen build preset) to this._buildChoice so it no longer shadows the _build() init method that onEnter() calls. The black screen with 'Uncaught TypeError: this._build is not a function' is gone.",
+  "summary": "M403 — Major batch: combat damage rolls per-hit, Multi-Shot fix, manual-combat clickable + tooltips repositioned + mana indicator, 24px desktop click targets, disabled-skill tooltips, captions positioning, hide auto-toggles in manual mode, 12-enemy battle grid, Party Skills/Inventory route to new PartyPanelScreen, stats Last Saved indicator, RSG-Demos card relinked (Home → index, Play Now → play.html), front page heroImg fix + live-data-driven class/companion counts + primary-attribute bubbles + 'By the numbers' Initiative removed + companion loyalty/Auto Rounds section removed, assets/images.html bosses/enemies split + new NPCs filter + ash_wraith hover-swap fix, sprite-adjust.html guides feature + Single compare mode + Bard Male sizing, custom-content.html updated for builds + hybrid skills + sleep status + new build-preset.json schema, Silas portrait regen (full bust shot), prologue + dust_roads + 8 other zone map_bg JPGs added, dialog conversation grid centered with 100px gap and 2x desktop sprites + NPC name in dedicated banner, prologue combat bg pointer added.",
   "categories": [
     "feature"
   ],
