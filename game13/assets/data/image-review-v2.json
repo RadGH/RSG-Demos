@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-04T06:26:55.363Z"
+    "generated": "2026-05-04T21:00:43.685Z"
   },
   "characters": [
     {
@@ -5261,6 +5261,13 @@
       "name": "abyssal depths hd"
     },
     {
+      "id": "combat_ashen_gate_hd",
+      "category": "background",
+      "type": "combat",
+      "file": "../images/combat_bg/ashen_gate_hd.jpg",
+      "name": "ashen gate hd"
+    },
+    {
       "id": "combat_border_roads_hd",
       "category": "background",
       "type": "combat",
@@ -5679,6 +5686,13 @@
       "type": "map",
       "file": "../images/map_bg/dust_roads.jpg",
       "name": "dust roads"
+    },
+    {
+      "id": "map_dust_roads_old_lava",
+      "category": "background",
+      "type": "map",
+      "file": "../images/map_bg/dust_roads_old_lava.jpg",
+      "name": "dust roads old lava"
     },
     {
       "id": "map_ember_plateau",

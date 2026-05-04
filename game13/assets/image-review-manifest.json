@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-04T06:26:55.279Z",
+    "generated": "2026-05-04T21:00:43.597Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (66 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
@@ -9,9 +9,9 @@
       "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (15 bosses)"
     },
     "counts": {
-      "total": 986,
+      "total": 988,
       "by_status": {
-        "ready": 733,
+        "ready": 735,
         "pending": 131,
         "orphaned": 60,
         "approved": 20,
@@ -22,7 +22,7 @@
         "companion": 125,
         "boss": 105,
         "enemy": 95,
-        "background": 68,
+        "background": 70,
         "tap-weapons": 9,
         "orphan": 60,
         "reference-sheet": 62
@@ -7125,6 +7125,15 @@
       "status": "ready"
     },
     {
+      "id": "bg_combat_ashen_gate_hd",
+      "category": "background",
+      "group": "combat",
+      "pose": null,
+      "file": "../images/combat_bg/ashen_gate_hd.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
       "id": "bg_combat_border_roads_hd",
       "category": "background",
       "group": "combat",
@@ -7580,6 +7589,15 @@
       "group": "map",
       "pose": null,
       "file": "../images/map_bg/dust_roads.jpg",
+      "prompt": null,
+      "status": "ready"
+    },
+    {
+      "id": "bg_map_dust_roads_old_lava",
+      "category": "background",
+      "group": "map",
+      "pose": null,
+      "file": "../images/map_bg/dust_roads_old_lava.jpg",
       "prompt": null,
       "status": "ready"
     },
