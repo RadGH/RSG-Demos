@@ -1,7 +1,7 @@
 {
-  "milestone": 399,
+  "milestone": 400,
   "date": "2026-05-03",
-  "summary": "M400 — Hotfix: defensive try/catch wrap on Character Builder steps so a render exception in any single step (build, stats, class) falls through to a safe step instead of black-screening the New Game flow on iPhone. Also moves the Silas conversation onto prologue_warning (the actual first dialog node players see) instead of the unused prologue_start, fixes a wood_shield item key reference (was undefined, would throw on the build-aware weapon gift path), and reuses the existing Silas Veilward sprite so the build-aware prologue gift actually fires.",
+  "summary": "M400 — Hotfix: defensive try/catch on Character Builder steps + iOS Chrome pull-to-refresh on the title screen + Silas conversation moved to the actual first dialog node + buckler fix in build-aware loot. New Game flow on iPhone falls through to a safe step instead of black-screening if any single render throws (and logs the error). TitleScreen toggles overscroll on so iOS Chrome pull-to-refresh works on the main menu, off when entering the game so combat taps don't accidentally refresh.",
   "categories": [
     "feature"
   ],

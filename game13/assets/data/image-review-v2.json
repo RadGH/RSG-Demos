@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-04T00:18:37.778Z"
+    "generated": "2026-05-04T00:56:14.292Z"
   },
   "characters": [
     {
@@ -5838,8 +5838,9 @@
           "reason": "M396 new class art (enchanter_male, portrait) — pending review.",
           "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.\n\nPOSE (portrait): Head-and-shoulders bust shot, three-quarter view. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple.",
           "newPrompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.\n\nPOSE (portrait): Head-and-shoulders bust shot, three-quarter view. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple.",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_enchanter_male_south",
@@ -5853,8 +5854,9 @@
           "reason": "M396 new class art (enchanter_male, south) — pending review.",
           "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.\n\nPOSE (south): Facing camera (south), calm idle, silver staff held at his side, faint violet glyph hovering near the staff tip.",
           "newPrompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.\n\nPOSE (south): Facing camera (south), calm idle, silver staff held at his side, faint violet glyph hovering near the staff tip.",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_enchanter_male_east",
@@ -5868,8 +5870,9 @@
           "reason": "M396 new class art (enchanter_male, east) — pending review.",
           "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
           "newPrompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_enchanter_male_east_attack",
@@ -5883,8 +5886,9 @@
           "reason": "M396 new class art (enchanter_male, east_attack) — pending review.",
           "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
           "newPrompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_enchanter_male_east_spell",
@@ -5895,11 +5899,13 @@
           "new": "../images/spritecook/enchanter_male_east_spell.png",
           "old": null,
           "assetId": "65677def-477e-43dc-97f5-12a8862c43a9",
-          "reason": "M396 new class art (enchanter_male, east_spell) — pending review.",
+          "reason": "M396 new class art (enchanter_male, east_spell) — pending review. M400: flipped horizontally.",
           "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
           "newPrompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z",
+          "flippedHorizontal": true
         },
         {
           "id": "hero_enchanter_male_east_block",
@@ -5913,8 +5919,9 @@
           "reason": "M396 new class art (enchanter_male, east_block) — pending review.",
           "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
           "newPrompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_enchanter_male_east_ko",
@@ -5925,11 +5932,13 @@
           "new": "../images/spritecook/enchanter_male_east_ko.png",
           "old": null,
           "assetId": "fffcb245-2399-4b57-8008-2736f5fce97a",
-          "reason": "M396 new class art (enchanter_male, east_ko) — pending review.",
+          "reason": "M396 new class art (enchanter_male, east_ko) — pending review. M400: flipped horizontally.",
           "prompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
           "newPrompt": "A male human Enchanter wizard, head-and-shoulders portrait facing forward. Long midnight-violet hooded robe with silver rune embroidery along the collar, calm composed face, short dark hair, glowing pale-lavender eyes, holding a small floating violet enchantment glyph beside his temple. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z",
+          "flippedHorizontal": true
         },
         {
           "id": "hero_enchanter_female_portrait",
@@ -5943,8 +5952,9 @@
           "reason": "M396 new class art (enchanter_female, portrait) — pending review.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_enchanter_female_south",
@@ -5958,8 +5968,9 @@
           "reason": "M396 new class art (enchanter_female, south) — pending review.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_enchanter_female_east",
@@ -5973,8 +5984,9 @@
           "reason": "M396 new class art (enchanter_female, east) — pending review.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_enchanter_female_east_attack",
@@ -5988,8 +6000,9 @@
           "reason": "M396 new class art (enchanter_female, east_attack) — pending review.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_enchanter_female_east_spell",
@@ -6003,8 +6016,9 @@
           "reason": "M396 new class art (enchanter_female, east_spell) — pending review.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_enchanter_female_east_block",
@@ -6018,8 +6032,9 @@
           "reason": "M396 new class art (enchanter_female, east_block) — pending review.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_enchanter_female_east_ko",
@@ -6030,11 +6045,13 @@
           "new": "../images/spritecook/enchanter_female_east_ko.png",
           "old": null,
           "assetId": "b5fed681-cd42-4c14-a2ed-a32ba05c2c0b",
-          "reason": "M396 new class art (enchanter_female, east_ko) — pending review.",
+          "reason": "M396 new class art (enchanter_female, east_ko) — pending review. M400: flipped horizontally.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z",
+          "flippedHorizontal": true
         },
         {
           "id": "hero_priest_female_portrait",
@@ -6048,8 +6065,9 @@
           "reason": "M396 new class art (priest_female, portrait) — pending review.",
           "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.\n\nPOSE (portrait): Bust shot, head-and-shoulders facing forward. Dark indigo hood up with silver crescent embroidery, raven-black hair visible at the front, eyes closed in soft prayer, pale skin, silver crescent pendant glowing softly at the chest.",
           "newPrompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.\n\nPOSE (portrait): Bust shot, head-and-shoulders facing forward. Dark indigo hood up with silver crescent embroidery, raven-black hair visible at the front, eyes closed in soft prayer, pale skin, silver crescent pendant glowing softly at the chest.",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_priest_female_south",
@@ -6059,12 +6077,14 @@
           "live": "../images/spritecook/priest_female_south.png",
           "new": "../images/spritecook/priest_female_south.png",
           "old": null,
-          "assetId": "fa6cf1e6-bde4-46c9-bbb3-53b51d617d98",
-          "reason": "M396 new class art (priest_female, south) — pending review.",
+          "assetId": "165ab9bd-c5eb-4942-9048-22ce7f062354",
+          "reason": "M400 — full body re-render (south frame was cropped to portrait).",
           "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.\n\nPOSE (south): Facing camera (south), calm idle. Prayer-mace held point-up in the right hand at her side, raven-black hair framing her face.",
           "newPrompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.\n\nPOSE (south): Facing camera (south), calm idle. Prayer-mace held point-up in the right hand at her side, raven-black hair framing her face.",
           "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": null,
+          "regeneratedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_priest_female_east",
@@ -6078,8 +6098,9 @@
           "reason": "M396 new class art (priest_female, east) — pending review.",
           "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
           "newPrompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_priest_female_east_attack",
@@ -6089,12 +6110,14 @@
           "live": "../images/spritecook/priest_female_east_attack.png",
           "new": "../images/spritecook/priest_female_east_attack.png",
           "old": null,
-          "assetId": "0b92ea46-7277-4668-aea1-89eaeeee5f40",
-          "reason": "M396 new class art (priest_female, east_attack) — pending review.",
+          "assetId": "4b1f7a35-6d8c-402c-85d3-644d6b2fbd84",
+          "reason": "M400 — re-render with single mace in one hand (was dual-wielding).",
           "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
           "newPrompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
           "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": null,
+          "regeneratedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_priest_female_east_spell",
@@ -6108,8 +6131,9 @@
           "reason": "M396 new class art (priest_female, east_spell) — pending review.",
           "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
           "newPrompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_priest_female_east_block",
@@ -6123,8 +6147,9 @@
           "reason": "M396 new class art (priest_female, east_block) — pending review.",
           "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
           "newPrompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_priest_female_east_ko",
@@ -6135,11 +6160,13 @@
           "new": "../images/spritecook/priest_female_east_ko.png",
           "old": null,
           "assetId": "9d45d2be-368d-405d-8f4c-2dffd60ebfb4",
-          "reason": "M396 new class art (priest_female, east_ko) — pending review.",
+          "reason": "M396 new class art (priest_female, east_ko) — pending review. M400: flipped horizontally.",
           "prompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
           "newPrompt": "A female human Priest (a Cleric of the dusk-vigil order), head-and-shoulders portrait facing forward. Dark indigo-and-charcoal hooded ceremonial robe with silver moon-and-crescent embroidery on the chest, long raven-black hair falling past her shoulders from beneath the hood, calm solemn face, pale skin, faint silver glow from a holy crescent pendant at her chest, eyes closed in soft prayer. Painted 16-bit SNES JRPG pixel art style, clean black outline, soft cel shading, transparent background.",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z",
+          "flippedHorizontal": true
         },
         {
           "id": "hero_priest_male_portrait",
@@ -6153,8 +6180,9 @@
           "reason": "M396 new class art (priest_male, portrait) — pending review.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_priest_male_south",
@@ -6168,8 +6196,9 @@
           "reason": "M396 new class art (priest_male, south) — pending review.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_priest_male_east",
@@ -6183,8 +6212,9 @@
           "reason": "M396 new class art (priest_male, east) — pending review.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_priest_male_east_attack",
@@ -6198,8 +6228,9 @@
           "reason": "M396 new class art (priest_male, east_attack) — pending review.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_priest_male_east_spell",
@@ -6210,11 +6241,13 @@
           "new": "../images/spritecook/priest_male_east_spell.png",
           "old": null,
           "assetId": "7283f477-e037-448f-b308-4305033d44dd",
-          "reason": "M396 new class art (priest_male, east_spell) — pending review.",
+          "reason": "M396 new class art (priest_male, east_spell) — pending review. M400: flipped horizontally.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z",
+          "flippedHorizontal": true
         },
         {
           "id": "hero_priest_male_east_block",
@@ -6228,8 +6261,9 @@
           "reason": "M396 new class art (priest_male, east_block) — pending review.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z"
         },
         {
           "id": "hero_priest_male_east_ko",
@@ -6240,11 +6274,13 @@
           "new": "../images/spritecook/priest_male_east_ko.png",
           "old": null,
           "assetId": "8618d20c-c6a9-4818-b5ed-c111b6f0ff44",
-          "reason": "M396 new class art (priest_male, east_ko) — pending review.",
+          "reason": "M396 new class art (priest_male, east_ko) — pending review. M400: flipped horizontally.",
           "prompt": "",
           "newPrompt": "",
-          "approved": false,
-          "addedAt": "2026-05-03T13:40:00Z"
+          "approved": true,
+          "addedAt": "2026-05-03T13:40:00Z",
+          "approvedAt": "2026-05-03T17:30:00Z",
+          "flippedHorizontal": true
         }
       ]
     },
