@@ -1,7 +1,7 @@
 {
-  "milestone": 414,
+  "milestone": 415,
   "date": "2026-05-06",
-  "summary": "M414 — combat background now extends to top of party HUD via live --hud-h CSS var (matches caption-bar bottom anchor); last-node forward dashed connector now uses same DOM popup pattern as back-arrow with 'Travel forward to {Zone}' button; gameState._state initialized via factory to break DEFAULT_STATE reference sharing.",
+  "summary": "M415 — recursion guards on soulbind/counter/thorns wrapped in try/finally (no more deadlock-on-throw); M65 legacy sfx alias table dropped after audit confirmed no call sites; SPRITE_MAP audit deferred (defensive override, intentional).",
   "categories": [
     "feature"
   ],
