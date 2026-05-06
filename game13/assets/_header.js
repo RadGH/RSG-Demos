@@ -94,6 +94,7 @@
   var DOCS_BY_GAME = {
     game13: [
       { href: ASSETS + 'docs.html', label: 'Documentation' },
+      { href: ASSETS + 'todo.html', label: 'Todo List' },
       { href: ASSETS + 'wishlist.html', label: 'Wishlist' },
       { href: ASSETS + 'brainstorm.html', label: 'Brainstorm' }
     ]

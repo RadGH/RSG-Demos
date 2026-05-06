@@ -36,67 +36,74 @@
 </p>
 
 <div class="card">
-  <h2 style="margin-top:0">Skill / Class Audit — M422 baseline</h2>
-  <p class="note">Auto-generated from the M422 Damage Report snapshot. Median is per role at L20 single-target solo. Items flagged at &gt;±25% deviation. <a href="./damage-report.html">Open Damage Report →</a></p>
+  <h2 style="margin-top:0">Skill / Class Audit — M425 (post-M424 rebalance + armor=0 + companion scaling)</h2>
+  <p class="note">Auto-generated from the M425 Damage Report snapshot. Median is per role at L20 single-target solo. Benchmark dummies now have armor=0 and companions use _effectiveLevel scaling. <a href="./damage-report.html">Open Damage Report →</a></p>
 
-  <h3 style="color:#c0a070;font-size:0.95rem">Single-Target DPS — median 898 dps at L20 solo</h3>
+  <h3 style="color:#c0a070;font-size:0.95rem">Single-Target DPS — median 933 at L20 solo</h3>
   <div class="item high">
-    <span class="tag">CRITICAL</span> <strong>Rogue</strong> — single-target DPS at <strong>+243%</strong> of median (3084 vs 898).
-    Likely the high-crit / poison stack interaction. Investigate skill multipliers and crit-chance gear pack assumptions.
-  </div>
-  <div class="item high">
-    <span class="tag">CRITICAL</span> <strong>Monk</strong> — single-target DPS at <strong>-89%</strong> of median (102 vs 898).
-    Auto-AI may be picking utility/heal skills over damage. Review skill priority + base damageMult of monk skills.
-  </div>
-  <div class="item high">
-    <span class="tag">HIGH</span> <strong>Shadow Dancer</strong> — <strong>-62%</strong> (342 vs 898). Stealth-conditional damage may not trigger under benchmark conditions.
+    <span class="tag">HIGH</span> <strong>Ranger</strong> — <strong>+193%</strong> (2737 vs 933). New outlier after M424 rebalance — needs nerf pass. Likely Multi-shot / poison crit interactions.
   </div>
   <div class="item med">
-    <span class="tag">MED</span> <strong>Witch Hunter</strong> — <strong>-37%</strong> (564 vs 898). Even after Silver Bolt + Purge Strike buff in M421, still under-performs single-target. Consider another small bump or check AI skill priority (Dispel Curse may still be over-cast).
+    <span class="tag">MED</span> <strong>Fighter</strong> — <strong>+61%</strong> (1503 vs 933). On the high side; track.
   </div>
   <div class="item med">
-    <span class="tag">MED</span> <strong>Ranger</strong> — <strong>+39%</strong> (1248 vs 898). On the high side; not critical, but track if it widens after future passes.
+    <span class="tag">MED</span> <strong>Rogue</strong> — <strong>+42%</strong> (1321 vs 933). M424 nerfs brought it down from +243%; another small trim needed.
   </div>
-
-  <h3 style="color:#c0a070;font-size:0.95rem">AoE DPS — median 5682 dps at L20 solo</h3>
   <div class="item med">
-    <span class="tag">NOTE</span> <strong>Stormcaller</strong> after M421 nerf — single-target now <strong>-37%</strong> below AoE-DPS median. Expected for an AoE specialist; verify aoe.group still leads when full party is sampled.
+    <span class="tag">MED</span> <strong>Monk</strong> — <strong>-32%</strong> (635 vs 933). M424 buffs brought it up from -89% — close but still flagged. Consider one more small bump on Palm Strike.
   </div>
   <div class="item low">
-    <span class="tag">CHECK</span> <strong>Pyromancer / Necromancer</strong> — single-target damage at 5682 / 6433 is suspiciously high for nominally AoE classes. May be using single-target spells in the benchmark; not necessarily wrong but worth confirming the AI rotation matches design intent.
+    <span class="tag">OK</span> <strong>Witch Hunter</strong> — <strong>-14%</strong> (now in band). <strong>Shadow Dancer</strong> -23% (in band).
+  </div>
+
+  <h3 style="color:#c0a070;font-size:0.95rem">AoE DPS — median 4189 at L20 solo</h3>
+  <div class="item med">
+    <span class="tag">MED</span> <strong>Necromancer</strong> single.solo=6119 (+46%). Pyromancer reads 4189, Stormcaller 3509 (-16%). Reasonable spread. Necromancer may need a small trim or its single-target skill is just strong.
+  </div>
+
+  <h3 style="color:#c0a070;font-size:0.95rem">Tanks — median 861 at L20 solo</h3>
+  <div class="item high">
+    <span class="tag">CRITICAL</span> <strong>Paladin</strong> — <strong>-79%</strong> (184 vs 861) after Holy Strike buffs in M424. Still failing — strongly suggests <strong>AI is not picking damage skills</strong>. Diagnose: does benchmark AI prioritize Lay on Hands self-heal over Holy Strike when no one needs healing? Trace the auto-AI for solo Paladin scenario.
   </div>
 
   <h3 style="color:#c0a070;font-size:0.95rem">Healers</h3>
   <div class="item">
-    <span class="tag">OK</span> <strong>Priest</strong> — full-party heal at 2020 (post-M420 buff). Cleric at 10368 (much higher — different spell list). Disparity is intentional (Cleric is heal-specialist) but may want re-check after companion sim runs.
+    <span class="tag">OK</span> <strong>Priest</strong> -13% from Cleric, both on the same scale (1599 / 1830). Healing now strong for both.
   </div>
 
-  <h3 style="color:#c0a070;font-size:0.95rem">Tanks</h3>
-  <div class="item high">
-    <span class="tag">HIGH</span> <strong>Paladin</strong> — single-target damage <strong>-95%</strong> below tank median (30 vs 657). Almost no offense in benchmark — verify Paladin skills include damage options at all and that AI picks them.
+  <h3 style="color:#c0a070;font-size:0.95rem">Companions (M425 — _effectiveLevel scaling now applied)</h3>
+  <div class="item">
+    <span class="tag">OK</span> Companions now register 276-330 single-target damage at L20 solo (~30% of single-DPS median). Before M425 the harness instantiated them at template L1 stats and they read as ~7-9 damage. Real-game observed Frost Wyrmling damage (2224 across ~22 rounds = ~100/round) is still higher than benchmark output — gap likely due to (1) benchmark dummy stats vs real bosses and (2) basic-attack-only profile. Acceptable for *trend* comparison; absolute parity with live combat is a follow-up.
   </div>
 
   <h3 style="color:#c0a070;font-size:0.95rem">Unclassified (need role tag)</h3>
   <div class="item low">
-    <span class="tag">META</span> Several classes are <code>unclassified</code> in the role map: Mage, Warlock, Demon Hunter, Scavenger, Swashbuckler, Dragon Knight, Oracle, Tactician, Shaman, Sorcerer, Tinker. Decide a role for each and update <code>ROLE_BY_CLASS</code> in <code>scripts/damage-report-snapshot.mjs</code>, then re-snapshot.
+    <span class="tag">META</span> Still <code>unclassified</code>: Mage, Warlock, Demon Hunter, Scavenger, Swashbuckler, Dragon Knight, Oracle, Tactician, Shaman, Sorcerer, Tinker. Decide a role for each and update <code>ROLE_BY_CLASS</code> in <code>scripts/damage-report-snapshot.mjs</code>, then re-snapshot.
   </div>
   <div class="item high">
-    <span class="tag">CRITICAL</span> <strong>Shaman</strong> — single-target 4275 (very high, role TBD). <strong>Tinker / Tactician / Scavenger / Dragon Knight</strong> all under 240 dmg single-target — likely missing skills, broken AI, or content gaps.
+    <span class="tag">HIGH</span> <strong>Shaman</strong> still strong post-M424 nerf to Spirit Bolt; <strong>Tactician / Tinker</strong> still &lt; 100 damage single-target. Likely an <strong>AI skill priority</strong> issue (these classes are buff-heavy and the AI may be casting buffs solo with no one to buff).
+  </div>
+  <div class="item high">
+    <span class="tag">HIGH</span> <strong>Mage / Warlock / Sorcerer / Oracle</strong> all 200-350% above their (TBD) role median. Likely AoE-DPS classes that should be re-classified.
   </div>
 </div>
 
 <div class="card">
   <h2 style="margin-top:0">Process notes</h2>
+  <div class="item">
+    <span class="tag">DONE</span>
+    <strong>Companion sim wiring (M425)</strong> — <code>_effectiveLevel</code>
+    scaling now applied; companions read 276-330 dmg at L20 solo. Trend
+    comparison usable; absolute parity with live combat still ~3× off.
+  </div>
   <div class="item high">
-    <span class="tag">CRITICAL</span>
-    <strong>Companion sim accuracy</strong> — companions ARE in the M423 snapshot
-    (role <code>companion</code>) but their damage reads as ~7–9 at L20, far below
-    the in-game observed Frost Wyrmling at 2224 dmg per round-set. Root cause:
-    the snapshot harness instantiates them with no skills, so they fall through
-    to basic-attack-only. Need to wire companion class skills (and their level-
-    scaled HP/DMG profile) into <code>makeCompanion()</code> in
-    <code>scripts/damage-report-snapshot.mjs</code> before the comparison is
-    meaningful.
+    <span class="tag">HIGH</span>
+    <strong>Benchmark AI ignores damage skills for some classes</strong> —
+    Paladin, Tactician, Tinker register near-zero damage even after multi-buff
+    rebalance. Suggests the auto-AI in solo benchmark mode picks self-heals or
+    party buffs (with no party to buff) instead of damage skills. Patch the
+    benchmark AI to weight damage skills higher when target list is non-empty
+    and ally HP &gt; 90%.
   </div>
   <div class="item low"><strong>Healing/mitigation in sim</strong> — currently we read healing from log events but mitigation is approximated from per-target preMitigation events (only present in some skill paths). Cross-check with the live Combat Report for parity.</div>
   <div class="item low"><strong>Hit-chance softcap (M418)</strong> — verify in a real combat that L20 parties now see &gt;0% miss rate against base enemies. The user previously reported zero misses.</div>
