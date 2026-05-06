@@ -1,7 +1,7 @@
 {
-  "milestone": 412,
+  "milestone": 413,
   "date": "2026-05-05",
-  "summary": "M412 — passives slot-mult bug fixed (pyro/stormcaller get unique replacement nodes), persistent per-combat statistics with Supabase mirror, attack-speed lines on item + compare tooltips, hero/companion split into separate 4-col HUD rows, fallen-hero ↔ save sync, dragon_hatchling 404 + zone-table cleanup.",
+  "summary": "M413 — verified pre-existing kill counters (warlock + pyromancer unlocks unblocked), maxMp fallback audit clean, flee-fail already canonical, cloud asset cleanup (deleted clouds_04/05 + thumbs + manifest scrub), milestone-jargon glossary doc.",
   "categories": [
     "feature"
   ],
