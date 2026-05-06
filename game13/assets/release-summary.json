@@ -1,7 +1,7 @@
 {
-  "milestone": 409,
+  "milestone": 410,
   "date": "2026-05-04",
-  "summary": "M409 — Lay on Hands AI fix. Heal/revive skills now bypass the partyMember.skills filter in the hero AI so a paladin with LoH unlocked but not in his manually-picked active list will still cast it on himself when wounded. Without this the picked-skills filter dropped LoH and the paladin let himself die instead of healing. Self-cast was already supported by the heal target picker (lowest-HP ally including self) — the bug was the AI never seeing the skill in the first place.",
+  "summary": "M410 — priest overheal fix. Two bugs: (1) AI selection at low priest level had Mend as the only usable skill, so the default-personality fallback chain landed on usableSkills[0]=Mend even when nobody was hurt — now skips heal/buff fallbacks unless someone actually needs healing; (2) the 85% overheal-skip gate in _executeSkill required actor.autoBuild.auto_active or non-hero, so a regular AI hero priest bypassed it entirely — now triggers whenever the cast isn't a manual-mode hero. Combined: priests stop spamming Mend at full HP.",
   "categories": [
     "feature"
   ],

@@ -1308,6 +1308,17 @@ const MAP_BG_FILES = [
   'ember_plateau.jpg','eternal_void.jpg','hell_breach.jpg','primordial_nexus.jpg',
   'shattered_core.jpg','thornwood.jpg',
 ];
+// M412 — combat backgrounds are separate from world-map backgrounds. Map bgs
+// render the zone overview; combat bgs render behind enemy sprites during a
+// fight. Different aspect, different art style. Listed below from
+// public/images/combat_bg/.
+const COMBAT_BG_FILES = [
+  'abyssal_depths_hd.png','ashen_gate_hd.jpg','border_roads_hd.png',
+  'cosmic_rift_hd.png','desert_plateau_hd.png','dragons_reach_hd.png',
+  'dragon_throne_hd.png','eternal_void_hd.png','hell_breach_hd.png',
+  'primordial_nexus_hd.png','shattered_core_hd.png','thornwood_forest_hd.png',
+  'volcanic_waste_hd.png',
+];
 
 function buildBgAsset(file, dir, label) {
   const bare = file.replace(/\.[^.]+$/, '').replace(/_/g, ' ');
@@ -1328,6 +1339,7 @@ function renderBackgroundsSection(assets) {
 
   const dialogAssets = DIALOG_BG_FILES.map(f => buildBgAsset(f, 'dialog_bg', 'Dialog scene'));
   const mapAssets = MAP_BG_FILES.map(f => buildBgAsset(f, 'map_bg', 'World map zone'));
+  const combatAssets = COMBAT_BG_FILES.map(f => buildBgAsset(f, 'combat_bg', 'Combat encounter backdrop'));
   // Also pull any assets categorized as background from JSON (e.g. menu_bg).
   const jsonBgs = assets.filter(a => {
     const c = (a.category || '').toLowerCase();
@@ -1335,7 +1347,7 @@ function renderBackgroundsSection(assets) {
     return c === 'backgrounds' || c === 'background' || f.includes('/menu_bg/');
   });
 
-  const total = dialogAssets.length + mapAssets.length + jsonBgs.length;
+  const total = dialogAssets.length + mapAssets.length + combatAssets.length + jsonBgs.length;
   section.innerHTML = `<div class="section-title">Backgrounds <span>${total}</span></div>`;
 
   function appendGroup(title, items) {
@@ -1364,6 +1376,7 @@ function renderBackgroundsSection(assets) {
   }
   appendGroup('Dialog Backgrounds', dialogAssets);
   appendGroup('World Map Backgrounds', mapAssets);
+  appendGroup('Combat Backgrounds', combatAssets);
   if (jsonBgs.length) appendGroup('Other Backgrounds', jsonBgs);
 
   return section;
@@ -1615,13 +1628,33 @@ async function render(assets) {
   const bgSection = renderBackgroundsSection(assets);
   if (bgSection) main.appendChild(bgSection);
 
-  // 6. Other (anything not heroes/companions/bosses/enemies/npcs/backgrounds)
+  // 6. Other (M412 — only assets NOT already shown in any earlier section).
+  // Earlier sections consume assets via `idx[ch.id].all`; we collect every
+  // shown file path by walking the same character lists used above. An asset
+  // ends up in Other only when its file is never referenced by any character
+  // bundle AND it's not a background or hero category we've already rendered.
+  const consumedFiles = new Set();
+  const allCharIds = [
+    ...HERO_LIST.map(h => h.id),
+    ...COMPANION_LIST.map(c => c.id),
+    ...bosses.map(b => b.id),
+    ...enemies.map(e => e.id),
+    ...NPC_LIST.map(n => n.id),
+  ];
+  for (const id of allCharIds) {
+    const bundle = idx[id];
+    if (!bundle) continue;
+    for (const a of (bundle.all || [])) if (a.file) consumedFiles.add(a.file);
+    if (bundle.portrait?.file) consumedFiles.add(bundle.portrait.file);
+    for (const f of (bundle.frames || [])) if (f.file) consumedFiles.add(f.file);
+  }
   const handledCats = new Set(['heroes','companions','bosses','enemies','npcs','backgrounds','background','companion_sprites']);
   const otherAssets = assets.filter(a => {
     const c = (a.category || 'other').toLowerCase();
     if (handledCats.has(c)) return false;
+    if (a.file && consumedFiles.has(a.file)) return false;
     const f = (a.file || '').toLowerCase();
-    if (f.includes('/menu_bg/') || f.includes('/map_bg/') || f.includes('/dialog_bg/')) return false;
+    if (f.includes('/menu_bg/') || f.includes('/map_bg/') || f.includes('/dialog_bg/') || f.includes('/combat_bg/')) return false;
     return true;
   });
   if (otherAssets.length) {
@@ -1635,6 +1668,36 @@ async function render(assets) {
     section.appendChild(grid);
     main.appendChild(section);
   }
+
+  // 7. Orphaned (M412 — files on disk that no game registry references). Pulls
+  // the orphan_* entries from image-review-manifest.json (status=orphaned).
+  // These aren't broken — just unused art still on disk.
+  try {
+    const manRes = await fetch('image-review-manifest.json');
+    if (manRes.ok) {
+      const man = await manRes.json();
+      const orphans = (man.entries || []).filter(e => e.status === 'orphaned');
+      if (orphans.length) {
+        const section = document.createElement('div');
+        section.className = 'section';
+        section.dataset.sectionKey = 'orphaned';
+        section.innerHTML = `<div class="section-title">Orphaned <span>${orphans.length}</span></div>
+          <div style="color:var(--muted);font-size:13px;margin:-8px 0 12px">Files present on disk but not referenced anywhere in the game registry — safe to delete or repurpose.</div>`;
+        const grid = document.createElement('div');
+        grid.className = 'grid';
+        orphans.forEach(o => {
+          const card = renderCard({
+            id: o.id, name: o.id.replace(/^orphan_/, '').replace(/_/g, ' '),
+            category: 'orphaned', source: 'manual', file: o.file,
+            notes: 'Orphaned — not referenced by appearances/companions/enemies/bosses or any background dir.',
+          });
+          grid.appendChild(card);
+        });
+        section.appendChild(grid);
+        main.appendChild(section);
+      }
+    }
+  } catch (_) { /* manifest optional */ }
 }
 
 function applyFilter(cat) {
@@ -1784,7 +1847,7 @@ async function init() {
   renderAudio();
 
   // Build filter buttons — fixed set matching the section keys.
-  const FILTER_CATS = ['heroes','companions','bosses','enemies','npcs','backgrounds','other'];
+  const FILTER_CATS = ['heroes','companions','bosses','enemies','npcs','backgrounds','other','orphaned'];
   const toolbar = document.getElementById('toolbar');
   const FILTER_LABELS = { npcs: 'NPCs' };
   FILTER_CATS.forEach(cat => {

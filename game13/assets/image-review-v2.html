@@ -135,7 +135,26 @@
 <body class="ev-themed">
 <div class="wrap">
   <h1>Image Review V2</h1>
-  <p class="sub">Live image catalog. Select images you want to act on, then click <strong>Copy as list</strong> and paste the result into a Claude prompt (e.g. "I approve these:" or "regen these:"). All client-side, no persistence between page loads.</p>
+  <p class="sub">Live image catalog. Select images you want to act on, then choose how to send them to Claude.</p>
+
+  <!-- M412 — explicit approval workflow callout. Was missing before, which led
+       to "I approved these on the page but they stayed pending" because
+       clicking cards alone never persists anything — the page only builds a
+       copy-paste payload and Claude must run the approve script. -->
+  <div style="background:rgba(232,160,32,0.08);border:1px solid var(--accent-dim);border-radius:6px;padding:0.75rem 1rem;margin-bottom:0.75rem;font-size:0.85rem;line-height:1.5">
+    <strong style="color:var(--accent)">Approving images is a two-step flow.</strong>
+    Selecting cards on this page does <em>not</em> persist anything — the page is read-only and your selections live only in this tab.
+    To actually approve:
+    <ol style="margin:0.4rem 0 0 1.2rem;padding:0">
+      <li>Select the cards you want to approve.</li>
+      <li>Click <strong>Copy approve command</strong> (or <strong>Copy as list</strong> + tell Claude "approve these").</li>
+      <li>Paste into Claude. Claude runs <code>node scripts/approve-image-review-v2.cjs &lt;ids…&gt;</code>, which copies the candidate file into the live path and marks the entry approved. Pending status disappears on the next page reload.</li>
+    </ol>
+    <div style="margin-top:0.5rem;color:var(--muted);font-size:0.78rem">
+      Tip: <strong>Copy approve command</strong> produces a ready-to-run shell line with the script and IDs already filled in.
+      <strong>Approve all</strong> covers the entire open batch in one command.
+    </div>
+  </div>
 
   <div class="topbar">
     <div>
@@ -175,7 +194,9 @@
 
 <div id="select-bar">
   <span class="count" id="select-count">0 selected</span>
-  <button id="copy-btn" disabled>Copy as list</button>
+  <button id="copy-btn" disabled title="Copy entry IDs and paths so you can paste them into a Claude prompt">Copy as list</button>
+  <button id="copy-cmd-btn" disabled title="Copy a ready-to-run approve-script command for the selected entries">Copy approve command</button>
+  <button id="approve-all-btn" title="Copy a one-liner that approves the entire open batch">Approve all</button>
   <button id="clear-btn" class="secondary" disabled>Clear</button>
   <span class="copy-hint" id="copy-hint"></span>
 </div>
@@ -313,6 +334,8 @@ function wireTopbar() {
 
 function wireSelectBar() {
   document.getElementById('copy-btn').onclick = copyList;
+  document.getElementById('copy-cmd-btn').onclick = copyApproveCommand;
+  document.getElementById('approve-all-btn').onclick = copyApproveAllCommand;
   document.getElementById('clear-btn').onclick = () => {
     selected.clear();
     updateSelectBar();
@@ -324,7 +347,16 @@ function updateSelectBar() {
   const n = selected.size;
   document.getElementById('select-count').textContent = `${n} selected`;
   document.getElementById('copy-btn').disabled = n === 0;
+  document.getElementById('copy-cmd-btn').disabled = n === 0;
   document.getElementById('clear-btn').disabled = n === 0;
+}
+
+function _copyToClipboardWithHint(text, msg) {
+  navigator.clipboard.writeText(text).then(() => {
+    const hint = document.getElementById('copy-hint');
+    hint.textContent = msg;
+    setTimeout(() => { hint.textContent = ''; }, 2500);
+  });
 }
 
 function copyList() {
@@ -339,12 +371,28 @@ function copyList() {
       lines.push(`${id}\t${e.file}`);
     }
   }
-  const text = lines.join('\n');
-  navigator.clipboard.writeText(text).then(() => {
-    const hint = document.getElementById('copy-hint');
-    hint.textContent = `copied ${lines.length} line(s)`;
-    setTimeout(() => { hint.textContent = ''; }, 2500);
-  });
+  _copyToClipboardWithHint(lines.join('\n'), `copied ${lines.length} line(s)`);
+}
+
+// M412 — generate the exact `node scripts/approve-image-review-v2.cjs <ids…>`
+// command for the selected entries so the user can paste it directly into a
+// Claude prompt (or a shell). Solves the "I clicked Approve but nothing
+// happened" problem by making the script invocation explicit.
+function copyApproveCommand() {
+  const ids = [];
+  for (const id of selected) {
+    const e = findEntryById(id);
+    if (!e) continue;
+    ids.push(e.id || e.assetId);
+  }
+  if (!ids.length) return;
+  const cmd = `node scripts/approve-image-review-v2.cjs ${ids.join(' ')}`;
+  _copyToClipboardWithHint(cmd, `copied approve command for ${ids.length} entr${ids.length === 1 ? 'y' : 'ies'}`);
+}
+
+function copyApproveAllCommand() {
+  const cmd = `node scripts/approve-image-review-v2.cjs --all`;
+  _copyToClipboardWithHint(cmd, 'copied "approve --all" command');
 }
 
 function findEntryById(id) {

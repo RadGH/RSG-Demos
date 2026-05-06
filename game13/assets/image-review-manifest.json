@@ -1,31 +1,31 @@
 {
   "_meta": {
-    "generated": "2026-05-04T22:19:55.959Z",
+    "generated": "2026-05-06T05:10:09.287Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (66 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
       "encounterCompanions": "src/maps/randomEvents.js reward.companion (14 unique)",
       "enemyIds": "src/maps/mapData.js ENEMIES + ENEMIES_ACT5 (19 non-boss enemies)",
-      "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (15 bosses)"
+      "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (19 bosses)"
     },
     "counts": {
-      "total": 988,
+      "total": 1018,
       "by_status": {
-        "ready": 735,
-        "pending": 131,
+        "ready": 740,
+        "pending": 154,
         "orphaned": 60,
         "approved": 20,
-        "candidate": 42
+        "candidate": 44
       },
       "by_category": {
         "hero": 462,
         "companion": 125,
-        "boss": 105,
+        "boss": 133,
         "enemy": 95,
         "background": 70,
         "tap-weapons": 9,
         "orphan": 60,
-        "reference-sheet": 62
+        "reference-sheet": 64
       }
     },
     "source": "scripts/build-image-review-manifest.cjs",
@@ -3944,7 +3944,7 @@
       "group": "silas_veilward",
       "pose": "portrait",
       "file": "../images/spritecook/silas_veilward_portrait.png",
-      "prompt": null,
+      "prompt": "Adult human male wandering mage/sage, about 30-35 years old, short brown hair, neat short brown beard, kind serious face.\n\nGreen hooded cloak open over a darker green long tunic, gray-silver shoulder mantle/cape draped across both shoulders, brown leather belt with small pouches at the chest, brown trousers, brown leather boots. NOT silver-haired, NOT old, NOT a graybeard, NOT armored.\n\nWooden quarterstaff, plain dark wood with no metal cap.\n\nPOSE (portrait): Head-and-shoulders bust shot from mid-chest upward, three-quarter view facing slightly to camera-left. Hood down. Calm composed expression.",
       "status": "ready"
     },
     {
@@ -3953,7 +3953,7 @@
       "group": "silas_veilward",
       "pose": "south",
       "file": "../images/spritecook/silas_veilward_south.png",
-      "prompt": null,
+      "prompt": "Adult human male wandering mage/sage, about 30-35 years old, short brown hair, neat short brown beard, kind serious face.\n\nGreen hooded cloak open over a darker green long tunic, gray-silver shoulder mantle/cape draped across both shoulders, brown leather belt with small pouches at the chest, brown trousers, brown leather boots. NOT silver-haired, NOT old, NOT a graybeard, NOT armored.\n\nWooden quarterstaff, plain dark wood with no metal cap.\n\nPOSE (south): Facing camera (south), calm idle. Quarterstaff held vertical at his right side.",
       "status": "ready"
     },
     {
@@ -3962,7 +3962,7 @@
       "group": "silas_veilward",
       "pose": "east",
       "file": "../images/spritecook/silas_veilward_east.png",
-      "prompt": null,
+      "prompt": "Adult human male wandering mage/sage, about 30-35 years old, short brown hair, neat short brown beard, kind serious face.\n\nGreen hooded cloak open over a darker green long tunic, gray-silver shoulder mantle/cape draped across both shoulders, brown leather belt with small pouches at the chest, brown trousers, brown leather boots. NOT silver-haired, NOT old, NOT a graybeard, NOT armored.\n\nWooden quarterstaff, plain dark wood with no metal cap.\n\nPOSE (east): Facing east (camera-right), calm idle. Quarterstaff held vertical, mantle visible over the trailing shoulder.",
       "status": "ready"
     },
     {
@@ -3971,7 +3971,7 @@
       "group": "silas_veilward",
       "pose": "east_attack",
       "file": "../images/spritecook/silas_veilward_east_attack.png",
-      "prompt": null,
+      "prompt": "Adult human male wandering mage/sage, about 30-35 years old, short brown hair, neat short brown beard, kind serious face.\n\nGreen hooded cloak open over a darker green long tunic, gray-silver shoulder mantle/cape draped across both shoulders, brown leather belt with small pouches at the chest, brown trousers, brown leather boots. NOT silver-haired, NOT old, NOT a graybeard, NOT armored.\n\nWooden quarterstaff, plain dark wood with no metal cap.",
       "status": "ready"
     },
     {
@@ -3980,7 +3980,7 @@
       "group": "silas_veilward",
       "pose": "east_spell",
       "file": "../images/spritecook/silas_veilward_east_spell.png",
-      "prompt": null,
+      "prompt": "Adult human male wandering mage/sage, about 30-35 years old, short brown hair, neat short brown beard, kind serious face.\n\nGreen hooded cloak open over a darker green long tunic, gray-silver shoulder mantle/cape draped across both shoulders, brown leather belt with small pouches at the chest, brown trousers, brown leather boots. NOT silver-haired, NOT old, NOT a graybeard, NOT armored.\n\nWooden quarterstaff, plain dark wood with no metal cap.",
       "status": "ready"
     },
     {
@@ -3989,7 +3989,7 @@
       "group": "silas_veilward",
       "pose": "east_block",
       "file": "../images/spritecook/silas_veilward_east_block.png",
-      "prompt": null,
+      "prompt": "Adult human male wandering mage/sage, about 30-35 years old, short brown hair, neat short brown beard, kind serious face.\n\nGreen hooded cloak open over a darker green long tunic, gray-silver shoulder mantle/cape draped across both shoulders, brown leather belt with small pouches at the chest, brown trousers, brown leather boots. NOT silver-haired, NOT old, NOT a graybeard, NOT armored.\n\nWooden quarterstaff, plain dark wood with no metal cap.",
       "status": "ready"
     },
     {
@@ -3998,7 +3998,7 @@
       "group": "silas_veilward",
       "pose": "east_ko",
       "file": "../images/spritecook/silas_veilward_east_ko.png",
-      "prompt": null,
+      "prompt": "Adult human male wandering mage/sage, about 30-35 years old, short brown hair, neat short brown beard, kind serious face.\n\nGreen hooded cloak open over a darker green long tunic, gray-silver shoulder mantle/cape draped across both shoulders, brown leather belt with small pouches at the chest, brown trousers, brown leather boots. NOT silver-haired, NOT old, NOT a graybeard, NOT armored.\n\nWooden quarterstaff, plain dark wood with no metal cap.",
       "status": "ready"
     },
     {
@@ -5690,6 +5690,258 @@
       "group": "frost_wyrm",
       "pose": "east_ko",
       "file": "../images/spritecook/frost_wyrm_east_ko.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_vault_guardian_portrait",
+      "category": "boss",
+      "group": "vault_guardian",
+      "pose": "portrait",
+      "file": "../images/spritecook/vault_guardian_portrait.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_vault_guardian_south",
+      "category": "boss",
+      "group": "vault_guardian",
+      "pose": "south",
+      "file": "../images/spritecook/vault_guardian_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_vault_guardian_east",
+      "category": "boss",
+      "group": "vault_guardian",
+      "pose": "east",
+      "file": "../images/spritecook/vault_guardian_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_vault_guardian_east_attack",
+      "category": "boss",
+      "group": "vault_guardian",
+      "pose": "east_attack",
+      "file": "../images/spritecook/vault_guardian_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_vault_guardian_east_spell",
+      "category": "boss",
+      "group": "vault_guardian",
+      "pose": "east_spell",
+      "file": "../images/spritecook/vault_guardian_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_vault_guardian_east_block",
+      "category": "boss",
+      "group": "vault_guardian",
+      "pose": "east_block",
+      "file": "../images/spritecook/vault_guardian_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_vault_guardian_east_ko",
+      "category": "boss",
+      "group": "vault_guardian",
+      "pose": "east_ko",
+      "file": "../images/spritecook/vault_guardian_east_ko.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_void_scholar_portrait",
+      "category": "boss",
+      "group": "void_scholar",
+      "pose": "portrait",
+      "file": "../images/spritecook/void_scholar_portrait.png",
+      "prompt": "Gaunt mid-50s human male, pale skin, sharp cheekbones, completely white eyes glowing faintly with violet inner light, silver-white slicked-back hair pulled into a small knot, neat silver-white goatee.\n\nCracked obsidian academic robe with a high stiff collar embroidered with violet runic glyphs, leather-bound books and tattered scroll-tubes hanging on chains across the chest, plain dark boots. Faint halo of violet-and-black void-mist rising from his shoulders.\n\nNo physical weapon — casts violet-black void-orbs from outstretched hand.\n\nPOSE (portrait): Head-and-shoulders bust, three-quarter view facing camera-left, calm sympathetic expression.",
+      "status": "ready"
+    },
+    {
+      "id": "boss_void_scholar_south",
+      "category": "boss",
+      "group": "void_scholar",
+      "pose": "south",
+      "file": "../images/spritecook/void_scholar_south.png",
+      "prompt": "Gaunt mid-50s human male, pale skin, sharp cheekbones, completely white eyes glowing faintly with violet inner light, silver-white slicked-back hair pulled into a small knot, neat silver-white goatee.\n\nCracked obsidian academic robe with a high stiff collar embroidered with violet runic glyphs, leather-bound books and tattered scroll-tubes hanging on chains across the chest, plain dark boots. Faint halo of violet-and-black void-mist rising from his shoulders.\n\nNo physical weapon — casts violet-black void-orbs from outstretched hand.\n\nPOSE (south): Facing camera, calm idle, both hands held loosely in front, robe to ankle-length.",
+      "status": "ready"
+    },
+    {
+      "id": "boss_void_scholar_east",
+      "category": "boss",
+      "group": "void_scholar",
+      "pose": "east",
+      "file": "../images/spritecook/void_scholar_east.png",
+      "prompt": "Gaunt mid-50s human male, pale skin, sharp cheekbones, completely white eyes glowing faintly with violet inner light, silver-white slicked-back hair pulled into a small knot, neat silver-white goatee.\n\nCracked obsidian academic robe with a high stiff collar embroidered with violet runic glyphs, leather-bound books and tattered scroll-tubes hanging on chains across the chest, plain dark boots. Faint halo of violet-and-black void-mist rising from his shoulders.\n\nNo physical weapon — casts violet-black void-orbs from outstretched hand.\n\nPOSE (east): Facing east in three-quarter side view, calm idle, robe to ankle-length, books visible on chest.",
+      "status": "ready"
+    },
+    {
+      "id": "boss_void_scholar_east_attack",
+      "category": "boss",
+      "group": "void_scholar",
+      "pose": "east_attack",
+      "file": "../images/spritecook/void_scholar_east_attack.png",
+      "prompt": "Gaunt mid-50s human male, pale skin, sharp cheekbones, completely white eyes glowing faintly with violet inner light, silver-white slicked-back hair pulled into a small knot, neat silver-white goatee.\n\nCracked obsidian academic robe with a high stiff collar embroidered with violet runic glyphs, leather-bound books and tattered scroll-tubes hanging on chains across the chest, plain dark boots. Faint halo of violet-and-black void-mist rising from his shoulders.\n\nNo physical weapon — casts violet-black void-orbs from outstretched hand.\n\nPOSE (east_attack): Facing east, mid-spell-cast: right arm thrust forward hurling a violet-black void-orb the size of his head; left hand pulled back glowing with a violet rune.",
+      "status": "ready"
+    },
+    {
+      "id": "boss_void_scholar_east_spell",
+      "category": "boss",
+      "group": "void_scholar",
+      "pose": "east_spell",
+      "file": "../images/spritecook/void_scholar_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_void_scholar_east_block",
+      "category": "boss",
+      "group": "void_scholar",
+      "pose": "east_block",
+      "file": "../images/spritecook/void_scholar_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_void_scholar_east_ko",
+      "category": "boss",
+      "group": "void_scholar",
+      "pose": "east_ko",
+      "file": "../images/spritecook/void_scholar_east_ko.png",
+      "prompt": "Gaunt mid-50s human male, pale skin, sharp cheekbones, completely white eyes glowing faintly with violet inner light, silver-white slicked-back hair pulled into a small knot, neat silver-white goatee.\n\nCracked obsidian academic robe with a high stiff collar embroidered with violet runic glyphs, leather-bound books and tattered scroll-tubes hanging on chains across the chest, plain dark boots. Faint halo of violet-and-black void-mist rising from his shoulders.\n\nNo physical weapon — casts violet-black void-orbs from outstretched hand.\n\nPOSE (east_ko): Lying defeated on the ground facing east, robe sprawled, eyes closed (no glow), void-mist dispersed to a thin wisp.",
+      "status": "ready"
+    },
+    {
+      "id": "boss_echo_sovereign_portrait",
+      "category": "boss",
+      "group": "echo_sovereign",
+      "pose": "portrait",
+      "file": "../images/spritecook/echo_sovereign_portrait.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_echo_sovereign_south",
+      "category": "boss",
+      "group": "echo_sovereign",
+      "pose": "south",
+      "file": "../images/spritecook/echo_sovereign_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_echo_sovereign_east",
+      "category": "boss",
+      "group": "echo_sovereign",
+      "pose": "east",
+      "file": "../images/spritecook/echo_sovereign_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_echo_sovereign_east_attack",
+      "category": "boss",
+      "group": "echo_sovereign",
+      "pose": "east_attack",
+      "file": "../images/spritecook/echo_sovereign_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_echo_sovereign_east_spell",
+      "category": "boss",
+      "group": "echo_sovereign",
+      "pose": "east_spell",
+      "file": "../images/spritecook/echo_sovereign_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_echo_sovereign_east_block",
+      "category": "boss",
+      "group": "echo_sovereign",
+      "pose": "east_block",
+      "file": "../images/spritecook/echo_sovereign_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_echo_sovereign_east_ko",
+      "category": "boss",
+      "group": "echo_sovereign",
+      "pose": "east_ko",
+      "file": "../images/spritecook/echo_sovereign_east_ko.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_the_first_ember_portrait",
+      "category": "boss",
+      "group": "the_first_ember",
+      "pose": "portrait",
+      "file": "../images/spritecook/the_first_ember_portrait.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_the_first_ember_south",
+      "category": "boss",
+      "group": "the_first_ember",
+      "pose": "south",
+      "file": "../images/spritecook/the_first_ember_south.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_the_first_ember_east",
+      "category": "boss",
+      "group": "the_first_ember",
+      "pose": "east",
+      "file": "../images/spritecook/the_first_ember_east.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_the_first_ember_east_attack",
+      "category": "boss",
+      "group": "the_first_ember",
+      "pose": "east_attack",
+      "file": "../images/spritecook/the_first_ember_east_attack.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_the_first_ember_east_spell",
+      "category": "boss",
+      "group": "the_first_ember",
+      "pose": "east_spell",
+      "file": "../images/spritecook/the_first_ember_east_spell.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_the_first_ember_east_block",
+      "category": "boss",
+      "group": "the_first_ember",
+      "pose": "east_block",
+      "file": "../images/spritecook/the_first_ember_east_block.png",
+      "prompt": null,
+      "status": "pending"
+    },
+    {
+      "id": "boss_the_first_ember_east_ko",
+      "category": "boss",
+      "group": "the_first_ember",
+      "pose": "east_ko",
+      "file": "../images/spritecook/the_first_ember_east_ko.png",
       "prompt": null,
       "status": "pending"
     },
@@ -8781,6 +9033,15 @@
       "status": "candidate"
     },
     {
+      "id": "ref_sheet_silas_veilward",
+      "category": "reference-sheet",
+      "group": "silas_veilward",
+      "pose": "reference_sheet",
+      "file": "../images/spritecook/silas_veilward_east.png",
+      "prompt": "Adult human male wandering mage/sage, about 30-35 years old, short brown hair, neat short brown beard, kind serious face.\n\nGreen hooded cloak open over a darker green long tunic, gray-silver shoulder mantle/cape draped across both shoulders, brown leather belt with small pouches at the chest, brown trousers, brown leather boots. NOT silver-haired, NOT old, NOT a graybeard, NOT armored.\n\nWooden quarterstaff, plain dark wood with no metal cap.",
+      "status": "candidate"
+    },
+    {
       "id": "ref_sheet_sorcerer",
       "category": "reference-sheet",
       "group": "sorcerer",
@@ -8860,6 +9121,15 @@
       "file": "../images/pixellab/turret_bot/portrait.png",
       "prompt": "See generation script — OpenAI gpt-image-2 pipeline, M269.",
       "status": "approved"
+    },
+    {
+      "id": "ref_sheet_void_scholar",
+      "category": "reference-sheet",
+      "group": "void_scholar",
+      "pose": "reference_sheet",
+      "file": "../images/spritecook/void_scholar_portrait.png",
+      "prompt": "Gaunt mid-50s human male, pale skin, sharp cheekbones, completely white eyes glowing faintly with violet inner light, silver-white slicked-back hair pulled into a small knot, neat silver-white goatee.\n\nCracked obsidian academic robe with a high stiff collar embroidered with violet runic glyphs, leather-bound books and tattered scroll-tubes hanging on chains across the chest, plain dark boots. Faint halo of violet-and-black void-mist rising from his shoulders.\n\nNo physical weapon — casts violet-black void-orbs from outstretched hand.",
+      "status": "candidate"
     },
     {
       "id": "ref_sheet_war_dog",
