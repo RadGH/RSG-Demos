@@ -1,7 +1,7 @@
 {
-  "milestone": 424,
+  "milestone": 425,
   "date": "2026-05-06",
-  "summary": "M424 — Extreme-class rebalance pass. Rogue NERFED: Backstab L10 2.50→2.10 + condition bonus 1.2→0.7, Shadow Step L18 2.53→1.9, Death Mark L20 dmgAmp 1.2→0.7. Monk BUFFED: Palm Strike 1.3→1.6, Flurry 0.6→0.8 (×3=2.4), Shadow Step 2.0→2.4. Paladin BUFFED: Holy Strike 1.1→1.5/2.0/2.6, Consecration 0.6→1.0/1.4/1.8. Shadow Dancer Shadow Strike 1.5→1.9 + Assassinate 2.2→2.6. Witch Hunter Silver Bolt 1.6→1.8 + Purge Strike 2.0→2.3. Shaman Spirit Bolt 1.5→1.0 (was hugely overperforming). Demon Hunter Demon Bolt 0.88→1.4 base. Todo List added to docs nav menu.",
+  "summary": "M425 — Companion sim wiring + benchmark improvements. Companions now use _effectiveLevel scaling so a L20 Frost Wyrmling reads as 300 dmg vs the prior 8 dmg. Benchmark dummies now have armor=0 so the chart measures raw class output instead of armor penetration. Re-snapshot generated; Todo List updated with current outliers (Ranger +193%, Paladin -79% suggesting AI skill-priority bug). Todo List link added to docs nav menu (shared/nav-header.js).",
   "categories": [
     "feature"
   ],
