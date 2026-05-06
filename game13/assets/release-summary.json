@@ -1,7 +1,7 @@
 {
-  "milestone": 411,
+  "milestone": 412,
   "date": "2026-05-05",
-  "summary": "M411 — 22-item batch: spell rewire to weapon-damage scaling, priest AI fixes (Call Back guard, surface offense), enemy hover tooltip (replaces click), companion power-tier balance + scaling, hireable-cost normalization (100g/level), trainer +1 button + spendGold crash + companion exclusion, build picker in custom hire + full point spend, levelup overlay opacity, dg-screen stale DOM cleanup, Void Scholar art set, Silas portrait regen, image-review-v2 page workflow callout + approve-command buttons, achievements wired to combat-victory + level-up + zone-unlock, Hell Breach duplicate boss demoted to challenge, level-up XP cap removed, ev-card class+level label, passives panel layout, items-found rarity colors, images.html combat-bg + orphaned section, Ember Plateau node-overlap pass-3 (edge-edge intersection nudge).",
+  "summary": "M412 — passives slot-mult bug fixed (pyro/stormcaller get unique replacement nodes), persistent per-combat statistics with Supabase mirror, attack-speed lines on item + compare tooltips, hero/companion split into separate 4-col HUD rows, fallen-hero ↔ save sync, dragon_hatchling 404 + zone-table cleanup.",
   "categories": [
     "feature"
   ],

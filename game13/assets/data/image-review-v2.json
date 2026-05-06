@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-06T06:37:20.044Z"
+    "generated": "2026-05-06T06:55:23.385Z"
   },
   "characters": [
     {
@@ -5411,20 +5411,6 @@
       "type": "menu",
       "file": "../images/menu_bg/clouds_03.jpg",
       "name": "clouds 03"
-    },
-    {
-      "id": "menu_clouds_04",
-      "category": "background",
-      "type": "menu",
-      "file": "../images/menu_bg/clouds_04.png",
-      "name": "clouds 04"
-    },
-    {
-      "id": "menu_clouds_05",
-      "category": "background",
-      "type": "menu",
-      "file": "../images/menu_bg/clouds_05.png",
-      "name": "clouds 05"
     },
     {
       "id": "menu_clouds_08b",

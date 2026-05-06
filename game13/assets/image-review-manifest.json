@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-06T06:37:19.949Z",
+    "generated": "2026-05-06T06:55:23.300Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (66 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
@@ -9,9 +9,9 @@
       "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (19 bosses)"
     },
     "counts": {
-      "total": 1018,
+      "total": 1016,
       "by_status": {
-        "ready": 740,
+        "ready": 738,
         "pending": 154,
         "orphaned": 60,
         "approved": 20,
@@ -22,7 +22,7 @@
         "companion": 125,
         "boss": 133,
         "enemy": 95,
-        "background": 70,
+        "background": 68,
         "tap-weapons": 9,
         "orphan": 60,
         "reference-sheet": 64
@@ -7949,24 +7949,6 @@
       "group": "menu",
       "pose": null,
       "file": "../images/menu_bg/clouds_03.jpg",
-      "prompt": null,
-      "status": "ready"
-    },
-    {
-      "id": "bg_menu_clouds_04",
-      "category": "background",
-      "group": "menu",
-      "pose": null,
-      "file": "../images/menu_bg/clouds_04.png",
-      "prompt": null,
-      "status": "ready"
-    },
-    {
-      "id": "bg_menu_clouds_05",
-      "category": "background",
-      "group": "menu",
-      "pose": null,
-      "file": "../images/menu_bg/clouds_05.png",
       "prompt": null,
       "status": "ready"
     },
