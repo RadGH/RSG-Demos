@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="rsg-game" content="Emberveil">
+<title>Todo List — Emberveil</title>
+<script src="./_header.js" defer></script>
+<script src="./_footer.js" defer></script>
+<style>
+  body { background: var(--rsg-bg, #0a0608); color: var(--rsg-text, #f0e8d8); font-family: var(--rsg-font-ui, 'Inter',system-ui,sans-serif); margin:0; padding:1rem; max-width:1100px; margin:0 auto; }
+  h1, h2 { color: var(--rsg-accent, #e8a020); font-family: var(--rsg-font-display, 'Cinzel',Georgia,serif); }
+  .card { background: var(--rsg-card,#1a1218); border:1px solid rgba(232,160,32,0.2); border-radius:10px; padding:1rem; margin:0.6rem 0; }
+  .item { padding:0.55rem 0.7rem; margin:0.35rem 0; border-left:3px solid #6080a0; background:#100a0f; border-radius:4px; font-size:0.9rem; line-height:1.45; }
+  .item.high { border-left-color:#e07070; }
+  .item.med { border-left-color:#e0c050; }
+  .item.low { border-left-color:#80b080; }
+  .tag { display:inline-block; font-size:0.7rem; padding:0.1rem 0.4rem; border-radius:3px; background:rgba(232,160,32,0.18); color:#e8c060; margin-right:0.4rem; }
+  .note { opacity:0.75; font-size:0.85rem; line-height:1.5; }
+  code { background:#100a0f; padding:0.05rem 0.3rem; border-radius:3px; color:#a0c0e0; }
+</style>
+</head>
+<body class="ev-themed">
+<h1>Todo List</h1>
+<p class="note">
+  Holding pen for items the user wants to <strong>review before</strong> they get
+  promoted to the wishlist or implementation. Skill audit findings live here, as
+  do design questions, balance flags, and any other "this needs eyes" notes.
+  When an item is acted on, move it to <a href="./wishlist.html">wishlist.html</a>
+  or just delete it.
+</p>
+<p class="note">
+  When the user asks "what should I work on", check this page <strong>plus</strong>
+  <a href="./wishlist.html">wishlist.html</a> and
+  <a href="./brainstorm.html">brainstorm.html</a>.
+</p>
+
+<div class="card">
+  <h2 style="margin-top:0">Skill / Class Audit — M422 baseline</h2>
+  <p class="note">Auto-generated from the M422 Damage Report snapshot. Median is per role at L20 single-target solo. Items flagged at &gt;±25% deviation. <a href="./damage-report.html">Open Damage Report →</a></p>
+
+  <h3 style="color:#c0a070;font-size:0.95rem">Single-Target DPS — median 898 dps at L20 solo</h3>
+  <div class="item high">
+    <span class="tag">CRITICAL</span> <strong>Rogue</strong> — single-target DPS at <strong>+243%</strong> of median (3084 vs 898).
+    Likely the high-crit / poison stack interaction. Investigate skill multipliers and crit-chance gear pack assumptions.
+  </div>
+  <div class="item high">
+    <span class="tag">CRITICAL</span> <strong>Monk</strong> — single-target DPS at <strong>-89%</strong> of median (102 vs 898).
+    Auto-AI may be picking utility/heal skills over damage. Review skill priority + base damageMult of monk skills.
+  </div>
+  <div class="item high">
+    <span class="tag">HIGH</span> <strong>Shadow Dancer</strong> — <strong>-62%</strong> (342 vs 898). Stealth-conditional damage may not trigger under benchmark conditions.
+  </div>
+  <div class="item med">
+    <span class="tag">MED</span> <strong>Witch Hunter</strong> — <strong>-37%</strong> (564 vs 898). Even after Silver Bolt + Purge Strike buff in M421, still under-performs single-target. Consider another small bump or check AI skill priority (Dispel Curse may still be over-cast).
+  </div>
+  <div class="item med">
+    <span class="tag">MED</span> <strong>Ranger</strong> — <strong>+39%</strong> (1248 vs 898). On the high side; not critical, but track if it widens after future passes.
+  </div>
+
+  <h3 style="color:#c0a070;font-size:0.95rem">AoE DPS — median 5682 dps at L20 solo</h3>
+  <div class="item med">
+    <span class="tag">NOTE</span> <strong>Stormcaller</strong> after M421 nerf — single-target now <strong>-37%</strong> below AoE-DPS median. Expected for an AoE specialist; verify aoe.group still leads when full party is sampled.
+  </div>
+  <div class="item low">
+    <span class="tag">CHECK</span> <strong>Pyromancer / Necromancer</strong> — single-target damage at 5682 / 6433 is suspiciously high for nominally AoE classes. May be using single-target spells in the benchmark; not necessarily wrong but worth confirming the AI rotation matches design intent.
+  </div>
+
+  <h3 style="color:#c0a070;font-size:0.95rem">Healers</h3>
+  <div class="item">
+    <span class="tag">OK</span> <strong>Priest</strong> — full-party heal at 2020 (post-M420 buff). Cleric at 10368 (much higher — different spell list). Disparity is intentional (Cleric is heal-specialist) but may want re-check after companion sim runs.
+  </div>
+
+  <h3 style="color:#c0a070;font-size:0.95rem">Tanks</h3>
+  <div class="item high">
+    <span class="tag">HIGH</span> <strong>Paladin</strong> — single-target damage <strong>-95%</strong> below tank median (30 vs 657). Almost no offense in benchmark — verify Paladin skills include damage options at all and that AI picks them.
+  </div>
+
+  <h3 style="color:#c0a070;font-size:0.95rem">Unclassified (need role tag)</h3>
+  <div class="item low">
+    <span class="tag">META</span> Several classes are <code>unclassified</code> in the role map: Mage, Warlock, Demon Hunter, Scavenger, Swashbuckler, Dragon Knight, Oracle, Tactician, Shaman, Sorcerer, Tinker. Decide a role for each and update <code>ROLE_BY_CLASS</code> in <code>scripts/damage-report-snapshot.mjs</code>, then re-snapshot.
+  </div>
+  <div class="item high">
+    <span class="tag">CRITICAL</span> <strong>Shaman</strong> — single-target 4275 (very high, role TBD). <strong>Tinker / Tactician / Scavenger / Dragon Knight</strong> all under 240 dmg single-target — likely missing skills, broken AI, or content gaps.
+  </div>
+</div>
+
+<div class="card">
+  <h2 style="margin-top:0">Process notes</h2>
+  <div class="item high">
+    <span class="tag">CRITICAL</span>
+    <strong>Companion sim accuracy</strong> — companions ARE in the M423 snapshot
+    (role <code>companion</code>) but their damage reads as ~7–9 at L20, far below
+    the in-game observed Frost Wyrmling at 2224 dmg per round-set. Root cause:
+    the snapshot harness instantiates them with no skills, so they fall through
+    to basic-attack-only. Need to wire companion class skills (and their level-
+    scaled HP/DMG profile) into <code>makeCompanion()</code> in
+    <code>scripts/damage-report-snapshot.mjs</code> before the comparison is
+    meaningful.
+  </div>
+  <div class="item low"><strong>Healing/mitigation in sim</strong> — currently we read healing from log events but mitigation is approximated from per-target preMitigation events (only present in some skill paths). Cross-check with the live Combat Report for parity.</div>
+  <div class="item low"><strong>Hit-chance softcap (M418)</strong> — verify in a real combat that L20 parties now see &gt;0% miss rate against base enemies. The user previously reported zero misses.</div>
+</div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-06T07:42:13.933Z"
+    "generated": "2026-05-06T19:29:26.158Z"
   },
   "tools": [
     {
@@ -136,6 +136,15 @@
       "tag": "devtool",
       "milestone": "M210",
       "updated": "2026-04-15",
+      "deprecated": false
+    },
+    {
+      "name": "Damage Report",
+      "href": "damage-report.html",
+      "desc": "Per-class damage, healing, and mitigation graphed across levels and benchmark scenarios. Compare two milestones side-by-side (solid vs dotted) to verify rebalances. Filter by role (single DPS, AoE DPS, tank, healer, support). Snapshots produced by scripts/damage-report-snapshot.mjs.",
+      "tag": "devtool",
+      "milestone": "M422",
+      "updated": "2026-05-06",
       "deprecated": false
     },
     {
@@ -352,6 +361,15 @@
       "tag": "devtool",
       "milestone": "",
       "updated": "2026-04-29",
+      "deprecated": false
+    },
+    {
+      "name": "Todo List",
+      "href": "todo.html",
+      "desc": "Holding pen for items the user wants to review before they land in wishlist or implementation. Skill audit findings (under/over-performing skills) and other pre-commit notes.",
+      "tag": "devtool",
+      "milestone": "M423",
+      "updated": "2026-05-06",
       "deprecated": false
     },
     {
