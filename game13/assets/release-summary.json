@@ -1,7 +1,7 @@
 {
-  "milestone": 413,
-  "date": "2026-05-05",
-  "summary": "M413 — verified pre-existing kill counters (warlock + pyromancer unlocks unblocked), maxMp fallback audit clean, flee-fail already canonical, cloud asset cleanup (deleted clouds_04/05 + thumbs + manifest scrub), milestone-jargon glossary doc.",
+  "milestone": 414,
+  "date": "2026-05-06",
+  "summary": "M414 — combat background now extends to top of party HUD via live --hud-h CSS var (matches caption-bar bottom anchor); last-node forward dashed connector now uses same DOM popup pattern as back-arrow with 'Travel forward to {Zone}' button; gameState._state initialized via factory to break DEFAULT_STATE reference sharing.",
   "categories": [
     "feature"
   ],
