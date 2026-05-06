@@ -1,24 +1,24 @@
-import{e as j,i as B,c as H,u as C,r as A,g as D,m as P,G as R,a as M,b as F,p as K,d as G,A as w,f as N}from"./play-DRpL4P1U.js";import"./savesClient-DUFjgBxb.js";function W(o,e,s={}){const t=o.getContext("2d"),i=window.devicePixelRatio||1,r=o.getBoundingClientRect();(o.width!==r.width*i||o.height!==r.height*i)&&(o.width=r.width*i,o.height=r.height*i),t.setTransform(i,0,0,i,0,0);const n=r.width,a=r.height;t.clearRect(0,0,n,a);const p=s.xKey||"t",b=s.yKey||"dps",m=s.color||"#e8a020",L="#5a4838",z="#8a7a6a",y=Object.assign({top:14,right:14,bottom:32,left:46},s.padding||{}),g=y.left,v=n-y.right,h=a-y.bottom,_=y.top;if(t.strokeStyle=L,t.lineWidth=1,t.beginPath(),t.moveTo(g,_),t.lineTo(g,h),t.lineTo(v,h),t.stroke(),!e||e.length===0){t.fillStyle=z,t.font="12px Inter, system-ui, sans-serif",t.textAlign="center",t.fillText(s.emptyLabel||"No data yet",(g+v)/2,(h+_)/2);return}let f=1/0,u=-1/0,$=0,x=-1/0;for(const l of e){const d=l[p],c=l[b];d<f&&(f=d),d>u&&(u=d),c>x&&(x=c)}u===f&&(u=f+1),x===0&&(x=1);const k=l=>g+(l-f)*(v-g)/(u-f),T=l=>h-(l-$)*(h-_)/(x-$);t.fillStyle=z,t.font="10px JetBrains Mono, monospace",t.textAlign="right",t.textBaseline="middle";const I=4;for(let l=0;l<=I;l++){const d=$+(x-$)*(l/I),c=T(d);t.strokeStyle=l===0?L:"rgba(90,72,56,0.45)",t.beginPath(),t.moveTo(g,c),t.lineTo(v,c),t.stroke(),t.fillText(O(d),g-6,c)}t.textAlign="center",t.textBaseline="top";for(let l=0;l<=3;l++){const d=f+(u-f)*(l/3),c=k(d);t.fillText(`${Math.round(d)}s`,c,h+6)}t.strokeStyle=m,t.lineWidth=2,t.beginPath();for(let l=0;l<e.length;l++){const d=k(e[l][p]),c=T(e[l][b]);l===0?t.moveTo(d,c):t.lineTo(d,c)}t.stroke(),t.lineTo(k(e[e.length-1][p]),h),t.lineTo(k(e[0][p]),h),t.closePath();const S=t.createLinearGradient(0,_,0,h);S.addColorStop(0,E(m,.3)),S.addColorStop(1,E(m,.02)),t.fillStyle=S,t.fill(),s.title&&(t.fillStyle="#e8a020",t.font="bold 12px Inter, system-ui, sans-serif",t.textAlign="left",t.textBaseline="top",t.fillText(s.title,g,0))}function O(o){return o>=1e3?(o/1e3).toFixed(1)+"k":Math.abs(o)<1?o.toFixed(2):Math.round(o).toString()}function E(o,e){const s=o.match(/^#([0-9a-f]{6})$/i);if(!s)return`rgba(232,160,32,${e})`;const t=parseInt(s[1],16);return`rgba(${t>>16&255},${t>>8&255},${t&255},${e})`}class V{constructor(e,s,t={}){this.manager=e,this.audio=s,this.noGameMenuEsc=!0,this._tab=t.tab||"party",this._selectedCharId=null,this._filterLog="all",this._lifetimeOnly=!!t.lifetimeOnly}onEnter(){j(),B("stats-styles",q),this._el=H("div","stats-screen"),document.body.appendChild(this._el),this._lifetimeOnly&&(this._tab="lifetime"),this._render()}onExit(){this._el&&C(this._el),A(this._el),this._el=null}destroy(){this._el&&C(this._el),A(this._el),this._el=null}update(){}draw(){}_render(){const e=this._lifetimeOnly?[["lifetime","Lifetime"],["achievements","Achievements"]]:[["party","Party"],["lifetime","Lifetime"],["achievements","Achievements"]],s=D();let t="Last saved: never";if(s!=null&&s.savedAt){const i=new Date(s.savedAt),r=String(i.getHours()).padStart(2,"0"),n=String(i.getMinutes()).padStart(2,"0"),a=String(i.getSeconds()).padStart(2,"0");t=`Last saved: ${i.toISOString().slice(0,10)} ${r}:${n}:${a}`}this._el.innerHTML=`
+import{e as D,i as R,c as H,u as L,r as M,g as A,m as P,G as B,a as E,b as F,p as K,d as G,A as z,f as N}from"./play-Upi_xDrz.js";import"./savesClient-DUFjgBxb.js";function W(n,e,s={}){const t=n.getContext("2d"),a=window.devicePixelRatio||1,r=n.getBoundingClientRect();(n.width!==r.width*a||n.height!==r.height*a)&&(n.width=r.width*a,n.height=r.height*a),t.setTransform(a,0,0,a,0,0);const d=r.width,c=r.height;t.clearRect(0,0,d,c);const p=s.xKey||"t",i=s.yKey||"dps",o=s.color||"#e8a020",y="#5a4838",_="#8a7a6a",b=Object.assign({top:14,right:14,bottom:32,left:46},s.padding||{}),f=b.left,$=d-b.right,m=c-b.bottom,k=b.top;if(t.strokeStyle=y,t.lineWidth=1,t.beginPath(),t.moveTo(f,k),t.lineTo(f,m),t.lineTo($,m),t.stroke(),!e||e.length===0){t.fillStyle=_,t.font="12px Inter, system-ui, sans-serif",t.textAlign="center",t.fillText(s.emptyLabel||"No data yet",(f+$)/2,(m+k)/2);return}let u=1/0,x=-1/0,w=0,v=-1/0;for(const l of e){const h=l[p],g=l[i];h<u&&(u=h),h>x&&(x=h),g>v&&(v=g)}x===u&&(x=u+1),v===0&&(v=1);const C=l=>f+(l-u)*($-f)/(x-u),T=l=>m-(l-w)*(m-k)/(v-w);t.fillStyle=_,t.font="10px JetBrains Mono, monospace",t.textAlign="right",t.textBaseline="middle";const I=4;for(let l=0;l<=I;l++){const h=w+(v-w)*(l/I),g=T(h);t.strokeStyle=l===0?y:"rgba(90,72,56,0.45)",t.beginPath(),t.moveTo(f,g),t.lineTo($,g),t.stroke(),t.fillText(O(h),f-6,g)}t.textAlign="center",t.textBaseline="top";for(let l=0;l<=3;l++){const h=u+(x-u)*(l/3),g=C(h);t.fillText(`${Math.round(h)}s`,g,m+6)}t.strokeStyle=o,t.lineWidth=2,t.beginPath();for(let l=0;l<e.length;l++){const h=C(e[l][p]),g=T(e[l][i]);l===0?t.moveTo(h,g):t.lineTo(h,g)}t.stroke(),t.lineTo(C(e[e.length-1][p]),m),t.lineTo(C(e[0][p]),m),t.closePath();const S=t.createLinearGradient(0,k,0,m);S.addColorStop(0,j(o,.3)),S.addColorStop(1,j(o,.02)),t.fillStyle=S,t.fill(),s.title&&(t.fillStyle="#e8a020",t.font="bold 12px Inter, system-ui, sans-serif",t.textAlign="left",t.textBaseline="top",t.fillText(s.title,f,0))}function O(n){return n>=1e3?(n/1e3).toFixed(1)+"k":Math.abs(n)<1?n.toFixed(2):Math.round(n).toString()}function j(n,e){const s=n.match(/^#([0-9a-f]{6})$/i);if(!s)return`rgba(232,160,32,${e})`;const t=parseInt(s[1],16);return`rgba(${t>>16&255},${t>>8&255},${t&255},${e})`}class V{constructor(e,s,t={}){this.manager=e,this.audio=s,this.noGameMenuEsc=!0,this._tab=t.tab||"party",this._selectedCharId=null,this._filterLog="all",this._lifetimeOnly=!!t.lifetimeOnly}onEnter(){D(),R("stats-styles",q),this._el=H("div","stats-screen"),document.body.appendChild(this._el),this._lifetimeOnly&&(this._tab="lifetime"),this._render()}onExit(){this._el&&L(this._el),M(this._el),this._el=null}destroy(){this._el&&L(this._el),M(this._el),this._el=null}update(){}draw(){}_render(){const e=this._lifetimeOnly?[["lifetime","Lifetime"],["achievements","Achievements"]]:[["party","Party"],["lifetime","Lifetime"],["achievements","Achievements"]],s=A();let t="Last saved: never";if(s!=null&&s.savedAt){const a=new Date(s.savedAt),r=String(a.getHours()).padStart(2,"0"),d=String(a.getMinutes()).padStart(2,"0"),c=String(a.getSeconds()).padStart(2,"0");t=`Last saved: ${a.toISOString().slice(0,10)} ${r}:${d}:${c}`}this._el.innerHTML=`
       <div class="st-header">
         <div class="st-title">Statistics</div>
         <div class="st-tabs">
-          ${e.map(([i,r])=>`<button class="st-tab${this._tab===i?" active":""}" data-tab="${i}">${r}</button>`).join("")}
+          ${e.map(([a,r])=>`<button class="st-tab${this._tab===a?" active":""}" data-tab="${a}">${r}</button>`).join("")}
         </div>
         <button class="st-close" id="st-close">✕ Close</button>
       </div>
       <div class="st-saved-at" style="font-size:11px;opacity:0.6;padding:2px 12px;text-align:right;">${t}</div>
       <div class="st-body" id="st-body">${this._renderTab()}</div>
-    `,this._el.querySelector("#st-close").addEventListener("click",()=>{this.audio.playSfx("click"),this.manager.pop()}),this._el.querySelectorAll(".st-tab").forEach(i=>i.addEventListener("click",()=>{this.audio.playSfx("click"),this._tab=i.dataset.tab,this._render()})),this._postRender(),C(this._el),P(this._el,{layout:"vertical",focusFirst:!1,onEscape:()=>{this.audio.playSfx("click"),this.manager.pop()}})}_renderTab(){return this._tab==="party"?this._renderParty():this._tab==="lifetime"?this._renderLifetime():this._tab==="achievements"?this._renderAchievements():""}_renderParty(){const e=R.get(),s=[...e.party||[],...e.companions||[]];if(!s.length)return'<div class="st-empty">No party members yet.</div>';(!this._selectedCharId||!s.find(a=>a.id===this._selectedCharId))&&(this._selectedCharId=s[0].id);const t=s.find(a=>a.id===this._selectedCharId),i=M(t.id),r=F(t.id),n=this._filterLog==="all"?r:r.filter(a=>a.type===this._filterLog);return`
+    `,this._el.querySelector("#st-close").addEventListener("click",()=>{this.audio.playSfx("click"),this.manager.pop()}),this._el.querySelectorAll(".st-tab").forEach(a=>a.addEventListener("click",()=>{this.audio.playSfx("click"),this._tab=a.dataset.tab,this._render()})),this._postRender(),L(this._el),P(this._el,{layout:"vertical",focusFirst:!1,onEscape:()=>{this.audio.playSfx("click"),this.manager.pop()}})}_renderTab(){return this._tab==="party"?this._renderParty():this._tab==="lifetime"?this._renderLifetime():this._tab==="achievements"?this._renderAchievements():""}_renderParty(){const e=B.get(),s=[...e.party||[],...e.companions||[]];if(!s.length)return'<div class="st-empty">No party members yet.</div>';(!this._selectedCharId||!s.find(i=>i.id===this._selectedCharId))&&(this._selectedCharId=s[0].id);const t=s.find(i=>i.id===this._selectedCharId),a=E(t.id),r=F(t.id),d=this._filterLog==="all"?r:r.filter(i=>i.type===this._filterLog),p=(D().combatHistory||[]).filter(i=>(i.perChar||[]).some(o=>o.id===t.id)).slice(-15).reverse();return`
       <div class="st-party-grid">
         <div class="st-roster">
-          ${s.map(a=>`
-            <button class="st-roster-row${a.id===this._selectedCharId?" active":""}" data-char="${a.id}">
-              <span class="st-roster-portrait">${K(a,36,"st-portrait")}</span>
+          ${s.map(i=>`
+            <button class="st-roster-row${i.id===this._selectedCharId?" active":""}" data-char="${i.id}">
+              <span class="st-roster-portrait">${K(i,36,"st-portrait")}</span>
               <span class="st-roster-name">
-                <span class="rn">${a.name}</span>
-                <span class="rc">${a.cls||a.class||"companion"} · L${a.level||1}</span>
+                <span class="rn">${i.name}</span>
+                <span class="rc">${i.cls||i.class||"companion"} · L${i.level||1}</span>
               </span>
-              <span class="st-roster-kills">${M(a.id).kills}<span class="lk">k</span></span>
+              <span class="st-roster-kills">${E(i.id).kills}<span class="lk">k</span></span>
             </button>
           `).join("")}
         </div>
@@ -27,23 +27,37 @@ import{e as j,i as B,c as H,u as C,r as A,g as D,m as P,G as R,a as M,b as F,p a
             <div class="st-detail-name">${t.name} <span class="st-detail-class">— ${t.cls||t.class||""} L${t.level||1}</span></div>
           </div>
           <div class="st-stat-grid">
-            ${this._statCell("Damage Dealt",i.damageDealt)}
-            ${this._statCell("Damage Taken",i.damageTaken)}
-            ${this._statCell("Kills",i.kills)}
-            ${this._statCell("Crits",i.crits)}
-            ${this._statCell("Heals Given",i.heals)}
-            ${this._statCell("Heals Received",i.healsReceived)}
-            ${this._statCell("Most Damage Hit",i.mostDamageHit)}
-            ${this._statCell("Longest Streak",i.longestKillStreak)}
-            ${this._statCell("Near-Deaths",i.nearDeaths)}
-            ${this._statCell("Deaths",i.deaths)}
-            ${this._statCell("Dodges",i.dodges)}
-            ${this._statCell("Blocks",i.blocks)}
-            ${this._statCell("Fights Won",i.fightsWon)}
-            ${this._statCell("Fights Lost",i.fightsLost)}
+            ${this._statCell("Damage Dealt",a.damageDealt)}
+            ${this._statCell("Damage Taken",a.damageTaken)}
+            ${this._statCell("Kills",a.kills)}
+            ${this._statCell("Crits",a.crits)}
+            ${this._statCell("Heals Given",a.heals)}
+            ${this._statCell("Heals Received",a.healsReceived)}
+            ${this._statCell("Most Damage Hit",a.mostDamageHit)}
+            ${this._statCell("Longest Streak",a.longestKillStreak)}
+            ${this._statCell("Near-Deaths",a.nearDeaths)}
+            ${this._statCell("Deaths",a.deaths)}
+            ${this._statCell("Dodges",a.dodges)}
+            ${this._statCell("Blocks",a.blocks)}
+            ${this._statCell("Fights Won",a.fightsWon)}
+            ${this._statCell("Fights Lost",a.fightsLost)}
           </div>
           <div class="st-section-title">DPS over time (this run)</div>
           <div class="st-chart-wrap"><canvas id="st-dps-chart" class="st-chart"></canvas></div>
+          <div class="st-section-title">Recent Combats (this run)</div>
+          <div class="st-combat-history">
+            ${p.length?p.map(i=>{const o=(i.perChar||[]).find(f=>f.id===t.id);if(!o)return"";const y=new Date(i.ts).toLocaleString(),_=i.won?'<span class="ch-win">Win</span>':'<span class="ch-loss">Loss</span>',b=o.mvp?'<span class="ch-mvp">MVP</span>':"";return`
+                <div class="st-ch-row">
+                  <div class="ch-meta">${_}${b}<span class="ch-zone">${i.zoneId||"—"}</span><span class="ch-time">${y} · ${i.durationSec}s</span></div>
+                  <div class="ch-stats">
+                    <span><b>${this._fmt(o.dmgDealt)}</b> dmg</span>
+                    <span><b>${this._fmt(o.dmgTaken)}</b> taken</span>
+                    <span><b>${this._fmt(o.heals)}</b> healed</span>
+                    <span><b>${o.kills}</b> kills</span>
+                    ${o.deaths?`<span class="ch-died">died ${o.deaths}×</span>`:""}
+                  </div>
+                </div>`}).join(""):'<div class="st-empty">No combats logged yet.</div>'}
+          </div>
           <div class="st-section-title">Story Log
             <select class="st-filter" id="st-log-filter">
               <option value="all"${this._filterLog==="all"?" selected":""}>all</option>
@@ -55,17 +69,17 @@ import{e as j,i as B,c as H,u as C,r as A,g as D,m as P,G as R,a as M,b as F,p a
             </select>
           </div>
           <div class="st-log">
-            ${n.length?n.map(a=>`
-              <div class="st-log-row" data-type="${a.type}">
-                <span class="st-log-tag">${this._logTagLabel(a.type)}</span>
-                <span class="st-log-text">${a.summary}</span>
-                <span class="st-log-meta">${a.zoneId||""}</span>
+            ${d.length?d.map(i=>`
+              <div class="st-log-row" data-type="${i.type}">
+                <span class="st-log-tag">${this._logTagLabel(i.type)}</span>
+                <span class="st-log-text">${i.summary}</span>
+                <span class="st-log-meta">${i.zoneId||""}</span>
               </div>
             `).join(""):'<div class="st-empty">No entries.</div>'}
           </div>
         </div>
       </div>
-    `}_statCell(e,s){return`<div class="st-cell"><div class="st-cell-label">${e}</div><div class="st-cell-value">${this._fmt(s)}</div></div>`}_fmt(e){return typeof e!="number"?String(e):e>=1e6?(e/1e6).toFixed(1)+"M":e>=1e3?(e/1e3).toFixed(1)+"k":Math.round(e).toString()}_logTagLabel(e){return e==="major_kill"?"Boss":e==="elite_kill"?"Elite":e==="near_death"?"Near Death":e==="death"?"Fell":e==="story"?"Story":e}_renderLifetime(){const e=D(),s=e.global||{},t=(e.runHistory||[]).slice(0,20);return`
+    `}_statCell(e,s){return`<div class="st-cell"><div class="st-cell-label">${e}</div><div class="st-cell-value">${this._fmt(s)}</div></div>`}_fmt(e){return typeof e!="number"?String(e):e>=1e6?(e/1e6).toFixed(1)+"M":e>=1e3?(e/1e3).toFixed(1)+"k":Math.round(e).toString()}_logTagLabel(e){return e==="major_kill"?"Boss":e==="elite_kill"?"Elite":e==="near_death"?"Near Death":e==="death"?"Fell":e==="story"?"Story":e}_renderLifetime(){const e=A(),s=e.global||{},t=(e.runHistory||[]).slice(0,20);return`
       <div class="st-lifetime">
         <div class="st-section-title">Lifetime totals (across all runs)</div>
         <div class="st-stat-grid">
@@ -85,23 +99,23 @@ import{e as j,i as B,c as H,u as C,r as A,g as D,m as P,G as R,a as M,b as F,p a
         <div class="st-section-title">Run history</div>
         ${t.length?`
           <div class="st-runlist">
-            ${t.map(i=>{var r,n,a,p;return`
+            ${t.map(a=>{var r,d,c,p;return`
               <div class="st-run-row">
-                <span class="st-run-date">${new Date(i.startedAt).toISOString().slice(0,10)}</span>
-                <span class="st-run-label">${i.label||"Run"}</span>
-                <span class="st-run-kpi">${((r=i.global)==null?void 0:r.totalKills)||0} kills</span>
-                <span class="st-run-kpi">${this._fmt(((n=i.global)==null?void 0:n.totalDamage)||0)} dmg</span>
-                <span class="st-run-kpi">${((a=i.global)==null?void 0:a.fightsWon)||0}-${((p=i.global)==null?void 0:p.fightsLost)||0}</span>
+                <span class="st-run-date">${new Date(a.startedAt).toISOString().slice(0,10)}</span>
+                <span class="st-run-label">${a.label||"Run"}</span>
+                <span class="st-run-kpi">${((r=a.global)==null?void 0:r.totalKills)||0} kills</span>
+                <span class="st-run-kpi">${this._fmt(((d=a.global)==null?void 0:d.totalDamage)||0)} dmg</span>
+                <span class="st-run-kpi">${((c=a.global)==null?void 0:c.fightsWon)||0}-${((p=a.global)==null?void 0:p.fightsLost)||0}</span>
               </div>
             `}).join("")}
           </div>
         `:'<div class="st-empty">No completed runs archived yet.</div>'}
       </div>
-    `}_renderAchievements(){const{current:e,life:s}=G(),t=w.length;return`
+    `}_renderAchievements(){const{current:e,life:s}=G(),t=z.length;return`
       <div class="st-ach">
-        <div class="st-section-title">Achievements <span class="st-progress">${w.filter(r=>{var n,a;return((n=e[r.id])==null?void 0:n.unlocked)||((a=s[r.id])==null?void 0:a.unlocked)}).length} / ${t}</span></div>
+        <div class="st-section-title">Achievements <span class="st-progress">${z.filter(r=>{var d,c;return((d=e[r.id])==null?void 0:d.unlocked)||((c=s[r.id])==null?void 0:c.unlocked)}).length} / ${t}</span></div>
         <div class="st-ach-grid">
-          ${w.map(r=>{var b,m;const n=!!((b=s[r.id])!=null&&b.unlocked),a=!!((m=e[r.id])!=null&&m.unlocked),p=n||a;return`
+          ${z.map(r=>{var i,o;const d=!!((i=s[r.id])!=null&&i.unlocked),c=!!((o=e[r.id])!=null&&o.unlocked),p=d||c;return`
               <div class="st-ach-card${p?" un":""} t-${r.tier}">
                 <div class="st-ach-tier">${r.tier.toUpperCase()}</div>
                 <div class="st-ach-name">${r.name}</div>
@@ -177,4 +191,17 @@ import{e as j,i as B,c as H,u as C,r as A,g as D,m as P,G as R,a as M,b as F,p a
 .st-ach-desc { font-size: 0.74rem; color: #c0b090; line-height: 1.4; }
 .st-ach-status { font-size: 0.7rem; color: #8a7a6a; margin-top: 4px; }
 .st-ach-card.un .st-ach-status { color: #e8a020; }
+
+/* M415 Recent Combats */
+.st-combat-history { display: flex; flex-direction: column; gap: 4px; max-height: 280px; overflow-y: auto; }
+.st-ch-row { padding: 6px 8px; background: rgba(0,0,0,0.25); border-radius: 4px; font-size: 0.78rem; }
+.st-ch-row .ch-meta { display: flex; align-items: center; gap: 8px; font-size: 0.72rem; color: #8a7a6a; margin-bottom: 3px; }
+.st-ch-row .ch-meta .ch-zone { color: #c0a070; }
+.st-ch-row .ch-meta .ch-time { margin-left: auto; font-style: italic; }
+.st-ch-row .ch-stats { display: flex; flex-wrap: wrap; gap: 10px; color: #c0b090; }
+.st-ch-row .ch-stats b { color: #f0e8d8; }
+.ch-win { color: #60c080; font-weight: 700; }
+.ch-loss { color: #c08060; font-weight: 700; }
+.ch-mvp { color: #ffd060; font-weight: 700; font-size: 0.68rem; padding: 1px 5px; background: rgba(232,160,32,0.18); border-radius: 3px; }
+.ch-died { color: #c04030; }
 `;export{V as StatsScreen};

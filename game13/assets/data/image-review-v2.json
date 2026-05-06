@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-06T05:10:09.375Z"
+    "generated": "2026-05-06T06:37:20.044Z"
   },
   "characters": [
     {
@@ -4488,7 +4488,7 @@
       "category": "companion",
       "group": "dragon_hatchling",
       "pose": "portrait",
-      "file": "../images/portraits/dragon_hatchling.png",
+      "file": "../images/spritecook/dragon_hatchling_portrait.png",
       "prompt": null
     },
     {

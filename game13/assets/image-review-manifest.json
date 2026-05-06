@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-06T05:10:09.287Z",
+    "generated": "2026-05-06T06:37:19.949Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (66 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
@@ -5140,7 +5140,7 @@
       "category": "companion",
       "group": "dragon_hatchling",
       "pose": "portrait",
-      "file": "../images/portraits/dragon_hatchling.png",
+      "file": "../images/spritecook/dragon_hatchling_portrait.png",
       "prompt": null,
       "status": "ready"
     },
