@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-07T21:11:48.022Z",
+  "generated": "2026-05-06T23:03:00.583Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,34 +28,6 @@
     }
   ],
   "entries": [
-    {
-      "milestone": 428,
-      "date": "2026-05-06",
-      "summary": "M428 — Border Roads 8-goblin warband cut to 3 (Goblin Vanguard); crowded fights now exclusive to Acts 4+. AI rewrite: hero AI now picks damage skills by expected damage (mult × hits × target count) instead of mp cost as proxy — Mage now correctly favors Fireball over Magic Missile against 6 targets. Mage Reality Shatter L20 4.5×→2.5×, Conflagration L15 2.5×→2.0× (Mage went +112%→+15%). Rogue Backstab L10 1.80→1.50 + condition bonus 0.7→0.5. Monk Palm Strike 1.8→2.0 + Flurry 1.0×3→1.2×3. Druid + Shaman classified as new 'hybrid_dps' role. Damage Report page filter updated.",
-      "items": [
-        {
-          "text": "M428 — Border Roads 8-goblin warband cut to 3 (Goblin Vanguard); crowded fights now exclusive to Acts 4+. AI rewrite: hero AI now picks damage skills by expected damage (mult × hits × target count) instead of mp cost as proxy — Mage now correctly favors Fireball over Magic Missile against 6 targets. Mage Reality Shatter L20 4.5×→2.5×, Conflagration L15 2.5×→2.0× (Mage went +112%→+15%). Rogue Backstab L10 1.80→1.50 + condition bonus 0.7→0.5. Monk Palm Strike 1.8→2.0 + Flurry 1.0×3→1.2×3. Druid + Shaman classified as new 'hybrid_dps' role. Damage Report page filter updated.",
-          "categories": [
-            "Feature",
-            "Balance"
-          ]
-        }
-      ]
-    },
-    {
-      "milestone": 427,
-      "date": "2026-05-06",
-      "summary": "M427 — Companion star-rating now affects damage (P1=0.33×, P3=1.0×, P5=1.67× per-level stat scaling); War Dog/Shadow Cat/Dire Wolf/Ember Drake/Frost Wyrmling spread 457/688/970/1140/1292 at L20 (was all ~926). Live combat parity update so the rating shapes in-game numbers too. Skill rebalance: Mage Arcane Surge 4.0/5.5/7.0→2.5/3.5/4.5, Magic Missile L10 1.0×6→0.8×5; Fighter Killing Blow 2.6→2.2; Rogue Backstab L10 2.10→1.80, Shadow Step 1.27→1.10; Runesmith Sovereign Rune 2.4→2.0, Rune of Might 0.25/0.4→0.20/0.30; Monk Palm Strike 1.6→1.8, Flurry 0.8×3→1.0×3, Shadow Step 2.4→2.8; Scavenger Treasure Hunter 1.8→2.2, Big Score 2.5→3.0; Warlock Corruption 0.6→0.8, Hellfire 1.3→1.6.",
-      "items": [
-        {
-          "text": "M427 — Companion star-rating now affects damage (P1=0.33×, P3=1.0×, P5=1.67× per-level stat scaling); War Dog/Shadow Cat/Dire Wolf/Ember Drake/Frost Wyrmling spread 457/688/970/1140/1292 at L20 (was all ~926). Live combat parity update so the rating shapes in-game numbers too. Skill rebalance: Mage Arcane Surge 4.0/5.5/7.0→2.5/3.5/4.5, Magic Missile L10 1.0×6→0.8×5; Fighter Killing Blow 2.6→2.2; Rogue Backstab L10 2.10→1.80, Shadow Step 1.27→1.10; Runesmith Sovereign Rune 2.4→2.0, Rune of Might 0.25/0.4→0.20/0.30; Monk Palm Strike 1.6→1.8, Flurry 0.8×3→1.0×3, Shadow Step 2.4→2.8; Scavenger Treasure Hunter 1.8→2.2, Big Score 2.5→3.0; Warlock Corruption 0.6→0.8, Hellfire 1.3→1.6.",
-          "categories": [
-            "Feature",
-            "Balance"
-          ]
-        }
-      ]
-    },
     {
       "milestone": 426,
       "date": "2026-05-06",

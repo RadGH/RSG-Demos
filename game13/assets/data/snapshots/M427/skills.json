@@ -1543,10 +1543,10 @@
     "cooldown": 0,
     "unlockLevel": 1,
     "damageStat": "damage",
-    "damageMult": 2,
+    "damageMult": 1.8,
     "damageCategory": null,
     "aoe": "single",
-    "description": "A focused palm strike for 200% Light damage.",
+    "description": "A focused palm strike for 180% Light damage.",
     "talents": [
       "ps_chi",
       "ps_stun"
@@ -1561,10 +1561,10 @@
     "cooldown": 0,
     "unlockLevel": 5,
     "damageStat": "damage",
-    "damageMult": 1.2,
+    "damageMult": 1,
     "damageCategory": null,
     "aoe": "single",
-    "description": "Three rapid strikes, each 120% Light damage.",
+    "description": "Three rapid strikes, each 100% Light damage.",
     "talents": [
       "fl_extra",
       "fl_bleed"
