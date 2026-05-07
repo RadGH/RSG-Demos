@@ -1,7 +1,7 @@
 {
-  "milestone": 429,
+  "milestone": 430,
   "date": "2026-05-07",
-  "summary": "M429 — Recommended-weapon scoring now uses Total Damage with the wielder's primary attribute (no more Runesmiths auto-equipping wands), tooltips show Offense/Defense/Utility ratings, and the battle grid is rebuilt as a column-slot system that drops empty columns and never lets sprites overlap.",
+  "summary": "M430 — Battle grid layout fix: ally zone hard-clamped to left 30%, enemy zone to right 50–94%; within each column every unit now gets a unique (x, y) so heroes and companions never overlap. Sprites are scaled to fit narrowest column on small screens.",
   "categories": [
     "feature"
   ],
