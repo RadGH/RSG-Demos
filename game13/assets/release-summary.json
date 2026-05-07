@@ -1,7 +1,7 @@
 {
-  "milestone": 428,
-  "date": "2026-05-06",
-  "summary": "M428 — Border Roads 8-goblin warband cut to 3 (Goblin Vanguard); crowded fights now exclusive to Acts 4+. AI rewrite: hero AI now picks damage skills by expected damage (mult × hits × target count) instead of mp cost as proxy — Mage now correctly favors Fireball over Magic Missile against 6 targets. Mage Reality Shatter L20 4.5×→2.5×, Conflagration L15 2.5×→2.0× (Mage went +112%→+15%). Rogue Backstab L10 1.80→1.50 + condition bonus 0.7→0.5. Monk Palm Strike 1.8→2.0 + Flurry 1.0×3→1.2×3. Druid + Shaman classified as new 'hybrid_dps' role. Damage Report page filter updated.",
+  "milestone": 429,
+  "date": "2026-05-07",
+  "summary": "M429 — Recommended-weapon scoring now uses Total Damage with the wielder's primary attribute (no more Runesmiths auto-equipping wands), tooltips show Offense/Defense/Utility ratings, and the battle grid is rebuilt as a column-slot system that drops empty columns and never lets sprites overlap.",
   "categories": [
     "feature"
   ],
