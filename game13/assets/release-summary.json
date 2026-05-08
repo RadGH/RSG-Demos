@@ -1,7 +1,7 @@
 {
-  "milestone": 436,
+  "milestone": 437,
   "date": "2026-05-07",
-  "summary": "M436 — Removed 'New Combat UI (Beta)' settings toggle (no alternate render path remains after M434/M435). isUiOverhaulEnabled() now returns true unconditionally. Removed vibej.am 2026 jam widget from index.html, play.html, contact.html, and the RSG Demos generate_pages_index.js. Restored the title-screen login UI (LOGIN_UI_DISABLED=false). iPhone 14 Pro front page: hero-stats grid forced to 3 columns (was 2 + orphan), top spacing above the '6 ACTS · 30 CLASSES · 35 COMPANIONS' tag tightened (24px top padding, 18px headline gap).",
+  "summary": "M437 — iPhone hero shrink. .hero min-height removed (was 100vh) and .hero-content min-height zeroed on ≤480px viewports; padding tightened to 60px top + 60px bottom with a 24px content gap so the hero sits at content height instead of leaving a tall empty band before scroll.",
   "categories": [
     "feature"
   ],
