@@ -1,7 +1,7 @@
 {
-  "milestone": 438,
+  "milestone": 439,
   "date": "2026-05-08",
-  "summary": "M438 — Mobile combat: hide the active-actor 'hot card' frame (portrait + name + HP/MP + status row) — it was covering the bottom row of sprites and the bottom party HUD already shows party HP. Spell rail still floats below. Desktop unchanged. Also removed the legacy colored circle status indicators painted above each combatant's HP bar — the M434 DOM particle overlay (fire/poison/bleed/stun icons) is now the only status visualization on canvas.",
+  "summary": "M439 — Battle status icons lifted above HP bar. Loot list shown one item per line with rarity colors (was comma-joined). World map rebuilt as a strict FTL-style staggered grid: every non-prologue zone now has 5-7 interior columns × 3 rows with a column-parity offset; every node is filled (filler 'Wandering Foes' combat encounters added where the authored zone was short); edges only go column c → c+1 (no backwards travel); per-column edge crossings prevented by a sign-test; total in+out connections capped at 4; dungeons + hidden bosses remain as single-edge off-shoots above/below the main band. Verified across all 12 act zones: zero >4-degree nodes, zero backwards edges, zero broken exits, zero node-position duplicates.",
   "categories": [
     "feature"
   ],
