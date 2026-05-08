@@ -1,7 +1,7 @@
 {
-  "milestone": 439,
+  "milestone": 440,
   "date": "2026-05-08",
-  "summary": "M439 — Battle status icons lifted above HP bar. Loot list shown one item per line with rarity colors (was comma-joined). World map rebuilt as a strict FTL-style staggered grid: every non-prologue zone now has 5-7 interior columns × 3 rows with a column-parity offset; every node is filled (filler 'Wandering Foes' combat encounters added where the authored zone was short); edges only go column c → c+1 (no backwards travel); per-column edge crossings prevented by a sign-test; total in+out connections capped at 4; dungeons + hidden bosses remain as single-edge off-shoots above/below the main band. Verified across all 12 act zones: zero >4-degree nodes, zero backwards edges, zero broken exits, zero node-position duplicates.",
+  "summary": "M440 — True FTL diamond grid. ZONE_PROFILES table assigns each zone a (length, height) — Act 1a 5×3, Act 1b 6×3, Act 2a 6×4 etc. Column row-counts follow profile[c]=min(H,c+1,L-c) for a clean 1→2→3→4→3→2→1 taper. Adjacent columns differ by at most 1 row, so edges can only step ±1 row vertically — no jumps over center rows. Filler combat nodes inserted automatically when the authored trunk is shorter than the grid. Y range clamped to [0.10,0.84] so node labels stop getting cut off at the bottom edge. Removed the M406 detangle pass that was nudging snapped nodes back off-grid (root cause of the 'Shady Wanderer jumps to top row' bug). Verified across 12 act zones: zero >1-row jumps, zero backwards edges, zero degree-cap violations, zero broken exits.",
   "categories": [
     "feature"
   ],
