@@ -1,7 +1,7 @@
 {
-  "milestone": 430,
+  "milestone": 431,
   "date": "2026-05-07",
-  "summary": "M430 — Battle grid layout fix: ally zone hard-clamped to left 30%, enemy zone to right 50–94%; within each column every unit now gets a unique (x, y) so heroes and companions never overlap. Sprites are scaled to fit narrowest column on small screens.",
+  "summary": "M431 — Battle grid: sprites are now sized to actually fit between adjacent columns. Hero column at 10%, companion at 34% (94px apart on phones), enemies pushed to 86% so a single-group encounter reaches the right edge. Within-column x-shift dropped to ~3px so heroes form a clean vertical column with y-stagger only — no more party-member-3 overlapping companion-2.",
   "categories": [
     "feature"
   ],

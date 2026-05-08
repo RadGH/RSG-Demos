@@ -774,6 +774,22 @@
   <button class="filter-btn active" data-cat="all">All</button>
 </div>
 
+<!-- M376 — Live Image Manifest. Generated from disk by
+     scripts/build-images-manifest.cjs and consumed at page load. This is the
+     authoritative listing of every image file in public/images/. Older
+     assets.json-driven sections appear below for legacy data (reports etc.). -->
+<section id="live-manifest" style="max-width:1200px;margin:0 auto 28px;padding:0 24px;">
+  <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 14px;">
+    <h2 style="font-family:var(--font-display);font-size:1.4rem;color:var(--gold-bright);margin:0;letter-spacing:0.1em;">Live Image Manifest</h2>
+    <span id="lm-total" style="color:var(--muted);font-size:13px;"></span>
+    <span id="lm-generated" style="color:var(--muted);font-size:11px;margin-left:auto;font-family:monospace;"></span>
+  </div>
+  <p style="color:var(--muted);font-size:12px;margin:0 0 12px;">Auto-generated from <code>public/images/</code>. Re-run <code>node scripts/build-images-manifest.cjs</code> to refresh. Every PNG/JPG/SVG/WEBP on disk appears here.</p>
+  <div id="lm-toolbar" style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px;"></div>
+  <input id="lm-search" type="search" placeholder="Filter by filename or id…" style="width:100%;max-width:480px;padding:8px 12px;background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:6px;margin:0 0 16px;font:inherit;">
+  <div id="lm-content"><p style="color:var(--muted)">Loading manifest…</p></div>
+</section>
+
 <main id="main"></main>
 
 <section id="news-section">
@@ -1896,6 +1912,201 @@ document.querySelectorAll('.audio-filter').forEach(btn => {
 });
 
 init();
+
+/* ============================================================================
+ * M376 — Live Image Manifest renderer
+ * ----------------------------------------------------------------------------
+ * Loads images-manifest.json (built by scripts/build-images-manifest.cjs) and
+ * renders every image on disk. Tabs: All · Classes · Bosses · Enemies ·
+ * Companions · Backgrounds · Portraits · UI · Particles · Spells · Other.
+ * Search box filters by id or filename. Class section groups male / female /
+ * unisex variants together so missing genders are visible at a glance.
+ * ============================================================================ */
+(function () {
+  var STATE = { manifest: null, tab: 'all', q: '' };
+
+  function el(tag, attrs, children) {
+    var n = document.createElement(tag);
+    if (attrs) for (var k in attrs) {
+      if (k === 'style' && typeof attrs[k] === 'object') Object.assign(n.style, attrs[k]);
+      else if (k === 'class') n.className = attrs[k];
+      else if (k.startsWith('on') && typeof attrs[k] === 'function') n.addEventListener(k.slice(2), attrs[k]);
+      else n.setAttribute(k, attrs[k]);
+    }
+    if (children != null) {
+      (Array.isArray(children) ? children : [children]).forEach(function (c) {
+        if (c == null) return;
+        if (typeof c === 'string') n.appendChild(document.createTextNode(c));
+        else n.appendChild(c);
+      });
+    }
+    return n;
+  }
+
+  function tile(file, label, sub) {
+    var src = '../images/' + file;
+    return el('a', { href: src, target: '_blank', rel: 'noopener', style: {
+      display:'block', background:'#15101a', border:'1px solid var(--border)',
+      borderRadius:'8px', padding:'8px', textDecoration:'none', color:'var(--text)',
+      fontSize:'11px'
+    } }, [
+      el('img', { src: src, loading: 'lazy', style: { width:'100%', height:'120px', objectFit:'contain', background:'#0a0608', borderRadius:'4px', display:'block' } }),
+      el('div', { style: { marginTop:'6px', fontFamily:'monospace', fontSize:'10px', color:'var(--gold-bright)', wordBreak:'break-all' } }, label),
+      sub ? el('div', { style: { color:'var(--muted)', fontSize:'10px', marginTop:'2px' } }, sub) : null
+    ]);
+  }
+
+  function group(title, count, children, opts) {
+    opts = opts || {};
+    var head = el('div', { style: { display:'flex', alignItems:'baseline', gap:'10px', margin:'18px 0 8px' } }, [
+      el('h3', { style: { fontFamily:'var(--font-display)', fontSize:'1.05rem', color:'var(--gold)', margin:0, letterSpacing:'0.06em', textTransform:'uppercase' } }, title),
+      el('span', { style: { color:'var(--muted)', fontSize:'12px' } }, '(' + count + ')'),
+      opts.note ? el('span', { style: { color:'#c04030', fontSize:'11px' } }, opts.note) : null
+    ]);
+    return el('div', null, [head].concat(children));
+  }
+
+  function gridOf(files, makeLabel) {
+    var grid = el('div', { style: { display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(140px, 1fr))', gap:'10px' } });
+    files.forEach(function (f) {
+      var name = typeof f === 'string' ? f : (f.name || f.file);
+      var path = typeof f === 'string' ? f : f.file;
+      var sub = (typeof f === 'object' && f.pose) ? f.pose : '';
+      grid.appendChild(tile(path, makeLabel ? makeLabel(f) : name.replace(/\.[^.]+$/, ''), sub));
+    });
+    return grid;
+  }
+
+  function matchQ(q, str) { return !q || (str || '').toLowerCase().indexOf(q) !== -1; }
+  function filterFiles(files, q) {
+    if (!q) return files;
+    return files.filter(function (f) {
+      var s = typeof f === 'string' ? f : (f.file + ' ' + (f.name || ''));
+      return matchQ(q, s);
+    });
+  }
+
+  function renderClasses(m, q) {
+    // Group by class id; show male/female/unisex sub-rows.
+    var byId = new Map();
+    m.classes.forEach(function (c) {
+      if (!byId.has(c.id)) byId.set(c.id, { id:c.id, name:c.name, variants:{} });
+      byId.get(c.id).variants[c.gender] = c;
+    });
+    var blocks = [];
+    Array.from(byId.values()).sort(function(a,b){return a.name.localeCompare(b.name);}).forEach(function (cls) {
+      var rows = [];
+      ['male','female','unisex'].forEach(function (g) {
+        var v = cls.variants[g];
+        if (!v) return;
+        var files = filterFiles(v.files || [], q);
+        if (v.missing) {
+          rows.push(el('div', { style: { color:'#c04030', fontSize:'12px', padding:'4px 0' } }, '⚠ Missing ' + g + ' variant — no files on disk'));
+          return;
+        }
+        if (q && !files.length) return;
+        rows.push(el('div', { style: { color:'var(--gold-bright)', fontSize:'12px', margin:'8px 0 4px', textTransform:'uppercase', letterSpacing:'0.1em' } }, g + ' (' + files.length + ')'));
+        rows.push(gridOf(files, function (f) { return f.name.replace(/\.[^.]+$/, ''); }));
+      });
+      if (q && !rows.length) return;
+      blocks.push(group(cls.name + ' · ' + cls.id, Object.values(cls.variants).reduce(function(s,v){return s+(v.files||[]).length;},0), rows));
+    });
+    return blocks;
+  }
+
+  function renderCharBuckets(items, q) {
+    return items.map(function (e) {
+      var files = filterFiles(e.files, q);
+      if (q && !files.length) return null;
+      return group(e.id, files.length, [gridOf(files, function (f) { return f.name.replace(/\.[^.]+$/, ''); })]);
+    }).filter(Boolean);
+  }
+
+  function renderBgBucket(bg, q) {
+    var blocks = [];
+    ['combat','map','dialog','menu','news'].forEach(function (key) {
+      var arr = filterFiles(bg[key] || [], q);
+      if (!arr.length) return;
+      blocks.push(group(key + ' backgrounds', arr.length, [gridOf(arr, function (f) { return f.name.replace(/\.[^.]+$/, ''); })]));
+    });
+    return blocks;
+  }
+
+  function render() {
+    var root = document.getElementById('lm-content');
+    var m = STATE.manifest;
+    if (!m) return;
+    var q = (STATE.q || '').toLowerCase().trim();
+    root.innerHTML = '';
+    var t = STATE.tab;
+
+    if (t === 'all' || t === 'classes')    renderClasses(m, q).forEach(function(b){root.appendChild(b);});
+    if (t === 'all' || t === 'bosses')     renderCharBuckets(m.bosses, q).forEach(function(b){root.appendChild(b);});
+    if (t === 'all' || t === 'enemies')    renderCharBuckets(m.enemies, q).forEach(function(b){root.appendChild(b);});
+    if (t === 'all' || t === 'companions') renderCharBuckets(m.companions, q).forEach(function(b){root.appendChild(b);});
+    if (t === 'all' || t === 'unknown')    renderCharBuckets(m.unknown_characters || [], q).forEach(function(b){root.appendChild(b);});
+    if (t === 'all' || t === 'backgrounds') renderBgBucket(m.backgrounds, q).forEach(function(b){root.appendChild(b);});
+    if (t === 'all' || t === 'portraits')  { var p = filterFiles(m.portraits_misc, q); if (p.length) root.appendChild(group('Portraits (misc)', p.length, [gridOf(p)])); }
+    if (t === 'all' || t === 'ui')         { var u = filterFiles(m.ui, q); if (u.length) root.appendChild(group('UI', u.length, [gridOf(u)])); }
+    if (t === 'all' || t === 'particles')  { var pa = filterFiles(m.particles, q); if (pa.length) root.appendChild(group('Particles & FX', pa.length, [gridOf(pa)])); }
+    if (t === 'all' || t === 'spells')     { var sp = filterFiles(m.spell_icons, q); if (sp.length) root.appendChild(group('Spell Icons', sp.length, [gridOf(sp)])); }
+    if (t === 'all' || t === 'other')      { var ot = filterFiles(m.other, q); if (ot.length) root.appendChild(group('Other (uncategorized)', ot.length, [gridOf(ot)])); }
+
+    if (!root.children.length) {
+      root.appendChild(el('p', { style: { color:'var(--muted)' } }, 'No matches.'));
+    }
+  }
+
+  function buildToolbar() {
+    var bar = document.getElementById('lm-toolbar');
+    bar.innerHTML = '';
+    var m = STATE.manifest;
+    var tabs = [
+      ['all',         'All',         m.totals.all],
+      ['classes',     'Classes',     m.totals.classes],
+      ['bosses',      'Bosses',      m.totals.bosses],
+      ['enemies',     'Enemies',     m.totals.enemies],
+      ['companions',  'Companions',  m.totals.companions],
+      ['backgrounds', 'Backgrounds', m.totals.backgrounds],
+      ['portraits',   'Portraits',   m.totals.portraits_misc],
+      ['ui',          'UI',          m.totals.ui],
+      ['particles',   'Particles',   m.totals.particles],
+      ['spells',      'Spells',      m.totals.spell_icons],
+      ['unknown',     'Unsorted Chars', m.totals.unknown_characters],
+      ['other',       'Other',       m.totals.other]
+    ];
+    tabs.forEach(function (t) {
+      var btn = el('button', { class:'filter-btn' + (STATE.tab === t[0] ? ' active' : ''), style: {
+        background: STATE.tab === t[0] ? 'var(--card-h)' : 'var(--card)',
+        border:'1px solid var(--border)', color:'var(--text)',
+        padding:'6px 12px', borderRadius:'18px', cursor:'pointer', fontSize:'12px'
+      } }, t[1] + ' (' + t[2] + ')');
+      btn.addEventListener('click', function () { STATE.tab = t[0]; buildToolbar(); render(); });
+      bar.appendChild(btn);
+    });
+  }
+
+  fetch('images-manifest.json?v=' + Date.now())
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (m) {
+      if (!m) {
+        document.getElementById('lm-content').innerHTML =
+          '<p style="color:#c04030">Manifest not found. Run <code>node scripts/build-images-manifest.cjs</code> from the game13 directory.</p>';
+        return;
+      }
+      STATE.manifest = m;
+      document.getElementById('lm-total').textContent = m.totals.all + ' files on disk';
+      document.getElementById('lm-generated').textContent = 'generated ' + (m.generated || '').replace('T',' ').replace(/\..*$/,'') + ' UTC';
+      buildToolbar();
+      render();
+      var s = document.getElementById('lm-search');
+      var t;
+      s.addEventListener('input', function () { clearTimeout(t); t = setTimeout(function () { STATE.q = s.value; render(); }, 120); });
+    })
+    .catch(function (err) {
+      document.getElementById('lm-content').innerHTML = '<p style="color:#c04030">Failed to load manifest: ' + err.message + '</p>';
+    });
+})();
 </script>
 </body>
 </html>

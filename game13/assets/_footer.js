@@ -37,7 +37,7 @@
             { href: GAME_ROOT, label: 'Home' },
             { href: GAME_ROOT + 'play.html', label: 'Play' },
             { href: ASSETS + 'changelog.html', label: 'Changelog' },
-            { href: NEWS + 'm220-m254-consolidation.html', label: 'Latest News' },
+            { href: NEWS + '2026-05-07-rebalance-and-grid.html', label: 'Latest News' },
           ]
         },
         {
@@ -53,8 +53,11 @@
           title: 'Docs',
           links: [
             { href: ASSETS + 'docs.html', label: 'Documentation' },
+            { href: ASSETS + 'todo.html', label: 'Todo List' },
             { href: ASSETS + 'wishlist.html', label: 'Wishlist' },
             { href: ASSETS + 'brainstorm.html', label: 'Brainstorm' },
+            { href: ASSETS + 'damage-report.html', label: 'Damage Report' },
+            { href: ASSETS + 'balance-report.html', label: 'Balance Report' },
           ]
         },
         {

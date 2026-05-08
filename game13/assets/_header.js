@@ -18,11 +18,16 @@
  */
 (function () {
   var SCRIPT = document.currentScript;
-  // M375: never fall back to document.title — page titles vary per page
-  // (e.g. images.html "Images — Emberveil") and we don't want the nav logo
-  // mutating from page to page. The rsg-game meta tag is the only authoritative
-  // source; fall back to the script's data-game attribute or the constant.
+  // M376: nav-logo is locked to a per-game constant. Pages do NOT get to
+  // override it (previously rsg-game meta could change it; that caused
+  // "RSG GAME HUB" to leak through on pages that omitted the meta tag).
+  // For game13 the brand is always "Emberveil".
+  var pathForLabel = window.location.pathname;
+  var labelKeyMatch = pathForLabel.match(/\/(game[0-9a-z_]+)\//i);
+  var labelKey = labelKeyMatch ? labelKeyMatch[1].toLowerCase() : '';
+  var GAME_LABELS_BY_KEY = { game13: 'Emberveil' };
   var GAME_LABEL =
+    GAME_LABELS_BY_KEY[labelKey] ||
     (SCRIPT && SCRIPT.dataset.game) ||
     (document.querySelector('meta[name="rsg-game"]') || {}).content ||
     'RSG GAME HUB';
@@ -96,7 +101,9 @@
       { href: ASSETS + 'docs.html', label: 'Documentation' },
       { href: ASSETS + 'todo.html', label: 'Todo List' },
       { href: ASSETS + 'wishlist.html', label: 'Wishlist' },
-      { href: ASSETS + 'brainstorm.html', label: 'Brainstorm' }
+      { href: ASSETS + 'brainstorm.html', label: 'Brainstorm' },
+      { href: ASSETS + 'damage-report.html', label: 'Damage Report' },
+      { href: ASSETS + 'balance-report.html', label: 'Balance Report' }
     ]
   };
   var ARCHIVED_BY_GAME = {
@@ -140,6 +147,7 @@
       { href: NEWS_ROOT + 'm5.html',          label: 'Milestone 5 Report',  date: '2025-10-01' }
     ],
     game13: [
+      { href: NEWS_ROOT + '2026-05-07-rebalance-and-grid.html', label: 'Battle Grid, Manual Mode & 100-Class Rebalance', date: '2026-05-07' },
       { href: NEWS_ROOT + 'post-overhaul-update.html', label: 'Cloud Saves, UI Unification & Balance Pass', date: '2026-04-28' },
       { href: NEWS_ROOT + 'm220-m254-consolidation.html', label: 'Fast-Travel Overhaul, Questline & Difficulty', date: '2026-04-23' },
       { href: NEWS_ROOT + 'milestone-report.html',   label: '20 Classes, 84 Skills & Combat Rework', date: '2026-04-15' },
