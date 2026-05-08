@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-08T03:29:45.366Z",
+  "generated": "2026-05-08T00:05:43.895Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,21 +28,6 @@
     }
   ],
   "entries": [
-    {
-      "milestone": 432,
-      "date": "2026-05-07",
-      "summary": "M376 — Locked nav logo to 'Emberveil', added Todo + Damage Report + Balance Report to header & footer, capped global H1 size to 72px (hero-title preserved), built live images-manifest.json (every image on disk auto-listed with male/female class variants), and shipped a rebalance + battle grid news post with charts.",
-      "items": [
-        {
-          "text": "M376 — Locked nav logo to 'Emberveil', added Todo + Damage Report + Balance Report to header & footer, capped global H1 size to 72px (hero-title preserved), built live images-manifest.json (every image on disk auto-listed with male/female class variants), and shipped a rebalance + battle grid news post with charts.",
-          "categories": [
-            "Feature",
-            "Balance",
-            "Art"
-          ]
-        }
-      ]
-    },
     {
       "milestone": 431,
       "date": "2026-05-07",

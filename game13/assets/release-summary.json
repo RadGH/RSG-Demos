@@ -1,7 +1,7 @@
 {
-  "milestone": 431,
+  "milestone": 432,
   "date": "2026-05-07",
-  "summary": "M431 — Battle grid: sprites are now sized to actually fit between adjacent columns. Hero column at 10%, companion at 34% (94px apart on phones), enemies pushed to 86% so a single-group encounter reaches the right edge. Within-column x-shift dropped to ~3px so heroes form a clean vertical column with y-stagger only — no more party-member-3 overlapping companion-2.",
+  "summary": "M376 — Locked nav logo to 'Emberveil', added Todo + Damage Report + Balance Report to header & footer, capped global H1 size to 72px (hero-title preserved), built live images-manifest.json (every image on disk auto-listed with male/female class variants), and shipped a rebalance + battle grid news post with charts.",
   "categories": [
     "feature"
   ],
