@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-08T06:12:03.960Z",
+  "generated": "2026-05-08T05:58:18.636Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,19 +28,6 @@
     }
   ],
   "entries": [
-    {
-      "milestone": 434,
-      "date": "2026-05-07",
-      "summary": "M434 — Battle grid v3 reliability pass. Killed the legacy EvBattlefield SVG/DOM grid (the 'old squares') so canvas is the single rendering path: position tiles are drawn on canvas at the M433 column positions, status-effect particle indicators are anchored to live canvas (x,y) instead of SVG grid coords, and spell targeting now resolves through a canvas pointer-down hit-test (no SVG tile click). Combat backgrounds always paint (no transparent canvas over a missing SVG). EvBattlefield is no longer imported or mounted; remaining EvBattlefield references no-op until M435 deletes the file.",
-      "items": [
-        {
-          "text": "M434 — Battle grid v3 reliability pass. Killed the legacy EvBattlefield SVG/DOM grid (the 'old squares') so canvas is the single rendering path: position tiles are drawn on canvas at the M433 column positions, status-effect particle indicators are anchored to live canvas (x,y) instead of SVG grid coords, and spell targeting now resolves through a canvas pointer-down hit-test (no SVG tile click). Combat backgrounds always paint (no transparent canvas over a missing SVG). EvBattlefield is no longer imported or mounted; remaining EvBattlefield references no-op until M435 deletes the file.",
-          "categories": [
-            "Feature"
-          ]
-        }
-      ]
-    },
     {
       "milestone": 433,
       "date": "2026-05-07",
