@@ -1,7 +1,7 @@
 {
-  "milestone": 437,
-  "date": "2026-05-07",
-  "summary": "M437 — iPhone hero shrink. .hero min-height removed (was 100vh) and .hero-content min-height zeroed on ≤480px viewports; padding tightened to 60px top + 60px bottom with a 24px content gap so the hero sits at content height instead of leaving a tall empty band before scroll.",
+  "milestone": 438,
+  "date": "2026-05-08",
+  "summary": "M438 — Mobile combat: hide the active-actor 'hot card' frame (portrait + name + HP/MP + status row) — it was covering the bottom row of sprites and the bottom party HUD already shows party HP. Spell rail still floats below. Desktop unchanged. Also removed the legacy colored circle status indicators painted above each combatant's HP bar — the M434 DOM particle overlay (fire/poison/bleed/stun icons) is now the only status visualization on canvas.",
   "categories": [
     "feature"
   ],
