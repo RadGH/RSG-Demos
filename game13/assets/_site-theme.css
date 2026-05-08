@@ -1194,9 +1194,15 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
   /* M436 — 3 cols on iPhone (was 2 cols + orphan trailing into row 2). */
   .hero-stats .row { grid-template-columns: repeat(3, 1fr); }
   .hero-stats .cell:nth-child(n+4) { display: none; } /* keep top 3 */
-  /* M436 — pull the hero tag up so the iPhone status bar / header don't
-     leave a fat empty band above "6 ACTS · 30 CLASSES · 35 COMPANIONS". */
-  .hero-content { padding: 24px 0 60px !important; }
+  /* M437 — hero is no longer full-height on mobile. Mobile users were
+     looking at a tall empty band before scrolling reached anything; cap
+     the hero at its content height + 60px top/bottom breathing room. */
+  .hero { min-height: 0 !important; }
+  .hero-content {
+    min-height: 0 !important;
+    padding: 60px 0 60px !important;
+    gap: 24px !important;
+  }
   .hero-headline { gap: 18px; }
   .hero-stormcaller img { height: 38vh; }
   .hero-title { font-size: clamp(2.6rem, 14vw, 4.5rem); }

@@ -1,7 +1,7 @@
 {
-  "milestone": 435,
+  "milestone": 436,
   "date": "2026-05-07",
-  "summary": "M435 — Battle grid v3 cleanup: combat layout extracted into src/ui/combatLayout.js (pure function, 7 unit tests covering column ordering, no-companion shift, single-enemy centering, vertical stack, no-overlap guarantee, placement.x margin behavior, tall-column compression). Deleted src/ui/EvBattlefield.js, src/ui/ev-battlefield.css, the import in main.js, and the dead _evBattlefield destroy/listener cleanup branches in CombatScreen. Combat is now a single canvas-only rendering path: combatLayout → canvas sprites + canvas position tiles + DOM status overlay anchored to canvas coords + canvas-pointerdown spell targeting.",
+  "summary": "M436 — Removed 'New Combat UI (Beta)' settings toggle (no alternate render path remains after M434/M435). isUiOverhaulEnabled() now returns true unconditionally. Removed vibej.am 2026 jam widget from index.html, play.html, contact.html, and the RSG Demos generate_pages_index.js. Restored the title-screen login UI (LOGIN_UI_DISABLED=false). iPhone 14 Pro front page: hero-stats grid forced to 3 columns (was 2 + orphan), top spacing above the '6 ACTS · 30 CLASSES · 35 COMPANIONS' tag tightened (24px top padding, 18px headline gap).",
   "categories": [
     "feature"
   ],
