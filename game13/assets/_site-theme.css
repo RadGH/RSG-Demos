@@ -1191,8 +1191,13 @@ img.pixel, .pixel img { image-rendering: pixelated; image-rendering: -moz-crisp-
 
 /* M371 — iPhone 14 Pro (393px) and smaller */
 @media (max-width: 480px) {
-  .hero-stats .row { grid-template-columns: repeat(2, 1fr); }
-  .hero-stats .cell:nth-child(n+5) { display: none; } /* keep top 4 */
+  /* M436 — 3 cols on iPhone (was 2 cols + orphan trailing into row 2). */
+  .hero-stats .row { grid-template-columns: repeat(3, 1fr); }
+  .hero-stats .cell:nth-child(n+4) { display: none; } /* keep top 3 */
+  /* M436 — pull the hero tag up so the iPhone status bar / header don't
+     leave a fat empty band above "6 ACTS · 30 CLASSES · 35 COMPANIONS". */
+  .hero-content { padding: 24px 0 60px !important; }
+  .hero-headline { gap: 18px; }
   .hero-stormcaller img { height: 38vh; }
   .hero-title { font-size: clamp(2.6rem, 14vw, 4.5rem); }
   .acts-rail { grid-template-columns: 1fr; }

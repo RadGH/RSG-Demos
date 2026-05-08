@@ -1,7 +1,7 @@
 {
-  "milestone": 434,
+  "milestone": 435,
   "date": "2026-05-07",
-  "summary": "M434 — Battle grid v3 reliability pass. Killed the legacy EvBattlefield SVG/DOM grid (the 'old squares') so canvas is the single rendering path: position tiles are drawn on canvas at the M433 column positions, status-effect particle indicators are anchored to live canvas (x,y) instead of SVG grid coords, and spell targeting now resolves through a canvas pointer-down hit-test (no SVG tile click). Combat backgrounds always paint (no transparent canvas over a missing SVG). EvBattlefield is no longer imported or mounted; remaining EvBattlefield references no-op until M435 deletes the file.",
+  "summary": "M435 — Battle grid v3 cleanup: combat layout extracted into src/ui/combatLayout.js (pure function, 7 unit tests covering column ordering, no-companion shift, single-enemy centering, vertical stack, no-overlap guarantee, placement.x margin behavior, tall-column compression). Deleted src/ui/EvBattlefield.js, src/ui/ev-battlefield.css, the import in main.js, and the dead _evBattlefield destroy/listener cleanup branches in CombatScreen. Combat is now a single canvas-only rendering path: combatLayout → canvas sprites + canvas position tiles + DOM status overlay anchored to canvas coords + canvas-pointerdown spell targeting.",
   "categories": [
     "feature"
   ],
