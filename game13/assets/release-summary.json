@@ -1,7 +1,7 @@
 {
-  "milestone": 448,
+  "milestone": 449,
   "date": "2026-05-09",
-  "summary": "M448 — Mobile bottom panel no longer expands on a hero's turn. The spell rail was the only visible child of the active-actor card after M444's chrome strip; it lived in the .ev-hud's normal layout flow with bg+border+padding, adding ~48px when a hero turn fired. Combined with M447's live-hud-height groundY measurement, this shoved every sprite upward each turn. Fix: position:absolute the rail at bottom:100% of .ev-hud so it overlays the bottom of the canvas with a thin gutter without occupying any in-flow height. Active card itself now has height:0 so it stops reserving padding space. Portrait strip stays untouched.",
+  "summary": "M449 — Reverted M448 spell-rail-absolute change (broke desktop). Real fix for mobile bottom-panel expansion: when the player is in auto-combat mode (the default), the active-actor card is now display:none even when 'mobile-selected'. Previously we hid the card's CONTENTS (M444) but the card element itself still claimed padding inside .ev-hud__card-row, which is the empty-space expansion the user kept seeing each hero turn. Manual-combat mode still shows the card (needed for skill picking). Desktop unchanged.",
   "categories": [
     "feature"
   ],
