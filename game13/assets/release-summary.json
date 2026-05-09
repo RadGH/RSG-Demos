@@ -1,7 +1,7 @@
 {
-  "milestone": 445,
+  "milestone": 446,
   "date": "2026-05-08",
-  "summary": "M445 — Map: zero dead-ends, mobile combat panel completely hidden. Map: previous in-cap of 2 was saturating on shrinking-column transitions (3→2 / 4→3) leaving some from-nodes with 0 outgoing — the dead-end the user just hit. Replaced static cap with dynamic inCap = max(2, ceil(fromCount*2/toCount)) so 3→2 takes inCap=3, 4→2 takes inCap=4, etc. Added Pass 1.5 that guarantees every from-node has ≥1 outgoing (cap-bypass) and Pass 1.6 that guarantees ≥2 outgoing whenever toCount ≥ 2. Verified across 12 act zones: 0 dead-ends, 90%/238 trunk nodes have ≥2 forward paths (the remaining 10% are nodes feeding the single-node boss column where ≥2 is geometrically impossible). Mobile combat panel: companion row now hidden on ≤700px (.ev-companion-row {display:none}); defensive ev-companion-card chrome zeroed for any future row injection. The bottom .ev-hud no longer expands upward to mid-canvas when a companion is active.",
+  "summary": "M446 — Kill the bottom combat panel on mobile (round 4). M438/M444/M445 hid pieces — the active-actor card, the .ev-corner ornaments, the .ev-companion-row — but the .ev-hud container itself still painted a bg gradient + border-top + box-shadow across the bottom of the screen, which IS the panel line the user kept seeing. M446 strips all of .ev-hud's chrome on mobile (background, border, box-shadow, padding, gap zeroed). The mobile portrait strip is also hidden (redundant with the turn-strip portraits at the top). Spell rail still works for manual targeting; nothing draws a panel line at the bottom anymore.",
   "categories": [
     "feature"
   ],
