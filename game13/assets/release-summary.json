@@ -1,7 +1,7 @@
 {
-  "milestone": 443,
+  "milestone": 444,
   "date": "2026-05-08",
-  "summary": "M443 — Map: 2-incoming-per-node pass + Silas weapon-reward fix. Map: added Pass 3 to the FTL hex layout that pumps each to-node up to ≥2 incoming when there's a near-diagonal candidate with degree budget; in-cap tightened to 2 so total degree per node never exceeds 4 (verified 0 over-cap across 226 interior trunk nodes). 60%/65% of interior nodes now have ≥2 in/out paths. Silas weapon-reward fix: build-preset weapon keys ('2h_sword'/'2h_axe') were never matching WEAPON_BASES ('sword2h'/'axe2h'), so generateItem returned null and the prologue Silas gift dropped only 15 XP. Added KEY_ALIAS map + walks all the build's preferences in order until one resolves; fighter Execution (2H) now actually receives a Greatsword. Shield drop now respects two-handed weapons (no useless buckler when the build wants a 2H weapon).",
+  "summary": "M444 — Mobile combat panel hidden properly + key-drift audit. Mobile fix: every child of the active-actor card except the spell rail is now display:none, including the .ev-corner ornaments and .ev-panel__seal; card itself loses bg/border/padding/box-shadow/min-width/transition; .ev-hud__card-row padding+gap zeroed and .ev-hud padding-top zeroed. Only the spell rail remains visible. Key-drift audit (see memory/key-drift-audit-m444.md): scanned every registry reference; found 57 issues, fixed 53 at the source: '2h_sword' → 'sword2h' (9 occurrences), '2h_axe' → 'axe2h' (5), 'mace' → 'iron_mace' (4), warrior class.skills[0] 'shield_bash' → 'cleave', necromancer class.skills 'death_coil' → 'corpse_explosion'. KEY_ALIAS in DialogScreen extended for defensive backup ('mace' added; 'unarmed' explicitly skipped for monks). 49 outstanding orphan ids in build.preferredSkills[] are display-only and reported in the audit md for triage via the new Dialog Inspector tool.",
   "categories": [
     "feature"
   ],
