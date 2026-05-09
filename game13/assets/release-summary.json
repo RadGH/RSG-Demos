@@ -1,7 +1,7 @@
 {
-  "milestone": 441,
+  "milestone": 442,
   "date": "2026-05-08",
-  "summary": "M441 — FTL hex/staggered grid: every other column shifted down 50% so adjacent-column nodes never share visual y. All edges are diagonal — zero horizontal/vertical connections (verified: 196 total edges, 0 flat). Each from-node connects to its closest up-right + down-right diagonal in the next column → ≥2 forward paths per node (cap 1 only when next column has 1 node, e.g. into the boss). 1-node columns reach both diagonals of the next column for true 2-path branching. Dungeons + hidden bosses placed on the alternate (col+0.5, vy±0.5) grid so they sit between two trunk rows and never overlap a trunk edge. Boss forced to be the LAST entry in z.nodes so the forward cross-zone arrow only lights up on the boss node (was firing on whatever node ended up at array tail).",
+  "summary": "M442 — Dialog & Encounter Inspector tool. Live data dump at public/assets/data/dialog-inspector.json regenerated on every release. New page at /assets/dialog-inspector.html lists every dialog (DIALOG_EVENTS, RANDOM_EVENTS, BOSS_DEATH_DIALOG), every encounter, and every map node grouped by type. Inline editor for choices, outcomes, and reward fields. Generate-Prompt button copies a paste-ready Claude Code instruction with file path, line hint, identifier, and only the dirty fields (not the full object).",
   "categories": [
     "feature"
   ],
