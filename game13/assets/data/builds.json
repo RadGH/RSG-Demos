@@ -12,8 +12,8 @@
     },
     "plateaus": {},
     "weapons": [
-      "2h_axe",
-      "2h_sword",
+      "axe2h",
+      "sword2h",
       "hammer"
     ],
     "shieldPref": "never",
@@ -73,8 +73,8 @@
     },
     "plateaus": {},
     "weapons": [
-      "2h_sword",
-      "2h_axe",
+      "sword2h",
+      "axe2h",
       "hammer"
     ],
     "shieldPref": "never",
@@ -406,7 +406,7 @@
     "plateaus": {},
     "weapons": [
       "staff",
-      "mace"
+      "iron_mace"
     ],
     "shieldPref": "never",
     "preferredSkills": [
@@ -549,8 +549,8 @@
     },
     "plateaus": {},
     "weapons": [
-      "2h_axe",
-      "2h_sword"
+      "axe2h",
+      "sword2h"
     ],
     "shieldPref": "never",
     "preferredSkills": [
@@ -877,7 +877,7 @@
     },
     "plateaus": {},
     "weapons": [
-      "2h_sword",
+      "sword2h",
       "sword"
     ],
     "shieldPref": "sometimes",
@@ -934,7 +934,7 @@
     "plateaus": {},
     "weapons": [
       "staff",
-      "mace"
+      "iron_mace"
     ],
     "shieldPref": "sometimes",
     "preferredSkills": [
@@ -994,7 +994,7 @@
     "plateaus": {},
     "weapons": [
       "hammer",
-      "2h_sword"
+      "sword2h"
     ],
     "shieldPref": "sometimes",
     "preferredSkills": [
@@ -1108,7 +1108,7 @@
     "plateaus": {},
     "weapons": [
       "scepter",
-      "mace",
+      "iron_mace",
       "staff"
     ],
     "shieldPref": "sometimes",
