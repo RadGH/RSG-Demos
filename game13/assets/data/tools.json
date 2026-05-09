@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-08T23:44:11.792Z"
+    "generated": "2026-05-09T00:08:35.370Z"
   },
   "tools": [
     {
@@ -181,6 +181,15 @@
       "tag": "catalog",
       "milestone": "M299",
       "updated": "2026-04-26",
+      "deprecated": false
+    },
+    {
+      "name": "Emberveil",
+      "href": "dialog-inspector.html",
+      "desc": "(no description — add one in tools-meta.json)",
+      "tag": "devtool",
+      "milestone": "",
+      "updated": "2026-05-09",
       "deprecated": false
     },
     {

@@ -81,6 +81,7 @@
       { href: ASSETS + 'sprite-adjust.html', label: 'Sprite Adjust' },
       { href: ASSETS + 'custom-content.html', label: 'Custom Content' },
       { href: ASSETS + 'skill-audit.html', label: 'Skill Audit' },
+      { href: ASSETS + 'dialog-inspector.html', label: 'Dialog Inspector' },
       { href: ASSETS + 'tools.html', label: 'All Tools (Index)' }
     ]
   };

@@ -1,4 +1,4 @@
-import{i as m,c as l,r as f}from"./play-BwRmLeeD.js";import"./savesClient-DUFjgBxb.js";const s=`
+import{i as m,c as l,r as f}from"./play-Fin7D2UK.js";import"./savesClient-DUFjgBxb.js";const s=`
 .confirm-modal-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.72);
   z-index: 5000; display: flex; align-items: center; justify-content: center;

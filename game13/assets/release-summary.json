@@ -1,7 +1,7 @@
 {
-  "milestone": 440,
+  "milestone": 441,
   "date": "2026-05-08",
-  "summary": "M440 — True FTL diamond grid. ZONE_PROFILES table assigns each zone a (length, height) — Act 1a 5×3, Act 1b 6×3, Act 2a 6×4 etc. Column row-counts follow profile[c]=min(H,c+1,L-c) for a clean 1→2→3→4→3→2→1 taper. Adjacent columns differ by at most 1 row, so edges can only step ±1 row vertically — no jumps over center rows. Filler combat nodes inserted automatically when the authored trunk is shorter than the grid. Y range clamped to [0.10,0.84] so node labels stop getting cut off at the bottom edge. Removed the M406 detangle pass that was nudging snapped nodes back off-grid (root cause of the 'Shady Wanderer jumps to top row' bug). Verified across 12 act zones: zero >1-row jumps, zero backwards edges, zero degree-cap violations, zero broken exits.",
+  "summary": "M441 — FTL hex/staggered grid: every other column shifted down 50% so adjacent-column nodes never share visual y. All edges are diagonal — zero horizontal/vertical connections (verified: 196 total edges, 0 flat). Each from-node connects to its closest up-right + down-right diagonal in the next column → ≥2 forward paths per node (cap 1 only when next column has 1 node, e.g. into the boss). 1-node columns reach both diagonals of the next column for true 2-path branching. Dungeons + hidden bosses placed on the alternate (col+0.5, vy±0.5) grid so they sit between two trunk rows and never overlap a trunk edge. Boss forced to be the LAST entry in z.nodes so the forward cross-zone arrow only lights up on the boss node (was firing on whatever node ended up at array tail).",
   "categories": [
     "feature"
   ],
