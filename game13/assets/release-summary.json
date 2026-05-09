@@ -1,7 +1,7 @@
 {
-  "milestone": 446,
+  "milestone": 447,
   "date": "2026-05-08",
-  "summary": "M446 — Kill the bottom combat panel on mobile (round 4). M438/M444/M445 hid pieces — the active-actor card, the .ev-corner ornaments, the .ev-companion-row — but the .ev-hud container itself still painted a bg gradient + border-top + box-shadow across the bottom of the screen, which IS the panel line the user kept seeing. M446 strips all of .ev-hud's chrome on mobile (background, border, box-shadow, padding, gap zeroed). The mobile portrait strip is also hidden (redundant with the turn-strip portraits at the top). Spell rail still works for manual targeting; nothing draws a panel line at the bottom anymore.",
+  "summary": "M447 — Restored party-frame bottom strip; fixed canvas overlap. M446's panel-strip was the wrong fix — the user wanted the party frames KEPT, just not overlapping the canvas's bottom row. Reverted M446's .ev-hud chrome strip and the .ev-mobile-portrait-strip hide. Real fix: the canvas's groundY is now computed ABOVE the live .ev-hud height each frame (canvas.height/rect.height conversion + 6px breathing room, clamped to ≥40% sky band), so the front row of sprites clears the bottom panel cleanly instead of rendering behind it.",
   "categories": [
     "feature"
   ],
