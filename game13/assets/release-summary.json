@@ -1,7 +1,7 @@
 {
-  "milestone": 447,
-  "date": "2026-05-08",
-  "summary": "M447 — Restored party-frame bottom strip; fixed canvas overlap. M446's panel-strip was the wrong fix — the user wanted the party frames KEPT, just not overlapping the canvas's bottom row. Reverted M446's .ev-hud chrome strip and the .ev-mobile-portrait-strip hide. Real fix: the canvas's groundY is now computed ABOVE the live .ev-hud height each frame (canvas.height/rect.height conversion + 6px breathing room, clamped to ≥40% sky band), so the front row of sprites clears the bottom panel cleanly instead of rendering behind it.",
+  "milestone": 448,
+  "date": "2026-05-09",
+  "summary": "M448 — Mobile bottom panel no longer expands on a hero's turn. The spell rail was the only visible child of the active-actor card after M444's chrome strip; it lived in the .ev-hud's normal layout flow with bg+border+padding, adding ~48px when a hero turn fired. Combined with M447's live-hud-height groundY measurement, this shoved every sprite upward each turn. Fix: position:absolute the rail at bottom:100% of .ev-hud so it overlays the bottom of the canvas with a thin gutter without occupying any in-flow height. Active card itself now has height:0 so it stops reserving padding space. Portrait strip stays untouched.",
   "categories": [
     "feature"
   ],
