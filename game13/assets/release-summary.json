@@ -1,7 +1,7 @@
 {
-  "milestone": 450,
+  "milestone": 451,
   "date": "2026-05-09",
-  "summary": "M450 — Six fixes + sprite workflow doc. (1) Combat log on mobile pushed below the turn-order strip (top:64) and given padding so the last line stops getting clipped. (2) Post-combat 'Items Found' list center-aligned (was right-aligned). (3) Cross-zone forward+back travel popups now position relative to the canvas content box (the wider scrollable area) instead of the visible viewport — popup sits next to the boss/start node regardless of scroll. (4) Filler combat nodes in late-act zones now use the zone's own ZONE_ENCOUNTER_POOLS first entry instead of the hardcoded 'goblin_patrol' default — Abyssal Depths fillers now use primordial_patrol etc. (5) HP-over-max bug fixed at the source: GameState.load + addToCompanions now run recalcPassiveStats which clamps current hp/mp to maxHp; PartyScreen._hpBar adds a defensive clamp at display. (6) Map auto-centers on the party's current node when MapScreen.onEnter fires (e.g. exiting Town). Plus: documented the OpenAI 9-pose sprite-sheet workflow in memory/openai-sprite-sheet-workflow.md and registered an auto-memory pointer.",
+  "summary": "M451 — Combat log fix (mobile only): padding-bottom: 1lh + pointer-events: auto on .cbt-log-entries so the last line shows + the panel is scrollable. Plus: frost_wyrmling sprite sheet regenerated via the new OpenAI 9-pose workflow (scripts/openai-spritesheet-gen.py). Sheet: 1024×1024, sliced into 9 256×256 cells (portrait, south, east, east_attack, east_spell, east_block, east_ko, east_cheer, east_wound), chroma-keyed against #00FF00 with tolerance 64 + despill, tagged for review on Image Review V2 with source='openai-9pose'. Pre-existing pixellab files backed up to spritecook/_pre_openai/.",
   "categories": [
     "feature"
   ],
