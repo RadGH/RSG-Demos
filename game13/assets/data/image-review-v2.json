@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-09T23:13:04.369Z"
+    "generated": "2026-05-10T04:14:55.983Z"
   },
   "characters": [
     {
@@ -4496,7 +4496,39 @@
       "category": "companion",
       "group": "frost_wyrmling",
       "pose": "portrait",
-      "file": "../images/portraits/frost_wyrmling.png",
+      "file": "../images/spritecook/frost_wyrmling_portrait.png",
+      "prompt": null
+    },
+    {
+      "id": "companion_frost_wyrmling_south",
+      "category": "companion",
+      "group": "frost_wyrmling",
+      "pose": "south",
+      "file": "../images/spritecook/frost_wyrmling_south.png",
+      "prompt": null
+    },
+    {
+      "id": "companion_frost_wyrmling_east",
+      "category": "companion",
+      "group": "frost_wyrmling",
+      "pose": "east",
+      "file": "../images/spritecook/frost_wyrmling_east.png",
+      "prompt": null
+    },
+    {
+      "id": "companion_frost_wyrmling_east_attack",
+      "category": "companion",
+      "group": "frost_wyrmling",
+      "pose": "east_attack",
+      "file": "../images/spritecook/frost_wyrmling_east_attack.png",
+      "prompt": null
+    },
+    {
+      "id": "companion_frost_wyrmling_east_ko",
+      "category": "companion",
+      "group": "frost_wyrmling",
+      "pose": "east_ko",
+      "file": "../images/spritecook/frost_wyrmling_east_ko.png",
       "prompt": null
     },
     {

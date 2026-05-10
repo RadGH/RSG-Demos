@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-09T23:13:04.285Z",
+    "generated": "2026-05-10T04:14:55.897Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (66 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
@@ -9,11 +9,11 @@
       "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (19 bosses)"
     },
     "counts": {
-      "total": 1016,
+      "total": 1021,
       "by_status": {
-        "ready": 738,
-        "pending": 154,
-        "orphaned": 60,
+        "ready": 742,
+        "pending": 150,
+        "orphaned": 65,
         "approved": 20,
         "candidate": 44
       },
@@ -24,7 +24,7 @@
         "enemy": 95,
         "background": 68,
         "tap-weapons": 9,
-        "orphan": 60,
+        "orphan": 65,
         "reference-sheet": 64
       }
     },
@@ -5185,7 +5185,7 @@
       "category": "companion",
       "group": "frost_wyrmling",
       "pose": "portrait",
-      "file": "../images/portraits/frost_wyrmling.png",
+      "file": "../images/spritecook/frost_wyrmling_portrait.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5196,7 +5196,7 @@
       "pose": "south",
       "file": "../images/spritecook/frost_wyrmling_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "companion_frost_wyrmling_east",
@@ -5205,7 +5205,7 @@
       "pose": "east",
       "file": "../images/spritecook/frost_wyrmling_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "companion_frost_wyrmling_east_attack",
@@ -5214,7 +5214,7 @@
       "pose": "east_attack",
       "file": "../images/spritecook/frost_wyrmling_east_attack.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "companion_frost_wyrmling_east_ko",
@@ -5223,7 +5223,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/frost_wyrmling_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "companion_storm_drake_portrait",
@@ -8444,6 +8444,51 @@
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/dust_boss_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_frost_wyrmling_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/frost_wyrmling_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_frost_wyrmling_east_cheer",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/frost_wyrmling_east_cheer.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_frost_wyrmling_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/frost_wyrmling_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_frost_wyrmling_east_wound",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/frost_wyrmling_east_wound.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_frost_wyrmling_openai_sheet",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/frost_wyrmling_openai_sheet.png",
       "prompt": null,
       "status": "orphaned"
     },
