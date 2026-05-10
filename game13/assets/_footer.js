@@ -81,7 +81,6 @@
     sections.push({
       title: 'Assets',
       links: [
-        { href: ASSETS, label: 'Asset Gallery' },
         { href: ASSETS + 'images.html', label: 'Images' },
         { href: ASSETS + 'audio.html', label: 'Audio' },
         { href: ASSETS + 'milestones.html', label: 'Milestones' }
@@ -101,15 +100,6 @@
     // --- Docs column (auto-mirrors header Docs dropdown) ---
     if (m.DOCS && m.DOCS.length) {
       sections.push({ title: 'Docs', links: m.DOCS.slice() });
-    }
-
-    // --- News column (top 8 articles + archive link) ---
-    if (m.NEWS && m.NEWS.length) {
-      var newsLinks = m.NEWS.slice(0, 8).map(function (n) {
-        return { href: n.href, label: n.label };
-      });
-      newsLinks.push({ href: NEWS_ARCHIVE, label: 'All News →' });
-      sections.push({ title: 'News', links: newsLinks });
     }
 
     return sections;

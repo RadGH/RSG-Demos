@@ -1,7 +1,7 @@
 {
-  "milestone": 453,
+  "milestone": 454,
   "date": "2026-05-09",
-  "summary": "M431+: images.html full refactor — appearance-driven manifest, no inline CSS, gender fixed (no unisex), orphan detection, transparency grid, single toolbar, enemies/companions/bosses all appearance-driven",
+  "summary": "M432: images.html full refactor — appearance-driven manifest, no inline CSS, gender fixed (no unisex), orphan detection, transparency grid, single toolbar",
   "categories": [
     "feature"
   ],

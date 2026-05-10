@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-10T04:57:27.133Z"
+    "generated": "2026-05-10T05:27:55.562Z"
   },
   "tools": [
     {
@@ -26,15 +26,6 @@
       "href": "ai-content-gen.html",
       "desc": "Generate dialogs, lore, and item names through the AI pipeline. Prompts driven by templates.",
       "tag": "devtool",
-      "milestone": "",
-      "updated": "2026-04-29",
-      "deprecated": false
-    },
-    {
-      "name": "All Tools (Index)",
-      "href": "tools.html",
-      "desc": "This page. Live index of every tool, catalog, and admin page.",
-      "tag": "admin",
       "milestone": "",
       "updated": "2026-04-29",
       "deprecated": false

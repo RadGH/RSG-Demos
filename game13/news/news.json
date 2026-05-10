@@ -6,7 +6,7 @@
     "category": "release",
     "summary": "The battle grid gets a full zone-based layout overhaul with sprites sized to fit adjacent columns. Manual combat mode ships alongside a comprehensive balance pass covering all 100 classes.",
     "file": "2026-05-07-rebalance-and-grid.html",
-    "hero": "../images/news_hero/post-overhaul-update.jpg"
+    "hero": "images/news_hero/post-overhaul-update.jpg"
   },
   {
     "slug": "post-overhaul-update",
@@ -15,7 +15,7 @@
     "category": "release",
     "summary": "99 milestones since the fast-travel overhaul: cloud saves, telemetry with consent gating, UI unification across five screens, NPC art pipeline maturity, the M350 balance pass that smoothed Acts 5-6, Image Review V2 launch, and shared design tokens.",
     "file": "post-overhaul-update.html",
-    "hero": "../images/news_hero/post-overhaul-update.jpg"
+    "hero": "images/news_hero/post-overhaul-update.jpg"
   },
   {
     "slug": "2026-04-26-m309-news-pipeline",
@@ -60,7 +60,7 @@
     "category": "release",
     "summary": "Forty-plus milestones rolled up: 6 new towns, always-visible Return-to-Town, Silas/Kaela/Marek 5-act main quest, Normal/Hard difficulty, Loot Chests, Magic Find, Attack Speed runtime, 27 gender variants, 5 data catalogs, sprite-approval to in-game sync bridge, and a dragon epilogue.",
     "file": "m220-m254-consolidation.html",
-    "hero": "../images/news_hero/m220-m254-consolidation.jpg"
+    "hero": "images/news_hero/m220-m254-consolidation.jpg"
   },
   {
     "slug": "seo-update",
@@ -69,7 +69,7 @@
     "category": "dev-diary",
     "summary": "Game moved to /play.html, new marketing homepage, canonical URLs, sitemap, llms.txt, OG/Twitter cards, and schema.org VideoGame markup.",
     "file": "seo-update.html",
-    "hero": "../images/combat_bg/ember_plateau_1.png"
+    "hero": "images/combat_bg/ember_plateau_1.png"
   },
   {
     "slug": "milestone-report",
@@ -78,7 +78,7 @@
     "category": "release",
     "summary": "20 hero classes, 84 skills, 10 companions, combat rebalance, 60+ SFX — a comprehensive look at the Emberveil journey so far.",
     "file": "milestone-report.html",
-    "hero": "../images/news_hero/milestone-report.jpg"
+    "hero": "images/news_hero/milestone-report.jpg"
   },
   {
     "slug": "re-redesign",
@@ -87,7 +87,7 @@
     "category": "dev-diary",
     "summary": "Full visual overhaul using SpriteCook's HD portrait and sprite pipeline — 20 hero classes, 10 companions, and boss art all regenerated.",
     "file": "re-redesign.html",
-    "hero": "../images/news_hero/re-redesign.jpg"
+    "hero": "images/news_hero/re-redesign.jpg"
   },
   {
     "slug": "m79-redesign",
@@ -96,7 +96,7 @@
     "category": "release",
     "summary": "Milestone 79 brought a sweeping UI redesign, refined combat feedback, and the new portrait-based character display system.",
     "file": "m79-redesign.html",
-    "hero": "../images/map_bg/border_roads.jpg"
+    "hero": "images/map_bg/border_roads.jpg"
   },
   {
     "slug": "balance-report",
@@ -105,7 +105,7 @@
     "category": "dev-diary",
     "summary": "Community survey on the M77 combat rebalance — burst vs sustain, target falloff, affix reshuffle.",
     "file": "balance-report.html",
-    "hero": "../images/news_hero/balance-report.jpg"
+    "hero": "images/news_hero/balance-report.jpg"
   },
   {
     "slug": "tap-weapons",
@@ -114,7 +114,7 @@
     "category": "dev-diary",
     "summary": "Design document for the tap-to-attack weapons system — how real-time input layers on top of the turn-based combat loop.",
     "file": "tap-weapons.html",
-    "hero": "../images/news_hero/tap-weapons.jpg"
+    "hero": "images/news_hero/tap-weapons.jpg"
   },
   {
     "slug": "simulation-overhaul",
@@ -123,7 +123,7 @@
     "category": "dev-diary",
     "summary": "Complete rewrite of the combat simulator with formula transparency, skill coverage, and statistical charting.",
     "file": "simulation-overhaul.html",
-    "hero": "../images/news_hero/simulation-overhaul.jpg"
+    "hero": "images/news_hero/simulation-overhaul.jpg"
   },
   {
     "slug": "dragon-expansion",
@@ -132,7 +132,7 @@
     "category": "release",
     "summary": "Act 6 Dragon's Reach expansion — new zones, boss encounters, and the Dragon Knight unlock chain.",
     "file": "dragon-expansion.html",
-    "hero": "../images/news_hero/dragon-expansion.jpg"
+    "hero": "images/news_hero/dragon-expansion.jpg"
   },
   {
     "slug": "milestone-53",
@@ -141,7 +141,7 @@
     "category": "release",
     "summary": "Blacksmith merge, UI overhaul, combat rebalance, simulation parity, and the new survey tool.",
     "file": "milestone-53.html",
-    "hero": "../images/news_hero/milestone-53.jpg"
+    "hero": "images/news_hero/milestone-53.jpg"
   },
   {
     "slug": "pre-game",
@@ -150,6 +150,6 @@
     "category": "dev-diary",
     "summary": "The original design document — party-based RPG with mobile-first combat and an atmospheric dark-fantasy world.",
     "file": "pre-game.html",
-    "hero": "../images/news_hero/pre-game.jpg"
+    "hero": "images/news_hero/pre-game.jpg"
   }
 ]

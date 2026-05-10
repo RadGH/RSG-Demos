@@ -1155,7 +1155,7 @@ function renderGenderCol(app, gender) {
   labelEl.appendChild(gBadge);
 
   if (app) {
-    // Badges
+    // Only show badges when something needs attention
     if (app.pendingReview) {
       const b = document.createElement('span');
       b.className = 'badge badge-pending';
@@ -1166,11 +1166,6 @@ function renderGenderCol(app, gender) {
       const b = document.createElement('span');
       b.className = 'badge badge-warn';
       b.textContent = app.missingPoses.length + ' missing';
-      labelEl.appendChild(b);
-    } else if (app.spriteCount >= 7) {
-      const b = document.createElement('span');
-      b.className = 'badge badge-ok';
-      b.textContent = '7/7';
       labelEl.appendChild(b);
     }
     col.appendChild(labelEl);
@@ -1268,12 +1263,15 @@ function buildClassGrid(section, classList, byClass, q) {
     header.appendChild(nameEl);
     header.appendChild(idEl);
 
-    // Pose-count badge
+    // Only show a warning badge when poses are missing
     const totalPoses = (male ? male.spriteCount : 0) + (female ? female.spriteCount : 0);
-    const countBadge = document.createElement('span');
-    countBadge.className = 'badge ' + ((totalPoses >= 14) ? 'badge-ok' : 'badge-warn');
-    countBadge.textContent = totalPoses + '/14';
-    header.appendChild(countBadge);
+    const maxPoses = 14;
+    if (totalPoses < maxPoses) {
+      const countBadge = document.createElement('span');
+      countBadge.className = 'badge badge-warn';
+      countBadge.textContent = (maxPoses - totalPoses) + ' missing';
+      header.appendChild(countBadge);
+    }
 
     block.appendChild(header);
 
@@ -1356,7 +1354,8 @@ function renderNpcSection(appearances, q) {
 }
 
 // ---------------------------------------------------------------------------
-// Entity section (companions, enemies, bosses) — simpler card grid
+// Entity section (companions, enemies, bosses) — portrait + 6-pose layout
+// matching Classes / NPCs (class-pair-block style, single column per entity)
 // ---------------------------------------------------------------------------
 function renderEntitySection(items, title, sectionKey, q) {
   if (!items || !items.length) return null;
@@ -1373,42 +1372,39 @@ function renderEntitySection(items, title, sectionKey, q) {
   section.appendChild(titleEl);
 
   const grid = document.createElement('div');
-  grid.className = 'entity-grid';
+  grid.className = 'class-pair-grid';
 
   for (const ent of qFilt) {
-    const card = document.createElement('div');
-    card.className = 'entity-card';
+    const block = document.createElement('div');
+    block.className = 'class-pair-block';
 
-    const hdr = document.createElement('div');
-    hdr.className = 'entity-card-header';
+    const header = document.createElement('div');
+    header.className = 'class-pair-header';
     const nameEl = document.createElement('div');
-    nameEl.className = 'entity-card-name';
+    nameEl.className = 'class-pair-name';
     nameEl.textContent = ent.name || ent.id;
-    hdr.appendChild(nameEl);
+    const idEl = document.createElement('div');
+    idEl.className = 'class-pair-id';
+    idEl.textContent = ent.id;
+    header.appendChild(nameEl);
+    header.appendChild(idEl);
     if (ent.missingPoses && ent.missingPoses.length) {
       const b = document.createElement('span');
       b.className = 'badge badge-warn';
       b.textContent = ent.missingPoses.length + ' missing';
-      hdr.appendChild(b);
+      header.appendChild(b);
     }
-    card.appendChild(hdr);
+    block.appendChild(header);
 
-    const idEl = document.createElement('div');
-    idEl.className = 'entity-card-id';
-    idEl.textContent = ent.id;
-    card.appendChild(idEl);
+    // Render as a single appearance row (portrait + 6 poses)
+    const app = {
+      id: ent.id,
+      name: ent.name || ent.id,
+      sprites: ent.sprites || {}
+    };
+    block.appendChild(renderAppearanceRow(app));
 
-    // Sprite frames — portrait first, then action poses
-    const framesDiv = document.createElement('div');
-    framesDiv.className = 'appearance-frames';
-    framesDiv.style.marginTop = '10px';
-    const poses = ['portrait', 'south', 'east', 'east_attack', 'east_spell', 'east_block', 'east_ko'];
-    for (const pose of poses) {
-      const rel = ent.sprites && ent.sprites[pose];
-      framesDiv.appendChild(renderPoseFrame(ent.id, ent.name, pose, rel));
-    }
-    card.appendChild(framesDiv);
-    grid.appendChild(card);
+    grid.appendChild(block);
   }
   section.appendChild(grid);
   return section;
@@ -1614,7 +1610,7 @@ function renderOrphanSection(orphans, q) {
 // Main manifest renderer
 // ---------------------------------------------------------------------------
 const SECTION_ORDER = ['classes', 'npcs', 'companions', 'enemies', 'bosses', 'backgrounds',
-  'ui', 'particles', 'spells', 'portraits', 'other', 'orphaned'];
+  'ui', 'particles', 'spells', 'orphaned'];
 
 var STATE = { manifest: null, tab: 'all', q: '' };
 
@@ -1641,8 +1637,6 @@ function render() {
   maybe('ui',          function() { return renderTileSection(m.ui, 'UI', 'ui', q); });
   maybe('particles',   function() { return renderTileSection(m.particles, 'Particles & FX', 'particles', q); });
   maybe('spells',      function() { return renderTileSection(m.spell_icons, 'Spell Icons', 'spells', q); });
-  maybe('portraits',   function() { return renderTileSection(m.portraits_misc, 'Portraits (misc)', 'portraits', q); });
-  maybe('other',       function() { return renderTileSection(m.other, 'Other', 'other', q); });
   maybe('orphaned',    function() { return renderOrphanSection(m.orphans, q); });
 
   if (!root.children.length) {
@@ -1655,7 +1649,7 @@ function buildToolbar(m) {
   bar.innerHTML = '';
 
   const tabs = [
-    ['all',         'All',            m.totals.appearances + m.totals.companions + m.totals.enemies + m.totals.bosses],
+    ['all',         'All',            m.totals.appearances + m.totals.companions + m.totals.enemies + m.totals.bosses + (m.totals.orphans || 0)],
     ['classes',     'Classes',        (m.appearances || []).filter(function(a){return !a.npc && !a.deprecated;}).length],
     ['npcs',        'NPCs',           (m.appearances || []).filter(function(a){return a.npc;}).length],
     ['companions',  'Companions',     m.totals.companions],
@@ -1665,8 +1659,6 @@ function buildToolbar(m) {
     ['ui',          'UI',             (m.ui || []).length],
     ['particles',   'Particles',      (m.particles || []).length],
     ['spells',      'Spells',         (m.spell_icons || []).length],
-    ['portraits',   'Portraits',      (m.portraits_misc || []).length],
-    ['other',       'Other',          (m.other || []).length],
     ['orphaned',    'Orphaned',       m.totals.orphans],
   ];
 
@@ -1711,11 +1703,9 @@ Promise.all([
 
   // Merge non-appearance content from images-manifest into apM
   if (imgM) {
-    apM.ui            = imgM.ui            || [];
-    apM.particles     = (imgM.particles    || []);
-    apM.spell_icons   = imgM.spell_icons   || [];
-    apM.portraits_misc= imgM.portraits_misc|| [];
-    apM.other         = imgM.other         || [];
+    apM.ui          = imgM.ui          || [];
+    apM.particles   = imgM.particles   || [];
+    apM.spell_icons = imgM.spell_icons || [];
   }
 
   // Attach class registry so renderClassesSection can sort by the canonical class order

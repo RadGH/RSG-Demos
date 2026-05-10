@@ -83,8 +83,7 @@
       { href: ASSETS + 'sprite-adjust.html', label: 'Sprite Adjust' },
       { href: ASSETS + 'custom-content.html', label: 'Custom Content' },
       { href: ASSETS + 'skill-audit.html', label: 'Skill Audit' },
-      { href: ASSETS + 'dialog-inspector.html', label: 'Dialog Inspector' },
-      { href: ASSETS + 'tools.html', label: 'All Tools (Index)' }
+      { href: ASSETS + 'dialog-inspector.html', label: 'Dialog Inspector' }
     ]
   };
   var CATALOG_BY_GAME = {
@@ -205,7 +204,7 @@
     ]
   };
   var toolsItem = TOOLS.length ? {
-    href: ASSETS + 'tools.html',
+    href: TOOLS[0].href,
     label: 'Tools',
     children: TOOLS.slice()
   } : null;
