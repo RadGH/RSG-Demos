@@ -327,6 +327,7 @@ function wireTopbar() {
       document.querySelectorAll('#mode-seg button').forEach(x => x.classList.remove('active'));
       b.classList.add('active');
       mode = b.dataset.mode;
+      document.body.dataset.mode = mode;  // M455: drives `body[data-mode] .card .badge` CSS
       document.getElementById('batch-select-wrap').style.display = (mode === 'history') ? '' : 'none';
       render();
     };
@@ -344,21 +345,24 @@ function wireTopbar() {
 }
 
 function wireSelectBar() {
+  // M455 — copy-cmd-btn + approve-all-btn removed from the bar; the
+  // approval workflow now copies a list of IDs and the user pastes them
+  // into Claude (which runs the approve script). Keep existing functions
+  // around in case they're referenced elsewhere; just don't wire them.
   document.getElementById('copy-btn').onclick = copyList;
-  document.getElementById('copy-cmd-btn').onclick = copyApproveCommand;
-  document.getElementById('approve-all-btn').onclick = copyApproveAllCommand;
   document.getElementById('clear-btn').onclick = () => {
     selected.clear();
     updateSelectBar();
     document.querySelectorAll('.card.selected').forEach(c => c.classList.remove('selected'));
   };
+  // Set initial body[data-mode] so the page styling matches default 'pending'.
+  document.body.dataset.mode = mode;
 }
 
 function updateSelectBar() {
   const n = selected.size;
   document.getElementById('select-count').textContent = `${n} selected`;
   document.getElementById('copy-btn').disabled = n === 0;
-  document.getElementById('copy-cmd-btn').disabled = n === 0;
   document.getElementById('clear-btn').disabled = n === 0;
 }
 

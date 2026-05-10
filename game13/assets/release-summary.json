@@ -1,7 +1,9 @@
 {
-  "milestone": 455,
+  "milestone": 456,
   "date": "2026-05-09",
-  "summary": "M455: Header/footer cleanup, news hero 404 fix, news.html two-column layout, images.html entity portrait cards, badge cleanup, and mobile hero stats swap.",
-  "categories": [],
+  "summary": "M456 — Frost wyrmling re-generation via updated openai-9pose workflow (no shield, mouth-breath frost spell, wing-block)",
+  "categories": [
+    "feature"
+  ],
   "breakingChanges": []
 }
