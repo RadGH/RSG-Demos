@@ -1,7 +1,7 @@
 {
-  "milestone": 451,
+  "milestone": 453,
   "date": "2026-05-09",
-  "summary": "M451 — Combat log fix (mobile only): padding-bottom: 1lh + pointer-events: auto on .cbt-log-entries so the last line shows + the panel is scrollable. Plus: frost_wyrmling sprite sheet regenerated via the new OpenAI 9-pose workflow (scripts/openai-spritesheet-gen.py). Sheet: 1024×1024, sliced into 9 256×256 cells (portrait, south, east, east_attack, east_spell, east_block, east_ko, east_cheer, east_wound), chroma-keyed against #00FF00 with tolerance 64 + despill, tagged for review on Image Review V2 with source='openai-9pose'. Pre-existing pixellab files backed up to spritecook/_pre_openai/.",
+  "summary": "M431+: images.html full refactor — appearance-driven manifest, no inline CSS, gender fixed (no unisex), orphan detection, transparency grid, single toolbar, enemies/companions/bosses all appearance-driven",
   "categories": [
     "feature"
   ],

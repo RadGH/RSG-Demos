@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-10T04:57:27.993Z",
+  "generated": "2026-05-10T04:52:56.086Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,20 +28,6 @@
     }
   ],
   "entries": [
-    {
-      "milestone": 453,
-      "date": "2026-05-09",
-      "summary": "M431+: images.html full refactor — appearance-driven manifest, no inline CSS, gender fixed (no unisex), orphan detection, transparency grid, single toolbar, enemies/companions/bosses all appearance-driven",
-      "items": [
-        {
-          "text": "M431+: images.html full refactor — appearance-driven manifest, no inline CSS, gender fixed (no unisex), orphan detection, transparency grid, single toolbar, enemies/companions/bosses all appearance-driven",
-          "categories": [
-            "Feature",
-            "BugFix"
-          ]
-        }
-      ]
-    },
     {
       "milestone": 452,
       "date": "2026-05-09",

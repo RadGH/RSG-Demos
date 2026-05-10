@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-10T04:14:55.955Z"
+    "generated": "2026-05-10T04:57:27.133Z"
   },
   "tools": [
     {
@@ -216,7 +216,7 @@
       "desc": "(no description — add one in tools-meta.json)",
       "tag": "devtool",
       "milestone": "",
-      "updated": "2026-05-07",
+      "updated": "2026-05-10",
       "deprecated": false
     },
     {
