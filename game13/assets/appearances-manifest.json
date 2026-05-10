@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-10T05:27:55.936Z",
+  "generated": "2026-05-10T05:54:23.326Z",
   "spriteDirs": [
     "spritecook",
     "sprites"
@@ -6195,6 +6195,51 @@
       "name": "south"
     },
     {
+      "file": "images/spritecook/_pre_openai/frost_wyrmling_east_attack.png",
+      "dir": "spritecook",
+      "name": "frost_wyrmling_east_attack"
+    },
+    {
+      "file": "images/spritecook/_pre_openai/frost_wyrmling_east_block.png",
+      "dir": "spritecook",
+      "name": "frost_wyrmling_east_block"
+    },
+    {
+      "file": "images/spritecook/_pre_openai/frost_wyrmling_east_cheer.png",
+      "dir": "spritecook",
+      "name": "frost_wyrmling_east_cheer"
+    },
+    {
+      "file": "images/spritecook/_pre_openai/frost_wyrmling_east_ko.png",
+      "dir": "spritecook",
+      "name": "frost_wyrmling_east_ko"
+    },
+    {
+      "file": "images/spritecook/_pre_openai/frost_wyrmling_east_spell.png",
+      "dir": "spritecook",
+      "name": "frost_wyrmling_east_spell"
+    },
+    {
+      "file": "images/spritecook/_pre_openai/frost_wyrmling_east_wound.png",
+      "dir": "spritecook",
+      "name": "frost_wyrmling_east_wound"
+    },
+    {
+      "file": "images/spritecook/_pre_openai/frost_wyrmling_east.png",
+      "dir": "spritecook",
+      "name": "frost_wyrmling_east"
+    },
+    {
+      "file": "images/spritecook/_pre_openai/frost_wyrmling_portrait.png",
+      "dir": "spritecook",
+      "name": "frost_wyrmling_portrait"
+    },
+    {
+      "file": "images/spritecook/_pre_openai/frost_wyrmling_south.png",
+      "dir": "spritecook",
+      "name": "frost_wyrmling_south"
+    },
+    {
       "file": "images/spritecook/abyss_boss_east_attack.png",
       "dir": "spritecook",
       "name": "abyss_boss_east_attack"
@@ -9232,7 +9277,7 @@
     "companions": 35,
     "enemies": 20,
     "bosses": 16,
-    "orphans": 908,
+    "orphans": 917,
     "missing": 71
   }
 }

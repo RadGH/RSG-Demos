@@ -1,0 +1,94 @@
+{
+  "entries": [
+    {
+      "id": "openai9_frost_wyrmling_portrait",
+      "category": "companion",
+      "group": "frost_wyrmling",
+      "pose": "portrait",
+      "file": "../images/spritecook/frost_wyrmling_portrait.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward with bared fangs and outstretched claws, no held weapon) / East spell (exhaling a wide pale-blue frost cone from the mouth, ice crystals forming mid-air) / East block (rearing back with wings flared like a natural shield, head low, no held shield)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A young frost dragon. Its dragon-breath freezes foes in place. Dragon-scales shimmer blue.\nEQUIPMENT (HARD RULE): this is a BEAST / DRAGON / NON-HUMANOID. DO NOT add a shield. DO NOT add a sword, axe, staff, wand, or any held weapon. The creature uses its own body \u2014 claws, fangs, wings, tail, magical breath, elemental aura \u2014 for every pose. Spells manifest as glow / breath / particles around the head or mouth, not from a wand or staff. Block uses the body itself (rearing back, wing-shield, etc.), never a held shield.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T05:50:37Z"
+    },
+    {
+      "id": "openai9_frost_wyrmling_south",
+      "category": "companion",
+      "group": "frost_wyrmling",
+      "pose": "south",
+      "file": "../images/spritecook/frost_wyrmling_south.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward with bared fangs and outstretched claws, no held weapon) / East spell (exhaling a wide pale-blue frost cone from the mouth, ice crystals forming mid-air) / East block (rearing back with wings flared like a natural shield, head low, no held shield)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A young frost dragon. Its dragon-breath freezes foes in place. Dragon-scales shimmer blue.\nEQUIPMENT (HARD RULE): this is a BEAST / DRAGON / NON-HUMANOID. DO NOT add a shield. DO NOT add a sword, axe, staff, wand, or any held weapon. The creature uses its own body \u2014 claws, fangs, wings, tail, magical breath, elemental aura \u2014 for every pose. Spells manifest as glow / breath / particles around the head or mouth, not from a wand or staff. Block uses the body itself (rearing back, wing-shield, etc.), never a held shield.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T05:50:37Z"
+    },
+    {
+      "id": "openai9_frost_wyrmling_east",
+      "category": "companion",
+      "group": "frost_wyrmling",
+      "pose": "east",
+      "file": "../images/spritecook/frost_wyrmling_east.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward with bared fangs and outstretched claws, no held weapon) / East spell (exhaling a wide pale-blue frost cone from the mouth, ice crystals forming mid-air) / East block (rearing back with wings flared like a natural shield, head low, no held shield)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A young frost dragon. Its dragon-breath freezes foes in place. Dragon-scales shimmer blue.\nEQUIPMENT (HARD RULE): this is a BEAST / DRAGON / NON-HUMANOID. DO NOT add a shield. DO NOT add a sword, axe, staff, wand, or any held weapon. The creature uses its own body \u2014 claws, fangs, wings, tail, magical breath, elemental aura \u2014 for every pose. Spells manifest as glow / breath / particles around the head or mouth, not from a wand or staff. Block uses the body itself (rearing back, wing-shield, etc.), never a held shield.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T05:50:37Z"
+    },
+    {
+      "id": "openai9_frost_wyrmling_east_attack",
+      "category": "companion",
+      "group": "frost_wyrmling",
+      "pose": "east_attack",
+      "file": "../images/spritecook/frost_wyrmling_east_attack.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward with bared fangs and outstretched claws, no held weapon) / East spell (exhaling a wide pale-blue frost cone from the mouth, ice crystals forming mid-air) / East block (rearing back with wings flared like a natural shield, head low, no held shield)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A young frost dragon. Its dragon-breath freezes foes in place. Dragon-scales shimmer blue.\nEQUIPMENT (HARD RULE): this is a BEAST / DRAGON / NON-HUMANOID. DO NOT add a shield. DO NOT add a sword, axe, staff, wand, or any held weapon. The creature uses its own body \u2014 claws, fangs, wings, tail, magical breath, elemental aura \u2014 for every pose. Spells manifest as glow / breath / particles around the head or mouth, not from a wand or staff. Block uses the body itself (rearing back, wing-shield, etc.), never a held shield.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T05:50:37Z"
+    },
+    {
+      "id": "openai9_frost_wyrmling_east_spell",
+      "category": "companion",
+      "group": "frost_wyrmling",
+      "pose": "east_spell",
+      "file": "../images/spritecook/frost_wyrmling_east_spell.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward with bared fangs and outstretched claws, no held weapon) / East spell (exhaling a wide pale-blue frost cone from the mouth, ice crystals forming mid-air) / East block (rearing back with wings flared like a natural shield, head low, no held shield)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A young frost dragon. Its dragon-breath freezes foes in place. Dragon-scales shimmer blue.\nEQUIPMENT (HARD RULE): this is a BEAST / DRAGON / NON-HUMANOID. DO NOT add a shield. DO NOT add a sword, axe, staff, wand, or any held weapon. The creature uses its own body \u2014 claws, fangs, wings, tail, magical breath, elemental aura \u2014 for every pose. Spells manifest as glow / breath / particles around the head or mouth, not from a wand or staff. Block uses the body itself (rearing back, wing-shield, etc.), never a held shield.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T05:50:37Z"
+    },
+    {
+      "id": "openai9_frost_wyrmling_east_block",
+      "category": "companion",
+      "group": "frost_wyrmling",
+      "pose": "east_block",
+      "file": "../images/spritecook/frost_wyrmling_east_block.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward with bared fangs and outstretched claws, no held weapon) / East spell (exhaling a wide pale-blue frost cone from the mouth, ice crystals forming mid-air) / East block (rearing back with wings flared like a natural shield, head low, no held shield)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A young frost dragon. Its dragon-breath freezes foes in place. Dragon-scales shimmer blue.\nEQUIPMENT (HARD RULE): this is a BEAST / DRAGON / NON-HUMANOID. DO NOT add a shield. DO NOT add a sword, axe, staff, wand, or any held weapon. The creature uses its own body \u2014 claws, fangs, wings, tail, magical breath, elemental aura \u2014 for every pose. Spells manifest as glow / breath / particles around the head or mouth, not from a wand or staff. Block uses the body itself (rearing back, wing-shield, etc.), never a held shield.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T05:50:37Z"
+    },
+    {
+      "id": "openai9_frost_wyrmling_east_ko",
+      "category": "companion",
+      "group": "frost_wyrmling",
+      "pose": "east_ko",
+      "file": "../images/spritecook/frost_wyrmling_east_ko.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward with bared fangs and outstretched claws, no held weapon) / East spell (exhaling a wide pale-blue frost cone from the mouth, ice crystals forming mid-air) / East block (rearing back with wings flared like a natural shield, head low, no held shield)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A young frost dragon. Its dragon-breath freezes foes in place. Dragon-scales shimmer blue.\nEQUIPMENT (HARD RULE): this is a BEAST / DRAGON / NON-HUMANOID. DO NOT add a shield. DO NOT add a sword, axe, staff, wand, or any held weapon. The creature uses its own body \u2014 claws, fangs, wings, tail, magical breath, elemental aura \u2014 for every pose. Spells manifest as glow / breath / particles around the head or mouth, not from a wand or staff. Block uses the body itself (rearing back, wing-shield, etc.), never a held shield.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T05:50:37Z"
+    },
+    {
+      "id": "openai9_frost_wyrmling_east_cheer",
+      "category": "companion",
+      "group": "frost_wyrmling",
+      "pose": "east_cheer",
+      "file": "../images/spritecook/frost_wyrmling_east_cheer.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward with bared fangs and outstretched claws, no held weapon) / East spell (exhaling a wide pale-blue frost cone from the mouth, ice crystals forming mid-air) / East block (rearing back with wings flared like a natural shield, head low, no held shield)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A young frost dragon. Its dragon-breath freezes foes in place. Dragon-scales shimmer blue.\nEQUIPMENT (HARD RULE): this is a BEAST / DRAGON / NON-HUMANOID. DO NOT add a shield. DO NOT add a sword, axe, staff, wand, or any held weapon. The creature uses its own body \u2014 claws, fangs, wings, tail, magical breath, elemental aura \u2014 for every pose. Spells manifest as glow / breath / particles around the head or mouth, not from a wand or staff. Block uses the body itself (rearing back, wing-shield, etc.), never a held shield.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T05:50:37Z"
+    },
+    {
+      "id": "openai9_frost_wyrmling_east_wound",
+      "category": "companion",
+      "group": "frost_wyrmling",
+      "pose": "east_wound",
+      "file": "../images/spritecook/frost_wyrmling_east_wound.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward with bared fangs and outstretched claws, no held weapon) / East spell (exhaling a wide pale-blue frost cone from the mouth, ice crystals forming mid-air) / East block (rearing back with wings flared like a natural shield, head low, no held shield)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A young frost dragon. Its dragon-breath freezes foes in place. Dragon-scales shimmer blue.\nEQUIPMENT (HARD RULE): this is a BEAST / DRAGON / NON-HUMANOID. DO NOT add a shield. DO NOT add a sword, axe, staff, wand, or any held weapon. The creature uses its own body \u2014 claws, fangs, wings, tail, magical breath, elemental aura \u2014 for every pose. Spells manifest as glow / breath / particles around the head or mouth, not from a wand or staff. Block uses the body itself (rearing back, wing-shield, etc.), never a held shield.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T05:50:37Z"
+    }
+  ]
+}

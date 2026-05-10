@@ -1,9 +1,7 @@
 {
-  "milestone": 454,
+  "milestone": 455,
   "date": "2026-05-09",
-  "summary": "M432: images.html full refactor — appearance-driven manifest, no inline CSS, gender fixed (no unisex), orphan detection, transparency grid, single toolbar",
-  "categories": [
-    "feature"
-  ],
+  "summary": "M455: Header/footer cleanup, news hero 404 fix, news.html two-column layout, images.html entity portrait cards, badge cleanup, and mobile hero stats swap.",
+  "categories": [],
   "breakingChanges": []
 }

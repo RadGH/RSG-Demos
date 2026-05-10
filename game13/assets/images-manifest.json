@@ -1,18 +1,18 @@
 {
-  "generated": "2026-05-10T05:27:55.843Z",
+  "generated": "2026-05-10T05:54:23.250Z",
   "totals": {
-    "all": 2058,
+    "all": 2067,
     "classes": 577,
     "bosses": 270,
     "enemies": 184,
-    "companions": 213,
+    "companions": 220,
     "backgrounds": 109,
     "ui": 3,
     "particles": 21,
     "spell_icons": 8,
     "portraits_misc": 85,
     "other": 0,
-    "unknown_characters": 588
+    "unknown_characters": 590
   },
   "classes": [
     {
@@ -7486,6 +7486,48 @@
       "id": "frost_wyrmling",
       "files": [
         {
+          "file": "spritecook/_pre_openai/frost_wyrmling_east_attack.png",
+          "name": "frost_wyrmling_east_attack.png",
+          "pose": "east+attack",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/_pre_openai/frost_wyrmling_east_block.png",
+          "name": "frost_wyrmling_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/_pre_openai/frost_wyrmling_east_ko.png",
+          "name": "frost_wyrmling_east_ko.png",
+          "pose": "east+ko",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/_pre_openai/frost_wyrmling_east_spell.png",
+          "name": "frost_wyrmling_east_spell.png",
+          "pose": "east+spell",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/_pre_openai/frost_wyrmling_east.png",
+          "name": "frost_wyrmling_east.png",
+          "pose": "east",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/_pre_openai/frost_wyrmling_portrait.png",
+          "name": "frost_wyrmling_portrait.png",
+          "pose": "portrait",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/_pre_openai/frost_wyrmling_south.png",
+          "name": "frost_wyrmling_south.png",
+          "pose": "south",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/frost_wyrmling_east_attack.png",
           "name": "frost_wyrmling_east_attack.png",
           "pose": "east+attack",
@@ -10477,6 +10519,12 @@
       "id": "frost_wyrmling_east_cheer",
       "files": [
         {
+          "file": "spritecook/_pre_openai/frost_wyrmling_east_cheer.png",
+          "name": "frost_wyrmling_east_cheer.png",
+          "pose": "",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/frost_wyrmling_east_cheer.png",
           "name": "frost_wyrmling_east_cheer.png",
           "pose": "",
@@ -10487,6 +10535,12 @@
     {
       "id": "frost_wyrmling_east_wound",
       "files": [
+        {
+          "file": "spritecook/_pre_openai/frost_wyrmling_east_wound.png",
+          "name": "frost_wyrmling_east_wound.png",
+          "pose": "",
+          "gender": "inferred"
+        },
         {
           "file": "spritecook/frost_wyrmling_east_wound.png",
           "name": "frost_wyrmling_east_wound.png",
