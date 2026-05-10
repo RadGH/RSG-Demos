@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-10T20:54:18.256Z",
+  "generated": "2026-05-10T20:51:32.911Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,22 +28,6 @@
     }
   ],
   "entries": [
-    {
-      "milestone": 459,
-      "date": "2026-05-10",
-      "summary": "M432: image-review-v2 Grouped layout with full 7-pose appearance cards (fixes Goblin 1-pic bug) + Layout button group (Grouped/List) + checkerboard pose frames matching images.html",
-      "items": [
-        {
-          "text": "M432: image-review-v2 Grouped layout with full 7-pose appearance cards (fixes Goblin 1-pic bug) + Layout button group (Grouped/List) + checkerboard pose frames matching images.html",
-          "categories": [
-            "Feature",
-            "BugFix",
-            "QoL",
-            "Art"
-          ]
-        }
-      ]
-    },
     {
       "milestone": 458,
       "date": "2026-05-10",

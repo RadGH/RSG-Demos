@@ -90,7 +90,7 @@
   .card .check-row { position:absolute; inset:0; display:none; }
   .card .pose-tag { position:absolute; bottom:0.35rem; left:0.35rem; background:#0008; color:#bbb; font-size:0.6rem; padding:0.1rem 0.35rem; border-radius:2px; }
 
-  /* Character group blocks */
+  /* Character group blocks (List layout) */
   .char-group { margin-bottom:1rem; padding:0.5rem; background:var(--panel); border:1px solid var(--border); border-radius:6px; }
   .char-group .group-head { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem; }
   .char-group .group-head h3 { margin:0; color:var(--accent); font-size:0.95rem; text-transform:capitalize; }
@@ -98,6 +98,105 @@
   .char-group .pose-row { display:grid; grid-template-columns:repeat(auto-fill, minmax(110px, 1fr)); gap:0.5rem; }
   .char-group .pose-row .card { padding:0.35rem; }
   .char-group .pose-row .card .label { font-size:0.6rem; }
+
+  /* =====================================================================
+     GROUPED layout — images.html-compatible appearance card components
+     Identical class names + rules so the same CSS governs both pages.
+     ===================================================================== */
+
+  /* Transparency checkerboard — matches images.html */
+  :root {
+    --checker-a: #1a1218;
+    --checker-b: #0f0b10;
+    --checker-size: 20px;
+  }
+  .checker-bg {
+    background-image:
+      linear-gradient(45deg, var(--checker-a) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--checker-a) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--checker-a) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--checker-a) 75%);
+    background-size: var(--checker-size) var(--checker-size);
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    background-color: var(--checker-b);
+  }
+
+  /* Outer grid for class-pair-block cards */
+  .class-pair-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(420px, 1fr)); gap:16px; margin-bottom:1rem; }
+
+  /* Individual character card */
+  .class-pair-block {
+    background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px;
+    transition:border-color 0.2s, box-shadow 0.2s;
+  }
+  .class-pair-block:hover { border-color:var(--accent-dim); box-shadow:0 4px 16px rgba(232,160,32,0.1); }
+  .class-pair-block.selected-group { border-color:var(--accent); box-shadow:0 0 0 2px rgba(255,208,96,0.15); }
+
+  /* Card header row */
+  .class-pair-header { display:flex; align-items:center; gap:8px; margin-bottom:12px; flex-wrap:wrap; }
+  .class-pair-name { font-size:15px; font-weight:700; color:var(--accent); text-transform:capitalize; }
+  .class-pair-id { font-size:10px; color:var(--muted); font-family:monospace; }
+
+  /* M/F side-by-side columns */
+  .class-pair-variants { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .gender-col { display:flex; flex-direction:column; gap:6px; }
+  .gender-col-label { font-size:10px; text-transform:uppercase; letter-spacing:0.1em; font-weight:700; color:var(--muted); display:flex; align-items:center; gap:5px; }
+  .badge-gender-male   { color:#80aaff; }
+  .badge-gender-female { color:#f080c0; }
+
+  /* Appearance row: portrait + 6 pose frames */
+  .appearance-row { display:flex; gap:6px; align-items:flex-start; flex-wrap:wrap; }
+
+  .appearance-portrait {
+    position:relative; width:72px; min-width:72px; height:72px;
+    border-radius:7px; overflow:hidden; border:2px solid var(--border);
+    cursor:pointer; transition:border-color 0.15s; flex-shrink:0;
+  }
+  .appearance-portrait:hover { border-color:var(--accent); }
+  .appearance-portrait img { width:100%; height:100%; object-fit:contain; image-rendering:pixelated; image-rendering:crisp-edges; }
+  .appearance-portrait.selected-portrait { border-color:var(--accent); box-shadow:0 0 0 2px rgba(255,208,96,0.25); }
+
+  .appearance-frames { display:grid; grid-template-columns:repeat(3, 44px); gap:3px; }
+
+  .pose-frame {
+    position:relative; width:44px; height:44px;
+    border-radius:5px; overflow:hidden; border:1px solid var(--border);
+    cursor:pointer; transition:border-color 0.15s, transform 0.12s;
+  }
+  .pose-frame:hover { border-color:var(--accent); transform:scale(1.08); }
+  .pose-frame.selected-pose { border-color:var(--accent); box-shadow:0 0 0 1px rgba(255,208,96,0.3); }
+  .pose-frame img { width:100%; height:100%; object-fit:contain; image-rendering:pixelated; image-rendering:crisp-edges; }
+  .pose-frame .pose-label {
+    position:absolute; bottom:0; left:0; right:0;
+    background:rgba(0,0,0,0.72); color:#fff; font-size:7px;
+    text-align:center; padding:1px; text-transform:uppercase; letter-spacing:0.04em;
+    pointer-events:none;
+  }
+  .pose-frame.pose-missing {
+    background:rgba(192,64,48,0.06); border-color:rgba(192,64,48,0.28);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; cursor:default;
+  }
+  .pose-frame.pose-missing .pose-missing-glyph { font-size:12px; color:var(--warn); opacity:0.5; }
+  .pose-frame.pose-missing .pose-label { position:static; background:transparent; color:var(--warn); opacity:0.6; }
+
+  .appearance-id-row { margin-top:5px; font-size:10px; color:var(--muted); font-family:monospace; display:flex; align-items:center; gap:5px; flex-wrap:wrap; }
+
+  /* Badge (mirroring images.html badge styles scoped to review page) */
+  .rv-badge {
+    font-size:9px; padding:1px 5px; border-radius:8px; font-weight:600;
+    letter-spacing:0.03em; display:inline-block;
+  }
+  .rv-badge-warn     { background:rgba(192,64,48,0.12); color:var(--warn); border:1px solid rgba(192,64,48,0.4); }
+  .rv-badge-pending  { background:#2a2020; color:#cc8844; border:1px solid #4a3030; }
+  .rv-badge-ok       { background:#1a3a2a; color:var(--ok); border:1px solid #2a5a3a; }
+
+  /* Section title inside grouped layout */
+  .rv-section-title {
+    font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--muted); margin:1rem 0 0.5rem; padding-bottom:5px;
+    border-bottom:1px solid var(--border); display:flex; align-items:center; gap:6px;
+  }
+  .rv-section-count { background:var(--panel-alt); border:1px solid var(--border); color:var(--parchment); padding:1px 7px; border-radius:8px; font-size:9px; }
 
   /* Lightbox */
   /* M375: lightbox sits BELOW the 72px sticky nav so its toolbar buttons +
@@ -185,6 +284,13 @@
         <button data-cat="other">Other</button>
       </div>
     </div>
+    <div id="layout-wrap">
+      <div style="font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem;">Layout</div>
+      <div class="seg" id="layout-seg">
+        <button data-layout="grouped" class="active">Grouped</button>
+        <button data-layout="list">List</button>
+      </div>
+    </div>
     <div id="batch-select-wrap" style="display:none;">
       <div style="font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem;">Batch</div>
       <select id="batch-select" style="background:var(--panel-alt); color:var(--parchment); border:1px solid var(--border-strong); padding:0.35rem 0.5rem; font-size:0.85rem; border-radius:4px;"></select>
@@ -233,18 +339,22 @@
 
 <script>
 const POSES = ['portrait','south','east','east_attack','east_spell','east_block','east_ko'];
+const NON_PORTRAIT_POSES = POSES.filter(p => p !== 'portrait');
+const POSE_LABELS = { portrait:'port', south:'S', east:'E', east_attack:'atk', east_spell:'spl', east_block:'blk', east_ko:'ko' };
 const DATA_URL = './data/image-review-v2.json';
+const APPEARANCES_URL = './appearances-manifest.json';
 
 let DATA = null;
+let APPEARANCES = null;   // appearances-manifest.json keyed by entity id
 let mode = 'pending';      // 'pending' | 'current' | 'history'
 let category = 'characters'; // 'characters' | 'backgrounds' | 'tap_weapons' | 'other'
+let layout = 'grouped';    // 'grouped' | 'list'
 let historyBatchId = null;   // when mode === 'history'
 
 const filters = {
   poses: new Set(POSES),
   charCats: new Set(['hero','companion','boss','enemy']),
   bgTypes: new Set(['combat','menu','map']),
-  showSubsprites: false,
 };
 
 const selected = new Set();   // entry ids
@@ -261,6 +371,26 @@ async function load() {
     document.getElementById('status').innerHTML =
       '<span style="color:var(--warn);">Failed to load image-review-v2.json. Run <code>node scripts/build-image-review-v2.cjs</code>.</span>';
     return;
+  }
+  // Load appearances-manifest for the Grouped layout — provides full 7-pose data
+  // for enemies/companions/bosses that image-review-manifest only has a portrait for.
+  try {
+    const ar = await fetch(APPEARANCES_URL, { cache: 'no-cache' });
+    if (ar.ok) {
+      const raw = await ar.json();
+      // Build a flat id→appearance lookup spanning appearances, enemies, companions, bosses
+      APPEARANCES = {};
+      const sections = ['appearances','enemies','companions','bosses'];
+      for (const sec of sections) {
+        const list = raw[sec] || [];
+        for (const a of list) {
+          if (a.id && !APPEARANCES[a.id]) APPEARANCES[a.id] = a;
+        }
+      }
+    }
+  } catch (_) {
+    // appearances-manifest is optional — fall back to portrait-only gracefully
+    APPEARANCES = null;
   }
   buildBatchSelect();
   buildFilters();
@@ -280,22 +410,26 @@ function buildBatchSelect() {
 
 function buildFilters() {
   const body = document.getElementById('filter-body');
+  // Pose filter note: only relevant in List layout (Grouped always shows all poses via appearances-manifest)
+  const posesNote = layout === 'grouped'
+    ? '<div class="group-title" style="opacity:0.55;font-style:italic;">Pose filter active in List layout only</div>'
+    : '';
   body.innerHTML = `
     <div class="filter-group" id="char-filters" ${category !== 'characters' ? 'style="display:none;"' : ''}>
       <div class="group-title">Character categories</div>
       ${['hero','companion','boss','enemy'].map(c => `
-        <label class="filter-row"><input type="checkbox" data-charcat="${c}" checked> ${c}s</label>
+        <label class="filter-row"><input type="checkbox" data-charcat="${c}" ${filters.charCats.has(c) ? 'checked' : ''}> ${c}s</label>
       `).join('')}
-      <div class="group-title" style="margin-top:0.5rem;">Poses</div>
+      ${posesNote}
+      <div class="group-title" style="margin-top:0.5rem;${layout === 'grouped' ? 'opacity:0.55;' : ''}">Poses</div>
       ${POSES.map(p => `
-        <label class="filter-row"><input type="checkbox" data-pose="${p}" checked> ${p}</label>
+        <label class="filter-row" ${layout === 'grouped' ? 'style="opacity:0.55;"' : ''}><input type="checkbox" data-pose="${p}" ${filters.poses.has(p) ? 'checked' : ''} ${layout === 'grouped' ? 'disabled' : ''}> ${p}</label>
       `).join('')}
-      <label class="filter-row" style="margin-top:0.4rem;"><input type="checkbox" id="show-sub"> Show sub-sprites (group all 7 poses)</label>
     </div>
     <div class="filter-group" id="bg-filters" ${category !== 'backgrounds' ? 'style="display:none;"' : ''}>
       <div class="group-title">Background type</div>
       ${['combat','menu','map'].map(t => `
-        <label class="filter-row"><input type="checkbox" data-bgtype="${t}" checked> ${t}</label>
+        <label class="filter-row"><input type="checkbox" data-bgtype="${t}" ${filters.bgTypes.has(t) ? 'checked' : ''}> ${t}</label>
       `).join('')}
     </div>
   `;
@@ -317,8 +451,6 @@ function buildFilters() {
       render();
     };
   });
-  const ssEl = body.querySelector('#show-sub');
-  if (ssEl) ssEl.onchange = () => { filters.showSubsprites = ssEl.checked; render(); };
 }
 
 function wireTopbar() {
@@ -329,6 +461,9 @@ function wireTopbar() {
       mode = b.dataset.mode;
       document.body.dataset.mode = mode;  // M455: drives `body[data-mode] .card .badge` CSS
       document.getElementById('batch-select-wrap').style.display = (mode === 'history') ? '' : 'none';
+      // Layout seg only visible in current+characters mode
+      document.getElementById('layout-wrap').style.display =
+        (mode === 'current' && category === 'characters') ? '' : 'none';
       render();
     };
   });
@@ -339,9 +474,24 @@ function wireTopbar() {
       category = b.dataset.cat;
       document.getElementById('char-filters').style.display = (category === 'characters') ? '' : 'none';
       document.getElementById('bg-filters').style.display = (category === 'backgrounds') ? '' : 'none';
+      document.getElementById('layout-wrap').style.display =
+        (mode === 'current' && category === 'characters') ? '' : 'none';
+      buildFilters();  // refresh pose filter greyed state
       render();
     };
   });
+  document.querySelectorAll('#layout-seg button').forEach(b => {
+    b.onclick = () => {
+      document.querySelectorAll('#layout-seg button').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      layout = b.dataset.layout;
+      buildFilters();  // refresh pose filter enabled/disabled state
+      render();
+    };
+  });
+  // Initial visibility: Grouped mode only in current+characters
+  document.getElementById('layout-wrap').style.display =
+    (mode === 'current' && category === 'characters') ? '' : 'none';
 }
 
 function wireSelectBar() {
@@ -463,7 +613,9 @@ function render() {
     entries = entries.filter(e => {
       const sub = e.category && e.category !== 'character' ? e.category : null;
       if (sub && !filters.charCats.has(sub)) return false;
-      if (e.pose && !filters.poses.has(e.pose)) return false;
+      // In Grouped layout the pose filter is not applied — the full pose set
+      // comes from appearances-manifest. In List layout, honor pose filters.
+      if (layout !== 'grouped' && e.pose && !filters.poses.has(e.pose)) return false;
       return true;
     });
   }
@@ -478,22 +630,298 @@ function render() {
   }
   status.textContent = `${entries.length} image(s)`;
 
-  if (mode !== 'current' || (category === 'characters' && filters.showSubsprites)) {
+  if (mode === 'current' && category === 'characters' && layout === 'grouped') {
+    // Grouped layout: use appearances-manifest for full 7-pose display.
+    // renderGroupedAppearances() sets lbItems directly — do NOT call rebuildLbItems after.
+    renderGroupedAppearances(entries);
+    return;
+  } else if (mode !== 'current') {
+    // Pending / history: always group-by-group (legacy path)
     renderGroupedByGroup(entries);
-  } else if (mode === 'current' && category === 'characters' && !filters.showSubsprites) {
-    // Show one card per character (portrait pose)
-    const grouped = {};
-    for (const e of entries) {
-      if (e.pose !== 'portrait') continue;
-      if (!grouped[e.group]) grouped[e.group] = e;
-    }
-    renderFlat(Object.values(grouped));
   } else if (category === 'backgrounds' && mode === 'current') {
     renderBackgroundsByType(entries);
+  } else if (mode === 'current' && category === 'characters') {
+    // List layout: flat grid grouped by group key
+    renderGroupedByGroup(entries);
   } else {
     renderFlat(entries);
   }
   rebuildLbItems(entries);
+}
+
+// ---------------------------------------------------------------------------
+// Grouped layout — images.html-compatible appearance card rendering
+// ---------------------------------------------------------------------------
+
+/** Build a synthetic entry id for an appearance pose for lightbox/selection. */
+function appearancePoseId(appId, pose) { return `${appId}_${pose}`; }
+
+/** Resolve the display file path for a pose from the appearances-manifest sprite map.
+ *  Returns null if missing. The manifest stores paths relative to images/ dir
+ *  (e.g. "spritecook/warrior_portrait.png"), so we prepend ../images/.
+ */
+function resolveAppearanceSrc(relPath) {
+  if (!relPath) return null;
+  return '../images/' + relPath;
+}
+
+/** Render a single pose tile (appearance-row style).
+ *  Returns an HTMLElement. Clicking opens the lightbox for that pose's synthetic id.
+ */
+function makePoseFrameEl(appId, appName, pose, relPath) {
+  const div = document.createElement('div');
+  div.className = 'pose-frame checker-bg';
+  const poseId = appearancePoseId(appId, pose);
+  div.dataset.id = poseId;
+  if (!relPath) {
+    div.classList.add('pose-missing');
+    div.innerHTML = `<span class="pose-missing-glyph">&#x2717;</span><span class="pose-label">${POSE_LABELS[pose] || pose}</span>`;
+    return div;
+  }
+  const src = resolveAppearanceSrc(relPath);
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = `${appName} ${pose}`;
+  img.loading = 'lazy';
+  const labelEl = document.createElement('div');
+  labelEl.className = 'pose-label';
+  labelEl.textContent = POSE_LABELS[pose] || pose;
+  div.appendChild(img);
+  div.appendChild(labelEl);
+  // Selection state
+  if (selected.has(poseId)) div.classList.add('selected-pose');
+  div.addEventListener('click', function(ev) {
+    ev.stopPropagation();
+    openLbById(poseId);
+  });
+  return div;
+}
+
+/** Render the portrait tile (larger, left-most in appearance-row). */
+function makePortraitEl(appId, appName, relPath) {
+  const div = document.createElement('div');
+  div.className = 'appearance-portrait checker-bg';
+  const poseId = appearancePoseId(appId, 'portrait');
+  div.dataset.id = poseId;
+  if (!relPath) {
+    div.innerHTML = '<span style="font-size:22px;color:var(--muted)">?</span>';
+    return div;
+  }
+  const src = resolveAppearanceSrc(relPath);
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = appName;
+  img.loading = 'lazy';
+  div.appendChild(img);
+  if (selected.has(poseId)) div.classList.add('selected-portrait');
+  div.addEventListener('click', function(ev) {
+    ev.stopPropagation();
+    openLbById(poseId);
+  });
+  return div;
+}
+
+/** Render one appearance row (portrait + 6 poses) inside a class-pair-block.
+ *  app = entry from appearances-manifest (has .sprites map, .name, .id, .missingPoses)
+ *  manifestEntries = matching image-review-manifest entries for this group (for prompt/status)
+ */
+function makeAppearanceRow(app, manifestEntries) {
+  const row = document.createElement('div');
+  row.className = 'appearance-row';
+
+  // Portrait
+  row.appendChild(makePortraitEl(app.id, app.name || app.id, app.sprites && app.sprites.portrait));
+
+  // 6 pose frames
+  const frames = document.createElement('div');
+  frames.className = 'appearance-frames';
+  for (const pose of NON_PORTRAIT_POSES) {
+    frames.appendChild(makePoseFrameEl(
+      app.id, app.name || app.id, pose,
+      app.sprites && app.sprites[pose]
+    ));
+  }
+  row.appendChild(frames);
+  return row;
+}
+
+/** Build the lbItems entries for all poses of an appearance, merging manifest data. */
+function lbItemsForAppearance(app, manifestEntriesByPose, charCat) {
+  const items = [];
+  for (const pose of POSES) {
+    const relPath = app.sprites && app.sprites[pose];
+    const manEntry = manifestEntriesByPose[pose];
+    const src = relPath ? resolveAppearanceSrc(relPath) : null;
+    if (!src) continue; // skip missing poses in lightbox
+    items.push({
+      id: appearancePoseId(app.id, pose),
+      title: app.name || app.id,
+      subtitle: pose,
+      src,
+      oldSrc: null,
+      newSrc: null,
+      prompt: manEntry ? (manEntry.prompt || null) : null,
+      oldPrompt: null,
+      newPrompt: null,
+      reason: null,
+      assetId: null,
+      referenceAssetId: null,
+      isBg: false,
+      charCat,
+    });
+  }
+  return items;
+}
+
+/** Main Grouped layout renderer for current+characters mode.
+ *  Groups entries by charCat (hero, companion, boss, enemy), then per entity
+ *  renders a class-pair-block with full 7-pose appearance row sourced from
+ *  appearances-manifest.json. Falls back to the single manifest entry card
+ *  if the entity has no appearances-manifest entry.
+ */
+function renderGroupedAppearances(entries) {
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+
+  // Build a quick lookup of manifest entries by group+pose for prompt data
+  const manifestByGroupPose = {};
+  for (const e of entries) {
+    const key = (e.group || e.id) + '|' + (e.pose || '');
+    manifestByGroupPose[key] = e;
+  }
+
+  // Group entries by charCat then by group name
+  const catOrder = ['hero','companion','boss','enemy'];
+  const catNames = { hero:'Heroes', companion:'Companions', boss:'Bosses', enemy:'Enemies' };
+  const byCat = { hero:{}, companion:{}, boss:{}, enemy:{} };
+
+  // Collect unique groups per category from the manifest entries
+  for (const e of entries) {
+    const cat = e.category;
+    if (!byCat[cat]) continue;
+    if (!filters.charCats.has(cat)) continue;
+    const grp = e.group || e.id;
+    if (!byCat[cat][grp]) byCat[cat][grp] = { name: grp, entries: [] };
+    byCat[cat][grp].entries.push(e);
+  }
+
+  // Collect all lightbox items across all sections
+  const allLbItems = [];
+
+  for (const cat of catOrder) {
+    if (!filters.charCats.has(cat)) continue;
+    const groups = byCat[cat];
+    if (!groups || !Object.keys(groups).length) continue;
+
+    // Section title
+    const titleEl = document.createElement('div');
+    titleEl.className = 'rv-section-title';
+    const count = Object.keys(groups).length;
+    titleEl.innerHTML = `${catNames[cat]} <span class="rv-section-count">${count}</span>`;
+    content.appendChild(titleEl);
+
+    const grid = document.createElement('div');
+    grid.className = 'class-pair-grid';
+
+    for (const [grpId, grpData] of Object.entries(groups)) {
+      // Try to get the full appearance from appearances-manifest
+      const app = APPEARANCES && APPEARANCES[grpId];
+
+      // Build pose→manifest entry lookup for this group
+      const manifestEntriesByPose = {};
+      for (const e of grpData.entries) {
+        if (e.pose) manifestEntriesByPose[e.pose] = e;
+      }
+
+      const block = document.createElement('div');
+      block.className = 'class-pair-block';
+
+      // Header
+      const header = document.createElement('div');
+      header.className = 'class-pair-header';
+      const nameEl = document.createElement('div');
+      nameEl.className = 'class-pair-name';
+      nameEl.textContent = (app && app.name) || grpId.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      const idEl = document.createElement('div');
+      idEl.className = 'class-pair-id';
+      idEl.textContent = grpId;
+      header.appendChild(nameEl);
+      header.appendChild(idEl);
+
+      if (app && app.missingPoses && app.missingPoses.length) {
+        const b = document.createElement('span');
+        b.className = 'rv-badge rv-badge-warn';
+        b.textContent = app.missingPoses.length + ' missing';
+        header.appendChild(b);
+      }
+      block.appendChild(header);
+
+      if (app) {
+        // Full 7-pose appearance row using appearances-manifest data
+        block.appendChild(makeAppearanceRow(app, manifestEntriesByPose));
+        const idRow = document.createElement('div');
+        idRow.className = 'appearance-id-row';
+        idRow.textContent = app.id;
+        block.appendChild(idRow);
+
+        // Collect lb items
+        allLbItems.push(...lbItemsForAppearance(app, manifestEntriesByPose, cat));
+      } else {
+        // Fallback: show the single portrait card from manifest
+        const portraitEntry = manifestEntriesByPose['portrait'] || grpData.entries[0];
+        if (portraitEntry) {
+          block.innerHTML += cardHtml(portraitEntry);
+          allLbItems.push({
+            id: portraitEntry.id,
+            title: grpId,
+            subtitle: portraitEntry.pose || '',
+            src: portraitEntry.file,
+            oldSrc: null, newSrc: null,
+            prompt: portraitEntry.prompt || null,
+            oldPrompt: null, newPrompt: null, reason: null,
+            assetId: null, referenceAssetId: null, isBg: false,
+          });
+        }
+      }
+
+      grid.appendChild(block);
+    }
+    content.appendChild(grid);
+  }
+
+  // Override the lbItems array so lightbox prev/next works over all poses
+  lbItems = allLbItems;
+
+  wireGroupedCards();
+}
+
+/** Wire click events for .appearance-portrait and .pose-frame tiles in Grouped layout. */
+function wireGroupedCards() {
+  // Portrait tiles
+  document.querySelectorAll('.appearance-portrait[data-id]').forEach(el => {
+    el.onclick = (ev) => {
+      ev.stopPropagation();
+      openLbById(el.dataset.id);
+    };
+  });
+  // Pose frames (non-missing)
+  document.querySelectorAll('.pose-frame:not(.pose-missing)[data-id]').forEach(el => {
+    el.onclick = (ev) => {
+      ev.stopPropagation();
+      openLbById(el.dataset.id);
+    };
+  });
+  // Fallback portrait cards from cardHtml (if appearances-manifest entry missing)
+  wireCards();
+}
+
+/** Open lightbox by entry id (supports both manifest ids and synthetic pose ids). */
+function openLbById(id) {
+  const i = lbItems.findIndex(x => x.id === id);
+  if (i < 0) return;
+  lbIdx = i;
+  showLb();
+  document.getElementById('lightbox').classList.add('open');
 }
 
 function renderFlat(entries) {
@@ -591,11 +1019,7 @@ function rebuildLbItems(entries) {
 }
 
 function openLb(id) {
-  const i = lbItems.findIndex(x => x.id === id);
-  if (i < 0) return;
-  lbIdx = i;
-  showLb();
-  document.getElementById('lightbox').classList.add('open');
+  openLbById(id);
 }
 
 function showLb() {

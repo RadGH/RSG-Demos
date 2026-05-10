@@ -1,7 +1,7 @@
 {
-  "milestone": 457,
-  "date": "2026-05-09",
-  "summary": "M457 — Pyromancer 50 kills (was 500); Scavenger lifetime rare-item counter (gs.lifetimeRareCount, no longer gated by current-inventory snapshot); Dragon Knight unlock now matches any boss whose id contains dragon/wyrm/drake/bahamoth/dragonking/etc. (some saves had non-matching ids); style.css overscroll-refresh body min-height 100% (was 100%+1px which left a permanent desktop scrollbar); image-review-v2.html: hide .card .badge when in Pending mode (badges were redundant + covered the corner of the image), select-bar slimmed to Copy + Clear (removed Copy-approve-command + Approve-all), filter-panel lifted on mobile so the bar stops covering it. Void Scholar east_attack flipped + all Void Scholar entries approved. Frost wyrmling sprite sheet re-generated via the updated openai-9pose workflow (already shipped in M456 by parallel agent — no held shield, mouth-breath frost spell, wing-block).",
+  "milestone": 459,
+  "date": "2026-05-10",
+  "summary": "M432: image-review-v2 Grouped layout with full 7-pose appearance cards (fixes Goblin 1-pic bug) + Layout button group (Grouped/List) + checkerboard pose frames matching images.html",
   "categories": [
     "feature"
   ],
