@@ -57,6 +57,13 @@
     padding:0.6rem 1rem; display:flex; gap:0.6rem; align-items:center; justify-content:center;
     backdrop-filter:blur(6px);
   }
+  /* M455 — on mobile, lift the floating filter panel above the select-bar
+     so the bar doesn't cover the filter trigger when the user scrolls. */
+  @media (max-width: 720px) {
+    #select-bar { padding:0.5rem 0.75rem; gap:0.5rem; flex-wrap:wrap; }
+    #select-bar .copy-hint { width: 100%; text-align: center; }
+    #filter-panel { bottom: 64px !important; }
+  }
   #select-bar .count { font-weight:600; color:var(--accent); font-size:0.9rem; }
   #select-bar button { background:var(--accent); color:#222; border:none; padding:0.5rem 1rem; border-radius:5px; font-weight:600; cursor:pointer; font-size:0.85rem; }
   #select-bar button:disabled { background:#444; color:#888; cursor:not-allowed; }
@@ -73,6 +80,10 @@
   .card .img-wrap.bg img { width:100%; height:100%; object-fit:cover; image-rendering:auto; }
   .card .label { font-size:0.72rem; color:#bbb; margin-top:0.35rem; word-break:break-word; line-height:1.2; }
   .card .badge { position:absolute; top:0.35rem; right:0.35rem; background:var(--pending); color:#222; font-size:0.6rem; font-weight:700; padding:0.15rem 0.4rem; border-radius:3px; text-transform:uppercase; letter-spacing:0.05em; }
+  /* M455 — in Pending mode every card is pending by definition; the badge is
+     redundant and covers the corner of the image. Hide it. body[data-mode]
+     is set in the page script when mode flips. */
+  body[data-mode="pending"] .card .badge { display: none; }
   .card .check { position:absolute; top:0.35rem; left:0.35rem; width:20px; height:20px; background:#000c; border:1px solid var(--accent-dim); border-radius:3px; display:flex; align-items:center; justify-content:center; font-size:0.85rem; color:transparent; }
   .card.selected .check { background:var(--accent); color:#222; }
   .card.selected .check::before { content:'✓'; font-weight:700; }
@@ -192,12 +203,12 @@
   <div id="filter-body"></div>
 </details>
 
+<!-- M455 — slimmer select-bar: just count + Copy + Clear, no Approve commands.
+     The "Copy as list" button name shortened to "Copy". -->
 <div id="select-bar">
   <span class="count" id="select-count">0 selected</span>
-  <button id="copy-btn" disabled title="Copy entry IDs and paths so you can paste them into a Claude prompt">Copy as list</button>
-  <button id="copy-cmd-btn" disabled title="Copy a ready-to-run approve-script command for the selected entries">Copy approve command</button>
-  <button id="approve-all-btn" title="Copy a one-liner that approves the entire open batch">Approve all</button>
-  <button id="clear-btn" class="secondary" disabled>Clear</button>
+  <button id="copy-btn" disabled title="Copy selected entry IDs + paths">Copy</button>
+  <button id="clear-btn" class="secondary" disabled>× Clear</button>
   <span class="copy-hint" id="copy-hint"></span>
 </div>
 
