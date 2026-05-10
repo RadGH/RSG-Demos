@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-10T06:28:50.605Z",
+    "generated": "2026-05-10T20:36:55.106Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (66 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
@@ -9,11 +9,11 @@
       "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (19 bosses)"
     },
     "counts": {
-      "total": 1021,
+      "total": 1041,
       "by_status": {
-        "ready": 742,
-        "pending": 150,
-        "orphaned": 65,
+        "ready": 758,
+        "pending": 134,
+        "orphaned": 85,
         "approved": 20,
         "candidate": 44
       },
@@ -24,7 +24,7 @@
         "enemy": 95,
         "background": 68,
         "tap-weapons": 9,
-        "orphan": 65,
+        "orphan": 85,
         "reference-sheet": 64
       }
     },
@@ -6753,7 +6753,7 @@
       "pose": "south",
       "file": "../images/spritecook/bandit_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_bandit_east",
@@ -6762,7 +6762,7 @@
       "pose": "east",
       "file": "../images/spritecook/bandit_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_bandit_east_attack",
@@ -6771,7 +6771,7 @@
       "pose": "east_attack",
       "file": "../images/spritecook/bandit_east_attack.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_bandit_east_ko",
@@ -6780,7 +6780,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/bandit_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_bandit_captain_portrait",
@@ -6798,7 +6798,7 @@
       "pose": "south",
       "file": "../images/spritecook/bandit_captain_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_bandit_captain_east",
@@ -6807,7 +6807,7 @@
       "pose": "east",
       "file": "../images/spritecook/bandit_captain_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_bandit_captain_east_attack",
@@ -6816,7 +6816,7 @@
       "pose": "east_attack",
       "file": "../images/spritecook/bandit_captain_east_attack.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_bandit_captain_east_ko",
@@ -6825,7 +6825,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/bandit_captain_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_imp_portrait",
@@ -6933,7 +6933,7 @@
       "pose": "south",
       "file": "../images/spritecook/void_shade_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_void_shade_east",
@@ -6942,7 +6942,7 @@
       "pose": "east",
       "file": "../images/spritecook/void_shade_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_void_shade_east_attack",
@@ -6951,7 +6951,7 @@
       "pose": "east_attack",
       "file": "../images/spritecook/void_shade_east_attack.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_void_shade_east_ko",
@@ -6960,7 +6960,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/void_shade_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_demon_brute_portrait",
@@ -7023,7 +7023,7 @@
       "pose": "south",
       "file": "../images/spritecook/ash_wraith_south.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_ash_wraith_east",
@@ -7032,7 +7032,7 @@
       "pose": "east",
       "file": "../images/spritecook/ash_wraith_east.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_ash_wraith_east_attack",
@@ -7041,7 +7041,7 @@
       "pose": "east_attack",
       "file": "../images/spritecook/ash_wraith_east_attack.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_ash_wraith_east_ko",
@@ -7050,7 +7050,7 @@
       "pose": "east_ko",
       "file": "../images/spritecook/ash_wraith_east_ko.png",
       "prompt": null,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "enemy_cinder_hound_portrait",
@@ -8277,6 +8277,141 @@
       "status": "orphaned"
     },
     {
+      "id": "orphan_images_spritecook_ash_wraith_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ash_wraith_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ash_wraith_east_cheer",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ash_wraith_east_cheer.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ash_wraith_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ash_wraith_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ash_wraith_east_wound",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ash_wraith_east_wound.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_ash_wraith_openai_sheet",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/ash_wraith_openai_sheet.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_bandit_captain_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/bandit_captain_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_bandit_captain_east_cheer",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/bandit_captain_east_cheer.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_bandit_captain_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/bandit_captain_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_bandit_captain_east_wound",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/bandit_captain_east_wound.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_bandit_captain_openai_sheet",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/bandit_captain_openai_sheet.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_bandit_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/bandit_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_bandit_east_cheer",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/bandit_east_cheer.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_bandit_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/bandit_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_bandit_east_wound",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/bandit_east_wound.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_bandit_openai_sheet",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/bandit_openai_sheet.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
       "id": "orphan_images_spritecook_border_boss_east_block",
       "category": "orphan",
       "group": "images/spritecook",
@@ -8624,6 +8759,51 @@
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/void_boss_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_void_shade_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/void_shade_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_void_shade_east_cheer",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/void_shade_east_cheer.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_void_shade_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/void_shade_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_void_shade_east_wound",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/void_shade_east_wound.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_void_shade_openai_sheet",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/void_shade_openai_sheet.png",
       "prompt": null,
       "status": "orphaned"
     },

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-10T06:28:50.987Z",
+  "generated": "2026-05-10T20:36:55.500Z",
   "spriteDirs": [
     "spritecook",
     "sprites"
@@ -2892,19 +2892,16 @@
       "act": 1,
       "sprites": {
         "portrait": "spritecook/bandit_portrait.png",
-        "south": "sprites/bandit_south.png",
-        "east": "sprites/bandit_east.png",
-        "east_attack": "sprites/bandit_east_attack.png",
-        "east_spell": "sprites/bandit_east_spell.png",
-        "east_block": null,
-        "east_ko": null
+        "south": "spritecook/bandit_south.png",
+        "east": "spritecook/bandit_east.png",
+        "east_attack": "spritecook/bandit_east_attack.png",
+        "east_spell": "spritecook/bandit_east_spell.png",
+        "east_block": "spritecook/bandit_east_block.png",
+        "east_ko": "spritecook/bandit_east_ko.png"
       },
-      "spriteCount": 5,
-      "missingPoses": [
-        "east_block",
-        "east_ko"
-      ],
-      "sourceDir": "sprites"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "spritecook"
     },
     {
       "id": "bandit_captain",
@@ -2912,19 +2909,16 @@
       "act": 1,
       "sprites": {
         "portrait": "spritecook/bandit_captain_portrait.png",
-        "south": "sprites/bandit_captain_south.png",
-        "east": "sprites/bandit_captain_east.png",
-        "east_attack": "sprites/bandit_captain_east_attack.png",
-        "east_spell": "sprites/bandit_captain_east_spell.png",
-        "east_block": null,
-        "east_ko": null
+        "south": "spritecook/bandit_captain_south.png",
+        "east": "spritecook/bandit_captain_east.png",
+        "east_attack": "spritecook/bandit_captain_east_attack.png",
+        "east_spell": "spritecook/bandit_captain_east_spell.png",
+        "east_block": "spritecook/bandit_captain_east_block.png",
+        "east_ko": "spritecook/bandit_captain_east_ko.png"
       },
-      "spriteCount": 5,
-      "missingPoses": [
-        "east_block",
-        "east_ko"
-      ],
-      "sourceDir": "sprites"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "spritecook"
     },
     {
       "id": "imp",
@@ -2972,19 +2966,16 @@
       "act": 1,
       "sprites": {
         "portrait": "spritecook/void_shade_portrait.png",
-        "south": "sprites/void_shade_south.png",
-        "east": "sprites/void_shade_east.png",
-        "east_attack": "sprites/void_shade_east_attack.png",
-        "east_spell": "sprites/void_shade_east_spell.png",
-        "east_block": null,
-        "east_ko": null
+        "south": "spritecook/void_shade_south.png",
+        "east": "spritecook/void_shade_east.png",
+        "east_attack": "spritecook/void_shade_east_attack.png",
+        "east_spell": "spritecook/void_shade_east_spell.png",
+        "east_block": "spritecook/void_shade_east_block.png",
+        "east_ko": "spritecook/void_shade_east_ko.png"
       },
-      "spriteCount": 5,
-      "missingPoses": [
-        "east_block",
-        "east_ko"
-      ],
-      "sourceDir": "sprites"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "spritecook"
     },
     {
       "id": "demon_brute",
@@ -3012,19 +3003,16 @@
       "act": 1,
       "sprites": {
         "portrait": "spritecook/ash_wraith_portrait.png",
-        "south": "sprites/ash_wraith_south.png",
-        "east": "sprites/ash_wraith_east.png",
-        "east_attack": "sprites/ash_wraith_east_attack.png",
-        "east_spell": "sprites/ash_wraith_east_spell.png",
-        "east_block": null,
-        "east_ko": null
+        "south": "spritecook/ash_wraith_south.png",
+        "east": "spritecook/ash_wraith_east.png",
+        "east_attack": "spritecook/ash_wraith_east_attack.png",
+        "east_spell": "spritecook/ash_wraith_east_spell.png",
+        "east_block": "spritecook/ash_wraith_east_block.png",
+        "east_ko": "spritecook/ash_wraith_east_ko.png"
       },
-      "spriteCount": 5,
-      "missingPoses": [
-        "east_block",
-        "east_ko"
-      ],
-      "sourceDir": "sprites"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "spritecook"
     },
     {
       "id": "cinder_hound",
@@ -6195,6 +6183,21 @@
       "name": "south"
     },
     {
+      "file": "images/spritecook/_pre_openai/ash_wraith_portrait.png",
+      "dir": "spritecook",
+      "name": "ash_wraith_portrait"
+    },
+    {
+      "file": "images/spritecook/_pre_openai/bandit_captain_portrait.png",
+      "dir": "spritecook",
+      "name": "bandit_captain_portrait"
+    },
+    {
+      "file": "images/spritecook/_pre_openai/bandit_portrait.png",
+      "dir": "spritecook",
+      "name": "bandit_portrait"
+    },
+    {
       "file": "images/spritecook/_pre_openai/frost_wyrmling_east_attack.png",
       "dir": "spritecook",
       "name": "frost_wyrmling_east_attack"
@@ -6238,6 +6241,11 @@
       "file": "images/spritecook/_pre_openai/frost_wyrmling_south.png",
       "dir": "spritecook",
       "name": "frost_wyrmling_south"
+    },
+    {
+      "file": "images/spritecook/_pre_openai/void_shade_portrait.png",
+      "dir": "spritecook",
+      "name": "void_shade_portrait"
     },
     {
       "file": "images/spritecook/abyss_boss_east_attack.png",
@@ -6308,6 +6316,51 @@
       "file": "images/spritecook/architect_boss_south.png",
       "dir": "spritecook",
       "name": "architect_boss_south"
+    },
+    {
+      "file": "images/spritecook/ash_wraith_east_cheer.png",
+      "dir": "spritecook",
+      "name": "ash_wraith_east_cheer"
+    },
+    {
+      "file": "images/spritecook/ash_wraith_east_wound.png",
+      "dir": "spritecook",
+      "name": "ash_wraith_east_wound"
+    },
+    {
+      "file": "images/spritecook/ash_wraith_openai_sheet.png",
+      "dir": "spritecook",
+      "name": "ash_wraith_openai_sheet"
+    },
+    {
+      "file": "images/spritecook/bandit_captain_east_cheer.png",
+      "dir": "spritecook",
+      "name": "bandit_captain_east_cheer"
+    },
+    {
+      "file": "images/spritecook/bandit_captain_east_wound.png",
+      "dir": "spritecook",
+      "name": "bandit_captain_east_wound"
+    },
+    {
+      "file": "images/spritecook/bandit_captain_openai_sheet.png",
+      "dir": "spritecook",
+      "name": "bandit_captain_openai_sheet"
+    },
+    {
+      "file": "images/spritecook/bandit_east_cheer.png",
+      "dir": "spritecook",
+      "name": "bandit_east_cheer"
+    },
+    {
+      "file": "images/spritecook/bandit_east_wound.png",
+      "dir": "spritecook",
+      "name": "bandit_east_wound"
+    },
+    {
+      "file": "images/spritecook/bandit_openai_sheet.png",
+      "dir": "spritecook",
+      "name": "bandit_openai_sheet"
     },
     {
       "file": "images/spritecook/border_boss_east_attack.png",
@@ -6648,6 +6701,21 @@
       "file": "images/spritecook/void_scholar_south.png",
       "dir": "spritecook",
       "name": "void_scholar_south"
+    },
+    {
+      "file": "images/spritecook/void_shade_east_cheer.png",
+      "dir": "spritecook",
+      "name": "void_shade_east_cheer"
+    },
+    {
+      "file": "images/spritecook/void_shade_east_wound.png",
+      "dir": "spritecook",
+      "name": "void_shade_east_wound"
+    },
+    {
+      "file": "images/spritecook/void_shade_openai_sheet.png",
+      "dir": "spritecook",
+      "name": "void_shade_openai_sheet"
     },
     {
       "file": "images/sprites/abyssal_knight_death.png",
@@ -8840,36 +8908,6 @@
       ]
     },
     {
-      "id": "bandit",
-      "name": "Bandit",
-      "kind": "entity",
-      "poses": [
-        "east_block",
-        "east_ko"
-      ],
-      "tried": [
-        "spritecook/bandit_east_block.png",
-        "sprites/bandit_east_block.png",
-        "spritecook/bandit_east_ko.png",
-        "sprites/bandit_east_ko.png"
-      ]
-    },
-    {
-      "id": "bandit_captain",
-      "name": "Bandit Captain",
-      "kind": "entity",
-      "poses": [
-        "east_block",
-        "east_ko"
-      ],
-      "tried": [
-        "spritecook/bandit_captain_east_block.png",
-        "sprites/bandit_captain_east_block.png",
-        "spritecook/bandit_captain_east_ko.png",
-        "sprites/bandit_captain_east_ko.png"
-      ]
-    },
-    {
       "id": "imp",
       "name": "Imp",
       "kind": "entity",
@@ -8900,21 +8938,6 @@
       ]
     },
     {
-      "id": "void_shade",
-      "name": "Void Shade",
-      "kind": "entity",
-      "poses": [
-        "east_block",
-        "east_ko"
-      ],
-      "tried": [
-        "spritecook/void_shade_east_block.png",
-        "sprites/void_shade_east_block.png",
-        "spritecook/void_shade_east_ko.png",
-        "sprites/void_shade_east_ko.png"
-      ]
-    },
-    {
       "id": "demon_brute",
       "name": "Demon Brute",
       "kind": "entity",
@@ -8927,21 +8950,6 @@
         "sprites/demon_brute_east_block.png",
         "spritecook/demon_brute_east_ko.png",
         "sprites/demon_brute_east_ko.png"
-      ]
-    },
-    {
-      "id": "ash_wraith",
-      "name": "Ash Wraith",
-      "kind": "entity",
-      "poses": [
-        "east_block",
-        "east_ko"
-      ],
-      "tried": [
-        "spritecook/ash_wraith_east_block.png",
-        "sprites/ash_wraith_east_block.png",
-        "spritecook/ash_wraith_east_ko.png",
-        "sprites/ash_wraith_east_ko.png"
       ]
     },
     {
@@ -9277,7 +9285,7 @@
     "companions": 35,
     "enemies": 20,
     "bosses": 16,
-    "orphans": 917,
-    "missing": 71
+    "orphans": 933,
+    "missing": 67
   }
 }

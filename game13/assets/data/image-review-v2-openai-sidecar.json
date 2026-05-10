@@ -89,6 +89,366 @@
       "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward with bared fangs and outstretched claws, no held weapon) / East spell (exhaling a wide pale-blue frost cone from the mouth, ice crystals forming mid-air) / East block (rearing back with wings flared like a natural shield, head low, no held shield)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A young frost dragon. Its dragon-breath freezes foes in place. Dragon-scales shimmer blue.\nEQUIPMENT (HARD RULE): this is a BEAST / DRAGON / NON-HUMANOID. DO NOT add a shield. DO NOT add a sword, axe, staff, wand, or any held weapon. The creature uses its own body \u2014 claws, fangs, wings, tail, magical breath, elemental aura \u2014 for every pose. Spells manifest as glow / breath / particles around the head or mouth, not from a wand or staff. Block uses the body itself (rearing back, wing-shield, etc.), never a held shield.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
       "source": "openai-9pose",
       "generatedAt": "2026-05-10T05:50:37Z"
+    },
+    {
+      "id": "openai9_ash_wraith_portrait",
+      "category": "companion",
+      "group": "ash_wraith",
+      "pose": "portrait",
+      "file": "../images/spritecook/ash_wraith_portrait.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (hurling a vivid orange-red fireball from an open palm) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: An ash wraith of smoldering gray smoke, burning ember eyes, drifting ash form, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:28:58Z"
+    },
+    {
+      "id": "openai9_ash_wraith_south",
+      "category": "companion",
+      "group": "ash_wraith",
+      "pose": "south",
+      "file": "../images/spritecook/ash_wraith_south.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (hurling a vivid orange-red fireball from an open palm) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: An ash wraith of smoldering gray smoke, burning ember eyes, drifting ash form, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:28:58Z"
+    },
+    {
+      "id": "openai9_ash_wraith_east",
+      "category": "companion",
+      "group": "ash_wraith",
+      "pose": "east",
+      "file": "../images/spritecook/ash_wraith_east.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (hurling a vivid orange-red fireball from an open palm) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: An ash wraith of smoldering gray smoke, burning ember eyes, drifting ash form, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:28:58Z"
+    },
+    {
+      "id": "openai9_ash_wraith_east_attack",
+      "category": "companion",
+      "group": "ash_wraith",
+      "pose": "east_attack",
+      "file": "../images/spritecook/ash_wraith_east_attack.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (hurling a vivid orange-red fireball from an open palm) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: An ash wraith of smoldering gray smoke, burning ember eyes, drifting ash form, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:28:58Z"
+    },
+    {
+      "id": "openai9_ash_wraith_east_spell",
+      "category": "companion",
+      "group": "ash_wraith",
+      "pose": "east_spell",
+      "file": "../images/spritecook/ash_wraith_east_spell.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (hurling a vivid orange-red fireball from an open palm) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: An ash wraith of smoldering gray smoke, burning ember eyes, drifting ash form, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:28:58Z"
+    },
+    {
+      "id": "openai9_ash_wraith_east_block",
+      "category": "companion",
+      "group": "ash_wraith",
+      "pose": "east_block",
+      "file": "../images/spritecook/ash_wraith_east_block.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (hurling a vivid orange-red fireball from an open palm) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: An ash wraith of smoldering gray smoke, burning ember eyes, drifting ash form, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:28:58Z"
+    },
+    {
+      "id": "openai9_ash_wraith_east_ko",
+      "category": "companion",
+      "group": "ash_wraith",
+      "pose": "east_ko",
+      "file": "../images/spritecook/ash_wraith_east_ko.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (hurling a vivid orange-red fireball from an open palm) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: An ash wraith of smoldering gray smoke, burning ember eyes, drifting ash form, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:28:58Z"
+    },
+    {
+      "id": "openai9_ash_wraith_east_cheer",
+      "category": "companion",
+      "group": "ash_wraith",
+      "pose": "east_cheer",
+      "file": "../images/spritecook/ash_wraith_east_cheer.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (hurling a vivid orange-red fireball from an open palm) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: An ash wraith of smoldering gray smoke, burning ember eyes, drifting ash form, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:28:58Z"
+    },
+    {
+      "id": "openai9_ash_wraith_east_wound",
+      "category": "companion",
+      "group": "ash_wraith",
+      "pose": "east_wound",
+      "file": "../images/spritecook/ash_wraith_east_wound.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (hurling a vivid orange-red fireball from an open palm) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: An ash wraith of smoldering gray smoke, burning ember eyes, drifting ash form, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:28:58Z"
+    },
+    {
+      "id": "openai9_bandit_portrait",
+      "category": "companion",
+      "group": "bandit",
+      "pose": "portrait",
+      "file": "../images/spritecook/bandit_portrait.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward stabbing with a curved dagger) / East spell (tossing a smoke bomb at the ground, gray puff of smoke) / East block (raising the off-hand dagger crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A rough human bandit in patched leather armor, hooded, clutching a curved dagger, stubbled face, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:30:12Z"
+    },
+    {
+      "id": "openai9_bandit_south",
+      "category": "companion",
+      "group": "bandit",
+      "pose": "south",
+      "file": "../images/spritecook/bandit_south.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward stabbing with a curved dagger) / East spell (tossing a smoke bomb at the ground, gray puff of smoke) / East block (raising the off-hand dagger crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A rough human bandit in patched leather armor, hooded, clutching a curved dagger, stubbled face, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:30:12Z"
+    },
+    {
+      "id": "openai9_bandit_east",
+      "category": "companion",
+      "group": "bandit",
+      "pose": "east",
+      "file": "../images/spritecook/bandit_east.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward stabbing with a curved dagger) / East spell (tossing a smoke bomb at the ground, gray puff of smoke) / East block (raising the off-hand dagger crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A rough human bandit in patched leather armor, hooded, clutching a curved dagger, stubbled face, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:30:12Z"
+    },
+    {
+      "id": "openai9_bandit_east_attack",
+      "category": "companion",
+      "group": "bandit",
+      "pose": "east_attack",
+      "file": "../images/spritecook/bandit_east_attack.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward stabbing with a curved dagger) / East spell (tossing a smoke bomb at the ground, gray puff of smoke) / East block (raising the off-hand dagger crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A rough human bandit in patched leather armor, hooded, clutching a curved dagger, stubbled face, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:30:12Z"
+    },
+    {
+      "id": "openai9_bandit_east_spell",
+      "category": "companion",
+      "group": "bandit",
+      "pose": "east_spell",
+      "file": "../images/spritecook/bandit_east_spell.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward stabbing with a curved dagger) / East spell (tossing a smoke bomb at the ground, gray puff of smoke) / East block (raising the off-hand dagger crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A rough human bandit in patched leather armor, hooded, clutching a curved dagger, stubbled face, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:30:12Z"
+    },
+    {
+      "id": "openai9_bandit_east_block",
+      "category": "companion",
+      "group": "bandit",
+      "pose": "east_block",
+      "file": "../images/spritecook/bandit_east_block.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward stabbing with a curved dagger) / East spell (tossing a smoke bomb at the ground, gray puff of smoke) / East block (raising the off-hand dagger crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A rough human bandit in patched leather armor, hooded, clutching a curved dagger, stubbled face, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:30:12Z"
+    },
+    {
+      "id": "openai9_bandit_east_ko",
+      "category": "companion",
+      "group": "bandit",
+      "pose": "east_ko",
+      "file": "../images/spritecook/bandit_east_ko.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward stabbing with a curved dagger) / East spell (tossing a smoke bomb at the ground, gray puff of smoke) / East block (raising the off-hand dagger crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A rough human bandit in patched leather armor, hooded, clutching a curved dagger, stubbled face, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:30:12Z"
+    },
+    {
+      "id": "openai9_bandit_east_cheer",
+      "category": "companion",
+      "group": "bandit",
+      "pose": "east_cheer",
+      "file": "../images/spritecook/bandit_east_cheer.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward stabbing with a curved dagger) / East spell (tossing a smoke bomb at the ground, gray puff of smoke) / East block (raising the off-hand dagger crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A rough human bandit in patched leather armor, hooded, clutching a curved dagger, stubbled face, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:30:12Z"
+    },
+    {
+      "id": "openai9_bandit_east_wound",
+      "category": "companion",
+      "group": "bandit",
+      "pose": "east_wound",
+      "file": "../images/spritecook/bandit_east_wound.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (lunging forward stabbing with a curved dagger) / East spell (tossing a smoke bomb at the ground, gray puff of smoke) / East block (raising the off-hand dagger crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A rough human bandit in patched leather armor, hooded, clutching a curved dagger, stubbled face, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:30:12Z"
+    },
+    {
+      "id": "openai9_bandit_captain_portrait",
+      "category": "companion",
+      "group": "bandit_captain",
+      "pose": "portrait",
+      "file": "../images/spritecook/bandit_captain_portrait.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (swinging a curved sabre forward in a wide arc) / East spell (shouting orders, raising sabre overhead, allies rally glow) / East block (raising the sabre crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A grim bandit captain with a scarred face, studded leather coat, dual blades at belt, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:31:19Z"
+    },
+    {
+      "id": "openai9_bandit_captain_south",
+      "category": "companion",
+      "group": "bandit_captain",
+      "pose": "south",
+      "file": "../images/spritecook/bandit_captain_south.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (swinging a curved sabre forward in a wide arc) / East spell (shouting orders, raising sabre overhead, allies rally glow) / East block (raising the sabre crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A grim bandit captain with a scarred face, studded leather coat, dual blades at belt, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:31:19Z"
+    },
+    {
+      "id": "openai9_bandit_captain_east",
+      "category": "companion",
+      "group": "bandit_captain",
+      "pose": "east",
+      "file": "../images/spritecook/bandit_captain_east.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (swinging a curved sabre forward in a wide arc) / East spell (shouting orders, raising sabre overhead, allies rally glow) / East block (raising the sabre crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A grim bandit captain with a scarred face, studded leather coat, dual blades at belt, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:31:19Z"
+    },
+    {
+      "id": "openai9_bandit_captain_east_attack",
+      "category": "companion",
+      "group": "bandit_captain",
+      "pose": "east_attack",
+      "file": "../images/spritecook/bandit_captain_east_attack.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (swinging a curved sabre forward in a wide arc) / East spell (shouting orders, raising sabre overhead, allies rally glow) / East block (raising the sabre crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A grim bandit captain with a scarred face, studded leather coat, dual blades at belt, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:31:19Z"
+    },
+    {
+      "id": "openai9_bandit_captain_east_spell",
+      "category": "companion",
+      "group": "bandit_captain",
+      "pose": "east_spell",
+      "file": "../images/spritecook/bandit_captain_east_spell.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (swinging a curved sabre forward in a wide arc) / East spell (shouting orders, raising sabre overhead, allies rally glow) / East block (raising the sabre crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A grim bandit captain with a scarred face, studded leather coat, dual blades at belt, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:31:19Z"
+    },
+    {
+      "id": "openai9_bandit_captain_east_block",
+      "category": "companion",
+      "group": "bandit_captain",
+      "pose": "east_block",
+      "file": "../images/spritecook/bandit_captain_east_block.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (swinging a curved sabre forward in a wide arc) / East spell (shouting orders, raising sabre overhead, allies rally glow) / East block (raising the sabre crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A grim bandit captain with a scarred face, studded leather coat, dual blades at belt, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:31:19Z"
+    },
+    {
+      "id": "openai9_bandit_captain_east_ko",
+      "category": "companion",
+      "group": "bandit_captain",
+      "pose": "east_ko",
+      "file": "../images/spritecook/bandit_captain_east_ko.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (swinging a curved sabre forward in a wide arc) / East spell (shouting orders, raising sabre overhead, allies rally glow) / East block (raising the sabre crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A grim bandit captain with a scarred face, studded leather coat, dual blades at belt, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:31:19Z"
+    },
+    {
+      "id": "openai9_bandit_captain_east_cheer",
+      "category": "companion",
+      "group": "bandit_captain",
+      "pose": "east_cheer",
+      "file": "../images/spritecook/bandit_captain_east_cheer.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (swinging a curved sabre forward in a wide arc) / East spell (shouting orders, raising sabre overhead, allies rally glow) / East block (raising the sabre crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A grim bandit captain with a scarred face, studded leather coat, dual blades at belt, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:31:19Z"
+    },
+    {
+      "id": "openai9_bandit_captain_east_wound",
+      "category": "companion",
+      "group": "bandit_captain",
+      "pose": "east_wound",
+      "file": "../images/spritecook/bandit_captain_east_wound.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (swinging a curved sabre forward in a wide arc) / East spell (shouting orders, raising sabre overhead, allies rally glow) / East block (raising the sabre crosswise to parry)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A grim bandit captain with a scarred face, studded leather coat, dual blades at belt, dark fantasy RPG enemy\nEQUIPMENT: humanoid character \u2014 may carry the weapon and/or shield described in the description. If no weapon/shield is mentioned, default to a sensible weapon for the class.\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:31:19Z"
+    },
+    {
+      "id": "openai9_void_shade_portrait",
+      "category": "companion",
+      "group": "void_shade",
+      "pose": "portrait",
+      "file": "../images/spritecook/void_shade_portrait.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (projecting a custom energy effect distinct from the reference's holy spell) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A ghostly void shade, translucent body of swirling black mist, hollow glowing eyes, wispy tendrils, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:32:29Z"
+    },
+    {
+      "id": "openai9_void_shade_south",
+      "category": "companion",
+      "group": "void_shade",
+      "pose": "south",
+      "file": "../images/spritecook/void_shade_south.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (projecting a custom energy effect distinct from the reference's holy spell) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A ghostly void shade, translucent body of swirling black mist, hollow glowing eyes, wispy tendrils, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:32:29Z"
+    },
+    {
+      "id": "openai9_void_shade_east",
+      "category": "companion",
+      "group": "void_shade",
+      "pose": "east",
+      "file": "../images/spritecook/void_shade_east.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (projecting a custom energy effect distinct from the reference's holy spell) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A ghostly void shade, translucent body of swirling black mist, hollow glowing eyes, wispy tendrils, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:32:29Z"
+    },
+    {
+      "id": "openai9_void_shade_east_attack",
+      "category": "companion",
+      "group": "void_shade",
+      "pose": "east_attack",
+      "file": "../images/spritecook/void_shade_east_attack.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (projecting a custom energy effect distinct from the reference's holy spell) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A ghostly void shade, translucent body of swirling black mist, hollow glowing eyes, wispy tendrils, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:32:29Z"
+    },
+    {
+      "id": "openai9_void_shade_east_spell",
+      "category": "companion",
+      "group": "void_shade",
+      "pose": "east_spell",
+      "file": "../images/spritecook/void_shade_east_spell.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (projecting a custom energy effect distinct from the reference's holy spell) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A ghostly void shade, translucent body of swirling black mist, hollow glowing eyes, wispy tendrils, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:32:29Z"
+    },
+    {
+      "id": "openai9_void_shade_east_block",
+      "category": "companion",
+      "group": "void_shade",
+      "pose": "east_block",
+      "file": "../images/spritecook/void_shade_east_block.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (projecting a custom energy effect distinct from the reference's holy spell) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A ghostly void shade, translucent body of swirling black mist, hollow glowing eyes, wispy tendrils, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:32:29Z"
+    },
+    {
+      "id": "openai9_void_shade_east_ko",
+      "category": "companion",
+      "group": "void_shade",
+      "pose": "east_ko",
+      "file": "../images/spritecook/void_shade_east_ko.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (projecting a custom energy effect distinct from the reference's holy spell) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A ghostly void shade, translucent body of swirling black mist, hollow glowing eyes, wispy tendrils, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:32:29Z"
+    },
+    {
+      "id": "openai9_void_shade_east_cheer",
+      "category": "companion",
+      "group": "void_shade",
+      "pose": "east_cheer",
+      "file": "../images/spritecook/void_shade_east_cheer.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (projecting a custom energy effect distinct from the reference's holy spell) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A ghostly void shade, translucent body of swirling black mist, hollow glowing eyes, wispy tendrils, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:32:29Z"
+    },
+    {
+      "id": "openai9_void_shade_east_wound",
+      "category": "companion",
+      "group": "void_shade",
+      "pose": "east_wound",
+      "file": "../images/spritecook/void_shade_east_wound.png",
+      "prompt": "Generate a 3x3 sprite sheet (square cells, identical size) of the same character, all on a SOLID #00FF00 green background. Match the LAYOUT and FRAMING of the attached reference image exactly. The reference shows the structural template only \u2014 DO NOT copy the reference character's weapons, spells, equipment, or actions. Use the new character's own actions (described below) instead.\n\n  Row 1: Portrait / South idle / East side-profile idle\n  Row 2: East attack (projecting a focused energy strike from its core, no held weapon) / East spell (projecting a custom energy effect distinct from the reference's holy spell) / East block (condensing into a tighter shape; magical wards flare around the body)\n  Row 3: East knocked out (lying down) / East cheering / East wounded\n\nCharacter: A ghostly void shade, translucent body of swirling black mist, hollow glowing eyes, wispy tendrils, dark fantasy RPG enemy\nEQUIPMENT (HARD RULE): this is an ELEMENTAL / SPIRIT / AMORPHOUS being. NO held weapons, NO shields, NO armor. All actions express through the elemental form itself (swirling energy, condensing matter, projected glyphs).\n\nUse a clean 16-bit JRPG pixel-art style with rich color palette, sharp outlines, no halo/glow into the green, no text, no labels, no UI. Each pose centered in its cell. Background must be exactly #00FF00 with no shading or gradient.",
+      "source": "openai-9pose",
+      "generatedAt": "2026-05-10T20:32:29Z"
     }
   ]
 }
