@@ -1,5 +1,5 @@
 {
-  "milestone": 459,
+  "milestone": 460,
   "date": "2026-05-10",
   "summary": "M432: image-review-v2 Grouped layout with full 7-pose appearance cards (fixes Goblin 1-pic bug) + Layout button group (Grouped/List) + checkerboard pose frames matching images.html",
   "categories": [

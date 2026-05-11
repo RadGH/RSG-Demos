@@ -641,8 +641,13 @@ function render() {
   } else if (category === 'backgrounds' && mode === 'current') {
     renderBackgroundsByType(entries);
   } else if (mode === 'current' && category === 'characters') {
-    // List layout: flat grid grouped by group key
-    renderGroupedByGroup(entries);
+    // M460: List layout now ALSO synthesises every pose for each entity
+    // from appearances-manifest (same source as Grouped). Previously the
+    // List path showed only the manifest entries — for enemies/companions
+    // that meant 1 pic per character (the bug Goblin exhibited). Now
+    // every appearance pose appears in a flat grid; useful when you want
+    // to scan a single pose across many characters or sort/filter by pose.
+    renderListAppearances(entries);
   } else {
     renderFlat(entries);
   }
@@ -927,6 +932,64 @@ function openLbById(id) {
 function renderFlat(entries) {
   const content = document.getElementById('content');
   content.innerHTML = `<div class="grid">${entries.map(e => cardHtml(e)).join('')}</div>`;
+  wireCards();
+}
+
+/** M460 — List layout for current+characters. Walks the same data source
+ *  as Grouped (appearances-manifest.json) but flattens every (entity × pose)
+ *  pair into one big grid card, with prompt + status merged in from
+ *  image-review-manifest.json when present. Honors pose + category filters.
+ *  Falls back to the legacy renderGroupedByGroup if appearances aren't
+ *  loaded yet (first paint before fetch).
+ */
+function renderListAppearances(entries) {
+  const content = document.getElementById('content');
+  if (!APPEARANCES) {
+    // Appearances not loaded yet — fall back to the legacy flat-grouped
+    // view so the page isn't blank during the initial fetch.
+    renderGroupedByGroup(entries);
+    return;
+  }
+  // Build manifest lookup for prompt/status merging.
+  const manifestByGroupPose = {};
+  for (const e of entries) {
+    const key = (e.group || e.id) + '|' + (e.pose || '');
+    manifestByGroupPose[key] = e;
+  }
+  // Enumerate every (appearance × pose).
+  const tiles = [];
+  const allLbItems = [];
+  for (const [appId, app] of Object.entries(APPEARANCES)) {
+    const cat = app.category || app.kind;
+    if (!filters.charCats.has(cat)) continue;
+    for (const pose of POSES) {
+      if (filters.poses && !filters.poses.has(pose)) continue;
+      const rel = app.sprites && app.sprites[pose];
+      if (!rel) continue; // skip missing — Grouped shows them, List hides
+      const manifestEntry = manifestByGroupPose[appId + '|' + pose];
+      const id = manifestEntry ? manifestEntry.id : appearancePoseId(appId, pose);
+      const src = resolveAppearanceSrc(rel);
+      const prompt = (manifestEntry && manifestEntry.prompt) || null;
+      tiles.push({
+        id, group: appId, pose, file: src, category: cat,
+        prompt, _appearance: true,
+      });
+      allLbItems.push({
+        id, title: app.name || appId, subtitle: pose,
+        src, oldSrc: null, newSrc: null,
+        prompt, oldPrompt: null, newPrompt: null, reason: null,
+        assetId: null, referenceAssetId: null, isBg: false,
+      });
+    }
+  }
+  if (!tiles.length) {
+    content.innerHTML = '';
+    document.getElementById('status').textContent = 'No matching appearances.';
+    return;
+  }
+  document.getElementById('status').textContent = `${tiles.length} image(s) (list)`;
+  content.innerHTML = `<div class="grid">${tiles.map(e => cardHtml(e)).join('')}</div>`;
+  lbItems = allLbItems;
   wireCards();
 }
 

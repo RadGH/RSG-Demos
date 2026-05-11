@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-11T01:24:36.633Z",
+  "generated": "2026-05-10T20:54:18.256Z",
   "categories": [
     {
       "id": "Feature",
@@ -29,7 +29,7 @@
   ],
   "entries": [
     {
-      "milestone": 460,
+      "milestone": 459,
       "date": "2026-05-10",
       "summary": "M432: image-review-v2 Grouped layout with full 7-pose appearance cards (fixes Goblin 1-pic bug) + Layout button group (Grouped/List) + checkerboard pose frames matching images.html",
       "items": [
@@ -38,21 +38,6 @@
           "categories": [
             "Feature",
             "BugFix",
-            "QoL",
-            "Art"
-          ]
-        }
-      ]
-    },
-    {
-      "milestone": 459,
-      "date": "2026-05-10",
-      "summary": "image-review-v2.html — Grouped layout replaces show-sub-sprites checkbox. In Current+Characters mode, Grouped layout renders full 7-pose appearance cards (portrait + 6 pose frames with checkerboard background) sourced from appearances-manifest.json, fixing the Goblin showing only 1 portrait card. Layout button group (Grouped/List) added to topbar; List mode preserves prior flat-grid path. CSS class-pair-block / appearance-portrait / pose-frame names identical to images.html so one shared stylesheet governs both pages.",
-      "items": [
-        {
-          "text": "image-review-v2.html — Grouped layout replaces show-sub-sprites checkbox. In Current+Characters mode, Grouped layout renders full 7-pose appearance cards (portrait + 6 pose frames with checkerboard background) sourced from appearances-manifest.json, fixing the Goblin showing only 1 portrait card. Layout button group (Grouped/List) added to topbar; List mode preserves prior flat-grid path. CSS class-pair-block / appearance-portrait / pose-frame names identical to images.html so one shared stylesheet governs both pages.",
-          "categories": [
-            "Feature",
             "QoL",
             "Art"
           ]
