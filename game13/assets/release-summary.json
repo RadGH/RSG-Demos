@@ -1,7 +1,7 @@
 {
-  "milestone": 460,
+  "milestone": 461,
   "date": "2026-05-10",
-  "summary": "M432: image-review-v2 Grouped layout with full 7-pose appearance cards (fixes Goblin 1-pic bug) + Layout button group (Grouped/List) + checkerboard pose frames matching images.html",
+  "summary": "M460 — image-review-v2 List layout now shows full per-pose sub-sprites. List mode in current+characters previously showed only the lone portrait card per enemy/companion/boss (same root cause as the Grouped goblin bug). Added renderListAppearances() which walks appearances-manifest.json the same way Grouped does, but flattens every (appearance × pose) pair into a single flat grid. Prompt + manifest status data are merged in when present; pose + category filters still apply; falls back to the legacy renderGroupedByGroup when appearances haven't fetched yet.",
   "categories": [
     "feature"
   ],
