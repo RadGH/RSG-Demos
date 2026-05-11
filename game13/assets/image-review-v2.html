@@ -121,6 +121,74 @@
     background-color: var(--checker-b);
   }
 
+  /* M463 — global sprite-background toggle. body[data-sprite-bg=...]
+     overrides every .checker-bg/.appearance-portrait/.pose-frame/.card .img-wrap
+     so the user can audit characters against different backdrops. */
+  body[data-sprite-bg="none"] .checker-bg,
+  body[data-sprite-bg="none"] .appearance-portrait,
+  body[data-sprite-bg="none"] .pose-frame,
+  body[data-sprite-bg="none"] .card .img-wrap { background-image:none; background-color:transparent; }
+  body[data-sprite-bg="white"] .checker-bg,
+  body[data-sprite-bg="white"] .appearance-portrait,
+  body[data-sprite-bg="white"] .pose-frame,
+  body[data-sprite-bg="white"] .card .img-wrap { background-image:none; background-color:#fff; }
+  body[data-sprite-bg="black"] .checker-bg,
+  body[data-sprite-bg="black"] .appearance-portrait,
+  body[data-sprite-bg="black"] .pose-frame,
+  body[data-sprite-bg="black"] .card .img-wrap { background-image:none; background-color:#000; }
+  body[data-sprite-bg="green"] .checker-bg,
+  body[data-sprite-bg="green"] .appearance-portrait,
+  body[data-sprite-bg="green"] .pose-frame,
+  body[data-sprite-bg="green"] .card .img-wrap { background-image:none; background-color:#00FF00; }
+
+  /* M463 — image-review flag indicators (subtle colored dot on each tile) */
+  .flag-dot {
+    position:absolute; top:0.35rem; right:0.35rem;
+    width:10px; height:10px; border-radius:50%;
+    border:1px solid rgba(0,0,0,0.4);
+    box-shadow:0 1px 2px rgba(0,0,0,0.6);
+    z-index:3; pointer-events:none;
+  }
+  .flag-dot[data-prio="error"]   { background:#c04030; }
+  .flag-dot[data-prio="warning"] { background:#e8a020; }
+  .flag-dot[data-prio="info"]    { background:#3080d0; }
+  /* Pose-frame variant sits inside the small 44px tile */
+  .pose-frame .flag-dot, .appearance-portrait .flag-dot { top:2px; right:2px; width:8px; height:8px; }
+  /* Hover tooltip on desktop only */
+  @media (hover: hover) {
+    .flag-dot[data-text]:hover::after {
+      content: attr(data-text);
+      position:absolute; bottom:14px; right:-4px;
+      background:#000d; color:#fff; font-size:10px; padding:3px 6px; border-radius:3px;
+      white-space:nowrap; pointer-events:none;
+    }
+  }
+
+  /* M463 — generator/version badge */
+  .gen-badge {
+    position:absolute; bottom:0.3rem; right:0.3rem;
+    background:rgba(0,0,0,0.7); color:#bbb;
+    font-size:9px; padding:1px 5px; border-radius:3px;
+    text-transform:uppercase; letter-spacing:0.04em;
+    pointer-events:none; z-index:2;
+  }
+  .gen-badge.gen-openai_v2 { background:rgba(48,128,208,0.7); color:#fff; }
+  .gen-badge.gen-spritecook { background:rgba(96,72,40,0.7); color:#ddd; }
+  .pose-frame .gen-badge, .appearance-portrait .gen-badge { font-size:7px; padding:0 3px; bottom:1px; right:1px; }
+
+  /* M463 — group bulk-select checkbox */
+  .group-bulk-check { width:16px; height:16px; accent-color:var(--accent); margin-right:0.4rem; cursor:pointer; }
+
+  /* M463 — Pipeline overview cards */
+  .pipeline-overview { display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:0.75rem; margin-bottom:1rem; }
+  .pipeline-card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:0.75rem; }
+  .pipeline-card summary { cursor:pointer; color:var(--accent); font-weight:700; font-size:0.95rem; user-select:none; padding:0.25rem 0; }
+  .pipeline-card summary::-webkit-details-marker { color:var(--accent); }
+  .pipeline-card .pc-body { padding-top:0.5rem; font-size:0.85rem; line-height:1.45; color:#cbb; }
+  .pipeline-card .pc-body p { margin:0.25rem 0 0.6rem; }
+  .pipeline-card .pc-ref { width:100%; max-width:360px; background:var(--panel-alt); border:1px solid var(--border); border-radius:4px; image-rendering:pixelated; margin-top:0.4rem; }
+  .pipeline-card .pc-meta { color:var(--muted); font-size:0.7rem; margin-top:0.4rem; font-family:monospace; }
+
   /* Outer grid for class-pair-block cards */
   .class-pair-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(420px, 1fr)); gap:16px; margin-bottom:1rem; }
 
@@ -266,6 +334,26 @@
     </div>
   </div>
 
+  <!-- M463 — pipeline overview cards (collapsible). One per current generator. -->
+  <div class="pipeline-overview">
+    <details class="pipeline-card">
+      <summary>SpriteCook</summary>
+      <div class="pc-body">
+        <p>Per-pose pixel art via the SpriteCook MCP. Default pipeline for established characters with a stable <code>art_direction/&lt;id&gt;.json</code> prompt set. No shared reference image — each character's prompt comes from the per-id JSON, so consistency is enforced by the prompt itself rather than a template.</p>
+        <p class="pc-meta">script: <code>scripts/spritecook-*.cjs</code> · output: <code>public/images/spritecook/</code></p>
+      </div>
+    </details>
+    <details class="pipeline-card" open>
+      <summary>OpenAI v2 (9-pose)</summary>
+      <div class="pc-body">
+        <p>Single-call 3×3 sprite-sheet generator (chroma-key #00FF00 + despill + slice + center-pad). Used for experimental / non-humanoid characters. Every regen enrols in the open review batch automatically (M462).</p>
+        <p>Reference template (current):</p>
+        <img class="pc-ref checker-bg" src="./openai_v2/reference.png" alt="OpenAI v2 reference template" loading="lazy">
+        <p class="pc-meta">script: <code>scripts/openai-spritesheet-gen.py</code> · output: <code>public/images/openai_v2/</code> · raw: <code>public/assets/openai_v2/raw/&lt;id&gt;/</code></p>
+      </div>
+    </details>
+  </div>
+
   <div class="topbar">
     <div>
       <div style="font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem;">Mode</div>
@@ -289,6 +377,16 @@
       <div class="seg" id="layout-seg">
         <button data-layout="grouped" class="active">Grouped</button>
         <button data-layout="list">List</button>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem;">Background</div>
+      <div class="seg" id="bg-seg">
+        <button data-bg="checker" class="active" title="Transparency grid">⛛</button>
+        <button data-bg="none" title="No background (page color)">∅</button>
+        <button data-bg="white" title="Solid white">W</button>
+        <button data-bg="black" title="Solid black">B</button>
+        <button data-bg="green" title="Chroma green #00FF00">G</button>
       </div>
     </div>
     <div id="batch-select-wrap" style="display:none;">
@@ -396,6 +494,8 @@ async function load() {
   buildFilters();
   wireTopbar();
   wireSelectBar();
+  wireBgSeg();          // M463
+  loadFlagsLocal();     // M463
   wireLightbox();
   render();
 }
@@ -451,6 +551,53 @@ function buildFilters() {
       render();
     };
   });
+}
+
+// M463 — Background mode (sticky in localStorage)
+const BG_LS_KEY = 'evImgReview_spriteBg';
+function applySpriteBg(mode) {
+  const valid = ['checker','none','white','black','green'];
+  if (!valid.includes(mode)) mode = 'checker';
+  // 'checker' = no override; the .checker-bg default class handles it.
+  document.body.dataset.spriteBg = mode === 'checker' ? '' : mode;
+  document.querySelectorAll('#bg-seg button').forEach(b =>
+    b.classList.toggle('active', b.dataset.bg === mode));
+  try { localStorage.setItem(BG_LS_KEY, mode); } catch (_) {}
+}
+function wireBgSeg() {
+  document.querySelectorAll('#bg-seg button').forEach(b => {
+    b.onclick = () => applySpriteBg(b.dataset.bg);
+  });
+  let initial = 'checker';
+  try { initial = localStorage.getItem(BG_LS_KEY) || 'checker'; } catch (_) {}
+  applySpriteBg(initial);
+}
+
+// M463 — Image flag persistence (sibling sidecar JSON loaded once, mutated in
+// memory only — no network write. Saving requires copy-paste to a script for
+// now, identical to the approval workflow.)
+let FLAGS = {};   // { entryId: { prio: 'error'|'warning'|'info', text: '' } }
+const FLAGS_LS_KEY = 'evImgReview_flagsLocal';
+function loadFlagsLocal() {
+  try { FLAGS = JSON.parse(localStorage.getItem(FLAGS_LS_KEY) || '{}'); } catch (_) { FLAGS = {}; }
+}
+function saveFlagsLocal() {
+  try { localStorage.setItem(FLAGS_LS_KEY, JSON.stringify(FLAGS)); } catch (_) {}
+}
+function flagFor(id) { return FLAGS[id] || null; }
+function setFlag(id, prio, text) {
+  if (!prio) { delete FLAGS[id]; }
+  else FLAGS[id] = { prio, text: text || '' };
+  saveFlagsLocal();
+}
+
+// M463 — derive generator from a sprite path. Returns 'openai_v2' / 'spritecook' / 'sprites' / 'other'.
+function generatorOf(src) {
+  if (!src) return 'other';
+  if (src.includes('/openai_v2/')) return 'openai_v2';
+  if (src.includes('/spritecook/')) return 'spritecook';
+  if (src.includes('/sprites/'))    return 'sprites';
+  return 'other';
 }
 
 function wireTopbar() {
@@ -693,6 +840,22 @@ function makePoseFrameEl(appId, appName, pose, relPath) {
   labelEl.textContent = POSE_LABELS[pose] || pose;
   div.appendChild(img);
   div.appendChild(labelEl);
+  // M463 — generator badge + flag dot
+  const gen = generatorOf(src);
+  if (gen !== 'other') {
+    const gb = document.createElement('span');
+    gb.className = `gen-badge gen-${gen}`;
+    gb.textContent = gen.replace('_', ' ');
+    div.appendChild(gb);
+  }
+  const f = flagFor(poseId);
+  if (f) {
+    const fd = document.createElement('span');
+    fd.className = 'flag-dot';
+    fd.dataset.prio = f.prio;
+    if (f.text) fd.dataset.text = f.text;
+    div.appendChild(fd);
+  }
   // Selection state
   if (selected.has(poseId)) div.classList.add('selected-pose');
   div.addEventListener('click', function(ev) {
@@ -718,6 +881,22 @@ function makePortraitEl(appId, appName, relPath) {
   img.alt = appName;
   img.loading = 'lazy';
   div.appendChild(img);
+  // M463 — generator badge + flag dot on the larger portrait too
+  const gen = generatorOf(src);
+  if (gen !== 'other') {
+    const gb = document.createElement('span');
+    gb.className = `gen-badge gen-${gen}`;
+    gb.textContent = gen.replace('_', ' ');
+    div.appendChild(gb);
+  }
+  const f = flagFor(poseId);
+  if (f) {
+    const fd = document.createElement('span');
+    fd.className = 'flag-dot';
+    fd.dataset.prio = f.prio;
+    if (f.text) fd.dataset.text = f.text;
+    div.appendChild(fd);
+  }
   if (selected.has(poseId)) div.classList.add('selected-portrait');
   div.addEventListener('click', function(ev) {
     ev.stopPropagation();
@@ -844,6 +1023,24 @@ function renderGroupedAppearances(entries) {
       // Header
       const header = document.createElement('div');
       header.className = 'class-pair-header';
+      // M463 — bulk-select checkbox for the whole character group
+      const bulkChk = document.createElement('input');
+      bulkChk.type = 'checkbox';
+      bulkChk.className = 'group-bulk-check';
+      bulkChk.title = `Select/deselect all ${grpId} poses`;
+      const groupPoseIds = (app ? POSES.filter(p => app.sprites?.[p]) : []).map(p => appearancePoseId(grpId, p));
+      bulkChk.checked = groupPoseIds.length > 0 && groupPoseIds.every(id => selected.has(id));
+      bulkChk.onclick = (ev) => {
+        ev.stopPropagation();
+        const turnOn = bulkChk.checked;
+        for (const id of groupPoseIds) {
+          if (turnOn) selected.add(id); else selected.delete(id);
+        }
+        updateSelectBar();
+        // Re-render to refresh selection visuals across all tiles in the group
+        render();
+      };
+      header.appendChild(bulkChk);
       const nameEl = document.createElement('div');
       nameEl.className = 'class-pair-name';
       nameEl.textContent = (app && app.name) || grpId.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
@@ -1031,13 +1228,23 @@ function cardHtml(e, compact = false, isBg = false) {
   const label = e.pose ? `${e.pose}` : (e.name || e.id.replace(/_/g, ' '));
   const badge = e._batchEntry ? '<span class="badge">pending</span>' : '';
   const isSelected = selected.has(e.id) ? ' selected' : '';
+  const gen = generatorOf(src);
+  const genBadge = (gen !== 'other')
+    ? `<span class="gen-badge gen-${gen}">${gen.replace('_', ' ')}</span>` : '';
+  const f = flagFor(e.id);
+  const flagDot = f
+    ? `<span class="flag-dot" data-prio="${f.prio}"${f.text ? ` data-text="${escapeHtmlAttr(f.text)}"` : ''}></span>` : '';
   return `<div class="card${isSelected}" data-id="${e.id}">
     <span class="check"></span>
     ${badge}
-    <div class="img-wrap${isBg ? ' bg' : ''}"><img src="${src}" alt="${e.id}" loading="lazy"></div>
+    ${flagDot}
+    <div class="img-wrap${isBg ? ' bg' : ' checker-bg'}"><img src="${src}" alt="${e.id}" loading="lazy"></div>
+    ${genBadge}
     ${compact ? `<div class="label">${label}</div>` : `<div class="label">${e.group || e.name || e.id}<br><small style="opacity:0.65;">${label}</small></div>`}
   </div>`;
 }
+
+function escapeHtmlAttr(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
 function wireCards() {
   document.querySelectorAll('.card').forEach(card => {
@@ -1120,7 +1327,35 @@ function showLb() {
   if (it.referenceAssetId) {
     html += `<div style="margin-top:0.2rem; font-size:0.7rem;"><span class="meta">Reference:</span> <code>${it.referenceAssetId}</code></div>`;
   }
+  // M463 — flag controls. Persisted to localStorage; stays per-browser
+  // until the user copies the flag JSON for Claude to commit.
+  const f = flagFor(it.id);
+  html += `<div style="margin-top:0.75rem; padding-top:0.5rem; border-top:1px solid var(--border);">
+    <div class="meta">Flag</div>
+    <div style="display:flex; gap:0.3rem; margin-top:0.3rem;">
+      <button data-flag-prio="" class="lb-flag-btn${!f ? ' active' : ''}" style="flex:1; padding:0.3rem; background:#222; border:1px solid #444; color:#888; cursor:pointer; border-radius:3px; font-size:0.7rem;">none</button>
+      <button data-flag-prio="info"    class="lb-flag-btn${f && f.prio==='info' ? ' active' : ''}"    style="flex:1; padding:0.3rem; background:#1a2a3a; border:1px solid #3080d0; color:#5fa6e6; cursor:pointer; border-radius:3px; font-size:0.7rem;">info</button>
+      <button data-flag-prio="warning" class="lb-flag-btn${f && f.prio==='warning' ? ' active' : ''}" style="flex:1; padding:0.3rem; background:#3a2a1a; border:1px solid #e8a020; color:#e8a020; cursor:pointer; border-radius:3px; font-size:0.7rem;">warn</button>
+      <button data-flag-prio="error"   class="lb-flag-btn${f && f.prio==='error' ? ' active' : ''}"   style="flex:1; padding:0.3rem; background:#3a1a1a; border:1px solid #c04030; color:#e07060; cursor:pointer; border-radius:3px; font-size:0.7rem;">error</button>
+    </div>
+    <input type="text" id="lb-flag-text" value="${escapeHtmlAttr(f?.text || '')}" placeholder="Flag note (optional)" style="width:100%; margin-top:0.4rem; padding:0.35rem; background:#0a0a0e; border:1px solid var(--border); color:var(--parchment); font-size:0.78rem; border-radius:3px;">
+  </div>`;
   side.innerHTML = html;
+  // Wire flag buttons + text
+  side.querySelectorAll('.lb-flag-btn').forEach(b => {
+    b.onclick = () => {
+      const prio = b.dataset.flagPrio || '';
+      const text = side.querySelector('#lb-flag-text')?.value || '';
+      setFlag(it.id, prio || null, text);
+      showLb();      // refresh flag UI active state
+      render();      // refresh card flag dots
+    };
+  });
+  const ti = side.querySelector('#lb-flag-text');
+  if (ti) ti.oninput = () => {
+    const cur = flagFor(it.id);
+    if (cur) setFlag(it.id, cur.prio, ti.value);
+  };
 }
 
 function escapeHtml(s) { return String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }

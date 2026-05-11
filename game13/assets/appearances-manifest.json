@@ -1,6 +1,7 @@
 {
-  "generated": "2026-05-11T18:29:34.945Z",
+  "generated": "2026-05-11T23:18:03.661Z",
   "spriteDirs": [
+    "openai_v2",
     "spritecook",
     "sprites"
   ],
@@ -2704,17 +2705,17 @@
       "ownerClass": null,
       "sprite": "frost_wyrmling",
       "sprites": {
-        "portrait": "spritecook/frost_wyrmling_portrait.png",
-        "south": "spritecook/frost_wyrmling_south.png",
-        "east": "spritecook/frost_wyrmling_east.png",
-        "east_attack": "spritecook/frost_wyrmling_east_attack.png",
-        "east_spell": "spritecook/frost_wyrmling_east_spell.png",
-        "east_block": "spritecook/frost_wyrmling_east_block.png",
-        "east_ko": "spritecook/frost_wyrmling_east_ko.png"
+        "portrait": "openai_v2/frost_wyrmling_portrait.png",
+        "south": "openai_v2/frost_wyrmling_south.png",
+        "east": "openai_v2/frost_wyrmling_east.png",
+        "east_attack": "openai_v2/frost_wyrmling_east_attack.png",
+        "east_spell": "openai_v2/frost_wyrmling_east_spell.png",
+        "east_block": "openai_v2/frost_wyrmling_east_block.png",
+        "east_ko": "openai_v2/frost_wyrmling_east_ko.png"
       },
       "spriteCount": 7,
       "missingPoses": [],
-      "sourceDir": "spritecook"
+      "sourceDir": "openai_v2"
     },
     {
       "id": "storm_drake",
@@ -2891,34 +2892,34 @@
       "name": "Bandit",
       "act": 1,
       "sprites": {
-        "portrait": "spritecook/bandit_portrait.png",
-        "south": "spritecook/bandit_south.png",
-        "east": "spritecook/bandit_east.png",
-        "east_attack": "spritecook/bandit_east_attack.png",
-        "east_spell": "spritecook/bandit_east_spell.png",
-        "east_block": "spritecook/bandit_east_block.png",
-        "east_ko": "spritecook/bandit_east_ko.png"
+        "portrait": "openai_v2/bandit_portrait.png",
+        "south": "openai_v2/bandit_south.png",
+        "east": "openai_v2/bandit_east.png",
+        "east_attack": "openai_v2/bandit_east_attack.png",
+        "east_spell": "openai_v2/bandit_east_spell.png",
+        "east_block": "openai_v2/bandit_east_block.png",
+        "east_ko": "openai_v2/bandit_east_ko.png"
       },
       "spriteCount": 7,
       "missingPoses": [],
-      "sourceDir": "spritecook"
+      "sourceDir": "openai_v2"
     },
     {
       "id": "bandit_captain",
       "name": "Bandit Captain",
       "act": 1,
       "sprites": {
-        "portrait": "spritecook/bandit_captain_portrait.png",
-        "south": "spritecook/bandit_captain_south.png",
-        "east": "spritecook/bandit_captain_east.png",
-        "east_attack": "spritecook/bandit_captain_east_attack.png",
-        "east_spell": "spritecook/bandit_captain_east_spell.png",
-        "east_block": "spritecook/bandit_captain_east_block.png",
-        "east_ko": "spritecook/bandit_captain_east_ko.png"
+        "portrait": "openai_v2/bandit_captain_portrait.png",
+        "south": "openai_v2/bandit_captain_south.png",
+        "east": "openai_v2/bandit_captain_east.png",
+        "east_attack": "openai_v2/bandit_captain_east_attack.png",
+        "east_spell": "openai_v2/bandit_captain_east_spell.png",
+        "east_block": "openai_v2/bandit_captain_east_block.png",
+        "east_ko": "openai_v2/bandit_captain_east_ko.png"
       },
       "spriteCount": 7,
       "missingPoses": [],
-      "sourceDir": "spritecook"
+      "sourceDir": "openai_v2"
     },
     {
       "id": "imp",
@@ -2965,17 +2966,17 @@
       "name": "Void Shade",
       "act": 1,
       "sprites": {
-        "portrait": "spritecook/void_shade_portrait.png",
-        "south": "spritecook/void_shade_south.png",
-        "east": "spritecook/void_shade_east.png",
-        "east_attack": "spritecook/void_shade_east_attack.png",
-        "east_spell": "spritecook/void_shade_east_spell.png",
-        "east_block": "spritecook/void_shade_east_block.png",
-        "east_ko": "spritecook/void_shade_east_ko.png"
+        "portrait": "openai_v2/void_shade_portrait.png",
+        "south": "openai_v2/void_shade_south.png",
+        "east": "openai_v2/void_shade_east.png",
+        "east_attack": "openai_v2/void_shade_east_attack.png",
+        "east_spell": "openai_v2/void_shade_east_spell.png",
+        "east_block": "openai_v2/void_shade_east_block.png",
+        "east_ko": "openai_v2/void_shade_east_ko.png"
       },
       "spriteCount": 7,
       "missingPoses": [],
-      "sourceDir": "spritecook"
+      "sourceDir": "openai_v2"
     },
     {
       "id": "demon_brute",
@@ -3002,17 +3003,17 @@
       "name": "Ash Wraith",
       "act": 1,
       "sprites": {
-        "portrait": "spritecook/ash_wraith_portrait.png",
-        "south": "spritecook/ash_wraith_south.png",
-        "east": "spritecook/ash_wraith_east.png",
-        "east_attack": "spritecook/ash_wraith_east_attack.png",
-        "east_spell": "spritecook/ash_wraith_east_spell.png",
-        "east_block": "spritecook/ash_wraith_east_block.png",
-        "east_ko": "spritecook/ash_wraith_east_ko.png"
+        "portrait": "openai_v2/ash_wraith_portrait.png",
+        "south": "openai_v2/ash_wraith_south.png",
+        "east": "openai_v2/ash_wraith_east.png",
+        "east_attack": "openai_v2/ash_wraith_east_attack.png",
+        "east_spell": "openai_v2/ash_wraith_east_spell.png",
+        "east_block": "openai_v2/ash_wraith_east_block.png",
+        "east_ko": "openai_v2/ash_wraith_east_ko.png"
       },
       "spriteCount": 7,
       "missingPoses": [],
-      "sourceDir": "spritecook"
+      "sourceDir": "openai_v2"
     },
     {
       "id": "cinder_hound",
@@ -3691,6 +3692,81 @@
       "file": "images/bosses/void_boss_south.png",
       "dir": "bosses",
       "name": "void_boss_south"
+    },
+    {
+      "file": "images/openai_v2/ash_wraith_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "ash_wraith_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/ash_wraith_east_wound.png",
+      "dir": "openai_v2",
+      "name": "ash_wraith_east_wound"
+    },
+    {
+      "file": "images/openai_v2/ash_wraith_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "ash_wraith_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/bandit_captain_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "bandit_captain_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/bandit_captain_east_wound.png",
+      "dir": "openai_v2",
+      "name": "bandit_captain_east_wound"
+    },
+    {
+      "file": "images/openai_v2/bandit_captain_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "bandit_captain_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/bandit_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "bandit_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/bandit_east_wound.png",
+      "dir": "openai_v2",
+      "name": "bandit_east_wound"
+    },
+    {
+      "file": "images/openai_v2/bandit_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "bandit_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/frost_wyrmling_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "frost_wyrmling_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/frost_wyrmling_east_wound.png",
+      "dir": "openai_v2",
+      "name": "frost_wyrmling_east_wound"
+    },
+    {
+      "file": "images/openai_v2/frost_wyrmling_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "frost_wyrmling_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/void_shade_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "void_shade_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/void_shade_east_wound.png",
+      "dir": "openai_v2",
+      "name": "void_shade_east_wound"
+    },
+    {
+      "file": "images/openai_v2/void_shade_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "void_shade_openai_sheet"
     },
     {
       "file": "images/pixellab/bard_female/east_attack.png",
@@ -6183,71 +6259,6 @@
       "name": "south"
     },
     {
-      "file": "images/spritecook/_pre_openai/ash_wraith_portrait.png",
-      "dir": "spritecook",
-      "name": "ash_wraith_portrait"
-    },
-    {
-      "file": "images/spritecook/_pre_openai/bandit_captain_portrait.png",
-      "dir": "spritecook",
-      "name": "bandit_captain_portrait"
-    },
-    {
-      "file": "images/spritecook/_pre_openai/bandit_portrait.png",
-      "dir": "spritecook",
-      "name": "bandit_portrait"
-    },
-    {
-      "file": "images/spritecook/_pre_openai/frost_wyrmling_east_attack.png",
-      "dir": "spritecook",
-      "name": "frost_wyrmling_east_attack"
-    },
-    {
-      "file": "images/spritecook/_pre_openai/frost_wyrmling_east_block.png",
-      "dir": "spritecook",
-      "name": "frost_wyrmling_east_block"
-    },
-    {
-      "file": "images/spritecook/_pre_openai/frost_wyrmling_east_cheer.png",
-      "dir": "spritecook",
-      "name": "frost_wyrmling_east_cheer"
-    },
-    {
-      "file": "images/spritecook/_pre_openai/frost_wyrmling_east_ko.png",
-      "dir": "spritecook",
-      "name": "frost_wyrmling_east_ko"
-    },
-    {
-      "file": "images/spritecook/_pre_openai/frost_wyrmling_east_spell.png",
-      "dir": "spritecook",
-      "name": "frost_wyrmling_east_spell"
-    },
-    {
-      "file": "images/spritecook/_pre_openai/frost_wyrmling_east_wound.png",
-      "dir": "spritecook",
-      "name": "frost_wyrmling_east_wound"
-    },
-    {
-      "file": "images/spritecook/_pre_openai/frost_wyrmling_east.png",
-      "dir": "spritecook",
-      "name": "frost_wyrmling_east"
-    },
-    {
-      "file": "images/spritecook/_pre_openai/frost_wyrmling_portrait.png",
-      "dir": "spritecook",
-      "name": "frost_wyrmling_portrait"
-    },
-    {
-      "file": "images/spritecook/_pre_openai/frost_wyrmling_south.png",
-      "dir": "spritecook",
-      "name": "frost_wyrmling_south"
-    },
-    {
-      "file": "images/spritecook/_pre_openai/void_shade_portrait.png",
-      "dir": "spritecook",
-      "name": "void_shade_portrait"
-    },
-    {
       "file": "images/spritecook/abyss_boss_east_attack.png",
       "dir": "spritecook",
       "name": "abyss_boss_east_attack"
@@ -6316,51 +6327,6 @@
       "file": "images/spritecook/architect_boss_south.png",
       "dir": "spritecook",
       "name": "architect_boss_south"
-    },
-    {
-      "file": "images/spritecook/ash_wraith_east_cheer.png",
-      "dir": "spritecook",
-      "name": "ash_wraith_east_cheer"
-    },
-    {
-      "file": "images/spritecook/ash_wraith_east_wound.png",
-      "dir": "spritecook",
-      "name": "ash_wraith_east_wound"
-    },
-    {
-      "file": "images/spritecook/ash_wraith_openai_sheet.png",
-      "dir": "spritecook",
-      "name": "ash_wraith_openai_sheet"
-    },
-    {
-      "file": "images/spritecook/bandit_captain_east_cheer.png",
-      "dir": "spritecook",
-      "name": "bandit_captain_east_cheer"
-    },
-    {
-      "file": "images/spritecook/bandit_captain_east_wound.png",
-      "dir": "spritecook",
-      "name": "bandit_captain_east_wound"
-    },
-    {
-      "file": "images/spritecook/bandit_captain_openai_sheet.png",
-      "dir": "spritecook",
-      "name": "bandit_captain_openai_sheet"
-    },
-    {
-      "file": "images/spritecook/bandit_east_cheer.png",
-      "dir": "spritecook",
-      "name": "bandit_east_cheer"
-    },
-    {
-      "file": "images/spritecook/bandit_east_wound.png",
-      "dir": "spritecook",
-      "name": "bandit_east_wound"
-    },
-    {
-      "file": "images/spritecook/bandit_openai_sheet.png",
-      "dir": "spritecook",
-      "name": "bandit_openai_sheet"
     },
     {
       "file": "images/spritecook/border_boss_east_attack.png",
@@ -6548,21 +6514,6 @@
       "name": "dust_boss_portrait"
     },
     {
-      "file": "images/spritecook/frost_wyrmling_east_cheer.png",
-      "dir": "spritecook",
-      "name": "frost_wyrmling_east_cheer"
-    },
-    {
-      "file": "images/spritecook/frost_wyrmling_east_wound.png",
-      "dir": "spritecook",
-      "name": "frost_wyrmling_east_wound"
-    },
-    {
-      "file": "images/spritecook/frost_wyrmling_openai_sheet.png",
-      "dir": "spritecook",
-      "name": "frost_wyrmling_openai_sheet"
-    },
-    {
       "file": "images/spritecook/plateau_boss_east_block.png",
       "dir": "spritecook",
       "name": "plateau_boss_east_block"
@@ -6701,21 +6652,6 @@
       "file": "images/spritecook/void_scholar_south.png",
       "dir": "spritecook",
       "name": "void_scholar_south"
-    },
-    {
-      "file": "images/spritecook/void_shade_east_cheer.png",
-      "dir": "spritecook",
-      "name": "void_shade_east_cheer"
-    },
-    {
-      "file": "images/spritecook/void_shade_east_wound.png",
-      "dir": "spritecook",
-      "name": "void_shade_east_wound"
-    },
-    {
-      "file": "images/spritecook/void_shade_openai_sheet.png",
-      "dir": "spritecook",
-      "name": "void_shade_openai_sheet"
     },
     {
       "file": "images/sprites/abyssal_knight_death.png",
@@ -8148,8 +8084,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/clockwork_turret_east_spell.png",
         "spritecook/clockwork_turret_east_spell.png",
         "sprites/clockwork_turret_east_spell.png",
+        "openai_v2/clockwork_turret_east_block.png",
         "spritecook/clockwork_turret_east_block.png",
         "sprites/clockwork_turret_east_block.png"
       ]
@@ -8163,8 +8101,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/pet_skeletal_warrior_east_spell.png",
         "spritecook/pet_skeletal_warrior_east_spell.png",
         "sprites/pet_skeletal_warrior_east_spell.png",
+        "openai_v2/pet_skeletal_warrior_east_block.png",
         "spritecook/pet_skeletal_warrior_east_block.png",
         "sprites/pet_skeletal_warrior_east_block.png"
       ]
@@ -8178,8 +8118,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/pet_bone_golem_east_spell.png",
         "spritecook/pet_bone_golem_east_spell.png",
         "sprites/pet_bone_golem_east_spell.png",
+        "openai_v2/pet_bone_golem_east_block.png",
         "spritecook/pet_bone_golem_east_block.png",
         "sprites/pet_bone_golem_east_block.png"
       ]
@@ -8193,8 +8135,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/pet_wolf_east_spell.png",
         "spritecook/pet_wolf_east_spell.png",
         "sprites/pet_wolf_east_spell.png",
+        "openai_v2/pet_wolf_east_block.png",
         "spritecook/pet_wolf_east_block.png",
         "sprites/pet_wolf_east_block.png"
       ]
@@ -8208,8 +8152,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/pet_bear_east_spell.png",
         "spritecook/pet_bear_east_spell.png",
         "sprites/pet_bear_east_spell.png",
+        "openai_v2/pet_bear_east_block.png",
         "spritecook/pet_bear_east_block.png",
         "sprites/pet_bear_east_block.png"
       ]
@@ -8223,8 +8169,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/pet_imp_east_spell.png",
         "spritecook/pet_imp_east_spell.png",
         "sprites/pet_imp_east_spell.png",
+        "openai_v2/pet_imp_east_block.png",
         "spritecook/pet_imp_east_block.png",
         "sprites/pet_imp_east_block.png"
       ]
@@ -8238,8 +8186,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/pet_demon_east_spell.png",
         "spritecook/pet_demon_east_spell.png",
         "sprites/pet_demon_east_spell.png",
+        "openai_v2/pet_demon_east_block.png",
         "spritecook/pet_demon_east_block.png",
         "sprites/pet_demon_east_block.png"
       ]
@@ -8253,8 +8203,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/pet_war_hound_east_spell.png",
         "spritecook/pet_war_hound_east_spell.png",
         "sprites/pet_war_hound_east_spell.png",
+        "openai_v2/pet_war_hound_east_block.png",
         "spritecook/pet_war_hound_east_block.png",
         "sprites/pet_war_hound_east_block.png"
       ]
@@ -8268,8 +8220,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/pet_fire_elemental_east_spell.png",
         "spritecook/pet_fire_elemental_east_spell.png",
         "sprites/pet_fire_elemental_east_spell.png",
+        "openai_v2/pet_fire_elemental_east_block.png",
         "spritecook/pet_fire_elemental_east_block.png",
         "sprites/pet_fire_elemental_east_block.png"
       ]
@@ -8283,8 +8237,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/pet_lightning_elemental_east_spell.png",
         "spritecook/pet_lightning_elemental_east_spell.png",
         "sprites/pet_lightning_elemental_east_spell.png",
+        "openai_v2/pet_lightning_elemental_east_block.png",
         "spritecook/pet_lightning_elemental_east_block.png",
         "sprites/pet_lightning_elemental_east_block.png"
       ]
@@ -8298,8 +8254,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/pet_familiar_east_spell.png",
         "spritecook/pet_familiar_east_spell.png",
         "sprites/pet_familiar_east_spell.png",
+        "openai_v2/pet_familiar_east_block.png",
         "spritecook/pet_familiar_east_block.png",
         "sprites/pet_familiar_east_block.png"
       ]
@@ -8318,18 +8276,25 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/pet_clockwork_turret_portrait.png",
         "spritecook/pet_clockwork_turret_portrait.png",
         "sprites/pet_clockwork_turret_portrait.png",
+        "openai_v2/pet_clockwork_turret_south.png",
         "spritecook/pet_clockwork_turret_south.png",
         "sprites/pet_clockwork_turret_south.png",
+        "openai_v2/pet_clockwork_turret_east.png",
         "spritecook/pet_clockwork_turret_east.png",
         "sprites/pet_clockwork_turret_east.png",
+        "openai_v2/pet_clockwork_turret_east_attack.png",
         "spritecook/pet_clockwork_turret_east_attack.png",
         "sprites/pet_clockwork_turret_east_attack.png",
+        "openai_v2/pet_clockwork_turret_east_spell.png",
         "spritecook/pet_clockwork_turret_east_spell.png",
         "sprites/pet_clockwork_turret_east_spell.png",
+        "openai_v2/pet_clockwork_turret_east_block.png",
         "spritecook/pet_clockwork_turret_east_block.png",
         "sprites/pet_clockwork_turret_east_block.png",
+        "openai_v2/pet_clockwork_turret_east_ko.png",
         "spritecook/pet_clockwork_turret_east_ko.png",
         "sprites/pet_clockwork_turret_east_ko.png"
       ]
@@ -8348,18 +8313,25 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/aela_portrait.png",
         "spritecook/aela_portrait.png",
         "sprites/aela_portrait.png",
+        "openai_v2/aela_south.png",
         "spritecook/aela_south.png",
         "sprites/aela_south.png",
+        "openai_v2/aela_east.png",
         "spritecook/aela_east.png",
         "sprites/aela_east.png",
+        "openai_v2/aela_east_attack.png",
         "spritecook/aela_east_attack.png",
         "sprites/aela_east_attack.png",
+        "openai_v2/aela_east_spell.png",
         "spritecook/aela_east_spell.png",
         "sprites/aela_east_spell.png",
+        "openai_v2/aela_east_block.png",
         "spritecook/aela_east_block.png",
         "sprites/aela_east_block.png",
+        "openai_v2/aela_east_ko.png",
         "spritecook/aela_east_ko.png",
         "sprites/aela_east_ko.png"
       ]
@@ -8378,18 +8350,25 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/borin_portrait.png",
         "spritecook/borin_portrait.png",
         "sprites/borin_portrait.png",
+        "openai_v2/borin_south.png",
         "spritecook/borin_south.png",
         "sprites/borin_south.png",
+        "openai_v2/borin_east.png",
         "spritecook/borin_east.png",
         "sprites/borin_east.png",
+        "openai_v2/borin_east_attack.png",
         "spritecook/borin_east_attack.png",
         "sprites/borin_east_attack.png",
+        "openai_v2/borin_east_spell.png",
         "spritecook/borin_east_spell.png",
         "sprites/borin_east_spell.png",
+        "openai_v2/borin_east_block.png",
         "spritecook/borin_east_block.png",
         "sprites/borin_east_block.png",
+        "openai_v2/borin_east_ko.png",
         "spritecook/borin_east_ko.png",
         "sprites/borin_east_ko.png"
       ]
@@ -8408,18 +8387,25 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/lysa_portrait.png",
         "spritecook/lysa_portrait.png",
         "sprites/lysa_portrait.png",
+        "openai_v2/lysa_south.png",
         "spritecook/lysa_south.png",
         "sprites/lysa_south.png",
+        "openai_v2/lysa_east.png",
         "spritecook/lysa_east.png",
         "sprites/lysa_east.png",
+        "openai_v2/lysa_east_attack.png",
         "spritecook/lysa_east_attack.png",
         "sprites/lysa_east_attack.png",
+        "openai_v2/lysa_east_spell.png",
         "spritecook/lysa_east_spell.png",
         "sprites/lysa_east_spell.png",
+        "openai_v2/lysa_east_block.png",
         "spritecook/lysa_east_block.png",
         "sprites/lysa_east_block.png",
+        "openai_v2/lysa_east_ko.png",
         "spritecook/lysa_east_ko.png",
         "sprites/lysa_east_ko.png"
       ]
@@ -8438,18 +8424,25 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/rekk_portrait.png",
         "spritecook/rekk_portrait.png",
         "sprites/rekk_portrait.png",
+        "openai_v2/rekk_south.png",
         "spritecook/rekk_south.png",
         "sprites/rekk_south.png",
+        "openai_v2/rekk_east.png",
         "spritecook/rekk_east.png",
         "sprites/rekk_east.png",
+        "openai_v2/rekk_east_attack.png",
         "spritecook/rekk_east_attack.png",
         "sprites/rekk_east_attack.png",
+        "openai_v2/rekk_east_spell.png",
         "spritecook/rekk_east_spell.png",
         "sprites/rekk_east_spell.png",
+        "openai_v2/rekk_east_block.png",
         "spritecook/rekk_east_block.png",
         "sprites/rekk_east_block.png",
+        "openai_v2/rekk_east_ko.png",
         "spritecook/rekk_east_ko.png",
         "sprites/rekk_east_ko.png"
       ]
@@ -8468,18 +8461,25 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/kaldrek_portrait.png",
         "spritecook/kaldrek_portrait.png",
         "sprites/kaldrek_portrait.png",
+        "openai_v2/kaldrek_south.png",
         "spritecook/kaldrek_south.png",
         "sprites/kaldrek_south.png",
+        "openai_v2/kaldrek_east.png",
         "spritecook/kaldrek_east.png",
         "sprites/kaldrek_east.png",
+        "openai_v2/kaldrek_east_attack.png",
         "spritecook/kaldrek_east_attack.png",
         "sprites/kaldrek_east_attack.png",
+        "openai_v2/kaldrek_east_spell.png",
         "spritecook/kaldrek_east_spell.png",
         "sprites/kaldrek_east_spell.png",
+        "openai_v2/kaldrek_east_block.png",
         "spritecook/kaldrek_east_block.png",
         "sprites/kaldrek_east_block.png",
+        "openai_v2/kaldrek_east_ko.png",
         "spritecook/kaldrek_east_ko.png",
         "sprites/kaldrek_east_ko.png"
       ]
@@ -8498,18 +8498,25 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/syra_wyrmsworn_portrait.png",
         "spritecook/syra_wyrmsworn_portrait.png",
         "sprites/syra_wyrmsworn_portrait.png",
+        "openai_v2/syra_wyrmsworn_south.png",
         "spritecook/syra_wyrmsworn_south.png",
         "sprites/syra_wyrmsworn_south.png",
+        "openai_v2/syra_wyrmsworn_east.png",
         "spritecook/syra_wyrmsworn_east.png",
         "sprites/syra_wyrmsworn_east.png",
+        "openai_v2/syra_wyrmsworn_east_attack.png",
         "spritecook/syra_wyrmsworn_east_attack.png",
         "sprites/syra_wyrmsworn_east_attack.png",
+        "openai_v2/syra_wyrmsworn_east_spell.png",
         "spritecook/syra_wyrmsworn_east_spell.png",
         "sprites/syra_wyrmsworn_east_spell.png",
+        "openai_v2/syra_wyrmsworn_east_block.png",
         "spritecook/syra_wyrmsworn_east_block.png",
         "sprites/syra_wyrmsworn_east_block.png",
+        "openai_v2/syra_wyrmsworn_east_ko.png",
         "spritecook/syra_wyrmsworn_east_ko.png",
         "sprites/syra_wyrmsworn_east_ko.png"
       ]
@@ -8528,18 +8535,25 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/vorin_emberjaw_portrait.png",
         "spritecook/vorin_emberjaw_portrait.png",
         "sprites/vorin_emberjaw_portrait.png",
+        "openai_v2/vorin_emberjaw_south.png",
         "spritecook/vorin_emberjaw_south.png",
         "sprites/vorin_emberjaw_south.png",
+        "openai_v2/vorin_emberjaw_east.png",
         "spritecook/vorin_emberjaw_east.png",
         "sprites/vorin_emberjaw_east.png",
+        "openai_v2/vorin_emberjaw_east_attack.png",
         "spritecook/vorin_emberjaw_east_attack.png",
         "sprites/vorin_emberjaw_east_attack.png",
+        "openai_v2/vorin_emberjaw_east_spell.png",
         "spritecook/vorin_emberjaw_east_spell.png",
         "sprites/vorin_emberjaw_east_spell.png",
+        "openai_v2/vorin_emberjaw_east_block.png",
         "spritecook/vorin_emberjaw_east_block.png",
         "sprites/vorin_emberjaw_east_block.png",
+        "openai_v2/vorin_emberjaw_east_ko.png",
         "spritecook/vorin_emberjaw_east_ko.png",
         "sprites/vorin_emberjaw_east_ko.png"
       ]
@@ -8558,18 +8572,25 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/maelis_drakeblood_portrait.png",
         "spritecook/maelis_drakeblood_portrait.png",
         "sprites/maelis_drakeblood_portrait.png",
+        "openai_v2/maelis_drakeblood_south.png",
         "spritecook/maelis_drakeblood_south.png",
         "sprites/maelis_drakeblood_south.png",
+        "openai_v2/maelis_drakeblood_east.png",
         "spritecook/maelis_drakeblood_east.png",
         "sprites/maelis_drakeblood_east.png",
+        "openai_v2/maelis_drakeblood_east_attack.png",
         "spritecook/maelis_drakeblood_east_attack.png",
         "sprites/maelis_drakeblood_east_attack.png",
+        "openai_v2/maelis_drakeblood_east_spell.png",
         "spritecook/maelis_drakeblood_east_spell.png",
         "sprites/maelis_drakeblood_east_spell.png",
+        "openai_v2/maelis_drakeblood_east_block.png",
         "spritecook/maelis_drakeblood_east_block.png",
         "sprites/maelis_drakeblood_east_block.png",
+        "openai_v2/maelis_drakeblood_east_ko.png",
         "spritecook/maelis_drakeblood_east_ko.png",
         "sprites/maelis_drakeblood_east_ko.png"
       ]
@@ -8588,18 +8609,25 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/ysolde_cogwright_portrait.png",
         "spritecook/ysolde_cogwright_portrait.png",
         "sprites/ysolde_cogwright_portrait.png",
+        "openai_v2/ysolde_cogwright_south.png",
         "spritecook/ysolde_cogwright_south.png",
         "sprites/ysolde_cogwright_south.png",
+        "openai_v2/ysolde_cogwright_east.png",
         "spritecook/ysolde_cogwright_east.png",
         "sprites/ysolde_cogwright_east.png",
+        "openai_v2/ysolde_cogwright_east_attack.png",
         "spritecook/ysolde_cogwright_east_attack.png",
         "sprites/ysolde_cogwright_east_attack.png",
+        "openai_v2/ysolde_cogwright_east_spell.png",
         "spritecook/ysolde_cogwright_east_spell.png",
         "sprites/ysolde_cogwright_east_spell.png",
+        "openai_v2/ysolde_cogwright_east_block.png",
         "spritecook/ysolde_cogwright_east_block.png",
         "sprites/ysolde_cogwright_east_block.png",
+        "openai_v2/ysolde_cogwright_east_ko.png",
         "spritecook/ysolde_cogwright_east_ko.png",
         "sprites/ysolde_cogwright_east_ko.png"
       ]
@@ -8612,6 +8640,7 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/war_dog_east_block.png",
         "spritecook/war_dog_east_block.png",
         "sprites/war_dog_east_block.png"
       ]
@@ -8625,8 +8654,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/shadow_cat_portrait.png",
         "spritecook/shadow_cat_portrait.png",
         "sprites/shadow_cat_portrait.png",
+        "openai_v2/shadow_cat_east_block.png",
         "spritecook/shadow_cat_east_block.png",
         "sprites/shadow_cat_east_block.png"
       ]
@@ -8640,8 +8671,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/dire_wolf_portrait.png",
         "spritecook/dire_wolf_portrait.png",
         "sprites/dire_wolf_portrait.png",
+        "openai_v2/dire_wolf_east_block.png",
         "spritecook/dire_wolf_east_block.png",
         "sprites/dire_wolf_east_block.png"
       ]
@@ -8655,8 +8688,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/forest_owl_portrait.png",
         "spritecook/forest_owl_portrait.png",
         "sprites/forest_owl_portrait.png",
+        "openai_v2/forest_owl_east_block.png",
         "spritecook/forest_owl_east_block.png",
         "sprites/forest_owl_east_block.png"
       ]
@@ -8670,8 +8705,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/ember_drake_portrait.png",
         "spritecook/ember_drake_portrait.png",
         "sprites/ember_drake_portrait.png",
+        "openai_v2/ember_drake_east_block.png",
         "spritecook/ember_drake_east_block.png",
         "sprites/ember_drake_east_block.png"
       ]
@@ -8685,8 +8722,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/crystal_golem_portrait.png",
         "spritecook/crystal_golem_portrait.png",
         "sprites/crystal_golem_portrait.png",
+        "openai_v2/crystal_golem_east_block.png",
         "spritecook/crystal_golem_east_block.png",
         "sprites/crystal_golem_east_block.png"
       ]
@@ -8700,8 +8739,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/spirit_wisp_portrait.png",
         "spritecook/spirit_wisp_portrait.png",
         "sprites/spirit_wisp_portrait.png",
+        "openai_v2/spirit_wisp_east_block.png",
         "spritecook/spirit_wisp_east_block.png",
         "sprites/spirit_wisp_east_block.png"
       ]
@@ -8715,8 +8756,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/bone_hound_portrait.png",
         "spritecook/bone_hound_portrait.png",
         "sprites/bone_hound_portrait.png",
+        "openai_v2/bone_hound_east_block.png",
         "spritecook/bone_hound_east_block.png",
         "sprites/bone_hound_east_block.png"
       ]
@@ -8730,8 +8773,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/ice_sprite_portrait.png",
         "spritecook/ice_sprite_portrait.png",
         "sprites/ice_sprite_portrait.png",
+        "openai_v2/ice_sprite_east_block.png",
         "spritecook/ice_sprite_east_block.png",
         "sprites/ice_sprite_east_block.png"
       ]
@@ -8745,8 +8790,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/swamp_frog_portrait.png",
         "spritecook/swamp_frog_portrait.png",
         "sprites/swamp_frog_portrait.png",
+        "openai_v2/swamp_frog_east_block.png",
         "spritecook/swamp_frog_east_block.png",
         "sprites/swamp_frog_east_block.png"
       ]
@@ -8760,8 +8807,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/void_moth_portrait.png",
         "spritecook/void_moth_portrait.png",
         "sprites/void_moth_portrait.png",
+        "openai_v2/void_moth_east_block.png",
         "spritecook/void_moth_east_block.png",
         "sprites/void_moth_east_block.png"
       ]
@@ -8775,8 +8824,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/dragon_hatchling_east_block.png",
         "spritecook/dragon_hatchling_east_block.png",
         "sprites/dragon_hatchling_east_block.png",
+        "openai_v2/dragon_hatchling_east_ko.png",
         "spritecook/dragon_hatchling_east_ko.png",
         "sprites/dragon_hatchling_east_ko.png"
       ]
@@ -8791,10 +8842,13 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/storm_drake_portrait.png",
         "spritecook/storm_drake_portrait.png",
         "sprites/storm_drake_portrait.png",
+        "openai_v2/storm_drake_east_block.png",
         "spritecook/storm_drake_east_block.png",
         "sprites/storm_drake_east_block.png",
+        "openai_v2/storm_drake_east_ko.png",
         "spritecook/storm_drake_east_ko.png",
         "sprites/storm_drake_east_ko.png"
       ]
@@ -8809,10 +8863,13 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/shadow_wyrm_portrait.png",
         "spritecook/shadow_wyrm_portrait.png",
         "sprites/shadow_wyrm_portrait.png",
+        "openai_v2/shadow_wyrm_east_block.png",
         "spritecook/shadow_wyrm_east_block.png",
         "sprites/shadow_wyrm_east_block.png",
+        "openai_v2/shadow_wyrm_east_ko.png",
         "spritecook/shadow_wyrm_east_ko.png",
         "sprites/shadow_wyrm_east_ko.png"
       ]
@@ -8826,8 +8883,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/goblin_scout_east_block.png",
         "spritecook/goblin_scout_east_block.png",
         "sprites/goblin_scout_east_block.png",
+        "openai_v2/goblin_scout_east_ko.png",
         "spritecook/goblin_scout_east_ko.png",
         "sprites/goblin_scout_east_ko.png"
       ]
@@ -8841,8 +8900,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/goblin_warrior_east_block.png",
         "spritecook/goblin_warrior_east_block.png",
         "sprites/goblin_warrior_east_block.png",
+        "openai_v2/goblin_warrior_east_ko.png",
         "spritecook/goblin_warrior_east_ko.png",
         "sprites/goblin_warrior_east_ko.png"
       ]
@@ -8856,8 +8917,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/goblin_shaman_east_block.png",
         "spritecook/goblin_shaman_east_block.png",
         "sprites/goblin_shaman_east_block.png",
+        "openai_v2/goblin_shaman_east_ko.png",
         "spritecook/goblin_shaman_east_ko.png",
         "sprites/goblin_shaman_east_ko.png"
       ]
@@ -8871,8 +8934,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/goblin_warlord_east_block.png",
         "spritecook/goblin_warlord_east_block.png",
         "sprites/goblin_warlord_east_block.png",
+        "openai_v2/goblin_warlord_east_ko.png",
         "spritecook/goblin_warlord_east_ko.png",
         "sprites/goblin_warlord_east_ko.png"
       ]
@@ -8886,8 +8951,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/corrupted_wolf_east_block.png",
         "spritecook/corrupted_wolf_east_block.png",
         "sprites/corrupted_wolf_east_block.png",
+        "openai_v2/corrupted_wolf_east_ko.png",
         "spritecook/corrupted_wolf_east_ko.png",
         "sprites/corrupted_wolf_east_ko.png"
       ]
@@ -8901,8 +8968,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/corrupted_bear_east_block.png",
         "spritecook/corrupted_bear_east_block.png",
         "sprites/corrupted_bear_east_block.png",
+        "openai_v2/corrupted_bear_east_ko.png",
         "spritecook/corrupted_bear_east_ko.png",
         "sprites/corrupted_bear_east_ko.png"
       ]
@@ -8916,8 +8985,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/imp_east_block.png",
         "spritecook/imp_east_block.png",
         "sprites/imp_east_block.png",
+        "openai_v2/imp_east_ko.png",
         "spritecook/imp_east_ko.png",
         "sprites/imp_east_ko.png"
       ]
@@ -8931,8 +9002,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/hell_knight_east_block.png",
         "spritecook/hell_knight_east_block.png",
         "sprites/hell_knight_east_block.png",
+        "openai_v2/hell_knight_east_ko.png",
         "spritecook/hell_knight_east_ko.png",
         "sprites/hell_knight_east_ko.png"
       ]
@@ -8946,8 +9019,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/demon_brute_east_block.png",
         "spritecook/demon_brute_east_block.png",
         "sprites/demon_brute_east_block.png",
+        "openai_v2/demon_brute_east_ko.png",
         "spritecook/demon_brute_east_ko.png",
         "sprites/demon_brute_east_ko.png"
       ]
@@ -8961,8 +9036,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/cinder_hound_east_block.png",
         "spritecook/cinder_hound_east_block.png",
         "sprites/cinder_hound_east_block.png",
+        "openai_v2/cinder_hound_east_ko.png",
         "spritecook/cinder_hound_east_ko.png",
         "sprites/cinder_hound_east_ko.png"
       ]
@@ -8976,8 +9053,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/molten_golem_east_block.png",
         "spritecook/molten_golem_east_block.png",
         "sprites/molten_golem_east_block.png",
+        "openai_v2/molten_golem_east_ko.png",
         "spritecook/molten_golem_east_ko.png",
         "sprites/molten_golem_east_ko.png"
       ]
@@ -8991,8 +9070,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/veil_cultist_east_block.png",
         "spritecook/veil_cultist_east_block.png",
         "sprites/veil_cultist_east_block.png",
+        "openai_v2/veil_cultist_east_ko.png",
         "spritecook/veil_cultist_east_ko.png",
         "sprites/veil_cultist_east_ko.png"
       ]
@@ -9006,8 +9087,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/veil_sorcerer_east_block.png",
         "spritecook/veil_sorcerer_east_block.png",
         "sprites/veil_sorcerer_east_block.png",
+        "openai_v2/veil_sorcerer_east_ko.png",
         "spritecook/veil_sorcerer_east_ko.png",
         "sprites/veil_sorcerer_east_ko.png"
       ]
@@ -9020,6 +9103,7 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/veil_warden_east_block.png",
         "spritecook/veil_warden_east_block.png",
         "sprites/veil_warden_east_block.png"
       ]
@@ -9033,8 +9117,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/void_wraith_east_block.png",
         "spritecook/void_wraith_east_block.png",
         "sprites/void_wraith_east_block.png",
+        "openai_v2/void_wraith_east_ko.png",
         "spritecook/void_wraith_east_ko.png",
         "sprites/void_wraith_east_ko.png"
       ]
@@ -9048,8 +9134,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/star_horror_east_block.png",
         "spritecook/star_horror_east_block.png",
         "sprites/star_horror_east_block.png",
+        "openai_v2/star_horror_east_ko.png",
         "spritecook/star_horror_east_ko.png",
         "sprites/star_horror_east_ko.png"
       ]
@@ -9063,8 +9151,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/archfiend_malgrath_portrait.png",
         "spritecook/archfiend_malgrath_portrait.png",
         "sprites/archfiend_malgrath_portrait.png",
+        "openai_v2/archfiend_malgrath_east_block.png",
         "spritecook/archfiend_malgrath_east_block.png",
         "sprites/archfiend_malgrath_east_block.png"
       ]
@@ -9078,8 +9168,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/emberveil_sovereign_portrait.png",
         "spritecook/emberveil_sovereign_portrait.png",
         "sprites/emberveil_sovereign_portrait.png",
+        "openai_v2/emberveil_sovereign_east_block.png",
         "spritecook/emberveil_sovereign_east_block.png",
         "sprites/emberveil_sovereign_east_block.png"
       ]
@@ -9093,8 +9185,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/lava_titan_portrait.png",
         "spritecook/lava_titan_portrait.png",
         "sprites/lava_titan_portrait.png",
+        "openai_v2/lava_titan_east_block.png",
         "spritecook/lava_titan_east_block.png",
         "sprites/lava_titan_east_block.png"
       ]
@@ -9108,8 +9202,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/grax_veil_touched_portrait.png",
         "spritecook/grax_veil_touched_portrait.png",
         "sprites/grax_veil_touched_portrait.png",
+        "openai_v2/grax_veil_touched_east_block.png",
         "spritecook/grax_veil_touched_east_block.png",
         "sprites/grax_veil_touched_east_block.png"
       ]
@@ -9122,6 +9218,7 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/primordial_elemental_east_block.png",
         "spritecook/primordial_elemental_east_block.png",
         "sprites/primordial_elemental_east_block.png"
       ]
@@ -9134,6 +9231,7 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/abyssal_knight_east_block.png",
         "spritecook/abyssal_knight_east_block.png",
         "sprites/abyssal_knight_east_block.png"
       ]
@@ -9146,6 +9244,7 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/reality_shard_east_block.png",
         "spritecook/reality_shard_east_block.png",
         "sprites/reality_shard_east_block.png"
       ]
@@ -9158,6 +9257,7 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/genesis_worm_east_block.png",
         "spritecook/genesis_worm_east_block.png",
         "sprites/genesis_worm_east_block.png"
       ]
@@ -9170,6 +9270,7 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/cosmic_titan_east_block.png",
         "spritecook/cosmic_titan_east_block.png",
         "sprites/cosmic_titan_east_block.png"
       ]
@@ -9183,8 +9284,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/void_prophet_east_block.png",
         "spritecook/void_prophet_east_block.png",
         "sprites/void_prophet_east_block.png",
+        "openai_v2/void_prophet_east_ko.png",
         "spritecook/void_prophet_east_ko.png",
         "sprites/void_prophet_east_ko.png"
       ]
@@ -9198,8 +9301,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/dragon_whelp_east_block.png",
         "spritecook/dragon_whelp_east_block.png",
         "sprites/dragon_whelp_east_block.png",
+        "openai_v2/dragon_whelp_east_ko.png",
         "spritecook/dragon_whelp_east_ko.png",
         "sprites/dragon_whelp_east_ko.png"
       ]
@@ -9213,8 +9318,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/wyrm_warrior_east_block.png",
         "spritecook/wyrm_warrior_east_block.png",
         "sprites/wyrm_warrior_east_block.png",
+        "openai_v2/wyrm_warrior_east_ko.png",
         "spritecook/wyrm_warrior_east_ko.png",
         "sprites/wyrm_warrior_east_ko.png"
       ]
@@ -9228,8 +9335,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/dragon_cultist_east_block.png",
         "spritecook/dragon_cultist_east_block.png",
         "sprites/dragon_cultist_east_block.png",
+        "openai_v2/dragon_cultist_east_ko.png",
         "spritecook/dragon_cultist_east_ko.png",
         "sprites/dragon_cultist_east_ko.png"
       ]
@@ -9243,8 +9352,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/frost_wyrm_east_block.png",
         "spritecook/frost_wyrm_east_block.png",
         "sprites/frost_wyrm_east_block.png",
+        "openai_v2/frost_wyrm_east_ko.png",
         "spritecook/frost_wyrm_east_ko.png",
         "sprites/frost_wyrm_east_ko.png"
       ]
@@ -9258,8 +9369,10 @@
         "east_ko"
       ],
       "tried": [
+        "openai_v2/storm_dragon_east_block.png",
         "spritecook/storm_dragon_east_block.png",
         "sprites/storm_dragon_east_block.png",
+        "openai_v2/storm_dragon_east_ko.png",
         "spritecook/storm_dragon_east_ko.png",
         "sprites/storm_dragon_east_ko.png"
       ]
@@ -9273,8 +9386,10 @@
         "east_block"
       ],
       "tried": [
+        "openai_v2/ancient_dragon_portrait.png",
         "spritecook/ancient_dragon_portrait.png",
         "sprites/ancient_dragon_portrait.png",
+        "openai_v2/ancient_dragon_east_block.png",
         "spritecook/ancient_dragon_east_block.png",
         "sprites/ancient_dragon_east_block.png"
       ]
@@ -9285,7 +9400,7 @@
     "companions": 35,
     "enemies": 20,
     "bosses": 16,
-    "orphans": 933,
+    "orphans": 920,
     "missing": 67
   }
 }

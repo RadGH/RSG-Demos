@@ -130,6 +130,35 @@
       color: #fff;
     }
 
+    /* M463 — global sprite-background toggle. body[data-sprite-bg=...]
+       overrides every .checker-bg / sprite container so the user can audit
+       characters against different backdrops. */
+    body[data-sprite-bg="none"] .checker-bg { background-image:none; background-color:transparent; }
+    body[data-sprite-bg="white"] .checker-bg { background-image:none; background-color:#fff; }
+    body[data-sprite-bg="black"] .checker-bg { background-image:none; background-color:#000; }
+    body[data-sprite-bg="green"] .checker-bg { background-image:none; background-color:#00FF00; }
+
+    .bg-toggle-bar {
+      display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;
+      margin: 0 0 12px;
+      padding: 6px 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    .bg-toggle-bar .bg-label {
+      color: var(--muted); text-transform:uppercase; letter-spacing:0.08em;
+      font-size: 10px; font-weight: 600;
+    }
+    .bg-toggle-bar .bg-seg-btn {
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--muted); padding: 4px 10px; border-radius: 4px;
+      cursor: pointer; font-size: 11px; font-weight: 600;
+    }
+    .bg-toggle-bar .bg-seg-btn:hover { background: var(--card-h); color: var(--text); }
+    .bg-toggle-bar .bg-seg-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
     /* search */
     .search-input {
       width: 100%;
@@ -854,6 +883,38 @@
 <div class="toolbar-wrap">
   <div id="lm-toolbar"></div>
 </div>
+
+<!-- M463 — sprite background toggle (sticky in localStorage). Class names
+     match image-review-v2.html so the same CSS rules apply across pages. -->
+<div class="bg-toggle-bar" id="bg-toggle-bar">
+  <span class="bg-label">Background:</span>
+  <button class="bg-seg-btn active" data-bg="checker" title="Transparency grid">Checker</button>
+  <button class="bg-seg-btn" data-bg="none" title="Page background">None</button>
+  <button class="bg-seg-btn" data-bg="white" title="Solid white">White</button>
+  <button class="bg-seg-btn" data-bg="black" title="Solid black">Black</button>
+  <button class="bg-seg-btn" data-bg="green" title="Chroma green #00FF00">Green</button>
+</div>
+<script>
+  (function() {
+    const KEY = 'evImgReview_spriteBg';
+    function apply(mode) {
+      const valid = ['checker','none','white','black','green'];
+      if (!valid.includes(mode)) mode = 'checker';
+      document.body.dataset.spriteBg = mode === 'checker' ? '' : mode;
+      document.querySelectorAll('#bg-toggle-bar .bg-seg-btn').forEach(b =>
+        b.classList.toggle('active', b.dataset.bg === mode));
+      try { localStorage.setItem(KEY, mode); } catch(_){}
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      let initial = 'checker';
+      try { initial = localStorage.getItem(KEY) || 'checker'; } catch(_){}
+      apply(initial);
+      document.querySelectorAll('#bg-toggle-bar .bg-seg-btn').forEach(b => {
+        b.addEventListener('click', () => apply(b.dataset.bg));
+      });
+    });
+  })();
+</script>
 
 <!-- ======================================================================
      LIVE IMAGE MANIFEST — appearance-driven, data-sourced from

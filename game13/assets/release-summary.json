@@ -1,7 +1,7 @@
 {
-  "milestone": 461,
-  "date": "2026-05-10",
-  "summary": "M460 — image-review-v2 List layout now shows full per-pose sub-sprites. List mode in current+characters previously showed only the lone portrait card per enemy/companion/boss (same root cause as the Grouped goblin bug). Added renderListAppearances() which walks appearances-manifest.json the same way Grouped does, but flattens every (appearance × pose) pair into a single flat grid. Prompt + manifest status data are merged in when present; pose + category filters still apply; falls back to the legacy renderGroupedByGroup when appearances haven't fetched yet.",
+  "milestone": 462,
+  "date": "2026-05-11",
+  "summary": "M462 — Auto-flag openai regens for review + site overview doc. Critical workflow fix: openai-spritesheet-gen.py was writing only to the sidecar (Current tab) but never enrolling in the open review batch (Pending tab), so the user couldn't review the 5 already-regenerated characters (frost_wyrmling, ash_wraith, bandit_captain, bandit, void_shade). Added register_open_batch_entries() to the script so every future regen auto-enrolls. One-shot scripts/flag-openai-regens-for-review.py retroactively flagged 54 pose entries for the 5 existing characters. Also wrote game13/memory/SITE_OVERVIEW.md as the cold-start manual covering every tool page, image pipeline, manifest, build step, and maintenance location; added a memory pointer (emberveil_site_map.md) so I read SITE_OVERVIEW.md before acting on any Emberveil request.",
   "categories": [
     "feature"
   ],
