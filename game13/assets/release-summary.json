@@ -1,7 +1,7 @@
 {
-  "milestone": 470,
+  "milestone": 471,
   "date": "2026-05-12",
-  "summary": "M470 — combat sim fix (enemy spells/blocks now fire in sims), 48 more enemy/boss/companion sprite regens, image-review+images.html unified into shared module (247 lines dedup), Supabase combat_history persistence (50 sessions/player), news dropdown viewport-clamp, auto-skill independence, post-combat 1-of-3 reward popup removed, +22 second class builds (every class now ≥2)",
+  "summary": "M471 — image-review-v2 unified single-row layout (group/list/pose filter removed, typos fixed, checker-bg works on both pages), slice-bleed fixes for pet_fire_elemental/bandit_captain/the_first_ember, forest_owl + dragon_king (1536x1024 — OpenAI capped) + giant_spider regens, 623/34 image-review approve sweep, faction-aware combat grid spacing (allies tight + enemies tight + battle-line gap), NG+ progression isolation (new resetRunProgression), README + Supabase migration docs, damage-report instrumentation analysis",
   "categories": [
     "feature"
   ],

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-12T21:37:10.157Z",
+  "generated": "2026-05-12T22:04:24.439Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,23 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 471,
+      "date": "",
+      "summary": "Five parallel agents shipped. (1) Image review v2 unified layout: removed Group/List + Pose filters; every character category renders identically — name + single row of equal-size 96px tiles (same as Pending); fixed heros→heroes/enemys→enemies; collapsed OpenAI v2 accordion by default; checker-bg works on both image-review-v2 and images.html via shared !important rules. (2) Slice-bleed fix: new scripts/fix-sliced-bleed.py auto-detects vertical seams in OpenAI 3×3 sheets; applied to pet_fire_elemental, bandit_captain, the_first_ember. (3) Sprite work: forest_owl regen (bite not scratch, 2 legs), dragon_king regen at 1536x1024 (OpenAI gpt-image-1 rejects 2048 — max is 1536), giant_spider regen (was the ONLY missing enemy per comprehensive audit covering ENEMIES/ACT4-6/HIDDEN_BOSS/companions/infiniteDungeon). approve-image-review-v2.cjs gained --exclude flag; ran with 10 for-review ids excluded → 623 approved, 34 still pending. (4) Combat grid: new COL_GAP_TIGHT (20px within-faction) + COL_GAP_BATTLE_LINE (96px between factions) in combatLayout.js; heroes+companions cluster left, enemies cluster right. (5) NG+ isolation: new resetRunProgression(state) clears flags/cleared nodes/event seen/seen events/sneaked/visited while preserving party/inventory/achievements/lifetime stats; 5/5 Vitest pass. (6) Docs: README.md gained Supabase migrations section; deploy_pages.sh now mirrors README on every push; todo.html cleaned. (7) Damage analysis: M425→M469 Warrior L20 1002→3049 jump is INSTRUMENTATION change (M426 made dummy invulnerable so fragile classes can be measured) — Warrior class byte-identical; analysis written to memory/damage_regression_warrior_M425_to_M469.md; Act 2+ cakewalk needs separate real-roster TTK benchmark.",
+      "items": [
+        {
+          "text": "Five parallel agents shipped. (1) Image review v2 unified layout: removed Group/List + Pose filters; every character category renders identically — name + single row of equal-size 96px tiles (same as Pending); fixed heros→heroes/enemys→enemies; collapsed OpenAI v2 accordion by default; checker-bg works on both image-review-v2 and images.html via shared !important rules. (2) Slice-bleed fix: new scripts/fix-sliced-bleed.py auto-detects vertical seams in OpenAI 3×3 sheets; applied to pet_fire_elemental, bandit_captain, the_first_ember. (3) Sprite work: forest_owl regen (bite not scratch, 2 legs), dragon_king regen at 1536x1024 (OpenAI gpt-image-1 rejects 2048 — max is 1536), giant_spider regen (was the ONLY missing enemy per comprehensive audit covering ENEMIES/ACT4-6/HIDDEN_BOSS/companions/infiniteDungeon). approve-image-review-v2.cjs gained --exclude flag; ran with 10 for-review ids excluded → 623 approved, 34 still pending. (4) Combat grid: new COL_GAP_TIGHT (20px within-faction) + COL_GAP_BATTLE_LINE (96px between factions) in combatLayout.js; heroes+companions cluster left, enemies cluster right. (5) NG+ isolation: new resetRunProgression(state) clears flags/cleared nodes/event seen/seen events/sneaked/visited while preserving party/inventory/achievements/lifetime stats; 5/5 Vitest pass. (6) Docs: README.md gained Supabase migrations section; deploy_pages.sh now mirrors README on every push; todo.html cleaned. (7) Damage analysis: M425→M469 Warrior L20 1002→3049 jump is INSTRUMENTATION change (M426 made dummy invulnerable so fragile classes can be measured) — Warrior class byte-identical; analysis written to memory/damage_regression_warrior_M425_to_M469.md; Act 2+ cakewalk needs separate real-roster TTK benchmark.",
+          "categories": [
+            "Feature",
+            "BugFix",
+            "Balance",
+            "QoL",
+            "Art"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 470,
       "date": "",
