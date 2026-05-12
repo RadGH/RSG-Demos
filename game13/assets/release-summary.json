@@ -1,7 +1,7 @@
 {
-  "milestone": 463,
+  "milestone": 464,
   "date": "2026-05-11",
-  "summary": "M463 — manifest-driven sprite loader + openai_v2 bucket + image-review-v2 background toggle / flag system / generator badges / bulk select / pipeline overview + bandit dedup + chroma fallback for blue-bg sprites.",
+  "summary": "M464 — high-fantasy prompt rewrite (no JRPG/chibi) + regen ash_wraith (desert), void_shade (purple arcane wisp), bandit + bandit_captain (knight-proportions)",
   "categories": [
     "feature"
   ],
