@@ -96,6 +96,62 @@
   /* Label above topbar segments */
   .topbar-label { font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem; }
 
+  /* Reusable replacements for prior inline `style=` attributes (M464). */
+  .approve-callout { background:rgba(232,160,32,0.08); border:1px solid var(--accent-dim); border-radius:6px; padding:0.75rem 1rem; margin-bottom:0.75rem; font-size:0.85rem; line-height:1.5; }
+  .approve-callout strong.callout-head { color:var(--accent); }
+  .approve-callout ol { margin:0.4rem 0 0 1.2rem; padding:0; }
+  .approve-callout .tip { margin-top:0.5rem; color:var(--muted); font-size:0.78rem; }
+  .status-line { color:var(--muted); font-size:0.85rem; margin-bottom:0.5rem; }
+  .status-line.error { color:var(--warn); }
+  .batch-select-input { background:var(--panel-alt); color:var(--parchment); border:1px solid var(--border-strong); padding:0.35rem 0.5rem; font-size:0.85rem; border-radius:4px; }
+  .lb-reason-row { margin-bottom:0.6rem; }
+  .lb-prompt-block { margin-top:0.6rem; }
+  .lb-prompt-block .prompt-sub { margin-top:0.4rem; }
+  .lb-asset-line { margin-top:0.5rem; font-size:0.7rem; }
+  .lb-asset-line.sub { margin-top:0.2rem; }
+  .lb-flag-row { margin-top:0.75rem; padding-top:0.5rem; border-top:1px solid var(--border); }
+  .lb-flag-row .lb-flag-btns { display:flex; gap:0.3rem; margin-top:0.3rem; }
+  .lb-flag-btn { flex:1; padding:0.3rem; border-radius:3px; font-size:0.7rem; cursor:pointer; }
+  .lb-flag-btn[data-flag-prio=""]        { background:#222; border:1px solid #444; color:#888; }
+  .lb-flag-btn[data-flag-prio="info"]    { background:#1a2a3a; border:1px solid #3080d0; color:#5fa6e6; }
+  .lb-flag-btn[data-flag-prio="warning"] { background:#3a2a1a; border:1px solid #e8a020; color:#e8a020; }
+  .lb-flag-btn[data-flag-prio="error"]   { background:#3a1a1a; border:1px solid #c04030; color:#e07060; }
+  .lb-flag-row input[type="text"] { width:100%; margin-top:0.4rem; padding:0.35rem; background:#0a0a0e; border:1px solid var(--border); color:var(--parchment); font-size:0.78rem; border-radius:3px; }
+  .topbar-col { display:flex; flex-direction:column; }
+  .bg-bg-heading { font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem; }
+  .filter-note-muted  { opacity:0.55; }
+  .filter-note-italic { font-style:italic; }
+  .appearance-portrait-missing { font-size:22px; color:var(--muted); }
+  .h2-count { color:var(--muted); font-size:0.8rem; font-weight:normal; }
+  .label-sub { opacity:0.65; }
+
+  /* Unified single-row character section (M464) — replaces the prior Grouped /
+     List dual layout. Every category (heroes/companions/bosses/enemies) and
+     every mode (pending/current/history) uses this:
+       <character name>
+       [portrait][south][east][east_attack][east_spell][east_block][east_ko]
+     One row per character, same tile size for every tile, no card frame. */
+  .unified-char { margin-bottom: 14px; padding: 10px 12px; background: var(--panel); border:1px solid var(--border); border-radius: 8px; }
+  .unified-char .uc-head { display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
+  .unified-char .uc-name { font-size:14px; font-weight:700; color:var(--accent); text-transform:capitalize; }
+  .unified-char .uc-id   { font-size:10px; color:var(--muted); font-family:monospace; }
+  .unified-char .uc-row  { display:flex; flex-wrap:wrap; gap:6px; align-items:flex-start; }
+  .unified-char .uc-tile {
+    position:relative; width:96px; height:96px; border-radius:6px;
+    border:1px solid var(--border); cursor:pointer; overflow:hidden;
+    transition: border-color 0.15s, transform 0.1s;
+  }
+  .unified-char .uc-tile:hover { border-color: var(--accent); transform: scale(1.04); }
+  .unified-char .uc-tile.selected { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(255,208,96,0.25); }
+  .unified-char .uc-tile.tile-missing { background: rgba(192,64,48,0.06); border-color: rgba(192,64,48,0.28); cursor: default; display:flex; align-items:center; justify-content:center; }
+  .unified-char .uc-tile.tile-missing .uc-missing-glyph { color: var(--warn); opacity:0.5; font-size:18px; }
+  .unified-char .uc-tile img { width:100%; height:100%; object-fit:contain; image-rendering:pixelated; }
+  .unified-char .uc-tile .uc-pose-label {
+    position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.72);
+    color:#fff; font-size:9px; text-align:center; padding:1px 2px;
+    text-transform:uppercase; letter-spacing:0.04em; pointer-events:none;
+  }
+
   /* Character group blocks (List layout) */
   .char-group { margin-bottom:1rem; padding:0.5rem; background:var(--panel); border:1px solid var(--border); border-radius:6px; }
   .char-group .group-head { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem; }
@@ -117,7 +173,10 @@
   .pipeline-card summary::-webkit-details-marker { color:var(--accent); }
   .pipeline-card .pc-body { padding-top:0.5rem; font-size:0.85rem; line-height:1.45; color:#cbb; }
   .pipeline-card .pc-body p { margin:0.25rem 0 0.6rem; }
-  .pipeline-card .pc-ref { width:100%; max-width:360px; background:var(--panel-alt); border:1px solid var(--border); border-radius:4px; image-rendering:pixelated; margin-top:0.4rem; }
+  /* The pc-ref image inherits its background from the .checker-bg class so it
+     responds to the body[data-sprite-bg] toggle like every other tile.
+     Don't set background here — sprite-grid.css owns it. */
+  .pipeline-card .pc-ref { width:100%; max-width:360px; border:1px solid var(--border); border-radius:4px; image-rendering:pixelated; margin-top:0.4rem; }
   .pipeline-card .pc-meta { color:var(--muted); font-size:0.7rem; margin-top:0.4rem; font-family:monospace; }
 
   /* Badge (page-specific variant — shared class-pair/appearance/pose CSS lives in _shared/sprite-grid.css) */
@@ -191,16 +250,16 @@
        to "I approved these on the page but they stayed pending" because
        clicking cards alone never persists anything — the page only builds a
        copy-paste payload and Claude must run the approve script. -->
-  <div style="background:rgba(232,160,32,0.08);border:1px solid var(--accent-dim);border-radius:6px;padding:0.75rem 1rem;margin-bottom:0.75rem;font-size:0.85rem;line-height:1.5">
-    <strong style="color:var(--accent)">Approving images is a two-step flow.</strong>
+  <div class="approve-callout">
+    <strong class="callout-head">Approving images is a two-step flow.</strong>
     Selecting cards on this page does <em>not</em> persist anything — the page is read-only and your selections live only in this tab.
     To actually approve:
-    <ol style="margin:0.4rem 0 0 1.2rem;padding:0">
+    <ol>
       <li>Select the cards you want to approve.</li>
       <li>Click <strong>Copy approve command</strong> (or <strong>Copy as list</strong> + tell Claude "approve these").</li>
       <li>Paste into Claude. Claude runs <code>node scripts/approve-image-review-v2.cjs &lt;ids…&gt;</code>, which copies the candidate file into the live path and marks the entry approved. Pending status disappears on the next page reload.</li>
     </ol>
-    <div style="margin-top:0.5rem;color:var(--muted);font-size:0.78rem">
+    <div class="tip">
       Tip: <strong>Copy approve command</strong> produces a ready-to-run shell line with the script and IDs already filled in.
       <strong>Approve all</strong> covers the entire open batch in one command.
     </div>
@@ -215,28 +274,28 @@
         <p class="pc-meta">script: <code>scripts/spritecook-*.cjs</code> · output: <code>public/images/spritecook/</code></p>
       </div>
     </details>
-    <details class="pipeline-card" open>
+    <details class="pipeline-card">
       <summary>OpenAI v2 (9-pose)</summary>
       <div class="pc-body">
         <p>Single-call 3×3 sprite-sheet generator (chroma-key #00FF00 + despill + slice + center-pad). Used for experimental / non-humanoid characters. Every regen enrols in the open review batch automatically (M462).</p>
         <p>Reference template (current):</p>
         <img class="pc-ref checker-bg" src="./openai_v2/reference.png" alt="OpenAI v2 reference template" loading="lazy">
-        <p class="pc-meta">script: <code>scripts/openai-spritesheet-gen.py</code> · output: <code>public/images/openai_v2/</code> · raw: <code>public/assets/openai_v2/raw/&lt;id&gt;/</code></p>
+        <p class="pc-meta">Background updates with the global sprite-bg toggle. script: <code>scripts/openai-spritesheet-gen.py</code> · output: <code>public/images/openai_v2/</code> · raw: <code>public/assets/openai_v2/raw/&lt;id&gt;/</code></p>
       </div>
     </details>
   </div>
 
   <div class="topbar">
-    <div>
-      <div style="font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem;">Mode</div>
+    <div class="topbar-col">
+      <div class="bg-bg-heading">Mode</div>
       <div class="seg" id="mode-seg">
         <button data-mode="pending" class="active">Pending</button>
         <button data-mode="current">Current</button>
         <button data-mode="history">History</button>
       </div>
     </div>
-    <div>
-      <div style="font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem;">Category</div>
+    <div class="topbar-col">
+      <div class="bg-bg-heading">Category</div>
       <div class="seg" id="cat-seg">
         <button data-cat="characters" class="active">Characters</button>
         <button data-cat="backgrounds">Backgrounds</button>
@@ -244,32 +303,25 @@
         <button data-cat="other">Other</button>
       </div>
     </div>
-    <div id="layout-wrap">
-      <div style="font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem;">Layout</div>
-      <div class="seg" id="layout-seg">
-        <button data-layout="grouped" class="active">Grouped</button>
-        <button data-layout="list">List</button>
-      </div>
-    </div>
-    <div>
+    <div class="topbar-col">
       <div class="topbar-label">Background</div>
       <div id="bg-filter-mount"></div>
     </div>
-    <div id="batch-select-wrap" style="display:none;">
-      <div style="font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem;">Batch</div>
-      <select id="batch-select" style="background:var(--panel-alt); color:var(--parchment); border:1px solid var(--border-strong); padding:0.35rem 0.5rem; font-size:0.85rem; border-radius:4px;"></select>
+    <div class="topbar-col" id="batch-select-wrap" hidden>
+      <div class="bg-bg-heading">Batch</div>
+      <select id="batch-select" class="batch-select-input"></select>
     </div>
   </div>
 
-  <div id="pending-banner" class="pending-banner" style="display:none;"></div>
+  <div id="pending-banner" class="pending-banner" hidden></div>
 
-  <div id="status" style="color:var(--muted); font-size:0.85rem; margin-bottom:0.5rem;">Loading…</div>
+  <div id="status" class="status-line">Loading…</div>
 
   <div id="content"></div>
 </div>
 
-<details id="filter-panel" open>
-  <summary>Filters ▾</summary>
+<details id="filter-panel">
+  <summary>Filters</summary>
   <div id="filter-body"></div>
 </details>
 
@@ -312,11 +364,11 @@ let DATA = null;
 let APPEARANCES = null;   // appearances-manifest.json keyed by entity id
 let mode = 'pending';      // 'pending' | 'current' | 'history'
 let category = 'characters'; // 'characters' | 'backgrounds' | 'tap_weapons' | 'other'
-let layout = 'grouped';    // 'grouped' | 'list'
 let historyBatchId = null;   // when mode === 'history'
 
+// M464 — pose filter + layout toggle removed; ONE single-row layout for all
+// modes/categories. The only filters left are character categories + bg types.
 const filters = {
-  poses: new Set(POSES),
   charCats: new Set(['hero','companion','boss','enemy']),
   bgTypes: new Set(['combat','menu','map']),
 };
@@ -333,7 +385,8 @@ async function load() {
     DATA = await r.json();
   } catch (e) {
     document.getElementById('status').innerHTML =
-      '<span style="color:var(--warn);">Failed to load image-review-v2.json. Run <code>node scripts/build-image-review-v2.cjs</code>.</span>';
+      '<span class="status-line error">Failed to load image-review-v2.json. Run <code>node scripts/build-image-review-v2.cjs</code>.</span>';
+    document.getElementById('status').className = 'status-line error';
     return;
   }
   // Load appearances-manifest for the Grouped layout — provides full 7-pose data
@@ -376,35 +429,23 @@ function buildBatchSelect() {
 
 function buildFilters() {
   const body = document.getElementById('filter-body');
-  // Pose filter note: only relevant in List layout (Grouped always shows all poses via appearances-manifest)
-  const posesNote = layout === 'grouped'
-    ? '<div class="group-title" style="opacity:0.55;font-style:italic;">Pose filter active in List layout only</div>'
-    : '';
+  // M464 — pose filter removed; layout always single-row.
   body.innerHTML = `
-    <div class="filter-group" id="char-filters" ${category !== 'characters' ? 'style="display:none;"' : ''}>
+    <div class="filter-group" id="char-filters" ${category !== 'characters' ? 'hidden' : ''}>
       <div class="group-title">Character categories</div>
-      ${['hero','companion','boss','enemy'].map(c => `
-        <label class="filter-row"><input type="checkbox" data-charcat="${c}" ${filters.charCats.has(c) ? 'checked' : ''}> ${c}s</label>
-      `).join('')}
-      ${posesNote}
-      <div class="group-title" style="margin-top:0.5rem;${layout === 'grouped' ? 'opacity:0.55;' : ''}">Poses</div>
-      ${POSES.map(p => `
-        <label class="filter-row" ${layout === 'grouped' ? 'style="opacity:0.55;"' : ''}><input type="checkbox" data-pose="${p}" ${filters.poses.has(p) ? 'checked' : ''} ${layout === 'grouped' ? 'disabled' : ''}> ${p}</label>
-      `).join('')}
+      ${['hero','companion','boss','enemy'].map(c => {
+        // Pluralisation map fixes "heros"/"enemys" typos.
+        const plurals = { hero:'heroes', companion:'companions', boss:'bosses', enemy:'enemies' };
+        return `<label class="filter-row"><input type="checkbox" data-charcat="${c}" ${filters.charCats.has(c) ? 'checked' : ''}> ${plurals[c]}</label>`;
+      }).join('')}
     </div>
-    <div class="filter-group" id="bg-filters" ${category !== 'backgrounds' ? 'style="display:none;"' : ''}>
+    <div class="filter-group" id="bg-filters" ${category !== 'backgrounds' ? 'hidden' : ''}>
       <div class="group-title">Background type</div>
       ${['combat','menu','map'].map(t => `
         <label class="filter-row"><input type="checkbox" data-bgtype="${t}" ${filters.bgTypes.has(t) ? 'checked' : ''}> ${t}</label>
       `).join('')}
     </div>
   `;
-  body.querySelectorAll('input[data-pose]').forEach(el => {
-    el.onchange = () => {
-      el.checked ? filters.poses.add(el.dataset.pose) : filters.poses.delete(el.dataset.pose);
-      render();
-    };
-  });
   body.querySelectorAll('input[data-charcat]').forEach(el => {
     el.onchange = () => {
       el.checked ? filters.charCats.add(el.dataset.charcat) : filters.charCats.delete(el.dataset.charcat);
@@ -461,10 +502,7 @@ function wireTopbar() {
       b.classList.add('active');
       mode = b.dataset.mode;
       document.body.dataset.mode = mode;  // M455: drives `body[data-mode] .card .badge` CSS
-      document.getElementById('batch-select-wrap').style.display = (mode === 'history') ? '' : 'none';
-      // Layout seg only visible in current+characters mode
-      document.getElementById('layout-wrap').style.display =
-        (mode === 'current' && category === 'characters') ? '' : 'none';
+      document.getElementById('batch-select-wrap').hidden = (mode !== 'history');
       render();
     };
   });
@@ -473,26 +511,14 @@ function wireTopbar() {
       document.querySelectorAll('#cat-seg button').forEach(x => x.classList.remove('active'));
       b.classList.add('active');
       category = b.dataset.cat;
-      document.getElementById('char-filters').style.display = (category === 'characters') ? '' : 'none';
-      document.getElementById('bg-filters').style.display = (category === 'backgrounds') ? '' : 'none';
-      document.getElementById('layout-wrap').style.display =
-        (mode === 'current' && category === 'characters') ? '' : 'none';
-      buildFilters();  // refresh pose filter greyed state
+      const charFilters = document.getElementById('char-filters');
+      const bgFilters = document.getElementById('bg-filters');
+      if (charFilters) charFilters.hidden = (category !== 'characters');
+      if (bgFilters)  bgFilters.hidden  = (category !== 'backgrounds');
+      buildFilters();
       render();
     };
   });
-  document.querySelectorAll('#layout-seg button').forEach(b => {
-    b.onclick = () => {
-      document.querySelectorAll('#layout-seg button').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      layout = b.dataset.layout;
-      buildFilters();  // refresh pose filter enabled/disabled state
-      render();
-    };
-  });
-  // Initial visibility: Grouped mode only in current+characters
-  document.getElementById('layout-wrap').style.display =
-    (mode === 'current' && category === 'characters') ? '' : 'none';
 }
 
 function wireSelectBar() {
@@ -590,11 +616,11 @@ function render() {
 
   const open = DATA.batches.open;
   if (open && open.entries && open.entries.length) {
-    banner.style.display = '';
+    banner.hidden = false;
     banner.innerHTML = `<h2>⚑ ${open.id.toUpperCase()} — ${open.entries.length} pending</h2>
       <p>Opened ${open.openedAt?.slice(0,10) || '—'}. Click into Pending mode below to review.</p>`;
   } else {
-    banner.style.display = 'none';
+    banner.hidden = true;
   }
 
   let entries = currentEntries();
@@ -614,9 +640,6 @@ function render() {
     entries = entries.filter(e => {
       const sub = e.category && e.category !== 'character' ? e.category : null;
       if (sub && !filters.charCats.has(sub)) return false;
-      // In Grouped layout the pose filter is not applied — the full pose set
-      // comes from appearances-manifest. In List layout, honor pose filters.
-      if (layout !== 'grouped' && e.pose && !filters.poses.has(e.pose)) return false;
       return true;
     });
   }
@@ -631,28 +654,181 @@ function render() {
   }
   status.textContent = `${entries.length} image(s)`;
 
-  if (mode === 'current' && category === 'characters' && layout === 'grouped') {
-    // Grouped layout: use appearances-manifest for full 7-pose display.
-    // renderGroupedAppearances() sets lbItems directly — do NOT call rebuildLbItems after.
-    renderGroupedAppearances(entries);
+  // M464 — Unified layout. Characters (across pending/current/history) all
+  // render as <character name> + single row of pose tiles. Backgrounds and
+  // tap-weapons still use renderFlat / renderBackgroundsByType.
+  if (category === 'characters') {
+    renderUnifiedCharacters(entries);
     return;
-  } else if (mode !== 'current') {
-    // Pending / history: always group-by-group (legacy path)
-    renderGroupedByGroup(entries);
-  } else if (category === 'backgrounds' && mode === 'current') {
+  }
+  if (category === 'backgrounds' && mode === 'current') {
     renderBackgroundsByType(entries);
-  } else if (mode === 'current' && category === 'characters') {
-    // M460: List layout now ALSO synthesises every pose for each entity
-    // from appearances-manifest (same source as Grouped). Previously the
-    // List path showed only the manifest entries — for enemies/companions
-    // that meant 1 pic per character (the bug Goblin exhibited). Now
-    // every appearance pose appears in a flat grid; useful when you want
-    // to scan a single pose across many characters or sort/filter by pose.
-    renderListAppearances(entries);
   } else {
     renderFlat(entries);
   }
   rebuildLbItems(entries);
+}
+
+/**
+ * M464 — Unified renderer for all character modes (pending / current / history).
+ * For each character (grouped by entry.group), render one section:
+ *   <name>
+ *   [tile][tile][tile] ... one tile per pose entry
+ *
+ * In "current" mode, prefer pulling the canonical 7-pose set from
+ * appearances-manifest so missing poses are visualised; in pending/history,
+ * only the entries actually in the batch are shown (those are what the user
+ * is reviewing).
+ */
+function renderUnifiedCharacters(entries) {
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+
+  // Group by entity id (entry.group), preserve filter ordering.
+  const byGroup = new Map();
+  for (const e of entries) {
+    const key = e.group || e.id;
+    if (!byGroup.has(key)) byGroup.set(key, { id: key, cat: e.category, entries: [], byPose: {} });
+    const g = byGroup.get(key);
+    g.entries.push(e);
+    if (e.pose) g.byPose[e.pose] = e;
+  }
+
+  const allLbItems = [];
+
+  for (const [groupId, g] of byGroup) {
+    const app = (mode === 'current' && APPEARANCES) ? APPEARANCES[groupId] : null;
+    const section = document.createElement('div');
+    section.className = 'unified-char';
+
+    const head = document.createElement('div');
+    head.className = 'uc-head';
+    const bulkChk = document.createElement('input');
+    bulkChk.type = 'checkbox';
+    bulkChk.className = 'group-bulk-check';
+    bulkChk.title = `Select/deselect all ${groupId}`;
+    head.appendChild(bulkChk);
+    const nameEl = document.createElement('div');
+    nameEl.className = 'uc-name';
+    nameEl.textContent = (app && app.name) || groupId.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    head.appendChild(nameEl);
+    const idEl = document.createElement('div');
+    idEl.className = 'uc-id';
+    idEl.textContent = groupId;
+    head.appendChild(idEl);
+    section.appendChild(head);
+
+    const row = document.createElement('div');
+    row.className = 'uc-row';
+
+    // Determine the list of (pose, source-entry-or-appearance) pairs to render.
+    // current mode + appearance available  → POSES order, missing poses shown as ✗
+    // otherwise                            → entries.list order
+    const tilesToRender = [];
+    if (app && mode === 'current') {
+      for (const pose of POSES) {
+        const rel = app.sprites && app.sprites[pose];
+        const manEntry = g.byPose[pose] || null;
+        const id = manEntry ? manEntry.id : `${groupId}_${pose}`;
+        if (!rel) {
+          tilesToRender.push({ id, pose, src: null, missing: true });
+        } else {
+          tilesToRender.push({
+            id, pose,
+            src: resolveAppearanceSrc(rel),
+            prompt: manEntry?.prompt || null,
+          });
+        }
+      }
+    } else {
+      // pending / history / no-appearance: render each entry directly.
+      for (const e of g.entries) {
+        const src = e._batchEntry ? e.new : e.file;
+        tilesToRender.push({
+          id: e.id, pose: e.pose || '',
+          src, prompt: e.prompt || null,
+          isBatch: !!e._batchEntry,
+          oldSrc: e.old || null, newSrc: e.new || null,
+          reason: e.reason || null,
+        });
+      }
+    }
+
+    const tileIds = [];
+    for (const t of tilesToRender) {
+      const tile = document.createElement('div');
+      tile.className = 'uc-tile checker-bg';
+      tile.dataset.id = t.id;
+      if (t.missing) {
+        tile.classList.add('tile-missing');
+        tile.innerHTML = `<span class="uc-missing-glyph">&#x2717;</span>`;
+        const lbl = document.createElement('div'); lbl.className = 'uc-pose-label';
+        lbl.textContent = POSE_LABELS[t.pose] || t.pose;
+        tile.appendChild(lbl);
+        row.appendChild(tile);
+        continue;
+      }
+      const img = document.createElement('img');
+      img.src = t.src; img.alt = `${groupId} ${t.pose}`; img.loading = 'lazy';
+      tile.appendChild(img);
+      if (t.pose) {
+        const lbl = document.createElement('div'); lbl.className = 'uc-pose-label';
+        lbl.textContent = POSE_LABELS[t.pose] || t.pose;
+        tile.appendChild(lbl);
+      }
+      // Generator badge
+      const gen = generatorOf(t.src);
+      if (gen !== 'other') {
+        const gb = document.createElement('span');
+        gb.className = `gen-badge gen-${gen}`;
+        gb.textContent = gen.replace('_', ' ');
+        tile.appendChild(gb);
+      }
+      const f = flagFor(t.id);
+      if (f) {
+        const fd = document.createElement('span'); fd.className = 'flag-dot';
+        fd.dataset.prio = f.prio; if (f.text) fd.dataset.text = f.text;
+        tile.appendChild(fd);
+      }
+      if (selected.has(t.id)) tile.classList.add('selected');
+      tile.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        // Single click = open lightbox; checkbox area not separate in this layout —
+        // shift-click toggles selection instead.
+        if (ev.shiftKey) {
+          toggleSelect(t.id, tile);
+        } else {
+          openLbById(t.id);
+        }
+      });
+      tileIds.push(t.id);
+      row.appendChild(tile);
+
+      allLbItems.push({
+        id: t.id, title: (app && app.name) || groupId, subtitle: t.pose || '',
+        src: t.src, oldSrc: t.oldSrc || null, newSrc: t.newSrc || null,
+        prompt: t.prompt || null, oldPrompt: null, newPrompt: null,
+        reason: t.reason || null, assetId: null, referenceAssetId: null,
+        isBg: false, charCat: g.cat,
+      });
+    }
+
+    bulkChk.checked = tileIds.length > 0 && tileIds.every(id => selected.has(id));
+    bulkChk.onclick = (ev) => {
+      ev.stopPropagation();
+      const turnOn = bulkChk.checked;
+      for (const id of tileIds) {
+        if (turnOn) selected.add(id); else selected.delete(id);
+      }
+      updateSelectBar();
+      render();
+    };
+
+    section.appendChild(row);
+    content.appendChild(section);
+  }
+
+  lbItems = allLbItems;
 }
 
 // ---------------------------------------------------------------------------
@@ -726,7 +902,7 @@ function makePortraitEl(appId, appName, relPath) {
   const poseId = appearancePoseId(appId, 'portrait');
   div.dataset.id = poseId;
   if (!relPath) {
-    div.innerHTML = '<span style="font-size:22px;color:var(--muted)">?</span>';
+    div.innerHTML = '<span class="appearance-portrait-missing">?</span>';
     return div;
   }
   const src = resolveAppearanceSrc(relPath);
@@ -1071,7 +1247,7 @@ function renderBackgroundsByType(entries) {
   let html = '';
   for (const [type, list] of Object.entries(groups)) {
     if (!list.length) continue;
-    html += `<h2>${type} backgrounds <span style="color:var(--muted); font-size:0.8rem; font-weight:normal;">(${list.length})</span></h2>
+    html += `<h2>${type} backgrounds <span class="h2-count">(${list.length})</span></h2>
       <div class="grid">${list.map(e => cardHtml(e, false, true)).join('')}</div>`;
   }
   content.innerHTML = html;
@@ -1095,7 +1271,7 @@ function cardHtml(e, compact = false, isBg = false) {
     ${flagDot}
     <div class="img-wrap${isBg ? ' bg' : ' checker-bg'}"><img src="${src}" alt="${e.id}" loading="lazy"></div>
     ${genBadge}
-    ${compact ? `<div class="label">${label}</div>` : `<div class="label">${e.group || e.name || e.id}<br><small style="opacity:0.65;">${label}</small></div>`}
+    ${compact ? `<div class="label">${label}</div>` : `<div class="label">${e.group || e.name || e.id}<br><small class="label-sub">${label}</small></div>`}
   </div>`;
 }
 
@@ -1160,40 +1336,40 @@ function showLb() {
   document.getElementById('lb-prev').disabled = lbItems.length < 2;
   document.getElementById('lb-next').disabled = lbItems.length < 2;
   let html = `<h3>${it.title}</h3><div class="meta">${it.subtitle}</div>`;
-  if (it.reason) html += `<div style="margin-bottom:0.6rem;"><strong>Reason:</strong> ${escapeHtml(it.reason)}</div>`;
+  if (it.reason) html += `<div class="lb-reason-row"><strong>Reason:</strong> ${escapeHtml(it.reason)}</div>`;
   if (it.oldSrc && it.newSrc) {
     html += `<div class="lb-comparison">
       <div><div class="lbl">Original</div><img src="${it.oldSrc}" alt="old"></div>
       <div><div class="lbl new">Candidate</div><img src="${it.newSrc}" alt="new"></div>
     </div>`;
     if (it.oldPrompt) {
-      html += `<div style="margin-top:0.6rem;"><div class="meta">Original prompt</div><div class="prompt">${escapeHtml(it.oldPrompt)}</div></div>`;
+      html += `<div class="lb-prompt-block"><div class="meta">Original prompt</div><div class="prompt">${escapeHtml(it.oldPrompt)}</div></div>`;
     }
     if (it.newPrompt) {
-      html += `<div style="margin-top:0.4rem;"><div class="meta">Candidate prompt</div><div class="prompt">${escapeHtml(it.newPrompt)}</div></div>`;
+      html += `<div class="lb-prompt-block prompt-sub"><div class="meta">Candidate prompt</div><div class="prompt">${escapeHtml(it.newPrompt)}</div></div>`;
     }
   }
   if (!it.oldSrc && it.prompt) {
-    html += `<div style="margin-top:0.6rem;"><div class="meta">Prompt</div><div class="prompt">${escapeHtml(it.prompt)}</div></div>`;
+    html += `<div class="lb-prompt-block"><div class="meta">Prompt</div><div class="prompt">${escapeHtml(it.prompt)}</div></div>`;
   }
   if (it.assetId) {
-    html += `<div style="margin-top:0.5rem; font-size:0.7rem;"><span class="meta">SpriteCook asset:</span> <code>${it.assetId}</code></div>`;
+    html += `<div class="lb-asset-line"><span class="meta">SpriteCook asset:</span> <code>${it.assetId}</code></div>`;
   }
   if (it.referenceAssetId) {
-    html += `<div style="margin-top:0.2rem; font-size:0.7rem;"><span class="meta">Reference:</span> <code>${it.referenceAssetId}</code></div>`;
+    html += `<div class="lb-asset-line sub"><span class="meta">Reference:</span> <code>${it.referenceAssetId}</code></div>`;
   }
   // M463 — flag controls. Persisted to localStorage; stays per-browser
   // until the user copies the flag JSON for Claude to commit.
   const f = flagFor(it.id);
-  html += `<div style="margin-top:0.75rem; padding-top:0.5rem; border-top:1px solid var(--border);">
+  html += `<div class="lb-flag-row">
     <div class="meta">Flag</div>
-    <div style="display:flex; gap:0.3rem; margin-top:0.3rem;">
-      <button data-flag-prio="" class="lb-flag-btn${!f ? ' active' : ''}" style="flex:1; padding:0.3rem; background:#222; border:1px solid #444; color:#888; cursor:pointer; border-radius:3px; font-size:0.7rem;">none</button>
-      <button data-flag-prio="info"    class="lb-flag-btn${f && f.prio==='info' ? ' active' : ''}"    style="flex:1; padding:0.3rem; background:#1a2a3a; border:1px solid #3080d0; color:#5fa6e6; cursor:pointer; border-radius:3px; font-size:0.7rem;">info</button>
-      <button data-flag-prio="warning" class="lb-flag-btn${f && f.prio==='warning' ? ' active' : ''}" style="flex:1; padding:0.3rem; background:#3a2a1a; border:1px solid #e8a020; color:#e8a020; cursor:pointer; border-radius:3px; font-size:0.7rem;">warn</button>
-      <button data-flag-prio="error"   class="lb-flag-btn${f && f.prio==='error' ? ' active' : ''}"   style="flex:1; padding:0.3rem; background:#3a1a1a; border:1px solid #c04030; color:#e07060; cursor:pointer; border-radius:3px; font-size:0.7rem;">error</button>
+    <div class="lb-flag-btns">
+      <button data-flag-prio=""        class="lb-flag-btn${!f ? ' active' : ''}">none</button>
+      <button data-flag-prio="info"    class="lb-flag-btn${f && f.prio==='info' ? ' active' : ''}">info</button>
+      <button data-flag-prio="warning" class="lb-flag-btn${f && f.prio==='warning' ? ' active' : ''}">warn</button>
+      <button data-flag-prio="error"   class="lb-flag-btn${f && f.prio==='error' ? ' active' : ''}">error</button>
     </div>
-    <input type="text" id="lb-flag-text" value="${escapeHtmlAttr(f?.text || '')}" placeholder="Flag note (optional)" style="width:100%; margin-top:0.4rem; padding:0.35rem; background:#0a0a0e; border:1px solid var(--border); color:var(--parchment); font-size:0.78rem; border-radius:3px;">
+    <input type="text" id="lb-flag-text" value="${escapeHtmlAttr(f?.text || '')}" placeholder="Flag note (optional)">
   </div>`;
   side.innerHTML = html;
   // Wire flag buttons + text

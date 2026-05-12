@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-12T17:27:18.765Z",
+    "generated": "2026-05-12T21:37:09.182Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (66 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
@@ -9,11 +9,11 @@
       "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (19 bosses)"
     },
     "counts": {
-      "total": 1429,
+      "total": 1439,
       "by_status": {
         "ready": 890,
         "pending": 2,
-        "orphaned": 473,
+        "orphaned": 483,
         "approved": 20,
         "candidate": 44
       },
@@ -24,7 +24,7 @@
         "enemy": 95,
         "background": 68,
         "tap-weapons": 9,
-        "orphan": 473,
+        "orphan": 483,
         "reference-sheet": 64
       }
     },
@@ -10091,6 +10091,96 @@
       "group": "images/openai_v2",
       "pose": null,
       "file": "../images/openai_v2/genesis_worm_openai_sheet.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_openai_v2_giant_spider_east",
+      "category": "orphan",
+      "group": "images/openai_v2",
+      "pose": null,
+      "file": "../images/openai_v2/giant_spider_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_openai_v2_giant_spider_east_attack",
+      "category": "orphan",
+      "group": "images/openai_v2",
+      "pose": null,
+      "file": "../images/openai_v2/giant_spider_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_openai_v2_giant_spider_east_block",
+      "category": "orphan",
+      "group": "images/openai_v2",
+      "pose": null,
+      "file": "../images/openai_v2/giant_spider_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_openai_v2_giant_spider_east_cheer",
+      "category": "orphan",
+      "group": "images/openai_v2",
+      "pose": null,
+      "file": "../images/openai_v2/giant_spider_east_cheer.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_openai_v2_giant_spider_east_ko",
+      "category": "orphan",
+      "group": "images/openai_v2",
+      "pose": null,
+      "file": "../images/openai_v2/giant_spider_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_openai_v2_giant_spider_east_spell",
+      "category": "orphan",
+      "group": "images/openai_v2",
+      "pose": null,
+      "file": "../images/openai_v2/giant_spider_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_openai_v2_giant_spider_east_wound",
+      "category": "orphan",
+      "group": "images/openai_v2",
+      "pose": null,
+      "file": "../images/openai_v2/giant_spider_east_wound.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_openai_v2_giant_spider_openai_sheet",
+      "category": "orphan",
+      "group": "images/openai_v2",
+      "pose": null,
+      "file": "../images/openai_v2/giant_spider_openai_sheet.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_openai_v2_giant_spider_portrait",
+      "category": "orphan",
+      "group": "images/openai_v2",
+      "pose": null,
+      "file": "../images/openai_v2/giant_spider_portrait.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_openai_v2_giant_spider_south",
+      "category": "orphan",
+      "group": "images/openai_v2",
+      "pose": null,
+      "file": "../images/openai_v2/giant_spider_south.png",
       "prompt": null,
       "status": "orphaned"
     },

@@ -44,33 +44,41 @@
    Mode "checker" = no override (leave .checker-bg defaults intact).
    Targets: .checker-bg, .appearance-portrait, .pose-frame, .card .img-wrap
    ============================================================================= */
+/* High-specificity overrides so per-page rules (e.g. .pipeline-card .pc-ref
+   { background: var(--panel-alt); }) don't win against the toggle. The
+   .checker-bg class is the marker — anywhere it appears, the body[data-sprite-bg]
+   choice must take precedence. */
 body[data-sprite-bg="none"] .checker-bg,
 body[data-sprite-bg="none"] .appearance-portrait,
 body[data-sprite-bg="none"] .pose-frame,
-body[data-sprite-bg="none"] .card .img-wrap {
-  background-image: none;
-  background-color: transparent;
+body[data-sprite-bg="none"] .card .img-wrap,
+body[data-sprite-bg="none"] img.checker-bg {
+  background-image: none !important;
+  background-color: transparent !important;
 }
 body[data-sprite-bg="white"] .checker-bg,
 body[data-sprite-bg="white"] .appearance-portrait,
 body[data-sprite-bg="white"] .pose-frame,
-body[data-sprite-bg="white"] .card .img-wrap {
-  background-image: none;
-  background-color: #fff;
+body[data-sprite-bg="white"] .card .img-wrap,
+body[data-sprite-bg="white"] img.checker-bg {
+  background-image: none !important;
+  background-color: #fff !important;
 }
 body[data-sprite-bg="black"] .checker-bg,
 body[data-sprite-bg="black"] .appearance-portrait,
 body[data-sprite-bg="black"] .pose-frame,
-body[data-sprite-bg="black"] .card .img-wrap {
-  background-image: none;
-  background-color: #000;
+body[data-sprite-bg="black"] .card .img-wrap,
+body[data-sprite-bg="black"] img.checker-bg {
+  background-image: none !important;
+  background-color: #000 !important;
 }
 body[data-sprite-bg="green"] .checker-bg,
 body[data-sprite-bg="green"] .appearance-portrait,
 body[data-sprite-bg="green"] .pose-frame,
-body[data-sprite-bg="green"] .card .img-wrap {
-  background-image: none;
-  background-color: #00FF00;
+body[data-sprite-bg="green"] .card .img-wrap,
+body[data-sprite-bg="green"] img.checker-bg {
+  background-image: none !important;
+  background-color: #00FF00 !important;
 }
 
 /* =============================================================================

@@ -1,7 +1,7 @@
 {
-  "milestone": 469,
+  "milestone": 470,
   "date": "2026-05-12",
-  "summary": "M469 — final 9 enemies + bone_hound regen, 5 new recurring NPCs (Iris/Garrick/Yssira/Tomek/Krix) with multi-act branching dialogs + party-member speakers + 10 combat follow-ups, enemy blockChance mechanic, 13 new enemy spells, all status effects now covered",
+  "summary": "M470 — combat sim fix (enemy spells/blocks now fire in sims), 48 more enemy/boss/companion sprite regens, image-review+images.html unified into shared module (247 lines dedup), Supabase combat_history persistence (50 sessions/player), news dropdown viewport-clamp, auto-skill independence, post-combat 1-of-3 reward popup removed, +22 second class builds (every class now ≥2)",
   "categories": [
     "feature"
   ],

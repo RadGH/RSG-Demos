@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-12T17:27:19.216Z",
+  "generated": "2026-05-12T21:37:09.652Z",
   "spriteDirs": [
     "openai_v2",
     "spritecook",
@@ -4021,6 +4021,56 @@
       "file": "images/openai_v2/genesis_worm_openai_sheet.png",
       "dir": "openai_v2",
       "name": "genesis_worm_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/giant_spider_east_attack.png",
+      "dir": "openai_v2",
+      "name": "giant_spider_east_attack"
+    },
+    {
+      "file": "images/openai_v2/giant_spider_east_block.png",
+      "dir": "openai_v2",
+      "name": "giant_spider_east_block"
+    },
+    {
+      "file": "images/openai_v2/giant_spider_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "giant_spider_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/giant_spider_east_ko.png",
+      "dir": "openai_v2",
+      "name": "giant_spider_east_ko"
+    },
+    {
+      "file": "images/openai_v2/giant_spider_east_spell.png",
+      "dir": "openai_v2",
+      "name": "giant_spider_east_spell"
+    },
+    {
+      "file": "images/openai_v2/giant_spider_east_wound.png",
+      "dir": "openai_v2",
+      "name": "giant_spider_east_wound"
+    },
+    {
+      "file": "images/openai_v2/giant_spider_east.png",
+      "dir": "openai_v2",
+      "name": "giant_spider_east"
+    },
+    {
+      "file": "images/openai_v2/giant_spider_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "giant_spider_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/giant_spider_portrait.png",
+      "dir": "openai_v2",
+      "name": "giant_spider_portrait"
+    },
+    {
+      "file": "images/openai_v2/giant_spider_south.png",
+      "dir": "openai_v2",
+      "name": "giant_spider_south"
     },
     {
       "file": "images/openai_v2/goblin_scout_east_cheer.png",
@@ -9770,7 +9820,7 @@
     "companions": 35,
     "enemies": 20,
     "bosses": 16,
-    "orphans": 1215,
+    "orphans": 1225,
     "missing": 12
   }
 }

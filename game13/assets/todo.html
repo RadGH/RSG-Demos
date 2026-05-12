@@ -44,67 +44,24 @@
     No crash — the client gracefully returns an empty list until the column exists.
   </p>
 
-  <div class="item high">
-    <span class="tag">REQUIRED</span>
-    <strong>Step 1 — Open your Supabase project SQL editor</strong><br>
-    Go to <strong>supabase.com → your project → SQL Editor → New query</strong>.
-    Paste the entire block below and click <strong>Run</strong>.
-  </div>
-
-  <div class="item" style="font-family:monospace;font-size:0.8rem;white-space:pre-wrap;background:#060408;border-left-color:#60c0e0">-- Migration 0004: add combat_history column to run_stats
--- File: game13/supabase/migrations/0004_run_stats_combat_history.sql
--- Safe to run on existing table (idempotent).
-
-ALTER TABLE public.run_stats
-  ADD COLUMN IF NOT EXISTS combat_history JSONB NOT NULL DEFAULT '[]'::JSONB;
-
-CREATE INDEX IF NOT EXISTS run_stats_user_started_desc_idx
-  ON public.run_stats (user_id, started_at DESC);
-
-CREATE OR REPLACE FUNCTION public.trim_run_stats()
-RETURNS TRIGGER LANGUAGE PLPGSQL AS $$
-BEGIN
-  DELETE FROM public.run_stats
-   WHERE id IN (
-     SELECT id FROM public.run_stats
-      WHERE user_id = NEW.user_id
-      ORDER BY started_at DESC
-      OFFSET 50
-   );
-  RETURN NEW;
-END;
-$$;
-
-DROP TRIGGER IF EXISTS run_stats_trim ON public.run_stats;
-CREATE TRIGGER run_stats_trim
-  AFTER INSERT ON public.run_stats
-  FOR EACH ROW EXECUTE FUNCTION public.trim_run_stats();</div>
-
-  <div class="item med">
-    <span class="tag">VERIFY</span>
-    <strong>Step 2 — Confirm RLS policies still apply</strong><br>
-    In Supabase dashboard go to <strong>Table Editor → run_stats → Policies</strong>.
-    You should see four policies: <code>run_stats_select_own</code>,
-    <code>run_stats_insert_own</code>, <code>run_stats_update_own</code>,
-    <code>run_stats_delete_own</code>. If any are missing, re-run the policy block
-    from <code>supabase/migrations/0002_run_stats.sql</code> in the SQL editor.
-  </div>
-
-  <div class="item low">
-    <span class="tag">VERIFY</span>
-    <strong>Step 3 — Confirm the column exists</strong><br>
-    In <strong>SQL Editor</strong> run: <code>SELECT column_name FROM information_schema.columns WHERE table_name='run_stats';</code>
-    You should see <code>combat_history</code> in the list.
+  <div class="item" style="border-left-color:#40a060">
+    <span class="tag" style="background:rgba(64,160,96,0.18);color:#80e0a0">DONE</span>
+    Steps 1–3 (SQL migration, RLS policy verification, column-exists check) were
+    completed against the live Supabase project. Migration 0004 is applied.
   </div>
 
   <div class="item low">
     <span class="tag">TEST</span>
     <strong>Step 4 — Smoke test (local, no creds needed)</strong><br>
-    From the repo root: <code>node game13/scripts/smoke-test-combat-sessions.mjs</code><br>
+    Run: <code>node /home/radgh/claude/game13/scripts/smoke-test-combat-sessions.mjs</code><br>
     Should print 3 PASS lines. This runs mocked logic only — it does not hit live Supabase.
-    For a live test, sign into the game, play one fight, then open Statistics → Combat tab.
-    The combat session row should appear after refreshing the page (and from any device
-    signed into the same account).
+  </div>
+
+  <div class="item low">
+    <span class="tag">VERIFY</span>
+    <strong>Step 5 — End-to-end persistence check</strong><br>
+    Play any combat in-game → refresh the page → open <strong>Statistics</strong> → confirm
+    the session appears in the Combat tab. If yes, persistence is working.
   </div>
 
   <div class="item" style="border-left-color:#40a060">
