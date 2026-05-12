@@ -1691,7 +1691,13 @@ function render() {
 
   maybe('classes',     function() { return renderClassesSection(m.appearances, m.classRegistry || [], q); });
   maybe('npcs',        function() { return renderNpcSection(m.appearances, q); });
-  maybe('companions',  function() { return renderEntitySection(m.companions, 'Companions', 'companions', q); });
+  maybe('companions',  function() {
+    // Filter out tavern hireables (Aela/Borin/Lysa/Rekk) — they're recruitable
+    // NPCs, not true companions. Their art lives in appearances-manifest as
+    // class-default/NPC entries, not in the companion section.
+    var trueComps = (m.companions || []).filter(function(c) { return c.kind !== 'hireable'; });
+    return renderEntitySection(trueComps, 'Companions', 'companions', q);
+  });
   maybe('enemies',     function() { return renderEntitySection(m.enemies, 'Enemies', 'enemies', q); });
   maybe('bosses',      function() { return renderEntitySection(m.bosses, 'Bosses', 'bosses', q); });
   maybe('backgrounds', function() { return renderBgSection(q); });

@@ -1,7 +1,7 @@
 {
-  "milestone": 465,
+  "milestone": 468,
   "date": "2026-05-11",
-  "summary": "M464b — converter-style chroma despill (alpha-unmix) preserves robe detail; reprocessed all 4 M464 enemies from raw",
+  "summary": "M468 — regen batch 2: 23 companions via approved openai_v2 pipeline + Aela/Boring orphan cleanup",
   "categories": [
     "feature"
   ],
