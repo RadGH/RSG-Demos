@@ -1,7 +1,7 @@
 {
-  "milestone": 468,
-  "date": "2026-05-11",
-  "summary": "M468 — regen batch 2: 23 companions via approved openai_v2 pipeline + Aela/Boring orphan cleanup",
+  "milestone": 469,
+  "date": "2026-05-12",
+  "summary": "M469 — final 9 enemies + bone_hound regen, 5 new recurring NPCs (Iris/Garrick/Yssira/Tomek/Krix) with multi-act branching dialogs + party-member speakers + 10 combat follow-ups, enemy blockChance mechanic, 13 new enemy spells, all status effects now covered",
   "categories": [
     "feature"
   ],

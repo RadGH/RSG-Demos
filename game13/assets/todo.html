@@ -35,6 +35,96 @@
   <a href="./brainstorm.html">brainstorm.html</a>.
 </p>
 
+<div class="card" id="supabase-combat-history-setup">
+  <h2 style="margin-top:0">REQUIRED SETUP — Combat Session Persistence (Supabase migration 0004)</h2>
+  <p class="note">
+    The Statistics screen now loads last-50 combat sessions from Supabase so they persist
+    across page refreshes and devices. The code is wired and waiting on a table migration.
+    Until you run the SQL below, the Combat tab shows local-only data (current run only).
+    No crash — the client gracefully returns an empty list until the column exists.
+  </p>
+
+  <div class="item high">
+    <span class="tag">REQUIRED</span>
+    <strong>Step 1 — Open your Supabase project SQL editor</strong><br>
+    Go to <strong>supabase.com → your project → SQL Editor → New query</strong>.
+    Paste the entire block below and click <strong>Run</strong>.
+  </div>
+
+  <div class="item" style="font-family:monospace;font-size:0.8rem;white-space:pre-wrap;background:#060408;border-left-color:#60c0e0">-- Migration 0004: add combat_history column to run_stats
+-- File: game13/supabase/migrations/0004_run_stats_combat_history.sql
+-- Safe to run on existing table (idempotent).
+
+ALTER TABLE public.run_stats
+  ADD COLUMN IF NOT EXISTS combat_history JSONB NOT NULL DEFAULT '[]'::JSONB;
+
+CREATE INDEX IF NOT EXISTS run_stats_user_started_desc_idx
+  ON public.run_stats (user_id, started_at DESC);
+
+CREATE OR REPLACE FUNCTION public.trim_run_stats()
+RETURNS TRIGGER LANGUAGE PLPGSQL AS $$
+BEGIN
+  DELETE FROM public.run_stats
+   WHERE id IN (
+     SELECT id FROM public.run_stats
+      WHERE user_id = NEW.user_id
+      ORDER BY started_at DESC
+      OFFSET 50
+   );
+  RETURN NEW;
+END;
+$$;
+
+DROP TRIGGER IF EXISTS run_stats_trim ON public.run_stats;
+CREATE TRIGGER run_stats_trim
+  AFTER INSERT ON public.run_stats
+  FOR EACH ROW EXECUTE FUNCTION public.trim_run_stats();</div>
+
+  <div class="item med">
+    <span class="tag">VERIFY</span>
+    <strong>Step 2 — Confirm RLS policies still apply</strong><br>
+    In Supabase dashboard go to <strong>Table Editor → run_stats → Policies</strong>.
+    You should see four policies: <code>run_stats_select_own</code>,
+    <code>run_stats_insert_own</code>, <code>run_stats_update_own</code>,
+    <code>run_stats_delete_own</code>. If any are missing, re-run the policy block
+    from <code>supabase/migrations/0002_run_stats.sql</code> in the SQL editor.
+  </div>
+
+  <div class="item low">
+    <span class="tag">VERIFY</span>
+    <strong>Step 3 — Confirm the column exists</strong><br>
+    In <strong>SQL Editor</strong> run: <code>SELECT column_name FROM information_schema.columns WHERE table_name='run_stats';</code>
+    You should see <code>combat_history</code> in the list.
+  </div>
+
+  <div class="item low">
+    <span class="tag">TEST</span>
+    <strong>Step 4 — Smoke test (local, no creds needed)</strong><br>
+    From the repo root: <code>node game13/scripts/smoke-test-combat-sessions.mjs</code><br>
+    Should print 3 PASS lines. This runs mocked logic only — it does not hit live Supabase.
+    For a live test, sign into the game, play one fight, then open Statistics → Combat tab.
+    The combat session row should appear after refreshing the page (and from any device
+    signed into the same account).
+  </div>
+
+  <div class="item" style="border-left-color:#40a060">
+    <span class="tag" style="background:rgba(64,160,96,0.18);color:#80e0a0">HOW IT WORKS</span>
+    <ul class="note" style="margin:0.3rem 0 0 1rem;padding:0">
+      <li><code>src/auth/runStatsClient.js</code> — new <code>listCombatHistory()</code> method.
+        Fetches last-50 run rows, flattens <code>combat_history[]</code> arrays, returns newest-first.</li>
+      <li><code>src/ui/screens/StatsDashboardScreen.js</code> — fetches cloud history on mount
+        (<code>_fetchCloudCombatHistory</code>), merges with live local data
+        (<code>_mergedCombatHistory</code>), renders in the Combat tab expandable table.</li>
+      <li>Write path: already wired since M415 via <code>runStatsClient.update()</code> /
+        <code>runStatsClient.finish()</code> in <code>src/game/stats.js</code>.
+        These pass <code>combatHistory: gs.stats.combatHistory.slice(-50)</code>.</li>
+      <li>The trim trigger caps each user to the last 50 <em>runs</em> (changed from 100 to 50).
+        Each run can have up to 200 fight entries in <code>combat_history</code>, but only the last
+        50 are uploaded per <code>stats.js: recordRunCompleted()</code>.</li>
+    </ul>
+  </div>
+</div>
+
 <div class="card">
   <h2 style="margin-top:0">Skill / Class Audit — M426 (dummies dmg=0 + caster reclassification)</h2>
   <p class="note">Auto-generated from the M426 Damage Report snapshot. Median is per role at L20 single-target solo. Benchmark dummies now deal 0 damage so the lead never gets KO'd before measuring; Mage/Warlock/Sorcerer/Oracle moved to aoe_dps; Paladin/Tactician/Tinker/Shaman moved to support; Demon Hunter/Scavenger/Swashbuckler to single_dps; Dragon Knight to tank. Ranger nerfed (Aimed Shot 1.5/2.2/3.0 → 1.4/1.9/2.4, executeChance 0.3→0.15). <a href="./damage-report.html">Open Damage Report →</a></p>

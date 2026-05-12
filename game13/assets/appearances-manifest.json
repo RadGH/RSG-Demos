@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-12T07:08:37.717Z",
+  "generated": "2026-05-12T17:27:19.216Z",
   "spriteDirs": [
     "openai_v2",
     "spritecook",
@@ -3002,40 +3002,34 @@
       "name": "Void Wraith",
       "act": 4,
       "sprites": {
-        "portrait": "spritecook/void_wraith_portrait.png",
-        "south": "sprites/void_wraith_south.png",
-        "east": "sprites/void_wraith_east.png",
-        "east_attack": "sprites/void_wraith_east_attack.png",
-        "east_spell": "sprites/void_wraith_east_spell.png",
-        "east_block": null,
-        "east_ko": null
+        "portrait": "openai_v2/void_wraith_portrait.png",
+        "south": "openai_v2/void_wraith_south.png",
+        "east": "openai_v2/void_wraith_east.png",
+        "east_attack": "openai_v2/void_wraith_east_attack.png",
+        "east_spell": "openai_v2/void_wraith_east_spell.png",
+        "east_block": "openai_v2/void_wraith_east_block.png",
+        "east_ko": "openai_v2/void_wraith_east_ko.png"
       },
-      "spriteCount": 5,
-      "missingPoses": [
-        "east_block",
-        "east_ko"
-      ],
-      "sourceDir": "sprites"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     },
     {
       "id": "star_horror",
       "name": "Star Horror",
       "act": 4,
       "sprites": {
-        "portrait": "spritecook/star_horror_portrait.png",
-        "south": "sprites/star_horror_south.png",
-        "east": "sprites/star_horror_east.png",
-        "east_attack": "sprites/star_horror_east_attack.png",
-        "east_spell": "sprites/star_horror_east_spell.png",
-        "east_block": null,
-        "east_ko": null
+        "portrait": "openai_v2/star_horror_portrait.png",
+        "south": "openai_v2/star_horror_south.png",
+        "east": "openai_v2/star_horror_east.png",
+        "east_attack": "openai_v2/star_horror_east_attack.png",
+        "east_spell": "openai_v2/star_horror_east_spell.png",
+        "east_block": "openai_v2/star_horror_east_block.png",
+        "east_ko": "openai_v2/star_horror_east_ko.png"
       },
-      "spriteCount": 5,
-      "missingPoses": [
-        "east_block",
-        "east_ko"
-      ],
-      "sourceDir": "sprites"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     }
   ],
   "bosses": [
@@ -3112,235 +3106,204 @@
       "name": "Primordial Elemental",
       "act": 5,
       "sprites": {
-        "portrait": "spritecook/primordial_elemental_portrait.png",
-        "south": "spritecook/primordial_elemental_south.png",
-        "east": "spritecook/primordial_elemental_east.png",
-        "east_attack": "spritecook/primordial_elemental_east_attack.png",
-        "east_spell": "sprites/primordial_elemental_east_spell.png",
-        "east_block": null,
-        "east_ko": "spritecook/primordial_elemental_east_ko.png"
+        "portrait": "openai_v2/primordial_elemental_portrait.png",
+        "south": "openai_v2/primordial_elemental_south.png",
+        "east": "openai_v2/primordial_elemental_east.png",
+        "east_attack": "openai_v2/primordial_elemental_east_attack.png",
+        "east_spell": "openai_v2/primordial_elemental_east_spell.png",
+        "east_block": "openai_v2/primordial_elemental_east_block.png",
+        "east_ko": "openai_v2/primordial_elemental_east_ko.png"
       },
-      "spriteCount": 6,
-      "missingPoses": [
-        "east_block"
-      ],
-      "sourceDir": "spritecook"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     },
     {
       "id": "abyssal_knight",
       "name": "Abyssal Knight",
       "act": 5,
       "sprites": {
-        "portrait": "spritecook/abyssal_knight_portrait.png",
-        "south": "spritecook/abyssal_knight_south.png",
-        "east": "spritecook/abyssal_knight_east.png",
-        "east_attack": "spritecook/abyssal_knight_east_attack.png",
-        "east_spell": "sprites/abyssal_knight_east_spell.png",
-        "east_block": null,
-        "east_ko": "spritecook/abyssal_knight_east_ko.png"
+        "portrait": "openai_v2/abyssal_knight_portrait.png",
+        "south": "openai_v2/abyssal_knight_south.png",
+        "east": "openai_v2/abyssal_knight_east.png",
+        "east_attack": "openai_v2/abyssal_knight_east_attack.png",
+        "east_spell": "openai_v2/abyssal_knight_east_spell.png",
+        "east_block": "openai_v2/abyssal_knight_east_block.png",
+        "east_ko": "openai_v2/abyssal_knight_east_ko.png"
       },
-      "spriteCount": 6,
-      "missingPoses": [
-        "east_block"
-      ],
-      "sourceDir": "spritecook"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     },
     {
       "id": "reality_shard",
       "name": "Reality Shard",
       "act": 5,
       "sprites": {
-        "portrait": "spritecook/reality_shard_portrait.png",
-        "south": "spritecook/reality_shard_south.png",
-        "east": "spritecook/reality_shard_east.png",
-        "east_attack": "spritecook/reality_shard_east_attack.png",
-        "east_spell": "sprites/reality_shard_east_spell.png",
-        "east_block": null,
-        "east_ko": "spritecook/reality_shard_east_ko.png"
+        "portrait": "openai_v2/reality_shard_portrait.png",
+        "south": "openai_v2/reality_shard_south.png",
+        "east": "openai_v2/reality_shard_east.png",
+        "east_attack": "openai_v2/reality_shard_east_attack.png",
+        "east_spell": "openai_v2/reality_shard_east_spell.png",
+        "east_block": "openai_v2/reality_shard_east_block.png",
+        "east_ko": "openai_v2/reality_shard_east_ko.png"
       },
-      "spriteCount": 6,
-      "missingPoses": [
-        "east_block"
-      ],
-      "sourceDir": "spritecook"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     },
     {
       "id": "genesis_worm",
       "name": "Genesis Worm",
       "act": 5,
       "sprites": {
-        "portrait": "spritecook/genesis_worm_portrait.png",
-        "south": "spritecook/genesis_worm_south.png",
-        "east": "spritecook/genesis_worm_east.png",
-        "east_attack": "spritecook/genesis_worm_east_attack.png",
-        "east_spell": "sprites/genesis_worm_east_spell.png",
-        "east_block": null,
-        "east_ko": "spritecook/genesis_worm_east_ko.png"
+        "portrait": "openai_v2/genesis_worm_portrait.png",
+        "south": "openai_v2/genesis_worm_south.png",
+        "east": "openai_v2/genesis_worm_east.png",
+        "east_attack": "openai_v2/genesis_worm_east_attack.png",
+        "east_spell": "openai_v2/genesis_worm_east_spell.png",
+        "east_block": "openai_v2/genesis_worm_east_block.png",
+        "east_ko": "openai_v2/genesis_worm_east_ko.png"
       },
-      "spriteCount": 6,
-      "missingPoses": [
-        "east_block"
-      ],
-      "sourceDir": "spritecook"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     },
     {
       "id": "cosmic_titan",
       "name": "Cosmic Titan",
       "act": 4,
       "sprites": {
-        "portrait": "spritecook/cosmic_titan_portrait.png",
-        "south": "spritecook/cosmic_titan_south.png",
-        "east": "spritecook/cosmic_titan_east.png",
-        "east_attack": "spritecook/cosmic_titan_east_attack.png",
-        "east_spell": "sprites/cosmic_titan_east_spell.png",
-        "east_block": null,
-        "east_ko": "spritecook/cosmic_titan_east_ko.png"
+        "portrait": "openai_v2/cosmic_titan_portrait.png",
+        "south": "openai_v2/cosmic_titan_south.png",
+        "east": "openai_v2/cosmic_titan_east.png",
+        "east_attack": "openai_v2/cosmic_titan_east_attack.png",
+        "east_spell": "openai_v2/cosmic_titan_east_spell.png",
+        "east_block": "openai_v2/cosmic_titan_east_block.png",
+        "east_ko": "openai_v2/cosmic_titan_east_ko.png"
       },
-      "spriteCount": 6,
-      "missingPoses": [
-        "east_block"
-      ],
-      "sourceDir": "spritecook"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     },
     {
       "id": "void_prophet",
       "name": "Void Prophet",
       "act": 4,
       "sprites": {
-        "portrait": "spritecook/void_prophet_portrait.png",
-        "south": "sprites/void_prophet_south.png",
-        "east": "sprites/void_prophet_east.png",
-        "east_attack": "sprites/void_prophet_east_attack.png",
-        "east_spell": "sprites/void_prophet_east_spell.png",
-        "east_block": null,
-        "east_ko": null
+        "portrait": "openai_v2/void_prophet_portrait.png",
+        "south": "openai_v2/void_prophet_south.png",
+        "east": "openai_v2/void_prophet_east.png",
+        "east_attack": "openai_v2/void_prophet_east_attack.png",
+        "east_spell": "openai_v2/void_prophet_east_spell.png",
+        "east_block": "openai_v2/void_prophet_east_block.png",
+        "east_ko": "openai_v2/void_prophet_east_ko.png"
       },
-      "spriteCount": 5,
-      "missingPoses": [
-        "east_block",
-        "east_ko"
-      ],
-      "sourceDir": "sprites"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     },
     {
       "id": "dragon_whelp",
       "name": "Dragon Whelp",
       "act": 6,
       "sprites": {
-        "portrait": "spritecook/dragon_whelp_portrait.png",
-        "south": "sprites/dragon_whelp_south.png",
-        "east": "sprites/dragon_whelp_east.png",
-        "east_attack": "sprites/dragon_whelp_east_attack.png",
-        "east_spell": "sprites/dragon_whelp_east_spell.png",
-        "east_block": null,
-        "east_ko": null
+        "portrait": "openai_v2/dragon_whelp_portrait.png",
+        "south": "openai_v2/dragon_whelp_south.png",
+        "east": "openai_v2/dragon_whelp_east.png",
+        "east_attack": "openai_v2/dragon_whelp_east_attack.png",
+        "east_spell": "openai_v2/dragon_whelp_east_spell.png",
+        "east_block": "openai_v2/dragon_whelp_east_block.png",
+        "east_ko": "openai_v2/dragon_whelp_east_ko.png"
       },
-      "spriteCount": 5,
-      "missingPoses": [
-        "east_block",
-        "east_ko"
-      ],
-      "sourceDir": "sprites"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     },
     {
       "id": "wyrm_warrior",
       "name": "Wyrm Warrior",
       "act": 6,
       "sprites": {
-        "portrait": "spritecook/wyrm_warrior_portrait.png",
-        "south": "sprites/wyrm_warrior_south.png",
-        "east": "sprites/wyrm_warrior_east.png",
-        "east_attack": "sprites/wyrm_warrior_east_attack.png",
-        "east_spell": "sprites/wyrm_warrior_east_spell.png",
-        "east_block": null,
-        "east_ko": null
+        "portrait": "openai_v2/wyrm_warrior_portrait.png",
+        "south": "openai_v2/wyrm_warrior_south.png",
+        "east": "openai_v2/wyrm_warrior_east.png",
+        "east_attack": "openai_v2/wyrm_warrior_east_attack.png",
+        "east_spell": "openai_v2/wyrm_warrior_east_spell.png",
+        "east_block": "openai_v2/wyrm_warrior_east_block.png",
+        "east_ko": "openai_v2/wyrm_warrior_east_ko.png"
       },
-      "spriteCount": 5,
-      "missingPoses": [
-        "east_block",
-        "east_ko"
-      ],
-      "sourceDir": "sprites"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     },
     {
       "id": "dragon_cultist",
       "name": "Dragon Cultist",
       "act": 6,
       "sprites": {
-        "portrait": "spritecook/dragon_cultist_portrait.png",
-        "south": "sprites/dragon_cultist_south.png",
-        "east": "sprites/dragon_cultist_east.png",
-        "east_attack": "sprites/dragon_cultist_east_attack.png",
-        "east_spell": "sprites/dragon_cultist_east_spell.png",
-        "east_block": null,
-        "east_ko": null
+        "portrait": "openai_v2/dragon_cultist_portrait.png",
+        "south": "openai_v2/dragon_cultist_south.png",
+        "east": "openai_v2/dragon_cultist_east.png",
+        "east_attack": "openai_v2/dragon_cultist_east_attack.png",
+        "east_spell": "openai_v2/dragon_cultist_east_spell.png",
+        "east_block": "openai_v2/dragon_cultist_east_block.png",
+        "east_ko": "openai_v2/dragon_cultist_east_ko.png"
       },
-      "spriteCount": 5,
-      "missingPoses": [
-        "east_block",
-        "east_ko"
-      ],
-      "sourceDir": "sprites"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     },
     {
       "id": "frost_wyrm",
       "name": "Frost Wyrm",
       "act": 6,
       "sprites": {
-        "portrait": "spritecook/frost_wyrm_portrait.png",
-        "south": "sprites/frost_wyrm_south.png",
-        "east": "sprites/frost_wyrm_east.png",
-        "east_attack": "sprites/frost_wyrm_east_attack.png",
-        "east_spell": "sprites/frost_wyrm_east_spell.png",
-        "east_block": null,
-        "east_ko": null
+        "portrait": "openai_v2/frost_wyrm_portrait.png",
+        "south": "openai_v2/frost_wyrm_south.png",
+        "east": "openai_v2/frost_wyrm_east.png",
+        "east_attack": "openai_v2/frost_wyrm_east_attack.png",
+        "east_spell": "openai_v2/frost_wyrm_east_spell.png",
+        "east_block": "openai_v2/frost_wyrm_east_block.png",
+        "east_ko": "openai_v2/frost_wyrm_east_ko.png"
       },
-      "spriteCount": 5,
-      "missingPoses": [
-        "east_block",
-        "east_ko"
-      ],
-      "sourceDir": "sprites"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     },
     {
       "id": "storm_dragon",
       "name": "Storm Dragon",
       "act": 6,
       "sprites": {
-        "portrait": "spritecook/storm_dragon_portrait.png",
-        "south": "sprites/storm_dragon_south.png",
-        "east": "sprites/storm_dragon_east.png",
-        "east_attack": "sprites/storm_dragon_east_attack.png",
-        "east_spell": "sprites/storm_dragon_east_spell.png",
-        "east_block": null,
-        "east_ko": null
+        "portrait": "openai_v2/storm_dragon_portrait.png",
+        "south": "openai_v2/storm_dragon_south.png",
+        "east": "openai_v2/storm_dragon_east.png",
+        "east_attack": "openai_v2/storm_dragon_east_attack.png",
+        "east_spell": "openai_v2/storm_dragon_east_spell.png",
+        "east_block": "openai_v2/storm_dragon_east_block.png",
+        "east_ko": "openai_v2/storm_dragon_east_ko.png"
       },
-      "spriteCount": 5,
-      "missingPoses": [
-        "east_block",
-        "east_ko"
-      ],
-      "sourceDir": "sprites"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     },
     {
       "id": "ancient_dragon",
       "name": "Ancient Dragon",
       "act": 6,
       "sprites": {
-        "portrait": null,
-        "south": "spritecook/ancient_dragon_south.png",
-        "east": "spritecook/ancient_dragon_east.png",
-        "east_attack": "spritecook/ancient_dragon_east_attack.png",
-        "east_spell": "sprites/ancient_dragon_east_spell.png",
-        "east_block": null,
-        "east_ko": "spritecook/ancient_dragon_east_ko.png"
+        "portrait": "openai_v2/ancient_dragon_portrait.png",
+        "south": "openai_v2/ancient_dragon_south.png",
+        "east": "openai_v2/ancient_dragon_east.png",
+        "east_attack": "openai_v2/ancient_dragon_east_attack.png",
+        "east_spell": "openai_v2/ancient_dragon_east_spell.png",
+        "east_block": "openai_v2/ancient_dragon_east_block.png",
+        "east_ko": "openai_v2/ancient_dragon_east_ko.png"
       },
-      "spriteCount": 5,
-      "missingPoses": [
-        "portrait",
-        "east_block"
-      ],
-      "sourceDir": "spritecook"
+      "spriteCount": 7,
+      "missingPoses": [],
+      "sourceDir": "openai_v2"
     }
   ],
   "orphans": [
@@ -3565,6 +3528,36 @@
       "name": "void_boss_south"
     },
     {
+      "file": "images/openai_v2/abyssal_knight_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "abyssal_knight_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/abyssal_knight_east_wound.png",
+      "dir": "openai_v2",
+      "name": "abyssal_knight_east_wound"
+    },
+    {
+      "file": "images/openai_v2/abyssal_knight_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "abyssal_knight_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/ancient_dragon_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "ancient_dragon_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/ancient_dragon_east_wound.png",
+      "dir": "openai_v2",
+      "name": "ancient_dragon_east_wound"
+    },
+    {
+      "file": "images/openai_v2/ancient_dragon_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "ancient_dragon_openai_sheet"
+    },
+    {
       "file": "images/openai_v2/archfiend_malgrath_east_cheer.png",
       "dir": "openai_v2",
       "name": "archfiend_malgrath_east_cheer"
@@ -3685,6 +3678,21 @@
       "name": "corrupted_wolf_openai_sheet"
     },
     {
+      "file": "images/openai_v2/cosmic_titan_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "cosmic_titan_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/cosmic_titan_east_wound.png",
+      "dir": "openai_v2",
+      "name": "cosmic_titan_east_wound"
+    },
+    {
+      "file": "images/openai_v2/cosmic_titan_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "cosmic_titan_openai_sheet"
+    },
+    {
       "file": "images/openai_v2/crystal_golem_east_cheer.png",
       "dir": "openai_v2",
       "name": "crystal_golem_east_cheer"
@@ -3730,6 +3738,21 @@
       "name": "dire_wolf_openai_sheet"
     },
     {
+      "file": "images/openai_v2/dragon_cultist_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "dragon_cultist_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/dragon_cultist_east_wound.png",
+      "dir": "openai_v2",
+      "name": "dragon_cultist_east_wound"
+    },
+    {
+      "file": "images/openai_v2/dragon_cultist_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "dragon_cultist_openai_sheet"
+    },
+    {
       "file": "images/openai_v2/dragon_hatchling_east_cheer.png",
       "dir": "openai_v2",
       "name": "dragon_hatchling_east_cheer"
@@ -3743,6 +3766,121 @@
       "file": "images/openai_v2/dragon_hatchling_openai_sheet.png",
       "dir": "openai_v2",
       "name": "dragon_hatchling_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/dragon_king_east_attack.png",
+      "dir": "openai_v2",
+      "name": "dragon_king_east_attack"
+    },
+    {
+      "file": "images/openai_v2/dragon_king_east_block.png",
+      "dir": "openai_v2",
+      "name": "dragon_king_east_block"
+    },
+    {
+      "file": "images/openai_v2/dragon_king_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "dragon_king_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/dragon_king_east_ko.png",
+      "dir": "openai_v2",
+      "name": "dragon_king_east_ko"
+    },
+    {
+      "file": "images/openai_v2/dragon_king_east_spell.png",
+      "dir": "openai_v2",
+      "name": "dragon_king_east_spell"
+    },
+    {
+      "file": "images/openai_v2/dragon_king_east_wound.png",
+      "dir": "openai_v2",
+      "name": "dragon_king_east_wound"
+    },
+    {
+      "file": "images/openai_v2/dragon_king_east.png",
+      "dir": "openai_v2",
+      "name": "dragon_king_east"
+    },
+    {
+      "file": "images/openai_v2/dragon_king_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "dragon_king_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/dragon_king_portrait.png",
+      "dir": "openai_v2",
+      "name": "dragon_king_portrait"
+    },
+    {
+      "file": "images/openai_v2/dragon_king_south.png",
+      "dir": "openai_v2",
+      "name": "dragon_king_south"
+    },
+    {
+      "file": "images/openai_v2/dragon_whelp_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "dragon_whelp_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/dragon_whelp_east_wound.png",
+      "dir": "openai_v2",
+      "name": "dragon_whelp_east_wound"
+    },
+    {
+      "file": "images/openai_v2/dragon_whelp_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "dragon_whelp_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/echo_sovereign_east_attack.png",
+      "dir": "openai_v2",
+      "name": "echo_sovereign_east_attack"
+    },
+    {
+      "file": "images/openai_v2/echo_sovereign_east_block.png",
+      "dir": "openai_v2",
+      "name": "echo_sovereign_east_block"
+    },
+    {
+      "file": "images/openai_v2/echo_sovereign_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "echo_sovereign_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/echo_sovereign_east_ko.png",
+      "dir": "openai_v2",
+      "name": "echo_sovereign_east_ko"
+    },
+    {
+      "file": "images/openai_v2/echo_sovereign_east_spell.png",
+      "dir": "openai_v2",
+      "name": "echo_sovereign_east_spell"
+    },
+    {
+      "file": "images/openai_v2/echo_sovereign_east_wound.png",
+      "dir": "openai_v2",
+      "name": "echo_sovereign_east_wound"
+    },
+    {
+      "file": "images/openai_v2/echo_sovereign_east.png",
+      "dir": "openai_v2",
+      "name": "echo_sovereign_east"
+    },
+    {
+      "file": "images/openai_v2/echo_sovereign_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "echo_sovereign_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/echo_sovereign_portrait.png",
+      "dir": "openai_v2",
+      "name": "echo_sovereign_portrait"
+    },
+    {
+      "file": "images/openai_v2/echo_sovereign_south.png",
+      "dir": "openai_v2",
+      "name": "echo_sovereign_south"
     },
     {
       "file": "images/openai_v2/ember_drake_east_cheer.png",
@@ -3788,6 +3926,21 @@
       "file": "images/openai_v2/forest_owl_openai_sheet.png",
       "dir": "openai_v2",
       "name": "forest_owl_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/frost_wyrm_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "frost_wyrm_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/frost_wyrm_east_wound.png",
+      "dir": "openai_v2",
+      "name": "frost_wyrm_east_wound"
+    },
+    {
+      "file": "images/openai_v2/frost_wyrm_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "frost_wyrm_openai_sheet"
     },
     {
       "file": "images/openai_v2/frost_wyrmling_east_cheer.png",
@@ -3853,6 +4006,21 @@
       "file": "images/openai_v2/garrick_ostmere_south.png",
       "dir": "openai_v2",
       "name": "garrick_ostmere_south"
+    },
+    {
+      "file": "images/openai_v2/genesis_worm_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "genesis_worm_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/genesis_worm_east_wound.png",
+      "dir": "openai_v2",
+      "name": "genesis_worm_east_wound"
+    },
+    {
+      "file": "images/openai_v2/genesis_worm_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "genesis_worm_openai_sheet"
     },
     {
       "file": "images/openai_v2/goblin_scout_east_cheer.png",
@@ -4305,6 +4473,36 @@
       "name": "pet_wolf_openai_sheet"
     },
     {
+      "file": "images/openai_v2/primordial_elemental_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "primordial_elemental_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/primordial_elemental_east_wound.png",
+      "dir": "openai_v2",
+      "name": "primordial_elemental_east_wound"
+    },
+    {
+      "file": "images/openai_v2/primordial_elemental_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "primordial_elemental_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/reality_shard_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "reality_shard_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/reality_shard_east_wound.png",
+      "dir": "openai_v2",
+      "name": "reality_shard_east_wound"
+    },
+    {
+      "file": "images/openai_v2/reality_shard_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "reality_shard_openai_sheet"
+    },
+    {
       "file": "images/openai_v2/shadow_cat_east_cheer.png",
       "dir": "openai_v2",
       "name": "shadow_cat_east_cheer"
@@ -4350,6 +4548,36 @@
       "name": "spirit_wisp_openai_sheet"
     },
     {
+      "file": "images/openai_v2/star_horror_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "star_horror_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/star_horror_east_wound.png",
+      "dir": "openai_v2",
+      "name": "star_horror_east_wound"
+    },
+    {
+      "file": "images/openai_v2/star_horror_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "star_horror_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/storm_dragon_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "storm_dragon_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/storm_dragon_east_wound.png",
+      "dir": "openai_v2",
+      "name": "storm_dragon_east_wound"
+    },
+    {
+      "file": "images/openai_v2/storm_dragon_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "storm_dragon_openai_sheet"
+    },
+    {
       "file": "images/openai_v2/storm_drake_east_cheer.png",
       "dir": "openai_v2",
       "name": "storm_drake_east_cheer"
@@ -4378,6 +4606,156 @@
       "file": "images/openai_v2/swamp_frog_openai_sheet.png",
       "dir": "openai_v2",
       "name": "swamp_frog_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/the_architect_east_attack.png",
+      "dir": "openai_v2",
+      "name": "the_architect_east_attack"
+    },
+    {
+      "file": "images/openai_v2/the_architect_east_block.png",
+      "dir": "openai_v2",
+      "name": "the_architect_east_block"
+    },
+    {
+      "file": "images/openai_v2/the_architect_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "the_architect_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/the_architect_east_ko.png",
+      "dir": "openai_v2",
+      "name": "the_architect_east_ko"
+    },
+    {
+      "file": "images/openai_v2/the_architect_east_spell.png",
+      "dir": "openai_v2",
+      "name": "the_architect_east_spell"
+    },
+    {
+      "file": "images/openai_v2/the_architect_east_wound.png",
+      "dir": "openai_v2",
+      "name": "the_architect_east_wound"
+    },
+    {
+      "file": "images/openai_v2/the_architect_east.png",
+      "dir": "openai_v2",
+      "name": "the_architect_east"
+    },
+    {
+      "file": "images/openai_v2/the_architect_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "the_architect_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/the_architect_portrait.png",
+      "dir": "openai_v2",
+      "name": "the_architect_portrait"
+    },
+    {
+      "file": "images/openai_v2/the_architect_south.png",
+      "dir": "openai_v2",
+      "name": "the_architect_south"
+    },
+    {
+      "file": "images/openai_v2/the_first_ember_east_attack.png",
+      "dir": "openai_v2",
+      "name": "the_first_ember_east_attack"
+    },
+    {
+      "file": "images/openai_v2/the_first_ember_east_block.png",
+      "dir": "openai_v2",
+      "name": "the_first_ember_east_block"
+    },
+    {
+      "file": "images/openai_v2/the_first_ember_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "the_first_ember_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/the_first_ember_east_ko.png",
+      "dir": "openai_v2",
+      "name": "the_first_ember_east_ko"
+    },
+    {
+      "file": "images/openai_v2/the_first_ember_east_spell.png",
+      "dir": "openai_v2",
+      "name": "the_first_ember_east_spell"
+    },
+    {
+      "file": "images/openai_v2/the_first_ember_east_wound.png",
+      "dir": "openai_v2",
+      "name": "the_first_ember_east_wound"
+    },
+    {
+      "file": "images/openai_v2/the_first_ember_east.png",
+      "dir": "openai_v2",
+      "name": "the_first_ember_east"
+    },
+    {
+      "file": "images/openai_v2/the_first_ember_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "the_first_ember_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/the_first_ember_portrait.png",
+      "dir": "openai_v2",
+      "name": "the_first_ember_portrait"
+    },
+    {
+      "file": "images/openai_v2/the_first_ember_south.png",
+      "dir": "openai_v2",
+      "name": "the_first_ember_south"
+    },
+    {
+      "file": "images/openai_v2/the_unraveler_east_attack.png",
+      "dir": "openai_v2",
+      "name": "the_unraveler_east_attack"
+    },
+    {
+      "file": "images/openai_v2/the_unraveler_east_block.png",
+      "dir": "openai_v2",
+      "name": "the_unraveler_east_block"
+    },
+    {
+      "file": "images/openai_v2/the_unraveler_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "the_unraveler_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/the_unraveler_east_ko.png",
+      "dir": "openai_v2",
+      "name": "the_unraveler_east_ko"
+    },
+    {
+      "file": "images/openai_v2/the_unraveler_east_spell.png",
+      "dir": "openai_v2",
+      "name": "the_unraveler_east_spell"
+    },
+    {
+      "file": "images/openai_v2/the_unraveler_east_wound.png",
+      "dir": "openai_v2",
+      "name": "the_unraveler_east_wound"
+    },
+    {
+      "file": "images/openai_v2/the_unraveler_east.png",
+      "dir": "openai_v2",
+      "name": "the_unraveler_east"
+    },
+    {
+      "file": "images/openai_v2/the_unraveler_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "the_unraveler_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/the_unraveler_portrait.png",
+      "dir": "openai_v2",
+      "name": "the_unraveler_portrait"
+    },
+    {
+      "file": "images/openai_v2/the_unraveler_south.png",
+      "dir": "openai_v2",
+      "name": "the_unraveler_south"
     },
     {
       "file": "images/openai_v2/tomek_halverin_east_attack.png",
@@ -4428,6 +4806,56 @@
       "file": "images/openai_v2/tomek_halverin_south.png",
       "dir": "openai_v2",
       "name": "tomek_halverin_south"
+    },
+    {
+      "file": "images/openai_v2/vault_guardian_east_attack.png",
+      "dir": "openai_v2",
+      "name": "vault_guardian_east_attack"
+    },
+    {
+      "file": "images/openai_v2/vault_guardian_east_block.png",
+      "dir": "openai_v2",
+      "name": "vault_guardian_east_block"
+    },
+    {
+      "file": "images/openai_v2/vault_guardian_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "vault_guardian_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/vault_guardian_east_ko.png",
+      "dir": "openai_v2",
+      "name": "vault_guardian_east_ko"
+    },
+    {
+      "file": "images/openai_v2/vault_guardian_east_spell.png",
+      "dir": "openai_v2",
+      "name": "vault_guardian_east_spell"
+    },
+    {
+      "file": "images/openai_v2/vault_guardian_east_wound.png",
+      "dir": "openai_v2",
+      "name": "vault_guardian_east_wound"
+    },
+    {
+      "file": "images/openai_v2/vault_guardian_east.png",
+      "dir": "openai_v2",
+      "name": "vault_guardian_east"
+    },
+    {
+      "file": "images/openai_v2/vault_guardian_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "vault_guardian_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/vault_guardian_portrait.png",
+      "dir": "openai_v2",
+      "name": "vault_guardian_portrait"
+    },
+    {
+      "file": "images/openai_v2/vault_guardian_south.png",
+      "dir": "openai_v2",
+      "name": "vault_guardian_south"
     },
     {
       "file": "images/openai_v2/veil_cultist_east_cheer.png",
@@ -4540,6 +4968,71 @@
       "name": "void_moth_openai_sheet"
     },
     {
+      "file": "images/openai_v2/void_prophet_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "void_prophet_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/void_prophet_east_wound.png",
+      "dir": "openai_v2",
+      "name": "void_prophet_east_wound"
+    },
+    {
+      "file": "images/openai_v2/void_prophet_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "void_prophet_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/void_scholar_east_attack.png",
+      "dir": "openai_v2",
+      "name": "void_scholar_east_attack"
+    },
+    {
+      "file": "images/openai_v2/void_scholar_east_block.png",
+      "dir": "openai_v2",
+      "name": "void_scholar_east_block"
+    },
+    {
+      "file": "images/openai_v2/void_scholar_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "void_scholar_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/void_scholar_east_ko.png",
+      "dir": "openai_v2",
+      "name": "void_scholar_east_ko"
+    },
+    {
+      "file": "images/openai_v2/void_scholar_east_spell.png",
+      "dir": "openai_v2",
+      "name": "void_scholar_east_spell"
+    },
+    {
+      "file": "images/openai_v2/void_scholar_east_wound.png",
+      "dir": "openai_v2",
+      "name": "void_scholar_east_wound"
+    },
+    {
+      "file": "images/openai_v2/void_scholar_east.png",
+      "dir": "openai_v2",
+      "name": "void_scholar_east"
+    },
+    {
+      "file": "images/openai_v2/void_scholar_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "void_scholar_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/void_scholar_portrait.png",
+      "dir": "openai_v2",
+      "name": "void_scholar_portrait"
+    },
+    {
+      "file": "images/openai_v2/void_scholar_south.png",
+      "dir": "openai_v2",
+      "name": "void_scholar_south"
+    },
+    {
       "file": "images/openai_v2/void_shade_east_cheer.png",
       "dir": "openai_v2",
       "name": "void_shade_east_cheer"
@@ -4553,6 +5046,36 @@
       "file": "images/openai_v2/void_shade_openai_sheet.png",
       "dir": "openai_v2",
       "name": "void_shade_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/void_wraith_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "void_wraith_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/void_wraith_east_wound.png",
+      "dir": "openai_v2",
+      "name": "void_wraith_east_wound"
+    },
+    {
+      "file": "images/openai_v2/void_wraith_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "void_wraith_openai_sheet"
+    },
+    {
+      "file": "images/openai_v2/wyrm_warrior_east_cheer.png",
+      "dir": "openai_v2",
+      "name": "wyrm_warrior_east_cheer"
+    },
+    {
+      "file": "images/openai_v2/wyrm_warrior_east_wound.png",
+      "dir": "openai_v2",
+      "name": "wyrm_warrior_east_wound"
+    },
+    {
+      "file": "images/openai_v2/wyrm_warrior_openai_sheet.png",
+      "dir": "openai_v2",
+      "name": "wyrm_warrior_openai_sheet"
     },
     {
       "file": "images/pixellab/bard_female/east_attack.png",
@@ -9240,224 +9763,6 @@
         "spritecook/war_dog_east_block.png",
         "sprites/war_dog_east_block.png"
       ]
-    },
-    {
-      "id": "void_wraith",
-      "name": "Void Wraith",
-      "kind": "entity",
-      "poses": [
-        "east_block",
-        "east_ko"
-      ],
-      "tried": [
-        "openai_v2/void_wraith_east_block.png",
-        "spritecook/void_wraith_east_block.png",
-        "sprites/void_wraith_east_block.png",
-        "openai_v2/void_wraith_east_ko.png",
-        "spritecook/void_wraith_east_ko.png",
-        "sprites/void_wraith_east_ko.png"
-      ]
-    },
-    {
-      "id": "star_horror",
-      "name": "Star Horror",
-      "kind": "entity",
-      "poses": [
-        "east_block",
-        "east_ko"
-      ],
-      "tried": [
-        "openai_v2/star_horror_east_block.png",
-        "spritecook/star_horror_east_block.png",
-        "sprites/star_horror_east_block.png",
-        "openai_v2/star_horror_east_ko.png",
-        "spritecook/star_horror_east_ko.png",
-        "sprites/star_horror_east_ko.png"
-      ]
-    },
-    {
-      "id": "primordial_elemental",
-      "name": "Primordial Elemental",
-      "kind": "entity",
-      "poses": [
-        "east_block"
-      ],
-      "tried": [
-        "openai_v2/primordial_elemental_east_block.png",
-        "spritecook/primordial_elemental_east_block.png",
-        "sprites/primordial_elemental_east_block.png"
-      ]
-    },
-    {
-      "id": "abyssal_knight",
-      "name": "Abyssal Knight",
-      "kind": "entity",
-      "poses": [
-        "east_block"
-      ],
-      "tried": [
-        "openai_v2/abyssal_knight_east_block.png",
-        "spritecook/abyssal_knight_east_block.png",
-        "sprites/abyssal_knight_east_block.png"
-      ]
-    },
-    {
-      "id": "reality_shard",
-      "name": "Reality Shard",
-      "kind": "entity",
-      "poses": [
-        "east_block"
-      ],
-      "tried": [
-        "openai_v2/reality_shard_east_block.png",
-        "spritecook/reality_shard_east_block.png",
-        "sprites/reality_shard_east_block.png"
-      ]
-    },
-    {
-      "id": "genesis_worm",
-      "name": "Genesis Worm",
-      "kind": "entity",
-      "poses": [
-        "east_block"
-      ],
-      "tried": [
-        "openai_v2/genesis_worm_east_block.png",
-        "spritecook/genesis_worm_east_block.png",
-        "sprites/genesis_worm_east_block.png"
-      ]
-    },
-    {
-      "id": "cosmic_titan",
-      "name": "Cosmic Titan",
-      "kind": "entity",
-      "poses": [
-        "east_block"
-      ],
-      "tried": [
-        "openai_v2/cosmic_titan_east_block.png",
-        "spritecook/cosmic_titan_east_block.png",
-        "sprites/cosmic_titan_east_block.png"
-      ]
-    },
-    {
-      "id": "void_prophet",
-      "name": "Void Prophet",
-      "kind": "entity",
-      "poses": [
-        "east_block",
-        "east_ko"
-      ],
-      "tried": [
-        "openai_v2/void_prophet_east_block.png",
-        "spritecook/void_prophet_east_block.png",
-        "sprites/void_prophet_east_block.png",
-        "openai_v2/void_prophet_east_ko.png",
-        "spritecook/void_prophet_east_ko.png",
-        "sprites/void_prophet_east_ko.png"
-      ]
-    },
-    {
-      "id": "dragon_whelp",
-      "name": "Dragon Whelp",
-      "kind": "entity",
-      "poses": [
-        "east_block",
-        "east_ko"
-      ],
-      "tried": [
-        "openai_v2/dragon_whelp_east_block.png",
-        "spritecook/dragon_whelp_east_block.png",
-        "sprites/dragon_whelp_east_block.png",
-        "openai_v2/dragon_whelp_east_ko.png",
-        "spritecook/dragon_whelp_east_ko.png",
-        "sprites/dragon_whelp_east_ko.png"
-      ]
-    },
-    {
-      "id": "wyrm_warrior",
-      "name": "Wyrm Warrior",
-      "kind": "entity",
-      "poses": [
-        "east_block",
-        "east_ko"
-      ],
-      "tried": [
-        "openai_v2/wyrm_warrior_east_block.png",
-        "spritecook/wyrm_warrior_east_block.png",
-        "sprites/wyrm_warrior_east_block.png",
-        "openai_v2/wyrm_warrior_east_ko.png",
-        "spritecook/wyrm_warrior_east_ko.png",
-        "sprites/wyrm_warrior_east_ko.png"
-      ]
-    },
-    {
-      "id": "dragon_cultist",
-      "name": "Dragon Cultist",
-      "kind": "entity",
-      "poses": [
-        "east_block",
-        "east_ko"
-      ],
-      "tried": [
-        "openai_v2/dragon_cultist_east_block.png",
-        "spritecook/dragon_cultist_east_block.png",
-        "sprites/dragon_cultist_east_block.png",
-        "openai_v2/dragon_cultist_east_ko.png",
-        "spritecook/dragon_cultist_east_ko.png",
-        "sprites/dragon_cultist_east_ko.png"
-      ]
-    },
-    {
-      "id": "frost_wyrm",
-      "name": "Frost Wyrm",
-      "kind": "entity",
-      "poses": [
-        "east_block",
-        "east_ko"
-      ],
-      "tried": [
-        "openai_v2/frost_wyrm_east_block.png",
-        "spritecook/frost_wyrm_east_block.png",
-        "sprites/frost_wyrm_east_block.png",
-        "openai_v2/frost_wyrm_east_ko.png",
-        "spritecook/frost_wyrm_east_ko.png",
-        "sprites/frost_wyrm_east_ko.png"
-      ]
-    },
-    {
-      "id": "storm_dragon",
-      "name": "Storm Dragon",
-      "kind": "entity",
-      "poses": [
-        "east_block",
-        "east_ko"
-      ],
-      "tried": [
-        "openai_v2/storm_dragon_east_block.png",
-        "spritecook/storm_dragon_east_block.png",
-        "sprites/storm_dragon_east_block.png",
-        "openai_v2/storm_dragon_east_ko.png",
-        "spritecook/storm_dragon_east_ko.png",
-        "sprites/storm_dragon_east_ko.png"
-      ]
-    },
-    {
-      "id": "ancient_dragon",
-      "name": "Ancient Dragon",
-      "kind": "entity",
-      "poses": [
-        "portrait",
-        "east_block"
-      ],
-      "tried": [
-        "openai_v2/ancient_dragon_portrait.png",
-        "spritecook/ancient_dragon_portrait.png",
-        "sprites/ancient_dragon_portrait.png",
-        "openai_v2/ancient_dragon_east_block.png",
-        "spritecook/ancient_dragon_east_block.png",
-        "sprites/ancient_dragon_east_block.png"
-      ]
     }
   ],
   "totals": {
@@ -9465,7 +9770,7 @@
     "companions": 35,
     "enemies": 20,
     "bosses": 16,
-    "orphans": 1103,
-    "missing": 26
+    "orphans": 1215,
+    "missing": 12
   }
 }

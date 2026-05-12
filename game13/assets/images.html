@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="rsg-game" content="Emberveil">
   <title>Images — Emberveil Asset Gallery</title>
+  <link rel="stylesheet" href="./_shared/sprite-grid.css">
   <style>
     /* =========================================================
        DESIGN TOKENS
@@ -49,18 +50,8 @@
     h1, h2, h3, .display { font-family: var(--font-display); }
 
     /* =========================================================
-       TRANSPARENCY CHECKERBOARD — applied via class
+       TRANSPARENCY CHECKERBOARD — defined in _shared/sprite-grid.css
        ========================================================= */
-    .checker-bg {
-      background-image:
-        linear-gradient(45deg, var(--checker-a) 25%, transparent 25%),
-        linear-gradient(-45deg, var(--checker-a) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, var(--checker-a) 75%),
-        linear-gradient(-45deg, transparent 75%, var(--checker-a) 75%);
-      background-size: var(--checker-size) var(--checker-size);
-      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-      background-color: var(--checker-b);
-    }
 
     /* =========================================================
        PAGE LAYOUT
@@ -130,34 +121,16 @@
       color: #fff;
     }
 
-    /* M463 — global sprite-background toggle. body[data-sprite-bg=...]
-       overrides every .checker-bg / sprite container so the user can audit
-       characters against different backdrops. */
-    body[data-sprite-bg="none"] .checker-bg { background-image:none; background-color:transparent; }
-    body[data-sprite-bg="white"] .checker-bg { background-image:none; background-color:#fff; }
-    body[data-sprite-bg="black"] .checker-bg { background-image:none; background-color:#000; }
-    body[data-sprite-bg="green"] .checker-bg { background-image:none; background-color:#00FF00; }
-
-    .bg-toggle-bar {
-      display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;
-      margin: 0 0 12px;
-      padding: 6px 10px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 12px;
+    /* M463 — sprite-background toggle + bg-filter-bar defined in _shared/sprite-grid.css */
+    /* Mount point: center within page flow, constrain width to match page columns */
+    #bg-filter-mount {
+      max-width: 1200px;
+      margin: 0 auto 12px;
+      padding: 0 24px;
     }
-    .bg-toggle-bar .bg-label {
-      color: var(--muted); text-transform:uppercase; letter-spacing:0.08em;
-      font-size: 10px; font-weight: 600;
+    #bg-filter-mount .bg-filter-bar {
+      margin: 0;
     }
-    .bg-toggle-bar .bg-seg-btn {
-      background: var(--card); border: 1px solid var(--border);
-      color: var(--muted); padding: 4px 10px; border-radius: 4px;
-      cursor: pointer; font-size: 11px; font-weight: 600;
-    }
-    .bg-toggle-bar .bg-seg-btn:hover { background: var(--card-h); color: var(--text); }
-    .bg-toggle-bar .bg-seg-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
     /* search */
     .search-input {
@@ -254,178 +227,26 @@
     }
 
     /* =========================================================
-       CLASS PAIR BLOCK (male + female side-by-side)
+       CLASS PAIR BLOCK — base styles in _shared/sprite-grid.css
+       Page-specific overrides only:
        ========================================================= */
-    .class-pair-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-      gap: 20px;
-    }
-
-    .class-pair-block {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .class-pair-block:hover {
-      border-color: var(--accent);
-      box-shadow: 0 6px 24px rgba(232,160,32,0.12);
-    }
-
-    .class-pair-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-    .class-pair-name {
-      font-family: var(--font-display);
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--gold-bright);
-      text-transform: capitalize;
-    }
-    .class-pair-id {
-      font-size: 11px;
-      color: var(--muted);
-      font-family: monospace;
-    }
-    .class-pair-variants {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    /* single gender variant column */
-    .gender-col {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .gender-col-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 700;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .badge-gender-male   { color: #80aaff; }
-    .badge-gender-female { color: #f080c0; }
-    .badge-gender-missing {
-      color: var(--warn);
-      font-size: 10px;
-      opacity: 0.7;
-    }
+    /* images.html uses a slightly larger gap and display-font name */
+    .class-pair-grid { gap: 20px; }
+    .class-pair-name { font-family: var(--font-display); font-size: 17px; color: var(--gold-bright); }
 
     /* =========================================================
-       APPEARANCE ROW — portrait + 6 pose frames
+       APPEARANCE ROW — base styles in _shared/sprite-grid.css
+       images.html uses slightly larger tiles: 80px portrait, 48px pose frames
        ========================================================= */
-    .appearance-row {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
+    .appearance-portrait { width: 80px; min-width: 80px; height: 80px; border-radius: 8px; }
+    .appearance-frames   { grid-template-columns: repeat(3, 48px); gap: 4px; }
+    .pose-frame          { width: 48px; height: 48px; border-radius: 6px; }
+    .appearance-id-row   { margin-top: 6px; font-size: 11px; gap: 6px; }
 
-    .appearance-portrait {
-      position: relative;
-      width: 80px;
-      min-width: 80px;
-      height: 80px;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 2px solid var(--border);
-      cursor: pointer;
-      transition: border-color 0.2s;
-      flex-shrink: 0;
-    }
-    .appearance-portrait:hover { border-color: var(--accent); }
-    .appearance-portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-    }
-
-    .appearance-frames {
-      display: grid;
-      grid-template-columns: repeat(3, 48px);
-      gap: 4px;
-    }
-
-    .pose-frame {
-      position: relative;
-      width: 48px;
-      height: 48px;
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: border-color 0.2s, transform 0.15s;
-    }
-    .pose-frame:hover {
-      border-color: var(--accent);
-      transform: scale(1.08);
-    }
-    .pose-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-    }
-    .pose-frame .pose-label {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0,0,0,0.75);
-      color: #fff;
-      font-size: 7px;
-      text-align: center;
-      padding: 1px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .pose-frame.pose-missing {
-      background: rgba(192,64,48,0.06);
-      border-color: rgba(192,64,48,0.3);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2px;
-      cursor: default;
-    }
-    .pose-frame.pose-missing .pose-missing-glyph {
-      font-size: 14px;
-      color: var(--warn);
-      opacity: 0.5;
-    }
-    .pose-frame.pose-missing .pose-label {
-      position: static;
-      background: transparent;
-      color: var(--warn);
-      opacity: 0.6;
-      font-size: 7px;
-    }
-
-    .appearance-id-row {
-      margin-top: 6px;
-      font-size: 11px;
-      color: var(--muted);
-      font-family: monospace;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
+    /* Gender column */
+    .gender-col      { gap: 8px; }
+    .gender-col-label { gap: 6px; }
+    .badge-gender-missing { color: var(--warn); font-size: 10px; opacity: 0.7; }
 
     /* =========================================================
        ENTITY GRID — companions, enemies, bosses (simpler layout)
@@ -868,6 +689,7 @@
   gtag('js', new Date());
   gtag('config', 'G-5H26ZXKBCL');
 </script>
+<script src="./_shared/sprite-grid.js"></script>
 </head>
 <body class="ev-themed">
 
@@ -884,37 +706,8 @@
   <div id="lm-toolbar"></div>
 </div>
 
-<!-- M463 — sprite background toggle (sticky in localStorage). Class names
-     match image-review-v2.html so the same CSS rules apply across pages. -->
-<div class="bg-toggle-bar" id="bg-toggle-bar">
-  <span class="bg-label">Background:</span>
-  <button class="bg-seg-btn active" data-bg="checker" title="Transparency grid">Checker</button>
-  <button class="bg-seg-btn" data-bg="none" title="Page background">None</button>
-  <button class="bg-seg-btn" data-bg="white" title="Solid white">White</button>
-  <button class="bg-seg-btn" data-bg="black" title="Solid black">Black</button>
-  <button class="bg-seg-btn" data-bg="green" title="Chroma green #00FF00">Green</button>
-</div>
-<script>
-  (function() {
-    const KEY = 'evImgReview_spriteBg';
-    function apply(mode) {
-      const valid = ['checker','none','white','black','green'];
-      if (!valid.includes(mode)) mode = 'checker';
-      document.body.dataset.spriteBg = mode === 'checker' ? '' : mode;
-      document.querySelectorAll('#bg-toggle-bar .bg-seg-btn').forEach(b =>
-        b.classList.toggle('active', b.dataset.bg === mode));
-      try { localStorage.setItem(KEY, mode); } catch(_){}
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      let initial = 'checker';
-      try { initial = localStorage.getItem(KEY) || 'checker'; } catch(_){}
-      apply(initial);
-      document.querySelectorAll('#bg-toggle-bar .bg-seg-btn').forEach(b => {
-        b.addEventListener('click', () => apply(b.dataset.bg));
-      });
-    });
-  })();
-</script>
+<!-- Sprite background toggle — mounted by SpriteGrid.mountBgFilter() from _shared/sprite-grid.js -->
+<div id="bg-filter-mount"></div>
 
 <!-- ======================================================================
      LIVE IMAGE MANIFEST — appearance-driven, data-sourced from
@@ -1043,6 +836,11 @@
    only (e.g. scroll positions, dynamic toggling) may use style properties.
    ============================================================================= */
 'use strict';
+
+// Mount the shared background-filter toolbar.
+document.addEventListener('DOMContentLoaded', function() {
+  SpriteGrid.mountBgFilter(document.getElementById('bg-filter-mount'));
+});
 
 // ---------------------------------------------------------------------------
 // Utility

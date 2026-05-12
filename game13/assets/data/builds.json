@@ -305,6 +305,40 @@
     ]
   },
   {
+    "classId": "rogue",
+    "id": "saboteur",
+    "name": "Saboteur",
+    "description": "Survival-biased rogue. DEX still primary for hits, but CON climbs so Shadow Step gets you out alive. Poison Blade + Death Mark do the damage over time so you never need to stay in melee long.",
+    "targetAttrs": {
+      "STR": 5,
+      "DEX": 45,
+      "INT": 0,
+      "CON": 50
+    },
+    "plateaus": {
+      "DEX": {
+        "until": "hit95"
+      },
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "dagger"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "poison_blade",
+      "shadow_step",
+      "death_mark",
+      "backstab"
+    ],
+    "tags": [
+      "light",
+      "hybrid"
+    ]
+  },
+  {
     "classId": "mage",
     "id": "evoker",
     "name": "Evoker",
@@ -333,6 +367,38 @@
     ]
   },
   {
+    "classId": "mage",
+    "id": "arcanist",
+    "name": "Arcanist",
+    "description": "Hardened caster build. INT still leads but CON climbs so the glass cannon stops being glass. Blizzard slows incoming damage, Arcane Surge bursts when needed.",
+    "targetAttrs": {
+      "STR": 0,
+      "DEX": 5,
+      "INT": 50,
+      "CON": 45
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "staff",
+      "wand"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "blizzard",
+      "arcane_surge",
+      "magic_missile",
+      "fireball"
+    ],
+    "tags": [
+      "magic",
+      "hybrid"
+    ]
+  },
+  {
     "classId": "cleric",
     "id": "shepherd",
     "name": "Shepherd",
@@ -358,6 +424,38 @@
     "tags": [
       "magic",
       "support"
+    ]
+  },
+  {
+    "classId": "cleric",
+    "id": "warpriest",
+    "name": "Warpriest",
+    "description": "Tank-leaning cleric. CON tops the spread so the healer is also the rock. Smite and Sanctuary keep the line stable; Heal still comes through INT-scaling gear.",
+    "targetAttrs": {
+      "STR": 10,
+      "DEX": 5,
+      "INT": 35,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "scepter",
+      "staff"
+    ],
+    "shieldPref": "always",
+    "preferredSkills": [
+      "sanctuary",
+      "heal",
+      "smite",
+      "mass_resurrection"
+    ],
+    "tags": [
+      "magic",
+      "tank"
     ]
   },
   {
@@ -393,6 +491,38 @@
     ]
   },
   {
+    "classId": "bard",
+    "id": "troubadour",
+    "name": "Troubadour",
+    "description": "Stoic bard. CON-led so the song never stops — survives every fight. Ballad of Valor and Inspiring Tune for party support; damage is incidental.",
+    "targetAttrs": {
+      "STR": 0,
+      "DEX": 20,
+      "INT": 30,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "dagger",
+      "wand"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "inspiring_song",
+      "ballad_of_valor",
+      "lullaby",
+      "discordant_wail"
+    ],
+    "tags": [
+      "light",
+      "support"
+    ]
+  },
+  {
     "classId": "druid",
     "id": "wildshape",
     "name": "Wildshape",
@@ -418,6 +548,38 @@
     "tags": [
       "magic",
       "support"
+    ]
+  },
+  {
+    "classId": "druid",
+    "id": "oakheart",
+    "name": "Oakheart",
+    "description": "Bear-form druid. CON-led so Wild Shape gives raw HP rather than damage. Entangle locks the field down while Rejuvenation drips healing through to allies.",
+    "targetAttrs": {
+      "STR": 10,
+      "DEX": 5,
+      "INT": 35,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "staff",
+      "iron_mace"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "wild_shape",
+      "rejuvenation",
+      "entangling_roots",
+      "natures_wrath"
+    ],
+    "tags": [
+      "magic",
+      "tank"
     ]
   },
   {
@@ -449,6 +611,39 @@
     ]
   },
   {
+    "classId": "necromancer",
+    "id": "graveward",
+    "name": "Graveward",
+    "description": "Life-drain necromancer. CON-heavy so Life Drain keeps regenerating into a bigger pool. Skeletons soak the front; the necromancer outlasts everyone.",
+    "targetAttrs": {
+      "STR": 0,
+      "DEX": 5,
+      "INT": 45,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "staff",
+      "wand",
+      "scepter"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "life_drain",
+      "skeletal_servant",
+      "bone_spike",
+      "corpse_explosion"
+    ],
+    "tags": [
+      "magic",
+      "hybrid"
+    ]
+  },
+  {
     "classId": "warlock",
     "id": "dark_pact",
     "name": "Dark Pact",
@@ -474,6 +669,38 @@
     "tags": [
       "magic",
       "caster"
+    ]
+  },
+  {
+    "classId": "warlock",
+    "id": "soulbinder",
+    "name": "Soulbinder",
+    "description": "Hardened warlock. CON climbs so Soul Pact's HP cost doesn't fold the build. Corruption + Void Rift do persistent DoT damage instead of burst.",
+    "targetAttrs": {
+      "STR": 0,
+      "DEX": 5,
+      "INT": 45,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "staff",
+      "wand"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "corruption",
+      "void_rift",
+      "soul_pact",
+      "hellfire"
+    ],
+    "tags": [
+      "magic",
+      "hybrid"
     ]
   },
   {
@@ -621,6 +848,38 @@
     ]
   },
   {
+    "classId": "pyromancer",
+    "id": "cinderward",
+    "name": "Cinderward",
+    "description": "Resilient pyromancer. CON tops the budget so you live long enough for Meteor to come up. Ignite stacks while Burn Aura ticks down the back rank.",
+    "targetAttrs": {
+      "STR": 0,
+      "DEX": 5,
+      "INT": 45,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "staff",
+      "scepter"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "ignite",
+      "flame_lance",
+      "pyroclasm",
+      "meteor"
+    ],
+    "tags": [
+      "magic",
+      "hybrid"
+    ]
+  },
+  {
     "classId": "stormcaller",
     "id": "thunderhead",
     "name": "Thunderhead",
@@ -649,6 +908,38 @@
     ]
   },
   {
+    "classId": "stormcaller",
+    "id": "stormwarden",
+    "name": "Stormwarden",
+    "description": "Tank-leaning stormcaller. Thunder Ring zones the battlefield and CON lets you stand in your own storms. Less burst, far more longevity.",
+    "targetAttrs": {
+      "STR": 0,
+      "DEX": 5,
+      "INT": 45,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "staff",
+      "wand"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "thunder_ring",
+      "static_field",
+      "chain_lightning",
+      "tempest"
+    ],
+    "tags": [
+      "magic",
+      "hybrid"
+    ]
+  },
+  {
     "classId": "oracle",
     "id": "foresight",
     "name": "Foresight",
@@ -674,6 +965,38 @@
     "tags": [
       "magic",
       "support"
+    ]
+  },
+  {
+    "classId": "oracle",
+    "id": "sentinel",
+    "name": "Sentinel",
+    "description": "Bulwark oracle. CON-led so Foresight shields hold up and Ascendance can land before you fall. Prophecy plus a heavy buffer.",
+    "targetAttrs": {
+      "STR": 0,
+      "DEX": 5,
+      "INT": 35,
+      "CON": 60
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.5
+      }
+    },
+    "weapons": [
+      "scepter",
+      "staff"
+    ],
+    "shieldPref": "always",
+    "preferredSkills": [
+      "foresight",
+      "ascendance",
+      "prophecy",
+      "fate_weave"
+    ],
+    "tags": [
+      "magic",
+      "tank"
     ]
   },
   {
@@ -709,6 +1032,41 @@
     ]
   },
   {
+    "classId": "swashbuckler",
+    "id": "showman",
+    "name": "Showman",
+    "description": "Taunt-bait swashbuckler. DEX still primary but CON climbs so Taunt actually draws aggro and survives it. Flourish builds Flair while you wear them down.",
+    "targetAttrs": {
+      "STR": 5,
+      "DEX": 40,
+      "INT": 0,
+      "CON": 55
+    },
+    "plateaus": {
+      "DEX": {
+        "until": "hit95"
+      },
+      "CON": {
+        "atLeast": 0.45
+      }
+    },
+    "weapons": [
+      "sword",
+      "dagger"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "taunt",
+      "flourish",
+      "riposte",
+      "grandeur"
+    ],
+    "tags": [
+      "light",
+      "hybrid"
+    ]
+  },
+  {
     "classId": "scavenger",
     "id": "opportunist",
     "name": "Opportunist",
@@ -738,6 +1096,39 @@
     "tags": [
       "light",
       "dps"
+    ]
+  },
+  {
+    "classId": "scavenger",
+    "id": "pack_rat",
+    "name": "Pack Rat",
+    "description": "Durable scavenger. CON-led so you survive long enough for Big Score to come up. Makeshift Bomb and Thrown Junk pull damage while you scavenge.",
+    "targetAttrs": {
+      "STR": 10,
+      "DEX": 35,
+      "INT": 5,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "hammer",
+      "sword",
+      "javelin"
+    ],
+    "shieldPref": "sometimes",
+    "preferredSkills": [
+      "scrounge",
+      "makeshift_bomb",
+      "thrown_junk",
+      "jackpot"
+    ],
+    "tags": [
+      "light",
+      "hybrid"
     ]
   },
   {
@@ -773,6 +1164,38 @@
     ]
   },
   {
+    "classId": "tactician",
+    "id": "warden",
+    "name": "Warden",
+    "description": "CON-led tactician. Shield Wall plus rally cadence — you stay on the line, the party orbits around you. INT still scales the orders.",
+    "targetAttrs": {
+      "STR": 15,
+      "DEX": 5,
+      "INT": 25,
+      "CON": 55
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.45
+      }
+    },
+    "weapons": [
+      "sword",
+      "scepter"
+    ],
+    "shieldPref": "always",
+    "preferredSkills": [
+      "feint",
+      "rally_action",
+      "reposition",
+      "masterstroke"
+    ],
+    "tags": [
+      "heavy",
+      "tank"
+    ]
+  },
+  {
     "classId": "chronomancer",
     "id": "temporal",
     "name": "Temporal",
@@ -798,6 +1221,38 @@
     "tags": [
       "magic",
       "caster"
+    ]
+  },
+  {
+    "classId": "chronomancer",
+    "id": "horologist",
+    "name": "Horologist",
+    "description": "Support chronomancer. CON-led so Rewind never finds you dead. Haste and Slow Time keep the tempo in your favour without spiking burst.",
+    "targetAttrs": {
+      "STR": 0,
+      "DEX": 5,
+      "INT": 45,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "staff",
+      "wand"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "rewind",
+      "haste",
+      "slow_time",
+      "time_stop"
+    ],
+    "tags": [
+      "magic",
+      "support"
     ]
   },
   {
@@ -830,6 +1285,38 @@
     "tags": [
       "light",
       "dps"
+    ]
+  },
+  {
+    "classId": "monk",
+    "id": "iron_palm",
+    "name": "Iron Palm",
+    "description": "Body-of-stone monk. CON-led so Inner Focus self-heals a much larger pool. Palm Strike + Flurry deliver damage while you absorb the front.",
+    "targetAttrs": {
+      "STR": 15,
+      "DEX": 35,
+      "INT": 0,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "unarmed",
+      "staff"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "inner_focus",
+      "palm_strike",
+      "flurry",
+      "monk_shadow_step"
+    ],
+    "tags": [
+      "light",
+      "tank"
     ]
   },
   {
@@ -921,6 +1408,38 @@
     ]
   },
   {
+    "classId": "sorcerer",
+    "id": "mana_warden",
+    "name": "Mana Warden",
+    "description": "Chaos-warded sorcerer. CON bulks up so Mana Burn doesn't backfire and Chaos Ward saves your life when the dice go bad.",
+    "targetAttrs": {
+      "STR": 0,
+      "DEX": 5,
+      "INT": 45,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "staff",
+      "wand"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "chaos_ward",
+      "mana_burn",
+      "wild_bolt",
+      "sorc_arcane_surge"
+    ],
+    "tags": [
+      "magic",
+      "hybrid"
+    ]
+  },
+  {
     "classId": "shaman",
     "id": "spiritcaller",
     "name": "Spiritcaller",
@@ -946,6 +1465,39 @@
     "tags": [
       "magic",
       "support"
+    ]
+  },
+  {
+    "classId": "shaman",
+    "id": "totemguard",
+    "name": "Totemguard",
+    "description": "Anvil shaman. CON-tilted so Ancestral Shield holds and you live to keep the totems planted. Healing Totem ticks while you absorb hits.",
+    "targetAttrs": {
+      "STR": 10,
+      "DEX": 5,
+      "INT": 35,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "staff",
+      "iron_mace",
+      "scepter"
+    ],
+    "shieldPref": "always",
+    "preferredSkills": [
+      "ancestral_shield",
+      "healing_totem",
+      "spirit_bolt",
+      "chain_lightning_spirit"
+    ],
+    "tags": [
+      "medium",
+      "tank"
     ]
   },
   {
@@ -981,6 +1533,38 @@
     ]
   },
   {
+    "classId": "witch_hunter",
+    "id": "templar",
+    "name": "Templar",
+    "description": "Heavy witch hunter. CON-led so Purge Strike connects safely from melee. Inquisitor Mark sets priority targets while you weather the answer.",
+    "targetAttrs": {
+      "STR": 25,
+      "DEX": 20,
+      "INT": 0,
+      "CON": 55
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.45
+      }
+    },
+    "weapons": [
+      "sword",
+      "hammer"
+    ],
+    "shieldPref": "always",
+    "preferredSkills": [
+      "purge_strike",
+      "inquisitor_mark",
+      "dispel_curse",
+      "silver_bolt"
+    ],
+    "tags": [
+      "medium",
+      "tank"
+    ]
+  },
+  {
     "classId": "runesmith",
     "id": "forgewright",
     "name": "Forgewright",
@@ -1009,6 +1593,37 @@
     ]
   },
   {
+    "classId": "runesmith",
+    "id": "wardsmith",
+    "name": "Wardsmith",
+    "description": "Tank runesmith. CON tops the spread; STR still scales the hammer. Rune of Warding pre-shields the party while Forge Flame counterattacks.",
+    "targetAttrs": {
+      "STR": 30,
+      "DEX": 5,
+      "INT": 10,
+      "CON": 55
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.45
+      }
+    },
+    "weapons": [
+      "hammer"
+    ],
+    "shieldPref": "always",
+    "preferredSkills": [
+      "rune_of_warding",
+      "rune_of_might",
+      "rune_hammer",
+      "forge_flame"
+    ],
+    "tags": [
+      "heavy",
+      "tank"
+    ]
+  },
+  {
     "classId": "shadow_dancer",
     "id": "umbral",
     "name": "Umbral",
@@ -1029,14 +1644,48 @@
     ],
     "shieldPref": "never",
     "preferredSkills": [
-      "shadow_strike",
-      "shadow_step_sd",
-      "veil_of_dusk",
-      "shadow_clone"
+      "sd_shadow_strike",
+      "smoke_veil",
+      "assassinate",
+      "dance_of_blades"
     ],
     "tags": [
       "light",
       "dps"
+    ]
+  },
+  {
+    "classId": "shadow_dancer",
+    "id": "nightveil",
+    "name": "Nightveil",
+    "description": "Evasion-heavy shadow dancer. DEX still leads but CON climbs so Smoke Veil and Dance of Blades buy you real survivability, not just escape velocity.",
+    "targetAttrs": {
+      "STR": 5,
+      "DEX": 45,
+      "INT": 0,
+      "CON": 50
+    },
+    "plateaus": {
+      "DEX": {
+        "until": "hit95"
+      },
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "dagger"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "smoke_veil",
+      "dance_of_blades",
+      "sd_shadow_strike",
+      "assassinate"
+    ],
+    "tags": [
+      "light",
+      "hybrid"
     ]
   },
   {
@@ -1064,6 +1713,38 @@
     "tags": [
       "magic",
       "hybrid"
+    ]
+  },
+  {
+    "classId": "tinker",
+    "id": "mechwright",
+    "name": "Mechwright",
+    "description": "Durable tinker. CON-tilted so Quick-Fix has someone to land on between volleys. Overcharge supports the party while you weather threats.",
+    "targetAttrs": {
+      "STR": 0,
+      "DEX": 20,
+      "INT": 30,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "crossbow",
+      "dagger"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "tinker_quick_fix",
+      "tinker_overcharge",
+      "tinker_grenade",
+      "tinker_bolt"
+    ],
+    "tags": [
+      "medium",
+      "support"
     ]
   },
   {
@@ -1095,6 +1776,38 @@
     ]
   },
   {
+    "classId": "enchanter",
+    "id": "beguiler",
+    "name": "Beguiler",
+    "description": "Resilient enchanter. CON climbs so a missed Sleep doesn't end the fight. Mind Charm pulls aggro off the casters; Arcane Jolt finishes priority targets.",
+    "targetAttrs": {
+      "STR": 0,
+      "DEX": 5,
+      "INT": 45,
+      "CON": 50
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.4
+      }
+    },
+    "weapons": [
+      "staff",
+      "wand"
+    ],
+    "shieldPref": "never",
+    "preferredSkills": [
+      "mind_charm",
+      "lullaby",
+      "mass_drowse",
+      "arcane_jolt"
+    ],
+    "tags": [
+      "magic",
+      "hybrid"
+    ]
+  },
+  {
     "classId": "priest",
     "id": "dusk_vigil",
     "name": "Dusk Vigil",
@@ -1121,6 +1834,38 @@
     "tags": [
       "magic",
       "support"
+    ]
+  },
+  {
+    "classId": "priest",
+    "id": "lightkeeper",
+    "name": "Lightkeeper",
+    "description": "Front-line priest. CON-led so Mend keeps the line standing and Call Back has someone left to revive. Shadow Veil for emergencies; damage is incidental.",
+    "targetAttrs": {
+      "STR": 5,
+      "DEX": 5,
+      "INT": 35,
+      "CON": 55
+    },
+    "plateaus": {
+      "CON": {
+        "atLeast": 0.45
+      }
+    },
+    "weapons": [
+      "iron_mace",
+      "scepter"
+    ],
+    "shieldPref": "always",
+    "preferredSkills": [
+      "priest_mend",
+      "priest_call_back",
+      "shadow_veil",
+      "shadow_bolt"
+    ],
+    "tags": [
+      "medium",
+      "tank"
     ]
   }
 ]

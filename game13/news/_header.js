@@ -223,17 +223,13 @@
     label: 'Archived',
     children: ARCHIVED.slice()
   } : null;
-  // News dropdown: show top 8 articles + "All News" link at bottom.
+  // News dropdown: show top 8 article titles (no date, no archive footer).
   var newsItem = NEWS.length ? (function () {
     var top = NEWS.slice(0, 8);
     var children = top.map(function (n) {
-      var d = n.date || '2026-04-14';
-      return { href: n.href, label: d + ' — ' + n.label };
+      return { href: n.href, label: n.label };
     });
-    // "All News" archive link at the bottom of the dropdown
-    children.push({ separator: true, label: 'Archive' });
-    children.push({ href: NEWS_ARCHIVE, label: 'All News →' });
-    return { href: NEWS_ARCHIVE, label: 'News', children: children };
+    return { href: NEWS_ARCHIVE, label: 'News', children: children, alignRight: true };
   })() : null;
   // M242: "Home" takes over the front-page role; "Game Info" still links
   // for any games that haven't consolidated yet. For Emberveil (game13)
@@ -265,7 +261,9 @@
           }
           return '<li><a href="' + c.href + '">' + c.label + '</a></li>';
         }).join('');
-        return '<li class="has-sub"><a href="' + m.href + '">' + m.label + ' ▾</a><ul class="sub-menu">' + sub + '</ul></li>';
+        var subCls = m.alignRight ? ' sub-menu sub-menu-right' : ' sub-menu';
+        var liCls = m.alignRight ? 'has-sub has-sub-right' : 'has-sub';
+        return '<li class="' + liCls + '"><a href="' + m.href + '">' + m.label + ' ▾</a><ul class="' + subCls + '">' + sub + '</ul></li>';
       }
       var attrs = m.external ? ' target="_blank" rel="noopener"' : '';
       var cls = m.primary ? ' class="nav-btn"' : '';
@@ -314,7 +312,8 @@
       'nav.rsg-shared-nav .nav-links a:hover{color:#ffb066}' +
       'nav.rsg-shared-nav .nav-links a.nav-btn{color:#f3e6d2;background:linear-gradient(180deg,rgba(232,97,42,.18),rgba(232,97,42,.06));padding:11px 22px;border:1px solid #54402f;border-radius:2px;font-weight:500;letter-spacing:0.22em}' +
       'nav.rsg-shared-nav .nav-links a.nav-btn:hover{background:linear-gradient(180deg,rgba(232,97,42,.32),rgba(232,97,42,.14));color:#fff;border-color:#e8612a}' +
-      'nav.rsg-shared-nav .sub-menu{display:none;position:absolute;top:100%;left:0;background:rgba(10,6,8,0.98);border:1px solid rgba(232,160,32,0.25);border-radius:6px;padding:0.4rem 0;list-style:none;margin:0;min-width:140px;box-shadow:0 8px 24px rgba(0,0,0,0.5);margin-top:17px;border-top:none;border-top-left-radius:0;border-top-right-radius:0}' +
+      'nav.rsg-shared-nav .sub-menu{display:none;position:absolute;top:100%;left:0;background:rgba(10,6,8,0.98);border:1px solid rgba(232,160,32,0.25);border-radius:6px;padding:0.4rem 0;list-style:none;margin:0;min-width:140px;max-width:calc(100vw - 16px);box-shadow:0 8px 24px rgba(0,0,0,0.5);margin-top:17px;border-top:none;border-top-left-radius:0;border-top-right-radius:0}' +
+      'nav.rsg-shared-nav .sub-menu-right{left:auto;right:0}' +
       'nav.rsg-shared-nav .sub-menu::before{content:"";position:absolute;bottom:calc(100% + -1px);left:0;right:0;height:19px}' +
       'nav.rsg-shared-nav .has-sub:hover .sub-menu,nav.rsg-shared-nav .has-sub:focus-within .sub-menu,nav.rsg-shared-nav .has-sub.open .sub-menu{display:block}' +
       'nav.rsg-shared-nav .sub-menu a{padding:0.4rem 0.9rem;font-size:0.7rem}' +

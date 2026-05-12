@@ -7,6 +7,7 @@
 <title>Image Review V2 — Emberveil</title>
 <script src="./_header.js" defer></script>
 <script src="./_footer.js" defer></script>
+<link rel="stylesheet" href="./_shared/sprite-grid.css">
 <style>
   :root {
     --bg:#0a0608; --panel:#1a1218; --panel-alt:#241a20; --border:rgba(232,160,32,0.2); --border-strong:rgba(232,160,32,0.45);
@@ -90,6 +91,11 @@
   .card .check-row { position:absolute; inset:0; display:none; }
   .card .pose-tag { position:absolute; bottom:0.35rem; left:0.35rem; background:#0008; color:#bbb; font-size:0.6rem; padding:0.1rem 0.35rem; border-radius:2px; }
 
+  /* Background filter bar inside topbar — remove the shared margin-bottom, no border */
+  .topbar .bg-filter-bar { margin:0; border:none; background:transparent; padding:0; }
+  /* Label above topbar segments */
+  .topbar-label { font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem; }
+
   /* Character group blocks (List layout) */
   .char-group { margin-bottom:1rem; padding:0.5rem; background:var(--panel); border:1px solid var(--border); border-radius:6px; }
   .char-group .group-head { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem; }
@@ -100,84 +106,9 @@
   .char-group .pose-row .card .label { font-size:0.6rem; }
 
   /* =====================================================================
-     GROUPED layout — images.html-compatible appearance card components
-     Identical class names + rules so the same CSS governs both pages.
+     GROUPED layout — shared CSS lives in _shared/sprite-grid.css
+     Only page-specific overrides below.
      ===================================================================== */
-
-  /* Transparency checkerboard — matches images.html */
-  :root {
-    --checker-a: #1a1218;
-    --checker-b: #0f0b10;
-    --checker-size: 20px;
-  }
-  .checker-bg {
-    background-image:
-      linear-gradient(45deg, var(--checker-a) 25%, transparent 25%),
-      linear-gradient(-45deg, var(--checker-a) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, var(--checker-a) 75%),
-      linear-gradient(-45deg, transparent 75%, var(--checker-a) 75%);
-    background-size: var(--checker-size) var(--checker-size);
-    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-    background-color: var(--checker-b);
-  }
-
-  /* M463 — global sprite-background toggle. body[data-sprite-bg=...]
-     overrides every .checker-bg/.appearance-portrait/.pose-frame/.card .img-wrap
-     so the user can audit characters against different backdrops. */
-  body[data-sprite-bg="none"] .checker-bg,
-  body[data-sprite-bg="none"] .appearance-portrait,
-  body[data-sprite-bg="none"] .pose-frame,
-  body[data-sprite-bg="none"] .card .img-wrap { background-image:none; background-color:transparent; }
-  body[data-sprite-bg="white"] .checker-bg,
-  body[data-sprite-bg="white"] .appearance-portrait,
-  body[data-sprite-bg="white"] .pose-frame,
-  body[data-sprite-bg="white"] .card .img-wrap { background-image:none; background-color:#fff; }
-  body[data-sprite-bg="black"] .checker-bg,
-  body[data-sprite-bg="black"] .appearance-portrait,
-  body[data-sprite-bg="black"] .pose-frame,
-  body[data-sprite-bg="black"] .card .img-wrap { background-image:none; background-color:#000; }
-  body[data-sprite-bg="green"] .checker-bg,
-  body[data-sprite-bg="green"] .appearance-portrait,
-  body[data-sprite-bg="green"] .pose-frame,
-  body[data-sprite-bg="green"] .card .img-wrap { background-image:none; background-color:#00FF00; }
-
-  /* M463 — image-review flag indicators (subtle colored dot on each tile) */
-  .flag-dot {
-    position:absolute; top:0.35rem; right:0.35rem;
-    width:10px; height:10px; border-radius:50%;
-    border:1px solid rgba(0,0,0,0.4);
-    box-shadow:0 1px 2px rgba(0,0,0,0.6);
-    z-index:3; pointer-events:none;
-  }
-  .flag-dot[data-prio="error"]   { background:#c04030; }
-  .flag-dot[data-prio="warning"] { background:#e8a020; }
-  .flag-dot[data-prio="info"]    { background:#3080d0; }
-  /* Pose-frame variant sits inside the small 44px tile */
-  .pose-frame .flag-dot, .appearance-portrait .flag-dot { top:2px; right:2px; width:8px; height:8px; }
-  /* Hover tooltip on desktop only */
-  @media (hover: hover) {
-    .flag-dot[data-text]:hover::after {
-      content: attr(data-text);
-      position:absolute; bottom:14px; right:-4px;
-      background:#000d; color:#fff; font-size:10px; padding:3px 6px; border-radius:3px;
-      white-space:nowrap; pointer-events:none;
-    }
-  }
-
-  /* M463 — generator/version badge */
-  .gen-badge {
-    position:absolute; bottom:0.3rem; right:0.3rem;
-    background:rgba(0,0,0,0.7); color:#bbb;
-    font-size:9px; padding:1px 5px; border-radius:3px;
-    text-transform:uppercase; letter-spacing:0.04em;
-    pointer-events:none; z-index:2;
-  }
-  .gen-badge.gen-openai_v2 { background:rgba(48,128,208,0.7); color:#fff; }
-  .gen-badge.gen-spritecook { background:rgba(96,72,40,0.7); color:#ddd; }
-  .pose-frame .gen-badge, .appearance-portrait .gen-badge { font-size:7px; padding:0 3px; bottom:1px; right:1px; }
-
-  /* M463 — group bulk-select checkbox */
-  .group-bulk-check { width:16px; height:16px; accent-color:var(--accent); margin-right:0.4rem; cursor:pointer; }
 
   /* M463 — Pipeline overview cards */
   .pipeline-overview { display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:0.75rem; margin-bottom:1rem; }
@@ -189,67 +120,7 @@
   .pipeline-card .pc-ref { width:100%; max-width:360px; background:var(--panel-alt); border:1px solid var(--border); border-radius:4px; image-rendering:pixelated; margin-top:0.4rem; }
   .pipeline-card .pc-meta { color:var(--muted); font-size:0.7rem; margin-top:0.4rem; font-family:monospace; }
 
-  /* Outer grid for class-pair-block cards */
-  .class-pair-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(420px, 1fr)); gap:16px; margin-bottom:1rem; }
-
-  /* Individual character card */
-  .class-pair-block {
-    background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px;
-    transition:border-color 0.2s, box-shadow 0.2s;
-  }
-  .class-pair-block:hover { border-color:var(--accent-dim); box-shadow:0 4px 16px rgba(232,160,32,0.1); }
-  .class-pair-block.selected-group { border-color:var(--accent); box-shadow:0 0 0 2px rgba(255,208,96,0.15); }
-
-  /* Card header row */
-  .class-pair-header { display:flex; align-items:center; gap:8px; margin-bottom:12px; flex-wrap:wrap; }
-  .class-pair-name { font-size:15px; font-weight:700; color:var(--accent); text-transform:capitalize; }
-  .class-pair-id { font-size:10px; color:var(--muted); font-family:monospace; }
-
-  /* M/F side-by-side columns */
-  .class-pair-variants { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-  .gender-col { display:flex; flex-direction:column; gap:6px; }
-  .gender-col-label { font-size:10px; text-transform:uppercase; letter-spacing:0.1em; font-weight:700; color:var(--muted); display:flex; align-items:center; gap:5px; }
-  .badge-gender-male   { color:#80aaff; }
-  .badge-gender-female { color:#f080c0; }
-
-  /* Appearance row: portrait + 6 pose frames */
-  .appearance-row { display:flex; gap:6px; align-items:flex-start; flex-wrap:wrap; }
-
-  .appearance-portrait {
-    position:relative; width:72px; min-width:72px; height:72px;
-    border-radius:7px; overflow:hidden; border:2px solid var(--border);
-    cursor:pointer; transition:border-color 0.15s; flex-shrink:0;
-  }
-  .appearance-portrait:hover { border-color:var(--accent); }
-  .appearance-portrait img { width:100%; height:100%; object-fit:contain; image-rendering:pixelated; image-rendering:crisp-edges; }
-  .appearance-portrait.selected-portrait { border-color:var(--accent); box-shadow:0 0 0 2px rgba(255,208,96,0.25); }
-
-  .appearance-frames { display:grid; grid-template-columns:repeat(3, 44px); gap:3px; }
-
-  .pose-frame {
-    position:relative; width:44px; height:44px;
-    border-radius:5px; overflow:hidden; border:1px solid var(--border);
-    cursor:pointer; transition:border-color 0.15s, transform 0.12s;
-  }
-  .pose-frame:hover { border-color:var(--accent); transform:scale(1.08); }
-  .pose-frame.selected-pose { border-color:var(--accent); box-shadow:0 0 0 1px rgba(255,208,96,0.3); }
-  .pose-frame img { width:100%; height:100%; object-fit:contain; image-rendering:pixelated; image-rendering:crisp-edges; }
-  .pose-frame .pose-label {
-    position:absolute; bottom:0; left:0; right:0;
-    background:rgba(0,0,0,0.72); color:#fff; font-size:7px;
-    text-align:center; padding:1px; text-transform:uppercase; letter-spacing:0.04em;
-    pointer-events:none;
-  }
-  .pose-frame.pose-missing {
-    background:rgba(192,64,48,0.06); border-color:rgba(192,64,48,0.28);
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; cursor:default;
-  }
-  .pose-frame.pose-missing .pose-missing-glyph { font-size:12px; color:var(--warn); opacity:0.5; }
-  .pose-frame.pose-missing .pose-label { position:static; background:transparent; color:var(--warn); opacity:0.6; }
-
-  .appearance-id-row { margin-top:5px; font-size:10px; color:var(--muted); font-family:monospace; display:flex; align-items:center; gap:5px; flex-wrap:wrap; }
-
-  /* Badge (mirroring images.html badge styles scoped to review page) */
+  /* Badge (page-specific variant — shared class-pair/appearance/pose CSS lives in _shared/sprite-grid.css) */
   .rv-badge {
     font-size:9px; padding:1px 5px; border-radius:8px; font-weight:600;
     letter-spacing:0.03em; display:inline-block;
@@ -309,6 +180,7 @@
     #filter-panel { right:0.5rem; bottom:4.5rem; }
   }
 </style>
+<script src="./_shared/sprite-grid.js"></script>
 </head>
 <body class="ev-themed">
 <div class="wrap">
@@ -380,14 +252,8 @@
       </div>
     </div>
     <div>
-      <div style="font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem;">Background</div>
-      <div class="seg" id="bg-seg">
-        <button data-bg="checker" class="active" title="Transparency grid">⛛</button>
-        <button data-bg="none" title="No background (page color)">∅</button>
-        <button data-bg="white" title="Solid white">W</button>
-        <button data-bg="black" title="Solid black">B</button>
-        <button data-bg="green" title="Chroma green #00FF00">G</button>
-      </div>
+      <div class="topbar-label">Background</div>
+      <div id="bg-filter-mount"></div>
     </div>
     <div id="batch-select-wrap" style="display:none;">
       <div style="font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem;">Batch</div>
@@ -553,24 +419,12 @@ function buildFilters() {
   });
 }
 
-// M463 — Background mode (sticky in localStorage)
-const BG_LS_KEY = 'evImgReview_spriteBg';
-function applySpriteBg(mode) {
-  const valid = ['checker','none','white','black','green'];
-  if (!valid.includes(mode)) mode = 'checker';
-  // 'checker' = no override; the .checker-bg default class handles it.
-  document.body.dataset.spriteBg = mode === 'checker' ? '' : mode;
-  document.querySelectorAll('#bg-seg button').forEach(b =>
-    b.classList.toggle('active', b.dataset.bg === mode));
-  try { localStorage.setItem(BG_LS_KEY, mode); } catch (_) {}
-}
+// Background mode — delegated to SpriteGrid shared module.
+// SpriteGrid.applySpriteBg / SpriteGrid.mountBgFilter in _shared/sprite-grid.js.
+const BG_LS_KEY = SpriteGrid.BG_LS_KEY;
+function applySpriteBg(mode) { SpriteGrid.applySpriteBg(mode); }
 function wireBgSeg() {
-  document.querySelectorAll('#bg-seg button').forEach(b => {
-    b.onclick = () => applySpriteBg(b.dataset.bg);
-  });
-  let initial = 'checker';
-  try { initial = localStorage.getItem(BG_LS_KEY) || 'checker'; } catch (_) {}
-  applySpriteBg(initial);
+  SpriteGrid.mountBgFilter(document.getElementById('bg-filter-mount'));
 }
 
 // M463 — Image flag persistence (sibling sidecar JSON loaded once, mutated in
@@ -1157,8 +1011,9 @@ function renderListAppearances(entries) {
   const tiles = [];
   const allLbItems = [];
   for (const [appId, app] of Object.entries(APPEARANCES)) {
-    const cat = app.category || app.kind;
-    if (!filters.charCats.has(cat)) continue;
+    // resolveAppearanceCategory maps 'class' kind → 'hero' filter category, etc.
+    const cat = SpriteGrid.resolveAppearanceCategory(app);
+    if (!cat || !filters.charCats.has(cat)) continue;
     for (const pose of POSES) {
       if (filters.poses && !filters.poses.has(pose)) continue;
       const rel = app.sprites && app.sprites[pose];
