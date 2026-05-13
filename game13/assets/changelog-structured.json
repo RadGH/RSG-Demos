@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-13T18:45:20.988Z",
+  "generated": "2026-05-13T19:14:58.983Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,21 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 477,
+      "date": "",
+      "summary": "Overview Stats fix. After loading a save with one hero and returning to main menu, the Overview tab Damage/Kills/Taken/Healing charts only showed that one hero even with All slots selected. Root cause: chartMembers fallback only used cloud names when live party was empty; non-empty live party masked cloud heroes. Now: chartMembers unions both lists (dedup by id + lowercase name). Slot filter still narrows via _mergedCombatHistory() upstream.",
+      "items": [
+        {
+          "text": "Overview Stats fix. After loading a save with one hero and returning to main menu, the Overview tab Damage/Kills/Taken/Healing charts only showed that one hero even with All slots selected. Root cause: chartMembers fallback only used cloud names when live party was empty; non-empty live party masked cloud heroes. Now: chartMembers unions both lists (dedup by id + lowercase name). Slot filter still narrows via _mergedCombatHistory() upstream.",
+          "categories": [
+            "Feature",
+            "BugFix",
+            "Balance"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 476,
       "date": "2026-05-13",

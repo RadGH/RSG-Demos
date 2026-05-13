@@ -700,7 +700,11 @@ function renderUnifiedCharacters(entries) {
     });
   }
 
+  // Clear before rendering — image-review re-builds the whole list on every
+  // filter/mode change. images.html doesn't pass clear because it calls in a
+  // loop per appearance and manages its own container lifecycle.
   SpriteGrid.renderUnifiedCharacters(content, characters, {
+    clear: true,
     decorateHead: (head, c) => {
       // Bulk checkbox at the start of the header.
       const bulkChk = document.createElement('input');

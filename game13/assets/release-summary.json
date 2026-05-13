@@ -1,7 +1,7 @@
 {
-  "milestone": 476,
+  "milestone": 477,
   "date": "2026-05-13",
-  "summary": "M476 — stats fixes + tooltips + uniques + bosses + RELEASE_FAST. Slot dropdown refreshes on cloud load. damageTaken now actually records (was 0 for everyone). Overview tab adds Damage Taken + Healing charts. .ev-tooltip-card portaled to body (escapes .ev-hud stacking). Hover tooltip on enemies + companions showing statuses + blue-name modifiers. Unique items had no dmg/armor stats — now baked at gen time (auto-equip works, tooltips show damage). Bosses no longer double-scaled (hardcoded 2.5x boost removed). RELEASE_FAST=1 mode added — this very release uses it.",
+  "summary": "M477 — Overview Stats charts now union live party + all cloud-history heroes (was locking to current party only after load+combat, ignoring slot filter).",
   "categories": [
     "feature"
   ],

@@ -160,7 +160,12 @@
    */
   function renderUnifiedCharacters(container, characters, opts) {
     opts = opts || {};
-    container.innerHTML = '';
+    // M478 — APPEND-only. Callers that need to clear (e.g. image-review-v2
+    // batch re-renders) own that responsibility. Previously this wiped the
+    // container on every call, which broke images.html where the page calls
+    // the renderer once per appearance in a loop — only the LAST appearance
+    // survived (made "Classes" filter show only clockwork_turret).
+    if (opts.clear) container.innerHTML = '';
 
     for (const c of characters) {
       const section = document.createElement('div');
