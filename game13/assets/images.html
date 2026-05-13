@@ -6,6 +6,7 @@
   <meta name="rsg-game" content="Emberveil">
   <title>Images — Emberveil Asset Gallery</title>
   <link rel="stylesheet" href="./_shared/sprite-grid.css">
+  <link rel="stylesheet" href="./_shared/lightbox.css">
   <style>
     /* =========================================================
        DESIGN TOKENS
@@ -226,27 +227,14 @@
       text-transform: uppercase;
     }
 
-    /* =========================================================
-       CLASS PAIR BLOCK — base styles in _shared/sprite-grid.css
-       Page-specific overrides only:
-       ========================================================= */
-    /* images.html uses a slightly larger gap and display-font name */
-    .class-pair-grid { gap: 20px; }
-    .class-pair-name { font-family: var(--font-display); font-size: 17px; color: var(--gold-bright); }
-
-    /* =========================================================
-       APPEARANCE ROW — base styles in _shared/sprite-grid.css
-       images.html uses slightly larger tiles: 80px portrait, 48px pose frames
-       ========================================================= */
-    .appearance-portrait { width: 80px; min-width: 80px; height: 80px; border-radius: 8px; }
-    .appearance-frames   { grid-template-columns: repeat(3, 48px); gap: 4px; }
-    .pose-frame          { width: 48px; height: 48px; border-radius: 6px; }
-    .appearance-id-row   { margin-top: 6px; font-size: 11px; gap: 6px; }
-
-    /* Gender column */
-    .gender-col      { gap: 8px; }
-    .gender-col-label { gap: 6px; }
-    .badge-gender-missing { color: var(--warn); font-size: 10px; opacity: 0.7; }
+    /* M472 — class-pair / appearance-row / gender-col styles retired; every
+       character now uses the unified single-row layout from _shared/sprite-grid.css
+       (.unified-char + .uc-row + .uc-tile). Display-font hooks for character
+       names so they keep the page's existing typography: */
+    .unified-char .uc-name { font-family: var(--font-display); font-size: 17px; color: var(--gold-bright); }
+    /* Gender badge colors (also used in unified-char heads for class appearances). */
+    .badge-gender-male    { color: #80aaff; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+    .badge-gender-female  { color: #f080c0; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
 
     /* =========================================================
        ENTITY GRID — companions, enemies, bosses (simpler layout)
@@ -387,67 +375,7 @@
     .badge-npc      { background: #1a2a3a; color: #60aaee; border: 1px solid #2a4a6a; }
     .badge-deprecated { background: #2a2a2a; color: var(--muted); border: 1px solid #3a3a3a; text-decoration: line-through; }
 
-    /* =========================================================
-       MODAL
-       ========================================================= */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.82);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-    .modal-overlay.open { display: flex; }
-    .modal {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      max-width: 700px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    .modal-img-wrap {
-      border-radius: 12px 12px 0 0;
-      overflow: hidden;
-      min-height: 80px;
-    }
-    .modal-img {
-      width: 100%;
-      max-height: 420px;
-      object-fit: contain;
-      display: block;
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-    }
-    .modal-body { padding: 20px; }
-    .modal-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
-    .modal-row { margin-bottom: 10px; }
-    .modal-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 2px;
-    }
-    .modal-value { font-size: 13px; color: var(--text); }
-    .modal-file { font-family: monospace; font-size: 12px; color: var(--muted); }
-    .modal-close {
-      float: right;
-      background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 20px;
-      cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-family: var(--font-ui);
-    }
-    .modal-close:hover { color: var(--text); }
+    /* Lightbox CSS — moved to _shared/lightbox.css (M472). */
 
     /* =========================================================
        AUDIO SECTION
@@ -690,6 +618,7 @@
   gtag('config', 'G-5H26ZXKBCL');
 </script>
 <script src="./_shared/sprite-grid.js"></script>
+<script src="./_shared/lightbox.js"></script>
 </head>
 <body class="ev-themed">
 
@@ -815,18 +744,7 @@
   </details>
 </section>
 
-<!-- Modal -->
-<div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
-  <div class="modal">
-    <div class="modal-body" style="padding-bottom:4px;">
-      <button class="modal-close" id="modal-close" aria-label="Close">&#x2715;</button>
-    </div>
-    <div class="modal-img-wrap checker-bg" id="modal-img-wrap">
-      <img id="modal-img" class="modal-img" src="" alt="" style="display:none">
-    </div>
-    <div class="modal-body" id="modal-content"></div>
-  </div>
-</div>
+<!-- Lightbox DOM auto-created by SharedLightbox.create() — see _shared/lightbox.js -->
 
 <script>
 /* =============================================================================
@@ -864,50 +782,80 @@ function thumbPath(file) {
   return '../images/_thumbs/' + rel;
 }
 
-function openModal(srcFile, title, meta) {
-  const overlay = document.getElementById('modal');
-  const img = document.getElementById('modal-img');
-  const wrap = document.getElementById('modal-img-wrap');
-  const content = document.getElementById('modal-content');
+// Shared lightbox controller — built once at DOMContentLoaded.
+// images.html opts out of flag controls / approve flow (review-v2 only).
+let LB = null;
+/** Current nav list of items for prev/next. Rebuilt at the end of render(). */
+let LB_NAV_ITEMS = [];
 
-  const full = srcFile ? ('../images/' + srcFile) : null;
-  if (full) {
-    img.src = full;
-    img.alt = title || '';
-    img.style.display = 'block';
-    wrap.style.display = 'block';
-  } else {
-    img.style.display = 'none';
-    wrap.style.display = 'none';
-  }
+document.addEventListener('DOMContentLoaded', function() {
+  LB = SharedLightbox.create({
+    enableFlags: false,
+    enableLayoutToggle: true,
+  });
+});
 
-  let html = `<div class="modal-title">${esc(title || 'Image')}</div>`;
-  if (meta) {
-    for (const [label, val] of Object.entries(meta)) {
-      if (!val) continue;
-      const isFile = label === 'File';
-      html += `<div class="modal-row">
-        <div class="modal-label">${esc(label)}</div>
-        <div class="modal-value${isFile ? ' modal-file' : ''}">${esc(val)}</div>
-      </div>`;
-    }
-  }
-  content.innerHTML = html;
-  overlay.classList.add('open');
+/** Open the lightbox for a given relative image path.
+ *  Used by every clickable image on the page — characters, backgrounds, UI tiles,
+ *  orphans. If the path matches an entry already in LB_NAV_ITEMS (rebuilt by
+ *  render()), prev/next walks the full visible set; otherwise it opens single-shot.
+ */
+/** Quick heuristic: treat dialog/map/combat backgrounds (and any non-pixel-art
+ *  JPG) as `isBg` so the lightbox renders them un-pixelated. */
+function isBgRelPath(rel) {
+  if (!rel) return false;
+  if (/^(dialog_bg|map_bg|combat_bg)\//.test(rel)) return true;
+  if (/\.jpe?g$/i.test(rel)) return true;
+  return false;
 }
 
-document.getElementById('modal-close').addEventListener('click', function() {
-  document.getElementById('modal').classList.remove('open');
-});
-document.getElementById('modal').addEventListener('click', function(e) {
-  if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
-});
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') document.getElementById('modal').classList.remove('open');
-});
+function openModal(srcFile, title, meta) {
+  if (!LB) return;
+  const id = srcFile || title;
+  const idx = LB_NAV_ITEMS.findIndex(it => it.id === id);
+  if (idx >= 0) {
+    LB.setItems(LB_NAV_ITEMS);
+    LB.openByIndex(idx);
+  } else {
+    LB.openSingle({
+      id, title: title || 'Image', subtitle: '',
+      src: srcFile ? ('../images/' + srcFile) : '',
+      meta: meta || null,
+      isBg: isBgRelPath(srcFile),
+    });
+  }
+}
+
+/** Build the lightbox nav list by collecting every visible (clickable) image in
+ *  the manifest content area. Each entry carries the relative path as its id,
+ *  matching the value openModal() will look up. */
+function rebuildLbNavItems() {
+  const items = [];
+  const seen = new Set();
+  function add(relPath, title, meta) {
+    if (!relPath || seen.has(relPath)) return;
+    seen.add(relPath);
+    items.push({
+      id: relPath,
+      title: title || relPath,
+      subtitle: '',
+      src: '../images/' + relPath,
+      meta: meta || null,
+      isBg: isBgRelPath(relPath),
+    });
+  }
+  // Collected by the various renderers via registerLbImage(); see callers below.
+  for (const e of LB_PENDING_REGISTRATIONS) add(e.relPath, e.title, e.meta);
+  LB_PENDING_REGISTRATIONS.length = 0;
+  LB_NAV_ITEMS = items;
+}
+const LB_PENDING_REGISTRATIONS = [];
+function registerLbImage(relPath, title, meta) {
+  LB_PENDING_REGISTRATIONS.push({ relPath, title, meta: meta || null });
+}
 
 // ---------------------------------------------------------------------------
-// Pose frame rendering
+// Pose labels (matches image-review-v2.html so both pages use the same glyphs).
 // ---------------------------------------------------------------------------
 const POSE_LABELS = {
   portrait:   'port',
@@ -918,256 +866,147 @@ const POSE_LABELS = {
   east_block: 'blk',
   east_ko:    'ko',
 };
-
-function renderPoseFrame(id, name, pose, relPath) {
-  const div = document.createElement('div');
-  div.className = 'pose-frame checker-bg';
-  if (!relPath) {
-    div.classList.add('pose-missing');
-    div.innerHTML = `<span class="pose-missing-glyph">&#x2717;</span><span class="pose-label">${esc(POSE_LABELS[pose] || pose)}</span>`;
-    return div;
-  }
-  const src      = thumbPath(relPath);
-  const fullSrc  = imgPath(relPath);
-  const label    = POSE_LABELS[pose] || pose;
-  const imgEl    = document.createElement('img');
-  imgEl.src      = src;
-  imgEl.alt      = `${name} ${pose}`;
-  imgEl.loading  = 'lazy';
-  imgEl.dataset.orig = fullSrc;
-  imgEl.onerror  = function() {
-    if (!this.dataset.tried) { this.dataset.tried = '1'; this.src = fullSrc; }
-    else { this.style.display = 'none'; }
-  };
-  const labelEl = document.createElement('div');
-  labelEl.className = 'pose-label';
-  labelEl.textContent = label;
-  div.appendChild(imgEl);
-  div.appendChild(labelEl);
-  div.addEventListener('click', function() {
-    openModal(relPath, `${name} — ${pose}`, { File: relPath });
-  });
-  return div;
-}
-
-function renderPortraitFrame(id, name, portraitPath) {
-  const div = document.createElement('div');
-  div.className = 'appearance-portrait checker-bg';
-  if (!portraitPath) {
-    div.innerHTML = '<span style="font-size:24px;color:var(--muted)">?</span>';
-    return div;
-  }
-  const src    = thumbPath(portraitPath);
-  const full   = imgPath(portraitPath);
-  const imgEl  = document.createElement('img');
-  imgEl.src    = src;
-  imgEl.alt    = name;
-  imgEl.loading = 'lazy';
-  imgEl.dataset.orig = full;
-  imgEl.onerror = function() {
-    if (!this.dataset.tried) { this.dataset.tried = '1'; this.src = full; }
-    else { this.style.display = 'none'; this.parentElement.innerHTML = '<span style="font-size:24px;color:var(--muted)">?</span>'; }
-  };
-  div.appendChild(imgEl);
-  div.addEventListener('click', function() {
-    openModal(portraitPath, `${name} — portrait`, { File: portraitPath });
-  });
-  return div;
-}
-
-// ---------------------------------------------------------------------------
-// Appearance row (portrait + 6 non-portrait poses)
-// ---------------------------------------------------------------------------
 const CANONICAL_POSES = ['portrait', 'south', 'east', 'east_attack', 'east_spell', 'east_block', 'east_ko'];
-const NON_PORTRAIT_POSES = CANONICAL_POSES.filter(p => p !== 'portrait');
 
-function renderAppearanceRow(app) {
-  const row = document.createElement('div');
-  row.className = 'appearance-row';
-
-  // Portrait
-  row.appendChild(renderPortraitFrame(app.id, app.name, app.sprites && app.sprites.portrait));
-
-  // 6 pose frames
-  const frames = document.createElement('div');
-  frames.className = 'appearance-frames';
-  for (const pose of NON_PORTRAIT_POSES) {
-    frames.appendChild(renderPoseFrame(app.id, app.name, pose, app.sprites && app.sprites[pose]));
+/** Build the TileSpec array for a single appearance entry. Missing poses are
+ *  represented with src=null (shared renderer draws the missing-tile glyph).
+ *  Tile click → openModal(relPath, …) which routes through the shared lightbox. */
+function appearanceTiles(app) {
+  const tiles = [];
+  for (const pose of CANONICAL_POSES) {
+    const rel = app.sprites && app.sprites[pose];
+    tiles.push({
+      id: app.id + '_' + pose,
+      pose,
+      poseLabel: POSE_LABELS[pose] || pose,
+      src: rel ? thumbPath(rel) : null,
+      data: { relPath: rel || null, fullSrc: rel ? imgPath(rel) : null, name: app.name || app.id },
+    });
+    if (rel) registerLbImage(rel, (app.name || app.id) + ' — ' + pose, { File: rel });
   }
-  row.appendChild(frames);
+  return tiles;
+}
 
-  return row;
+/** Decorate callback for character tiles. Adds onerror fallback (thumb → full)
+ *  and a click handler routed via openModal so prev/next of the lightbox works. */
+function decorateCharacterTile(tileEl, t /*, c */) {
+  if (!t.src) return;
+  const img = tileEl.querySelector('img');
+  if (img && t.data) {
+    img.dataset.orig = t.data.fullSrc || '';
+    img.onerror = function() {
+      if (!this.dataset.tried && t.data.fullSrc) { this.dataset.tried = '1'; this.src = t.data.fullSrc; }
+      else { this.style.display = 'none'; }
+    };
+  }
+}
+function onCharacterTileClick(t, c, ev) {
+  if (!t.src || !t.data || !t.data.relPath) return;
+  ev.stopPropagation();
+  openModal(t.data.relPath, (c.name || c.id) + ' — ' + (t.pose || 'image'), { File: t.data.relPath });
+}
+
+/** Append a single appearance (warrior male, warrior female, npc, companion, …)
+ *  as its own unified-char section. */
+function renderUnifiedAppearance(container, app, opts) {
+  opts = opts || {};
+  const headBadges = [];
+  if (app.pendingReview)                         headBadges.push({ cls: 'badge badge-pending', text: 'Review' });
+  if (app.missingPoses && app.missingPoses.length) headBadges.push({ cls: 'badge badge-warn', text: app.missingPoses.length + ' missing' });
+  if (app.npc)                                   headBadges.push({ cls: 'badge badge-npc', text: 'NPC' });
+  if (app.deprecated)                            headBadges.push({ cls: 'badge badge-deprecated', text: 'deprecated' });
+  if (opts.genderLabel)                          headBadges.unshift({ cls: 'badge-gender-' + opts.genderLabel, text: opts.genderLabel[0].toUpperCase() + opts.genderLabel.slice(1) });
+
+  SpriteGrid.renderUnifiedCharacters(container, [{
+    id: app.id,
+    name: opts.displayName || app.name || app.id,
+    subtitle: app.id,
+    tiles: appearanceTiles(app),
+  }], {
+    decorateHead: (head /*, c */) => {
+      for (const b of headBadges) {
+        const span = document.createElement('span');
+        span.className = b.cls;
+        span.textContent = b.text;
+        head.appendChild(span);
+      }
+    },
+    decorateTile: decorateCharacterTile,
+    onTileClick: onCharacterTileClick,
+  });
 }
 
 // ---------------------------------------------------------------------------
-// Gender column
-// ---------------------------------------------------------------------------
-function renderGenderCol(app, gender) {
-  const col = document.createElement('div');
-  col.className = 'gender-col';
-
-  const labelEl = document.createElement('div');
-  labelEl.className = 'gender-col-label';
-  const gBadge = document.createElement('span');
-  gBadge.className = `badge-gender-${gender}`;
-  gBadge.textContent = gender.charAt(0).toUpperCase() + gender.slice(1);
-  labelEl.appendChild(gBadge);
-
-  if (app) {
-    // Only show badges when something needs attention
-    if (app.pendingReview) {
-      const b = document.createElement('span');
-      b.className = 'badge badge-pending';
-      b.textContent = 'Review';
-      labelEl.appendChild(b);
-    }
-    if (app.missingPoses && app.missingPoses.length > 0) {
-      const b = document.createElement('span');
-      b.className = 'badge badge-warn';
-      b.textContent = app.missingPoses.length + ' missing';
-      labelEl.appendChild(b);
-    }
-    col.appendChild(labelEl);
-    col.appendChild(renderAppearanceRow(app));
-
-    const idRow = document.createElement('div');
-    idRow.className = 'appearance-id-row';
-    idRow.textContent = app.id;
-    if (app.npc) {
-      const b = document.createElement('span');
-      b.className = 'badge badge-npc';
-      b.textContent = 'NPC';
-      idRow.appendChild(b);
-    }
-    col.appendChild(idRow);
-  } else {
-    const labelMissing = document.createElement('span');
-    labelMissing.className = 'badge-gender-missing';
-    labelMissing.textContent = '(no sprites)';
-    labelEl.appendChild(labelMissing);
-    col.appendChild(labelEl);
-  }
-  return col;
-}
-
-// ---------------------------------------------------------------------------
-// Classes section — group appearances by classDefault, show M+F side-by-side
+// Classes section — every playable class appearance gets its own unified row,
+// ordered by classRegistry (then male before female).
 // ---------------------------------------------------------------------------
 function renderClassesSection(appearances, classes, q) {
-  // Group appearances by classDefault
+  // Build an ordered list of (class meta, appearance) pairs.
   const byClass = new Map();
   for (const a of appearances) {
+    if (a.npc) continue; // NPCs render in their own section
     const cd = a.classDefault || a.id;
-    if (!byClass.has(cd)) byClass.set(cd, { male: null, female: null, other: [] });
-    const g = a.gender;
-    const slot = byClass.get(cd);
-    if (g === 'male' && !slot.male) slot.male = a;
-    else if (g === 'female' && !slot.female) slot.female = a;
-    else slot.other.push(a);
+    if (!byClass.has(cd)) byClass.set(cd, []);
+    byClass.get(cd).push(a);
   }
+  // Sort each bucket: male, female, other (deprecated last).
+  function genderRank(a) {
+    if (a.deprecated) return 9;
+    if (a.gender === 'male')   return 0;
+    if (a.gender === 'female') return 1;
+    return 2;
+  }
+  for (const list of byClass.values()) list.sort((a, b) => genderRank(a) - genderRank(b));
+
+  // Order classes by classRegistry; append any unregistered ones at the end.
+  const ordered = [];
+  const seen = new Set();
+  for (const c of classes) {
+    if (byClass.has(c.id)) { ordered.push({ cls: c, apps: byClass.get(c.id) }); seen.add(c.id); }
+  }
+  for (const [cd, apps] of byClass) {
+    if (!seen.has(cd)) ordered.push({ cls: { id: cd, name: apps[0]?.name || cd }, apps });
+  }
+
+  // Query filter.
+  const qLow = (q || '').toLowerCase();
+  const filtered = qLow
+    ? ordered.map(o => ({ cls: o.cls, apps: o.apps.filter(a =>
+        a.id.toLowerCase().includes(qLow) || (a.name || '').toLowerCase().includes(qLow) ||
+        (o.cls.id || '').toLowerCase().includes(qLow) || (o.cls.name || '').toLowerCase().includes(qLow)
+      )})).filter(o => o.apps.length)
+    : ordered;
+
+  if (!filtered.length) return null;
 
   const section = document.createElement('div');
   section.className = 'section';
   section.dataset.sectionKey = 'classes';
 
-  // Only include playable class appearances (not NPCs, not deprecated)
-  const playableClasses = classes.filter(c => {
-    const slot = byClass.get(c.id);
-    return slot && (slot.male || slot.female || slot.other.length);
-  });
-
-  if (q) {
-    const qLow = q.toLowerCase();
-    const filtered = playableClasses.filter(c => {
-      const slot = byClass.get(c.id) || {};
-      return c.id.includes(qLow) || (c.name || '').toLowerCase().includes(qLow)
-        || [slot.male, slot.female, ...(slot.other || [])].filter(Boolean).some(a => a.id.includes(qLow));
-    });
-    if (!filtered.length) return null;
-    buildClassGrid(section, filtered, byClass, q);
-  } else {
-    buildClassGrid(section, playableClasses, byClass, q);
-  }
-
-  const grid = section.querySelector('.class-pair-grid');
-  const total = grid ? grid.children.length : 0;
+  const totalApps = filtered.reduce((n, o) => n + o.apps.length, 0);
   const titleEl = document.createElement('div');
   titleEl.className = 'section-title';
-  titleEl.innerHTML = `Classes <span class="section-count">${total} classes</span>`;
-  section.insertBefore(titleEl, section.firstChild);
+  titleEl.innerHTML = `Classes <span class="section-count">${filtered.length} classes · ${totalApps} appearances</span>`;
+  section.appendChild(titleEl);
+
+  for (const o of filtered) {
+    for (const app of o.apps) {
+      renderUnifiedAppearance(section, app, {
+        genderLabel: (app.gender === 'male' || app.gender === 'female') ? app.gender : null,
+      });
+    }
+  }
   return section;
 }
 
-function buildClassGrid(section, classList, byClass, q) {
-  const grid = document.createElement('div');
-  grid.className = 'class-pair-grid';
-
-  for (const cls of classList) {
-    const slot = byClass.get(cls.id) || {};
-    const male   = slot.male   || null;
-    const female = slot.female || null;
-    // If ONLY one gender present, infer the other column is missing (not a second of same gender)
-
-    const block = document.createElement('div');
-    block.className = 'class-pair-block';
-
-    const header = document.createElement('div');
-    header.className = 'class-pair-header';
-    const nameEl = document.createElement('div');
-    nameEl.className = 'class-pair-name';
-    nameEl.textContent = cls.name || cls.id;
-    const idEl = document.createElement('div');
-    idEl.className = 'class-pair-id';
-    idEl.textContent = cls.id;
-    header.appendChild(nameEl);
-    header.appendChild(idEl);
-
-    // Only show a warning badge when poses are missing
-    const totalPoses = (male ? male.spriteCount : 0) + (female ? female.spriteCount : 0);
-    const maxPoses = 14;
-    if (totalPoses < maxPoses) {
-      const countBadge = document.createElement('span');
-      countBadge.className = 'badge badge-warn';
-      countBadge.textContent = (maxPoses - totalPoses) + ' missing';
-      header.appendChild(countBadge);
-    }
-
-    block.appendChild(header);
-
-    const variants = document.createElement('div');
-    variants.className = 'class-pair-variants';
-    variants.appendChild(renderGenderCol(male, 'male'));
-    variants.appendChild(renderGenderCol(female, 'female'));
-    block.appendChild(variants);
-
-    // Additional variants (e.g. deprecated oracle_old)
-    for (const extra of (slot.other || [])) {
-      if (q && !extra.id.toLowerCase().includes(q.toLowerCase())) continue;
-      const extraRow = document.createElement('div');
-      extraRow.className = 'appearance-id-row';
-      extraRow.textContent = extra.name + ' (' + extra.id + ')';
-      if (extra.deprecated) {
-        const b = document.createElement('span');
-        b.className = 'badge badge-deprecated';
-        b.textContent = 'deprecated';
-        extraRow.appendChild(b);
-      }
-      block.appendChild(extraRow);
-      block.appendChild(renderAppearanceRow(extra));
-    }
-
-    grid.appendChild(block);
-  }
-  section.appendChild(grid);
-}
-
 // ---------------------------------------------------------------------------
-// NPCs section
+// NPCs section — one unified row per NPC appearance.
 // ---------------------------------------------------------------------------
 function renderNpcSection(appearances, q) {
   const npcs = appearances.filter(a => a.npc);
   if (!npcs.length) return null;
-  const qFilt = q ? npcs.filter(a => a.id.toLowerCase().includes(q) || a.name.toLowerCase().includes(q)) : npcs;
+  const qLow = (q || '').toLowerCase();
+  const qFilt = qLow ? npcs.filter(a => a.id.toLowerCase().includes(qLow) || (a.name || '').toLowerCase().includes(qLow)) : npcs;
   if (!qFilt.length) return null;
 
   const section = document.createElement('div');
@@ -1179,46 +1018,17 @@ function renderNpcSection(appearances, q) {
   titleEl.innerHTML = `NPCs <span class="section-count">${qFilt.length}</span>`;
   section.appendChild(titleEl);
 
-  const grid = document.createElement('div');
-  grid.className = 'class-pair-grid';
-  for (const npc of qFilt) {
-    const block = document.createElement('div');
-    block.className = 'class-pair-block';
-    const header = document.createElement('div');
-    header.className = 'class-pair-header';
-    const nameEl = document.createElement('div');
-    nameEl.className = 'class-pair-name';
-    nameEl.textContent = npc.name;
-    const b = document.createElement('span');
-    b.className = 'badge badge-npc';
-    b.textContent = 'NPC';
-    header.appendChild(nameEl);
-    header.appendChild(b);
-    if (npc.missingPoses && npc.missingPoses.length) {
-      const bw = document.createElement('span');
-      bw.className = 'badge badge-warn';
-      bw.textContent = npc.missingPoses.length + ' missing';
-      header.appendChild(bw);
-    }
-    block.appendChild(header);
-    block.appendChild(renderAppearanceRow(npc));
-    const idRow = document.createElement('div');
-    idRow.className = 'appearance-id-row';
-    idRow.textContent = npc.id;
-    block.appendChild(idRow);
-    grid.appendChild(block);
-  }
-  section.appendChild(grid);
+  for (const npc of qFilt) renderUnifiedAppearance(section, npc);
   return section;
 }
 
 // ---------------------------------------------------------------------------
-// Entity section (companions, enemies, bosses) — portrait + 6-pose layout
-// matching Classes / NPCs (class-pair-block style, single column per entity)
+// Entity section (companions, enemies, bosses) — one unified row per entity.
 // ---------------------------------------------------------------------------
 function renderEntitySection(items, title, sectionKey, q) {
   if (!items || !items.length) return null;
-  const qFilt = q ? items.filter(e => e.id.toLowerCase().includes(q) || (e.name||'').toLowerCase().includes(q)) : items;
+  const qLow = (q || '').toLowerCase();
+  const qFilt = qLow ? items.filter(e => e.id.toLowerCase().includes(qLow) || (e.name || '').toLowerCase().includes(qLow)) : items;
   if (!qFilt.length) return null;
 
   const section = document.createElement('div');
@@ -1230,42 +1040,16 @@ function renderEntitySection(items, title, sectionKey, q) {
   titleEl.innerHTML = `${esc(title)} <span class="section-count">${qFilt.length}</span>`;
   section.appendChild(titleEl);
 
-  const grid = document.createElement('div');
-  grid.className = 'class-pair-grid';
-
   for (const ent of qFilt) {
-    const block = document.createElement('div');
-    block.className = 'class-pair-block';
-
-    const header = document.createElement('div');
-    header.className = 'class-pair-header';
-    const nameEl = document.createElement('div');
-    nameEl.className = 'class-pair-name';
-    nameEl.textContent = ent.name || ent.id;
-    const idEl = document.createElement('div');
-    idEl.className = 'class-pair-id';
-    idEl.textContent = ent.id;
-    header.appendChild(nameEl);
-    header.appendChild(idEl);
-    if (ent.missingPoses && ent.missingPoses.length) {
-      const b = document.createElement('span');
-      b.className = 'badge badge-warn';
-      b.textContent = ent.missingPoses.length + ' missing';
-      header.appendChild(b);
-    }
-    block.appendChild(header);
-
-    // Render as a single appearance row (portrait + 6 poses)
+    // Adapt entity → appearance shape for the unified renderer.
     const app = {
       id: ent.id,
       name: ent.name || ent.id,
-      sprites: ent.sprites || {}
+      sprites: ent.sprites || {},
+      missingPoses: ent.missingPoses || [],
     };
-    block.appendChild(renderAppearanceRow(app));
-
-    grid.appendChild(block);
+    renderUnifiedAppearance(section, app);
   }
-  section.appendChild(grid);
   return section;
 }
 
@@ -1319,6 +1103,7 @@ function renderBgSection(q) {
       const relPath = `${grp.dir}/${f}`;
       const fullSrc = `../images/${relPath}`;
       const bareName = f.replace(/\.[^.]+$/, '').replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      registerLbImage(relPath, bareName, { Usage: grp.note, File: relPath });
       const card = document.createElement('div');
       card.className = 'bg-card';
       card.addEventListener('click', function() {
@@ -1379,6 +1164,7 @@ function renderTileSection(items, title, sectionKey, q) {
     const fname   = relFile.split('/').pop();
     const bareName = fname.replace(/\.[^.]+$/, '');
     const fullSrc = '../images/' + relFile;
+    registerLbImage(relFile, bareName, { File: relFile });
     const a = document.createElement('a');
     a.className = 'tile-card checker-bg';
     a.href = fullSrc;
@@ -1435,6 +1221,7 @@ function renderOrphanSection(orphans, q) {
   grid.className = 'orphan-grid';
   for (const o of qFilt) {
     const relFile = o.file.replace(/^images\//, '');  // strip leading "images/"
+    registerLbImage(relFile, o.name, { Dir: o.dir, File: o.file });
     const a = document.createElement('a');
     a.className = 'tile-card checker-bg';
     a.href = '../' + o.file;
@@ -1480,6 +1267,10 @@ function render() {
   const q = STATE.q.toLowerCase().trim();
   const t = STATE.tab;
   root.innerHTML = '';
+  // Reset the lightbox nav-item registry — each section renderer below calls
+  // registerLbImage() for every clickable image; rebuildLbNavItems() at the
+  // end consolidates them so prev/next walks the visible page.
+  LB_PENDING_REGISTRATIONS.length = 0;
 
   function maybe(sectionKey, fn) {
     if (t !== 'all' && t !== sectionKey) return;
@@ -1507,6 +1298,7 @@ function render() {
   if (!root.children.length) {
     root.innerHTML = '<p style="color:var(--muted)">No matches.</p>';
   }
+  rebuildLbNavItems();
 }
 
 function buildToolbar(m) {

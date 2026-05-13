@@ -8,6 +8,7 @@
 <script src="./_header.js" defer></script>
 <script src="./_footer.js" defer></script>
 <link rel="stylesheet" href="./_shared/sprite-grid.css">
+<link rel="stylesheet" href="./_shared/lightbox.css">
 <style>
   :root {
     --bg:#0a0608; --panel:#1a1218; --panel-alt:#241a20; --border:rgba(232,160,32,0.2); --border-strong:rgba(232,160,32,0.45);
@@ -125,32 +126,7 @@
   .h2-count { color:var(--muted); font-size:0.8rem; font-weight:normal; }
   .label-sub { opacity:0.65; }
 
-  /* Unified single-row character section (M464) — replaces the prior Grouped /
-     List dual layout. Every category (heroes/companions/bosses/enemies) and
-     every mode (pending/current/history) uses this:
-       <character name>
-       [portrait][south][east][east_attack][east_spell][east_block][east_ko]
-     One row per character, same tile size for every tile, no card frame. */
-  .unified-char { margin-bottom: 14px; padding: 10px 12px; background: var(--panel); border:1px solid var(--border); border-radius: 8px; }
-  .unified-char .uc-head { display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
-  .unified-char .uc-name { font-size:14px; font-weight:700; color:var(--accent); text-transform:capitalize; }
-  .unified-char .uc-id   { font-size:10px; color:var(--muted); font-family:monospace; }
-  .unified-char .uc-row  { display:flex; flex-wrap:wrap; gap:6px; align-items:flex-start; }
-  .unified-char .uc-tile {
-    position:relative; width:96px; height:96px; border-radius:6px;
-    border:1px solid var(--border); cursor:pointer; overflow:hidden;
-    transition: border-color 0.15s, transform 0.1s;
-  }
-  .unified-char .uc-tile:hover { border-color: var(--accent); transform: scale(1.04); }
-  .unified-char .uc-tile.selected { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(255,208,96,0.25); }
-  .unified-char .uc-tile.tile-missing { background: rgba(192,64,48,0.06); border-color: rgba(192,64,48,0.28); cursor: default; display:flex; align-items:center; justify-content:center; }
-  .unified-char .uc-tile.tile-missing .uc-missing-glyph { color: var(--warn); opacity:0.5; font-size:18px; }
-  .unified-char .uc-tile img { width:100%; height:100%; object-fit:contain; image-rendering:pixelated; }
-  .unified-char .uc-tile .uc-pose-label {
-    position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.72);
-    color:#fff; font-size:9px; text-align:center; padding:1px 2px;
-    text-transform:uppercase; letter-spacing:0.04em; pointer-events:none;
-  }
+  /* Unified single-row character CSS — moved to _shared/sprite-grid.css (M472) */
 
   /* Character group blocks (List layout) */
   .char-group { margin-bottom:1rem; padding:0.5rem; background:var(--panel); border:1px solid var(--border); border-radius:6px; }
@@ -196,43 +172,9 @@
   }
   .rv-section-count { background:var(--panel-alt); border:1px solid var(--border); color:var(--parchment); padding:1px 7px; border-radius:8px; font-size:9px; }
 
-  /* Lightbox */
-  /* M375: lightbox sits BELOW the 72px sticky nav so its toolbar buttons +
-     close-X aren't clipped. */
-  .lightbox { display:none; position:fixed; inset:72px 0 0 0; z-index:200; background:rgba(0,0,0,0.94); padding:0.75rem; }
-  .lightbox.open { display:flex; flex-direction:column; }
-  .lb-close-x {
-    position:fixed; top:80px; right:0.5rem; z-index:210;
-    width:44px; height:44px; border-radius:6px;
-    background:#c04030; color:#fff; border:1px solid #ffd060;
-    font-size:1.4rem; line-height:1; cursor:pointer; font-weight:700;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 2px 8px rgba(0,0,0,0.5);
-  }
-  .lb-close-x:hover { background:#d05040; }
-  .lb-toolbar { display:flex; justify-content:space-between; align-items:center; gap:0.5rem; flex-wrap:wrap; padding:0.25rem 3rem 0.5rem 0.25rem; }
-  .lb-toolbar button { background:#222; color:#ddd; border:1px solid var(--border-strong); border-radius:4px; padding:0.5rem 0.85rem; cursor:pointer; font-size:0.85rem; min-height:40px; }
-  .lb-toolbar button:hover { background:#333; }
-  .lb-toolbar button:disabled { opacity:0.4; cursor:not-allowed; }
-  .lb-body { flex:1; display:grid; grid-template-columns:1.6fr 1fr; gap:1rem; min-height:0; }
-  .lb-body.stacked { grid-template-columns:1fr; grid-template-rows:1fr auto; }
-  .lb-stage { background:#0008; border:1px solid var(--border); border-radius:6px; display:flex; align-items:center; justify-content:center; min-height:0; overflow:hidden; }
-  .lb-stage img { max-width:100%; max-height:100%; image-rendering:pixelated; }
-  .lb-stage.bg img { image-rendering:auto; }
-  .lb-side { background:var(--panel); border:1px solid var(--border); border-radius:6px; padding:0.75rem; overflow-y:auto; font-size:0.85rem; line-height:1.45; }
-  .lb-side h3 { margin:0 0 0.25rem; color:var(--accent); }
-  .lb-side .meta { color:var(--muted); font-size:0.75rem; margin-bottom:0.6rem; }
-  .lb-side .ref-thumb { width:100%; max-width:200px; margin-top:0.4rem; border:1px solid var(--border); border-radius:4px; image-rendering:pixelated; background:#0a0a0e; }
-  .lb-side .prompt { white-space:pre-wrap; font-size:0.7rem; opacity:0.8; max-height:200px; overflow:auto; padding:0.4rem; background:#0a0a0e; border:1px solid var(--border); border-radius:4px; }
-  .lb-counter { color:var(--muted); font-size:0.75rem; }
-  .lb-comparison { display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; }
-  .lb-comparison > div { text-align:center; }
-  .lb-comparison img { max-width:100%; image-rendering:pixelated; background:#0a0a0e; border:1px solid var(--border); border-radius:3px; }
-  .lb-comparison .lbl { font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.2rem; }
-  .lb-comparison .lbl.new { color:var(--accent); }
+  /* Lightbox CSS — moved to _shared/lightbox.css (M472) */
 
   @media (max-width: 768px) {
-    .lb-body { grid-template-columns:1fr; grid-template-rows:1fr auto; }
     .topbar { flex-direction:column; align-items:stretch; }
     .seg { width:100%; }
     .seg button { flex:1; }
@@ -240,6 +182,7 @@
   }
 </style>
 <script src="./_shared/sprite-grid.js"></script>
+<script src="./_shared/lightbox.js"></script>
 </head>
 <body class="ev-themed">
 <div class="wrap">
@@ -334,24 +277,7 @@
   <span class="copy-hint" id="copy-hint"></span>
 </div>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-  <button class="lb-close-x" id="lb-close-x" aria-label="Close lightbox">×</button>
-  <div class="lb-toolbar">
-    <div>
-      <button id="lb-prev" type="button">← Prev</button>
-      <button id="lb-next" type="button">Next →</button>
-      <span class="lb-counter" id="lb-counter"></span>
-    </div>
-    <div>
-      <button id="lb-toggle-layout" type="button">Toggle layout</button>
-      <button id="lb-close" type="button">× Close</button>
-    </div>
-  </div>
-  <div class="lb-body" id="lb-body">
-    <div class="lb-stage" id="lb-stage"><img id="lb-img" alt=""></div>
-    <div class="lb-side" id="lb-side"></div>
-  </div>
-</div>
+<!-- Lightbox DOM is auto-created by SharedLightbox.create() — see _shared/lightbox.js -->
 
 <script>
 const POSES = ['portrait','south','east','east_attack','east_spell','east_block','east_ko'];
@@ -375,8 +301,9 @@ const filters = {
 
 const selected = new Set();   // entry ids
 let lbItems = [];
-let lbIdx = 0;
-let lbStacked = false;
+let lb = null;   // SharedLightbox controller (initialized in wireLightbox)
+/** Push the current lbItems array into the shared lightbox so prev/next works. */
+function syncLbItems() { if (lb) lb.setItems(lbItems); }
 
 async function load() {
   try {
@@ -659,6 +586,7 @@ function render() {
   // tap-weapons still use renderFlat / renderBackgroundsByType.
   if (category === 'characters') {
     renderUnifiedCharacters(entries);
+    syncLbItems();
     return;
   }
   if (category === 'backgrounds' && mode === 'current') {
@@ -667,6 +595,7 @@ function render() {
     renderFlat(entries);
   }
   rebuildLbItems(entries);
+  syncLbItems();
 }
 
 /**
@@ -682,7 +611,6 @@ function render() {
  */
 function renderUnifiedCharacters(entries) {
   const content = document.getElementById('content');
-  content.innerHTML = '';
 
   // Group by entity id (entry.group), preserve filter ordering.
   const byGroup = new Map();
@@ -694,36 +622,17 @@ function renderUnifiedCharacters(entries) {
     if (e.pose) g.byPose[e.pose] = e;
   }
 
+  // Build CharRecord array for the shared renderer.
   const allLbItems = [];
+  /** entityId → array of tile ids inside that group (for bulk-select). */
+  const tileIdsByGroup = {};
+  const characters = [];
 
   for (const [groupId, g] of byGroup) {
     const app = (mode === 'current' && APPEARANCES) ? APPEARANCES[groupId] : null;
-    const section = document.createElement('div');
-    section.className = 'unified-char';
+    const charName = (app && app.name) || groupId.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 
-    const head = document.createElement('div');
-    head.className = 'uc-head';
-    const bulkChk = document.createElement('input');
-    bulkChk.type = 'checkbox';
-    bulkChk.className = 'group-bulk-check';
-    bulkChk.title = `Select/deselect all ${groupId}`;
-    head.appendChild(bulkChk);
-    const nameEl = document.createElement('div');
-    nameEl.className = 'uc-name';
-    nameEl.textContent = (app && app.name) || groupId.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-    head.appendChild(nameEl);
-    const idEl = document.createElement('div');
-    idEl.className = 'uc-id';
-    idEl.textContent = groupId;
-    head.appendChild(idEl);
-    section.appendChild(head);
-
-    const row = document.createElement('div');
-    row.className = 'uc-row';
-
-    // Determine the list of (pose, source-entry-or-appearance) pairs to render.
-    // current mode + appearance available  → POSES order, missing poses shown as ✗
-    // otherwise                            → entries.list order
+    // Build tile descriptors.
     const tilesToRender = [];
     if (app && mode === 'current') {
       for (const pose of POSES) {
@@ -731,102 +640,120 @@ function renderUnifiedCharacters(entries) {
         const manEntry = g.byPose[pose] || null;
         const id = manEntry ? manEntry.id : `${groupId}_${pose}`;
         if (!rel) {
-          tilesToRender.push({ id, pose, src: null, missing: true });
+          tilesToRender.push({ id, pose, src: null, poseLabel: POSE_LABELS[pose] || pose });
         } else {
           tilesToRender.push({
             id, pose,
             src: resolveAppearanceSrc(rel),
-            prompt: manEntry?.prompt || null,
+            poseLabel: POSE_LABELS[pose] || pose,
+            data: { prompt: manEntry?.prompt || null },
           });
         }
       }
     } else {
-      // pending / history / no-appearance: render each entry directly.
       for (const e of g.entries) {
         const src = e._batchEntry ? e.new : e.file;
         tilesToRender.push({
           id: e.id, pose: e.pose || '',
-          src, prompt: e.prompt || null,
-          isBatch: !!e._batchEntry,
-          oldSrc: e.old || null, newSrc: e.new || null,
-          reason: e.reason || null,
+          poseLabel: e.pose ? (POSE_LABELS[e.pose] || e.pose) : '',
+          src,
+          data: {
+            prompt: e.prompt || null,
+            isBatch: !!e._batchEntry,
+            oldSrc: e.old || null, newSrc: e.new || null,
+            reason: e.reason || null,
+          },
         });
       }
     }
 
-    const tileIds = [];
+    // Stash tile ids for the bulk checkbox closure.
+    tileIdsByGroup[groupId] = tilesToRender.filter(t => t.src).map(t => t.id);
+
+    // Push lightbox items in the same order.
     for (const t of tilesToRender) {
-      const tile = document.createElement('div');
-      tile.className = 'uc-tile checker-bg';
-      tile.dataset.id = t.id;
-      if (t.missing) {
-        tile.classList.add('tile-missing');
-        tile.innerHTML = `<span class="uc-missing-glyph">&#x2717;</span>`;
-        const lbl = document.createElement('div'); lbl.className = 'uc-pose-label';
-        lbl.textContent = POSE_LABELS[t.pose] || t.pose;
-        tile.appendChild(lbl);
-        row.appendChild(tile);
-        continue;
-      }
-      const img = document.createElement('img');
-      img.src = t.src; img.alt = `${groupId} ${t.pose}`; img.loading = 'lazy';
-      tile.appendChild(img);
-      if (t.pose) {
-        const lbl = document.createElement('div'); lbl.className = 'uc-pose-label';
-        lbl.textContent = POSE_LABELS[t.pose] || t.pose;
-        tile.appendChild(lbl);
-      }
+      if (!t.src) continue;
+      const d = t.data || {};
+      allLbItems.push({
+        id: t.id,
+        title: charName,
+        subtitle: t.pose || '',
+        src: t.src,
+        oldSrc: d.oldSrc || null,
+        newSrc: d.newSrc || null,
+        prompt: d.prompt || null,
+        oldPrompt: null,
+        newPrompt: null,
+        reason: d.reason || null,
+        assetId: null,
+        referenceAssetId: null,
+        isBg: false,
+      });
+    }
+
+    characters.push({
+      id: groupId,
+      name: charName,
+      subtitle: groupId,
+      tiles: tilesToRender,
+      _meta: { app, cat: g.cat },
+    });
+  }
+
+  SpriteGrid.renderUnifiedCharacters(content, characters, {
+    decorateHead: (head, c) => {
+      // Bulk checkbox at the start of the header.
+      const bulkChk = document.createElement('input');
+      bulkChk.type = 'checkbox';
+      bulkChk.className = 'group-bulk-check';
+      bulkChk.title = `Select/deselect all ${c.id}`;
+      const tileIds = tileIdsByGroup[c.id] || [];
+      bulkChk.checked = tileIds.length > 0 && tileIds.every(id => selected.has(id));
+      bulkChk.onclick = (ev) => {
+        ev.stopPropagation();
+        const turnOn = bulkChk.checked;
+        for (const id of tileIds) {
+          if (turnOn) selected.add(id); else selected.delete(id);
+        }
+        updateSelectBar();
+        render();
+      };
+      head.appendChild(bulkChk);
+    },
+    decorateTile: (tileEl, t /*, c */) => {
+      if (!t.src) return; // missing tiles get no decorations
       // Generator badge
       const gen = generatorOf(t.src);
       if (gen !== 'other') {
         const gb = document.createElement('span');
         gb.className = `gen-badge gen-${gen}`;
         gb.textContent = gen.replace('_', ' ');
-        tile.appendChild(gb);
+        tileEl.appendChild(gb);
       }
+      // Flag dot
       const f = flagFor(t.id);
       if (f) {
-        const fd = document.createElement('span'); fd.className = 'flag-dot';
-        fd.dataset.prio = f.prio; if (f.text) fd.dataset.text = f.text;
-        tile.appendChild(fd);
+        const fd = document.createElement('span');
+        fd.className = 'flag-dot';
+        fd.dataset.prio = f.prio;
+        if (f.text) fd.dataset.text = f.text;
+        tileEl.appendChild(fd);
       }
-      if (selected.has(t.id)) tile.classList.add('selected');
-      tile.addEventListener('click', (ev) => {
-        ev.stopPropagation();
-        // Single click = open lightbox; checkbox area not separate in this layout —
-        // shift-click toggles selection instead.
-        if (ev.shiftKey) {
-          toggleSelect(t.id, tile);
-        } else {
-          openLbById(t.id);
-        }
-      });
-      tileIds.push(t.id);
-      row.appendChild(tile);
-
-      allLbItems.push({
-        id: t.id, title: (app && app.name) || groupId, subtitle: t.pose || '',
-        src: t.src, oldSrc: t.oldSrc || null, newSrc: t.newSrc || null,
-        prompt: t.prompt || null, oldPrompt: null, newPrompt: null,
-        reason: t.reason || null, assetId: null, referenceAssetId: null,
-        isBg: false, charCat: g.cat,
-      });
-    }
-
-    bulkChk.checked = tileIds.length > 0 && tileIds.every(id => selected.has(id));
-    bulkChk.onclick = (ev) => {
+      // Selection state
+      if (selected.has(t.id)) tileEl.classList.add('selected');
+    },
+    onTileClick: (t /*, c */, ev) => {
+      if (!t.src) return; // missing tiles: no-op
       ev.stopPropagation();
-      const turnOn = bulkChk.checked;
-      for (const id of tileIds) {
-        if (turnOn) selected.add(id); else selected.delete(id);
+      // Single click = open lightbox; shift-click toggles selection.
+      if (ev.shiftKey) {
+        const tileEl = ev.currentTarget;
+        toggleSelect(t.id, tileEl);
+      } else {
+        openLbById(t.id);
       }
-      updateSelectBar();
-      render();
-    };
-
-    section.appendChild(row);
-    content.appendChild(section);
-  }
+    },
+  });
 
   lbItems = allLbItems;
 }
@@ -1149,11 +1076,9 @@ function wireGroupedCards() {
 
 /** Open lightbox by entry id (supports both manifest ids and synthetic pose ids). */
 function openLbById(id) {
-  const i = lbItems.findIndex(x => x.id === id);
-  if (i < 0) return;
-  lbIdx = i;
-  showLb();
-  document.getElementById('lightbox').classList.add('open');
+  if (!lb) return;
+  lb.setItems(lbItems);
+  lb.openById(id);
 }
 
 function renderFlat(entries) {
@@ -1319,103 +1244,21 @@ function rebuildLbItems(entries) {
   }));
 }
 
-function openLb(id) {
-  openLbById(id);
-}
+function openLb(id) { openLbById(id); }
 
-function showLb() {
-  const it = lbItems[lbIdx];
-  if (!it) return;
-  const stage = document.getElementById('lb-stage');
-  const img = document.getElementById('lb-img');
-  const side = document.getElementById('lb-side');
-  stage.classList.toggle('bg', !!it.isBg);
-  img.src = it.src;
-  img.alt = it.title;
-  document.getElementById('lb-counter').textContent = `${lbIdx+1} / ${lbItems.length}`;
-  document.getElementById('lb-prev').disabled = lbItems.length < 2;
-  document.getElementById('lb-next').disabled = lbItems.length < 2;
-  let html = `<h3>${it.title}</h3><div class="meta">${it.subtitle}</div>`;
-  if (it.reason) html += `<div class="lb-reason-row"><strong>Reason:</strong> ${escapeHtml(it.reason)}</div>`;
-  if (it.oldSrc && it.newSrc) {
-    html += `<div class="lb-comparison">
-      <div><div class="lbl">Original</div><img src="${it.oldSrc}" alt="old"></div>
-      <div><div class="lbl new">Candidate</div><img src="${it.newSrc}" alt="new"></div>
-    </div>`;
-    if (it.oldPrompt) {
-      html += `<div class="lb-prompt-block"><div class="meta">Original prompt</div><div class="prompt">${escapeHtml(it.oldPrompt)}</div></div>`;
-    }
-    if (it.newPrompt) {
-      html += `<div class="lb-prompt-block prompt-sub"><div class="meta">Candidate prompt</div><div class="prompt">${escapeHtml(it.newPrompt)}</div></div>`;
-    }
-  }
-  if (!it.oldSrc && it.prompt) {
-    html += `<div class="lb-prompt-block"><div class="meta">Prompt</div><div class="prompt">${escapeHtml(it.prompt)}</div></div>`;
-  }
-  if (it.assetId) {
-    html += `<div class="lb-asset-line"><span class="meta">SpriteCook asset:</span> <code>${it.assetId}</code></div>`;
-  }
-  if (it.referenceAssetId) {
-    html += `<div class="lb-asset-line sub"><span class="meta">Reference:</span> <code>${it.referenceAssetId}</code></div>`;
-  }
-  // M463 — flag controls. Persisted to localStorage; stays per-browser
-  // until the user copies the flag JSON for Claude to commit.
-  const f = flagFor(it.id);
-  html += `<div class="lb-flag-row">
-    <div class="meta">Flag</div>
-    <div class="lb-flag-btns">
-      <button data-flag-prio=""        class="lb-flag-btn${!f ? ' active' : ''}">none</button>
-      <button data-flag-prio="info"    class="lb-flag-btn${f && f.prio==='info' ? ' active' : ''}">info</button>
-      <button data-flag-prio="warning" class="lb-flag-btn${f && f.prio==='warning' ? ' active' : ''}">warn</button>
-      <button data-flag-prio="error"   class="lb-flag-btn${f && f.prio==='error' ? ' active' : ''}">error</button>
-    </div>
-    <input type="text" id="lb-flag-text" value="${escapeHtmlAttr(f?.text || '')}" placeholder="Flag note (optional)">
-  </div>`;
-  side.innerHTML = html;
-  // Wire flag buttons + text
-  side.querySelectorAll('.lb-flag-btn').forEach(b => {
-    b.onclick = () => {
-      const prio = b.dataset.flagPrio || '';
-      const text = side.querySelector('#lb-flag-text')?.value || '';
-      setFlag(it.id, prio || null, text);
-      showLb();      // refresh flag UI active state
-      render();      // refresh card flag dots
-    };
-  });
-  const ti = side.querySelector('#lb-flag-text');
-  if (ti) ti.oninput = () => {
-    const cur = flagFor(it.id);
-    if (cur) setFlag(it.id, cur.prio, ti.value);
-  };
-}
-
-function escapeHtml(s) { return String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
-
-function closeLb() { document.getElementById('lightbox').classList.remove('open'); }
+/** Initialize the shared lightbox controller. Called once from load(). */
 function wireLightbox() {
-  const lb = document.getElementById('lightbox');
-  // Event delegation — survives any later DOM change
-  lb.addEventListener('click', (e) => {
-    const t = e.target.closest('button');
-    if (!t) {
-      // Click on backdrop (not on an interactive element) closes
-      if (e.target === lb) closeLb();
-      return;
-    }
-    if (t.id === 'lb-close' || t.id === 'lb-close-x') { closeLb(); return; }
-    if (t.id === 'lb-prev' && lbItems.length > 1) { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; showLb(); return; }
-    if (t.id === 'lb-next' && lbItems.length > 1) { lbIdx = (lbIdx + 1) % lbItems.length; showLb(); return; }
-    if (t.id === 'lb-toggle-layout') {
-      lbStacked = !lbStacked;
-      document.getElementById('lb-body').classList.toggle('stacked', lbStacked);
-      return;
-    }
-  });
-  document.addEventListener('keydown', (e) => {
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'Escape') closeLb();
-    if (e.key === 'ArrowLeft' && lbItems.length > 1) { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; showLb(); }
-    if (e.key === 'ArrowRight' && lbItems.length > 1) { lbIdx = (lbIdx + 1) % lbItems.length; showLb(); }
+  lb = SharedLightbox.create({
+    enableFlags: true,
+    enableLayoutToggle: true,
+    flagAdapter: {
+      get: (id) => flagFor(id),
+      set: (id, prio, text) => {
+        setFlag(id, prio || null, text || '');
+        // Re-render the underlying cards so flag dots update immediately.
+        render();
+      },
+    },
   });
 }
 

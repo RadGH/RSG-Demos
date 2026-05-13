@@ -389,3 +389,87 @@ body[data-sprite-bg="green"] img.checker-bg {
   margin-right:  0.4rem;
   cursor:        pointer;
 }
+
+/* =============================================================================
+   9. UNIFIED SINGLE-ROW CHARACTER SECTION (M464/M471)
+   <name>
+   [portrait][south][east][east_attack][east_spell][east_block][east_ko]
+   One row per character, same 96px tile size for every tile, no card frame.
+   Rendered by SpriteGrid.renderUnifiedCharacters().
+   ============================================================================= */
+.unified-char {
+  margin-bottom: 14px;
+  padding:       10px 12px;
+  background:    var(--panel, #1a1218);
+  border:        1px solid var(--border, rgba(232, 160, 32, 0.2));
+  border-radius: 8px;
+}
+.unified-char .uc-head {
+  display:       flex;
+  align-items:   center;
+  gap:           8px;
+  margin-bottom: 6px;
+  flex-wrap:     wrap;
+}
+.unified-char .uc-name {
+  font-size:      14px;
+  font-weight:    700;
+  color:          var(--accent, #e8a020);
+  text-transform: capitalize;
+}
+.unified-char .uc-id {
+  font-size:   10px;
+  color:       var(--muted, #8a7a6a);
+  font-family: monospace;
+}
+.unified-char .uc-row {
+  display:     flex;
+  flex-wrap:   wrap;
+  gap:         6px;
+  align-items: flex-start;
+}
+.unified-char .uc-tile {
+  position:      relative;
+  width:         96px;
+  height:        96px;
+  border-radius: 6px;
+  border:        1px solid var(--border, rgba(232, 160, 32, 0.2));
+  cursor:        pointer;
+  overflow:      hidden;
+  transition:    border-color 0.15s, transform 0.1s;
+}
+.unified-char .uc-tile:hover    { border-color: var(--accent, #e8a020); transform: scale(1.04); }
+.unified-char .uc-tile.selected { border-color: var(--accent, #e8a020); box-shadow: 0 0 0 2px rgba(255, 208, 96, 0.25); }
+.unified-char .uc-tile.tile-missing {
+  background:      rgba(192, 64, 48, 0.06);
+  border-color:    rgba(192, 64, 48, 0.28);
+  cursor:          default;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+}
+.unified-char .uc-tile.tile-missing .uc-missing-glyph {
+  color:     var(--warn, #c04030);
+  opacity:   0.5;
+  font-size: 18px;
+}
+.unified-char .uc-tile img {
+  width:           100%;
+  height:          100%;
+  object-fit:      contain;
+  image-rendering: pixelated;
+}
+.unified-char .uc-tile .uc-pose-label {
+  position:       absolute;
+  bottom:         0;
+  left:           0;
+  right:          0;
+  background:     rgba(0, 0, 0, 0.72);
+  color:          #fff;
+  font-size:      9px;
+  text-align:     center;
+  padding:        1px 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}

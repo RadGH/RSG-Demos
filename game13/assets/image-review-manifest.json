@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2026-05-12T22:04:23.436Z",
+    "generated": "2026-05-13T00:11:29.415Z",
     "derivedFrom": {
       "appearances": "src/game/appearances.js (66 entries)",
       "classPets": "src/game/companions.js CLASS_PETS (11 entries)",
@@ -9,11 +9,11 @@
       "bossIds": "src/maps/mapData.js map nodes type:'boss' encounter fields (19 bosses)"
     },
     "counts": {
-      "total": 1439,
+      "total": 1404,
       "by_status": {
         "ready": 890,
         "pending": 2,
-        "orphaned": 483,
+        "orphaned": 448,
         "approved": 20,
         "candidate": 44
       },
@@ -24,7 +24,7 @@
         "enemy": 95,
         "background": 68,
         "tap-weapons": 9,
-        "orphan": 483,
+        "orphan": 448,
         "reference-sheet": 64
       }
     },
@@ -5446,7 +5446,7 @@
       "category": "boss",
       "group": "archfiend_malgrath",
       "pose": "portrait",
-      "file": "../images/openai_v2/archfiend_malgrath_portrait.png",
+      "file": "../images/spritecook/archfiend_malgrath_portrait.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5455,7 +5455,7 @@
       "category": "boss",
       "group": "archfiend_malgrath",
       "pose": "south",
-      "file": "../images/openai_v2/archfiend_malgrath_south.png",
+      "file": "../images/spritecook/archfiend_malgrath_south.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5464,7 +5464,7 @@
       "category": "boss",
       "group": "archfiend_malgrath",
       "pose": "east",
-      "file": "../images/openai_v2/archfiend_malgrath_east.png",
+      "file": "../images/spritecook/archfiend_malgrath_east.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5473,7 +5473,7 @@
       "category": "boss",
       "group": "archfiend_malgrath",
       "pose": "east_attack",
-      "file": "../images/openai_v2/archfiend_malgrath_east_attack.png",
+      "file": "../images/spritecook/archfiend_malgrath_east_attack.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5482,7 +5482,7 @@
       "category": "boss",
       "group": "archfiend_malgrath",
       "pose": "east_spell",
-      "file": "../images/openai_v2/archfiend_malgrath_east_spell.png",
+      "file": "../images/spritecook/archfiend_malgrath_east_spell.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5491,7 +5491,7 @@
       "category": "boss",
       "group": "archfiend_malgrath",
       "pose": "east_block",
-      "file": "../images/openai_v2/archfiend_malgrath_east_block.png",
+      "file": "../images/spritecook/archfiend_malgrath_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5500,7 +5500,7 @@
       "category": "boss",
       "group": "archfiend_malgrath",
       "pose": "east_ko",
-      "file": "../images/openai_v2/archfiend_malgrath_east_ko.png",
+      "file": "../images/spritecook/archfiend_malgrath_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5509,7 +5509,7 @@
       "category": "boss",
       "group": "cosmic_titan",
       "pose": "portrait",
-      "file": "../images/openai_v2/cosmic_titan_portrait.png",
+      "file": "../images/spritecook/cosmic_titan_portrait.png",
       "prompt": "A cosmic titan of stone and galaxies, giant humanoid wreathed in nebulae, star-lit runes, dark fantasy RPG enemy portrait",
       "status": "ready"
     },
@@ -5518,7 +5518,7 @@
       "category": "boss",
       "group": "cosmic_titan",
       "pose": "south",
-      "file": "../images/openai_v2/cosmic_titan_south.png",
+      "file": "../images/spritecook/cosmic_titan_south.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5527,7 +5527,7 @@
       "category": "boss",
       "group": "cosmic_titan",
       "pose": "east",
-      "file": "../images/openai_v2/cosmic_titan_east.png",
+      "file": "../images/spritecook/cosmic_titan_east.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5536,7 +5536,7 @@
       "category": "boss",
       "group": "cosmic_titan",
       "pose": "east_attack",
-      "file": "../images/openai_v2/cosmic_titan_east_attack.png",
+      "file": "../images/spritecook/cosmic_titan_east_attack.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5545,7 +5545,7 @@
       "category": "boss",
       "group": "cosmic_titan",
       "pose": "east_spell",
-      "file": "../images/openai_v2/cosmic_titan_east_spell.png",
+      "file": "../images/spritecook/cosmic_titan_east_spell.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5554,7 +5554,7 @@
       "category": "boss",
       "group": "cosmic_titan",
       "pose": "east_block",
-      "file": "../images/openai_v2/cosmic_titan_east_block.png",
+      "file": "../images/spritecook/cosmic_titan_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5563,7 +5563,7 @@
       "category": "boss",
       "group": "cosmic_titan",
       "pose": "east_ko",
-      "file": "../images/openai_v2/cosmic_titan_east_ko.png",
+      "file": "../images/spritecook/cosmic_titan_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5635,7 +5635,7 @@
       "category": "boss",
       "group": "frost_wyrm",
       "pose": "portrait",
-      "file": "../images/openai_v2/frost_wyrm_portrait.png",
+      "file": "../images/spritecook/frost_wyrm_portrait.png",
       "prompt": "A frost wyrm dragon with icy blue scales, frost breath spilling from its jaws, icicles on spines, dark fantasy RPG enemy portrait",
       "status": "ready"
     },
@@ -5644,7 +5644,7 @@
       "category": "boss",
       "group": "frost_wyrm",
       "pose": "south",
-      "file": "../images/openai_v2/frost_wyrm_south.png",
+      "file": "../images/spritecook/frost_wyrm_south.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5653,7 +5653,7 @@
       "category": "boss",
       "group": "frost_wyrm",
       "pose": "east",
-      "file": "../images/openai_v2/frost_wyrm_east.png",
+      "file": "../images/spritecook/frost_wyrm_east.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5662,7 +5662,7 @@
       "category": "boss",
       "group": "frost_wyrm",
       "pose": "east_attack",
-      "file": "../images/openai_v2/frost_wyrm_east_attack.png",
+      "file": "../images/spritecook/frost_wyrm_east_attack.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5671,7 +5671,7 @@
       "category": "boss",
       "group": "frost_wyrm",
       "pose": "east_spell",
-      "file": "../images/openai_v2/frost_wyrm_east_spell.png",
+      "file": "../images/spritecook/frost_wyrm_east_spell.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5680,7 +5680,7 @@
       "category": "boss",
       "group": "frost_wyrm",
       "pose": "east_block",
-      "file": "../images/openai_v2/frost_wyrm_east_block.png",
+      "file": "../images/spritecook/frost_wyrm_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5689,7 +5689,7 @@
       "category": "boss",
       "group": "frost_wyrm",
       "pose": "east_ko",
-      "file": "../images/openai_v2/frost_wyrm_east_ko.png",
+      "file": "../images/spritecook/frost_wyrm_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5698,7 +5698,7 @@
       "category": "boss",
       "group": "vault_guardian",
       "pose": "portrait",
-      "file": "../images/openai_v2/vault_guardian_portrait.png",
+      "file": "../images/spritecook/vault_guardian_portrait.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5707,7 +5707,7 @@
       "category": "boss",
       "group": "vault_guardian",
       "pose": "south",
-      "file": "../images/openai_v2/vault_guardian_south.png",
+      "file": "../images/spritecook/vault_guardian_south.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5716,7 +5716,7 @@
       "category": "boss",
       "group": "vault_guardian",
       "pose": "east",
-      "file": "../images/openai_v2/vault_guardian_east.png",
+      "file": "../images/spritecook/vault_guardian_east.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5725,7 +5725,7 @@
       "category": "boss",
       "group": "vault_guardian",
       "pose": "east_attack",
-      "file": "../images/openai_v2/vault_guardian_east_attack.png",
+      "file": "../images/spritecook/vault_guardian_east_attack.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5734,7 +5734,7 @@
       "category": "boss",
       "group": "vault_guardian",
       "pose": "east_spell",
-      "file": "../images/openai_v2/vault_guardian_east_spell.png",
+      "file": "../images/spritecook/vault_guardian_east_spell.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5743,7 +5743,7 @@
       "category": "boss",
       "group": "vault_guardian",
       "pose": "east_block",
-      "file": "../images/openai_v2/vault_guardian_east_block.png",
+      "file": "../images/spritecook/vault_guardian_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5752,7 +5752,7 @@
       "category": "boss",
       "group": "vault_guardian",
       "pose": "east_ko",
-      "file": "../images/openai_v2/vault_guardian_east_ko.png",
+      "file": "../images/spritecook/vault_guardian_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5761,7 +5761,7 @@
       "category": "boss",
       "group": "void_scholar",
       "pose": "portrait",
-      "file": "../images/openai_v2/void_scholar_portrait.png",
+      "file": "../images/spritecook/void_scholar_portrait.png",
       "prompt": "Gaunt mid-50s human male, pale skin, sharp cheekbones, completely white eyes glowing faintly with violet inner light, silver-white slicked-back hair pulled into a small knot, neat silver-white goatee.\n\nCracked obsidian academic robe with a high stiff collar embroidered with violet runic glyphs, leather-bound books and tattered scroll-tubes hanging on chains across the chest, plain dark boots. Faint halo of violet-and-black void-mist rising from his shoulders.\n\nNo physical weapon — casts violet-black void-orbs from outstretched hand.\n\nPOSE (portrait): Head-and-shoulders bust, three-quarter view facing camera-left, calm sympathetic expression.",
       "status": "ready"
     },
@@ -5770,7 +5770,7 @@
       "category": "boss",
       "group": "void_scholar",
       "pose": "south",
-      "file": "../images/openai_v2/void_scholar_south.png",
+      "file": "../images/spritecook/void_scholar_south.png",
       "prompt": "Gaunt mid-50s human male, pale skin, sharp cheekbones, completely white eyes glowing faintly with violet inner light, silver-white slicked-back hair pulled into a small knot, neat silver-white goatee.\n\nCracked obsidian academic robe with a high stiff collar embroidered with violet runic glyphs, leather-bound books and tattered scroll-tubes hanging on chains across the chest, plain dark boots. Faint halo of violet-and-black void-mist rising from his shoulders.\n\nNo physical weapon — casts violet-black void-orbs from outstretched hand.\n\nPOSE (south): Facing camera, calm idle, both hands held loosely in front, robe to ankle-length.",
       "status": "ready"
     },
@@ -5779,7 +5779,7 @@
       "category": "boss",
       "group": "void_scholar",
       "pose": "east",
-      "file": "../images/openai_v2/void_scholar_east.png",
+      "file": "../images/spritecook/void_scholar_east.png",
       "prompt": "Gaunt mid-50s human male, pale skin, sharp cheekbones, completely white eyes glowing faintly with violet inner light, silver-white slicked-back hair pulled into a small knot, neat silver-white goatee.\n\nCracked obsidian academic robe with a high stiff collar embroidered with violet runic glyphs, leather-bound books and tattered scroll-tubes hanging on chains across the chest, plain dark boots. Faint halo of violet-and-black void-mist rising from his shoulders.\n\nNo physical weapon — casts violet-black void-orbs from outstretched hand.\n\nPOSE (east): Facing east in three-quarter side view, calm idle, robe to ankle-length, books visible on chest.",
       "status": "ready"
     },
@@ -5788,7 +5788,7 @@
       "category": "boss",
       "group": "void_scholar",
       "pose": "east_attack",
-      "file": "../images/openai_v2/void_scholar_east_attack.png",
+      "file": "../images/spritecook/void_scholar_east_attack.png",
       "prompt": "Gaunt mid-50s human male, pale skin, sharp cheekbones, completely white eyes glowing faintly with violet inner light, silver-white slicked-back hair pulled into a small knot, neat silver-white goatee.\n\nCracked obsidian academic robe with a high stiff collar embroidered with violet runic glyphs, leather-bound books and tattered scroll-tubes hanging on chains across the chest, plain dark boots. Faint halo of violet-and-black void-mist rising from his shoulders.\n\nNo physical weapon — casts violet-black void-orbs from outstretched hand.\n\nPOSE (east_attack): Facing east, mid-spell-cast: right arm thrust forward hurling a violet-black void-orb the size of his head; left hand pulled back glowing with a violet rune.",
       "status": "ready"
     },
@@ -5797,7 +5797,7 @@
       "category": "boss",
       "group": "void_scholar",
       "pose": "east_spell",
-      "file": "../images/openai_v2/void_scholar_east_spell.png",
+      "file": "../images/spritecook/void_scholar_east_spell.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5806,7 +5806,7 @@
       "category": "boss",
       "group": "void_scholar",
       "pose": "east_block",
-      "file": "../images/openai_v2/void_scholar_east_block.png",
+      "file": "../images/spritecook/void_scholar_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5815,7 +5815,7 @@
       "category": "boss",
       "group": "void_scholar",
       "pose": "east_ko",
-      "file": "../images/openai_v2/void_scholar_east_ko.png",
+      "file": "../images/spritecook/void_scholar_east_ko.png",
       "prompt": "Gaunt mid-50s human male, pale skin, sharp cheekbones, completely white eyes glowing faintly with violet inner light, silver-white slicked-back hair pulled into a small knot, neat silver-white goatee.\n\nCracked obsidian academic robe with a high stiff collar embroidered with violet runic glyphs, leather-bound books and tattered scroll-tubes hanging on chains across the chest, plain dark boots. Faint halo of violet-and-black void-mist rising from his shoulders.\n\nNo physical weapon — casts violet-black void-orbs from outstretched hand.\n\nPOSE (east_ko): Lying defeated on the ground facing east, robe sprawled, eyes closed (no glow), void-mist dispersed to a thin wisp.",
       "status": "ready"
     },
@@ -5824,7 +5824,7 @@
       "category": "boss",
       "group": "echo_sovereign",
       "pose": "portrait",
-      "file": "../images/openai_v2/echo_sovereign_portrait.png",
+      "file": "../images/spritecook/echo_sovereign_portrait.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5833,7 +5833,7 @@
       "category": "boss",
       "group": "echo_sovereign",
       "pose": "south",
-      "file": "../images/openai_v2/echo_sovereign_south.png",
+      "file": "../images/spritecook/echo_sovereign_south.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5842,7 +5842,7 @@
       "category": "boss",
       "group": "echo_sovereign",
       "pose": "east",
-      "file": "../images/openai_v2/echo_sovereign_east.png",
+      "file": "../images/spritecook/echo_sovereign_east.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5851,7 +5851,7 @@
       "category": "boss",
       "group": "echo_sovereign",
       "pose": "east_attack",
-      "file": "../images/openai_v2/echo_sovereign_east_attack.png",
+      "file": "../images/spritecook/echo_sovereign_east_attack.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5860,7 +5860,7 @@
       "category": "boss",
       "group": "echo_sovereign",
       "pose": "east_spell",
-      "file": "../images/openai_v2/echo_sovereign_east_spell.png",
+      "file": "../images/spritecook/echo_sovereign_east_spell.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5869,7 +5869,7 @@
       "category": "boss",
       "group": "echo_sovereign",
       "pose": "east_block",
-      "file": "../images/openai_v2/echo_sovereign_east_block.png",
+      "file": "../images/spritecook/echo_sovereign_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5878,7 +5878,7 @@
       "category": "boss",
       "group": "echo_sovereign",
       "pose": "east_ko",
-      "file": "../images/openai_v2/echo_sovereign_east_ko.png",
+      "file": "../images/spritecook/echo_sovereign_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5887,7 +5887,7 @@
       "category": "boss",
       "group": "the_first_ember",
       "pose": "portrait",
-      "file": "../images/openai_v2/the_first_ember_portrait.png",
+      "file": "../images/spritecook/the_first_ember_portrait.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5896,7 +5896,7 @@
       "category": "boss",
       "group": "the_first_ember",
       "pose": "south",
-      "file": "../images/openai_v2/the_first_ember_south.png",
+      "file": "../images/spritecook/the_first_ember_south.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5905,7 +5905,7 @@
       "category": "boss",
       "group": "the_first_ember",
       "pose": "east",
-      "file": "../images/openai_v2/the_first_ember_east.png",
+      "file": "../images/spritecook/the_first_ember_east.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5914,7 +5914,7 @@
       "category": "boss",
       "group": "the_first_ember",
       "pose": "east_attack",
-      "file": "../images/openai_v2/the_first_ember_east_attack.png",
+      "file": "../images/spritecook/the_first_ember_east_attack.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5923,7 +5923,7 @@
       "category": "boss",
       "group": "the_first_ember",
       "pose": "east_spell",
-      "file": "../images/openai_v2/the_first_ember_east_spell.png",
+      "file": "../images/spritecook/the_first_ember_east_spell.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5932,7 +5932,7 @@
       "category": "boss",
       "group": "the_first_ember",
       "pose": "east_block",
-      "file": "../images/openai_v2/the_first_ember_east_block.png",
+      "file": "../images/spritecook/the_first_ember_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5941,7 +5941,7 @@
       "category": "boss",
       "group": "the_first_ember",
       "pose": "east_ko",
-      "file": "../images/openai_v2/the_first_ember_east_ko.png",
+      "file": "../images/spritecook/the_first_ember_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5950,7 +5950,7 @@
       "category": "boss",
       "group": "veilspawn_herald",
       "pose": "portrait",
-      "file": "../images/openai_v2/veilspawn_herald_portrait.png",
+      "file": "../images/spritecook/veilspawn_herald_portrait.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5959,7 +5959,7 @@
       "category": "boss",
       "group": "veilspawn_herald",
       "pose": "south",
-      "file": "../images/openai_v2/veilspawn_herald_south.png",
+      "file": "../images/spritecook/veilspawn_herald_south.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5968,7 +5968,7 @@
       "category": "boss",
       "group": "veilspawn_herald",
       "pose": "east",
-      "file": "../images/openai_v2/veilspawn_herald_east.png",
+      "file": "../images/spritecook/veilspawn_herald_east.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5977,7 +5977,7 @@
       "category": "boss",
       "group": "veilspawn_herald",
       "pose": "east_attack",
-      "file": "../images/openai_v2/veilspawn_herald_east_attack.png",
+      "file": "../images/spritecook/veilspawn_herald_east_attack.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5986,7 +5986,7 @@
       "category": "boss",
       "group": "veilspawn_herald",
       "pose": "east_spell",
-      "file": "../images/openai_v2/veilspawn_herald_east_spell.png",
+      "file": "../images/spritecook/veilspawn_herald_east_spell.png",
       "prompt": null,
       "status": "ready"
     },
@@ -5995,7 +5995,7 @@
       "category": "boss",
       "group": "veilspawn_herald",
       "pose": "east_block",
-      "file": "../images/openai_v2/veilspawn_herald_east_block.png",
+      "file": "../images/spritecook/veilspawn_herald_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6004,7 +6004,7 @@
       "category": "boss",
       "group": "veilspawn_herald",
       "pose": "east_ko",
-      "file": "../images/openai_v2/veilspawn_herald_east_ko.png",
+      "file": "../images/spritecook/veilspawn_herald_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6139,7 +6139,7 @@
       "category": "boss",
       "group": "emberveil_sovereign",
       "pose": "portrait",
-      "file": "../images/openai_v2/emberveil_sovereign_portrait.png",
+      "file": "../images/spritecook/emberveil_sovereign_portrait.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6148,7 +6148,7 @@
       "category": "boss",
       "group": "emberveil_sovereign",
       "pose": "south",
-      "file": "../images/openai_v2/emberveil_sovereign_south.png",
+      "file": "../images/spritecook/emberveil_sovereign_south.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6157,7 +6157,7 @@
       "category": "boss",
       "group": "emberveil_sovereign",
       "pose": "east",
-      "file": "../images/openai_v2/emberveil_sovereign_east.png",
+      "file": "../images/spritecook/emberveil_sovereign_east.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6166,7 +6166,7 @@
       "category": "boss",
       "group": "emberveil_sovereign",
       "pose": "east_attack",
-      "file": "../images/openai_v2/emberveil_sovereign_east_attack.png",
+      "file": "../images/spritecook/emberveil_sovereign_east_attack.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6175,7 +6175,7 @@
       "category": "boss",
       "group": "emberveil_sovereign",
       "pose": "east_spell",
-      "file": "../images/openai_v2/emberveil_sovereign_east_spell.png",
+      "file": "../images/spritecook/emberveil_sovereign_east_spell.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6184,7 +6184,7 @@
       "category": "boss",
       "group": "emberveil_sovereign",
       "pose": "east_block",
-      "file": "../images/openai_v2/emberveil_sovereign_east_block.png",
+      "file": "../images/spritecook/emberveil_sovereign_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6193,7 +6193,7 @@
       "category": "boss",
       "group": "emberveil_sovereign",
       "pose": "east_ko",
-      "file": "../images/openai_v2/emberveil_sovereign_east_ko.png",
+      "file": "../images/spritecook/emberveil_sovereign_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6265,7 +6265,7 @@
       "category": "boss",
       "group": "the_unraveler",
       "pose": "portrait",
-      "file": "../images/openai_v2/the_unraveler_portrait.png",
+      "file": "../images/spritecook/the_unraveler_portrait.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6274,7 +6274,7 @@
       "category": "boss",
       "group": "the_unraveler",
       "pose": "south",
-      "file": "../images/openai_v2/the_unraveler_south.png",
+      "file": "../images/spritecook/the_unraveler_south.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6283,7 +6283,7 @@
       "category": "boss",
       "group": "the_unraveler",
       "pose": "east",
-      "file": "../images/openai_v2/the_unraveler_east.png",
+      "file": "../images/spritecook/the_unraveler_east.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6292,7 +6292,7 @@
       "category": "boss",
       "group": "the_unraveler",
       "pose": "east_attack",
-      "file": "../images/openai_v2/the_unraveler_east_attack.png",
+      "file": "../images/spritecook/the_unraveler_east_attack.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6301,7 +6301,7 @@
       "category": "boss",
       "group": "the_unraveler",
       "pose": "east_spell",
-      "file": "../images/openai_v2/the_unraveler_east_spell.png",
+      "file": "../images/spritecook/the_unraveler_east_spell.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6310,7 +6310,7 @@
       "category": "boss",
       "group": "the_unraveler",
       "pose": "east_block",
-      "file": "../images/openai_v2/the_unraveler_east_block.png",
+      "file": "../images/spritecook/the_unraveler_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6319,7 +6319,7 @@
       "category": "boss",
       "group": "the_unraveler",
       "pose": "east_ko",
-      "file": "../images/openai_v2/the_unraveler_east_ko.png",
+      "file": "../images/spritecook/the_unraveler_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6328,7 +6328,7 @@
       "category": "boss",
       "group": "the_architect",
       "pose": "portrait",
-      "file": "../images/openai_v2/the_architect_portrait.png",
+      "file": "../images/spritecook/the_architect_portrait.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6337,7 +6337,7 @@
       "category": "boss",
       "group": "the_architect",
       "pose": "south",
-      "file": "../images/openai_v2/the_architect_south.png",
+      "file": "../images/spritecook/the_architect_south.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6346,7 +6346,7 @@
       "category": "boss",
       "group": "the_architect",
       "pose": "east",
-      "file": "../images/openai_v2/the_architect_east.png",
+      "file": "../images/spritecook/the_architect_east.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6355,7 +6355,7 @@
       "category": "boss",
       "group": "the_architect",
       "pose": "east_attack",
-      "file": "../images/openai_v2/the_architect_east_attack.png",
+      "file": "../images/spritecook/the_architect_east_attack.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6364,7 +6364,7 @@
       "category": "boss",
       "group": "the_architect",
       "pose": "east_spell",
-      "file": "../images/openai_v2/the_architect_east_spell.png",
+      "file": "../images/spritecook/the_architect_east_spell.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6373,7 +6373,7 @@
       "category": "boss",
       "group": "the_architect",
       "pose": "east_block",
-      "file": "../images/openai_v2/the_architect_east_block.png",
+      "file": "../images/spritecook/the_architect_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6382,7 +6382,7 @@
       "category": "boss",
       "group": "the_architect",
       "pose": "east_ko",
-      "file": "../images/openai_v2/the_architect_east_ko.png",
+      "file": "../images/spritecook/the_architect_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6391,7 +6391,7 @@
       "category": "boss",
       "group": "ancient_dragon",
       "pose": "portrait",
-      "file": "../images/openai_v2/ancient_dragon_portrait.png",
+      "file": "../images/spritecook/ancient_dragon_portrait.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6400,7 +6400,7 @@
       "category": "boss",
       "group": "ancient_dragon",
       "pose": "south",
-      "file": "../images/openai_v2/ancient_dragon_south.png",
+      "file": "../images/spritecook/ancient_dragon_south.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6409,7 +6409,7 @@
       "category": "boss",
       "group": "ancient_dragon",
       "pose": "east",
-      "file": "../images/openai_v2/ancient_dragon_east.png",
+      "file": "../images/spritecook/ancient_dragon_east.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6418,7 +6418,7 @@
       "category": "boss",
       "group": "ancient_dragon",
       "pose": "east_attack",
-      "file": "../images/openai_v2/ancient_dragon_east_attack.png",
+      "file": "../images/spritecook/ancient_dragon_east_attack.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6427,7 +6427,7 @@
       "category": "boss",
       "group": "ancient_dragon",
       "pose": "east_spell",
-      "file": "../images/openai_v2/ancient_dragon_east_spell.png",
+      "file": "../images/spritecook/ancient_dragon_east_spell.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6436,7 +6436,7 @@
       "category": "boss",
       "group": "ancient_dragon",
       "pose": "east_block",
-      "file": "../images/openai_v2/ancient_dragon_east_block.png",
+      "file": "../images/spritecook/ancient_dragon_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6445,7 +6445,7 @@
       "category": "boss",
       "group": "ancient_dragon",
       "pose": "east_ko",
-      "file": "../images/openai_v2/ancient_dragon_east_ko.png",
+      "file": "../images/spritecook/ancient_dragon_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6454,7 +6454,7 @@
       "category": "boss",
       "group": "dragon_king",
       "pose": "portrait",
-      "file": "../images/openai_v2/dragon_king_portrait.png",
+      "file": "../images/spritecook/dragon_king_portrait.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6463,7 +6463,7 @@
       "category": "boss",
       "group": "dragon_king",
       "pose": "south",
-      "file": "../images/openai_v2/dragon_king_south.png",
+      "file": "../images/spritecook/dragon_king_south.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6472,7 +6472,7 @@
       "category": "boss",
       "group": "dragon_king",
       "pose": "east",
-      "file": "../images/openai_v2/dragon_king_east.png",
+      "file": "../images/spritecook/dragon_king_east.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6481,7 +6481,7 @@
       "category": "boss",
       "group": "dragon_king",
       "pose": "east_attack",
-      "file": "../images/openai_v2/dragon_king_east_attack.png",
+      "file": "../images/spritecook/dragon_king_east_attack.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6490,7 +6490,7 @@
       "category": "boss",
       "group": "dragon_king",
       "pose": "east_spell",
-      "file": "../images/openai_v2/dragon_king_east_spell.png",
+      "file": "../images/spritecook/dragon_king_east_spell.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6499,7 +6499,7 @@
       "category": "boss",
       "group": "dragon_king",
       "pose": "east_block",
-      "file": "../images/openai_v2/dragon_king_east_block.png",
+      "file": "../images/spritecook/dragon_king_east_block.png",
       "prompt": null,
       "status": "ready"
     },
@@ -6508,7 +6508,7 @@
       "category": "boss",
       "group": "dragon_king",
       "pose": "east_ko",
-      "file": "../images/openai_v2/dragon_king_east_ko.png",
+      "file": "../images/spritecook/dragon_king_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -7192,7 +7192,7 @@
       "category": "enemy",
       "group": "grax_veil_touched",
       "pose": "portrait",
-      "file": "../images/openai_v2/grax_veil_touched_portrait.png",
+      "file": "../images/spritecook/grax_veil_touched_portrait.png",
       "prompt": null,
       "status": "ready"
     },
@@ -7201,7 +7201,7 @@
       "category": "enemy",
       "group": "grax_veil_touched",
       "pose": "south",
-      "file": "../images/openai_v2/grax_veil_touched_south.png",
+      "file": "../images/spritecook/grax_veil_touched_south.png",
       "prompt": null,
       "status": "ready"
     },
@@ -7210,7 +7210,7 @@
       "category": "enemy",
       "group": "grax_veil_touched",
       "pose": "east",
-      "file": "../images/openai_v2/grax_veil_touched_east.png",
+      "file": "../images/spritecook/grax_veil_touched_east.png",
       "prompt": null,
       "status": "ready"
     },
@@ -7219,7 +7219,7 @@
       "category": "enemy",
       "group": "grax_veil_touched",
       "pose": "east_attack",
-      "file": "../images/openai_v2/grax_veil_touched_east_attack.png",
+      "file": "../images/spritecook/grax_veil_touched_east_attack.png",
       "prompt": null,
       "status": "ready"
     },
@@ -7228,7 +7228,7 @@
       "category": "enemy",
       "group": "grax_veil_touched",
       "pose": "east_ko",
-      "file": "../images/openai_v2/grax_veil_touched_east_ko.png",
+      "file": "../images/spritecook/grax_veil_touched_east_ko.png",
       "prompt": null,
       "status": "ready"
     },
@@ -8268,24 +8268,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_spritecook_ancient_dragon_east_ko",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/ancient_dragon_east_ko.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_archfiend_malgrath_east_ko",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/archfiend_malgrath_east_ko.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_spritecook_architect_boss_east_block",
       "category": "orphan",
       "group": "images/spritecook",
@@ -8367,15 +8349,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_spritecook_cosmic_titan_east_ko",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/cosmic_titan_east_ko.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_spritecook_crystal_golem_east_ko",
       "category": "orphan",
       "group": "images/spritecook",
@@ -8417,15 +8390,6 @@
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/dragon_hatchling_portrait.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_dragon_king_east_ko",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/dragon_king_east_ko.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -8538,15 +8502,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_spritecook_emberveil_sovereign_east_ko",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/emberveil_sovereign_east_ko.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_spritecook_forest_owl_east_ko",
       "category": "orphan",
       "group": "images/spritecook",
@@ -8565,11 +8520,20 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_spritecook_grax_veil_touched_east_ko",
+      "id": "orphan_images_spritecook_grax_veil_touched_east_block",
       "category": "orphan",
       "group": "images/spritecook",
       "pose": null,
-      "file": "../images/spritecook/grax_veil_touched_east_ko.png",
+      "file": "../images/spritecook/grax_veil_touched_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_grax_veil_touched_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/grax_veil_touched_east_spell.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -8727,20 +8691,65 @@
       "status": "orphaned"
     },
     {
+      "id": "orphan_images_spritecook_storm_dragon_east",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/storm_dragon_east.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_storm_dragon_east_attack",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/storm_dragon_east_attack.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_storm_dragon_east_block",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/storm_dragon_east_block.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_storm_dragon_east_ko",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/storm_dragon_east_ko.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_storm_dragon_east_spell",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/storm_dragon_east_spell.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
+      "id": "orphan_images_spritecook_storm_dragon_south",
+      "category": "orphan",
+      "group": "images/spritecook",
+      "pose": null,
+      "file": "../images/spritecook/storm_dragon_south.png",
+      "prompt": null,
+      "status": "orphaned"
+    },
+    {
       "id": "orphan_images_spritecook_swamp_frog_east_ko",
       "category": "orphan",
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/swamp_frog_east_ko.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_the_architect_east_ko",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/the_architect_east_ko.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -8772,69 +8781,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_spritecook_veilspawn_herald_east",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/veilspawn_herald_east.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_veilspawn_herald_east_attack",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/veilspawn_herald_east_attack.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_veilspawn_herald_east_block",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/veilspawn_herald_east_block.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_veilspawn_herald_east_ko",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/veilspawn_herald_east_ko.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_veilspawn_herald_east_spell",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/veilspawn_herald_east_spell.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_veilspawn_herald_portrait",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/veilspawn_herald_portrait.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_veilspawn_herald_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/veilspawn_herald_south.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_spritecook_void_boss_east_block",
       "category": "orphan",
       "group": "images/spritecook",
@@ -8858,51 +8804,6 @@
       "group": "images/spritecook",
       "pose": null,
       "file": "../images/spritecook/void_moth_east_ko.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_void_scholar_east",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/void_scholar_east.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_void_scholar_east_attack",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/void_scholar_east_attack.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_void_scholar_east_ko",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/void_scholar_east_ko.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_void_scholar_portrait",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/void_scholar_portrait.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_spritecook_void_scholar_south",
-      "category": "orphan",
-      "group": "images/spritecook",
-      "pose": null,
-      "file": "../images/spritecook/void_scholar_south.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -8988,15 +8889,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_openai_v2_ancient_dragon_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/ancient_dragon_openai_sheet.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_openai_v2_archfiend_malgrath_east_cheer",
       "category": "orphan",
       "group": "images/openai_v2",
@@ -9011,15 +8903,6 @@
       "group": "images/openai_v2",
       "pose": null,
       "file": "../images/openai_v2/archfiend_malgrath_east_wound.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_openai_v2_archfiend_malgrath_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/archfiend_malgrath_openai_sheet.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -9357,15 +9240,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_openai_v2_cosmic_titan_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/cosmic_titan_openai_sheet.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_openai_v2_crystal_golem_east_block",
       "category": "orphan",
       "group": "images/openai_v2",
@@ -9654,15 +9528,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_openai_v2_dragon_king_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/dragon_king_openai_sheet.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_openai_v2_dragon_whelp_east",
       "category": "orphan",
       "group": "images/openai_v2",
@@ -9771,15 +9636,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_openai_v2_echo_sovereign_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/echo_sovereign_openai_sheet.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_openai_v2_ember_drake_east_block",
       "category": "orphan",
       "group": "images/openai_v2",
@@ -9843,15 +9699,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_openai_v2_emberveil_sovereign_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/emberveil_sovereign_openai_sheet.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_openai_v2_forest_owl_east_block",
       "category": "orphan",
       "group": "images/openai_v2",
@@ -9911,15 +9758,6 @@
       "group": "images/openai_v2",
       "pose": null,
       "file": "../images/openai_v2/frost_wyrm_east_wound.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_openai_v2_frost_wyrm_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/frost_wyrm_openai_sheet.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -10347,15 +10185,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_openai_v2_grax_veil_touched_east_block",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/grax_veil_touched_east_block.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_openai_v2_grax_veil_touched_east_cheer",
       "category": "orphan",
       "group": "images/openai_v2",
@@ -10365,29 +10194,11 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_openai_v2_grax_veil_touched_east_spell",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/grax_veil_touched_east_spell.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_openai_v2_grax_veil_touched_east_wound",
       "category": "orphan",
       "group": "images/openai_v2",
       "pose": null,
       "file": "../images/openai_v2/grax_veil_touched_east_wound.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_openai_v2_grax_veil_touched_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/grax_veil_touched_openai_sheet.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -11526,33 +11337,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_openai_v2_storm_dragon_east",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/storm_dragon_east.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_openai_v2_storm_dragon_east_attack",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/storm_dragon_east_attack.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_openai_v2_storm_dragon_east_block",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/storm_dragon_east_block.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_openai_v2_storm_dragon_east_cheer",
       "category": "orphan",
       "group": "images/openai_v2",
@@ -11562,56 +11346,11 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_openai_v2_storm_dragon_east_ko",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/storm_dragon_east_ko.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_openai_v2_storm_dragon_east_spell",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/storm_dragon_east_spell.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_openai_v2_storm_dragon_east_wound",
       "category": "orphan",
       "group": "images/openai_v2",
       "pose": null,
       "file": "../images/openai_v2/storm_dragon_east_wound.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_openai_v2_storm_dragon_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/storm_dragon_openai_sheet.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_openai_v2_storm_dragon_portrait",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/storm_dragon_portrait.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_openai_v2_storm_dragon_south",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/storm_dragon_south.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -11724,15 +11463,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_openai_v2_the_architect_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/the_architect_openai_sheet.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_openai_v2_the_first_ember_east_cheer",
       "category": "orphan",
       "group": "images/openai_v2",
@@ -11751,15 +11481,6 @@
       "status": "orphaned"
     },
     {
-      "id": "orphan_images_openai_v2_the_first_ember_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/the_first_ember_openai_sheet.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
       "id": "orphan_images_openai_v2_the_unraveler_east_cheer",
       "category": "orphan",
       "group": "images/openai_v2",
@@ -11774,15 +11495,6 @@
       "group": "images/openai_v2",
       "pose": null,
       "file": "../images/openai_v2/the_unraveler_east_wound.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_openai_v2_the_unraveler_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/the_unraveler_openai_sheet.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -11882,15 +11594,6 @@
       "group": "images/openai_v2",
       "pose": null,
       "file": "../images/openai_v2/vault_guardian_east_wound.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_openai_v2_vault_guardian_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/vault_guardian_openai_sheet.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -12008,15 +11711,6 @@
       "group": "images/openai_v2",
       "pose": null,
       "file": "../images/openai_v2/veilspawn_herald_east_wound.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_openai_v2_veilspawn_herald_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/veilspawn_herald_openai_sheet.png",
       "prompt": null,
       "status": "orphaned"
     },
@@ -12170,15 +11864,6 @@
       "group": "images/openai_v2",
       "pose": null,
       "file": "../images/openai_v2/void_scholar_east_wound.png",
-      "prompt": null,
-      "status": "orphaned"
-    },
-    {
-      "id": "orphan_images_openai_v2_void_scholar_openai_sheet",
-      "category": "orphan",
-      "group": "images/openai_v2",
-      "pose": null,
-      "file": "../images/openai_v2/void_scholar_openai_sheet.png",
       "prompt": null,
       "status": "orphaned"
     },

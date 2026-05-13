@@ -1,7 +1,7 @@
 {
-  "milestone": 471,
+  "milestone": 472,
   "date": "2026-05-12",
-  "summary": "M471 — image-review-v2 unified single-row layout (group/list/pose filter removed, typos fixed, checker-bg works on both pages), slice-bleed fixes for pet_fire_elemental/bandit_captain/the_first_ember, forest_owl + dragon_king (1536x1024 — OpenAI capped) + giant_spider regens, 623/34 image-review approve sweep, faction-aware combat grid spacing (allies tight + enemies tight + battle-line gap), NG+ progression isolation (new resetRunProgression), README + Supabase migration docs, damage-report instrumentation analysis",
+  "summary": "M472 — defer Supabase save pushes during combat. A 3-enemy fight was firing ~27 PATCHes against /rest/v1/saves; now it fires ~1. cloudSaves.pushSave caches per-key while window.__inCombat=true; CombatScreen.onExit flushes once with the latest record. Mid-combat interrupt loses progress by design (per user).",
   "categories": [
     "feature"
   ],

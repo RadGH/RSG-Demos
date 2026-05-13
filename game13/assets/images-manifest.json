@@ -1,18 +1,18 @@
 {
-  "generated": "2026-05-12T22:04:23.832Z",
+  "generated": "2026-05-13T00:11:29.784Z",
   "totals": {
-    "all": 3041,
+    "all": 3103,
     "classes": 577,
-    "bosses": 433,
+    "bosses": 459,
     "enemies": 368,
     "companions": 475,
     "backgrounds": 109,
     "ui": 3,
     "particles": 21,
     "spell_icons": 8,
-    "portraits_misc": 103,
+    "portraits_misc": 109,
     "other": 0,
-    "unknown_characters": 944
+    "unknown_characters": 974
   },
   "classes": [
     {
@@ -4349,43 +4349,43 @@
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/ancient_dragon_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/ancient_dragon_east_attack.png",
           "name": "ancient_dragon_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/ancient_dragon_east_block.png",
+          "file": "openai_v2/_pre_spritecook/ancient_dragon_east_block.png",
           "name": "ancient_dragon_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/ancient_dragon_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/ancient_dragon_east_ko.png",
           "name": "ancient_dragon_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/ancient_dragon_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/ancient_dragon_east_spell.png",
           "name": "ancient_dragon_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/ancient_dragon_east.png",
+          "file": "openai_v2/_pre_spritecook/ancient_dragon_east.png",
           "name": "ancient_dragon_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/ancient_dragon_portrait.png",
+          "file": "openai_v2/_pre_spritecook/ancient_dragon_portrait.png",
           "name": "ancient_dragon_portrait.png",
           "pose": "portrait",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/ancient_dragon_south.png",
+          "file": "openai_v2/_pre_spritecook/ancient_dragon_south.png",
           "name": "ancient_dragon_south.png",
           "pose": "south",
           "gender": "inferred"
@@ -4397,15 +4397,33 @@
           "gender": "inferred"
         },
         {
+          "file": "spritecook/ancient_dragon_east_block.png",
+          "name": "ancient_dragon_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/ancient_dragon_east_ko.png",
           "name": "ancient_dragon_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
+          "file": "spritecook/ancient_dragon_east_spell.png",
+          "name": "ancient_dragon_east_spell.png",
+          "pose": "east+spell",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/ancient_dragon_east.png",
           "name": "ancient_dragon_east.png",
           "pose": "east",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/ancient_dragon_portrait.png",
+          "name": "ancient_dragon_portrait.png",
+          "pose": "portrait",
           "gender": "inferred"
         },
         {
@@ -4474,43 +4492,43 @@
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/archfiend_malgrath_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/archfiend_malgrath_east_attack.png",
           "name": "archfiend_malgrath_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/archfiend_malgrath_east_block.png",
+          "file": "openai_v2/_pre_spritecook/archfiend_malgrath_east_block.png",
           "name": "archfiend_malgrath_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/archfiend_malgrath_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/archfiend_malgrath_east_ko.png",
           "name": "archfiend_malgrath_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/archfiend_malgrath_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/archfiend_malgrath_east_spell.png",
           "name": "archfiend_malgrath_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/archfiend_malgrath_east.png",
+          "file": "openai_v2/_pre_spritecook/archfiend_malgrath_east.png",
           "name": "archfiend_malgrath_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/archfiend_malgrath_portrait.png",
+          "file": "openai_v2/_pre_spritecook/archfiend_malgrath_portrait.png",
           "name": "archfiend_malgrath_portrait.png",
           "pose": "portrait",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/archfiend_malgrath_south.png",
+          "file": "openai_v2/_pre_spritecook/archfiend_malgrath_south.png",
           "name": "archfiend_malgrath_south.png",
           "pose": "south",
           "gender": "inferred"
@@ -4522,15 +4540,33 @@
           "gender": "inferred"
         },
         {
+          "file": "spritecook/archfiend_malgrath_east_block.png",
+          "name": "archfiend_malgrath_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/archfiend_malgrath_east_ko.png",
           "name": "archfiend_malgrath_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
+          "file": "spritecook/archfiend_malgrath_east_spell.png",
+          "name": "archfiend_malgrath_east_spell.png",
+          "pose": "east+spell",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/archfiend_malgrath_east.png",
           "name": "archfiend_malgrath_east.png",
           "pose": "east",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/archfiend_malgrath_portrait.png",
+          "name": "archfiend_malgrath_portrait.png",
+          "pose": "portrait",
           "gender": "inferred"
         },
         {
@@ -4859,43 +4895,43 @@
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/cosmic_titan_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/cosmic_titan_east_attack.png",
           "name": "cosmic_titan_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/cosmic_titan_east_block.png",
+          "file": "openai_v2/_pre_spritecook/cosmic_titan_east_block.png",
           "name": "cosmic_titan_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/cosmic_titan_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/cosmic_titan_east_ko.png",
           "name": "cosmic_titan_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/cosmic_titan_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/cosmic_titan_east_spell.png",
           "name": "cosmic_titan_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/cosmic_titan_east.png",
+          "file": "openai_v2/_pre_spritecook/cosmic_titan_east.png",
           "name": "cosmic_titan_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/cosmic_titan_portrait.png",
+          "file": "openai_v2/_pre_spritecook/cosmic_titan_portrait.png",
           "name": "cosmic_titan_portrait.png",
           "pose": "portrait",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/cosmic_titan_south.png",
+          "file": "openai_v2/_pre_spritecook/cosmic_titan_south.png",
           "name": "cosmic_titan_south.png",
           "pose": "south",
           "gender": "inferred"
@@ -4907,9 +4943,21 @@
           "gender": "inferred"
         },
         {
+          "file": "spritecook/cosmic_titan_east_block.png",
+          "name": "cosmic_titan_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/cosmic_titan_east_ko.png",
           "name": "cosmic_titan_east_ko.png",
           "pose": "east+ko",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/cosmic_titan_east_spell.png",
+          "name": "cosmic_titan_east_spell.png",
+          "pose": "east+spell",
           "gender": "inferred"
         },
         {
@@ -5392,43 +5440,43 @@
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/emberveil_sovereign_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/emberveil_sovereign_east_attack.png",
           "name": "emberveil_sovereign_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/emberveil_sovereign_east_block.png",
+          "file": "openai_v2/_pre_spritecook/emberveil_sovereign_east_block.png",
           "name": "emberveil_sovereign_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/emberveil_sovereign_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/emberveil_sovereign_east_ko.png",
           "name": "emberveil_sovereign_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/emberveil_sovereign_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/emberveil_sovereign_east_spell.png",
           "name": "emberveil_sovereign_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/emberveil_sovereign_east.png",
+          "file": "openai_v2/_pre_spritecook/emberveil_sovereign_east.png",
           "name": "emberveil_sovereign_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/emberveil_sovereign_portrait.png",
+          "file": "openai_v2/_pre_spritecook/emberveil_sovereign_portrait.png",
           "name": "emberveil_sovereign_portrait.png",
           "pose": "portrait",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/emberveil_sovereign_south.png",
+          "file": "openai_v2/_pre_spritecook/emberveil_sovereign_south.png",
           "name": "emberveil_sovereign_south.png",
           "pose": "south",
           "gender": "inferred"
@@ -5440,15 +5488,33 @@
           "gender": "inferred"
         },
         {
+          "file": "spritecook/emberveil_sovereign_east_block.png",
+          "name": "emberveil_sovereign_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/emberveil_sovereign_east_ko.png",
           "name": "emberveil_sovereign_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
+          "file": "spritecook/emberveil_sovereign_east_spell.png",
+          "name": "emberveil_sovereign_east_spell.png",
+          "pose": "east+spell",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/emberveil_sovereign_east.png",
           "name": "emberveil_sovereign_east.png",
           "pose": "east",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/emberveil_sovereign_portrait.png",
+          "name": "emberveil_sovereign_portrait.png",
+          "pose": "portrait",
           "gender": "inferred"
         },
         {
@@ -5517,51 +5583,87 @@
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/frost_wyrm_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/frost_wyrm_east_attack.png",
           "name": "frost_wyrm_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/frost_wyrm_east_block.png",
+          "file": "openai_v2/_pre_spritecook/frost_wyrm_east_block.png",
           "name": "frost_wyrm_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/frost_wyrm_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/frost_wyrm_east_ko.png",
           "name": "frost_wyrm_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/frost_wyrm_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/frost_wyrm_east_spell.png",
           "name": "frost_wyrm_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/frost_wyrm_east.png",
+          "file": "openai_v2/_pre_spritecook/frost_wyrm_east.png",
           "name": "frost_wyrm_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/frost_wyrm_portrait.png",
+          "file": "openai_v2/_pre_spritecook/frost_wyrm_portrait.png",
           "name": "frost_wyrm_portrait.png",
           "pose": "portrait",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/frost_wyrm_south.png",
+          "file": "openai_v2/_pre_spritecook/frost_wyrm_south.png",
           "name": "frost_wyrm_south.png",
           "pose": "south",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/frost_wyrm_east_attack.png",
+          "name": "frost_wyrm_east_attack.png",
+          "pose": "east+attack",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/frost_wyrm_east_block.png",
+          "name": "frost_wyrm_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/frost_wyrm_east_ko.png",
+          "name": "frost_wyrm_east_ko.png",
+          "pose": "east+ko",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/frost_wyrm_east_spell.png",
+          "name": "frost_wyrm_east_spell.png",
+          "pose": "east+spell",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/frost_wyrm_east.png",
+          "name": "frost_wyrm_east.png",
+          "pose": "east",
           "gender": "inferred"
         },
         {
           "file": "spritecook/frost_wyrm_portrait.png",
           "name": "frost_wyrm_portrait.png",
           "pose": "portrait",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/frost_wyrm_south.png",
+          "name": "frost_wyrm_south.png",
+          "pose": "south",
           "gender": "inferred"
         },
         {
@@ -5779,43 +5881,43 @@
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/grax_veil_touched_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/grax_veil_touched_east_attack.png",
           "name": "grax_veil_touched_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/grax_veil_touched_east_block.png",
+          "file": "openai_v2/_pre_spritecook/grax_veil_touched_east_block.png",
           "name": "grax_veil_touched_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/grax_veil_touched_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/grax_veil_touched_east_ko.png",
           "name": "grax_veil_touched_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/grax_veil_touched_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/grax_veil_touched_east_spell.png",
           "name": "grax_veil_touched_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/grax_veil_touched_east.png",
+          "file": "openai_v2/_pre_spritecook/grax_veil_touched_east.png",
           "name": "grax_veil_touched_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/grax_veil_touched_portrait.png",
+          "file": "openai_v2/_pre_spritecook/grax_veil_touched_portrait.png",
           "name": "grax_veil_touched_portrait.png",
           "pose": "portrait",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/grax_veil_touched_south.png",
+          "file": "openai_v2/_pre_spritecook/grax_veil_touched_south.png",
           "name": "grax_veil_touched_south.png",
           "pose": "south",
           "gender": "inferred"
@@ -5827,15 +5929,33 @@
           "gender": "inferred"
         },
         {
+          "file": "spritecook/grax_veil_touched_east_block.png",
+          "name": "grax_veil_touched_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/grax_veil_touched_east_ko.png",
           "name": "grax_veil_touched_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
+          "file": "spritecook/grax_veil_touched_east_spell.png",
+          "name": "grax_veil_touched_east_spell.png",
+          "pose": "east+spell",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/grax_veil_touched_east.png",
           "name": "grax_veil_touched_east.png",
           "pose": "east",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/grax_veil_touched_portrait.png",
+          "name": "grax_veil_touched_portrait.png",
+          "pose": "portrait",
           "gender": "inferred"
         },
         {
@@ -6451,51 +6571,87 @@
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/storm_dragon_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/storm_dragon_east_attack.png",
           "name": "storm_dragon_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/storm_dragon_east_block.png",
+          "file": "openai_v2/_pre_spritecook/storm_dragon_east_block.png",
           "name": "storm_dragon_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/storm_dragon_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/storm_dragon_east_ko.png",
           "name": "storm_dragon_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/storm_dragon_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/storm_dragon_east_spell.png",
           "name": "storm_dragon_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/storm_dragon_east.png",
+          "file": "openai_v2/_pre_spritecook/storm_dragon_east.png",
           "name": "storm_dragon_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/storm_dragon_portrait.png",
+          "file": "openai_v2/_pre_spritecook/storm_dragon_portrait.png",
           "name": "storm_dragon_portrait.png",
           "pose": "portrait",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/storm_dragon_south.png",
+          "file": "openai_v2/_pre_spritecook/storm_dragon_south.png",
           "name": "storm_dragon_south.png",
           "pose": "south",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/storm_dragon_east_attack.png",
+          "name": "storm_dragon_east_attack.png",
+          "pose": "east+attack",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/storm_dragon_east_block.png",
+          "name": "storm_dragon_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/storm_dragon_east_ko.png",
+          "name": "storm_dragon_east_ko.png",
+          "pose": "east+ko",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/storm_dragon_east_spell.png",
+          "name": "storm_dragon_east_spell.png",
+          "pose": "east+spell",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/storm_dragon_east.png",
+          "name": "storm_dragon_east.png",
+          "pose": "east",
           "gender": "inferred"
         },
         {
           "file": "spritecook/storm_dragon_portrait.png",
           "name": "storm_dragon_portrait.png",
           "pose": "portrait",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/storm_dragon_south.png",
+          "name": "storm_dragon_south.png",
+          "pose": "south",
           "gender": "inferred"
         },
         {
@@ -12191,7 +12347,7 @@
       "id": "ancient_dragon_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/ancient_dragon_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/ancient_dragon_openai_sheet.png",
           "name": "ancient_dragon_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -12224,7 +12380,7 @@
       "id": "archfiend_malgrath_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/archfiend_malgrath_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/archfiend_malgrath_openai_sheet.png",
           "name": "archfiend_malgrath_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -12683,7 +12839,7 @@
       "id": "cosmic_titan_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/cosmic_titan_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/cosmic_titan_openai_sheet.png",
           "name": "cosmic_titan_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -12895,37 +13051,37 @@
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/dragon_king_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/dragon_king_east_attack.png",
           "name": "dragon_king_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/dragon_king_east_block.png",
+          "file": "openai_v2/_pre_spritecook/dragon_king_east_block.png",
           "name": "dragon_king_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/dragon_king_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/dragon_king_east_ko.png",
           "name": "dragon_king_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/dragon_king_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/dragon_king_east_spell.png",
           "name": "dragon_king_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/dragon_king_east.png",
+          "file": "openai_v2/_pre_spritecook/dragon_king_east.png",
           "name": "dragon_king_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/dragon_king_south.png",
+          "file": "openai_v2/_pre_spritecook/dragon_king_south.png",
           "name": "dragon_king_south.png",
           "pose": "south",
           "gender": "inferred"
@@ -12937,9 +13093,21 @@
           "gender": "inferred"
         },
         {
+          "file": "spritecook/dragon_king_east_block.png",
+          "name": "dragon_king_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/dragon_king_east_ko.png",
           "name": "dragon_king_east_ko.png",
           "pose": "east+ko",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/dragon_king_east_spell.png",
+          "name": "dragon_king_east_spell.png",
+          "pose": "east+spell",
           "gender": "inferred"
         },
         {
@@ -13024,7 +13192,7 @@
       "id": "dragon_king_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/dragon_king_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/dragon_king_openai_sheet.png",
           "name": "dragon_king_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -14939,37 +15107,73 @@
       "id": "echo_sovereign",
       "files": [
         {
-          "file": "openai_v2/echo_sovereign_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/echo_sovereign_east_attack.png",
           "name": "echo_sovereign_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/echo_sovereign_east_block.png",
+          "file": "openai_v2/_pre_spritecook/echo_sovereign_east_block.png",
           "name": "echo_sovereign_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/echo_sovereign_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/echo_sovereign_east_ko.png",
           "name": "echo_sovereign_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/echo_sovereign_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/echo_sovereign_east_spell.png",
           "name": "echo_sovereign_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/echo_sovereign_east.png",
+          "file": "openai_v2/_pre_spritecook/echo_sovereign_east.png",
           "name": "echo_sovereign_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/echo_sovereign_south.png",
+          "file": "openai_v2/_pre_spritecook/echo_sovereign_south.png",
+          "name": "echo_sovereign_south.png",
+          "pose": "south",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/echo_sovereign_east_attack.png",
+          "name": "echo_sovereign_east_attack.png",
+          "pose": "east+attack",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/echo_sovereign_east_block.png",
+          "name": "echo_sovereign_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/echo_sovereign_east_ko.png",
+          "name": "echo_sovereign_east_ko.png",
+          "pose": "east+ko",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/echo_sovereign_east_spell.png",
+          "name": "echo_sovereign_east_spell.png",
+          "pose": "east+spell",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/echo_sovereign_east.png",
+          "name": "echo_sovereign_east.png",
+          "pose": "east",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/echo_sovereign_south.png",
           "name": "echo_sovereign_south.png",
           "pose": "south",
           "gender": "inferred"
@@ -15002,7 +15206,7 @@
       "id": "echo_sovereign_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/echo_sovereign_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/echo_sovereign_openai_sheet.png",
           "name": "echo_sovereign_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -15068,7 +15272,7 @@
       "id": "emberveil_sovereign_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/emberveil_sovereign_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/emberveil_sovereign_openai_sheet.png",
           "name": "emberveil_sovereign_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -15146,7 +15350,7 @@
       "id": "frost_wyrm_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/frost_wyrm_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/frost_wyrm_openai_sheet.png",
           "name": "frost_wyrm_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -15585,7 +15789,7 @@
       "id": "grax_veil_touched_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/grax_veil_touched_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/grax_veil_touched_openai_sheet.png",
           "name": "grax_veil_touched_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -17887,7 +18091,7 @@
       "id": "storm_dragon_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/storm_dragon_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/storm_dragon_openai_sheet.png",
           "name": "storm_dragon_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -17988,37 +18192,37 @@
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_architect_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/the_architect_east_attack.png",
           "name": "the_architect_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_architect_east_block.png",
+          "file": "openai_v2/_pre_spritecook/the_architect_east_block.png",
           "name": "the_architect_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_architect_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/the_architect_east_ko.png",
           "name": "the_architect_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_architect_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/the_architect_east_spell.png",
           "name": "the_architect_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_architect_east.png",
+          "file": "openai_v2/_pre_spritecook/the_architect_east.png",
           "name": "the_architect_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_architect_south.png",
+          "file": "openai_v2/_pre_spritecook/the_architect_south.png",
           "name": "the_architect_south.png",
           "pose": "south",
           "gender": "inferred"
@@ -18030,9 +18234,21 @@
           "gender": "inferred"
         },
         {
+          "file": "spritecook/the_architect_east_block.png",
+          "name": "the_architect_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/the_architect_east_ko.png",
           "name": "the_architect_east_ko.png",
           "pose": "east+ko",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/the_architect_east_spell.png",
+          "name": "the_architect_east_spell.png",
+          "pose": "east+spell",
           "gender": "inferred"
         },
         {
@@ -18123,7 +18339,7 @@
       "id": "the_architect_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/the_architect_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/the_architect_openai_sheet.png",
           "name": "the_architect_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -18170,37 +18386,73 @@
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_first_ember_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/the_first_ember_east_attack.png",
           "name": "the_first_ember_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_first_ember_east_block.png",
+          "file": "openai_v2/_pre_spritecook/the_first_ember_east_block.png",
           "name": "the_first_ember_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_first_ember_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/the_first_ember_east_ko.png",
           "name": "the_first_ember_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_first_ember_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/the_first_ember_east_spell.png",
           "name": "the_first_ember_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_first_ember_east.png",
+          "file": "openai_v2/_pre_spritecook/the_first_ember_east.png",
           "name": "the_first_ember_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_first_ember_south.png",
+          "file": "openai_v2/_pre_spritecook/the_first_ember_south.png",
+          "name": "the_first_ember_south.png",
+          "pose": "south",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/the_first_ember_east_attack.png",
+          "name": "the_first_ember_east_attack.png",
+          "pose": "east+attack",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/the_first_ember_east_block.png",
+          "name": "the_first_ember_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/the_first_ember_east_ko.png",
+          "name": "the_first_ember_east_ko.png",
+          "pose": "east+ko",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/the_first_ember_east_spell.png",
+          "name": "the_first_ember_east_spell.png",
+          "pose": "east+spell",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/the_first_ember_east.png",
+          "name": "the_first_ember_east.png",
+          "pose": "east",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/the_first_ember_south.png",
           "name": "the_first_ember_south.png",
           "pose": "south",
           "gender": "inferred"
@@ -18245,7 +18497,7 @@
       "id": "the_first_ember_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/the_first_ember_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/the_first_ember_openai_sheet.png",
           "name": "the_first_ember_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -18256,37 +18508,73 @@
       "id": "the_unraveler",
       "files": [
         {
-          "file": "openai_v2/the_unraveler_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/the_unraveler_east_attack.png",
           "name": "the_unraveler_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_unraveler_east_block.png",
+          "file": "openai_v2/_pre_spritecook/the_unraveler_east_block.png",
           "name": "the_unraveler_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_unraveler_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/the_unraveler_east_ko.png",
           "name": "the_unraveler_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_unraveler_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/the_unraveler_east_spell.png",
           "name": "the_unraveler_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_unraveler_east.png",
+          "file": "openai_v2/_pre_spritecook/the_unraveler_east.png",
           "name": "the_unraveler_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/the_unraveler_south.png",
+          "file": "openai_v2/_pre_spritecook/the_unraveler_south.png",
+          "name": "the_unraveler_south.png",
+          "pose": "south",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/the_unraveler_east_attack.png",
+          "name": "the_unraveler_east_attack.png",
+          "pose": "east+attack",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/the_unraveler_east_block.png",
+          "name": "the_unraveler_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/the_unraveler_east_ko.png",
+          "name": "the_unraveler_east_ko.png",
+          "pose": "east+ko",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/the_unraveler_east_spell.png",
+          "name": "the_unraveler_east_spell.png",
+          "pose": "east+spell",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/the_unraveler_east.png",
+          "name": "the_unraveler_east.png",
+          "pose": "east",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/the_unraveler_south.png",
           "name": "the_unraveler_south.png",
           "pose": "south",
           "gender": "inferred"
@@ -18367,7 +18655,7 @@
       "id": "the_unraveler_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/the_unraveler_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/the_unraveler_openai_sheet.png",
           "name": "the_unraveler_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -18452,37 +18740,73 @@
       "id": "vault_guardian",
       "files": [
         {
-          "file": "openai_v2/vault_guardian_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/vault_guardian_east_attack.png",
           "name": "vault_guardian_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/vault_guardian_east_block.png",
+          "file": "openai_v2/_pre_spritecook/vault_guardian_east_block.png",
           "name": "vault_guardian_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/vault_guardian_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/vault_guardian_east_ko.png",
           "name": "vault_guardian_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/vault_guardian_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/vault_guardian_east_spell.png",
           "name": "vault_guardian_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/vault_guardian_east.png",
+          "file": "openai_v2/_pre_spritecook/vault_guardian_east.png",
           "name": "vault_guardian_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/vault_guardian_south.png",
+          "file": "openai_v2/_pre_spritecook/vault_guardian_south.png",
+          "name": "vault_guardian_south.png",
+          "pose": "south",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/vault_guardian_east_attack.png",
+          "name": "vault_guardian_east_attack.png",
+          "pose": "east+attack",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/vault_guardian_east_block.png",
+          "name": "vault_guardian_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/vault_guardian_east_ko.png",
+          "name": "vault_guardian_east_ko.png",
+          "pose": "east+ko",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/vault_guardian_east_spell.png",
+          "name": "vault_guardian_east_spell.png",
+          "pose": "east+spell",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/vault_guardian_east.png",
+          "name": "vault_guardian_east.png",
+          "pose": "east",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/vault_guardian_south.png",
           "name": "vault_guardian_south.png",
           "pose": "south",
           "gender": "inferred"
@@ -18515,7 +18839,7 @@
       "id": "vault_guardian_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/vault_guardian_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/vault_guardian_openai_sheet.png",
           "name": "vault_guardian_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -18661,37 +18985,37 @@
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/veilspawn_herald_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/veilspawn_herald_east_attack.png",
           "name": "veilspawn_herald_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/veilspawn_herald_east_block.png",
+          "file": "openai_v2/_pre_spritecook/veilspawn_herald_east_block.png",
           "name": "veilspawn_herald_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/veilspawn_herald_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/veilspawn_herald_east_ko.png",
           "name": "veilspawn_herald_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/veilspawn_herald_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/veilspawn_herald_east_spell.png",
           "name": "veilspawn_herald_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/veilspawn_herald_east.png",
+          "file": "openai_v2/_pre_spritecook/veilspawn_herald_east.png",
           "name": "veilspawn_herald_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/veilspawn_herald_south.png",
+          "file": "openai_v2/_pre_spritecook/veilspawn_herald_south.png",
           "name": "veilspawn_herald_south.png",
           "pose": "south",
           "gender": "inferred"
@@ -18760,7 +19084,7 @@
       "id": "veilspawn_herald_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/veilspawn_herald_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/veilspawn_herald_openai_sheet.png",
           "name": "veilspawn_herald_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -18861,37 +19185,37 @@
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/void_scholar_east_attack.png",
+          "file": "openai_v2/_pre_spritecook/void_scholar_east_attack.png",
           "name": "void_scholar_east_attack.png",
           "pose": "east+attack",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/void_scholar_east_block.png",
+          "file": "openai_v2/_pre_spritecook/void_scholar_east_block.png",
           "name": "void_scholar_east_block.png",
           "pose": "east+block",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/void_scholar_east_ko.png",
+          "file": "openai_v2/_pre_spritecook/void_scholar_east_ko.png",
           "name": "void_scholar_east_ko.png",
           "pose": "east+ko",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/void_scholar_east_spell.png",
+          "file": "openai_v2/_pre_spritecook/void_scholar_east_spell.png",
           "name": "void_scholar_east_spell.png",
           "pose": "east+spell",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/void_scholar_east.png",
+          "file": "openai_v2/_pre_spritecook/void_scholar_east.png",
           "name": "void_scholar_east.png",
           "pose": "east",
           "gender": "inferred"
         },
         {
-          "file": "openai_v2/void_scholar_south.png",
+          "file": "openai_v2/_pre_spritecook/void_scholar_south.png",
           "name": "void_scholar_south.png",
           "pose": "south",
           "gender": "inferred"
@@ -18903,9 +19227,21 @@
           "gender": "inferred"
         },
         {
+          "file": "spritecook/void_scholar_east_block.png",
+          "name": "void_scholar_east_block.png",
+          "pose": "east+block",
+          "gender": "inferred"
+        },
+        {
           "file": "spritecook/void_scholar_east_ko.png",
           "name": "void_scholar_east_ko.png",
           "pose": "east+ko",
+          "gender": "inferred"
+        },
+        {
+          "file": "spritecook/void_scholar_east_spell.png",
+          "name": "void_scholar_east_spell.png",
+          "pose": "east+spell",
           "gender": "inferred"
         },
         {
@@ -18948,7 +19284,7 @@
       "id": "void_scholar_openai_sheet",
       "files": [
         {
-          "file": "openai_v2/void_scholar_openai_sheet.png",
+          "file": "openai_v2/_pre_spritecook/void_scholar_openai_sheet.png",
           "name": "void_scholar_openai_sheet.png",
           "pose": "",
           "gender": "inferred"
@@ -19675,14 +20011,50 @@
       "gender": "inferred"
     },
     {
-      "file": "openai_v2/dragon_king_portrait.png",
+      "file": "openai_v2/_pre_spritecook/dragon_king_portrait.png",
       "name": "dragon_king_portrait.png",
       "pose": "portrait",
       "gender": "inferred"
     },
     {
-      "file": "openai_v2/echo_sovereign_portrait.png",
+      "file": "openai_v2/_pre_spritecook/echo_sovereign_portrait.png",
       "name": "echo_sovereign_portrait.png",
+      "pose": "portrait",
+      "gender": "inferred"
+    },
+    {
+      "file": "openai_v2/_pre_spritecook/the_architect_portrait.png",
+      "name": "the_architect_portrait.png",
+      "pose": "portrait",
+      "gender": "inferred"
+    },
+    {
+      "file": "openai_v2/_pre_spritecook/the_first_ember_portrait.png",
+      "name": "the_first_ember_portrait.png",
+      "pose": "portrait",
+      "gender": "inferred"
+    },
+    {
+      "file": "openai_v2/_pre_spritecook/the_unraveler_portrait.png",
+      "name": "the_unraveler_portrait.png",
+      "pose": "portrait",
+      "gender": "inferred"
+    },
+    {
+      "file": "openai_v2/_pre_spritecook/vault_guardian_portrait.png",
+      "name": "vault_guardian_portrait.png",
+      "pose": "portrait",
+      "gender": "inferred"
+    },
+    {
+      "file": "openai_v2/_pre_spritecook/veilspawn_herald_portrait.png",
+      "name": "veilspawn_herald_portrait.png",
+      "pose": "portrait",
+      "gender": "inferred"
+    },
+    {
+      "file": "openai_v2/_pre_spritecook/void_scholar_portrait.png",
+      "name": "void_scholar_portrait.png",
       "pose": "portrait",
       "gender": "inferred"
     },
@@ -19717,44 +20089,8 @@
       "gender": "inferred"
     },
     {
-      "file": "openai_v2/the_architect_portrait.png",
-      "name": "the_architect_portrait.png",
-      "pose": "portrait",
-      "gender": "inferred"
-    },
-    {
-      "file": "openai_v2/the_first_ember_portrait.png",
-      "name": "the_first_ember_portrait.png",
-      "pose": "portrait",
-      "gender": "inferred"
-    },
-    {
-      "file": "openai_v2/the_unraveler_portrait.png",
-      "name": "the_unraveler_portrait.png",
-      "pose": "portrait",
-      "gender": "inferred"
-    },
-    {
       "file": "openai_v2/tomek_halverin_portrait.png",
       "name": "tomek_halverin_portrait.png",
-      "pose": "portrait",
-      "gender": "inferred"
-    },
-    {
-      "file": "openai_v2/vault_guardian_portrait.png",
-      "name": "vault_guardian_portrait.png",
-      "pose": "portrait",
-      "gender": "inferred"
-    },
-    {
-      "file": "openai_v2/veilspawn_herald_portrait.png",
-      "name": "veilspawn_herald_portrait.png",
-      "pose": "portrait",
-      "gender": "inferred"
-    },
-    {
-      "file": "openai_v2/void_scholar_portrait.png",
-      "name": "void_scholar_portrait.png",
       "pose": "portrait",
       "gender": "inferred"
     },
@@ -20071,6 +20407,18 @@
       "gender": "inferred"
     },
     {
+      "file": "spritecook/dragon_king_portrait.png",
+      "name": "dragon_king_portrait.png",
+      "pose": "portrait",
+      "gender": "inferred"
+    },
+    {
+      "file": "spritecook/echo_sovereign_portrait.png",
+      "name": "echo_sovereign_portrait.png",
+      "pose": "portrait",
+      "gender": "inferred"
+    },
+    {
       "file": "spritecook/kaela_thorne_portrait.png",
       "name": "kaela_thorne_portrait.png",
       "pose": "portrait",
@@ -20097,6 +20445,30 @@
     {
       "file": "spritecook/silas_veilward_portrait.png",
       "name": "silas_veilward_portrait.png",
+      "pose": "portrait",
+      "gender": "inferred"
+    },
+    {
+      "file": "spritecook/the_architect_portrait.png",
+      "name": "the_architect_portrait.png",
+      "pose": "portrait",
+      "gender": "inferred"
+    },
+    {
+      "file": "spritecook/the_first_ember_portrait.png",
+      "name": "the_first_ember_portrait.png",
+      "pose": "portrait",
+      "gender": "inferred"
+    },
+    {
+      "file": "spritecook/the_unraveler_portrait.png",
+      "name": "the_unraveler_portrait.png",
+      "pose": "portrait",
+      "gender": "inferred"
+    },
+    {
+      "file": "spritecook/vault_guardian_portrait.png",
+      "name": "vault_guardian_portrait.png",
       "pose": "portrait",
       "gender": "inferred"
     },

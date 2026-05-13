@@ -117,11 +117,129 @@
     }
   }
 
+  // ---------------------------------------------------------------------------
+  // Unified single-row character renderer (M464 / M471)
+  // Layout per character:
+  //   <name>
+  //   [portrait][south][east][east_attack][east_spell][east_block][east_ko]
+  // One row per character, equal-size 96px tiles, no card frame.
+  //
+  // Used by image-review-v2.html (with selection / flag / generator badges) and
+  // images.html (plain click-to-open). The renderer is pure — callers supply
+  // characters + tile sources + tile-click handler, and the renderer wires up
+  // the DOM. Page-specific decorations (flag dots, generator badges, selection
+  // state, bulk-select checkbox) are opt-in via the `decorateTile` callback.
+  // ---------------------------------------------------------------------------
+
+  /**
+   * @typedef CharRecord
+   * @property {string}        id         Group id (e.g. "warrior", "dire_wolf").
+   * @property {string}        name       Display name. Falls back to id if blank.
+   * @property {string|null}   subtitle   Optional id row (e.g. "warrior").
+   * @property {Array<TileSpec>} tiles    Tile descriptors in render order.
+   */
+  /**
+   * @typedef TileSpec
+   * @property {string}        id         Tile-level id (entry id or synthetic pose id).
+   * @property {string|null}   src        Image src; null = missing-tile glyph.
+   * @property {string|null}   pose       Pose key (used for the small label).
+   * @property {string|null}   poseLabel  Override label text (e.g. "atk").
+   * @property {string|null}   subtitle   Extra alt-text qualifier.
+   * @property {any}           data       Caller-defined payload forwarded to onTileClick / decorateTile.
+   */
+
+  /**
+   * Render a unified-character section into `container`.
+   *
+   * @param {HTMLElement}  container
+   * @param {CharRecord[]} characters
+   * @param {Object}       [opts]
+   * @param {Function}     [opts.onTileClick]   (tile, charRecord, event) — click handler. If omitted, tiles are non-interactive.
+   * @param {Function}     [opts.decorateTile]  (tileEl, tile, charRecord) — page-specific decorations after the base tile is built.
+   * @param {Function}     [opts.decorateHead]  (headEl, charRecord) — page-specific header content (bulk checkbox, badges).
+   */
+  function renderUnifiedCharacters(container, characters, opts) {
+    opts = opts || {};
+    container.innerHTML = '';
+
+    for (const c of characters) {
+      const section = document.createElement('div');
+      section.className = 'unified-char';
+
+      const head = document.createElement('div');
+      head.className = 'uc-head';
+
+      if (typeof opts.decorateHead === 'function') {
+        try { opts.decorateHead(head, c); } catch (e) { console.error(e); }
+      }
+
+      const nameEl = document.createElement('div');
+      nameEl.className = 'uc-name';
+      nameEl.textContent = c.name || (c.id || '').replace(/_/g, ' ').replace(/\b\w/g, ch => ch.toUpperCase());
+      head.appendChild(nameEl);
+
+      if (c.subtitle || c.id) {
+        const idEl = document.createElement('div');
+        idEl.className = 'uc-id';
+        idEl.textContent = c.subtitle || c.id;
+        head.appendChild(idEl);
+      }
+      section.appendChild(head);
+
+      const row = document.createElement('div');
+      row.className = 'uc-row';
+
+      for (const t of (c.tiles || [])) {
+        const tile = document.createElement('div');
+        tile.className = 'uc-tile checker-bg';
+        if (t.id) tile.dataset.id = t.id;
+
+        if (!t.src) {
+          tile.classList.add('tile-missing');
+          tile.innerHTML = '<span class="uc-missing-glyph">&#x2717;</span>';
+          if (t.poseLabel || t.pose) {
+            const lbl = document.createElement('div');
+            lbl.className = 'uc-pose-label';
+            lbl.textContent = t.poseLabel || t.pose;
+            tile.appendChild(lbl);
+          }
+          row.appendChild(tile);
+          continue;
+        }
+
+        const img = document.createElement('img');
+        img.src = t.src;
+        img.alt = (c.name || c.id || '') + ' ' + (t.pose || '');
+        img.loading = 'lazy';
+        tile.appendChild(img);
+
+        if (t.poseLabel || t.pose) {
+          const lbl = document.createElement('div');
+          lbl.className = 'uc-pose-label';
+          lbl.textContent = t.poseLabel || t.pose;
+          tile.appendChild(lbl);
+        }
+
+        if (typeof opts.decorateTile === 'function') {
+          try { opts.decorateTile(tile, t, c); } catch (e) { console.error(e); }
+        }
+
+        if (typeof opts.onTileClick === 'function') {
+          tile.addEventListener('click', (ev) => opts.onTileClick(t, c, ev));
+        }
+        row.appendChild(tile);
+      }
+      section.appendChild(row);
+      container.appendChild(section);
+    }
+  }
+
   // Expose on window
   window.SpriteGrid = {
     BG_LS_KEY:                   BG_LS_KEY,
     applySpriteBg:               applySpriteBg,
     mountBgFilter:               mountBgFilter,
     resolveAppearanceCategory:   resolveAppearanceCategory,
+    renderUnifiedCharacters:     renderUnifiedCharacters,
   };
 })();
