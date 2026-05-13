@@ -1,7 +1,7 @@
 {
-  "milestone": 479,
+  "milestone": 480,
   "date": "2026-05-13",
-  "summary": "M479 — dialog buildLoot rewards (prologue Silas gifts etc.) now color the item name by actual rarity. Was always rendering in the default gold .dlg-reward-line color regardless of the underlying rarity, so a magic/blue item looked rare/gold in the dialog.",
+  "summary": "M480 — combat grid fit check now includes the SPRITE_W_AT_1 sprite width so leftmost + rightmost half-sprites stay inside the viewport. Was clipping with 1 hero + 4 enemies on mobile (393px).",
   "categories": [
     "feature"
   ],

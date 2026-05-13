@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-13T19:34:46.269Z",
+  "generated": "2026-05-13T20:09:43.059Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,23 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 480,
+      "date": "",
+      "summary": "Combat layout overflow fix. combatLayout.js fit check compared center-to-center span against gridW but ignored that the leftmost and rightmost sprites extend half-a-sprite-width beyond those centers. With 1 hero + 4 enemies on iPhone-14-pro viewport, the cluster scaled to exactly gridW center-to-center, leaving sprite halves outside on both ends. Now check uses trueWidth = centerSpan + SPRITE_W_AT_1; if that exceeds gridW, both gaps scale down proportionally and centerSpan recomputes. 7/7 layout tests still pass.",
+      "items": [
+        {
+          "text": "Combat layout overflow fix. combatLayout.js fit check compared center-to-center span against gridW but ignored that the leftmost and rightmost sprites extend half-a-sprite-width beyond those centers. With 1 hero + 4 enemies on iPhone-14-pro viewport, the cluster scaled to exactly gridW center-to-center, leaving sprite halves outside on both ends. Now check uses trueWidth = centerSpan + SPRITE_W_AT_1; if that exceeds gridW, both gaps scale down proportionally and centerSpan recomputes. 7/7 layout tests still pass.",
+          "categories": [
+            "Feature",
+            "BugFix",
+            "Balance",
+            "QoL",
+            "Art"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 479,
       "date": "",
