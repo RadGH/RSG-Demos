@@ -1,7 +1,7 @@
 {
-  "milestone": 473,
+  "milestone": 474,
   "date": "2026-05-12",
-  "summary": "M473 — 15 bosses regenerated via SpriteCook (transparent pixel-art, intimidating, ~1344 SpriteCook credits used). Krix dialog skill-check now routes to node ids correctly. Stats persistence root-cause fixed (combat_history was only written at run-end; now after every fight). Stats page slot filter + per-slot count + last-50 notice. images.html + image-review-v2 lightbox unified into _shared/lightbox. Dark-border post-process fix on 18 sprites. Goblin Shaman flip override removed. Town T letter visible on revive. Load Game shows selected difficulty. Status tooltip z-index 1200 + close-on-icon-removal. Flee = no gold + end-of-round + 1/round. Dragon King reverted to pre-2x version.",
+  "summary": "M474 — REAL stats persistence fix (UPDATE→UPSERT in runStatsClient + Stats dashboard re-renders Overview after async cloud fetch lands), lightbox stopPropagation defensive guard, removed 135 stale openai_v2 boss entries from image-review (now only the 105 SpriteCook ones remain, correctly tagged category:boss)",
   "categories": [
     "feature"
   ],

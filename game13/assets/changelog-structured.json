@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-13T04:49:07.320Z",
+  "generated": "2026-05-13T15:32:13.735Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,21 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 474,
+      "date": "2026-05-12",
+      "summary": "M474 — REAL stats persistence fix (UPDATE→UPSERT in runStatsClient + Stats dashboard re-renders Overview after async cloud fetch lands), lightbox stopPropagation defensive guard, removed 135 stale openai_v2 boss entries from image-review (now only the 105 SpriteCook ones remain, correctly tagged category:boss)",
+      "items": [
+        {
+          "text": "M474 — REAL stats persistence fix (UPDATE→UPSERT in runStatsClient + Stats dashboard re-renders Overview after async cloud fetch lands), lightbox stopPropagation defensive guard, removed 135 stale openai_v2 boss entries from image-review (now only the 105 SpriteCook ones remain, correctly tagged category:boss)",
+          "categories": [
+            "Feature",
+            "BugFix",
+            "Art"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 473,
       "date": "",
