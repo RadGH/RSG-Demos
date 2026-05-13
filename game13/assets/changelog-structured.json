@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-13T19:14:58.983Z",
+  "generated": "2026-05-13T19:26:41.641Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,22 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 478,
+      "date": "",
+      "summary": "images.html regression fix. The M473 lightbox/layout unification extracted renderUnifiedCharacters into _shared/sprite-grid.js with container.innerHTML = chr(39)chr(39) at function start. image-review-v2.html passes the whole character array in one call (safe). images.html iterates appearances and calls renderUnifiedAppearance per app (broken — each call wiped prior renders, leaving only the last). Fix: renderer is now append-only by default; image-review-v2 passes clear:true to opt into the previous behavior.",
+      "items": [
+        {
+          "text": "images.html regression fix. The M473 lightbox/layout unification extracted renderUnifiedCharacters into _shared/sprite-grid.js with container.innerHTML = chr(39)chr(39) at function start. image-review-v2.html passes the whole character array in one call (safe). images.html iterates appearances and calls renderUnifiedAppearance per app (broken — each call wiped prior renders, leaving only the last). Fix: renderer is now append-only by default; image-review-v2 passes clear:true to opt into the previous behavior.",
+          "categories": [
+            "Feature",
+            "BugFix",
+            "QoL",
+            "Art"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 477,
       "date": "",

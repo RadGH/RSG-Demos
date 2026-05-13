@@ -1,7 +1,7 @@
 {
-  "milestone": 477,
+  "milestone": 478,
   "date": "2026-05-13",
-  "summary": "M477 — Overview Stats charts now union live party + all cloud-history heroes (was locking to current party only after load+combat, ignoring slot filter).",
+  "summary": "M478 — fixed images.html showing only the last appearance (clockwork_turret). Shared renderUnifiedCharacters was wiping container on every call; images.html calls it in a loop per appearance, so all prior renders were destroyed. Now append-only; image-review-v2 opts in via clear:true.",
   "categories": [
     "feature"
   ],
