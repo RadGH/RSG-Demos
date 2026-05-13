@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-13T00:11:30.345Z",
+  "generated": "2026-05-13T04:49:07.320Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,22 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 473,
+      "date": "",
+      "summary": "Six parallel agents shipped. (1) SpriteCook bosses: 15 bosses (ancient_dragon, dragon_king, storm_dragon, frost_wyrm, archfiend_malgrath, emberveil_sovereign, grax_veil_touched, the_architect, the_unraveler, cosmic_titan, vault_guardian, void_scholar, echo_sovereign, the_first_ember, veilspawn_herald) regenerated via SpriteCook MCP, east-frame-first then 6 reference-locked siblings, transparent PNGs from pixel_url; old OpenAI versions archived to openai_v2/_pre_spritecook/. 105 entries enrolled in image-review batch m354 for approval. (2) Dialog skill-check fix: DialogScreen._showOutcome now routes outcomeKey to event.nodes[id] when the outcome map miss matches a node id; 7-test regression suite at src/ui/__tests__/dialog_skillcheck_node_routing.test.js. The Krix INT 14 silent-exit-to-map bug is closed. (3) Stats persistence: TWO root causes fixed. (a) recordFightEnd now pushes combat_history to Supabase after EVERY fight via _pushCombatHistoryToCloud (was only at run-end). (b) Kills-by-hero chart now reads from merged cloud history, not in-memory gs.stats.perChar (which resets on refresh). (4) Stats slot filter: dropdown shows hero name + class + level + per-slot fight count; \"Only last 50\" notice. (5) Lightbox unified: extracted public/assets/_shared/lightbox.{css,js}; both image-review-v2.html and images.html use the same component (next/prev/keyboard/close); 376 lines of duplication deleted. images.html character layout switched to unified single-row to match image-review-v2. (6) Dark-border bug: OpenAI was rendering thin dark frames between 3x3 sheet cells; chroma-key kept them. Added 3% inset to slice_3x3 + appended \"no dark frame/outline/borders\" to prompt. Reprocessed 18 sprites from raw archives. (7) UI fixes: town T letter dark on filled circles (visited OR isCurrent), Load Game shows actual difficulty in summary, status tooltip z-index 1200 + dies cleanly on icon removal, flee removes gold cost + queues for end-of-round + 1/round, Goblin Shaman flip override removed (was double-flipping post-M467 regen). (8) Dragon King reverted to pre-2x — the 1536x1024 attempt did not look better.",
+      "items": [
+        {
+          "text": "Six parallel agents shipped. (1) SpriteCook bosses: 15 bosses (ancient_dragon, dragon_king, storm_dragon, frost_wyrm, archfiend_malgrath, emberveil_sovereign, grax_veil_touched, the_architect, the_unraveler, cosmic_titan, vault_guardian, void_scholar, echo_sovereign, the_first_ember, veilspawn_herald) regenerated via SpriteCook MCP, east-frame-first then 6 reference-locked siblings, transparent PNGs from pixel_url; old OpenAI versions archived to openai_v2/_pre_spritecook/. 105 entries enrolled in image-review batch m354 for approval. (2) Dialog skill-check fix: DialogScreen._showOutcome now routes outcomeKey to event.nodes[id] when the outcome map miss matches a node id; 7-test regression suite at src/ui/__tests__/dialog_skillcheck_node_routing.test.js. The Krix INT 14 silent-exit-to-map bug is closed. (3) Stats persistence: TWO root causes fixed. (a) recordFightEnd now pushes combat_history to Supabase after EVERY fight via _pushCombatHistoryToCloud (was only at run-end). (b) Kills-by-hero chart now reads from merged cloud history, not in-memory gs.stats.perChar (which resets on refresh). (4) Stats slot filter: dropdown shows hero name + class + level + per-slot fight count; \"Only last 50\" notice. (5) Lightbox unified: extracted public/assets/_shared/lightbox.{css,js}; both image-review-v2.html and images.html use the same component (next/prev/keyboard/close); 376 lines of duplication deleted. images.html character layout switched to unified single-row to match image-review-v2. (6) Dark-border bug: OpenAI was rendering thin dark frames between 3x3 sheet cells; chroma-key kept them. Added 3% inset to slice_3x3 + appended \"no dark frame/outline/borders\" to prompt. Reprocessed 18 sprites from raw archives. (7) UI fixes: town T letter dark on filled circles (visited OR isCurrent), Load Game shows actual difficulty in summary, status tooltip z-index 1200 + dies cleanly on icon removal, flee removes gold cost + queues for end-of-round + 1/round, Goblin Shaman flip override removed (was double-flipping post-M467 regen). (8) Dragon King reverted to pre-2x — the 1536x1024 attempt did not look better.",
+          "categories": [
+            "Feature",
+            "BugFix",
+            "QoL",
+            "Art"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 472,
       "date": "",

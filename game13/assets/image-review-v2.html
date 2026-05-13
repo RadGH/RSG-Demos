@@ -744,9 +744,11 @@ function renderUnifiedCharacters(entries) {
     },
     onTileClick: (t /*, c */, ev) => {
       if (!t.src) return; // missing tiles: no-op
-      ev.stopPropagation();
+      // M474 — defensive: a few caller paths invoke handlers without a real
+      // Event object; stopPropagation/shiftKey may be missing.
+      if (ev && typeof ev.stopPropagation === 'function') ev.stopPropagation();
       // Single click = open lightbox; shift-click toggles selection.
-      if (ev.shiftKey) {
+      if (ev && ev.shiftKey) {
         const tileEl = ev.currentTarget;
         toggleSelect(t.id, tileEl);
       } else {
