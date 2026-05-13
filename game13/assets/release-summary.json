@@ -1,7 +1,7 @@
 {
-  "milestone": 474,
-  "date": "2026-05-12",
-  "summary": "M474 — REAL stats persistence fix (UPDATE→UPSERT in runStatsClient + Stats dashboard re-renders Overview after async cloud fetch lands), lightbox stopPropagation defensive guard, removed 135 stale openai_v2 boss entries from image-review (now only the 105 SpriteCook ones remain, correctly tagged category:boss)",
+  "milestone": 475,
+  "date": "2026-05-13",
+  "summary": "M475 — per-hero damage/kills/taken/healing charts + Hero Totals table on the Lifetime tab. Data was persisting since M473 (verified via direct Supabase query); user couldn't see it because main-menu Stats hides the Overview tab when no party is loaded and Lifetime had only global aggregates. No new Supabase table needed.",
   "categories": [
     "feature"
   ],

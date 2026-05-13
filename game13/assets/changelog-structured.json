@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-13T15:32:13.735Z",
+  "generated": "2026-05-13T16:12:16.866Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,21 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 475,
+      "date": "",
+      "summary": "Lifetime Stats tab now shows per-hero charts (Damage Dealt / Kills / Damage Taken / Healing) + a sortable Hero Totals table, aggregating cloud combat_history (existing JSONB column on run_stats). Direct REST query confirmed the data has been persisting since M473 — the user couldn't see it because the Overview tab auto-hides on main-menu Stats (no party = nothing to chart) and Lifetime previously showed only global numbers. With multiple runs each row keeps up to 50 sessions; listCombatHistory caps at limit*10=500 entries across all runs, plenty for the \"history per hero\" use case. Also: my next release will add RELEASE_FAST=1 for code-only changes — most release time goes to gallery thumbnails / regression sims / data snapshots which don't need to run when only JS/CSS changed.",
+      "items": [
+        {
+          "text": "Lifetime Stats tab now shows per-hero charts (Damage Dealt / Kills / Damage Taken / Healing) + a sortable Hero Totals table, aggregating cloud combat_history (existing JSONB column on run_stats). Direct REST query confirmed the data has been persisting since M473 — the user couldn't see it because the Overview tab auto-hides on main-menu Stats (no party = nothing to chart) and Lifetime previously showed only global numbers. With multiple runs each row keeps up to 50 sessions; listCombatHistory caps at limit*10=500 entries across all runs, plenty for the \"history per hero\" use case. Also: my next release will add RELEASE_FAST=1 for code-only changes — most release time goes to gallery thumbnails / regression sims / data snapshots which don't need to run when only JS/CSS changed.",
+          "categories": [
+            "Feature",
+            "BugFix",
+            "Balance"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 474,
       "date": "2026-05-12",
