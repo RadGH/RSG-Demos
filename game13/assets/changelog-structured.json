@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-13T19:26:41.641Z",
+  "generated": "2026-05-13T19:34:46.269Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,20 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 479,
+      "date": "",
+      "summary": "Dialog buildLoot rarity-color fix. DialogScreen._applyReward's buildLoot branch (the prologue Silas gift path) pushed +built.name with no span, falling back to the default gold color. The regular reward.item path already wrapped in var(--rarity-XXX). Now buildLoot matches. User caught this when a blue bow showed as gold in the gift dialog.",
+      "items": [
+        {
+          "text": "Dialog buildLoot rarity-color fix. DialogScreen._applyReward's buildLoot branch (the prologue Silas gift path) pushed +built.name with no span, falling back to the default gold color. The regular reward.item path already wrapped in var(--rarity-XXX). Now buildLoot matches. User caught this when a blue bow showed as gold in the gift dialog.",
+          "categories": [
+            "Feature",
+            "BugFix"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 478,
       "date": "",

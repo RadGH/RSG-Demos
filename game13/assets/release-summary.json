@@ -1,7 +1,7 @@
 {
-  "milestone": 478,
+  "milestone": 479,
   "date": "2026-05-13",
-  "summary": "M478 — fixed images.html showing only the last appearance (clockwork_turret). Shared renderUnifiedCharacters was wiping container on every call; images.html calls it in a loop per appearance, so all prior renders were destroyed. Now append-only; image-review-v2 opts in via clear:true.",
+  "summary": "M479 — dialog buildLoot rewards (prologue Silas gifts etc.) now color the item name by actual rarity. Was always rendering in the default gold .dlg-reward-line color regardless of the underlying rarity, so a magic/blue item looked rare/gold in the dialog.",
   "categories": [
     "feature"
   ],
