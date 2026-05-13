@@ -1,7 +1,7 @@
 {
-  "milestone": 475,
+  "milestone": 476,
   "date": "2026-05-13",
-  "summary": "M475 — per-hero damage/kills/taken/healing charts + Hero Totals table on the Lifetime tab. Data was persisting since M473 (verified via direct Supabase query); user couldn't see it because main-menu Stats hides the Overview tab when no party is loaded and Lifetime had only global aggregates. No new Supabase table needed.",
+  "summary": "M476 — stats fixes + tooltips + uniques + bosses + RELEASE_FAST. Slot dropdown refreshes on cloud load. damageTaken now actually records (was 0 for everyone). Overview tab adds Damage Taken + Healing charts. .ev-tooltip-card portaled to body (escapes .ev-hud stacking). Hover tooltip on enemies + companions showing statuses + blue-name modifiers. Unique items had no dmg/armor stats — now baked at gen time (auto-equip works, tooltips show damage). Bosses no longer double-scaled (hardcoded 2.5x boost removed). RELEASE_FAST=1 mode added — this very release uses it.",
   "categories": [
     "feature"
   ],

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-13T16:12:16.866Z",
+  "generated": "2026-05-13T18:45:20.988Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,22 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 476,
+      "date": "2026-05-13",
+      "summary": "M476 — stats fixes + tooltips + uniques + bosses + RELEASE_FAST. Slot dropdown refreshes on cloud load. damageTaken now actually records (was 0 for everyone). Overview tab adds Damage Taken + Healing charts. .ev-tooltip-card portaled to body (escapes .ev-hud stacking). Hover tooltip on enemies + companions showing statuses + blue-name modifiers. Unique items had no dmg/armor stats — now baked at gen time (auto-equip works, tooltips show damage). Bosses no longer double-scaled (hardcoded 2.5x boost removed). RELEASE_FAST=1 mode added — this very release uses it.",
+      "items": [
+        {
+          "text": "M476 — stats fixes + tooltips + uniques + bosses + RELEASE_FAST. Slot dropdown refreshes on cloud load. damageTaken now actually records (was 0 for everyone). Overview tab adds Damage Taken + Healing charts. .ev-tooltip-card portaled to body (escapes .ev-hud stacking). Hover tooltip on enemies + companions showing statuses + blue-name modifiers. Unique items had no dmg/armor stats — now baked at gen time (auto-equip works, tooltips show damage). Bosses no longer double-scaled (hardcoded 2.5x boost removed). RELEASE_FAST=1 mode added — this very release uses it.",
+          "categories": [
+            "Feature",
+            "BugFix",
+            "Balance",
+            "QoL"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 475,
       "date": "",
