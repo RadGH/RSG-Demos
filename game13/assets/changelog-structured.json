@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-14T06:11:59.331Z",
+  "generated": "2026-05-14T06:21:27.196Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,20 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 483,
+      "date": "",
+      "summary": "Stats tab restoration. _availableTabs in StatsDashboardScreen had a no-party gate that returned only [lifetime, crossrun] when gs.party was empty. Result: after page refresh from main menu, user lost Overview/Characters/Damage/Loot/Power/Combat tabs entirely — only Lifetime+Cross-Run showed. After quit-to-menu mid-run those tabs were back because party was still in memory. Now main_menu always returns all tabs. Renderers that need party data (_renderCharacters, _renderDamage, _renderLoot, _renderPower) already have empty-state guards (\"No party members yet\", etc.) so they degrade gracefully. Charts that DO have cloud data (Overview kills/dmg/taken/heals from M477, Lifetime per-hero from M475) populate correctly.",
+      "items": [
+        {
+          "text": "Stats tab restoration. _availableTabs in StatsDashboardScreen had a no-party gate that returned only [lifetime, crossrun] when gs.party was empty. Result: after page refresh from main menu, user lost Overview/Characters/Damage/Loot/Power/Combat tabs entirely — only Lifetime+Cross-Run showed. After quit-to-menu mid-run those tabs were back because party was still in memory. Now main_menu always returns all tabs. Renderers that need party data (_renderCharacters, _renderDamage, _renderLoot, _renderPower) already have empty-state guards (\"No party members yet\", etc.) so they degrade gracefully. Charts that DO have cloud data (Overview kills/dmg/taken/heals from M477, Lifetime per-hero from M475) populate correctly.",
+          "categories": [
+            "Feature",
+            "Balance"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 482,
       "date": "",

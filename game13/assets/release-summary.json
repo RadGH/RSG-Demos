@@ -1,7 +1,7 @@
 {
-  "milestone": 482,
+  "milestone": 483,
   "date": "2026-05-13",
-  "summary": "M482 — approved all image-review-v2 entries (batch m354 → history, m355 opened). No code changes; image data is now the canonical state.",
+  "summary": "M483 — main-menu Stats now shows all 8 tabs on first load (was hiding all but Lifetime + Cross-Run when no party loaded).",
   "categories": [
     "feature"
   ],
