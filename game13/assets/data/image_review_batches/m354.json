@@ -307,8 +307,9 @@
       "old": "../images/openai_v2/_pre_openai/bandit_captain_east_attack.png",
       "new": "../images/openai_v2/bandit_captain_east_attack.png",
       "live": "../images/openai_v2/bandit_captain_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T04:48:47Z"
+      "approved": true,
+      "addedAt": "2026-05-12T04:48:47Z",
+      "approvedAt": "2026-05-13T20:18:07.265Z"
     },
     {
       "id": "openai9_bandit_captain_east_spell",
@@ -320,8 +321,9 @@
       "old": "../images/openai_v2/_pre_openai/bandit_captain_east_spell.png",
       "new": "../images/openai_v2/bandit_captain_east_spell.png",
       "live": "../images/openai_v2/bandit_captain_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T04:48:47Z"
+      "approved": true,
+      "addedAt": "2026-05-12T04:48:47Z",
+      "approvedAt": "2026-05-13T20:18:07.270Z"
     },
     {
       "id": "openai9_bandit_captain_east_block",
@@ -333,8 +335,9 @@
       "old": "../images/openai_v2/_pre_openai/bandit_captain_east_block.png",
       "new": "../images/openai_v2/bandit_captain_east_block.png",
       "live": "../images/openai_v2/bandit_captain_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T04:48:47Z"
+      "approved": true,
+      "addedAt": "2026-05-12T04:48:47Z",
+      "approvedAt": "2026-05-13T20:18:07.270Z"
     },
     {
       "id": "openai9_bandit_captain_east_ko",
@@ -2824,8 +2827,9 @@
       "old": "../images/openai_v2/_pre_openai/pet_fire_elemental_east_attack.png",
       "new": "../images/openai_v2/pet_fire_elemental_east_attack.png",
       "live": "../images/openai_v2/pet_fire_elemental_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T05:56:44Z"
+      "approved": true,
+      "addedAt": "2026-05-12T05:56:44Z",
+      "approvedAt": "2026-05-13T20:18:07.271Z"
     },
     {
       "id": "openai9_pet_fire_elemental_east_spell",
@@ -2837,8 +2841,9 @@
       "old": "../images/openai_v2/pet_fire_elemental_east_spell.png",
       "new": "../images/openai_v2/pet_fire_elemental_east_spell.png",
       "live": "../images/openai_v2/pet_fire_elemental_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T05:56:44Z"
+      "approved": true,
+      "addedAt": "2026-05-12T05:56:44Z",
+      "approvedAt": "2026-05-13T20:18:07.271Z"
     },
     {
       "id": "openai9_pet_fire_elemental_east_block",
@@ -7064,8 +7069,9 @@
       "old": "../images/openai_v2/_pre_openai/forest_owl_portrait.png",
       "new": "../images/openai_v2/forest_owl_portrait.png",
       "live": "../images/openai_v2/forest_owl_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:26:57Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:26:57Z",
+      "approvedAt": "2026-05-13T20:18:07.271Z"
     },
     {
       "id": "openai9_forest_owl_south",
@@ -7077,8 +7083,9 @@
       "old": "../images/openai_v2/_pre_openai/forest_owl_south.png",
       "new": "../images/openai_v2/forest_owl_south.png",
       "live": "../images/openai_v2/forest_owl_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:26:57Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:26:57Z",
+      "approvedAt": "2026-05-13T20:18:07.271Z"
     },
     {
       "id": "openai9_forest_owl_east",
@@ -7090,8 +7097,9 @@
       "old": "../images/openai_v2/_pre_openai/forest_owl_east.png",
       "new": "../images/openai_v2/forest_owl_east.png",
       "live": "../images/openai_v2/forest_owl_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:26:57Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:26:57Z",
+      "approvedAt": "2026-05-13T20:18:07.271Z"
     },
     {
       "id": "openai9_forest_owl_east_attack",
@@ -7103,8 +7111,9 @@
       "old": "../images/openai_v2/_pre_openai/forest_owl_east_attack.png",
       "new": "../images/openai_v2/forest_owl_east_attack.png",
       "live": "../images/openai_v2/forest_owl_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:26:57Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:26:57Z",
+      "approvedAt": "2026-05-13T20:18:07.272Z"
     },
     {
       "id": "openai9_forest_owl_east_spell",
@@ -7116,8 +7125,9 @@
       "old": "../images/openai_v2/_pre_openai/forest_owl_east_spell.png",
       "new": "../images/openai_v2/forest_owl_east_spell.png",
       "live": "../images/openai_v2/forest_owl_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:26:57Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:26:57Z",
+      "approvedAt": "2026-05-13T20:18:07.272Z"
     },
     {
       "id": "openai9_forest_owl_east_block",
@@ -7129,8 +7139,9 @@
       "old": "../images/openai_v2/_pre_openai/forest_owl_east_block.png",
       "new": "../images/openai_v2/forest_owl_east_block.png",
       "live": "../images/openai_v2/forest_owl_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:26:57Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:26:57Z",
+      "approvedAt": "2026-05-13T20:18:07.272Z"
     },
     {
       "id": "openai9_forest_owl_east_ko",
@@ -7142,8 +7153,9 @@
       "old": "../images/openai_v2/_pre_openai/forest_owl_east_ko.png",
       "new": "../images/openai_v2/forest_owl_east_ko.png",
       "live": "../images/openai_v2/forest_owl_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:26:57Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:26:57Z",
+      "approvedAt": "2026-05-13T20:18:07.272Z"
     },
     {
       "id": "openai9_forest_owl_east_cheer",
@@ -7155,8 +7167,9 @@
       "old": "../images/openai_v2/_pre_openai/forest_owl_east_cheer.png",
       "new": "../images/openai_v2/forest_owl_east_cheer.png",
       "live": "../images/openai_v2/forest_owl_east_cheer.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:26:57Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:26:57Z",
+      "approvedAt": "2026-05-13T20:18:07.272Z"
     },
     {
       "id": "openai9_forest_owl_east_wound",
@@ -7168,8 +7181,9 @@
       "old": "../images/openai_v2/_pre_openai/forest_owl_east_wound.png",
       "new": "../images/openai_v2/forest_owl_east_wound.png",
       "live": "../images/openai_v2/forest_owl_east_wound.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:26:57Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:26:57Z",
+      "approvedAt": "2026-05-13T20:18:07.272Z"
     },
     {
       "id": "openai9_giant_spider_portrait",
@@ -7181,8 +7195,9 @@
       "old": "../images/openai_v2/giant_spider_portrait.png",
       "new": "../images/openai_v2/giant_spider_portrait.png",
       "live": "../images/openai_v2/giant_spider_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:27:09Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:27:09Z",
+      "approvedAt": "2026-05-13T20:18:07.272Z"
     },
     {
       "id": "openai9_giant_spider_south",
@@ -7194,8 +7209,9 @@
       "old": "../images/openai_v2/giant_spider_south.png",
       "new": "../images/openai_v2/giant_spider_south.png",
       "live": "../images/openai_v2/giant_spider_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:27:09Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:27:09Z",
+      "approvedAt": "2026-05-13T20:18:07.273Z"
     },
     {
       "id": "openai9_giant_spider_east",
@@ -7207,8 +7223,9 @@
       "old": "../images/openai_v2/giant_spider_east.png",
       "new": "../images/openai_v2/giant_spider_east.png",
       "live": "../images/openai_v2/giant_spider_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:27:09Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:27:09Z",
+      "approvedAt": "2026-05-13T20:18:07.273Z"
     },
     {
       "id": "openai9_giant_spider_east_attack",
@@ -7220,8 +7237,9 @@
       "old": "../images/openai_v2/giant_spider_east_attack.png",
       "new": "../images/openai_v2/giant_spider_east_attack.png",
       "live": "../images/openai_v2/giant_spider_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:27:09Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:27:09Z",
+      "approvedAt": "2026-05-13T20:18:07.273Z"
     },
     {
       "id": "openai9_giant_spider_east_spell",
@@ -7233,8 +7251,9 @@
       "old": "../images/openai_v2/giant_spider_east_spell.png",
       "new": "../images/openai_v2/giant_spider_east_spell.png",
       "live": "../images/openai_v2/giant_spider_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:27:09Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:27:09Z",
+      "approvedAt": "2026-05-13T20:18:07.273Z"
     },
     {
       "id": "openai9_giant_spider_east_block",
@@ -7246,8 +7265,9 @@
       "old": "../images/openai_v2/giant_spider_east_block.png",
       "new": "../images/openai_v2/giant_spider_east_block.png",
       "live": "../images/openai_v2/giant_spider_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:27:09Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:27:09Z",
+      "approvedAt": "2026-05-13T20:18:07.273Z"
     },
     {
       "id": "openai9_giant_spider_east_ko",
@@ -7259,8 +7279,9 @@
       "old": "../images/openai_v2/giant_spider_east_ko.png",
       "new": "../images/openai_v2/giant_spider_east_ko.png",
       "live": "../images/openai_v2/giant_spider_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:27:09Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:27:09Z",
+      "approvedAt": "2026-05-13T20:18:07.274Z"
     },
     {
       "id": "openai9_giant_spider_east_cheer",
@@ -7272,8 +7293,9 @@
       "old": "../images/openai_v2/giant_spider_east_cheer.png",
       "new": "../images/openai_v2/giant_spider_east_cheer.png",
       "live": "../images/openai_v2/giant_spider_east_cheer.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:27:09Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:27:09Z",
+      "approvedAt": "2026-05-13T20:18:07.274Z"
     },
     {
       "id": "openai9_giant_spider_east_wound",
@@ -7285,8 +7307,9 @@
       "old": "../images/openai_v2/giant_spider_east_wound.png",
       "new": "../images/openai_v2/giant_spider_east_wound.png",
       "live": "../images/openai_v2/giant_spider_east_wound.png",
-      "approved": false,
-      "addedAt": "2026-05-12T21:27:09Z"
+      "approved": true,
+      "addedAt": "2026-05-12T21:27:09Z",
+      "approvedAt": "2026-05-13T20:18:07.274Z"
     },
     {
       "id": "spritecookboss_ancient_dragon_portrait",
@@ -7298,8 +7321,9 @@
       "old": "../images/openai_v2/_pre_spritecook/ancient_dragon_portrait.png",
       "new": "../images/spritecook/ancient_dragon_portrait.png",
       "live": "../images/spritecook/ancient_dragon_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T22:18:18Z"
+      "approved": true,
+      "addedAt": "2026-05-12T22:18:18Z",
+      "approvedAt": "2026-05-13T20:18:07.274Z"
     },
     {
       "id": "spritecookboss_ancient_dragon_south",
@@ -7311,8 +7335,9 @@
       "old": "../images/openai_v2/_pre_spritecook/ancient_dragon_south.png",
       "new": "../images/spritecook/ancient_dragon_south.png",
       "live": "../images/spritecook/ancient_dragon_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T22:18:18Z"
+      "approved": true,
+      "addedAt": "2026-05-12T22:18:18Z",
+      "approvedAt": "2026-05-13T20:18:07.274Z"
     },
     {
       "id": "spritecookboss_ancient_dragon_east",
@@ -7324,8 +7349,9 @@
       "old": "../images/openai_v2/_pre_spritecook/ancient_dragon_east.png",
       "new": "../images/spritecook/ancient_dragon_east.png",
       "live": "../images/spritecook/ancient_dragon_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T22:18:18Z"
+      "approved": true,
+      "addedAt": "2026-05-12T22:18:18Z",
+      "approvedAt": "2026-05-13T20:18:07.274Z"
     },
     {
       "id": "spritecookboss_ancient_dragon_east_attack",
@@ -7337,8 +7363,9 @@
       "old": "../images/openai_v2/_pre_spritecook/ancient_dragon_east_attack.png",
       "new": "../images/spritecook/ancient_dragon_east_attack.png",
       "live": "../images/spritecook/ancient_dragon_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T22:18:18Z"
+      "approved": true,
+      "addedAt": "2026-05-12T22:18:18Z",
+      "approvedAt": "2026-05-13T20:18:07.274Z"
     },
     {
       "id": "spritecookboss_ancient_dragon_east_spell",
@@ -7350,8 +7377,9 @@
       "old": "../images/openai_v2/_pre_spritecook/ancient_dragon_east_spell.png",
       "new": "../images/spritecook/ancient_dragon_east_spell.png",
       "live": "../images/spritecook/ancient_dragon_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T22:18:18Z"
+      "approved": true,
+      "addedAt": "2026-05-12T22:18:18Z",
+      "approvedAt": "2026-05-13T20:18:07.274Z"
     },
     {
       "id": "spritecookboss_ancient_dragon_east_block",
@@ -7363,8 +7391,9 @@
       "old": "../images/openai_v2/_pre_spritecook/ancient_dragon_east_block.png",
       "new": "../images/spritecook/ancient_dragon_east_block.png",
       "live": "../images/spritecook/ancient_dragon_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T22:18:18Z"
+      "approved": true,
+      "addedAt": "2026-05-12T22:18:18Z",
+      "approvedAt": "2026-05-13T20:18:07.274Z"
     },
     {
       "id": "spritecookboss_ancient_dragon_east_ko",
@@ -7376,8 +7405,9 @@
       "old": "../images/openai_v2/_pre_spritecook/ancient_dragon_east_ko.png",
       "new": "../images/spritecook/ancient_dragon_east_ko.png",
       "live": "../images/spritecook/ancient_dragon_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T22:18:18Z"
+      "approved": true,
+      "addedAt": "2026-05-12T22:18:18Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_dragon_king_portrait",
@@ -7389,8 +7419,9 @@
       "old": "../images/openai_v2/_pre_spritecook/dragon_king_portrait.png",
       "new": "../images/spritecook/dragon_king_portrait.png",
       "live": "../images/spritecook/dragon_king_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_dragon_king_south",
@@ -7402,8 +7433,9 @@
       "old": "../images/openai_v2/_pre_spritecook/dragon_king_south.png",
       "new": "../images/spritecook/dragon_king_south.png",
       "live": "../images/spritecook/dragon_king_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_dragon_king_east",
@@ -7415,8 +7447,9 @@
       "old": "../images/openai_v2/_pre_spritecook/dragon_king_east.png",
       "new": "../images/spritecook/dragon_king_east.png",
       "live": "../images/spritecook/dragon_king_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_dragon_king_east_attack",
@@ -7428,8 +7461,9 @@
       "old": "../images/openai_v2/_pre_spritecook/dragon_king_east_attack.png",
       "new": "../images/spritecook/dragon_king_east_attack.png",
       "live": "../images/spritecook/dragon_king_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_dragon_king_east_spell",
@@ -7441,8 +7475,9 @@
       "old": "../images/openai_v2/_pre_spritecook/dragon_king_east_spell.png",
       "new": "../images/spritecook/dragon_king_east_spell.png",
       "live": "../images/spritecook/dragon_king_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_dragon_king_east_block",
@@ -7454,8 +7489,9 @@
       "old": "../images/openai_v2/_pre_spritecook/dragon_king_east_block.png",
       "new": "../images/spritecook/dragon_king_east_block.png",
       "live": "../images/spritecook/dragon_king_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_dragon_king_east_ko",
@@ -7467,8 +7503,9 @@
       "old": "../images/openai_v2/_pre_spritecook/dragon_king_east_ko.png",
       "new": "../images/spritecook/dragon_king_east_ko.png",
       "live": "../images/spritecook/dragon_king_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_storm_dragon_portrait",
@@ -7480,8 +7517,9 @@
       "old": "../images/openai_v2/_pre_spritecook/storm_dragon_portrait.png",
       "new": "../images/spritecook/storm_dragon_portrait.png",
       "live": "../images/spritecook/storm_dragon_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_storm_dragon_south",
@@ -7493,8 +7531,9 @@
       "old": "../images/openai_v2/_pre_spritecook/storm_dragon_south.png",
       "new": "../images/spritecook/storm_dragon_south.png",
       "live": "../images/spritecook/storm_dragon_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_storm_dragon_east",
@@ -7506,8 +7545,9 @@
       "old": "../images/openai_v2/_pre_spritecook/storm_dragon_east.png",
       "new": "../images/spritecook/storm_dragon_east.png",
       "live": "../images/spritecook/storm_dragon_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_storm_dragon_east_attack",
@@ -7519,8 +7559,9 @@
       "old": "../images/openai_v2/_pre_spritecook/storm_dragon_east_attack.png",
       "new": "../images/spritecook/storm_dragon_east_attack.png",
       "live": "../images/spritecook/storm_dragon_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_storm_dragon_east_spell",
@@ -7532,8 +7573,9 @@
       "old": "../images/openai_v2/_pre_spritecook/storm_dragon_east_spell.png",
       "new": "../images/spritecook/storm_dragon_east_spell.png",
       "live": "../images/spritecook/storm_dragon_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_storm_dragon_east_block",
@@ -7545,8 +7587,9 @@
       "old": "../images/openai_v2/_pre_spritecook/storm_dragon_east_block.png",
       "new": "../images/spritecook/storm_dragon_east_block.png",
       "live": "../images/spritecook/storm_dragon_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_storm_dragon_east_ko",
@@ -7558,8 +7601,9 @@
       "old": "../images/openai_v2/_pre_spritecook/storm_dragon_east_ko.png",
       "new": "../images/spritecook/storm_dragon_east_ko.png",
       "live": "../images/spritecook/storm_dragon_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_frost_wyrm_portrait",
@@ -7571,8 +7615,9 @@
       "old": "../images/openai_v2/_pre_spritecook/frost_wyrm_portrait.png",
       "new": "../images/spritecook/frost_wyrm_portrait.png",
       "live": "../images/spritecook/frost_wyrm_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_frost_wyrm_south",
@@ -7584,8 +7629,9 @@
       "old": "../images/openai_v2/_pre_spritecook/frost_wyrm_south.png",
       "new": "../images/spritecook/frost_wyrm_south.png",
       "live": "../images/spritecook/frost_wyrm_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_frost_wyrm_east",
@@ -7597,8 +7643,9 @@
       "old": "../images/openai_v2/_pre_spritecook/frost_wyrm_east.png",
       "new": "../images/spritecook/frost_wyrm_east.png",
       "live": "../images/spritecook/frost_wyrm_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_frost_wyrm_east_attack",
@@ -7610,8 +7657,9 @@
       "old": "../images/openai_v2/_pre_spritecook/frost_wyrm_east_attack.png",
       "new": "../images/spritecook/frost_wyrm_east_attack.png",
       "live": "../images/spritecook/frost_wyrm_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_frost_wyrm_east_spell",
@@ -7623,8 +7671,9 @@
       "old": "../images/openai_v2/_pre_spritecook/frost_wyrm_east_spell.png",
       "new": "../images/spritecook/frost_wyrm_east_spell.png",
       "live": "../images/spritecook/frost_wyrm_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.275Z"
     },
     {
       "id": "spritecookboss_frost_wyrm_east_block",
@@ -7636,8 +7685,9 @@
       "old": "../images/openai_v2/_pre_spritecook/frost_wyrm_east_block.png",
       "new": "../images/spritecook/frost_wyrm_east_block.png",
       "live": "../images/spritecook/frost_wyrm_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_frost_wyrm_east_ko",
@@ -7649,8 +7699,9 @@
       "old": "../images/openai_v2/_pre_spritecook/frost_wyrm_east_ko.png",
       "new": "../images/spritecook/frost_wyrm_east_ko.png",
       "live": "../images/spritecook/frost_wyrm_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:22Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:22Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_archfiend_malgrath_portrait",
@@ -7662,8 +7713,9 @@
       "old": "../images/openai_v2/_pre_spritecook/archfiend_malgrath_portrait.png",
       "new": "../images/spritecook/archfiend_malgrath_portrait.png",
       "live": "../images/spritecook/archfiend_malgrath_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_archfiend_malgrath_south",
@@ -7675,8 +7727,9 @@
       "old": "../images/openai_v2/_pre_spritecook/archfiend_malgrath_south.png",
       "new": "../images/spritecook/archfiend_malgrath_south.png",
       "live": "../images/spritecook/archfiend_malgrath_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_archfiend_malgrath_east",
@@ -7688,8 +7741,9 @@
       "old": "../images/openai_v2/_pre_spritecook/archfiend_malgrath_east.png",
       "new": "../images/spritecook/archfiend_malgrath_east.png",
       "live": "../images/spritecook/archfiend_malgrath_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_archfiend_malgrath_east_attack",
@@ -7701,8 +7755,9 @@
       "old": "../images/openai_v2/_pre_spritecook/archfiend_malgrath_east_attack.png",
       "new": "../images/spritecook/archfiend_malgrath_east_attack.png",
       "live": "../images/spritecook/archfiend_malgrath_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_archfiend_malgrath_east_spell",
@@ -7714,8 +7769,9 @@
       "old": "../images/openai_v2/_pre_spritecook/archfiend_malgrath_east_spell.png",
       "new": "../images/spritecook/archfiend_malgrath_east_spell.png",
       "live": "../images/spritecook/archfiend_malgrath_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_archfiend_malgrath_east_block",
@@ -7727,8 +7783,9 @@
       "old": "../images/openai_v2/_pre_spritecook/archfiend_malgrath_east_block.png",
       "new": "../images/spritecook/archfiend_malgrath_east_block.png",
       "live": "../images/spritecook/archfiend_malgrath_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_archfiend_malgrath_east_ko",
@@ -7740,8 +7797,9 @@
       "old": "../images/openai_v2/_pre_spritecook/archfiend_malgrath_east_ko.png",
       "new": "../images/spritecook/archfiend_malgrath_east_ko.png",
       "live": "../images/spritecook/archfiend_malgrath_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_emberveil_sovereign_portrait",
@@ -7753,8 +7811,9 @@
       "old": "../images/openai_v2/_pre_spritecook/emberveil_sovereign_portrait.png",
       "new": "../images/spritecook/emberveil_sovereign_portrait.png",
       "live": "../images/spritecook/emberveil_sovereign_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_emberveil_sovereign_south",
@@ -7766,8 +7825,9 @@
       "old": "../images/openai_v2/_pre_spritecook/emberveil_sovereign_south.png",
       "new": "../images/spritecook/emberveil_sovereign_south.png",
       "live": "../images/spritecook/emberveil_sovereign_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_emberveil_sovereign_east",
@@ -7779,8 +7839,9 @@
       "old": "../images/openai_v2/_pre_spritecook/emberveil_sovereign_east.png",
       "new": "../images/spritecook/emberveil_sovereign_east.png",
       "live": "../images/spritecook/emberveil_sovereign_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_emberveil_sovereign_east_attack",
@@ -7792,8 +7853,9 @@
       "old": "../images/openai_v2/_pre_spritecook/emberveil_sovereign_east_attack.png",
       "new": "../images/spritecook/emberveil_sovereign_east_attack.png",
       "live": "../images/spritecook/emberveil_sovereign_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_emberveil_sovereign_east_spell",
@@ -7805,8 +7867,9 @@
       "old": "../images/openai_v2/_pre_spritecook/emberveil_sovereign_east_spell.png",
       "new": "../images/spritecook/emberveil_sovereign_east_spell.png",
       "live": "../images/spritecook/emberveil_sovereign_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_emberveil_sovereign_east_block",
@@ -7818,8 +7881,9 @@
       "old": "../images/openai_v2/_pre_spritecook/emberveil_sovereign_east_block.png",
       "new": "../images/spritecook/emberveil_sovereign_east_block.png",
       "live": "../images/spritecook/emberveil_sovereign_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_emberveil_sovereign_east_ko",
@@ -7831,8 +7895,9 @@
       "old": "../images/openai_v2/_pre_spritecook/emberveil_sovereign_east_ko.png",
       "new": "../images/spritecook/emberveil_sovereign_east_ko.png",
       "live": "../images/spritecook/emberveil_sovereign_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_grax_veil_touched_portrait",
@@ -7844,8 +7909,9 @@
       "old": "../images/openai_v2/_pre_spritecook/grax_veil_touched_portrait.png",
       "new": "../images/spritecook/grax_veil_touched_portrait.png",
       "live": "../images/spritecook/grax_veil_touched_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_grax_veil_touched_south",
@@ -7857,8 +7923,9 @@
       "old": "../images/openai_v2/_pre_spritecook/grax_veil_touched_south.png",
       "new": "../images/spritecook/grax_veil_touched_south.png",
       "live": "../images/spritecook/grax_veil_touched_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_grax_veil_touched_east",
@@ -7870,8 +7937,9 @@
       "old": "../images/openai_v2/_pre_spritecook/grax_veil_touched_east.png",
       "new": "../images/spritecook/grax_veil_touched_east.png",
       "live": "../images/spritecook/grax_veil_touched_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_grax_veil_touched_east_attack",
@@ -7883,8 +7951,9 @@
       "old": "../images/openai_v2/_pre_spritecook/grax_veil_touched_east_attack.png",
       "new": "../images/spritecook/grax_veil_touched_east_attack.png",
       "live": "../images/spritecook/grax_veil_touched_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_grax_veil_touched_east_spell",
@@ -7896,8 +7965,9 @@
       "old": "../images/openai_v2/_pre_spritecook/grax_veil_touched_east_spell.png",
       "new": "../images/spritecook/grax_veil_touched_east_spell.png",
       "live": "../images/spritecook/grax_veil_touched_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_grax_veil_touched_east_block",
@@ -7909,8 +7979,9 @@
       "old": "../images/openai_v2/_pre_spritecook/grax_veil_touched_east_block.png",
       "new": "../images/spritecook/grax_veil_touched_east_block.png",
       "live": "../images/spritecook/grax_veil_touched_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_grax_veil_touched_east_ko",
@@ -7922,8 +7993,9 @@
       "old": "../images/openai_v2/_pre_spritecook/grax_veil_touched_east_ko.png",
       "new": "../images/spritecook/grax_veil_touched_east_ko.png",
       "live": "../images/spritecook/grax_veil_touched_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.276Z"
     },
     {
       "id": "spritecookboss_the_architect_portrait",
@@ -7935,8 +8007,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_architect_portrait.png",
       "new": "../images/spritecook/the_architect_portrait.png",
       "live": "../images/spritecook/the_architect_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.277Z"
     },
     {
       "id": "spritecookboss_the_architect_south",
@@ -7948,8 +8021,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_architect_south.png",
       "new": "../images/spritecook/the_architect_south.png",
       "live": "../images/spritecook/the_architect_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.277Z"
     },
     {
       "id": "spritecookboss_the_architect_east",
@@ -7961,8 +8035,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_architect_east.png",
       "new": "../images/spritecook/the_architect_east.png",
       "live": "../images/spritecook/the_architect_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.277Z"
     },
     {
       "id": "spritecookboss_the_architect_east_attack",
@@ -7974,8 +8049,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_architect_east_attack.png",
       "new": "../images/spritecook/the_architect_east_attack.png",
       "live": "../images/spritecook/the_architect_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.277Z"
     },
     {
       "id": "spritecookboss_the_architect_east_spell",
@@ -7987,8 +8063,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_architect_east_spell.png",
       "new": "../images/spritecook/the_architect_east_spell.png",
       "live": "../images/spritecook/the_architect_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.277Z"
     },
     {
       "id": "spritecookboss_the_architect_east_block",
@@ -8000,8 +8077,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_architect_east_block.png",
       "new": "../images/spritecook/the_architect_east_block.png",
       "live": "../images/spritecook/the_architect_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.277Z"
     },
     {
       "id": "spritecookboss_the_architect_east_ko",
@@ -8013,8 +8091,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_architect_east_ko.png",
       "new": "../images/spritecook/the_architect_east_ko.png",
       "live": "../images/spritecook/the_architect_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.277Z"
     },
     {
       "id": "spritecookboss_the_unraveler_portrait",
@@ -8026,8 +8105,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_unraveler_portrait.png",
       "new": "../images/spritecook/the_unraveler_portrait.png",
       "live": "../images/spritecook/the_unraveler_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.277Z"
     },
     {
       "id": "spritecookboss_the_unraveler_south",
@@ -8039,8 +8119,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_unraveler_south.png",
       "new": "../images/spritecook/the_unraveler_south.png",
       "live": "../images/spritecook/the_unraveler_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.277Z"
     },
     {
       "id": "spritecookboss_the_unraveler_east",
@@ -8052,8 +8133,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_unraveler_east.png",
       "new": "../images/spritecook/the_unraveler_east.png",
       "live": "../images/spritecook/the_unraveler_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.277Z"
     },
     {
       "id": "spritecookboss_the_unraveler_east_attack",
@@ -8065,8 +8147,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_unraveler_east_attack.png",
       "new": "../images/spritecook/the_unraveler_east_attack.png",
       "live": "../images/spritecook/the_unraveler_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.277Z"
     },
     {
       "id": "spritecookboss_the_unraveler_east_spell",
@@ -8078,8 +8161,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_unraveler_east_spell.png",
       "new": "../images/spritecook/the_unraveler_east_spell.png",
       "live": "../images/spritecook/the_unraveler_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.279Z"
     },
     {
       "id": "spritecookboss_the_unraveler_east_block",
@@ -8091,8 +8175,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_unraveler_east_block.png",
       "new": "../images/spritecook/the_unraveler_east_block.png",
       "live": "../images/spritecook/the_unraveler_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.279Z"
     },
     {
       "id": "spritecookboss_the_unraveler_east_ko",
@@ -8104,8 +8189,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_unraveler_east_ko.png",
       "new": "../images/spritecook/the_unraveler_east_ko.png",
       "live": "../images/spritecook/the_unraveler_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.279Z"
     },
     {
       "id": "spritecookboss_cosmic_titan_portrait",
@@ -8117,8 +8203,9 @@
       "old": "../images/openai_v2/_pre_spritecook/cosmic_titan_portrait.png",
       "new": "../images/spritecook/cosmic_titan_portrait.png",
       "live": "../images/spritecook/cosmic_titan_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.279Z"
     },
     {
       "id": "spritecookboss_cosmic_titan_south",
@@ -8130,8 +8217,9 @@
       "old": "../images/openai_v2/_pre_spritecook/cosmic_titan_south.png",
       "new": "../images/spritecook/cosmic_titan_south.png",
       "live": "../images/spritecook/cosmic_titan_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.279Z"
     },
     {
       "id": "spritecookboss_cosmic_titan_east",
@@ -8143,8 +8231,9 @@
       "old": "../images/openai_v2/_pre_spritecook/cosmic_titan_east.png",
       "new": "../images/spritecook/cosmic_titan_east.png",
       "live": "../images/spritecook/cosmic_titan_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.279Z"
     },
     {
       "id": "spritecookboss_cosmic_titan_east_attack",
@@ -8156,8 +8245,9 @@
       "old": "../images/openai_v2/_pre_spritecook/cosmic_titan_east_attack.png",
       "new": "../images/spritecook/cosmic_titan_east_attack.png",
       "live": "../images/spritecook/cosmic_titan_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.279Z"
     },
     {
       "id": "spritecookboss_cosmic_titan_east_spell",
@@ -8169,8 +8259,9 @@
       "old": "../images/openai_v2/_pre_spritecook/cosmic_titan_east_spell.png",
       "new": "../images/spritecook/cosmic_titan_east_spell.png",
       "live": "../images/spritecook/cosmic_titan_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.279Z"
     },
     {
       "id": "spritecookboss_cosmic_titan_east_block",
@@ -8182,8 +8273,9 @@
       "old": "../images/openai_v2/_pre_spritecook/cosmic_titan_east_block.png",
       "new": "../images/spritecook/cosmic_titan_east_block.png",
       "live": "../images/spritecook/cosmic_titan_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_cosmic_titan_east_ko",
@@ -8195,8 +8287,9 @@
       "old": "../images/openai_v2/_pre_spritecook/cosmic_titan_east_ko.png",
       "new": "../images/spritecook/cosmic_titan_east_ko.png",
       "live": "../images/spritecook/cosmic_titan_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_vault_guardian_portrait",
@@ -8208,8 +8301,9 @@
       "old": "../images/openai_v2/_pre_spritecook/vault_guardian_portrait.png",
       "new": "../images/spritecook/vault_guardian_portrait.png",
       "live": "../images/spritecook/vault_guardian_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_vault_guardian_south",
@@ -8221,8 +8315,9 @@
       "old": "../images/openai_v2/_pre_spritecook/vault_guardian_south.png",
       "new": "../images/spritecook/vault_guardian_south.png",
       "live": "../images/spritecook/vault_guardian_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_vault_guardian_east",
@@ -8234,8 +8329,9 @@
       "old": "../images/openai_v2/_pre_spritecook/vault_guardian_east.png",
       "new": "../images/spritecook/vault_guardian_east.png",
       "live": "../images/spritecook/vault_guardian_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_vault_guardian_east_attack",
@@ -8247,8 +8343,9 @@
       "old": "../images/openai_v2/_pre_spritecook/vault_guardian_east_attack.png",
       "new": "../images/spritecook/vault_guardian_east_attack.png",
       "live": "../images/spritecook/vault_guardian_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_vault_guardian_east_spell",
@@ -8260,8 +8357,9 @@
       "old": "../images/openai_v2/_pre_spritecook/vault_guardian_east_spell.png",
       "new": "../images/spritecook/vault_guardian_east_spell.png",
       "live": "../images/spritecook/vault_guardian_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_vault_guardian_east_block",
@@ -8273,8 +8371,9 @@
       "old": "../images/openai_v2/_pre_spritecook/vault_guardian_east_block.png",
       "new": "../images/spritecook/vault_guardian_east_block.png",
       "live": "../images/spritecook/vault_guardian_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_vault_guardian_east_ko",
@@ -8286,8 +8385,9 @@
       "old": "../images/openai_v2/_pre_spritecook/vault_guardian_east_ko.png",
       "new": "../images/spritecook/vault_guardian_east_ko.png",
       "live": "../images/spritecook/vault_guardian_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_void_scholar_portrait",
@@ -8299,8 +8399,9 @@
       "old": "../images/openai_v2/_pre_spritecook/void_scholar_portrait.png",
       "new": "../images/spritecook/void_scholar_portrait.png",
       "live": "../images/spritecook/void_scholar_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_void_scholar_south",
@@ -8312,8 +8413,9 @@
       "old": "../images/openai_v2/_pre_spritecook/void_scholar_south.png",
       "new": "../images/spritecook/void_scholar_south.png",
       "live": "../images/spritecook/void_scholar_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_void_scholar_east",
@@ -8325,8 +8427,9 @@
       "old": "../images/openai_v2/_pre_spritecook/void_scholar_east.png",
       "new": "../images/spritecook/void_scholar_east.png",
       "live": "../images/spritecook/void_scholar_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_void_scholar_east_attack",
@@ -8338,8 +8441,9 @@
       "old": "../images/openai_v2/_pre_spritecook/void_scholar_east_attack.png",
       "new": "../images/spritecook/void_scholar_east_attack.png",
       "live": "../images/spritecook/void_scholar_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_void_scholar_east_spell",
@@ -8351,8 +8455,9 @@
       "old": "../images/openai_v2/_pre_spritecook/void_scholar_east_spell.png",
       "new": "../images/spritecook/void_scholar_east_spell.png",
       "live": "../images/spritecook/void_scholar_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_void_scholar_east_block",
@@ -8364,8 +8469,9 @@
       "old": "../images/openai_v2/_pre_spritecook/void_scholar_east_block.png",
       "new": "../images/spritecook/void_scholar_east_block.png",
       "live": "../images/spritecook/void_scholar_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_void_scholar_east_ko",
@@ -8377,8 +8483,9 @@
       "old": "../images/openai_v2/_pre_spritecook/void_scholar_east_ko.png",
       "new": "../images/spritecook/void_scholar_east_ko.png",
       "live": "../images/spritecook/void_scholar_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_echo_sovereign_portrait",
@@ -8390,8 +8497,9 @@
       "old": "../images/openai_v2/_pre_spritecook/echo_sovereign_portrait.png",
       "new": "../images/spritecook/echo_sovereign_portrait.png",
       "live": "../images/spritecook/echo_sovereign_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_echo_sovereign_south",
@@ -8403,8 +8511,9 @@
       "old": "../images/openai_v2/_pre_spritecook/echo_sovereign_south.png",
       "new": "../images/spritecook/echo_sovereign_south.png",
       "live": "../images/spritecook/echo_sovereign_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_echo_sovereign_east",
@@ -8416,8 +8525,9 @@
       "old": "../images/openai_v2/_pre_spritecook/echo_sovereign_east.png",
       "new": "../images/spritecook/echo_sovereign_east.png",
       "live": "../images/spritecook/echo_sovereign_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_echo_sovereign_east_attack",
@@ -8429,8 +8539,9 @@
       "old": "../images/openai_v2/_pre_spritecook/echo_sovereign_east_attack.png",
       "new": "../images/spritecook/echo_sovereign_east_attack.png",
       "live": "../images/spritecook/echo_sovereign_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_echo_sovereign_east_spell",
@@ -8442,8 +8553,9 @@
       "old": "../images/openai_v2/_pre_spritecook/echo_sovereign_east_spell.png",
       "new": "../images/spritecook/echo_sovereign_east_spell.png",
       "live": "../images/spritecook/echo_sovereign_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_echo_sovereign_east_block",
@@ -8455,8 +8567,9 @@
       "old": "../images/openai_v2/_pre_spritecook/echo_sovereign_east_block.png",
       "new": "../images/spritecook/echo_sovereign_east_block.png",
       "live": "../images/spritecook/echo_sovereign_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_echo_sovereign_east_ko",
@@ -8468,8 +8581,9 @@
       "old": "../images/openai_v2/_pre_spritecook/echo_sovereign_east_ko.png",
       "new": "../images/spritecook/echo_sovereign_east_ko.png",
       "live": "../images/spritecook/echo_sovereign_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_the_first_ember_portrait",
@@ -8481,8 +8595,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_first_ember_portrait.png",
       "new": "../images/spritecook/the_first_ember_portrait.png",
       "live": "../images/spritecook/the_first_ember_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_the_first_ember_south",
@@ -8494,8 +8609,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_first_ember_south.png",
       "new": "../images/spritecook/the_first_ember_south.png",
       "live": "../images/spritecook/the_first_ember_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_the_first_ember_east",
@@ -8507,8 +8623,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_first_ember_east.png",
       "new": "../images/spritecook/the_first_ember_east.png",
       "live": "../images/spritecook/the_first_ember_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_the_first_ember_east_attack",
@@ -8520,8 +8637,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_first_ember_east_attack.png",
       "new": "../images/spritecook/the_first_ember_east_attack.png",
       "live": "../images/spritecook/the_first_ember_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_the_first_ember_east_spell",
@@ -8533,8 +8651,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_first_ember_east_spell.png",
       "new": "../images/spritecook/the_first_ember_east_spell.png",
       "live": "../images/spritecook/the_first_ember_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_the_first_ember_east_block",
@@ -8546,8 +8665,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_first_ember_east_block.png",
       "new": "../images/spritecook/the_first_ember_east_block.png",
       "live": "../images/spritecook/the_first_ember_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_the_first_ember_east_ko",
@@ -8559,8 +8679,9 @@
       "old": "../images/openai_v2/_pre_spritecook/the_first_ember_east_ko.png",
       "new": "../images/spritecook/the_first_ember_east_ko.png",
       "live": "../images/spritecook/the_first_ember_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_veilspawn_herald_portrait",
@@ -8572,8 +8693,9 @@
       "old": "../images/openai_v2/_pre_spritecook/veilspawn_herald_portrait.png",
       "new": "../images/spritecook/veilspawn_herald_portrait.png",
       "live": "../images/spritecook/veilspawn_herald_portrait.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_veilspawn_herald_south",
@@ -8585,8 +8707,9 @@
       "old": "../images/openai_v2/_pre_spritecook/veilspawn_herald_south.png",
       "new": "../images/spritecook/veilspawn_herald_south.png",
       "live": "../images/spritecook/veilspawn_herald_south.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_veilspawn_herald_east",
@@ -8598,8 +8721,9 @@
       "old": "../images/openai_v2/_pre_spritecook/veilspawn_herald_east.png",
       "new": "../images/spritecook/veilspawn_herald_east.png",
       "live": "../images/spritecook/veilspawn_herald_east.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.280Z"
     },
     {
       "id": "spritecookboss_veilspawn_herald_east_attack",
@@ -8611,8 +8735,9 @@
       "old": "../images/openai_v2/_pre_spritecook/veilspawn_herald_east_attack.png",
       "new": "../images/spritecook/veilspawn_herald_east_attack.png",
       "live": "../images/spritecook/veilspawn_herald_east_attack.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.281Z"
     },
     {
       "id": "spritecookboss_veilspawn_herald_east_spell",
@@ -8624,8 +8749,9 @@
       "old": "../images/openai_v2/_pre_spritecook/veilspawn_herald_east_spell.png",
       "new": "../images/spritecook/veilspawn_herald_east_spell.png",
       "live": "../images/spritecook/veilspawn_herald_east_spell.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.281Z"
     },
     {
       "id": "spritecookboss_veilspawn_herald_east_block",
@@ -8637,8 +8763,9 @@
       "old": "../images/openai_v2/_pre_spritecook/veilspawn_herald_east_block.png",
       "new": "../images/spritecook/veilspawn_herald_east_block.png",
       "live": "../images/spritecook/veilspawn_herald_east_block.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.281Z"
     },
     {
       "id": "spritecookboss_veilspawn_herald_east_ko",
@@ -8650,8 +8777,9 @@
       "old": "../images/openai_v2/_pre_spritecook/veilspawn_herald_east_ko.png",
       "new": "../images/spritecook/veilspawn_herald_east_ko.png",
       "live": "../images/spritecook/veilspawn_herald_east_ko.png",
-      "approved": false,
-      "addedAt": "2026-05-12T23:54:23Z"
+      "approved": true,
+      "addedAt": "2026-05-12T23:54:23Z",
+      "approvedAt": "2026-05-13T20:18:07.281Z"
     }
   ]
 }

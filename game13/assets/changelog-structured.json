@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-13T20:09:43.059Z",
+  "generated": "2026-05-14T06:11:59.331Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,36 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 482,
+      "date": "",
+      "summary": "Approval sweep. node scripts/approve-image-review-v2.cjs --all approved the remaining 627 entries in batch m354 covering all M467-M477 SpriteCook + OpenAI sprites. Batch rotated to history at m354; m355 opened empty for next regen cycle.",
+      "items": [
+        {
+          "text": "Approval sweep. node scripts/approve-image-review-v2.cjs --all approved the remaining 627 entries in batch m354 covering all M467-M477 SpriteCook + OpenAI sprites. Batch rotated to history at m354; m355 opened empty for next regen cycle.",
+          "categories": [
+            "Feature",
+            "Art"
+          ]
+        }
+      ]
+    },
+    {
+      "milestone": 481,
+      "date": "",
+      "summary": "Two layout fixes. (1) All four sprite scales (characterScale/companionScale/enemyScale/bossScale) unified to 1.5 in combatDebugSettings.js. Added schema v2 migration in _load() so users with v1 saved 2.0/1.5/1.5/2.0 get wiped and re-defaulted (other customizations preserved). After M476 removed the orphan 2.5x bossBoost, bosses were rendering at bossScale=2.0 while enemyScale=1.5 — bosses ended up the same size as heroes but smaller than they used to look, reading as too small relative to the 1.5x enemies. (2) placeColumn now anchors small columns (n<=2) at 60% of gridH instead of bottom-padding. 3+ unit columns keep the bottom-anchored fill so back rows stay visible. 7/7 layout tests still pass.",
+      "items": [
+        {
+          "text": "Two layout fixes. (1) All four sprite scales (characterScale/companionScale/enemyScale/bossScale) unified to 1.5 in combatDebugSettings.js. Added schema v2 migration in _load() so users with v1 saved 2.0/1.5/1.5/2.0 get wiped and re-defaulted (other customizations preserved). After M476 removed the orphan 2.5x bossBoost, bosses were rendering at bossScale=2.0 while enemyScale=1.5 — bosses ended up the same size as heroes but smaller than they used to look, reading as too small relative to the 1.5x enemies. (2) placeColumn now anchors small columns (n<=2) at 60% of gridH instead of bottom-padding. 3+ unit columns keep the bottom-anchored fill so back rows stay visible. 7/7 layout tests still pass.",
+          "categories": [
+            "Feature",
+            "BugFix",
+            "QoL",
+            "Art"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 480,
       "date": "",

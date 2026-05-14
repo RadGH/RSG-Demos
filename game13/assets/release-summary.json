@@ -1,7 +1,7 @@
 {
-  "milestone": 480,
+  "milestone": 482,
   "date": "2026-05-13",
-  "summary": "M480 — combat grid fit check now includes the SPRITE_W_AT_1 sprite width so leftmost + rightmost half-sprites stay inside the viewport. Was clipping with 1 hero + 4 enemies on mobile (393px).",
+  "summary": "M482 — approved all image-review-v2 entries (batch m354 → history, m355 opened). No code changes; image data is now the canonical state.",
   "categories": [
     "feature"
   ],
