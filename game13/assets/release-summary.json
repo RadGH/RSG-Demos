@@ -1,7 +1,7 @@
 {
-  "milestone": 488,
+  "milestone": 489,
   "date": "2026-05-14",
-  "summary": "M488 — flipped two combat-HUD defaults: Show Companion Frames OFF (was ON; companion HP still shows on canvas sprites), Combat Captions ON (was OFF; subtitles narrate combat for new players). Users who explicitly set either before are preserved.",
+  "summary": "M489 — 12 sprite regens via SpriteCook (feet-cut-off fixes). Used each character's east_attack frame as the SpriteCook reference; regenerated paladin_female/rogue_male/oracle_old/tinker/tinker_female/marek_greel east_block, swashbuckler_female/tactician_female south, monk/mira_seer east, tinker_female east_spell and east_ko. Pending review on staging — not yet pushed to emberveil.radgh.com.",
   "categories": [
     "feature"
   ],
