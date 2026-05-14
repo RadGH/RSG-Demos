@@ -1,7 +1,7 @@
 {
-  "milestone": 483,
+  "milestone": 484,
   "date": "2026-05-13",
-  "summary": "M483 — main-menu Stats now shows all 8 tabs on first load (was hiding all but Lifetime + Cross-Run when no party loaded).",
+  "summary": "M484 — sprite 404 fix + manifest gaps closed (5 recurring NPCs added). Deploy scripts switched to SSH (HTTPS was failing on large pushes). Guild hall + merchant rarity now scales with renown — was always returning whites/magics at high fame.",
   "categories": [
     "feature"
   ],
