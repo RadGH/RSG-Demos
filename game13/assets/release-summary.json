@@ -1,7 +1,7 @@
 {
-  "milestone": 489,
+  "milestone": 490,
   "date": "2026-05-14",
-  "summary": "M489 — 12 sprite regens via SpriteCook (feet-cut-off fixes). Used each character's east_attack frame as the SpriteCook reference; regenerated paladin_female/rogue_male/oracle_old/tinker/tinker_female/marek_greel east_block, swashbuckler_female/tactician_female south, monk/mira_seer east, tinker_female east_spell and east_ko. Pending review on staging — not yet pushed to emberveil.radgh.com.",
+  "summary": "M489b — re-rolled oracle_old_east_block sprite at full 256x256 (was 98x98 from M489 — too small to be readable in combat). Same SpriteCook reference (oracle_old_east_attack), aggressive framing prompt forcing ~90% canvas height. Staging only.",
   "categories": [
     "feature"
   ],

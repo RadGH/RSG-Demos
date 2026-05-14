@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-14T21:15:14.981Z",
+  "generated": "2026-05-14T22:20:34.014Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,20 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 490,
+      "date": "2026-05-14",
+      "summary": "M489b — re-rolled oracle_old_east_block sprite at full 256x256 (was 98x98 from M489 — too small to be readable in combat). Same SpriteCook reference (oracle_old_east_attack), aggressive framing prompt forcing ~90% canvas height. Staging only.",
+      "items": [
+        {
+          "text": "M489b — re-rolled oracle_old_east_block sprite at full 256x256 (was 98x98 from M489 — too small to be readable in combat). Same SpriteCook reference (oracle_old_east_attack), aggressive framing prompt forcing ~90% canvas height. Staging only.",
+          "categories": [
+            "Feature",
+            "Art"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 489,
       "date": "2026-05-14",
