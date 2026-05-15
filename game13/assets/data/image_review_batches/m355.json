@@ -13,10 +13,11 @@
       "old": "../images/spritecook/_pre_regen_m489/paladin_female_east_block.png",
       "new": "../images/spritecook/paladin_female_east_block.png",
       "live": "../images/spritecook/paladin_female_east_block.png",
-      "approved": false,
+      "approved": true,
       "addedAt": "2026-05-14T20:17:42.128469Z",
       "milestone": "M489",
-      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference."
+      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference.",
+      "approvedAt": "2026-05-14T22:56:48.279Z"
     },
     {
       "id": "spritecookflow_rogue_male_east_block",
@@ -24,14 +25,15 @@
       "pose": "east_block",
       "category": "class",
       "source": "spritecook-regen",
-      "prompt": "IDENTITY (must match reference image exactly): Human MAN, distinctly masculine, broad shoulders, flat chest, ~28, TALL SLENDER adult, long adult legs, short-cropped dark hair, hooded cloak. OUTFIT: dark leather rogue armor, hood up over the head. WEAPONS: two daggers. POSE (east_block): side-profile east-facing, both daggers crossed in front of the face in an X guard, hood up, knees bent slightly, both legs visible. FRAMING (non-negotiable): FULL-BODY head-to-toe inside the 256x256 canvas. Feet ~6-8% clearance above bottom edge (NEVER cropped, NEVER cut off, do not crop feet). Head ~6-8% headroom above hair. Figure ~85% of canvas height, centered. Camera pulled back. STYLE: pixel art, transparent background, no ground shadow. NEGATIVE: do not crop feet, do not crop weapons, do not zoom in. Do NOT generate a female character \u2014 male only.",
+      "prompt": "IDENTITY (must match reference image exactly): Human MAN, distinctly masculine, broad shoulders, flat chest, ~28, TALL SLENDER adult, long adult legs, short-cropped dark hair, hooded cloak. OUTFIT: dark leather rogue armor, hood up over the head. WEAPONS: two daggers. POSE (east_block): side-profile east-facing, both daggers crossed in front of the face in an X guard, hood up, knees bent slightly, both legs visible. FRAMING (non-negotiable): FULL-BODY head-to-toe inside the 256x256 canvas. Feet ~6-8% clearance above bottom edge (NEVER cropped, NEVER cut off, do not crop feet). Head ~6-8% headroom above hair. Figure ~85% of canvas height, centered. Camera pulled back. STYLE: pixel art, transparent background, no ground shadow. NEGATIVE: do not crop feet, do not crop weapons, do not zoom in. Do NOT generate a female character — male only.",
       "old": "../images/spritecook/_pre_regen_m489/rogue_male_east_block.png",
       "new": "../images/spritecook/rogue_male_east_block.png",
       "live": "../images/spritecook/rogue_male_east_block.png",
-      "approved": false,
+      "approved": true,
       "addedAt": "2026-05-14T20:17:42.128469Z",
       "milestone": "M489",
-      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference."
+      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference.",
+      "approvedAt": "2026-05-14T22:56:48.284Z"
     },
     {
       "id": "spritecookflow_swashbuckler_female_south",
@@ -43,10 +45,11 @@
       "old": "../images/spritecook/_pre_regen_m489/swashbuckler_female_south.png",
       "new": "../images/spritecook/swashbuckler_female_south.png",
       "live": "../images/spritecook/swashbuckler_female_south.png",
-      "approved": false,
+      "approved": true,
       "addedAt": "2026-05-14T20:17:42.128469Z",
       "milestone": "M489",
-      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference."
+      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference.",
+      "approvedAt": "2026-05-14T22:56:48.284Z"
     },
     {
       "id": "spritecookflow_oracle_old_east_block",
@@ -54,14 +57,15 @@
       "pose": "east_block",
       "category": "class",
       "source": "spritecook-regen",
-      "prompt": "IDENTITY (must match the reference image exactly \u2014 preserve all visible features of the character in the reference). POSE (east_block): side-profile east-facing, raising both arms in a defensive guard, palms forward, head tucked, both legs visible, stance grounded. FRAMING (non-negotiable): FULL-BODY head-to-toe inside the 256x256 canvas. Feet ~6-8% clearance above bottom edge (NEVER cropped, NEVER cut off, do not crop feet). Head ~6-8% headroom above hair. Figure ~85% of canvas height, centered. Camera pulled back. STYLE: pixel art, transparent background, no ground shadow. NEGATIVE: do not crop feet, do not zoom in.",
+      "prompt": "IDENTITY (must match the reference image exactly — preserve all visible features of the character in the reference). POSE (east_block): side-profile east-facing, raising both arms in a defensive guard, palms forward, head tucked, both legs visible, stance grounded. FRAMING (non-negotiable): FULL-BODY head-to-toe inside the 256x256 canvas. Feet ~6-8% clearance above bottom edge (NEVER cropped, NEVER cut off, do not crop feet). Head ~6-8% headroom above hair. Figure ~85% of canvas height, centered. Camera pulled back. STYLE: pixel art, transparent background, no ground shadow. NEGATIVE: do not crop feet, do not zoom in.",
       "old": "../images/spritecook/_pre_regen_m489/oracle_old_east_block.png",
       "new": "../images/spritecook/oracle_old_east_block.png",
       "live": "../images/spritecook/oracle_old_east_block.png",
-      "approved": false,
+      "approved": true,
       "addedAt": "2026-05-14T20:17:42.128469Z",
       "milestone": "M489",
-      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference."
+      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference.",
+      "approvedAt": "2026-05-14T22:56:48.284Z"
     },
     {
       "id": "spritecookflow_tactician_female_south",
@@ -73,10 +77,11 @@
       "old": "../images/spritecook/_pre_regen_m489/tactician_female_south.png",
       "new": "../images/spritecook/tactician_female_south.png",
       "live": "../images/spritecook/tactician_female_south.png",
-      "approved": false,
+      "approved": true,
       "addedAt": "2026-05-14T20:17:42.128469Z",
       "milestone": "M489",
-      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference."
+      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference.",
+      "approvedAt": "2026-05-14T22:56:48.284Z"
     },
     {
       "id": "spritecookflow_monk_east",
@@ -88,10 +93,11 @@
       "old": "../images/spritecook/_pre_regen_m489/monk_east.png",
       "new": "../images/spritecook/monk_east.png",
       "live": "../images/spritecook/monk_east.png",
-      "approved": false,
+      "approved": true,
       "addedAt": "2026-05-14T20:17:42.128469Z",
       "milestone": "M489",
-      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference."
+      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference.",
+      "approvedAt": "2026-05-14T22:56:48.284Z"
     },
     {
       "id": "spritecookflow_tinker_female_east_spell",
@@ -99,14 +105,15 @@
       "pose": "east_spell",
       "category": "class",
       "source": "spritecook-regen",
-      "prompt": "IDENTITY (must match reference image exactly): Human WOMAN tinker-mage in her 30s, red hair in a practical coil braided with brass hair-pins, brass goggles pushed up on forehead. OUTFIT: leather workshop apron over a long-sleeved tunic, many small tool-pockets, tool-belt with brass instruments. POSE (east_spell): side-profile east-facing, channelling arcane magic \u2014 arcane-blue sparks swirl around a glowing brass pocket-watch orb held in the palm. Both legs visible. FRAMING (non-negotiable): FULL-BODY head-to-toe inside the 256x256 canvas. Feet ~6-8% clearance above bottom edge (NEVER cropped, NEVER cut off, do not crop feet). Head ~6-8% headroom. Figure ~85% of canvas height, centered. Camera pulled back. STYLE: pixel art, transparent background, no ground shadow. NEGATIVE: do not crop feet, do not zoom in. No modern, industrial, sci-fi, laser, robot, cyberpunk, plastic, or neon.",
+      "prompt": "IDENTITY (must match reference image exactly): Human WOMAN tinker-mage in her 30s, red hair in a practical coil braided with brass hair-pins, brass goggles pushed up on forehead. OUTFIT: leather workshop apron over a long-sleeved tunic, many small tool-pockets, tool-belt with brass instruments. POSE (east_spell): side-profile east-facing, channelling arcane magic — arcane-blue sparks swirl around a glowing brass pocket-watch orb held in the palm. Both legs visible. FRAMING (non-negotiable): FULL-BODY head-to-toe inside the 256x256 canvas. Feet ~6-8% clearance above bottom edge (NEVER cropped, NEVER cut off, do not crop feet). Head ~6-8% headroom. Figure ~85% of canvas height, centered. Camera pulled back. STYLE: pixel art, transparent background, no ground shadow. NEGATIVE: do not crop feet, do not zoom in. No modern, industrial, sci-fi, laser, robot, cyberpunk, plastic, or neon.",
       "old": "../images/spritecook/_pre_regen_m489/tinker_female_east_spell.png",
       "new": "../images/spritecook/tinker_female_east_spell.png",
       "live": "../images/spritecook/tinker_female_east_spell.png",
-      "approved": false,
+      "approved": true,
       "addedAt": "2026-05-14T20:17:42.128469Z",
       "milestone": "M489",
-      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference."
+      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference.",
+      "approvedAt": "2026-05-14T22:56:48.285Z"
     },
     {
       "id": "spritecookflow_tinker_female_east_block",
@@ -118,10 +125,11 @@
       "old": "../images/spritecook/_pre_regen_m489/tinker_female_east_block.png",
       "new": "../images/spritecook/tinker_female_east_block.png",
       "live": "../images/spritecook/tinker_female_east_block.png",
-      "approved": false,
+      "approved": true,
       "addedAt": "2026-05-14T20:17:42.128469Z",
       "milestone": "M489",
-      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference."
+      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference.",
+      "approvedAt": "2026-05-14T22:56:48.285Z"
     },
     {
       "id": "spritecookflow_tinker_female_east_ko",
@@ -129,14 +137,15 @@
       "pose": "east_ko",
       "category": "class",
       "source": "spritecook-regen",
-      "prompt": "IDENTITY (must match reference image exactly): Human WOMAN tinker-mage in her 30s, red hair in a practical coil braided with brass hair-pins, brass goggles pushed up on forehead. OUTFIT: leather workshop apron over a long-sleeved tunic, many small tool-pockets, tool-belt with brass instruments. POSE (east_ko): side-profile east-facing, knocked-down lying on the ground in a peaceful unconscious pose, tools scattered around her \u2014 brass gears, wrenches, loose springs. Full body horizontal on the ground, head and feet both visible. FRAMING (non-negotiable): FULL-BODY head-to-toe inside the 256x256 canvas. Feet visible at one edge, head at the other, with clearance on both sides. Figure occupies most of the canvas width, centered vertically. STYLE: pixel art, transparent background, no ground shadow. NEGATIVE: do not crop feet, do not crop head, do not zoom in. No modern, industrial, sci-fi, laser, robot, cyberpunk.",
+      "prompt": "IDENTITY (must match reference image exactly): Human WOMAN tinker-mage in her 30s, red hair in a practical coil braided with brass hair-pins, brass goggles pushed up on forehead. OUTFIT: leather workshop apron over a long-sleeved tunic, many small tool-pockets, tool-belt with brass instruments. POSE (east_ko): side-profile east-facing, knocked-down lying on the ground in a peaceful unconscious pose, tools scattered around her — brass gears, wrenches, loose springs. Full body horizontal on the ground, head and feet both visible. FRAMING (non-negotiable): FULL-BODY head-to-toe inside the 256x256 canvas. Feet visible at one edge, head at the other, with clearance on both sides. Figure occupies most of the canvas width, centered vertically. STYLE: pixel art, transparent background, no ground shadow. NEGATIVE: do not crop feet, do not crop head, do not zoom in. No modern, industrial, sci-fi, laser, robot, cyberpunk.",
       "old": "../images/spritecook/_pre_regen_m489/tinker_female_east_ko.png",
       "new": "../images/spritecook/tinker_female_east_ko.png",
       "live": "../images/spritecook/tinker_female_east_ko.png",
-      "approved": false,
+      "approved": true,
       "addedAt": "2026-05-14T20:17:42.128469Z",
       "milestone": "M489",
-      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference."
+      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference.",
+      "approvedAt": "2026-05-14T22:56:48.285Z"
     },
     {
       "id": "spritecookflow_tinker_east_block",
@@ -148,10 +157,11 @@
       "old": "../images/spritecook/_pre_regen_m489/tinker_east_block.png",
       "new": "../images/spritecook/tinker_east_block.png",
       "live": "../images/spritecook/tinker_east_block.png",
-      "approved": false,
+      "approved": true,
       "addedAt": "2026-05-14T20:17:42.128469Z",
       "milestone": "M489",
-      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference."
+      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference.",
+      "approvedAt": "2026-05-14T22:56:48.285Z"
     },
     {
       "id": "spritecookflow_marek_greel_east_block",
@@ -159,14 +169,15 @@
       "pose": "east_block",
       "category": "npc",
       "source": "spritecook-regen",
-      "prompt": "IDENTITY (must match the reference image exactly \u2014 preserve all visible features, outfit, weapons, hairstyle, skin tone, and palette of the character in the reference). POSE (east_block): side-profile east-facing, weapon raised crosswise in front of the body as a parry guard, both hands on the grip, chin tucked, both legs visible. FRAMING (non-negotiable): FULL-BODY head-to-toe inside the 256x256 canvas. Feet ~6-8% clearance above bottom edge (NEVER cropped, NEVER cut off, do not crop feet). Head ~6-8% headroom. Figure ~85% of canvas height, centered. Camera pulled back. STYLE: pixel art, transparent background, no ground shadow. NEGATIVE: do not crop feet, do not crop weapon, do not zoom in.",
+      "prompt": "IDENTITY (must match the reference image exactly — preserve all visible features, outfit, weapons, hairstyle, skin tone, and palette of the character in the reference). POSE (east_block): side-profile east-facing, weapon raised crosswise in front of the body as a parry guard, both hands on the grip, chin tucked, both legs visible. FRAMING (non-negotiable): FULL-BODY head-to-toe inside the 256x256 canvas. Feet ~6-8% clearance above bottom edge (NEVER cropped, NEVER cut off, do not crop feet). Head ~6-8% headroom. Figure ~85% of canvas height, centered. Camera pulled back. STYLE: pixel art, transparent background, no ground shadow. NEGATIVE: do not crop feet, do not crop weapon, do not zoom in.",
       "old": "../images/spritecook/_pre_regen_m489/marek_greel_east_block.png",
       "new": "../images/spritecook/marek_greel_east_block.png",
       "live": "../images/spritecook/marek_greel_east_block.png",
-      "approved": false,
+      "approved": true,
       "addedAt": "2026-05-14T20:17:42.128469Z",
       "milestone": "M489",
-      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference."
+      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference.",
+      "approvedAt": "2026-05-14T22:56:48.285Z"
     },
     {
       "id": "spritecookflow_mira_seer_east",
@@ -174,14 +185,15 @@
       "pose": "east",
       "category": "npc",
       "source": "spritecook-regen",
-      "prompt": "IDENTITY (must match the reference image exactly \u2014 preserve all visible features, outfit, hairstyle, skin tone, and palette of the character in the reference). POSE (east): side-profile east-facing, standing relaxed idle, arms at sides or one hand near a held item, both legs visible. FRAMING (non-negotiable): FULL-BODY head-to-toe inside the 256x256 canvas. Feet ~6-8% clearance above bottom edge (NEVER cropped, NEVER cut off, do not crop feet). Head ~6-8% headroom. Figure ~85% of canvas height, centered. Camera pulled back. STYLE: pixel art, transparent background, no ground shadow. NEGATIVE: do not crop feet, do not zoom in.",
+      "prompt": "IDENTITY (must match the reference image exactly — preserve all visible features, outfit, hairstyle, skin tone, and palette of the character in the reference). POSE (east): side-profile east-facing, standing relaxed idle, arms at sides or one hand near a held item, both legs visible. FRAMING (non-negotiable): FULL-BODY head-to-toe inside the 256x256 canvas. Feet ~6-8% clearance above bottom edge (NEVER cropped, NEVER cut off, do not crop feet). Head ~6-8% headroom. Figure ~85% of canvas height, centered. Camera pulled back. STYLE: pixel art, transparent background, no ground shadow. NEGATIVE: do not crop feet, do not zoom in.",
       "old": "../images/spritecook/_pre_regen_m489/mira_seer_east.png",
       "new": "../images/spritecook/mira_seer_east.png",
       "live": "../images/spritecook/mira_seer_east.png",
-      "approved": false,
+      "approved": true,
       "addedAt": "2026-05-14T20:17:42.128469Z",
       "milestone": "M489",
-      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference."
+      "notes": "Feet-cut-off fix; east_attack used as SpriteCook reference.",
+      "approvedAt": "2026-05-14T22:56:48.285Z"
     }
   ]
 }

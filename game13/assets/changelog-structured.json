@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-14T22:20:34.014Z",
+  "generated": "2026-05-15T18:58:44.960Z",
   "categories": [
     {
       "id": "Feature",
@@ -28,6 +28,29 @@
     }
   ],
   "entries": [
+    {
+      "milestone": 491,
+      "date": "",
+      "summary": "Image-review filter fix. M489 enrolled 12 sprites in batch m355 with category:class (hero classes) and category:npc (marek/mira). The Characters filter only matched [character, hero, companion, boss, enemy] so all 12 entries were silently filtered out. Now matches [character, hero, class, companion, boss, enemy, npc, hireable]. Sub-filter checkbox set + default Set updated to match.",
+      "items": [
+        {
+          "text": "Image-review filter fix. M489 enrolled 12 sprites in batch m355 with category:class (hero classes) and category:npc (marek/mira). The Characters filter only matched [character, hero, companion, boss, enemy] so all 12 entries were silently filtered out. Now matches [character, hero, class, companion, boss, enemy, npc, hireable]. Sub-filter checkbox set + default Set updated to match.",
+          "categories": [
+            "Feature",
+            "BugFix",
+            "Art"
+          ]
+        },
+        {
+          "text": "M489b — Oracle re-roll. The M489 batch produced 12 sprites with feet-cut-off fixes; 11 came back at 150-250px range, but oracle_old_east_block came in at 98x98 — too small to read in combat. Re-rolled via SpriteCook with character_id=225eb053 (oracle_old_east_attack imported), platformer perspective, custom_animations with explicit FRAMING (CRITICAL) prompt forcing 90% canvas height. Result: 256x256 single frame extracted from the animation sheet, saved over the bad one. Backup at public/images/spritecook/_pre_regen_m489b/. Staging only — review at image-review-v2.html before approving for prod.",
+          "categories": [
+            "Feature",
+            "BugFix",
+            "Art"
+          ]
+        }
+      ]
+    },
     {
       "milestone": 490,
       "date": "2026-05-14",

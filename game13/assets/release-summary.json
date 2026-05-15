@@ -1,7 +1,7 @@
 {
-  "milestone": 490,
+  "milestone": 491,
   "date": "2026-05-14",
-  "summary": "M489b — re-rolled oracle_old_east_block sprite at full 256x256 (was 98x98 from M489 — too small to be readable in combat). Same SpriteCook reference (oracle_old_east_attack), aggressive framing prompt forcing ~90% canvas height. Staging only.",
+  "summary": "M491 — image-review-v2 character filter accepts class/npc/hireable. M489 batch entries used category=class for hero classes and npc for marek/mira; the filter only accepted [character/hero/companion/boss/enemy] so all 12 pending sprites were hidden even though the page loaded the data.",
   "categories": [
     "feature"
   ],
